@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Content {
+  id               String   @id @default(uuid())
+  platform         String   // instagram, pinterest, etc.
+  source_url       String
+  media_url        String?
+  thumbnail_url    String?
+  caption          String?
+  tags             String   // Storing as JSON string or comma-separated string since SQLite doesn't have native string[]
+  category         String?
+  created_at       DateTime @default(now())
+  popularity_score Int      @default(0)
+}
