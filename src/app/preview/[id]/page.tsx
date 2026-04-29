@@ -1,7 +1,8 @@
-import { prisma } from "@/lib/db/prisma";
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import { Download, ExternalLink } from "lucide-react";
+import { prisma } from '@/lib/db/prisma';
+import { notFound } from 'next/navigation';
+import { findSimilarContent } from '@/services/recommendation';
+import PreviewClient from './PreviewClient';
+import type { Metadata } from 'next';
 
 export default async function PreviewPage({ params }: { params: { id: string } }) {
   let content = null;

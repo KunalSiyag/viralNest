@@ -1,102 +1,141 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { Search, Loader2 } from "lucide-react";
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles, TrendingUp, Zap } from 'lucide-react';
+import SearchBar from '@/components/ui/SearchBar';
+import { CATEGORIES } from '@/lib/constants';
+
+const iconMap: Record<string, React.ReactNode> = {
+  dumbbell: <span className="text-2xl">💪</span>,
+  rocket: <span className="text-2xl">🚀</span>,
+  palette: <span className="text-2xl">🎨</span>,
+  flame: <span className="text-2xl">🔥</span>,
+  sparkles: <span className="text-2xl">✨</span>,
+  'book-open': <span className="text-2xl">📚</span>,
+  'chef-hat': <span className="text-2xl">🍳</span>,
+  plane: <span className="text-2xl">✈️</span>,
+  cpu: <span className="text-2xl">💻</span>,
+  shirt: <span className="text-2xl">👗</span>,
+};
 
 export default function Home() {
-  const [url, setUrl] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const router = useRouter();
 
-  const handleExtract = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!url) return;
+  const handleExtract = async (url: string) => {
+    const res = await fetch('/api/extract', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url }),
+    });
 
-    setLoading(true);
-    setError("");
+    const data = await res.json();
 
-    try {
-      const res = await fetch("/api/extract", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Failed to extract content");
-      }
-
-      // Redirect to preview page
-      router.push(`/preview/${data.data.id}`);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError(String(err));
-      }
-      setLoading(false);
+    if (!res.ok) {
+      throw new Error(data.error || 'Failed to extract content');
     }
+
+    router.push(`/preview/${data.data.id}`);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[70vh] text-center max-w-3xl mx-auto space-y-10">
-      <div className="space-y-4">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl text-neutral-900 dark:text-white">
-          The ultimate <span className="text-blue-600">content engine</span>.
-        </h1>
-        <p className="text-xl text-neutral-600 dark:text-neutral-400">
-          Discover, save, and reuse viral content from Instagram, Pinterest, and more.
-        </p>
-      </div>
-
-      <form onSubmit={handleExtract} className="w-full relative shadow-xl rounded-full">
-        <div className="relative flex items-center">
-          <Search className="absolute left-6 h-6 w-6 text-neutral-400" />
-          <input
-            type="url"
-            required
-            placeholder="Paste a link from Instagram, Pinterest, or YouTube..."
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            className="w-full py-5 pl-16 pr-32 text-lg bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            className="absolute right-2 py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition disabled:opacity-50 flex items-center"
+    <div className="hero-gradient">
+      {/* Hero Section */}
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-16">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-8">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--brand-subtle)] text-[var(--brand)] text-sm font-medium border border-[var(--brand)]/20"
           >
-            {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : "Extract"}
-          </button>
-        </div>
-        {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
-      </form>
+            <Sparkles className="w-3.5 h-3.5" />
+            The Content Discovery Engine
+          </motion.div>
 
-      <div className="pt-10 w-full text-left">
-        <h2 className="text-2xl font-bold mb-6">Trending Categories</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { name: "Health & Fitness", slug: "fitness" },
-            { name: "Startup Insights", slug: "startup" },
-            { name: "Design Inspo", slug: "design" },
-            { name: "Motivation", slug: "motivation" },
-          ].map((cat) => (
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]"
+          >
+            Discover & save{' '}
+            <span className="text-gradient">viral content</span>{' '}
+            from anywhere
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg sm:text-xl text-[var(--text-secondary)] max-w-xl"
+          >
+            Extract, explore, and download content from Instagram, YouTube, Pinterest, TikTok and more.
+          </motion.p>
+
+          {/* Search Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="w-full"
+          >
+            <SearchBar onExtract={handleExtract} />
+          </motion.div>
+
+          {/* Trust indicators */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-wrap justify-center gap-6 text-sm text-[var(--text-tertiary)]"
+          >
+            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-amber-500" /> Instant extraction</span>
+            <span className="flex items-center gap-1.5"><TrendingUp className="w-3.5 h-3.5 text-emerald-500" /> Trending feeds</span>
+            <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-violet-500" /> Smart categorization</span>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold">Explore Categories</h2>
+            <p className="text-[var(--text-secondary)] mt-1">Browse trending content by topic</p>
+          </div>
+          <Link
+            href="/feed"
+            className="hidden sm:flex items-center gap-1 text-sm font-medium text-[var(--brand)] hover:underline"
+          >
+            View all <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 stagger-children">
+          {CATEGORIES.map((cat) => (
             <Link
               key={cat.slug}
               href={`/feed/${cat.slug}`}
-              className="p-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl hover:border-blue-500 hover:shadow-md transition text-center font-medium"
+              className="group relative p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] hover:border-[var(--brand)]/30 hover:shadow-[var(--shadow-md)] transition-all duration-300 overflow-hidden"
             >
-              {cat.name}
+              {/* Gradient hover effect */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${cat.gradient} opacity-0 group-hover:opacity-[0.06] transition-opacity duration-300`} />
+              <div className="relative space-y-3">
+                <div>{iconMap[cat.icon] || <span className="text-2xl">📁</span>}</div>
+                <div>
+                  <h3 className="font-semibold text-sm">{cat.name}</h3>
+                  <p className="text-xs text-[var(--text-tertiary)] mt-0.5 line-clamp-1">{cat.description}</p>
+                </div>
+              </div>
             </Link>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 }

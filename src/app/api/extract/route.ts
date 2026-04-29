@@ -1,13 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { extractMediaData } from "@/services/extractor";
+import { categorizeContent, normalizeTags, extractTagsFromText } from "@/services/content-engine";
 import { prisma } from "@/lib/db/prisma";
+
+const extractSchema = z.object({
+  url: z.string().url('Please provide a valid URL'),
+});
+
+// Simple in-memory rate limiter (per-IP, 10 requests per minute)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + 60000 });
+    return true;
+  }
+
+  if (entry.count >= 10) return false;
+
+  entry.count++;
+  return true;
+}
 
 export async function POST(req: NextRequest) {
   try {
-    const { url } = await req.json();
-
-    if (!url) {
-      return NextResponse.json({ error: "URL is required" }, { status: 400 });
+    // Rate limiting
+    const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+    if (!checkRateLimit(ip)) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please wait a moment.' },
+        { status: 429 }
+      );
     }
 
     // Extract data using our scraper
@@ -39,7 +66,7 @@ export async function POST(req: NextRequest) {
       savedContent = {
         id: "stateless-" + Buffer.from(url).toString('base64').replace(/[^a-zA-Z0-9]/g, '').substring(0, 10),
         platform: extractedData.platform,
-        source_url: extractedData.source_url,
+        source_url: url.split('?')[0], // Clean URL
         media_url: extractedData.media_url,
         thumbnail_url: extractedData.thumbnail_url,
         caption: extractedData.caption,
@@ -50,11 +77,15 @@ export async function POST(req: NextRequest) {
       };
     }
 
-    return NextResponse.json({ success: true, data: savedContent });
+    return NextResponse.json({
+      success: true,
+      data: savedContent,
+      category: { name: category.name, slug: category.slug },
+      cached: false,
+    });
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
-    }
-    return NextResponse.json({ error: String(error) }, { status: 500 });
+    console.error('Extraction error:', error);
+    const message = error instanceof Error ? error.message : 'An unexpected error occurred';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

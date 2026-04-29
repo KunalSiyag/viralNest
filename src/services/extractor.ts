@@ -1,4 +1,17 @@
-import * as cheerio from "cheerio";
+/**
+ * Platform Extractor Interface & Registry
+ *
+ * Each platform gets a dedicated extractor module that implements
+ * a common interface. The registry auto-detects which extractor
+ * to use based on the URL domain.
+ */
+
+import { PLATFORMS, type PlatformId } from '@/lib/constants';
+import { extractInstagram } from './extractors/instagram';
+import { extractYouTube } from './extractors/youtube';
+import { extractPinterest } from './extractors/pinterest';
+import { extractTikTok } from './extractors/tiktok';
+import { extractGeneric } from './extractors/generic';
 
 export interface ExtractedData {
   platform: string;
@@ -7,63 +20,72 @@ export interface ExtractedData {
   thumbnail_url?: string;
   caption?: string;
   tags: string[];
+  media_type: 'video' | 'image' | 'carousel';
 }
 
+export type PlatformExtractorFn = (url: string) => Promise<ExtractedData>;
+
+/**
+ * Detect which platform a URL belongs to
+ */
+export function detectPlatform(url: string): PlatformId | 'unknown' {
+  const hostname = new URL(url).hostname.toLowerCase();
+
+  for (const [id, platform] of Object.entries(PLATFORMS)) {
+    if (platform.domains.some(d => hostname.includes(d))) {
+      return id as PlatformId;
+    }
+  }
+
+  return 'unknown';
+}
+
+/**
+ * Platform extractor registry
+ */
+const extractors: Partial<Record<PlatformId | 'unknown', PlatformExtractorFn>> = {
+  instagram: extractInstagram,
+  youtube: extractYouTube,
+  pinterest: extractPinterest,
+  tiktok: extractTikTok,
+  unknown: extractGeneric,
+};
+
+/**
+ * Main extraction function.
+ * Detects platform → uses platform-specific extractor → falls back to generic.
+ */
 export async function extractMediaData(url: string): Promise<ExtractedData> {
+  // Validate URL
   try {
-    // Since Vercel Serverless Functions have strict limits and no access to binaries
-    // like yt-dlp, we use a basic OpenGraph metadata fetcher as a fallback.
-    // In a production application, this should be replaced with a reliable API
-    // (e.g. Apify, RapidAPI) since public platform pages often block standard fetch requests.
-    const response = await fetch(url, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-      },
-    });
+    new URL(url);
+  } catch {
+    throw new Error('Invalid URL provided');
+  }
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch URL: ${response.statusText}`);
-    }
+  const platform = detectPlatform(url);
+  const extractor = extractors[platform] || extractGeneric;
 
-    const html = await response.text();
-    const $ = cheerio.load(html);
-
-    let platform = "unknown";
-    if (url.includes("instagram.com")) platform = "instagram";
-    else if (url.includes("pinterest.com") || url.includes("pin.it")) platform = "pinterest";
-    else if (url.includes("youtube.com") || url.includes("youtu.be")) platform = "youtube";
-    else if (url.includes("tiktok.com")) platform = "tiktok";
-
-    const title = $('meta[property="og:title"]').attr("content") || $("title").text();
-    const description = $('meta[property="og:description"]').attr("content") || "";
-    const image = $('meta[property="og:image"]').attr("content");
-    const video = $('meta[property="og:video"]').attr("content") || $('meta[property="og:video:url"]').attr("content") || $('meta[property="og:video:secure_url"]').attr("content");
-
-    // Attempt to extract tags
-    const words = `${title} ${description}`.match(/#\w+/g) || [];
-    const tags = Array.from(new Set(words.map(w => w.replace("#", "").toLowerCase())));
-
-    // Determine the media URL. If no OG video tag is present (common for protected pages),
-    // we fallback to the source URL so the user has something.
-    let mediaUrl = video;
-    if (!mediaUrl && platform === "youtube") {
-      mediaUrl = url; // Pass the YouTube link itself
-    }
-
+  try {
+    const data = await extractor(url);
     return {
-      platform,
-      source_url: url,
-      media_url: mediaUrl,
-      thumbnail_url: image,
-      caption: title || "Extracted Content",
-      tags,
+      ...data,
+      platform: platform === 'unknown' ? data.platform : platform,
     };
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error("Extraction failed:", error.message, error.stack);
-    } else {
-      console.error("Extraction failed with unknown error:", error);
+  } catch (firstError) {
+    // If platform-specific extractor fails, try generic fallback
+    if (platform !== 'unknown') {
+      console.warn(`Platform extractor for ${platform} failed, trying generic fallback`);
+      try {
+        const fallbackData = await extractGeneric(url);
+        return {
+          ...fallbackData,
+          platform,
+        };
+      } catch {
+        // Both failed, throw original error
+      }
     }
-    throw new Error("Failed to extract media data. The URL might be invalid, or the site blocked the request.");
+    throw firstError;
   }
 }

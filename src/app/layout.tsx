@@ -1,21 +1,38 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import ThemeProvider from "@/components/ThemeProvider";
 
-const geistSans = Geist({
+const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "viralNest - Discover & Save Viral Content",
-  description: "Discover, save, and reuse viral content from across the internet.",
+  title: {
+    default: "viralNest — Discover & Save Viral Content",
+    template: "%s | viralNest",
+  },
+  description: "Discover, save, and reuse viral content from Instagram, Pinterest, YouTube, TikTok and more. The ultimate content discovery engine.",
+  keywords: ["viral content", "instagram reels", "pinterest videos", "content discovery", "download reels", "trending content"],
+  openGraph: {
+    type: "website",
+    siteName: "viralNest",
+    title: "viralNest — Discover & Save Viral Content",
+    description: "Discover, save, and reuse viral content from across the internet.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "viralNest — Discover & Save Viral Content",
+    description: "Discover, save, and reuse viral content from across the internet.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -24,23 +41,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50`}
-      >
-        <header className="border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
-          <div className="max-w-6xl mx-auto p-4 flex justify-between items-center">
-            <Link href="/" className="text-xl font-bold tracking-tight">viral<span className="text-blue-600">Nest</span></Link>
-            <nav className="flex space-x-4 text-sm font-medium">
-              <Link href="/feed" className="hover:text-blue-600">Trending</Link>
-              <Link href="/feed/fitness" className="hover:text-blue-600">Fitness</Link>
-              <Link href="/feed/startup" className="hover:text-blue-600">Startups</Link>
-            </nav>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} antialiased`}>
+        <ThemeProvider>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
           </div>
-        </header>
-        <main className="max-w-6xl mx-auto p-4">
-          {children}
-        </main>
+        </ThemeProvider>
       </body>
     </html>
   );

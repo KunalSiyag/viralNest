@@ -7,18 +7,29 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      = env("DATABASE_URL")
 }
 
 model Content {
   id               String   @id @default(uuid())
-  platform         String   // instagram, pinterest, etc.
-  source_url       String
+  platform         String   // instagram, pinterest, youtube, tiktok, twitter, unknown
+  source_url       String   @unique // Prevent duplicate entries for the same URL
   media_url        String?
   thumbnail_url    String?
   caption          String?
-  tags             String   // Storing as JSON string or comma-separated string since SQLite doesn't have native string[]
-  category         String?
+  tags             String   // JSON array stored as string (SQLite compat)
+  category         String   @default("uncategorized")
   created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
   popularity_score Int      @default(0)
+  download_count   Int      @default(0)
+  view_count       Int      @default(0)
+  media_type       String   @default("video") // video, image, carousel
+
+  @@index([platform])
+  @@index([category])
+  @@index([created_at])
+  @@index([popularity_score])
+  @@index([category, created_at])
+  @@index([platform, created_at])
 }
