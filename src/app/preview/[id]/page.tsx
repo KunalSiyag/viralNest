@@ -4,9 +4,28 @@ import Link from "next/link";
 import { Download, ExternalLink } from "lucide-react";
 
 export default async function PreviewPage({ params }: { params: { id: string } }) {
-  const content = await prisma.content.findUnique({
-    where: { id: params.id },
-  });
+  let content = null;
+
+  if (params.id.startsWith("stateless-")) {
+    // If running in Vercel with SQLite, database writes fail, so the ID is mocked.
+    // We can't fetch it from the DB, so we display a generic stateless preview.
+    content = {
+      id: params.id,
+      platform: "extracted",
+      source_url: "#",
+      media_url: null,
+      thumbnail_url: null,
+      caption: "Content extracted (Stateless Mode)",
+      tags: "[]",
+      category: "uncategorized",
+      created_at: new Date(),
+      popularity_score: 0,
+    };
+  } else {
+    content = await prisma.content.findUnique({
+      where: { id: params.id },
+    });
+  }
 
   if (!content) {
     notFound();
