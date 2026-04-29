@@ -1,7 +1,4 @@
-import { execFile } from "child_process";
-import { promisify } from "util";
-
-const execFileAsync = promisify(execFile);
+import * as cheerio from "cheerio";
 
 export interface ExtractedData {
   platform: string;
@@ -14,37 +11,59 @@ export interface ExtractedData {
 
 export async function extractMediaData(url: string): Promise<ExtractedData> {
   try {
-    // Run yt-dlp to get the JSON dump without actually downloading the video
-    // Use --no-warnings and --quiet to keep stdout clean, except for the JSON dump
-    // Using execFileAsync with args array to prevent shell command injection
-    const { stdout } = await execFileAsync("yt-dlp", ["--dump-json", "--no-warnings", "--quiet", url]);
+    // Since Vercel Serverless Functions have strict limits and no access to binaries
+    // like yt-dlp, we use a basic OpenGraph metadata fetcher as a fallback.
+    // In a production application, this should be replaced with a reliable API
+    // (e.g. Apify, RapidAPI) since public platform pages often block standard fetch requests.
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      },
+    });
 
-    const data = JSON.parse(stdout.trim());
+    if (!response.ok) {
+      throw new Error(`Failed to fetch URL: ${response.statusText}`);
+    }
 
-    // Basic heuristic to determine platform
+    const html = await response.text();
+    const $ = cheerio.load(html);
+
     let platform = "unknown";
     if (url.includes("instagram.com")) platform = "instagram";
     else if (url.includes("pinterest.com") || url.includes("pin.it")) platform = "pinterest";
     else if (url.includes("youtube.com") || url.includes("youtu.be")) platform = "youtube";
     else if (url.includes("tiktok.com")) platform = "tiktok";
 
-    // Extract tags from tags array or caption text
-    const tags = Array.isArray(data.tags) ? data.tags : [];
+    const title = $('meta[property="og:title"]').attr("content") || $("title").text();
+    const description = $('meta[property="og:description"]').attr("content") || "";
+    const image = $('meta[property="og:image"]').attr("content");
+    const video = $('meta[property="og:video"]').attr("content") || $('meta[property="og:video:url"]').attr("content") || $('meta[property="og:video:secure_url"]').attr("content");
+
+    // Attempt to extract tags
+    const words = `${title} ${description}`.match(/#\w+/g) || [];
+    const tags = Array.from(new Set(words.map(w => w.replace("#", "").toLowerCase())));
+
+    // Determine the media URL. If no OG video tag is present (common for protected pages),
+    // we fallback to the source URL so the user has something.
+    let mediaUrl = video;
+    if (!mediaUrl && platform === "youtube") {
+      mediaUrl = url; // Pass the YouTube link itself
+    }
 
     return {
       platform,
       source_url: url,
-      media_url: data.url || data.webpage_url,
-      thumbnail_url: data.thumbnail,
-      caption: data.title || data.description || "",
+      media_url: mediaUrl,
+      thumbnail_url: image,
+      caption: title || "Extracted Content",
       tags,
     };
   } catch (error: unknown) {
     if (error instanceof Error) {
-      console.error("Failed to extract data:", error.message);
+      console.error("Extraction failed:", error.message, error.stack);
     } else {
-      console.error("Failed to extract data:", error);
+      console.error("Extraction failed with unknown error:", error);
     }
-    throw new Error("Failed to extract media data. The URL might be invalid or unsupported.");
+    throw new Error("Failed to extract media data. The URL might be invalid, or the site blocked the request.");
   }
 }
