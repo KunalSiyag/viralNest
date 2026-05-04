@@ -18,6 +18,12 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: '**.tiktokcdn-us.com' },
       // Generic
       { protocol: 'https', hostname: '**.twimg.com' },
+      // Unsplash (seed data + user-generated)
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      // oEmbed thumbnails
+      { protocol: 'https', hostname: 'noembed.com' },
+      // Catch-all for user-submitted content thumbnails
+      { protocol: 'https', hostname: '**' },
     ],
   },
   async headers() {

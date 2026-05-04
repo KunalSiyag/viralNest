@@ -67,6 +67,10 @@ export default function PreviewClient({ content, similar }: PreviewClientProps) 
 
   const isYouTube = content.platform === 'youtube';
   const youtubeId = isYouTube ? extractYouTubeId(content.source_url) : null;
+  const isInstagram = content.platform === 'instagram';
+  const igShortcode = isInstagram ? extractInstagramShortcode(content.source_url) : null;
+  const isTikTok = content.platform === 'tiktok';
+  const tiktokVideoId = isTikTok ? extractTikTokId(content.source_url) : null;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
@@ -79,34 +83,79 @@ export default function PreviewClient({ content, similar }: PreviewClientProps) 
       >
         {/* Media Preview */}
         <div className="flex-1 min-w-0">
-          <div className="relative rounded-3xl overflow-hidden bg-black shadow-[var(--shadow-xl)] aspect-video lg:aspect-[3/4] max-h-[600px] flex items-center justify-center">
+          <div className="relative rounded-3xl overflow-hidden bg-[var(--bg-tertiary)] shadow-[var(--shadow-xl)] flex items-center justify-center"
+            style={{ minHeight: '400px' }}
+          >
+            {/* YouTube embed */}
             {isYouTube && youtubeId ? (
-              <iframe
-                src={`https://www.youtube.com/embed/${youtubeId}`}
-                className="w-full h-full absolute inset-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title={content.caption || 'Video'}
-              />
-            ) : content.media_url && content.media_type === 'video' ? (
-              <video
-                src={content.media_url}
-                controls
-                className="w-full h-full object-contain"
-                poster={content.thumbnail_url || undefined}
-                playsInline
-              />
+              <div className="w-full aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${youtubeId}`}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={content.caption || 'Video'}
+                />
+              </div>
+
+            /* Instagram embed — rendered via native IG embed iframe */
+            ) : isInstagram && igShortcode ? (
+              <div className="w-full flex justify-center bg-[var(--bg-primary)] py-4">
+                <iframe
+                  src={`https://www.instagram.com/p/${igShortcode}/embed/`}
+                  className="border-0 rounded-xl"
+                  width="400"
+                  height="500"
+                  allowFullScreen
+                  scrolling="no"
+                  title={content.caption || 'Instagram Post'}
+                  style={{ maxWidth: '100%' }}
+                />
+              </div>
+
+            /* TikTok embed */
+            ) : isTikTok && tiktokVideoId ? (
+              <div className="w-full flex justify-center bg-[var(--bg-primary)] py-4">
+                <iframe
+                  src={`https://www.tiktok.com/embed/v2/${tiktokVideoId}`}
+                  className="border-0 rounded-xl"
+                  width="340"
+                  height="600"
+                  allowFullScreen
+                  scrolling="no"
+                  title={content.caption || 'TikTok Video'}
+                  style={{ maxWidth: '100%' }}
+                />
+              </div>
+
+            /* Direct video with media_url (non-embed) */
+            ) : content.media_url && content.media_type === 'video' && !content.media_url.includes('/embed') ? (
+              <div className="w-full aspect-video">
+                <video
+                  src={content.media_url}
+                  controls
+                  className="w-full h-full object-contain"
+                  poster={content.thumbnail_url || undefined}
+                  playsInline
+                />
+              </div>
+
+            /* Thumbnail image */
             ) : content.thumbnail_url ? (
-              <Image
-                src={content.thumbnail_url}
-                alt={content.caption || 'Content preview'}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain"
-                priority
-              />
+              <div className="relative w-full aspect-[3/4] max-h-[600px]">
+                <Image
+                  src={content.thumbnail_url}
+                  alt={content.caption || 'Content preview'}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-contain"
+                  priority
+                />
+              </div>
+
+            /* Fallback — no preview available */
             ) : (
-              <div className="text-white/60 text-center p-8 space-y-3">
+              <div className="text-[var(--text-tertiary)] text-center p-8 space-y-3">
                 <Play className="w-16 h-16 mx-auto opacity-40" />
                 <p>Preview unavailable</p>
                 <a href={content.source_url} target="_blank" rel="noreferrer" className="text-[var(--brand)] underline text-sm">
@@ -239,3 +288,14 @@ function extractYouTubeId(url: string): string | null {
   const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/);
   return match ? match[1] : null;
 }
+
+function extractInstagramShortcode(url: string): string | null {
+  const match = url.match(/\/(?:p|reel|tv|reels)\/([A-Za-z0-9_-]+)/);
+  return match ? match[1] : null;
+}
+
+function extractTikTokId(url: string): string | null {
+  const match = url.match(/\/video\/(\d+)/);
+  return match ? match[1] : null;
+}
+

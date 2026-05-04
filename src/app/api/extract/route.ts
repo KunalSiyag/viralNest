@@ -37,45 +37,57 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Extract data using our scraper
+    const body = await req.json();
+    const parsed = extractSchema.safeParse(body);
+
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: parsed.error.errors[0]?.message || 'Invalid input' },
+        { status: 400 }
+      );
+    }
+
+    const { url } = parsed.data;
+    const cleanUrl = url.split('?')[0];
+
+    // Check for duplicate — return existing if already extracted
+    const existing = await prisma.content.findUnique({
+      where: { source_url: cleanUrl },
+    });
+
+    if (existing) {
+      await prisma.content.update({
+        where: { id: existing.id },
+        data: { view_count: { increment: 1 } },
+      });
+      return NextResponse.json({ success: true, data: existing, cached: true });
+    }
+
+    // Extract data using modular pipeline
     const extractedData = await extractMediaData(url);
 
-    let savedContent;
+    // Process through content engine
+    const allTags = normalizeTags([
+      ...extractedData.tags,
+      ...extractTagsFromText(extractedData.caption || ''),
+    ]);
 
-    try {
-      // Attempt to save metadata to Prisma (works locally)
-      savedContent = await prisma.content.create({
-        data: {
-          platform: extractedData.platform,
-          source_url: extractedData.source_url,
-          media_url: extractedData.media_url,
-          thumbnail_url: extractedData.thumbnail_url,
-          caption: extractedData.caption,
-          tags: JSON.stringify(extractedData.tags),
-          category: "uncategorized",
-        },
-      });
-    } catch (dbError) {
-      // Vercel serverless environments have a read-only filesystem.
-      // SQLite writes will fail with Error 14.
-      // If the database write fails, we fall back to returning the data directly statelessly
-      // so the user can still proceed to the preview page.
-      console.warn("Database write failed (likely read-only environment). Returning stateless data.", dbError);
+    const category = categorizeContent(allTags);
 
-      // Generate a mock ID for the stateless preview
-      savedContent = {
-        id: "stateless-" + Buffer.from(url).toString('base64').replace(/[^a-zA-Z0-9]/g, '').substring(0, 10),
+    // Save to database
+    const savedContent = await prisma.content.create({
+      data: {
         platform: extractedData.platform,
-        source_url: url.split('?')[0], // Clean URL
+        source_url: cleanUrl,
         media_url: extractedData.media_url,
         thumbnail_url: extractedData.thumbnail_url,
         caption: extractedData.caption,
-        tags: JSON.stringify(extractedData.tags),
-        category: "uncategorized",
-        created_at: new Date(),
-        popularity_score: 0
-      };
-    }
+        tags: JSON.stringify(allTags),
+        category: category.slug,
+        media_type: extractedData.media_type,
+        view_count: 1,
+      },
+    });
 
     return NextResponse.json({
       success: true,

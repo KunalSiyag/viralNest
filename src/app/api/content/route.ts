@@ -45,26 +45,25 @@ export async function GET(req: NextRequest) {
     }
 
     // Build orderBy
-    type OrderByField = 'created_at' | 'popularity_score' | 'download_count';
-    type OrderByDirection = 'asc' | 'desc';
-    let orderBy: Record<OrderByField, OrderByDirection>[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let orderBy: any[];
 
     switch (sort) {
       case 'trending':
         orderBy = [
-          { popularity_score: 'desc' },
-          { created_at: 'desc' },
+          { popularity_score: 'desc' as const },
+          { created_at: 'desc' as const },
         ];
         break;
       case 'popular':
         orderBy = [
-          { download_count: 'desc' },
-          { popularity_score: 'desc' },
+          { download_count: 'desc' as const },
+          { popularity_score: 'desc' as const },
         ];
         break;
       case 'newest':
       default:
-        orderBy = [{ created_at: 'desc' }];
+        orderBy = [{ created_at: 'desc' as const }];
         break;
     }
 

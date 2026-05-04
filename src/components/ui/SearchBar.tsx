@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Search, Loader2, Instagram, Youtube, Pin, Music, Globe } from 'lucide-react';
+import { Search, Loader2, Camera, PlayCircle, Pin, Music, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface SearchBarProps {
@@ -9,8 +9,8 @@ interface SearchBarProps {
 }
 
 const platformIcons: Record<string, React.ReactNode> = {
-  instagram: <Instagram className="w-5 h-5 text-pink-500" />,
-  youtube: <Youtube className="w-5 h-5 text-red-500" />,
+  instagram: <Camera className="w-5 h-5 text-pink-500" />,
+  youtube: <PlayCircle className="w-5 h-5 text-red-500" />,
   pinterest: <Pin className="w-5 h-5 text-red-600" />,
   tiktok: <Music className="w-5 h-5" />,
   unknown: <Globe className="w-5 h-5 text-[var(--text-tertiary)]" />,
