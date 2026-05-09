@@ -15,6 +15,8 @@ import type { ExtractedData } from '../extractor';
 import { extractTagsFromText } from '../content-engine';
 import { extractWithBrowser } from './browser-extractor';
 import { fetchMetadataWithFallback } from './metadata-services';
+import { normalizeSourceUrl } from '../url-normalizer';
+import { parseEngagementCount } from '../media-capabilities';
 
 const OEMBED_URL = 'https://api.instagram.com/oembed';
 
@@ -24,6 +26,11 @@ const OEMBED_URL = 'https://api.instagram.com/oembed';
 function extractShortcode(url: string): string | null {
   const match = url.match(/\/(?:p|reel|tv|reels)\/([A-Za-z0-9_-]+)/);
   return match ? match[1] : null;
+}
+
+function extractInstagramContentType(url: string): 'p' | 'reel' | 'reels' | 'tv' | null {
+  const match = url.match(/\/(p|reel|reels|tv)\//);
+  return match ? (match[1] as 'p' | 'reel' | 'reels' | 'tv') : null;
 }
 
 /**
@@ -36,10 +43,26 @@ function detectMediaType(url: string): 'video' | 'image' {
   return 'image';
 }
 
+function extractMetricsFromText(text: string) {
+  const metrics: { likes?: number | null; comments?: number | null; views?: number | null } = {};
+  const compact = text.toLowerCase().replace(/\s+/g, ' ');
+
+  const likesMatch = compact.match(/([\d.,]+(?:\s*[km])?)\s+likes?/);
+  const commentsMatch = compact.match(/([\d.,]+(?:\s*[km])?)\s+comments?/);
+  const viewsMatch = compact.match(/([\d.,]+(?:\s*[km])?)\s+views?/);
+
+  if (likesMatch) metrics.likes = parseEngagementCount(likesMatch[1]);
+  if (commentsMatch) metrics.comments = parseEngagementCount(commentsMatch[1]);
+  if (viewsMatch) metrics.views = parseEngagementCount(viewsMatch[1]);
+
+  return metrics;
+}
+
 export async function extractInstagram(url: string): Promise<ExtractedData> {
-  const cleanUrl = url.split('?')[0];
+  const cleanUrl = normalizeSourceUrl(url);
   const shortcode = extractShortcode(cleanUrl);
   const mediaType = detectMediaType(cleanUrl);
+  const contentType = extractInstagramContentType(cleanUrl);
 
   // --- Attempt 1: Headless browser extraction ---
   // Load the page in Chrome, dismiss login popup, capture media from network
@@ -47,14 +70,30 @@ export async function extractInstagram(url: string): Promise<ExtractedData> {
     console.log('[Instagram] Attempting browser-based extraction...');
     const result = await extractWithBrowser(cleanUrl);
 
+    const caption = result.caption || '';
+    const isLoginWall = 
+      (result.thumbnailUrl && result.thumbnailUrl.includes('rsrc.php')) ||
+      caption.toLowerCase().includes('log in to instagram') ||
+      caption.toLowerCase().includes("page isn't available") ||
+      caption.toLowerCase().includes('create an account');
+
+    if (isLoginWall && !result.mediaUrl) {
+      throw new Error('Browser extraction hit Instagram login wall');
+    }
+
     if (result.mediaUrl || result.thumbnailUrl) {
-      const caption = result.caption || `Instagram ${mediaType === 'video' ? 'Reel' : 'Post'}`;
-      const tags = extractTagsFromText(caption);
+      const finalCaption = caption || `Instagram ${mediaType === 'video' ? 'Reel' : 'Post'}`;
+      const tags = extractTagsFromText(finalCaption);
+      const platformMetrics = {
+        ...extractMetricsFromText(finalCaption),
+        ...result.platformMetrics,
+        author_handle: result.author || null,
+      };
 
       console.log('[Instagram] Browser extraction succeeded:', {
         hasVideo: !!result.mediaUrl,
         hasThumbnail: !!result.thumbnailUrl,
-        captionLength: caption.length,
+        captionLength: finalCaption.length,
       });
 
       return {
@@ -62,9 +101,11 @@ export async function extractInstagram(url: string): Promise<ExtractedData> {
         source_url: cleanUrl,
         media_url: result.mediaUrl || undefined,
         thumbnail_url: result.thumbnailUrl || undefined,
-        caption,
+        caption: finalCaption,
         tags: tags.length > 0 ? tags : ['instagram'],
         media_type: result.mediaUrl ? 'video' : mediaType,
+        platform_metrics: platformMetrics,
+        preview_mode: 'embed',
       };
     }
   } catch (e) {
@@ -84,6 +125,11 @@ export async function extractInstagram(url: string): Promise<ExtractedData> {
         const data = await oembedRes.json();
         const caption = data.title || '';
         const tags = extractTagsFromText(caption);
+        const platformMetrics = {
+          ...extractMetricsFromText(caption),
+          author_name: data.author_name || null,
+          author_handle: data.author_name || null,
+        };
 
         return {
           platform: 'instagram',
@@ -92,6 +138,8 @@ export async function extractInstagram(url: string): Promise<ExtractedData> {
           caption: caption || 'Instagram Post',
           tags: tags.length > 0 ? tags : ['instagram'],
           media_type: mediaType,
+          platform_metrics: platformMetrics,
+          preview_mode: 'embed',
         };
       }
     }
@@ -121,6 +169,8 @@ export async function extractInstagram(url: string): Promise<ExtractedData> {
           caption: caption || 'Instagram Post',
           tags: tags.length > 0 ? tags : ['instagram'],
           media_type: metadata.video ? 'video' : mediaType,
+          platform_metrics: extractMetricsFromText(`${title} ${description}`),
+          preview_mode: 'embed',
         };
       }
     }
@@ -129,16 +179,24 @@ export async function extractInstagram(url: string): Promise<ExtractedData> {
   }
 
   // --- Attempt 4: Embed URL fallback ---
-  const embedUrl = shortcode
-    ? `https://www.instagram.com/p/${shortcode}/embed/`
-    : undefined;
+  let embedUrl: string | undefined;
+  if (shortcode) {
+    if (contentType === 'reel' || contentType === 'reels') {
+      embedUrl = `https://www.instagram.com/reel/${shortcode}/embed/`;
+    } else if (contentType === 'tv') {
+      embedUrl = `https://www.instagram.com/tv/${shortcode}/embed/`;
+    } else {
+      embedUrl = `https://www.instagram.com/p/${shortcode}/embed/`;
+    }
+  }
 
   return {
     platform: 'instagram',
     source_url: cleanUrl,
-    media_url: embedUrl,
+    media_url: undefined, // Embed URL is not a direct media download link
     caption: `Instagram ${mediaType === 'video' ? 'Reel' : 'Post'}`,
     tags: ['instagram'],
     media_type: mediaType,
+    preview_mode: 'embed',
   };
 }

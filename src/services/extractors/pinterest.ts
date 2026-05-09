@@ -10,9 +10,10 @@
 import type { ExtractedData } from '../extractor';
 import { extractTagsFromText } from '../content-engine';
 import { fetchMetadataWithFallback } from './metadata-services';
+import { normalizeSourceUrl } from '../url-normalizer';
 
 export async function extractPinterest(url: string): Promise<ExtractedData> {
-  const cleanUrl = url.split('?')[0];
+  const cleanUrl = normalizeSourceUrl(url);
 
   // --- Attempt 1: Direct OG tag scraping ---
   try {
@@ -58,6 +59,7 @@ export async function extractPinterest(url: string): Promise<ExtractedData> {
             caption: title || description || 'Pinterest Pin',
             tags: tags.length > 0 ? tags : ['pinterest'],
             media_type: mediaType,
+            preview_mode: video ? 'direct_video' : 'image',
           };
         }
       }
@@ -87,6 +89,7 @@ export async function extractPinterest(url: string): Promise<ExtractedData> {
         caption: caption || 'Pinterest Pin',
         tags: tags.length > 0 ? tags : ['pinterest'],
         media_type: mediaType,
+        preview_mode: metadata.video ? 'direct_video' : 'image',
       };
     }
   } catch (e) {
@@ -100,5 +103,6 @@ export async function extractPinterest(url: string): Promise<ExtractedData> {
     caption: 'Pinterest Pin',
     tags: ['pinterest'],
     media_type: 'image',
+    preview_mode: 'external',
   };
 }

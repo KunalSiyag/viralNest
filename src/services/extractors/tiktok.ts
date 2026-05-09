@@ -11,11 +11,12 @@
 import type { ExtractedData } from '../extractor';
 import { extractTagsFromText } from '../content-engine';
 import { fetchMetadataWithFallback } from './metadata-services';
+import { normalizeSourceUrl } from '../url-normalizer';
 
 const OEMBED_URL = 'https://www.tiktok.com/oembed';
 
 export async function extractTikTok(url: string): Promise<ExtractedData> {
-  const cleanUrl = url.split('?')[0];
+  const cleanUrl = normalizeSourceUrl(url);
 
   // --- Attempt 1: TikTok oEmbed ---
   try {

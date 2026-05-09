@@ -3,49 +3,50 @@
 @theme {
   --font-sans: 'Inter', var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), 'JetBrains Mono', monospace;
+  --font-heading: var(--font-heading), 'Oswald', 'Inter', system-ui, sans-serif;
 }
 
 /* ── Design Tokens ── */
 :root {
   /* Brand */
-  --brand-hue: 250;
-  --brand: hsl(var(--brand-hue) 90% 60%);
-  --brand-light: hsl(var(--brand-hue) 90% 70%);
-  --brand-dark: hsl(var(--brand-hue) 90% 45%);
-  --brand-subtle: hsl(var(--brand-hue) 40% 96%);
+  --brand-hue: 350; /* Crimson/Vermilion */
+  --brand: hsl(350 85% 55%);
+  --brand-light: hsl(350 85% 65%);
+  --brand-dark: hsl(350 85% 45%);
+  --brand-subtle: hsl(350 40% 90%);
 
   /* Accent */
-  --accent: hsl(330 85% 60%);
-  --accent-light: hsl(330 85% 70%);
+  --accent: hsl(45 95% 45%); /* Amber/Gold */
+  --accent-light: hsl(45 95% 55%);
 
-  /* Surfaces */
-  --bg-primary: hsl(0 0% 100%);
-  --bg-secondary: hsl(240 10% 97%);
-  --bg-tertiary: hsl(240 10% 94%);
-  --bg-elevated: hsl(0 0% 100%);
+  /* Surfaces - Poster Paper Light Base */
+  --bg-primary: hsl(40 30% 96%); /* Off-white paper */
+  --bg-secondary: hsl(40 20% 92%);
+  --bg-tertiary: hsl(40 20% 88%);
+  --bg-elevated: hsl(40 30% 98%);
 
-  /* Text */
-  --text-primary: hsl(240 10% 8%);
-  --text-secondary: hsl(240 5% 40%);
-  --text-tertiary: hsl(240 5% 55%);
-  --text-inverted: hsl(0 0% 100%);
+  /* Text - High contrast ink */
+  --text-primary: hsl(220 20% 12%);
+  --text-secondary: hsl(220 15% 35%);
+  --text-tertiary: hsl(220 15% 50%);
+  --text-inverted: hsl(40 30% 96%);
 
   /* Borders */
-  --border: hsl(240 10% 90%);
-  --border-hover: hsl(240 10% 82%);
+  --border: hsl(220 20% 80%);
+  --border-hover: hsl(220 20% 60%);
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.06), 0 4px 10px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 30px hsla(var(--brand-hue) 90% 60% / 0.15);
+  /* Shadows - Sharp, dramatic shadows */
+  --shadow-sm: 0 2px 0px rgba(0, 0, 0, 0.1);
+  --shadow-md: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 8px 8px 0px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 16px 16px 0px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 40px hsla(350 85% 55% / 0.15);
 
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  /* Radii - Sharper corners for posters */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -57,31 +58,30 @@
 
 /* ── Dark Mode ── */
 .dark {
-  --brand: hsl(var(--brand-hue) 85% 65%);
-  --brand-light: hsl(var(--brand-hue) 85% 75%);
-  --brand-dark: hsl(var(--brand-hue) 85% 50%);
-  --brand-subtle: hsl(var(--brand-hue) 30% 15%);
+  /* Surfaces - Cinema Dark Base */
+  --brand-subtle: hsl(350 40% 15%);
 
-  --accent: hsl(330 80% 65%);
-  --accent-light: hsl(330 80% 75%);
+  --bg-primary: hsl(220 20% 8%); /* Deep ink base */
+  --bg-secondary: hsl(220 20% 12%);
+  --bg-tertiary: hsl(220 20% 16%);
+  --bg-elevated: hsl(220 20% 14%);
 
-  --bg-primary: hsl(240 10% 6%);
-  --bg-secondary: hsl(240 10% 9%);
-  --bg-tertiary: hsl(240 10% 13%);
-  --bg-elevated: hsl(240 10% 11%);
+  /* Text - High contrast ivory */
+  --text-primary: hsl(40 20% 95%);
+  --text-secondary: hsl(40 10% 70%);
+  --text-tertiary: hsl(40 10% 50%);
+  --text-inverted: hsl(220 20% 8%);
 
-  --text-primary: hsl(240 10% 95%);
-  --text-secondary: hsl(240 5% 60%);
-  --text-tertiary: hsl(240 5% 45%);
+  /* Borders */
+  --border: hsl(220 20% 20%);
+  --border-hover: hsl(220 20% 30%);
 
-  --border: hsl(240 10% 16%);
-  --border-hover: hsl(240 10% 22%);
-
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.35);
-  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.45);
-  --shadow-glow: 0 0 40px hsla(var(--brand-hue) 85% 65% / 0.12);
+  /* Shadows */
+  --shadow-sm: 0 2px 0px rgba(0, 0, 0, 0.4);
+  --shadow-md: 4px 4px 0px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 8px 8px 0px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 16px 16px 0px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px hsla(350 85% 55% / 0.25);
 }
 
 /* ── Base ── */
@@ -91,6 +91,12 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 /* Smooth scrolling */
@@ -119,7 +125,7 @@ html {
 
 /* ── Selection ── */
 ::selection {
-  background: hsla(var(--brand-hue) 90% 60% / 0.25);
+  background: hsla(350 85% 55% / 0.25);
   color: var(--text-primary);
 }
 
@@ -142,22 +148,6 @@ html {
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsla(var(--brand-hue) 90% 60% / 0.1); }
-  50% { box-shadow: 0 0 40px hsla(var(--brand-hue) 90% 60% / 0.25); }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 .animate-fade-in {
@@ -185,17 +175,55 @@ html {
 .stagger-children > *:nth-child(7) { animation-delay: 360ms; }
 .stagger-children > *:nth-child(8) { animation-delay: 420ms; }
 
-/* ── Glassmorphism ── */
-.glass {
-  background: hsla(0 0% 100% / 0.7);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid hsla(0 0% 100% / 0.3);
+/* ── Poster Styles & Utilities ── */
+.poster-frame {
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  transition: transform var(--duration-normal) var(--ease-out-expo),
+              box-shadow var(--duration-normal) var(--ease-out-expo),
+              border-color var(--duration-normal) var(--ease-out-expo);
 }
 
-.dark .glass {
-  background: hsla(240 10% 10% / 0.7);
-  border: 1px solid hsla(240 10% 20% / 0.3);
+.poster-frame:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--brand);
+}
+
+.stamp-label {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.genre-ribbon {
+  position: absolute;
+  top: 1.5rem;
+  right: -2rem;
+  background: var(--brand);
+  color: var(--text-inverted);
+  padding: 0.25rem 3rem;
+  transform: rotate(45deg);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
 }
 
 /* ── Gradient text ── */
@@ -218,17 +246,20 @@ html {
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
-/* ── Hero gradient background ── */
+/* ── Hero gradient background (Subtle light sweep) ── */
 .hero-gradient {
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, hsla(var(--brand-hue) 90% 60% / 0.15), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 50%, hsla(330 85% 60% / 0.08), transparent),
-    radial-gradient(ellipse 60% 40% at 20% 80%, hsla(var(--brand-hue) 90% 60% / 0.05), transparent);
+  position: relative;
 }
 
-.dark .hero-gradient {
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, hsla(var(--brand-hue) 85% 65% / 0.12), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 50%, hsla(330 80% 65% / 0.06), transparent),
-    radial-gradient(ellipse 60% 40% at 20% 80%, hsla(var(--brand-hue) 85% 65% / 0.04), transparent);
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, hsla(350 85% 55% / 0.15), transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark .hero-gradient::before {
+  background: radial-gradient(circle at 50% 0%, hsla(350 85% 55% / 0.1), transparent 60%);
 }

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
-import { Search, Loader2, Camera, PlayCircle, Pin, Music, Globe } from 'lucide-react';
+import { useState, useRef, useCallback } from 'react';
+import { Search, Loader2, Camera, PlayCircle, Pin, Music, Globe, Terminal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface SearchBarProps {
@@ -9,11 +9,11 @@ interface SearchBarProps {
 }
 
 const platformIcons: Record<string, React.ReactNode> = {
-  instagram: <Camera className="w-5 h-5 text-pink-500" />,
-  youtube: <PlayCircle className="w-5 h-5 text-red-500" />,
-  pinterest: <Pin className="w-5 h-5 text-red-600" />,
-  tiktok: <Music className="w-5 h-5" />,
-  unknown: <Globe className="w-5 h-5 text-[var(--text-tertiary)]" />,
+  instagram: <Camera className="w-4 h-4 text-white" />,
+  youtube: <PlayCircle className="w-4 h-4 text-white" />,
+  pinterest: <Pin className="w-4 h-4 text-white" />,
+  tiktok: <Music className="w-4 h-4 text-white" />,
+  unknown: <Globe className="w-4 h-4 text-white" />,
 };
 
 function detectPlatformFromUrl(url: string): string {
@@ -30,12 +30,8 @@ export default function SearchBar({ onExtract }: SearchBarProps) {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [platform, setPlatform] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    setPlatform(detectPlatformFromUrl(url));
-  }, [url]);
+  const platform = detectPlatformFromUrl(url);
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,59 +51,64 @@ export default function SearchBar({ onExtract }: SearchBarProps) {
   }, [url, loading, onExtract]);
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl">
       <form onSubmit={handleSubmit} className="relative">
-        <div
-          className="relative flex items-center rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] shadow-[var(--shadow-lg)] transition-all duration-300 focus-within:shadow-[var(--shadow-glow)] focus-within:border-[var(--brand)]"
-          style={{ overflow: 'hidden' }}
-        >
-          {/* Platform indicator */}
-          <div className="absolute left-4 flex items-center">
-            <AnimatePresence mode="wait">
-              {platform ? (
-                <motion.div
-                  key={platform}
-                  initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {platformIcons[platform] || platformIcons.unknown}
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="search"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <Search className="w-5 h-5 text-[var(--text-tertiary)]" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <div
+            className="flex-1 relative flex items-center bg-[var(--bg-tertiary)] border-2 border-[var(--border)] focus-within:border-[var(--brand)] transition-colors duration-200"
+            style={{ borderRadius: 'var(--radius-sm)' }}
+          >
+            {/* Terminal / Platform marker */}
+            <div className="absolute left-0 top-0 bottom-0 flex items-center justify-center w-12 border-r-2 border-[var(--border)] bg-[var(--bg-secondary)]">
+              <AnimatePresence mode="wait">
+                {platform ? (
+                  <motion.div
+                    key={platform}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.15 }}
+                    className="flex items-center justify-center w-full h-full"
+                    title={platform}
+                  >
+                    {platformIcons[platform] || platformIcons.unknown}
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="terminal"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <Terminal className="w-4 h-4 text-[var(--text-tertiary)]" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-          <input
-            ref={inputRef}
-            type="url"
-            required
-            placeholder="Paste a link from Instagram, YouTube, Pinterest..."
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            disabled={loading}
-            className="w-full py-4 pl-12 pr-28 text-base bg-transparent outline-none placeholder:text-[var(--text-tertiary)] disabled:opacity-50"
-          />
+            <input
+              ref={inputRef}
+              type="url"
+              required
+              placeholder="PASTE MEDIA URL HERE..."
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              disabled={loading}
+              className="w-full py-4 pl-16 pr-4 text-sm font-mono bg-transparent outline-none placeholder:text-[var(--text-tertiary)] disabled:opacity-50 uppercase"
+            />
+          </div>
 
           <button
             type="submit"
             disabled={loading || !url.trim()}
-            className="absolute right-2 py-2.5 px-5 bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white font-semibold rounded-xl transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2 text-sm"
+            className="sm:w-auto w-full py-4 px-8 bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-[var(--text-inverted)] font-heading font-bold tracking-widest text-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 uppercase border-2 border-[var(--brand)] hover:border-[var(--brand-dark)]"
+            style={{ borderRadius: 'var(--radius-sm)' }}
           >
             {loading ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
+              <Loader2 className="w-5 h-5 animate-spin" />
             ) : (
               <>
-                <Search className="w-4 h-4" />
+                <Search className="w-5 h-5" />
                 Extract
               </>
             )}
@@ -117,14 +118,17 @@ export default function SearchBar({ onExtract }: SearchBarProps) {
 
       <AnimatePresence>
         {error && (
-          <motion.p
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            className="text-red-500 text-sm mt-3 text-center"
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
           >
-            {error}
-          </motion.p>
+            <div className="mt-4 p-3 bg-red-950/40 border border-red-500/50 text-red-400 text-sm font-mono flex items-start gap-2" style={{ borderRadius: 'var(--radius-sm)' }}>
+              <span className="text-red-500 font-bold">ERR:</span>
+              <p>{error}</p>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

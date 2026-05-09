@@ -7,6 +7,7 @@
 
 import type { ExtractedData } from '../extractor';
 import { extractTagsFromText } from '../content-engine';
+import { normalizeSourceUrl } from '../url-normalizer';
 
 const OEMBED_URL = 'https://www.youtube.com/oembed';
 
@@ -28,7 +29,11 @@ function extractVideoId(url: string): string | null {
 }
 
 export async function extractYouTube(url: string): Promise<ExtractedData> {
-  const videoId = extractVideoId(url);
+  const normalizedUrl = normalizeSourceUrl(url);
+  const videoId = extractVideoId(normalizedUrl);
+  const canonicalSource = videoId
+    ? `https://www.youtube.com/watch?v=${videoId}`
+    : normalizedUrl;
 
   // Determine media type
   const isShort = url.includes('/shorts/');
@@ -41,7 +46,7 @@ export async function extractYouTube(url: string): Promise<ExtractedData> {
 
   try {
     const oembedRes = await fetch(
-      `${OEMBED_URL}?url=${encodeURIComponent(url)}&format=json`,
+      `${OEMBED_URL}?url=${encodeURIComponent(canonicalSource)}&format=json`,
       { signal: AbortSignal.timeout(10000) }
     );
 
@@ -54,12 +59,14 @@ export async function extractYouTube(url: string): Promise<ExtractedData> {
 
       return {
         platform: 'youtube',
-        source_url: url,
-        media_url: videoId ? `https://www.youtube.com/watch?v=${videoId}` : url,
+        source_url: canonicalSource,
+        media_url: undefined,
         thumbnail_url: thumbnailUrl || data.thumbnail_url,
         caption: caption || 'YouTube Video',
         tags,
         media_type: mediaType,
+        preview_mode: 'embed',
+        download_available: false,
       };
     }
   } catch (e) {
@@ -69,11 +76,13 @@ export async function extractYouTube(url: string): Promise<ExtractedData> {
   // Fallback with video ID
   return {
     platform: 'youtube',
-    source_url: url,
-    media_url: videoId ? `https://www.youtube.com/watch?v=${videoId}` : url,
+    source_url: canonicalSource,
+    media_url: undefined,
     thumbnail_url: thumbnailUrl,
     caption: 'YouTube Video',
     tags: ['youtube'],
     media_type: mediaType,
+    preview_mode: 'embed',
+    download_available: false,
   };
 }

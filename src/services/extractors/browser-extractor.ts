@@ -19,6 +19,7 @@
  */
 
 import { chromium, type Browser, type Page } from 'playwright-core';
+import { parseEngagementCount, type PlatformMetrics } from '../media-capabilities';
 
 const CHROME_PATH = process.env.CHROME_PATH || '/usr/bin/google-chrome';
 
@@ -73,6 +74,7 @@ export interface BrowserExtractResult {
   thumbnailUrl: string | null;
   caption: string | null;
   author: string | null;
+  platformMetrics: PlatformMetrics;
 }
 
 /**
@@ -83,8 +85,10 @@ export async function extractWithBrowser(url: string): Promise<BrowserExtractRes
   const browser = await getBrowser();
   const context = await browser.newContext({
     userAgent:
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    viewport: { width: 1280, height: 900 },
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1',
+    viewport: { width: 390, height: 844 },
+    hasTouch: true,
+    isMobile: true,
     locale: 'en-US',
   });
 
@@ -123,6 +127,21 @@ export async function extractWithBrowser(url: string): Promise<BrowserExtractRes
       }
       capturedMedia.push({ url: resUrl, type: 'image', size: contentLength });
     }
+
+    // Also capture from GraphQL/API JSON responses
+    if (resUrl.includes('graphql') || resUrl.includes('/api/')) {
+      try {
+        const body = await response.text();
+        const json = JSON.parse(body);
+        const found = findMediaInJson(json);
+        for (const f of found) {
+          // Add a high size so these are preferred over smaller CDN segments
+          capturedMedia.push({ url: f.url, type: f.type, size: 999999 });
+        }
+      } catch {
+        // Ignore errors (not JSON, body unavailable, etc.)
+      }
+    }
   });
 
   try {
@@ -148,8 +167,16 @@ export async function extractWithBrowser(url: string): Promise<BrowserExtractRes
     }
 
     // Find the best video URL (largest file = highest quality)
+    // Exclude URLs that are very likely to be short-lived chunks.
     const videos = capturedMedia
-      .filter((m) => m.type === 'video')
+      .filter((m) => {
+        if (m.type !== 'video') return false;
+        const lowerUrl = m.url.toLowerCase();
+        if (lowerUrl.includes('.m3u8')) return false;
+        if (lowerUrl.includes('/dash/')) return false;
+        if (lowerUrl.includes('/hls/')) return false;
+        return true;
+      })
       .sort((a, b) => b.size - a.size);
 
     const bestVideo = videos.length > 0 ? videos[0].url : null;
@@ -164,11 +191,14 @@ export async function extractWithBrowser(url: string): Promise<BrowserExtractRes
       }
     }
 
+    const platformMetrics = await extractPlatformMetrics(page);
+
     return {
       mediaUrl: bestVideo,
       thumbnailUrl,
       caption,
       author,
+      platformMetrics,
     };
   } finally {
     await context.close();
@@ -308,6 +338,137 @@ async function extractThumbnailFromPage(page: Page): Promise<string | null> {
   } catch {
     return null;
   }
+}
+
+async function extractPlatformMetrics(page: Page): Promise<PlatformMetrics> {
+  try {
+    const metricData = await page.evaluate(() => {
+      const details: {
+        description?: string;
+        ldJsonTexts: string[];
+      } = {
+        description: undefined,
+        ldJsonTexts: [],
+      };
+
+      const descriptionMeta = document.querySelector('meta[property="og:description"], meta[name="description"]') as HTMLMetaElement | null;
+      if (descriptionMeta?.content) {
+        details.description = descriptionMeta.content;
+      }
+
+      const ldJsonScripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
+      details.ldJsonTexts = ldJsonScripts
+        .map(node => node.textContent || '')
+        .filter(Boolean);
+
+      return details;
+    });
+
+    const metrics: PlatformMetrics = {};
+
+    if (metricData.description) {
+      const compact = metricData.description.toLowerCase().replace(/\s+/g, ' ');
+      const likesMatch = compact.match(/([\d.,]+(?:\s*[km])?)\s+likes?/);
+      const commentsMatch = compact.match(/([\d.,]+(?:\s*[km])?)\s+comments?/);
+      const viewsMatch = compact.match(/([\d.,]+(?:\s*[km])?)\s+views?/);
+
+      if (likesMatch) metrics.likes = parseEngagementCount(likesMatch[1]);
+      if (commentsMatch) metrics.comments = parseEngagementCount(commentsMatch[1]);
+      if (viewsMatch) metrics.views = parseEngagementCount(viewsMatch[1]);
+    }
+
+    for (const text of metricData.ldJsonTexts) {
+      try {
+        const parsed = JSON.parse(text);
+        const entries = Array.isArray(parsed) ? parsed : [parsed];
+
+        for (const entry of entries) {
+          if (!entry || typeof entry !== 'object') continue;
+          const interactions = Array.isArray(entry.interactionStatistic)
+            ? entry.interactionStatistic
+            : entry.interactionStatistic
+              ? [entry.interactionStatistic]
+              : [];
+
+          for (const interaction of interactions) {
+            const interactionType =
+              typeof interaction?.interactionType === 'string'
+                ? interaction.interactionType
+                : typeof interaction?.interactionType?.['@type'] === 'string'
+                  ? interaction.interactionType['@type']
+                  : '';
+            const count = typeof interaction?.userInteractionCount === 'number'
+              ? interaction.userInteractionCount
+              : Number.parseInt(String(interaction?.userInteractionCount || ''), 10);
+
+            if (Number.isNaN(count)) continue;
+
+            const normalizedType = interactionType.toLowerCase();
+            if (normalizedType.includes('like')) metrics.likes = count;
+            if (normalizedType.includes('comment')) metrics.comments = count;
+            if (normalizedType.includes('watch') || normalizedType.includes('view')) metrics.views = count;
+          }
+        }
+      } catch {
+        // Ignore malformed JSON-LD blobs.
+      }
+    }
+
+    return metrics;
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Recursively find video/image URLs in JSON responses
+ */
+function findMediaInJson(obj: unknown, depth = 0): { type: string; url: string }[] {
+  if (depth > 20 || !obj) return [];
+  const results: { type: string; url: string }[] = [];
+  
+  if (typeof obj === 'string') {
+    if (obj.includes('cdninstagram.com') || obj.includes('fbcdn.net') || obj.includes('scontent')) {
+      if (obj.includes('.mp4') || obj.includes('video')) {
+        results.push({ type: 'video', url: obj });
+      } else if (obj.match(/\.(jpg|jpeg|png|webp)/i)) {
+        results.push({ type: 'image', url: obj });
+      }
+    }
+    
+    // Attempt to parse stringified JSON
+    if (obj.trim().startsWith('{') || obj.trim().startsWith('[')) {
+      try {
+        const parsed = JSON.parse(obj);
+        results.push(...findMediaInJson(parsed, depth + 1));
+      } catch {
+        // Not valid JSON, ignore
+      }
+    }
+    
+    return results;
+  }
+  
+  if (Array.isArray(obj)) {
+    for (const item of obj) {
+      results.push(...findMediaInJson(item, depth + 1));
+    }
+    return results;
+  }
+  
+  if (typeof obj === 'object' && obj !== null) {
+    for (const [key, value] of Object.entries(obj)) {
+      // Special keys that indicate media
+      if (['video_url', 'display_url', 'thumbnail_src', 'image_versions2', 'video_versions'].includes(key)) {
+        if (typeof value === 'string') {
+          results.push({ type: key.includes('video') ? 'video' : 'image', url: value });
+        }
+      }
+      results.push(...findMediaInJson(value, depth + 1));
+    }
+  }
+  
+  return results;
 }
 
 /**

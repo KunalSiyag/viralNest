@@ -1,4 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import {
+  extensionFromContentType,
+  isLikelyDirectMediaUrl,
+  isMediaContentType,
+} from "@/services/media-capabilities";
 
 /**
  * GET /api/download
@@ -25,11 +30,26 @@ export async function GET(req: NextRequest) {
     }
 
     // Validate URL
+    let parsedUrl: URL;
     try {
-      new URL(mediaUrl);
+      parsedUrl = new URL(mediaUrl);
     } catch {
       return NextResponse.json(
         { error: 'Invalid media URL' },
+        { status: 400 }
+      );
+    }
+
+    if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
+      return NextResponse.json(
+        { error: 'Only HTTP(S) media URLs are supported' },
+        { status: 400 }
+      );
+    }
+
+    if (!isLikelyDirectMediaUrl(mediaUrl)) {
+      return NextResponse.json(
+        { error: 'This URL is not a direct media asset. Please use the original source link.' },
         { status: 400 }
       );
     }
@@ -52,12 +72,14 @@ export async function GET(req: NextRequest) {
 
     // Determine file extension from content type
     const contentType = mediaRes.headers.get('content-type') || 'application/octet-stream';
-    let ext = '.mp4';
-    if (contentType.includes('image/jpeg')) ext = '.jpg';
-    else if (contentType.includes('image/png')) ext = '.png';
-    else if (contentType.includes('image/webp')) ext = '.webp';
-    else if (contentType.includes('video/mp4')) ext = '.mp4';
-    else if (contentType.includes('video/webm')) ext = '.webm';
+    if (!isMediaContentType(contentType)) {
+      return NextResponse.json(
+        { error: `Origin returned non-media content-type: ${contentType}` },
+        { status: 415 }
+      );
+    }
+
+    const ext = extensionFromContentType(contentType);
 
     const safeFilename = `${filename.replace(/[^a-zA-Z0-9-_]/g, '_')}${ext}`;
 

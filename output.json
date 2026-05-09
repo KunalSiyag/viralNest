@@ -1,0 +1,24 @@
+Extracting: https://www.instagram.com/reel/DIxUdkPy0ga/
+[Instagram] Attempting browser-based extraction...
+[Instagram] Browser extraction succeeded: { hasVideo: false, hasThumbnail: true, captionLength: 94 }
+{
+  "platform": "instagram",
+  "source_url": "https://www.instagram.com/reel/DIxUdkPy0ga/",
+  "thumbnail_url": "https://static.cdninstagram.com/rsrc.php/yR/r/92ZsVHNkyvf.webp",
+  "caption": "Create an account or log in to Instagram - Share what you're into with the people who get you.",
+  "tags": [
+    "create",
+    "account",
+    "log",
+    "instagram",
+    "share",
+    "people",
+    "who",
+    "get"
+  ],
+  "media_type": "video",
+  "platform_metrics": {
+    "author_handle": "accounts"
+  },
+  "preview_mode": "embed"
+}

@@ -4,11 +4,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, TrendingUp, Dumbbell, Rocket, Palette, Flame, Sun, Moon } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { Menu, X, Terminal, Dumbbell, Rocket, Palette, Flame } from 'lucide-react';
 
 const navLinks = [
-  { href: '/feed', label: 'Trending', icon: TrendingUp },
+  { href: '/feed', label: 'Trending', icon: Terminal },
   { href: '/feed/fitness', label: 'Fitness', icon: Dumbbell },
   { href: '/feed/startup', label: 'Startups', icon: Rocket },
   { href: '/feed/design', label: 'Design', icon: Palette },
@@ -18,38 +17,43 @@ const navLinks = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
 
   return (
-    <header className="sticky top-0 z-50 glass border-b border-[var(--border)]">
+    <header className="sticky top-0 z-50 bg-[var(--bg-primary)] border-b-4 border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-1 group" id="logo-link">
-            <span className="text-xl font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--brand)] transition-colors">
-              viral
+          <Link href="/" className="flex flex-col group" id="logo-link">
+            <span className="text-3xl font-heading font-bold uppercase tracking-widest leading-none text-[var(--text-primary)] group-hover:text-[var(--brand)] transition-colors">
+              VIRAL_NEST
             </span>
-            <span className="text-xl font-bold tracking-tight text-gradient">
-              Nest
+            <span className="font-mono text-[10px] tracking-[0.2em] text-[var(--text-tertiary)] group-hover:text-[var(--accent)] transition-colors uppercase">
+              Content_Archive_System
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1" id="desktop-nav">
-            {navLinks.map(({ href, label, icon: Icon }) => {
+          <nav className="hidden md:flex items-center gap-6" id="desktop-nav">
+            {navLinks.map(({ href, label }) => {
               const isActive = pathname === href || (href !== '/feed' && pathname.startsWith(href));
               return (
                 <Link
                   key={href}
                   href={href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
+                  className={`relative py-2 text-sm font-heading font-bold uppercase tracking-widest transition-all duration-200 hover:text-[var(--brand)] ${
                     isActive
-                      ? 'bg-[var(--brand-subtle)] text-[var(--brand)]'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'
+                      ? 'text-[var(--brand)]'
+                      : 'text-[var(--text-secondary)]'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" />
                   {label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-indicator"
+                      className="absolute bottom-0 left-0 right-0 h-1 bg-[var(--brand)]"
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                  )}
                 </Link>
               );
             })}
@@ -57,21 +61,10 @@ export default function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            {/* Theme toggle */}
-            <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors"
-              id="theme-toggle"
-              aria-label="Toggle theme"
-            >
-              <Sun className="w-4 h-4 hidden dark:block" />
-              <Moon className="w-4 h-4 block dark:hidden" />
-            </button>
-
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] transition-colors"
+              className="md:hidden p-2 rounded-sm text-[var(--text-secondary)] border border-[var(--border)] hover:bg-[var(--bg-secondary)] transition-colors"
               id="mobile-menu-toggle"
               aria-label="Toggle menu"
             >
@@ -89,9 +82,9 @@ export default function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-[var(--border)] overflow-hidden"
+            className="md:hidden border-t-2 border-[var(--border)] bg-[var(--bg-secondary)] overflow-hidden"
           >
-            <nav className="p-4 space-y-1" id="mobile-nav">
+            <nav className="p-4 space-y-2" id="mobile-nav">
               {navLinks.map(({ href, label, icon: Icon }) => {
                 const isActive = pathname === href || (href !== '/feed' && pathname.startsWith(href));
                 return (
@@ -99,10 +92,10 @@ export default function Header() {
                     key={href}
                     href={href}
                     onClick={() => setMobileOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                    className={`flex items-center gap-4 px-4 py-3 text-sm font-heading tracking-widest uppercase border-l-4 transition-colors ${
                       isActive
-                        ? 'bg-[var(--brand-subtle)] text-[var(--brand)]'
-                        : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                        ? 'border-[var(--brand)] bg-[var(--bg-tertiary)] text-[var(--brand)]'
+                        : 'border-transparent text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
