@@ -123,8 +123,20 @@ export default function DownloaderForm() {
         setLoading(false);
       }
     } else {
-      // Batch mode parsing
-      const links = batchUrls.split('\n').map(l => l.trim()).filter(l => l.length > 5).slice(0, 5);
+      // Robust multi-delimiter batch mode parsing (newlines, commas, spaces)
+      const links = Array.from(new Set(
+        batchUrls
+          .split(/[\n,\s]+/)
+          .map(l => l.trim())
+          .filter(l => l.length > 5 && (l.includes('pinterest.com') || l.includes('pin.it')))
+      )).slice(0, 10);
+
+      if (links.length === 0) {
+        setError('Please enter valid Pinterest URLs (e.g., https://pinterest.com/pin/... or https://pin.it/...)');
+        setLoading(false);
+        return;
+      }
+
       const results: ExtractionResult[] = [];
       let failCount = 0;
 
@@ -137,7 +149,18 @@ export default function DownloaderForm() {
           });
           const data = await res.json();
           if (res.ok) {
-            results.push(data);
+            if (data.is_board && data.pins) {
+              results.push(...data.pins.map((p: any) => ({
+                platform: 'pinterest',
+                title: p.title,
+                image_url: p.image_url,
+                thumbnail_url: p.thumbnail_url,
+                is_video: false,
+                video_url: null,
+              })));
+            } else {
+              results.push(data);
+            }
             saveToHistory(data, link);
           } else {
             failCount++;
@@ -150,7 +173,7 @@ export default function DownloaderForm() {
       if (results.length > 0) {
         setBatchResults(results);
       } else {
-        setError(`Failed to extract batch links. Please ensure valid Pinterest URLs.`);
+        setError('Failed to extract batch links. Please check if the Pinterest URLs are public.');
       }
       setLoading(false);
     }
@@ -588,11 +611,39 @@ export default function DownloaderForm() {
 
       {/* Batch Results Grid */}
       {batchResults.length > 0 && (
-        <div className="mt-8 flex flex-col gap-4 text-left">
-          <h3 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-            <Layers className="w-5 h-5 text-[#E60023]" />
-            <span>Extracted Batch Media ({batchResults.length} items)</span>
-          </h3>
+        <div className="mt-8 flex flex-col gap-4 text-left animate-in fade-in duration-300">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+            <h3 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+              <Layers className="w-5 h-5 text-[#E60023]" />
+              <span>Extracted Batch Media ({batchResults.length} items)</span>
+            </h3>
+
+            {/* Master Sequential Download All Button */}
+            <button
+              type="button"
+              onClick={() => {
+                batchResults.forEach((res, idx) => {
+                  setTimeout(() => {
+                    const downloadUrl = res.video_url || res.image_url;
+                    if (downloadUrl) {
+                      const a = document.createElement('a');
+                      const ext = res.is_video ? 'mp4' : 'jpg';
+                      a.href = `/api/download?url=${encodeURIComponent(downloadUrl)}&filename=${encodeURIComponent((res.title || 'pin').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.${ext}`;
+                      a.download = `pinterest_${idx + 1}.${ext}`;
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                    }
+                  }, idx * 500);
+                });
+              }}
+              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-[#E60023] hover:bg-[#CC0000] text-white font-bold text-xs shadow-md shadow-red-500/20 transition-all active:scale-95 shrink-0"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download All ({batchResults.length} Items)</span>
+            </button>
+          </div>
+
           <div className="grid sm:grid-cols-2 gap-4">
             {batchResults.map((res, idx) => (
               <div key={idx} className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between gap-3">
@@ -606,7 +657,7 @@ export default function DownloaderForm() {
                 <a
                   href={`/api/download?url=${encodeURIComponent(res.video_url || res.image_url!)}&filename=${encodeURIComponent((res.title || 'pin').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.${res.is_video ? 'mp4' : 'jpg'}`}
                   download
-                  className="w-full py-2.5 rounded-xl bg-[#E60023] hover:bg-[#CC0000] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                  className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-[#E60023] hover:text-white text-slate-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download {res.is_video ? 'MP4' : 'Image'}</span>
