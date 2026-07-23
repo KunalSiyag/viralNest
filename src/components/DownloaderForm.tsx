@@ -57,6 +57,8 @@ interface HistoryItem {
 /** Intent-specific form surface for SEO tool pages */
 export type FormVariant = 'hub' | 'pin' | 'video' | 'image' | 'board' | 'profile';
 
+export type FormLayout = 'default' | 'hero';
+
 const VARIANT_COPY: Record<
   FormVariant,
   {
@@ -73,10 +75,10 @@ const VARIANT_COPY: Record<
     worksLabel: 'Works with',
     singleTab: 'Pin / Board / Profile',
     showBatch: true,
-    placeholder: 'Pin, board, or profile URL… e.g. pinterest.com/user/board-name/',
-    ariaLabel: 'Pinterest Pin, board, or profile link',
-    submitLabel: 'Extract Media',
-    hint: 'Board or profile links list public pins — then use Download ZIP. Pin links download one file or full carousel.',
+    placeholder: 'Paste Pinterest link here',
+    ariaLabel: 'Pinterest pin, board, or profile link',
+    submitLabel: 'Download',
+    hint: 'Public pin, board, or profile URLs. Board & profile links download as ZIP.',
   },
   pin: {
     worksLabel: 'Best for',
@@ -125,7 +127,15 @@ const VARIANT_COPY: Record<
   },
 };
 
-export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVariant }) {
+export default function DownloaderForm({
+  variant = 'hub',
+  layout = 'default',
+}: {
+  variant?: FormVariant;
+  /** hero = Pinpea-style pill input + download on landing */
+  layout?: FormLayout;
+}) {
+  const isHero = layout === 'hero';
   const copy = VARIANT_COPY[variant] || VARIANT_COPY.hub;
   const [mode, setMode] = useState<'single' | 'batch'>('single');
   const [url, setUrl] = useState('');
@@ -403,74 +413,76 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
   );
 
   return (
-    <div className="w-full max-w-3xl mx-auto mt-4">
-      {/* Intent chips — page-specific for SEO tool separation */}
-      <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-          {copy.worksLabel}
-        </span>
-        {(variant === 'hub' || variant === 'pin' || variant === 'video' || variant === 'image') && (
+    <div className={`w-full mx-auto ${isHero ? 'max-w-2xl mt-0' : 'max-w-3xl mt-4'}`}>
+      {/* Intent chips — hidden on hero for a clean Pinpea-style first fold */}
+      {!isHero && (
+        <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            {copy.worksLabel}
+          </span>
+          {(variant === 'hub' || variant === 'pin' || variant === 'video' || variant === 'image') && (
+            <a
+              href="/pinterest-pin-downloader"
+              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
+                variant === 'pin'
+                  ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
+                  : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
+              }`}
+            >
+              Pin
+            </a>
+          )}
+          {(variant === 'hub' || variant === 'video') && (
+            <a
+              href="/pinterest-video-downloader"
+              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
+                variant === 'video'
+                  ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
+                  : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
+              }`}
+            >
+              Video MP4
+            </a>
+          )}
+          {(variant === 'hub' || variant === 'image') && (
+            <a
+              href="/pinterest-image-downloader"
+              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
+                variant === 'image'
+                  ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
+                  : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
+              }`}
+            >
+              HD Image
+            </a>
+          )}
           <a
-            href="/pinterest-pin-downloader"
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
-              variant === 'pin'
-                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
-                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
+            href="/pinterest-board-downloader"
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
+              variant === 'board'
+                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48]'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E11D48]'
             }`}
           >
-            Pin
+            <Archive className="w-3 h-3" aria-hidden />
+            Board → ZIP
           </a>
-        )}
-        {(variant === 'hub' || variant === 'video') && (
           <a
-            href="/pinterest-video-downloader"
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
-              variant === 'video'
-                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
-                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
+            href="/pinterest-profile-downloader"
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
+              variant === 'profile'
+                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48]'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E11D48]'
             }`}
           >
-            Video MP4
+            <User className="w-3 h-3" aria-hidden />
+            Profile → ZIP
           </a>
-        )}
-        {(variant === 'hub' || variant === 'image') && (
-          <a
-            href="/pinterest-image-downloader"
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
-              variant === 'image'
-                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
-                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
-            }`}
-          >
-            HD Image
-          </a>
-        )}
-        <a
-          href="/pinterest-board-downloader"
-          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
-            variant === 'board'
-              ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48]'
-              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E11D48]'
-          }`}
-        >
-          <Archive className="w-3 h-3" aria-hidden />
-          Board → ZIP
-        </a>
-        <a
-          href="/pinterest-profile-downloader"
-          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
-            variant === 'profile'
-              ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48]'
-              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E11D48]'
-          }`}
-        >
-          <User className="w-3 h-3" aria-hidden />
-          Profile → ZIP
-        </a>
-      </div>
+        </div>
+      )}
 
-      {/* Mode Switcher Tabs */}
-      {copy.showBatch && (
+      {/* Mode Switcher — not on hero */}
+      {!isHero && copy.showBatch && (
         <div className="flex items-center justify-center gap-2 mb-4 bg-slate-200/60 dark:bg-slate-800/80 p-1 rounded-2xl w-fit mx-auto border border-slate-300/60 dark:border-slate-700">
           <button
             type="button"
@@ -495,40 +507,80 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
       )}
 
       {/* Input Form */}
-      <form onSubmit={handleSubmit} className="relative flex flex-col gap-3 items-center w-full">
-        {mode === 'single' || !copy.showBatch ? (
-          <div className="relative w-full">
-            <input
-              type="url"
-              name="url"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              placeholder={copy.placeholder}
-              className="w-full h-14 pl-5 pr-20 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
-              required
-              aria-label={copy.ariaLabel}
-            />
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
-              {url ? (
-                <button
-                  type="button"
-                  onClick={() => setUrl('')}
-                  className="text-xs font-semibold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 px-2 py-1 rounded-md"
-                >
-                  Clear
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={handlePaste}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-2.5 py-1.5 rounded-lg transition-colors"
-                >
-                  <Clipboard className="w-3.5 h-3.5" />
-                  <span>Paste</span>
-                </button>
-              )}
+      <form
+        onSubmit={handleSubmit}
+        className={`relative w-full ${isHero ? 'flex flex-col sm:block' : 'flex flex-col gap-3 items-center'}`}
+      >
+        {mode === 'single' || !copy.showBatch || isHero ? (
+          isHero ? (
+            <div className="relative w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 rounded-[2rem] sm:rounded-full bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.1] shadow-pill p-1.5 sm:p-1.5 sm:pl-5">
+              <div className="flex items-center gap-2 flex-1 min-w-0 px-3 sm:px-0">
+                <Clipboard className="w-5 h-5 text-ink-400 shrink-0 hidden sm:block" aria-hidden />
+                <input
+                  type="url"
+                  name="url"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  placeholder={copy.placeholder}
+                  className="w-full h-12 sm:h-14 bg-transparent border-0 text-ink-900 dark:text-white placeholder:text-ink-400 focus:outline-none focus:ring-0 text-base sm:text-[1.05rem] min-w-0"
+                  required
+                  aria-label={copy.ariaLabel}
+                  autoComplete="url"
+                  inputMode="url"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={loading || !url.trim()}
+                className="h-12 sm:h-14 px-7 sm:px-8 rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white font-semibold text-base flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0 touch-manipulation shadow-soft"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>Working…</span>
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-5 h-5" />
+                    <span>Download</span>
+                  </>
+                )}
+              </button>
             </div>
-          </div>
+          ) : (
+            <div className="relative w-full">
+              <input
+                type="url"
+                name="url"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                placeholder={copy.placeholder}
+                className="w-full h-14 pl-5 pr-20 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
+                required
+                aria-label={copy.ariaLabel}
+              />
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                {url ? (
+                  <button
+                    type="button"
+                    onClick={() => setUrl('')}
+                    className="text-xs font-semibold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 px-2 py-1 rounded-md"
+                  >
+                    Clear
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handlePaste}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-2.5 py-1.5 rounded-lg transition-colors"
+                  >
+                    <Clipboard className="w-3.5 h-3.5" />
+                    <span>Paste</span>
+                  </button>
+                )}
+              </div>
+            </div>
+          )
         ) : (
           <div className="relative w-full">
             <textarea
@@ -550,27 +602,29 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
           </div>
         )}
 
-        <button
-          type="submit"
-          disabled={
-            loading ||
-            (mode === 'batch' && copy.showBatch ? !batchUrls.trim() : !url.trim())
-          }
-          className="w-full h-14 px-8 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-red-500/25 active:scale-95"
-        >
-          {loading ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              <span>{mode === 'batch' && copy.showBatch ? 'Processing batch links…' : 'Extracting…'}</span>
-            </>
-          ) : (
-            <>
-              <Download className="w-5 h-5" />
-              <span>{mode === 'batch' && copy.showBatch ? 'Batch Extract All' : copy.submitLabel}</span>
-            </>
-          )}
-        </button>
-        {(mode === 'single' || !copy.showBatch) && (
+        {!isHero && (
+          <button
+            type="submit"
+            disabled={
+              loading ||
+              (mode === 'batch' && copy.showBatch ? !batchUrls.trim() : !url.trim())
+            }
+            className="w-full h-14 px-8 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-red-500/25 active:scale-95"
+          >
+            {loading ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin" />
+                <span>{mode === 'batch' && copy.showBatch ? 'Processing batch links…' : 'Extracting…'}</span>
+              </>
+            ) : (
+              <>
+                <Download className="w-5 h-5" />
+                <span>{mode === 'batch' && copy.showBatch ? 'Batch Extract All' : copy.submitLabel}</span>
+              </>
+            )}
+          </button>
+        )}
+        {!isHero && (mode === 'single' || !copy.showBatch) && (
           <p className="text-center text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl">
             {copy.hint}
           </p>

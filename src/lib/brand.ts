@@ -5,9 +5,9 @@ export const BRAND = {
   shortName: 'Pint',
   domain: 'pintdownload.app',
   url: 'https://pintdownload.app',
-  tagline: 'Pinterest downloads, perfected',
+  tagline: 'Free Pinterest video, pin & board downloader',
   description:
-    'Free Pinterest pin, video, board, and profile downloader. Save public MP4s, images, GIFs, and ZIP packs — no account required.',
+    'Free Pinterest video downloader online. Save public MP4s, photos, GIFs, boards, and profiles — no account required.',
   /**
    * Public @pintdownload.app addresses (forward privately to your ops inbox).
    * Never put the personal Gmail on the public site.

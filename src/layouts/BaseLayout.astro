@@ -64,13 +64,21 @@ const websiteSearchSchema = {
   },
 };
 
+/** SEO-rich primary nav (Pinpea-style intent labels) */
 const nav = [
-  { href: '/pinterest-pin-downloader', label: 'Pin' },
-  { href: '/pinterest-video-downloader', label: 'Video' },
-  { href: '/pinterest-board-downloader', label: 'Board' },
-  { href: '/pinterest-profile-downloader', label: 'Profile' },
-  { href: '/pinterest-image-downloader', label: 'Image' },
+  { href: '/pinterest-video-downloader', label: 'Pinterest Video Downloader' },
+  { href: '/pinterest-pin-downloader', label: 'Pinterest Pin Downloader' },
+  { href: '/pinterest-board-downloader', label: 'Pinterest Board Downloader' },
+];
+
+const mobileNav = [
+  ...nav,
+  { href: '/pinterest-image-downloader', label: 'Pinterest Photo Downloader' },
+  { href: '/pinterest-profile-downloader', label: 'Pinterest Profile Downloader' },
   { href: '/blog', label: 'Blog' },
+  { href: '/how-to-download-pinterest-videos', label: 'How to download' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ];
 ---
 
@@ -141,12 +149,12 @@ const nav = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body
-    class="bg-[#FBFBFD] dark:bg-ink-950 text-ink-900 dark:text-slate-100 antialiased min-h-screen flex flex-col font-sans selection:bg-brand-600/20 selection:text-brand-800 dark:selection:text-brand-100"
+    class="bg-[#FFFBFB] dark:bg-ink-950 text-ink-900 dark:text-slate-100 antialiased min-h-screen flex flex-col font-sans selection:bg-brand-600/20 selection:text-brand-800 dark:selection:text-brand-100"
   >
     <a
       href="#main-content"
@@ -155,48 +163,48 @@ const nav = [
       Skip to content
     </a>
 
-    <!-- Apple-like frosted header -->
+    <!-- Minimal frosted header -->
     <header
-      class="sticky top-0 z-50 w-full border-b border-black/[0.06] dark:border-white/[0.08] bg-white/72 dark:bg-ink-950/72 backdrop-blur-2xl backdrop-saturate-150"
+      class="sticky top-0 z-50 w-full border-b border-black/[0.05] dark:border-white/[0.08] bg-white/80 dark:bg-ink-950/80 backdrop-blur-xl"
     >
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-[4.25rem] flex items-center justify-between gap-4">
-        <a href="/" class="flex items-center gap-2.5 group min-w-0 focus-visible:outline-none">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-[4.25rem] flex items-center justify-between gap-3">
+        <a href="/" class="flex items-center gap-2.5 group min-w-0 focus-visible:outline-none shrink-0">
           <img
             src="/images/logo.svg"
             alt=""
             width="36"
             height="36"
-            class="w-9 h-9 rounded-[22%] shadow-soft group-hover:scale-105 transition-transform duration-300"
+            class="w-9 h-9 rounded-[22%] shadow-soft"
             decoding="async"
           />
-          <span class="font-semibold text-[1.15rem] tracking-tight text-ink-900 dark:text-white truncate">
+          <span class="font-bold text-[1.125rem] tracking-tight text-ink-900 dark:text-white truncate">
             Pint<span class="text-brand-600">Download</span>
           </span>
         </a>
 
-        <nav class="hidden lg:flex items-center gap-1 text-[0.95rem] font-medium" aria-label="Main">
+        <nav class="hidden xl:flex items-center gap-0.5 text-[0.875rem] font-medium" aria-label="Main">
           {nav.map((item) => (
             <a
               href={item.href}
-              class="px-3 py-2 rounded-full text-ink-600 dark:text-slate-300 hover:text-ink-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors"
+              class="px-3 py-2 rounded-full text-ink-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap"
             >
               {item.label}
             </a>
           ))}
           <a
-            href="/how-to-download-pinterest-videos"
-            class="ml-1 px-4 py-2 rounded-full bg-ink-900 dark:bg-white text-white dark:text-ink-900 text-[0.9rem] font-semibold hover:opacity-90 transition-opacity"
+            href="/blog"
+            class="px-3 py-2 rounded-full text-ink-600 dark:text-slate-300 hover:text-brand-600 transition-colors"
           >
-            Get started
+            Blog
           </a>
         </nav>
 
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1.5">
           <button
             id="theme-toggle-btn"
             type="button"
             onclick="const h=document.documentElement;if(h.classList.contains('dark')){h.classList.remove('dark');h.classList.add('light');localStorage.setItem('theme','light');}else{h.classList.remove('light');h.classList.add('dark');localStorage.setItem('theme','dark');}"
-            class="h-11 w-11 inline-flex items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.08] text-ink-700 dark:text-slate-200 hover:bg-black/[0.07] dark:hover:bg-white/[0.12] transition-colors touch-manipulation text-base"
+            class="h-10 w-10 inline-flex items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.08] text-ink-700 dark:text-slate-200 hover:bg-black/[0.07] dark:hover:bg-white/[0.12] transition-colors touch-manipulation text-sm"
             title="Toggle theme"
             aria-label="Toggle light and dark mode"
           >
@@ -206,7 +214,7 @@ const nav = [
           <button
             id="mobile-nav-toggle"
             type="button"
-            class="lg:hidden h-11 w-11 inline-flex items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.08] text-ink-800 dark:text-slate-100 touch-manipulation"
+            class="xl:hidden h-10 w-10 inline-flex items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.08] text-ink-800 dark:text-slate-100 touch-manipulation"
             aria-expanded="false"
             aria-controls="mobile-nav-panel"
             aria-label="Open menu"
@@ -216,17 +224,12 @@ const nav = [
         </div>
       </div>
 
-      <div id="mobile-nav-panel" class="hidden lg:hidden border-t border-black/[0.06] dark:border-white/[0.08] bg-white/95 dark:bg-ink-950/95 backdrop-blur-xl">
-        <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 grid grid-cols-2 gap-2 text-[0.95rem] font-medium" aria-label="Tools">
-          {[
-            ...nav,
-            { href: '/how-to-download-pinterest-videos', label: 'How-to' },
-            { href: '/about', label: 'About' },
-            { href: '/contact', label: 'Contact' },
-          ].map((item) => (
+      <div id="mobile-nav-panel" class="hidden xl:hidden border-t border-black/[0.05] dark:border-white/[0.08] bg-white/95 dark:bg-ink-950/95 backdrop-blur-xl">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-3 grid grid-cols-1 gap-1.5 text-[0.95rem] font-medium" aria-label="Tools">
+          {mobileNav.map((item) => (
             <a
               href={item.href}
-              class="px-4 py-3 rounded-2xl bg-ink-50 dark:bg-white/[0.05] text-ink-800 dark:text-slate-100 hover:bg-brand-50 dark:hover:bg-brand-950/40 hover:text-brand-700 transition-colors touch-manipulation"
+              class="px-4 py-3 rounded-xl bg-ink-50 dark:bg-white/[0.05] text-ink-800 dark:text-slate-100 hover:bg-brand-50 dark:hover:bg-brand-950/40 hover:text-brand-700 transition-colors touch-manipulation"
             >
               {item.label}
             </a>
@@ -296,12 +299,12 @@ const nav = [
           <div>
             <h4 class="font-semibold text-ink-900 dark:text-white mb-4 text-[1.05rem]">Tools</h4>
             <ul class="space-y-2.5 text-[0.95rem] font-medium">
-              <li><a href="/pinterest-pin-downloader" class="hover:text-brand-600 transition-colors">Pin Downloader</a></li>
-              <li><a href="/pinterest-video-downloader" class="hover:text-brand-600 transition-colors">Video → MP4</a></li>
-              <li><a href="/pinterest-board-downloader" class="hover:text-brand-600 transition-colors">Board ZIP</a></li>
-              <li><a href="/pinterest-profile-downloader" class="hover:text-brand-600 transition-colors">Profile ZIP</a></li>
-              <li><a href="/pinterest-image-downloader" class="hover:text-brand-600 transition-colors">HD Image</a></li>
-              <li><a href="/pinterest-gif-downloader" class="hover:text-brand-600 transition-colors">GIF</a></li>
+              <li><a href="/pinterest-video-downloader" class="hover:text-brand-600 transition-colors">Pinterest Video Downloader</a></li>
+              <li><a href="/pinterest-pin-downloader" class="hover:text-brand-600 transition-colors">Pinterest Pin Downloader</a></li>
+              <li><a href="/pinterest-board-downloader" class="hover:text-brand-600 transition-colors">Pinterest Board Downloader</a></li>
+              <li><a href="/pinterest-image-downloader" class="hover:text-brand-600 transition-colors">Pinterest Photo Downloader</a></li>
+              <li><a href="/pinterest-profile-downloader" class="hover:text-brand-600 transition-colors">Pinterest Profile Downloader</a></li>
+              <li><a href="/pinterest-gif-downloader" class="hover:text-brand-600 transition-colors">Pinterest GIF Downloader</a></li>
             </ul>
           </div>
 
@@ -342,7 +345,7 @@ const nav = [
             © {new Date().getFullYear()} {BRAND.name} · {BRAND.domain}
           </p>
           <p class="text-ink-400 dark:text-slate-500 text-center md:text-right max-w-lg">
-            Independent tool — not affiliated with Pinterest Inc.
+            Credit original creators when you reuse clips. Independent tool — not affiliated with Pinterest Inc.
           </p>
         </div>
       </div>
@@ -356,12 +359,12 @@ const nav = [
   }
 
   html {
-    font-size: 106.25%; /* ~17px root → larger relative type */
+    font-size: 100%;
   }
 
   @media (min-width: 768px) {
     html {
-      font-size: 112.5%; /* ~18px */
+      font-size: 106.25%; /* slightly larger on desktop */
     }
   }
 
