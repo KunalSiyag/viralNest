@@ -449,6 +449,27 @@ export default function DownloaderForm({
     return downloadUrlsAsZip(entries, archiveName);
   };
 
+  const downloadSinglePinCompletePack = async (res: ExtractionResult) => {
+    if (zipping) return;
+    const vUrl = selectedQuality || res.video_url;
+    const safeTitle = slugify(res.title || res.pin_id || 'pinterest_pin');
+    const entries: { url: string; filename: string }[] = [];
+
+    if (vUrl) {
+      entries.push({ url: vUrl, filename: `${safeTitle}_video.mp4` });
+      entries.push({ url: vUrl, filename: `${safeTitle}_audio.mp3` });
+    }
+
+    if (res.image_url || res.thumbnail_url) {
+      entries.push({
+        url: res.image_url || res.thumbnail_url!,
+        filename: `${safeTitle}_cover.jpg`,
+      });
+    }
+
+    return downloadUrlsAsZip(entries, `${safeTitle}_media_pack`);
+  };
+
   const isCollection = !!(result && (result.is_board || result.is_profile) && result.pins?.length);
   const isCarousel = !!(
     result &&
@@ -1108,21 +1129,42 @@ export default function DownloaderForm({
                     <a
                       href={`/api/download?url=${encodeURIComponent(selectedQuality || result.video_url!)}&filename=${encodeURIComponent((result.title || 'pinterest_video').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.mp4`}
                       download={`${(result.title || 'pinterest_video').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.mp4`}
-                      className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95"
+                      className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation"
+                      title="Download full HD MP4 video with embedded audio sound"
                     >
                       <Download className="w-4 h-4" />
-                      <span>Download MP4 Video</span>
+                      <span>Download MP4 (Video + Audio)</span>
                     </a>
                     
                     <a
                       href={`/api/download?url=${encodeURIComponent(selectedQuality || result.video_url!)}&filename=${encodeURIComponent((result.title || 'pinterest_audio').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.mp3`}
                       download={`${(result.title || 'pinterest_audio').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.mp3`}
-                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all text-sm shadow-md shadow-purple-500/20 active:scale-95"
-                      title="Extract and download original audio stream"
+                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all text-sm shadow-md shadow-purple-500/20 active:scale-95 touch-manipulation"
+                      title="Extract and download original MP3 audio stream"
                     >
                       <Music className="w-4 h-4" />
-                      <span>Download MP3 Sound</span>
+                      <span>Download MP3 Audio</span>
                     </a>
+
+                    <button
+                      type="button"
+                      disabled={zipping}
+                      onClick={() => downloadSinglePinCompletePack(result)}
+                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-extrabold transition-all text-sm shadow-md shadow-amber-500/20 active:scale-95 touch-manipulation disabled:opacity-60"
+                      title="Download MP4 Video, MP3 Sound, and HD Photo Image together in one ZIP package"
+                    >
+                      {zipping ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Zipping Pack…</span>
+                        </>
+                      ) : (
+                        <>
+                          <Archive className="w-4 h-4" />
+                          <span>Download Pack (MP4 + MP3 + HD Image)</span>
+                        </>
+                      )}
+                    </button>
                   </>
                 )}
 
@@ -1130,7 +1172,7 @@ export default function DownloaderForm({
                   <a
                     href={`/api/download?url=${encodeURIComponent(result.image_url)}&filename=${encodeURIComponent((result.title || 'pinterest_image').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.jpg`}
                     download={`${(result.title || 'pinterest_image').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.jpg`}
-                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95"
+                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation"
                   >
                     <ImageIcon className="w-4 h-4 text-[#E11D48]" />
                     <span>Download HD Image</span>
