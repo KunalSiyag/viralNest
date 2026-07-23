@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight } from 'lucide-react';
 import JSZip from 'jszip';
 
 interface BoardPinItem {
@@ -154,6 +154,11 @@ export default function DownloaderForm({
   const [zipping, setZipping] = useState(false);
   const [zipProgress, setZipProgress] = useState({ done: 0, total: 0 });
 
+  // Pagination limit for board/profile pins & scroll refs
+  const [displayLimit, setDisplayLimit] = useState<number>(12);
+  const collectionScrollRef = useRef<HTMLDivElement>(null);
+  const carouselScrollRef = useRef<HTMLDivElement>(null);
+
   // Load download history from LocalStorage
   useEffect(() => {
     try {
@@ -163,6 +168,29 @@ export default function DownloaderForm({
       }
     } catch (e) {
       console.warn('LocalStorage access failed:', e);
+    }
+  }, []);
+
+  // Prefill from ?url= (bookmarklet / deep links) and optionally auto-extract
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('url') || params.get('link');
+      if (!q) return;
+      const cleaned = q.trim();
+      if (!cleaned) return;
+      setUrl(cleaned);
+      setMode('single');
+      if (params.get('auto') === '1' || params.get('auto') === 'true') {
+        // Defer so state settles, then submit extract
+        const t = window.setTimeout(() => {
+          void extractSingle(cleaned);
+        }, 80);
+        return () => window.clearTimeout(t);
+      }
+    } catch (e) {
+      console.warn('URL prefill failed:', e);
     }
   }, []);
 
@@ -202,38 +230,48 @@ export default function DownloaderForm({
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (mode === 'single' && !url.trim()) return;
-    if (mode === 'batch' && !batchUrls.trim()) return;
-
+  const extractSingle = async (pinUrl: string) => {
+    const target = pinUrl.trim();
+    if (!target) return;
     setLoading(true);
     setError('');
     setResult(null);
     setBatchResults([]);
     setCopiedTags(false);
     setShowPlayer(false);
+    setDisplayLimit(12);
+    try {
+      const res = await fetch('/api/extract', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: target }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to extract media from Pinterest.');
+      setResult(data);
+      if (data.video_url) setSelectedQuality(data.video_url);
+      saveToHistory(data, target);
+    } catch (err: any) {
+      setError(err.message || 'An error occurred. Check the Pinterest URL.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (mode === 'single' && !url.trim()) return;
+    if (mode === 'batch' && !batchUrls.trim()) return;
 
     if (mode === 'single') {
-      try {
-        const res = await fetch('/api/extract', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: url.trim() })
-        });
-
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Failed to extract media from Pinterest.');
-
-        setResult(data);
-        if (data.video_url) setSelectedQuality(data.video_url);
-        saveToHistory(data, url.trim());
-      } catch (err: any) {
-        setError(err.message || 'An error occurred. Check the Pinterest URL.');
-      } finally {
-        setLoading(false);
-      }
+      await extractSingle(url);
     } else {
+      setLoading(true);
+      setError('');
+      setResult(null);
+      setBatchResults([]);
+      setCopiedTags(false);
+      setShowPlayer(false);
       // Robust multi-delimiter batch mode parsing (newlines, commas, spaces)
       const links = Array.from(new Set(
         batchUrls
@@ -705,40 +743,65 @@ export default function DownloaderForm({
             <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3">{result.description}</p>
           )}
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {result.media_items.map((item, idx) => {
-              const ext = item.type === 'video' ? 'mp4' : 'jpg';
-              const filename = `slide_${idx + 1}.${ext}`;
-              return (
-                <div
-                  key={idx}
-                  className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col gap-3 group min-w-0"
-                >
-                  <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
-                    <img
-                      src={item.thumbnail_url || (item.type === 'image' ? item.url : result.thumbnail_url) || ''}
-                      alt={item.title || `Slide ${idx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold">
-                      {idx + 1}/{result.media_items!.length}
-                      {item.type === 'video' ? ' · VIDEO' : ''}
-                    </span>
-                  </div>
-                  <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate">
-                    {item.title || `Slide ${idx + 1}`}
-                  </span>
-                  <a
-                    href={`/api/download?url=${encodeURIComponent(item.url)}&filename=${encodeURIComponent(filename)}`}
-                    download
-                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1 transition-colors touch-manipulation"
+          {/* Horizontal Scrollable Carousel */}
+          <div className="relative group/carousel">
+            <button
+              type="button"
+              onClick={() => carouselScrollRef.current?.scrollBy({ left: -360, behavior: 'smooth' })}
+              className="absolute -left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-white shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100"
+              aria-label="Scroll slides left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <div
+              ref={carouselScrollRef}
+              className="flex flex-row overflow-x-auto gap-4 pb-4 pt-1 snap-x scroll-smooth scrollbar-thin scrollbar-thumb-rose-400 dark:scrollbar-thumb-rose-600"
+            >
+              {result.media_items.map((item, idx) => {
+                const ext = item.type === 'video' ? 'mp4' : 'jpg';
+                const filename = `slide_${idx + 1}.${ext}`;
+                return (
+                  <div
+                    key={idx}
+                    className="w-48 sm:w-56 shrink-0 snap-start p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col justify-between gap-3 group/card min-w-0"
                   >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>{item.type === 'video' ? 'Download MP4' : 'Download HD'}</span>
-                  </a>
-                </div>
-              );
-            })}
+                    <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
+                      <img
+                        src={item.thumbnail_url || (item.type === 'image' ? item.url : result.thumbnail_url) || ''}
+                        alt={item.title || `Slide ${idx + 1}`}
+                        className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold">
+                        {idx + 1}/{result.media_items!.length}
+                        {item.type === 'video' ? ' · VIDEO' : ''}
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate" title={item.title || `Slide ${idx + 1}`}>
+                      {item.title || `Slide ${idx + 1}`}
+                    </span>
+                    <a
+                      href={`/api/download?url=${encodeURIComponent(item.url)}&filename=${encodeURIComponent(filename)}`}
+                      download
+                      className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>{item.type === 'video' ? 'Download MP4' : 'Download HD'}</span>
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => carouselScrollRef.current?.scrollBy({ left: 360, behavior: 'smooth' })}
+              className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-white shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100"
+              aria-label="Scroll slides right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       ) : isCollection ? (
@@ -761,14 +824,17 @@ export default function DownloaderForm({
                   : result!.board_title || 'Pinterest Board'}
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Found {result!.pins?.length || 0} downloadable pins
+                Found <strong>{result!.pins?.length || 0}</strong> downloadable pins
                 {result!.username ? ` from @${result!.username}` : ''}
+                {result!.pins && result!.pins.length > displayLimit
+                  ? ` · Showing ${Math.min(displayLimit, result!.pins.length)} preview items`
+                  : ''}
                 {zipping ? ` · Packing ZIP ${zipProgress.done}/${zipProgress.total}…` : ''}
               </p>
             </div>
 
             {result!.pins && result!.pins.length > 0 && (
-              <div className="flex flex-col sm:flex-row gap-2 shrink-0 w-full sm:w-auto">
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 shrink-0 w-full sm:w-auto">
                 <button
                   type="button"
                   disabled={zipping}
@@ -780,7 +846,7 @@ export default function DownloaderForm({
                         : `board_${result!.board_title || 'pinterest'}`,
                     )
                   }
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation flex-1 sm:flex-initial"
                 >
                   {zipping ? (
                     <>
@@ -796,30 +862,15 @@ export default function DownloaderForm({
                     </>
                   )}
                 </button>
-                <button
-                  type="button"
-                  disabled={zipping}
-                  onClick={() => {
-                    result!.pins?.forEach((pin, idx) => {
-                      setTimeout(() => {
-                        const mediaUrl =
-                          pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
-                        if (!mediaUrl) return;
-                        const ext = pin.is_video && pin.video_url ? 'mp4' : 'jpg';
-                        const a = document.createElement('a');
-                        a.href = `/api/download?url=${encodeURIComponent(mediaUrl)}&filename=${encodeURIComponent(`pin_${pin.pin_id}.${ext}`)}`;
-                        a.download = `pin_${pin.pin_id}.${ext}`;
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                      }, idx * 600);
-                    });
-                  }}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold text-sm border border-slate-200 dark:border-slate-700 active:scale-95 transition-all disabled:opacity-60 touch-manipulation"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>One by one</span>
-                </button>
+                {result!.pins.length > displayLimit && (
+                  <button
+                    type="button"
+                    onClick={() => setDisplayLimit(result!.pins!.length)}
+                    className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold text-xs border border-slate-200 dark:border-slate-700 transition-all"
+                  >
+                    <span>Show All ({result!.pins.length})</span>
+                  </button>
+                )}
               </div>
             )}
           </div>
@@ -840,41 +891,97 @@ export default function DownloaderForm({
             </div>
           )}
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {result!.pins?.map((pin, idx) => {
-              const mediaUrl = pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
-              const ext = pin.is_video && pin.video_url ? 'mp4' : 'jpg';
-              return (
-                <div
-                  key={pin.pin_id || idx}
-                  className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col justify-between gap-3 group min-w-0"
-                >
-                  <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
-                    <img
-                      src={pin.thumbnail_url || pin.image_url}
-                      alt={pin.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {pin.is_video && (
-                      <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold">
-                        VIDEO
-                      </span>
-                    )}
-                  </div>
-                  <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate">
-                    {pin.title}
-                  </span>
-                  <a
-                    href={`/api/download?url=${encodeURIComponent(mediaUrl)}&filename=${encodeURIComponent(`pin_${pin.pin_id}.${ext}`)}`}
-                    download
-                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1 transition-colors touch-manipulation"
+          {/* Horizontal Scrollable Carousel for Board/Profile Pins */}
+          <div className="relative group/scroll">
+            {/* Left Scroll Arrow */}
+            <button
+              type="button"
+              onClick={() => collectionScrollRef.current?.scrollBy({ left: -360, behavior: 'smooth' })}
+              className="absolute -left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-white shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/scroll:opacity-100 focus:opacity-100"
+              aria-label="Scroll pins left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <div
+              ref={collectionScrollRef}
+              className="flex flex-row overflow-x-auto gap-4 pb-4 pt-1 snap-x scroll-smooth scrollbar-thin scrollbar-thumb-rose-400 dark:scrollbar-thumb-rose-600"
+            >
+              {result!.pins?.slice(0, displayLimit).map((pin, idx) => {
+                const mediaUrl = pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
+                const ext = pin.is_video && pin.video_url ? 'mp4' : 'jpg';
+                return (
+                  <div
+                    key={pin.pin_id || idx}
+                    className="w-48 sm:w-56 shrink-0 snap-start p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col justify-between gap-3 group/card min-w-0"
                   >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>{pin.is_video && pin.video_url ? 'Download MP4' : 'Download HD'}</span>
-                  </a>
+                    <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
+                      <img
+                        src={pin.thumbnail_url || pin.image_url}
+                        alt={pin.title}
+                        className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      {pin.is_video && (
+                        <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/80 text-white text-[10px] font-extrabold tracking-wider">
+                          MP4 VIDEO
+                        </span>
+                      )}
+                      <span className="absolute bottom-2 left-2 px-1.5 py-0.5 rounded-md bg-black/60 text-white text-[10px] font-mono">
+                        #{idx + 1}
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate" title={pin.title}>
+                      {pin.title || `Pin #${idx + 1}`}
+                    </span>
+                    <a
+                      href={`/api/download?url=${encodeURIComponent(mediaUrl)}&filename=${encodeURIComponent(`pin_${pin.pin_id}.${ext}`)}`}
+                      download
+                      className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>{pin.is_video && pin.video_url ? 'Download MP4' : 'Download HD'}</span>
+                    </a>
+                  </div>
+                );
+              })}
+
+              {/* Card at end if more pins exist */}
+              {result!.pins && result!.pins.length > displayLimit && (
+                <div className="w-52 sm:w-60 shrink-0 snap-start p-4 rounded-2xl bg-gradient-to-br from-rose-50 to-red-100 dark:from-slate-800 dark:to-slate-900 border-2 border-dashed border-red-200 dark:border-red-900/60 flex flex-col items-center justify-center text-center gap-3">
+                  <span className="text-xs font-extrabold text-[#E11D48] dark:text-red-400 uppercase tracking-wider">
+                    +{result!.pins.length - displayLimit} More Pins
+                  </span>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-snug">
+                    Get all {result!.pins.length} items in one ZIP archive.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setDisplayLimit((prev) => prev + 24)}
+                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-slate-900 dark:text-white font-bold text-xs shadow-sm hover:bg-red-50"
+                  >
+                    Load More (+24)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setDisplayLimit(result!.pins!.length)}
+                    className="text-xs font-bold text-[#E11D48] hover:underline"
+                  >
+                    Show All ({result!.pins.length})
+                  </button>
                 </div>
-              );
-            })}
+              )}
+            </div>
+
+            {/* Right Scroll Arrow */}
+            <button
+              type="button"
+              onClick={() => collectionScrollRef.current?.scrollBy({ left: 360, behavior: 'smooth' })}
+              className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-white shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/scroll:opacity-100 focus:opacity-100"
+              aria-label="Scroll pins right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       ) : result && (

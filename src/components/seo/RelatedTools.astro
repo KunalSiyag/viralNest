@@ -5,13 +5,14 @@ interface Props {
   /** Current path without domain, e.g. /pinterest-board-downloader */
   current?: string;
   title?: string;
+  stripe?: boolean;
 }
 
-const { current = '', title = 'Related Pinterest download tools' } = Astro.props;
+const { current = '', title = 'Related Pinterest download tools', stripe = true } = Astro.props;
 const tools = TOOL_LINKS.filter((t) => t.href !== current);
 ---
 
-<section class="mt-14 w-full text-left" aria-labelledby="related-tools-heading">
+<section class="mt-14 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left" aria-labelledby="related-tools-heading">
   <h2 id="related-tools-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
     {title}
   </h2>

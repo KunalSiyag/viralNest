@@ -10,6 +10,7 @@ interface Props {
   title?: string;
   highlight?: 'pin' | 'board' | 'profile';
   rows?: Row[];
+  stripe?: boolean;
 }
 
 const defaultRows: Row[] = [
@@ -45,7 +46,7 @@ const defaultRows: Row[] = [
   },
 ];
 
-const { title = 'Pin vs Board vs Profile — which tool?', highlight, rows = defaultRows } = Astro.props;
+const { title = 'Pin vs Board vs Profile — which tool?', highlight, rows = defaultRows, stripe = true } = Astro.props;
 
 const colClass = (col: 'pin' | 'board' | 'profile') =>
   highlight === col
@@ -53,7 +54,7 @@ const colClass = (col: 'pin' | 'board' | 'profile') =>
     : 'text-slate-600 dark:text-slate-400';
 ---
 
-<section class="mt-14 w-full text-left" aria-labelledby="compare-heading">
+<section class="mt-14 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left" aria-labelledby="compare-heading">
   <h2 id="compare-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
     {title}
   </h2>

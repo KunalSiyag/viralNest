@@ -63,28 +63,64 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
-  <article class="flex flex-col items-center py-8 sm:py-12 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
-      Profile URL → bulk pin ZIP
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+  <!-- Hero card with curved background image -->
+  <section
+    class="relative mx-3 sm:mx-6 lg:mx-8 xl:mx-10 mt-2 sm:mt-3 mb-4 sm:mb-6 rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-10 sm:py-14 border border-red-100/80 dark:border-red-900/30 shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
+    aria-labelledby="hero-heading"
+  >
+    <!-- Light theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
+      style="background-image: url('/images/hero_background.webp');"
+      aria-hidden="true"
+    />
+    <!-- Dark theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
+      style="background-image: url('/images/hero_background_dark.webp');"
+      aria-hidden="true"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-white/45 via-white/65 to-white/85 dark:from-ink-950/60 dark:via-ink-950/75 dark:to-ink-950/90"
+      aria-hidden="true"
+    />
+
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-8 lg:px-12 pt-12 sm:pt-14 lg:pt-16 pb-6 sm:pb-8 lg:pb-10 w-full my-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 dark:bg-ink-900/80 text-[#E11D48] text-xs sm:text-sm font-bold mb-6 border border-red-200/80 dark:border-red-900/40 shadow-sm backdrop-blur-sm">
+        Profile URL → bulk pin ZIP
+      </div>
+
+      <h1
+        id="hero-heading"
+        class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-4xl leading-tight mb-4"
+        style="text-wrap: balance;"
+      >
+        Pinterest <span class="text-[#E11D48]">Profile Downloader</span>
+      </h1>
+
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mb-8 leading-relaxed">
+        Paste a public <strong class="text-slate-900 dark:text-white">profile URL</strong> (<code class="text-xs">pinterest.com/username/</code>)
+        to extract visible pins and download them as a <strong class="text-slate-900 dark:text-white">ZIP</strong>.
+        Ideal for creator research and bulk public saves — not for secret accounts.
+      </p>
+
+      <div class="w-full max-w-4xl">
+        <DownloaderForm client:load variant="profile" />
+      </div>
+
+      <p class="mt-5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
+        Works with <code class="text-[11px] bg-white/70 dark:bg-ink-900/70 px-1.5 py-0.5 rounded">pinterest.com/username/</code> URLs.
+        Public profiles only.
+      </p>
     </div>
+  </section>
 
-    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
-      Pinterest <span class="text-[#E11D48]">Profile Downloader</span>
-    </h1>
-
-    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
-      Paste a public <strong class="text-slate-800 dark:text-slate-200">profile URL</strong> (<code class="text-xs">pinterest.com/username/</code>)
-      to extract visible pins and download them as a <strong class="text-slate-800 dark:text-slate-200">ZIP</strong>.
-      Ideal for creator research and bulk public saves — not for secret accounts.
-    </p>
-
-    <DownloaderForm client:load variant="profile" />
-
-    <div class="mt-10 w-full max-w-3xl grid sm:grid-cols-3 gap-3 text-left text-sm">
+  <article class="flex flex-col items-center text-center w-full max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
+    <div class="mt-2 w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm">
       <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
         <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Profile intent</h2>
-        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Targets “download Pinterest profile” queries with username-only URLs.</p>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Targets "download Pinterest profile" queries with username-only URLs.</p>
       </div>
       <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
         <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Bulk ZIP</h2>
@@ -96,7 +132,7 @@ const jsonLd = [
       </div>
     </div>
 
-    <div class="w-full max-w-3xl">
+    <div class="w-full max-w-4xl">
       <HowToSteps
         title="How to download Pinterest profile pins as a ZIP"
         intro="Use a profile link only. If the URL has a board name after the username, switch to the Board Downloader."
@@ -114,7 +150,7 @@ const jsonLd = [
             <h3 class="font-extrabold text-[#E11D48] mb-2">This page — Profile</h3>
             <ul class="space-y-1.5 text-slate-700 dark:text-slate-300 text-xs leading-relaxed list-disc pl-4">
               <li>URL: <code>pinterest.com/username/</code></li>
-              <li>Goal: bulk pins from a creator’s public page</li>
+              <li>Goal: bulk pins from a creator's public page</li>
               <li>Output: multi-pin ZIP of visible pins</li>
             </ul>
           </div>
@@ -137,3 +173,4 @@ const jsonLd = [
     </div>
   </article>
 </BaseLayout>
+
