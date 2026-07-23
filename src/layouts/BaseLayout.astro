@@ -10,6 +10,40 @@ interface Props {
 const { title, description, canonicalUrl, jsonLd } = Astro.props;
 const currentCanonical = canonicalUrl || Astro.url.href;
 const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+// Automatic BreadcrumbList Schema for Google & Bing
+const pathName = Astro.url.pathname.replace(/\/$/, '');
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://viralnest.com/"
+    },
+    ...(pathName ? [{
+      "@type": "ListItem",
+      "position": 2,
+      "name": title.split("—")[0].trim(),
+      "item": currentCanonical
+    }] : [])
+  ]
+};
+
+// Sitelinks Searchbox WebSite Schema for Bing & Google Search Bar
+const websiteSearchSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "viralNest",
+  "url": "https://viralnest.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://viralnest.com/?url={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
 ---
 
 <!doctype html>
@@ -25,9 +59,12 @@ const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta name="description" content={description} />
     <link rel="canonical" href={currentCanonical} />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="viralNest" />
+    <link rel="search" type="application/opensearchdescription+xml" title="viralNest" href="/opensearch.xml" />
+
+    <!-- Bing, Yandex, Baidu, and Search Engine Verification Directives -->
+    <meta name="msvalidate.01" content="BING_WEBMASTER_VERIFICATION_KEY" />
+    <meta name="yandex-verification" content="YANDEX_VERIFICATION_KEY" />
+    <meta name="baidu-site-verification" content="BAIDU_VERIFICATION_KEY" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:site_name" content="viralNest" />
@@ -46,6 +83,13 @@ const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     
     <meta name="theme-color" content="#E60023" />
 
+    <!-- Automatic Schema Injection for Google & Bing -->
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSearchSchema)} />
+    {jsonLdItems.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+
     <!-- Theme Inline Script to prevent FOUC -->
     <script is:inline>
       (function() {
@@ -59,11 +103,6 @@ const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
         }
       })();
     </script>
-
-    <!-- JSON-LD Structured Data for Google Rich Snippets -->
-    {jsonLdItems.map((schema) => (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-    ))}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pinterest 4K & HD Video Downloader — viralNest",
+  "operatingSystem": "All",
+  "applicationCategory": "MultimediaApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+};
+---
+
+<BaseLayout
+  title="Pinterest 4K & 1080p Full HD Video Downloader Free"
+  description="Download Pinterest videos in maximum 1080p Full HD and 4K ultra quality. Save original uncompressed MP4 videos and images directly to your gallery."
+  jsonLd={webAppSchema}
+>
+  <div class="flex flex-col items-center justify-center py-8 sm:py-12 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40 shadow-xs">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/></svg>
+      <span>Ultra Quality • 1080p & 4K HD</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
+      Pinterest <span class="text-[#E60023]">4K & 1080p HD</span> Video Downloader
+    </h1>
+
+    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+      Download Pinterest videos in original 1080p Full HD and highest available bitrate quality without compression artifacts or watermarks.
+    </p>
+
+    <DownloaderForm client:load />
+  </div>
+</BaseLayout>

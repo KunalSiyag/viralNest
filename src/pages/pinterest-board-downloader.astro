@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pinterest Board Downloader — viralNest",
+  "operatingSystem": "All",
+  "applicationCategory": "MultimediaApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+};
+---
+
+<BaseLayout
+  title="Pinterest Board Downloader — Batch Download Board Pins Online"
+  description="Batch download multiple Pins, videos, and images from Pinterest boards in one click. Paste multiple Pin links or board URLs to extract media instantly."
+  jsonLd={webAppSchema}
+>
+  <div class="flex flex-col items-center justify-center py-8 sm:py-12 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40 shadow-xs">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17 12 22 22 17"/><path d="M2 12 12 17 22 12"/><path d="M12 2 2 7 12 12 22 7 12 2"/></svg>
+      <span>Batch & Multi-Pin Downloader</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
+      Pinterest <span class="text-[#E60023]">Board & Multi-Pin</span> Downloader
+    </h1>
+
+    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+      Batch extract and download multiple Pinterest videos, high-res images, and GIFs in one single session using our multi-link downloader tool.
+    </p>
+
+    <DownloaderForm client:load />
+  </div>
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pinterest to MP4 Converter — viralNest",
+  "operatingSystem": "All",
+  "applicationCategory": "MultimediaApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I convert a Pinterest video to MP4?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Copy any Pinterest Pin URL, paste it into the viralNest converter, and click Download MP4 Video to save the converted 1080p MP4 file to your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is converting Pinterest videos to MP4 free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! viralNest is 100% free with no registration, no subscription, and no watermarks."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Pinterest to MP4 Converter — Convert Pinterest Videos Online Free"
+  description="Convert Pinterest videos to high quality MP4 format online for free. Fast, HD 1080p conversion for mobile phones, tablets, and desktop computers without watermarks."
+  jsonLd={[webAppSchema, faqSchema]}
+>
+  <div class="flex flex-col items-center justify-center py-8 sm:py-12 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40 shadow-xs">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 8 6 4-6 4Z"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
+      <span>Free Pinterest to MP4 Converter</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
+      Convert <span class="text-[#E60023]">Pinterest Videos to MP4</span> Online
+    </h1>
+
+    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+      Convert any video Pin, Idea Pin, or clip from Pinterest into high-definition MP4 format with audio. Free, fast, and no software installation required.
+    </p>
+
+    <DownloaderForm client:load />
+  </div>
+</BaseLayout>
