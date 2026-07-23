@@ -5,6 +5,7 @@ out/
 # Astro & Vite build outputs
 dist/
 .astro/
+.vercel/
 
 # dependencies
 node_modules/
