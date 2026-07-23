@@ -1,116 +1,159 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllPosts, getCategories, BLOG_PUBLISHER, getCoverUrl } from '../../data/blog';
 
-const articles = [
-  {
-    slug: 'pinterest-downloader-what-it-is-how-it-works',
-    title: 'Pinterest Downloader: What It Is, How It Works, and When to Use One',
-    excerpt: 'You find a useful video on Pinterest: a recipe, a DIY tutorial, a workout, or a design idea. Learn how Pinterest downloaders extract public media files.',
-    date: '2026-07-20',
-    category: 'Guide'
-  },
-  {
-    slug: 'how-to-copy-correct-pinterest-pin-link',
-    title: 'How to Copy the Correct Pinterest Pin Link for Downloading',
-    excerpt: 'Pasted a link and got an error? Learn how to distinguish direct Pin links from board, profile, and shortlink URLs.',
-    date: '2026-07-18',
-    category: 'Tips'
-  },
-  {
-    slug: 'why-pinterest-downloader-is-not-working',
-    title: 'Why Pinterest Downloader Is Not Working: 10 Common Reasons',
-    excerpt: 'No video? No download button? Explore the 10 most common reasons why Pinterest media extraction fails and how to fix it.',
-    date: '2026-07-15',
-    category: 'Troubleshooting'
-  },
-  {
-    slug: 'how-to-download-pinterest-content-on-phone-android-iphone',
-    title: 'How to Download Pinterest Content on Your Phone: Android and iPhone',
-    excerpt: 'Save Pinterest videos and high-res photos directly to your iOS Camera Roll or Android Gallery without watermarks.',
-    date: '2026-07-12',
-    category: 'Mobile'
-  },
-  {
-    slug: 'why-pinterest-does-not-always-let-you-download-videos-directly',
-    title: 'Why Pinterest Does Not Always Let You Download Videos Directly',
-    excerpt: 'Understand platform video streaming architectures, DRM, HLS streams, and why external extraction tools are needed.',
-    date: '2026-07-10',
-    category: 'Technical'
-  },
-  {
-    slug: 'how-to-save-and-organize-pinterest-ideas',
-    title: 'How to Save and Organize Pinterest Ideas for Study, Design, and Work',
-    excerpt: 'Organize your creative references, color palettes, and video clips offline for seamless workflow integration.',
-    date: '2026-07-08',
-    category: 'Workflow'
-  },
-  {
-    slug: 'how-to-use-pinterest-to-find-video-ideas-for-reels-tiktok-shorts',
-    title: 'How to Use Pinterest to Find Video Ideas for Reels, TikTok, and Shorts',
-    excerpt: 'Leverage Pinterest trending visual aesthetics to brainstorm viral content ideas for TikTok and Instagram Reels.',
-    date: '2026-07-05',
-    category: 'Creators'
-  },
-  {
-    slug: 'how-to-find-original-source-of-pinterest-image',
-    title: 'How to Find the Original or Most Reliable Source of a Pinterest Image',
-    excerpt: 'Reverse image search and metadata tracing to find creator accreditation and original high-resolution assets.',
-    date: '2026-07-01',
-    category: 'Research'
-  }
-];
+const articles = getAllPosts();
+const categories = getCategories();
+const featured = articles[0];
 
 const blogHubSchema = {
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "viralNest Blog & Pinterest Guides",
-  "description": "Comprehensive guides, tutorials, and tips for downloading, organizing, and discovering Pinterest content.",
-  "publisher": { "@type": "Organization", "name": "viralNest" }
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'viralNest Blog — Pinterest Download Guides',
+  description:
+    'In-depth tips, guides, and troubleshooting for downloading Pinterest videos, boards, profiles, GIFs, and images. Written by the viralNest Team.',
+  url: 'https://viralnest.com/blog',
+  publisher: {
+    '@type': 'Organization',
+    name: BLOG_PUBLISHER.name,
+    url: BLOG_PUBLISHER.url,
+    logo: { '@type': 'ImageObject', url: BLOG_PUBLISHER.logo },
+  },
+  blogPost: articles.map((a) => ({
+    '@type': 'BlogPosting',
+    headline: a.title,
+    url: `https://viralnest.com/blog/${a.slug}`,
+    image: getCoverUrl(a),
+    datePublished: a.datePublished,
+    dateModified: a.dateModified,
+    author: { '@type': 'Organization', name: 'viralNest Team' },
+  })),
 };
 ---
 
-<BaseLayout 
-  title="Pinterest Guides & Tutorials — viralNest Blog" 
-  description="Simple tips, guides, and tutorials for downloading Pinterest videos, images, and GIFs on iPhone, Android, and PC."
+<BaseLayout
+  title="Pinterest Blog & Guides — viralNest Team Tutorials"
+  description="In-depth tips, guides, and troubleshooting for downloading Pinterest videos, boards, profiles, GIFs, and images. Written by the viralNest Team."
+  canonicalUrl="https://viralnest.com/blog"
+  image={featured?.coverImage}
   jsonLd={blogHubSchema}
 >
-  <div class="flex flex-col items-center justify-center py-8 sm:py-12 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 shadow-sm">
-      📚 Knowledge Center & Tutorials
+  <div class="flex flex-col items-center py-8 sm:py-12 text-center w-full">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+      viralNest Blog · Long-form guides · By viralNest Team
     </div>
-    
-    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight leading-tight max-w-3xl">
+
+    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight leading-tight max-w-3xl">
       Pinterest <span class="text-[#E60023]">Blog & Guides</span>
     </h1>
-    
-    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mb-12 leading-relaxed font-medium">
-      Learn how to copy correct pin links, fix downloader errors, save videos to gallery, and find trending ideas.
+
+    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mb-4 leading-relaxed">
+      In-depth articles on pin, video, board ZIP, and profile ZIP downloads — practical steps, troubleshooting, and workflows written like real guides, not stubs.
     </p>
 
-    <!-- Articles Grid -->
-    <div class="grid sm:grid-cols-2 gap-6 w-full text-left">
-      {articles.map((art) => (
-        <a 
-          href={`/blog/${art.slug}`}
-          class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-red-200 transition-all flex flex-col justify-between group"
+    <p class="text-xs text-slate-500 mb-8 flex flex-wrap justify-center gap-3">
+      <a href="/rss.xml" class="font-bold text-[#E60023] hover:underline">RSS feed</a>
+      <span aria-hidden="true">·</span>
+      <a href="/pinterest-video-downloader" class="hover:text-[#E60023]">Video</a>
+      <a href="/pinterest-board-downloader" class="hover:text-[#E60023]">Board ZIP</a>
+      <a href="/pinterest-profile-downloader" class="hover:text-[#E60023]">Profile ZIP</a>
+      <a href="/pinterest-pin-downloader" class="hover:text-[#E60023]">Pin</a>
+    </p>
+
+    <!-- Category chips -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10 max-w-3xl">
+      {categories.map((cat) => (
+        <a
+          href={`#cat-${cat.replace(/\s+/g, '-').toLowerCase()}`}
+          class="px-3 py-1.5 rounded-full text-xs font-bold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-red-200 hover:text-[#E60023] transition-colors touch-manipulation"
         >
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="px-2.5 py-1 rounded-md bg-red-50 text-[#E60023] text-xs font-bold uppercase tracking-wider">
-                {art.category}
-              </span>
-              <span class="text-xs font-medium text-slate-400">{art.date}</span>
-            </div>
-            <h2 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#E60023] transition-colors leading-snug">
-              {art.title}
-            </h2>
-            <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-6">
-              {art.excerpt}
-            </p>
+          {cat}
+        </a>
+      ))}
+    </div>
+
+    <!-- Featured article -->
+    {featured && (
+      <a
+        href={`/blog/${featured.slug}`}
+        class="group w-full mb-8 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-red-200 dark:hover:border-red-900 transition-all text-left"
+      >
+        <div class="grid md:grid-cols-2 gap-0">
+          <div class="aspect-[16/10] md:aspect-auto md:min-h-[280px] overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <img
+              src={featured.coverImage}
+              alt={featured.coverAlt}
+              width={1200}
+              height={675}
+              class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
           </div>
-          <div class="flex items-center gap-1.5 text-xs font-extrabold text-[#E60023] group-hover:translate-x-1 transition-transform">
-            <span>Read full guide</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <div class="p-6 sm:p-8 flex flex-col justify-center min-w-0">
+            <div class="flex items-center gap-2 mb-3 flex-wrap">
+              <span class="px-2.5 py-1 rounded-md bg-red-50 dark:bg-red-950/50 text-[#E60023] text-[10px] font-bold uppercase tracking-wider">
+                Featured · {featured.category}
+              </span>
+              <span class="text-[11px] font-medium text-slate-400 tabular-nums">
+                {featured.datePublished} · {featured.readTimeMin}&nbsp;min
+              </span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-[#E60023] transition-colors leading-snug">
+              {featured.title}
+            </h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3 mb-4">
+              {featured.excerpt}
+            </p>
+            <span class="text-xs font-extrabold text-[#E60023]">Read full article →</span>
+          </div>
+        </div>
+      </a>
+    )}
+
+    <div class="grid sm:grid-cols-2 gap-5 w-full text-left">
+      {articles.slice(1).map((art) => (
+        <a
+          href={`/blog/${art.slug}`}
+          class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-red-200 dark:hover:border-red-900 transition-all flex flex-col group min-w-0 overflow-hidden"
+        >
+          <div class="aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <img
+              src={art.coverImage}
+              alt={art.coverAlt}
+              width={640}
+              height={360}
+              class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                <span
+                  id={`cat-${art.category.replace(/\s+/g, '-').toLowerCase()}`}
+                  class="px-2.5 py-1 rounded-md bg-red-50 dark:bg-red-950/50 text-[#E60023] text-[10px] font-bold uppercase tracking-wider"
+                >
+                  {art.category}
+                </span>
+                <span class="text-[11px] font-medium text-slate-400 tabular-nums">
+                  {art.datePublished} · {art.readTimeMin}&nbsp;min
+                </span>
+              </div>
+              <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[#E60023] transition-colors leading-snug">
+                {art.title}
+              </h2>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3 mb-3">
+                {art.excerpt}
+              </p>
+              <p class="text-[11px] font-semibold text-slate-500">By viralNest Team</p>
+            </div>
+            <div class="mt-4 flex items-center gap-1.5 text-xs font-extrabold text-[#E60023] group-hover:translate-x-1 transition-transform">
+              <span>Read full article</span>
+              <span aria-hidden="true">→</span>
+            </div>
           </div>
         </a>
       ))}

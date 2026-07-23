@@ -1,37 +1,108 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloaderForm from '../components/DownloaderForm';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import CompareTable from '../components/seo/CompareTable.astro';
+import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
+
+const path = '/pinterest-video-downloader';
+const pageUrl = `https://viralnest.com${path}`;
+const title = 'Pinterest Video Downloader — Save Pins to MP4 HD Free Online';
+const description =
+  'Free Pinterest video downloader: paste a video pin link and save HD MP4 without watermarks. Works with pin.it shortlinks. No app install, no login.';
+
+const faqs = [
+  {
+    q: 'How do I download a Pinterest video as MP4?',
+    a: 'Copy the video pin link from the Pinterest app or browser, paste it into this video downloader, extract, then download the MP4 stream. Prefer links that contain /pin/ or pin.it.',
+  },
+  {
+    q: 'What quality can I get?',
+    a: 'When Pinterest exposes multiple streams, viralNest lists available qualities (for example 720p/1080p-class MP4). Exact options depend on the pin.',
+  },
+  {
+    q: 'Can I extract audio only?',
+    a: 'Yes on many video pins — use Download MP3 Sound when the stream is available, or open the dedicated audio tool for audio-focused workflows.',
+  },
+  {
+    q: 'Why is there no video on my pin?',
+    a: 'The pin may be a static image, a private pin, or a format without a public MP4. Try the Pin or Image downloader if the pin is not a video.',
+  },
+  {
+    q: 'Does this download whole boards of videos?',
+    a: 'No. This page is for single video pins. For many pins at once use the Board or Profile ZIP tools.',
+  },
+];
+
+const steps = [
+  { title: 'Find a video pin', body: 'Open a pin that plays video (not a still photo grid card only).' },
+  { title: 'Copy the link', body: 'Share → Copy link, or copy the browser URL with <code>/pin/</code>.' },
+  { title: 'Paste & extract', body: 'Paste into the video tool above and run extract.' },
+  { title: 'Save MP4', body: 'Choose quality if offered, then download the MP4 to your device.' },
+];
+
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest Video Downloader — viralNest',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to download Pinterest videos to MP4',
+    description: 'Steps to save a Pinterest video pin as an MP4 file online.',
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
+  }),
+  faqSchema(faqs),
+];
 ---
 
-<BaseLayout 
-  title="Pinterest Video Downloader — Save Pins & Idea Pins to MP4" 
-  description="Download Pinterest videos, stories, and idea pins to your device in full HD. Fast, free, and secure Pinterest downloader."
->
-  <div class="flex flex-col items-center justify-center py-16 text-center">
-    <div class="w-16 h-16 rounded-2xl bg-[#E60023] mb-8 flex items-center justify-center shadow-[0_0_40px_rgba(230,0,35,0.3)]">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
+  <article class="flex flex-col items-center py-8 sm:py-12 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+      Video pin → HD MP4
     </div>
-    
-    <h1 class="text-4xl sm:text-6xl font-heading font-bold text-white mb-6">
-      Pinterest Video Downloader
+
+    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
+      Pinterest <span class="text-[#E60023]">Video Downloader</span>
     </h1>
-    
-    <p class="text-lg text-white/60 max-w-2xl mb-12">
-      Paste any Pinterest video or Idea Pin link to download the high-quality MP4 file directly to your phone or computer.
+
+    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+      Paste a public <strong class="text-slate-800 dark:text-slate-200">video pin</strong> URL and download the
+      <strong class="text-slate-800 dark:text-slate-200">MP4</strong> stream online — free, no watermark, no install.
+      For still photos use the image tool; for whole boards use ZIP tools.
     </p>
 
-    <DownloaderForm client:load />
-    
-    <div class="mt-20 prose prose-invert max-w-none text-left w-full px-6 py-8 bg-white/5 border border-white/10 rounded-2xl">
-      <h2 class="text-2xl font-heading font-bold mb-4 text-white">How to Download Pinterest Videos</h2>
-      <ol class="list-decimal pl-5 space-y-2 text-white/70">
-        <li>Find the video on the Pinterest app or website.</li>
-        <li>Click the <strong>Share</strong> icon and select <strong>Copy Link</strong>.</li>
-        <li>Paste the copied link into the box above.</li>
-        <li>Click <strong>Download</strong> to extract the video.</li>
-        <li>Save the video directly to your gallery or downloads folder!</li>
-      </ol>
-    </div>
-  </div>
-</BaseLayout>
+    <DownloaderForm client:load variant="video" />
 
+    <div class="mt-10 w-full max-w-3xl grid sm:grid-cols-3 gap-3 text-left text-sm">
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">MP4 focused</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Ranked for “Pinterest video downloader” and “save Pinterest video MP4” intent.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Quality picker</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">When multiple streams exist, pick the quality that fits your device.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Mobile friendly</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Works from iOS/Android browsers with pin.it shortlinks from the app.</p>
+      </div>
+    </div>
+
+    <div class="w-full max-w-3xl">
+      <HowToSteps
+        title="How to download Pinterest videos on phone or desktop"
+        intro="Works with public video pins. Board links belong on the Board Downloader page."
+        exampleUrl="https://pin.it/…"
+        exampleLabel="Common shortlink"
+        steps={steps}
+      />
+      <CompareTable highlight="pin" title="Video pin vs board vs profile tools" />
+      <FaqSection title="Pinterest video downloader FAQ" items={faqs} />
+      <RelatedTools current={path} />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+import { TOOL_LINKS } from '../../lib/seo';
+
+interface Props {
+  /** Current path without domain, e.g. /pinterest-board-downloader */
+  current?: string;
+  title?: string;
+}
+
+const { current = '', title = 'Related Pinterest download tools' } = Astro.props;
+const tools = TOOL_LINKS.filter((t) => t.href !== current);
+---
+
+<section class="mt-14 w-full text-left" aria-labelledby="related-tools-heading">
+  <h2 id="related-tools-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
+    {title}
+  </h2>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 max-w-2xl">
+    Each tool is built for a different URL type and search intent — so you land on the right downloader first time.
+  </p>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    {tools.map((tool) => (
+      <a
+        href={tool.href}
+        class="group p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-200 dark:hover:border-red-900 hover:shadow-md transition-all text-left min-w-0"
+      >
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <h3 class="text-sm font-extrabold text-slate-900 dark:text-white group-hover:text-[#E60023] transition-colors truncate">
+            {tool.title}
+          </h3>
+          <span class="shrink-0 text-[10px] font-extrabold uppercase tracking-wide px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/50 text-[#E60023] border border-red-200 dark:border-red-900/40">
+            {tool.badge}
+          </span>
+        </div>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{tool.blurb}</p>
+      </a>
+    ))}
+  </div>
+</section>

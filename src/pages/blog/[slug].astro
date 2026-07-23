@@ -1,183 +1,203 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  getAllPosts,
+  getPostBySlug,
+  getRelatedPosts,
+  BLOG_AUTHOR,
+  BLOG_PUBLISHER,
+  getCoverUrl,
+  estimateWordCount,
+} from '../../data/blog';
 
 export function getStaticPaths() {
-  return [
-    {
-      params: { slug: 'pinterest-downloader-what-it-is-how-it-works' },
-      props: {
-        title: 'Pinterest Downloader: What It Is, How It Works, and When to Use One',
-        description: 'Learn how Pinterest video downloaders parse public pin pages, extract MP4 video streams, and save high-resolution media to phone or desktop.',
-        date: '2026-07-20',
-        category: 'Guide',
-        content: `
-          <p>You find a useful video on Pinterest: a recipe, a DIY tutorial, a workout, or a design idea. You save it to a board, but later you want the actual MP4 file on your phone or PC gallery. That is where a Pinterest downloader comes in.</p>
-          <h3>What is a Pinterest Downloader?</h3>
-          <p>A Pinterest downloader is an online web tool that parses public Pinterest pin URLs, identifies the underlying media stream (MP4 video, JPG image, or animated GIF), and delivers a direct download link to your device.</p>
-          <h3>How Does It Work?</h3>
-          <ol>
-            <li><strong>Link Extraction:</strong> You paste a public Pin link (e.g. <code>https://pinterest.com/pin/123456/</code> or <code>https://pin.it/...</code>).</li>
-            <li><strong>Media Parsing:</strong> The downloader fetches the public HTML payload and parses the video CDN endpoints.</li>
-            <li><strong>Direct Saving:</strong> The file is streamed directly to your device's downloads folder.</li>
-          </ol>
-        `
-      }
-    },
-    {
-      params: { slug: 'how-to-copy-correct-pinterest-pin-link' },
-      props: {
-        title: 'How to Copy the Correct Pinterest Pin Link for Downloading',
-        description: 'You paste a Pinterest link and get an error? Learn how to copy the correct direct Pin URL from mobile apps and web browsers.',
-        date: '2026-07-18',
-        category: 'Tips',
-        content: `
-          <p>If you paste a Pinterest link into a downloader and receive an error, 90% of the time the issue is the URL format.</p>
-          <h3>Valid Pinterest Link Formats</h3>
-          <ul>
-            <li><code>https://www.pinterest.com/pin/123456789/</code></li>
-            <li><code>https://in.pinterest.com/pin/123456789/</code></li>
-            <li><code>https://pin.it/aBcDeFg</code></li>
-          </ul>
-          <h3>Invalid Links to Avoid</h3>
-          <ul>
-            <li>Board links (e.g. <code>pinterest.com/username/board-name/</code>)</li>
-            <li>Profile links (e.g. <code>pinterest.com/username/</code>)</li>
-            <li>Home feed URLs (e.g. <code>pinterest.com/today/</code>)</li>
-          </ul>
-        `
-      }
-    },
-    {
-      params: { slug: 'why-pinterest-downloader-is-not-working' },
-      props: {
-        title: 'Why Pinterest Downloader Is Not Working: 10 Common Reasons',
-        description: 'Discover the top 10 reasons why Pinterest video downloads fail, including private pins, broken shortlinks, and network blocks.',
-        date: '2026-07-15',
-        category: 'Troubleshooting',
-        content: `
-          <p>Experiencing issues downloading a Pinterest video? Here are the 10 most common causes:</p>
-          <ol>
-            <li><strong>Private or Secret Board:</strong> Media in private boards cannot be accessed.</li>
-            <li><strong>Deleted Pin:</strong> The pin was removed by the creator.</li>
-            <li><strong>Board URL Pasted:</strong> Ensure you copied the specific Pin URL.</li>
-            <li><strong>Network Firewall:</strong> Some corporate networks block external video parsing.</li>
-            <li><strong>Expired Shortlink:</strong> Refresh the pin.it shortlink in your app.</li>
-          </ol>
-        `
-      }
-    },
-    {
-      params: { slug: 'how-to-download-pinterest-content-on-phone-android-iphone' },
-      props: {
-        title: 'How to Download Pinterest Content on Your Phone: Android and iPhone',
-        description: 'Save Pinterest videos, Idea Pins, and photos directly to your iOS Camera Roll or Android Gallery using free online tools.',
-        date: '2026-07-12',
-        category: 'Mobile',
-        content: `
-          <p>Saving Pinterest videos to your mobile gallery is simple:</p>
-          <h3>For iPhone (iOS Safari)</h3>
-          <ol>
-            <li>Open Pinterest app, tap <strong>•••</strong> and choose <strong>Copy Link</strong>.</li>
-            <li>Open Safari, go to <strong>viralNest</strong>, and paste the URL.</li>
-            <li>Tap <strong>Download MP4 Video</strong>. Safari will save the video directly to your Downloads folder.</li>
-          </ol>
-          <h3>For Android (Chrome)</h3>
-          <ol>
-            <li>Copy the Pin link from the Pinterest app.</li>
-            <li>Open Chrome, paste into viralNest, and tap Download.</li>
-          </ol>
-        `
-      }
-    },
-    {
-      params: { slug: 'why-pinterest-does-not-always-let-you-download-videos-directly' },
-      props: {
-        title: 'Why Pinterest Does Not Always Let You Download Videos Directly',
-        description: 'Understand why the Pinterest app only allows saving images natively and requires third-party tools for video files.',
-        date: '2026-07-10',
-        category: 'Technical',
-        content: `
-          <p>While Pinterest allows downloading static images natively in their mobile app, video pins do not feature a direct "Save Video" button. This is due to bandwidth management, content protection, and video player streaming protocols.</p>
-        `
-      }
-    },
-    {
-      params: { slug: 'how-to-save-and-organize-pinterest-ideas' },
-      props: {
-        title: 'How to Save and Organize Pinterest Ideas for Study, Design, and Work',
-        description: 'Best practices for organizing design references, color palettes, and video clips for professional workflows.',
-        date: '2026-07-08',
-        category: 'Workflow',
-        content: `
-          <p>Learn how designers and video creators curate offline moodboards using viralNest extracted assets and color palette chips.</p>
-        `
-      }
-    },
-    {
-      params: { slug: 'how-to-use-pinterest-to-find-video-ideas-for-reels-tiktok-shorts' },
-      props: {
-        title: 'How to Use Pinterest to Find Video Ideas for Reels, TikTok, and Shorts',
-        description: 'Leverage Pinterest visual search trends to brainstorm viral video concepts for Instagram Reels and TikTok.',
-        date: '2026-07-05',
-        category: 'Creators',
-        content: `
-          <p>Pinterest is one of the richest search engines for aesthetic video trends, color moodboards, and creative hooks for short-form video creators.</p>
-        `
-      }
-    },
-    {
-      params: { slug: 'how-to-find-original-source-of-pinterest-image' },
-      props: {
-        title: 'How to Find the Original or Most Reliable Source of a Pinterest Image',
-        description: 'Reverse image search and metadata techniques to locate original content creators and high-res source files.',
-        date: '2026-07-01',
-        category: 'Research',
-        content: `
-          <p>Learn how to trace repinned images back to their original creators for proper accreditation and license usage.</p>
-        `
-      }
-    }
-  ];
+  return getAllPosts().map((post) => ({
+    params: { slug: post.slug },
+    props: { slug: post.slug },
+  }));
 }
 
-const { title, description, date, category, content } = Astro.props;
+const { slug } = Astro.props as { slug: string };
+const post = getPostBySlug(slug);
+if (!post) {
+  throw new Error(`Unknown blog slug: ${slug}`);
+}
+
+const related = getRelatedPosts(post, 4);
+const pageUrl = `https://viralnest.com/blog/${post.slug}`;
+const coverUrl = getCoverUrl(post);
+const wordCount = estimateWordCount(post.content);
 
 const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": title,
-  "description": description,
-  "datePublished": date,
-  "author": { "@type": "Organization", "name": "viralNest" }
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.description,
+  image: [coverUrl],
+  datePublished: post.datePublished,
+  dateModified: post.dateModified,
+  author: {
+    '@type': 'Organization',
+    name: BLOG_AUTHOR.name,
+    url: BLOG_AUTHOR.url,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: BLOG_PUBLISHER.name,
+    url: BLOG_PUBLISHER.url,
+    logo: {
+      '@type': 'ImageObject',
+      url: BLOG_PUBLISHER.logo,
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': pageUrl,
+  },
+  articleSection: post.category,
+  keywords: post.tags.join(', '),
+  inLanguage: 'en-US',
+  isAccessibleForFree: true,
+  wordCount,
+};
+
+const breadcrumbExtra = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://viralnest.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://viralnest.com/blog' },
+    { '@type': 'ListItem', position: 3, name: post.title, item: pageUrl },
+  ],
 };
 ---
 
-<BaseLayout title={title} description={description} jsonLd={articleSchema}>
-  <div class="max-w-3xl mx-auto py-8 text-left">
-    <a href="/blog" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#E60023] hover:underline mb-6">
-      ← Back to all guides
-    </a>
+<BaseLayout
+  title={`${post.title} — viralNest Blog`}
+  description={post.description}
+  canonicalUrl={pageUrl}
+  image={post.coverImage}
+  ogType="article"
+  jsonLd={[articleSchema, breadcrumbExtra]}
+>
+  <article class="max-w-3xl mx-auto py-8 text-left w-full">
+    <nav class="text-xs font-semibold text-slate-500 mb-6 flex flex-wrap items-center gap-1.5" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-[#E60023]">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/blog" class="hover:text-[#E60023]">Blog</a>
+      <span aria-hidden="true">/</span>
+      <span class="text-slate-700 dark:text-slate-300 line-clamp-1">{post.category}</span>
+    </nav>
 
-    <div class="flex items-center gap-3 mb-4">
-      <span class="px-2.5 py-1 rounded-md bg-red-50 text-[#E60023] text-xs font-bold uppercase tracking-wider">
-        {category}
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      <span class="px-2.5 py-1 rounded-md bg-red-50 dark:bg-red-950/50 text-[#E60023] text-xs font-bold uppercase tracking-wider">
+        {post.category}
       </span>
-      <span class="text-xs font-medium text-slate-400">{date}</span>
+      {post.tags.slice(0, 3).map((tag) => (
+        <span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-semibold">
+          {tag}
+        </span>
+      ))}
     </div>
 
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
-      {title}
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 leading-tight text-wrap balance">
+      {post.title}
     </h1>
 
-    <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm prose max-w-none text-slate-700 leading-relaxed font-medium" set:html={content} />
+    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex flex-wrap items-center gap-x-2 gap-y-1">
+      <span>
+        By <a href="/about" class="font-bold text-slate-800 dark:text-slate-200 hover:text-[#E60023]">viralNest Team</a>
+      </span>
+      <span class="text-slate-300" aria-hidden="true">·</span>
+      <time datetime={post.datePublished}>Published {post.datePublished}</time>
+      <span class="text-slate-300" aria-hidden="true">·</span>
+      <time datetime={post.dateModified}>Updated {post.dateModified}</time>
+      <span class="text-slate-300" aria-hidden="true">·</span>
+      <span>~{post.readTimeMin} min read</span>
+      <span class="text-slate-300" aria-hidden="true">·</span>
+      <span class="tabular-nums">{wordCount.toLocaleString()} words</span>
+    </p>
 
-    <!-- CTA Box -->
-    <div class="mt-12 p-8 rounded-3xl bg-gradient-to-br from-white to-red-50/50 border border-red-200 text-center shadow-sm">
-      <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Ready to Download Pinterest Videos?</h3>
-      <p class="text-slate-600 text-sm mb-6 max-w-md mx-auto">Try viralNest for free — paste any Pinterest link and download HD MP4 videos, images, or GIFs instantly.</p>
-      <a href="/" class="inline-flex items-center justify-center h-12 px-8 rounded-xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-md shadow-red-500/20 transition-all">
-        Go to Downloader Tool
-      </a>
-    </div>
-  </div>
+    <!-- Cover image -->
+    <figure class="not-prose mb-8 -mx-0">
+      <div class="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm bg-slate-100 dark:bg-slate-900 aspect-[16/9]">
+        <img
+          src={post.coverImage}
+          alt={post.coverAlt}
+          width={1200}
+          height={675}
+          class="w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption class="sr-only">{post.coverAlt}</figcaption>
+    </figure>
+
+    <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed border-l-4 border-[#E60023]/pl-4">
+      {post.excerpt}
+    </p>
+
+    <div
+      class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm prose prose-slate dark:prose-invert max-w-none prose-headings:scroll-mt-24 prose-headings:font-extrabold prose-h2:text-2xl prose-h2:mt-10 prose-h3:text-lg prose-a:text-[#E60023] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-900 dark:prose-strong:text-white prose-li:my-1 leading-relaxed"
+      set:html={post.content}
+    />
+
+    <!-- Tool strip -->
+    <aside class="mt-10 p-6 rounded-3xl bg-gradient-to-br from-white to-red-50/60 dark:from-slate-900 dark:to-red-950/20 border border-red-200 dark:border-red-900/40 text-center shadow-sm">
+      <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2">Try viralNest now</h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 max-w-md mx-auto">
+        Paste a public Pinterest link and download free — pin, video, board ZIP, or profile ZIP.
+      </p>
+      <div class="flex flex-wrap justify-center gap-2">
+        <a href="/pinterest-video-downloader" class="inline-flex h-11 px-5 items-center rounded-xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-md shadow-red-500/20 transition-all touch-manipulation">Video MP4</a>
+        <a href="/pinterest-pin-downloader" class="inline-flex h-11 px-5 items-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-bold text-sm hover:border-red-200 transition-all touch-manipulation">Pin / Carousel</a>
+        <a href="/pinterest-board-downloader" class="inline-flex h-11 px-5 items-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-bold text-sm hover:border-red-200 transition-all touch-manipulation">Board ZIP</a>
+        <a href="/pinterest-profile-downloader" class="inline-flex h-11 px-5 items-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-bold text-sm hover:border-red-200 transition-all touch-manipulation">Profile ZIP</a>
+      </div>
+    </aside>
+
+    <!-- Related posts -->
+    {related.length > 0 && (
+      <section class="mt-12" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="text-xl font-extrabold text-slate-900 dark:text-white mb-4">
+          Keep reading
+        </h2>
+        <ul class="grid sm:grid-cols-2 gap-4">
+          {related.map((r) => (
+            <li>
+              <a
+                href={`/blog/${r.slug}`}
+                class="group block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-red-200 dark:hover:border-red-900 transition-colors h-full overflow-hidden"
+              >
+                <div class="aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-slate-800">
+                  <img
+                    src={r.coverImage}
+                    alt={r.coverAlt}
+                    width={640}
+                    height={360}
+                    class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="p-4">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E60023]">{r.category}</span>
+                  <span class="block mt-1 font-bold text-sm text-slate-900 dark:text-white leading-snug">{r.title}</span>
+                  <span class="block mt-1 text-[11px] text-slate-500 tabular-nums">{r.readTimeMin}&nbsp;min read</span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <p class="mt-10 text-center text-sm">
+      <a href="/blog" class="font-bold text-[#E60023] hover:underline">← All viralNest guides</a>
+      <span class="text-slate-300 mx-2">·</span>
+      <a href="/rss.xml" class="font-semibold text-slate-600 dark:text-slate-400 hover:text-[#E60023]">RSS</a>
+    </p>
+  </article>
 </BaseLayout>

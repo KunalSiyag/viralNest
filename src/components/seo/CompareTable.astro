@@ -1,0 +1,95 @@
+---
+interface Row {
+  feature: string;
+  pin: string;
+  board: string;
+  profile: string;
+}
+
+interface Props {
+  title?: string;
+  highlight?: 'pin' | 'board' | 'profile';
+  rows?: Row[];
+}
+
+const defaultRows: Row[] = [
+  {
+    feature: 'URL example',
+    pin: 'pinterest.com/pin/123…',
+    board: 'pinterest.com/user/board/',
+    profile: 'pinterest.com/user/',
+  },
+  {
+    feature: 'What you get',
+    pin: '1 file or full carousel',
+    board: 'Many pins → ZIP',
+    profile: 'Visible pins → ZIP',
+  },
+  {
+    feature: 'Best for',
+    pin: 'Saving one idea / video',
+    board: 'Moodboards & collections',
+    profile: 'Creator bulk backup',
+  },
+  {
+    feature: 'Carousel slides',
+    pin: 'Yes — every slide',
+    board: 'Cover per pin*',
+    profile: 'Cover per pin*',
+  },
+  {
+    feature: 'Private / secret content',
+    pin: 'Not supported',
+    board: 'Not supported',
+    profile: 'Not supported',
+  },
+];
+
+const { title = 'Pin vs Board vs Profile — which tool?', highlight, rows = defaultRows } = Astro.props;
+
+const colClass = (col: 'pin' | 'board' | 'profile') =>
+  highlight === col
+    ? 'bg-red-50/80 dark:bg-red-950/30 font-semibold text-slate-900 dark:text-white'
+    : 'text-slate-600 dark:text-slate-400';
+---
+
+<section class="mt-14 w-full text-left" aria-labelledby="compare-heading">
+  <h2 id="compare-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
+    {title}
+  </h2>
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-5">
+    Use the tool that matches your link type. Wrong URL type is the #1 reason downloads fail.
+  </p>
+  <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+    <table class="w-full text-left text-xs sm:text-sm min-w-[560px]">
+      <thead>
+        <tr class="border-b border-slate-200 dark:border-slate-800">
+          <th scope="col" class="p-3 sm:p-4 font-extrabold text-slate-900 dark:text-white">Feature</th>
+          <th scope="col" class={`p-3 sm:p-4 font-extrabold ${highlight === 'pin' ? 'text-[#E60023]' : 'text-slate-900 dark:text-white'}`}>
+            <a href="/pinterest-pin-downloader" class="hover:underline">Pin</a>
+          </th>
+          <th scope="col" class={`p-3 sm:p-4 font-extrabold ${highlight === 'board' ? 'text-[#E60023]' : 'text-slate-900 dark:text-white'}`}>
+            <a href="/pinterest-board-downloader" class="hover:underline">Board ZIP</a>
+          </th>
+          <th scope="col" class={`p-3 sm:p-4 font-extrabold ${highlight === 'profile' ? 'text-[#E60023]' : 'text-slate-900 dark:text-white'}`}>
+            <a href="/pinterest-profile-downloader" class="hover:underline">Profile ZIP</a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr class="border-b border-slate-100 dark:border-slate-800 last:border-0">
+            <th scope="row" class="p-3 sm:p-4 font-bold text-slate-800 dark:text-slate-200 align-top">{row.feature}</th>
+            <td class={`p-3 sm:p-4 align-top ${colClass('pin')}`}>{row.pin}</td>
+            <td class={`p-3 sm:p-4 align-top ${colClass('board')}`}>{row.board}</td>
+            <td class={`p-3 sm:p-4 align-top ${colClass('profile')}`}>{row.profile}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="mt-2 text-[11px] text-slate-500 dark:text-slate-500">
+    * For full carousel slides of a pin inside a board/profile pack, open that pin with the{' '}
+    <a href="/pinterest-pin-downloader" class="text-[#E60023] font-semibold hover:underline">Pin Downloader</a>.
+  </p>
+</section>

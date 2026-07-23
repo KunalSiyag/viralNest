@@ -1,51 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloaderForm from '../components/DownloaderForm';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 
-const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Pinterest Image Downloader",
-  "operatingSystem": "All",
-  "applicationCategory": "MultimediaApplication",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-};
+const path = '/pinterest-image-downloader';
+const pageUrl = `https://viralnest.com${path}`;
+const title = 'Pinterest Image Downloader — Save Full HD Original Photos Free';
+const description =
+  'Free Pinterest image downloader for original-resolution photos, wallpapers, and artwork. Paste a pin URL and save HD JPG without login or watermark.';
+
+const faqs = [
+  {
+    q: 'How do I download a high-resolution Pinterest image?',
+    a: 'Copy the image pin URL, paste it into this image downloader, extract, then download the HD/original image file.',
+  },
+  {
+    q: 'Will I get the original size or a tiny thumbnail?',
+    a: 'viralNest prefers originals when available (not the small grid thumbnail). Some pins only expose mid-size CDN variants.',
+  },
+  {
+    q: 'Can I download multi-image carousels?',
+    a: 'Yes — multi-slide pins list every image so you can save all slides. For a dedicated pin flow see the Pin Downloader.',
+  },
+  {
+    q: 'Is this different from the video downloader?',
+    a: 'Yes. This page targets still photos and artwork. Use the video tool for MP4 streams and the board/profile tools for bulk ZIP packs.',
+  },
+];
+
+const steps = [
+  { title: 'Open the image pin', body: 'Open the pin close-up so the URL contains <code>/pin/</code>.' },
+  { title: 'Copy the link', body: 'Copy share link or browser URL.' },
+  { title: 'Paste & extract', body: 'Paste into the image tool and extract media.' },
+  { title: 'Download HD', body: 'Save the original-resolution image to your device.' },
+];
+
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({ name: 'Pinterest Image Downloader — viralNest', description, url: pageUrl }),
+  howToSchema({
+    name: 'How to download Pinterest images in full resolution',
+    description: 'Steps to save original HD photos from Pinterest pin links.',
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
+  }),
+  faqSchema(faqs),
+];
 ---
 
-<BaseLayout 
-  title="Pinterest Image Downloader — Save Full HD Pinterest Photos & Images" 
-  description="Download full-resolution Pinterest images, photos, artwork, and infographics for free. High quality PNG & JPG original pin downloads."
-  jsonLd={webAppSchema}
->
-  <div class="flex flex-col items-center justify-center py-8 sm:py-12 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 shadow-sm">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-      100% Original Resolution Image Downloader
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
+  <article class="flex flex-col items-center py-8 sm:py-12 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+      Original resolution · Photos · Artwork
     </div>
-    
-    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight leading-tight max-w-3xl">
+
+    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
       Pinterest <span class="text-[#E60023]">Image Downloader</span>
     </h1>
-    
-    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mb-8 leading-relaxed font-medium">
-      Save uncompressed, maximum resolution Pinterest photos, wallpapers, artwork, and infographics directly to your device.
+
+    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+      Download <strong class="text-slate-800 dark:text-slate-200">full-resolution</strong> Pinterest photos, wallpapers,
+      and artwork from a public pin link — free, no login, no watermark.
     </p>
 
-    <DownloaderForm client:load />
+    <DownloaderForm client:load variant="image" />
 
-    <!-- Features -->
-    <div class="mt-16 w-full text-left bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 mb-4">Why Use Our Pinterest Image Downloader?</h2>
-      <div class="grid sm:grid-cols-2 gap-6 text-sm text-slate-600">
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <h3 class="font-bold text-slate-900 mb-1">Max Original Quality</h3>
-          <p>Extracts the raw uncompressed original resolution image uploaded to Pinterest servers.</p>
-        </div>
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-          <h3 class="font-bold text-slate-900 mb-1">No Login Needed</h3>
-          <p>Fast and 100% anonymous downloads without giving out credentials or logging in.</p>
-        </div>
-      </div>
+    <div class="w-full max-w-3xl">
+      <HowToSteps
+        title="How to download Pinterest images in HD"
+        intro="Use a pin URL. Board bulk saves belong on the Board ZIP page."
+        exampleUrl="https://www.pinterest.com/pin/…"
+        steps={steps}
+      />
+      <FaqSection title="Pinterest image downloader FAQ" items={faqs} />
+      <RelatedTools current={path} />
     </div>
-  </div>
+  </article>
 </BaseLayout>

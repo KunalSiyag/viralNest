@@ -6,9 +6,24 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://viralnest.com/pinterest-pin-downloader</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+  <url>
     <loc>https://viralnest.com/pinterest-video-downloader</loc>
     <changefreq>daily</changefreq>
-    <priority>0.95</priority>
+    <priority>0.97</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/pinterest-board-downloader</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.96</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/pinterest-profile-downloader</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.96</priority>
   </url>
   <url>
     <loc>https://viralnest.com/pinterest-image-downloader</loc>
@@ -36,11 +51,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://viralnest.com/pinterest-board-downloader</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
     <loc>https://viralnest.com/pinterest-audio-downloader</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -53,27 +63,156 @@
   <url>
     <loc>https://viralnest.com/blog</loc>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://viralnest.com/blog/pinterest-downloader-what-it-is-how-it-works</loc>
+    <loc>https://viralnest.com/rss.xml</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/how-to-download-pinterest-videos-fast-and-easy</loc>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/troubleshooting-pinterest-downloads</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/why-pinterest-video-downloaded-as-photo</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/pin-vs-board-vs-profile-urls-explained</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/how-to-download-pinterest-board-as-zip</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/how-to-download-pinterest-profile-pins-as-zip</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/download-pinterest-carousel-all-slides</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/using-viralnest-on-phone-android-ios</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/save-pinterest-offline-without-account</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/video-quality-on-pinterest-downloads</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/understanding-file-formats-mp4-webm-gif-jpg-png</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/private-browsing-and-pinterest-downloads</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/tips-to-organize-downloaded-pinterest-videos</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/beyond-the-download-personal-reference-library</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/pinterest-for-long-flights-and-layovers</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/study-smarter-with-pinterest-videos</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/save-diy-videos-for-the-job-site</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/understanding-aspect-ratios-pinterest-media</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/download-times-what-is-normal</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/using-downloaded-content-responsibly</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://viralnest.com/blog/things-to-know-before-downloading-pinterest-videos</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://viralnest.com/blog/how-to-copy-correct-pinterest-pin-link</loc>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://viralnest.com/blog/why-pinterest-downloader-is-not-working</loc>
+    <loc>https://viralnest.com/blog/download-on-shared-or-work-devices</loc>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://viralnest.com/blog/how-to-download-pinterest-content-on-phone-android-iphone</loc>
+    <loc>https://viralnest.com/blog/pinterest-downloader-what-it-is-how-it-works</loc>
+    <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://viralnest.com/privacy-policy</loc>

@@ -32,4 +32,9 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+# Sitemaps & discovery
 Sitemap: https://viralnest.com/sitemap.xml
+# Blog RSS (not a sitemap, but useful for feed readers / some crawlers)
+# https://viralnest.com/rss.xml
+# LLM-oriented site summary
+# https://viralnest.com/llms.txt

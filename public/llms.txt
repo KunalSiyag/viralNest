@@ -1,21 +1,34 @@
-# viralNest — Free Pinterest Video & Media Downloader
+# viralNest — Free Pinterest Downloaders (Pin, Video, Board, Profile)
 
-> viralNest is a fast, free, online tool for downloading Pinterest videos, high-resolution images, animated GIFs, Idea Pins, and extracting MP3 audio without watermarks or registration.
+> viralNest is a free online suite for downloading public Pinterest media: single pins (image/video/GIF/carousel), HD videos (MP4), board ZIPs, and profile ZIPs. No registration required. Private and secret content is not supported.
 
-## Core Capabilities
-- **Pinterest Video Downloader**: Extracts 1080p, 720p HD MP4 video streams from public Pinterest pins and pin.it shortlinks.
-- **Pinterest Image Downloader**: Downloads full-resolution original static images and artwork.
-- **Pinterest GIF Downloader**: Downloads animated GIF pins directly to camera roll or gallery.
-- **Pinterest Idea Pin & Story Downloader**: Downloads multi-slide story pins and slideshow carousels.
-- **Pinterest Audio Downloader**: Extracts audio tracks and background music from Pinterest videos.
+## Primary tools (distinct SEO intents)
 
-## Pages & Tools
-- [Pinterest Video Downloader](https://viralnest.com/): Primary online video extraction tool.
-- [Pinterest Image Downloader](https://viralnest.com/pinterest-image-downloader): High-resolution photo downloader.
-- [Pinterest GIF Downloader](https://viralnest.com/pinterest-gif-downloader): Animated GIF downloader.
-- [Pinterest Idea Pin Downloader](https://viralnest.com/pinterest-story-downloader): Story Pin & Carousel downloader.
-- [Pinterest Audio Downloader](https://viralnest.com/pinterest-audio-downloader): Audio & MP3 extractor.
-- [Step-by-Step Guide](https://viralnest.com/how-to-download-pinterest-videos): Guide for iOS, Android, and Desktop users.
+- [Pinterest Pin Downloader](https://viralnest.com/pinterest-pin-downloader): Single pin URL → image, video, GIF, or full carousel slides.
+- [Pinterest Video Downloader](https://viralnest.com/pinterest-video-downloader): Video pin → HD MP4 (and optional audio).
+- [Pinterest Board Downloader](https://viralnest.com/pinterest-board-downloader): Board URL (`/username/board/`) → multi-pin ZIP.
+- [Pinterest Profile Downloader](https://viralnest.com/pinterest-profile-downloader): Profile URL (`/username/`) → visible pins ZIP.
+- [Pinterest Image Downloader](https://viralnest.com/pinterest-image-downloader): Original-resolution still photos from pin links.
+- [Pinterest GIF Downloader](https://viralnest.com/pinterest-gif-downloader): Animated GIF pins.
+- [Pinterest Audio Downloader](https://viralnest.com/pinterest-audio-downloader): MP3 extraction from video pins.
 
-## API Endpoint
-- POST `https://viralnest.com/api/extract` — Accepts JSON `{ "url": "<pinterest_pin_url>" }` and returns `{ "video_url": "...", "image_url": "...", "title": "...", "qualities": [...] }`.
+## Hub & guides
+
+- [Home](https://viralnest.com/): Tool hub and general extractor.
+- [How to download Pinterest videos](https://viralnest.com/how-to-download-pinterest-videos): Mobile and desktop guide.
+- [Blog](https://viralnest.com/blog): 20+ guides by the viralNest Team (schema-rich BlogPosting).
+- [RSS](https://viralnest.com/rss.xml): Full blog feed for subscribers and discovery.
+- [Sitemap](https://viralnest.com/sitemap.xml): All public URLs for crawlers.
+- [robots.txt](https://viralnest.com/robots.txt): Crawl rules.
+
+## URL types
+
+| URL shape | Tool |
+|-----------|------|
+| `pinterest.com/pin/…` or `pin.it/…` | Pin / Video / Image |
+| `pinterest.com/username/board-name/` | Board ZIP |
+| `pinterest.com/username/` | Profile ZIP |
+
+## API
+
+- `POST /api/extract` with JSON `{ "url": "<pinterest_url>" }` returns media metadata including `media_items` for carousels and `pins` for boards/profiles.

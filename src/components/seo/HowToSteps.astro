@@ -1,0 +1,44 @@
+---
+interface Step {
+  title: string;
+  body: string;
+}
+
+interface Props {
+  title: string;
+  intro?: string;
+  steps: Step[];
+  exampleUrl?: string;
+  exampleLabel?: string;
+}
+
+const { title, intro, steps, exampleUrl, exampleLabel } = Astro.props;
+---
+
+<section class="mt-14 w-full text-left" aria-labelledby="howto-heading">
+  <h2 id="howto-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
+    {title}
+  </h2>
+  {intro && (
+    <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 max-w-2xl leading-relaxed">{intro}</p>
+  )}
+  {exampleUrl && (
+    <p class="mb-5 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
+      <span class="font-bold text-slate-800 dark:text-slate-200">{exampleLabel || 'Example URL'}:</span>{' '}
+      <code class="text-[11px] sm:text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg break-all">{exampleUrl}</code>
+    </p>
+  )}
+  <ol class="space-y-3">
+    {steps.map((step, i) => (
+      <li class="flex gap-3 sm:gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E60023] text-white text-sm font-extrabold flex items-center justify-center shadow-sm">
+          {i + 1}
+        </span>
+        <div class="min-w-0">
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base mb-1">{step.title}</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" set:html={step.body} />
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

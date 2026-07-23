@@ -1,40 +1,137 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloaderForm from '../components/DownloaderForm';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import CompareTable from '../components/seo/CompareTable.astro';
+import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 
-const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Pinterest Board Downloader — viralNest",
-  "operatingSystem": "All",
-  "applicationCategory": "MultimediaApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-};
+const path = '/pinterest-board-downloader';
+const pageUrl = `https://viralnest.com${path}`;
+const title = 'Pinterest Board Downloader — Download Entire Board as ZIP Free';
+const description =
+  'Free Pinterest board downloader: paste a public board URL, extract pins (images & videos), and download the board as a ZIP. Batch board pin saver online — no login.';
+
+const faqs = [
+  {
+    q: 'How do I download an entire Pinterest board?',
+    a: 'Copy the public board URL (pinterest.com/username/board-name/), paste it into the board downloader, extract pins, then click Download ZIP to save the pack as one archive.',
+  },
+  {
+    q: 'What does a Pinterest board URL look like?',
+    a: 'Board links have two path segments after the domain: the username and the board slug, for example pinterest.com/pinterest/official-news/. They never contain /pin/ in the middle of the path for the board itself.',
+  },
+  {
+    q: 'Can I download secret or private boards?',
+    a: 'No. viralNest only extracts public boards. Secret boards, private profiles, and login-only pins cannot be accessed by this tool.',
+  },
+  {
+    q: 'How many pins can I get from a board?',
+    a: 'The tool extracts public pins that appear on the board page load (up to a safe public limit). Very large boards may not return every historical pin in one pass.',
+  },
+  {
+    q: 'Board vs profile downloader — which should I use?',
+    a: 'Use the board downloader for one themed collection (e.g. “kitchen remodel”). Use the profile downloader when you want pins visible on a creator’s profile page overall.',
+  },
+  {
+    q: 'Will carousel pins include every slide in the ZIP?',
+    a: 'Board ZIP packs typically include the cover media for each pin. To download every carousel slide of one pin, open that pin in the Pin Downloader.',
+  },
+];
+
+const steps = [
+  { title: 'Open the public board', body: 'In Pinterest, open the board page (grid of pins), not a single pin close-up.' },
+  { title: 'Copy the board URL', body: 'Copy from the address bar. It should look like <code>pinterest.com/username/board-name/</code>.' },
+  { title: 'Paste & extract', body: 'Paste into this board tool and run extract to list downloadable public pins.' },
+  { title: 'Download ZIP', body: 'Click <strong>Download ZIP</strong> to pack images/videos into one archive, or download pins one by one.' },
+];
+
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest Board Downloader — viralNest',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to download a Pinterest board as ZIP',
+    description: 'Steps to batch download pins from a public Pinterest board into a ZIP file.',
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
+  }),
+  faqSchema(faqs),
+];
 ---
 
-<BaseLayout
-  title="Pinterest Board Downloader — Batch Download Board Pins Online"
-  description="Batch download multiple Pins, videos, and images from Pinterest boards in one click. Paste multiple Pin links or board URLs to extract media instantly."
-  jsonLd={webAppSchema}
->
-  <div class="flex flex-col items-center justify-center py-8 sm:py-12 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40 shadow-xs">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17 12 22 22 17"/><path d="M2 12 12 17 22 12"/><path d="M12 2 2 7 12 12 22 7 12 2"/></svg>
-      <span>Batch & Multi-Pin Downloader</span>
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
+  <article class="flex flex-col items-center py-8 sm:py-12 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+      Board URL → multi-pin ZIP
     </div>
 
     <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
-      Pinterest <span class="text-[#E60023]">Board & Multi-Pin</span> Downloader
+      Pinterest <span class="text-[#E60023]">Board Downloader</span>
     </h1>
 
     <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
-      Batch extract and download multiple Pinterest videos, high-res images, and GIFs in one single session using our multi-link downloader tool.
+      Download a public Pinterest <strong class="text-slate-800 dark:text-slate-200">board</strong> in one flow:
+      paste the board link, extract pins, then save everything as a <strong class="text-slate-800 dark:text-slate-200">ZIP</strong>.
+      Built for moodboards, recipe boards, and design collections — not single pins.
     </p>
 
-    <DownloaderForm client:load />
-  </div>
+    <DownloaderForm client:load variant="board" />
+
+    <div class="mt-10 w-full max-w-3xl grid sm:grid-cols-3 gap-3 text-left text-sm">
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Board-only intent</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Optimized for <code class="text-[10px]">/username/board-slug/</code> URLs and “download whole board” searches.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">ZIP archive</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Pack public board pins into one file for offline moodboards and client handoff.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Images + videos</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Extracts downloadable image and video pins listed on the public board page.</p>
+      </div>
+    </div>
+
+    <div class="w-full max-w-3xl">
+      <HowToSteps
+        title="How to download a Pinterest board as a ZIP"
+        intro="This page is only for board links. If your URL has /pin/ in it, use the Pin Downloader instead."
+        exampleUrl="https://www.pinterest.com/pinterest/spice-up-your-dinner-plans/"
+        exampleLabel="Example board URL"
+        steps={steps}
+      />
+
+      <section class="mt-14 text-left" aria-labelledby="board-use-heading">
+        <h2 id="board-use-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 scroll-mt-24">
+          Best use cases for a board downloader
+        </h2>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed list-disc pl-5">
+          <li>Saving a wedding, interior, or fashion <strong class="text-slate-800 dark:text-slate-200">moodboard</strong> offline.</li>
+          <li>Archiving a recipe or DIY board before pins disappear.</li>
+          <li>Handing a design reference pack to a team as one ZIP.</li>
+          <li>Bulk-saving public marketing boards for offline review.</li>
+        </ul>
+      </section>
+
+      <section class="mt-14 text-left rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6" aria-labelledby="board-url-heading">
+        <h2 id="board-url-heading" class="text-lg font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
+          Board URL checklist (avoid common errors)
+        </h2>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+          <li class="flex gap-2"><span class="text-emerald-600 font-bold">✓</span> <span><code class="text-xs">pinterest.com/username/board-name/</code> — correct board link</span></li>
+          <li class="flex gap-2"><span class="text-red-500 font-bold">✗</span> <span><code class="text-xs">pinterest.com/pin/123/</code> — that is a pin; use the <a href="/pinterest-pin-downloader" class="text-[#E60023] font-semibold hover:underline">Pin Downloader</a></span></li>
+          <li class="flex gap-2"><span class="text-red-500 font-bold">✗</span> <span><code class="text-xs">pinterest.com/username/</code> only — that is a profile; use the <a href="/pinterest-profile-downloader" class="text-[#E60023] font-semibold hover:underline">Profile Downloader</a></span></li>
+          <li class="flex gap-2"><span class="text-red-500 font-bold">✗</span> <span>Secret boards or private accounts — not publicly extractable</span></li>
+        </ul>
+      </section>
+
+      <CompareTable highlight="board" />
+      <FaqSection title="Pinterest board downloader FAQ" items={faqs} />
+      <RelatedTools current={path} title="Related tools (pin, profile, video)" />
+    </div>
+  </article>
 </BaseLayout>

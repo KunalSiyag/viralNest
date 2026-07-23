@@ -4,12 +4,20 @@ interface Props {
   title: string;
   description: string;
   canonicalUrl?: string;
+  /** Absolute or site-relative path for Open Graph / Twitter image */
+  image?: string;
+  ogType?: 'website' | 'article';
   jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
-const { title, description, canonicalUrl, jsonLd } = Astro.props;
+const { title, description, canonicalUrl, image, ogType = 'website', jsonLd } = Astro.props;
 const currentCanonical = canonicalUrl || Astro.url.href;
 const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const ogImage = image
+  ? image.startsWith('http')
+    ? image
+    : `https://viralnest.com${image.startsWith('/') ? image : `/${image}`}`
+  : 'https://viralnest.com/og-image.png';
 
 // Automatic BreadcrumbList Schema for Google & Bing
 const pathName = Astro.url.pathname.replace(/\/$/, '');
@@ -59,6 +67,7 @@ const websiteSearchSchema = {
     <meta name="description" content={description} />
     <link rel="canonical" href={currentCanonical} />
     <link rel="manifest" href="/manifest.json" />
+    <link rel="alternate" type="application/rss+xml" title="viralNest Blog RSS" href="https://viralnest.com/rss.xml" />
     <link rel="search" type="application/opensearchdescription+xml" title="viralNest" href="/opensearch.xml" />
 
     <!-- Bing, Yandex, Baidu, and Search Engine Verification Directives -->
@@ -68,18 +77,19 @@ const websiteSearchSchema = {
     
     <!-- Open Graph / Facebook -->
     <meta property="og:site_name" content="viralNest" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={currentCanonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://viralnest.com/og-image.png" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={title} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={currentCanonical} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://viralnest.com/og-image.png" />
+    <meta name="twitter:image" content={ogImage} />
     
     <meta name="theme-color" content="#E60023" />
 
@@ -119,24 +129,66 @@ const websiteSearchSchema = {
           </div>
           <span class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">viral<span class="text-[#E60023]">Nest</span></span>
         </a>
-        <nav class="hidden md:flex gap-5 items-center text-sm font-semibold">
-          <a href="/" class="text-slate-700 dark:text-slate-200 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Video Downloader</a>
-          <a href="/pinterest-image-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Images</a>
-          <a href="/pinterest-gif-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">GIFs</a>
-          <a href="/pinterest-story-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Idea Pins</a>
-          <a href="/pinterest-audio-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Audio MP3</a>
+        <nav class="hidden lg:flex gap-3 xl:gap-4 items-center text-sm font-semibold" aria-label="Main">
+          <a href="/pinterest-pin-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Pin</a>
+          <a href="/pinterest-video-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Video</a>
+          <a href="/pinterest-board-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Board</a>
+          <a href="/pinterest-profile-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Profile</a>
+          <a href="/pinterest-image-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Image</a>
+          <a href="/blog" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Blog</a>
           <a href="/how-to-download-pinterest-videos" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Guide</a>
         </nav>
-        <button
-          id="theme-toggle-btn"
-          onclick="const h = document.documentElement; if(h.classList.contains('dark')){h.classList.remove('dark');h.classList.add('light');localStorage.setItem('theme','light');}else{h.classList.remove('light');h.classList.add('dark');localStorage.setItem('theme','dark');}"
-          class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-xs font-bold flex items-center gap-1.5"
-          title="Toggle Light / Dark Mode"
-        >
-          <span class="hidden dark:inline">☀️ Light</span>
-          <span class="inline dark:hidden">🌙 Dark</span>
-        </button>
+        <div class="flex items-center gap-2">
+          <button
+            id="theme-toggle-btn"
+            type="button"
+            onclick="const h = document.documentElement; if(h.classList.contains('dark')){h.classList.remove('dark');h.classList.add('light');localStorage.setItem('theme','light');}else{h.classList.remove('light');h.classList.add('dark');localStorage.setItem('theme','dark');}"
+            class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-xs font-bold flex items-center gap-1.5 touch-manipulation"
+            title="Toggle Light / Dark Mode"
+          >
+            <span class="hidden dark:inline">☀️ Light</span>
+            <span class="inline dark:hidden">🌙 Dark</span>
+          </button>
+          <button
+            id="mobile-nav-toggle"
+            type="button"
+            class="lg:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors touch-manipulation"
+            aria-expanded="false"
+            aria-controls="mobile-nav-panel"
+            aria-label="Open tools menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
       </div>
+      <!-- Mobile / tablet tools menu -->
+      <div
+        id="mobile-nav-panel"
+        class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+      >
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-3 grid grid-cols-2 gap-2 text-sm font-semibold" aria-label="Tools">
+          <a href="/pinterest-pin-downloader" class="px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023] transition-colors">Pin</a>
+          <a href="/pinterest-video-downloader" class="px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023] transition-colors">Video MP4</a>
+          <a href="/pinterest-board-downloader" class="px-3 py-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 text-[#E60023] border border-red-200 dark:border-red-900/40">Board ZIP</a>
+          <a href="/pinterest-profile-downloader" class="px-3 py-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 text-[#E60023] border border-red-200 dark:border-red-900/40">Profile ZIP</a>
+          <a href="/pinterest-image-downloader" class="px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023] transition-colors">Image HD</a>
+          <a href="/pinterest-gif-downloader" class="px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023] transition-colors">GIF</a>
+          <a href="/blog" class="px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023] transition-colors">Blog</a>
+          <a href="/how-to-download-pinterest-videos" class="px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023] transition-colors">How-to</a>
+        </nav>
+      </div>
+      <script is:inline>
+        (function () {
+          var btn = document.getElementById('mobile-nav-toggle');
+          var panel = document.getElementById('mobile-nav-panel');
+          if (!btn || !panel) return;
+          btn.addEventListener('click', function () {
+            var open = panel.classList.toggle('hidden') === false;
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.setAttribute('aria-label', open ? 'Close tools menu' : 'Open tools menu');
+          });
+        })();
+      </script>
     </header>
 
     <!-- Main Content Container with Floating Side Collage Cards -->
@@ -200,10 +252,12 @@ const websiteSearchSchema = {
           <div>
             <h4 class="font-bold text-slate-900 mb-3 text-base">Media Tools</h4>
             <ul class="space-y-2 text-xs font-semibold">
-              <li><a href="/" class="hover:text-[#E60023] transition-colors">Pinterest Video Downloader</a></li>
-              <li><a href="/pinterest-image-downloader" class="hover:text-[#E60023] transition-colors">Pinterest Image Downloader</a></li>
-              <li><a href="/pinterest-gif-downloader" class="hover:text-[#E60023] transition-colors">Pinterest GIF Downloader</a></li>
-              <li><a href="/pinterest-story-downloader" class="hover:text-[#E60023] transition-colors">Idea Pin & Story Downloader</a></li>
+              <li><a href="/pinterest-pin-downloader" class="hover:text-[#E60023] transition-colors">Pin Downloader</a></li>
+              <li><a href="/pinterest-video-downloader" class="hover:text-[#E60023] transition-colors">Video Downloader (MP4)</a></li>
+              <li><a href="/pinterest-image-downloader" class="hover:text-[#E60023] transition-colors">Image Downloader (HD)</a></li>
+              <li><a href="/pinterest-board-downloader" class="hover:text-[#E60023] transition-colors font-extrabold text-[#E60023]">Board Downloader → ZIP</a></li>
+              <li><a href="/pinterest-profile-downloader" class="hover:text-[#E60023] transition-colors font-extrabold text-[#E60023]">Profile Downloader → ZIP</a></li>
+              <li><a href="/pinterest-gif-downloader" class="hover:text-[#E60023] transition-colors">GIF Downloader</a></li>
               <li><a href="/pinterest-audio-downloader" class="hover:text-[#E60023] transition-colors">MP3 Audio Extractor</a></li>
             </ul>
           </div>
@@ -211,10 +265,12 @@ const websiteSearchSchema = {
           <div>
             <h4 class="font-bold text-slate-900 mb-3 text-base">Blog & Tutorials</h4>
             <ul class="space-y-2 text-xs font-semibold">
-              <li><a href="/blog" class="hover:text-[#E60023] transition-colors">Blog Hub & Guides</a></li>
+              <li><a href="/blog" class="hover:text-[#E60023] transition-colors">Blog Hub (viralNest Team)</a></li>
+              <li><a href="/rss.xml" class="hover:text-[#E60023] transition-colors">RSS Feed</a></li>
               <li><a href="/how-to-download-pinterest-videos" class="hover:text-[#E60023] transition-colors">How to Download Pinterest Videos</a></li>
-              <li><a href="/blog/why-pinterest-downloader-is-not-working" class="hover:text-[#E60023] transition-colors">Fix Downloader Errors</a></li>
-              <li><a href="/blog/how-to-copy-correct-pinterest-pin-link" class="hover:text-[#E60023] transition-colors">Copy Pin Links Correctly</a></li>
+              <li><a href="/blog/troubleshooting-pinterest-downloads" class="hover:text-[#E60023] transition-colors">Fix Download Errors</a></li>
+              <li><a href="/blog/how-to-download-pinterest-board-as-zip" class="hover:text-[#E60023] transition-colors">Download Boards as ZIP</a></li>
+              <li><a href="/blog/pin-vs-board-vs-profile-urls-explained" class="hover:text-[#E60023] transition-colors">Pin vs Board vs Profile URLs</a></li>
             </ul>
           </div>
 

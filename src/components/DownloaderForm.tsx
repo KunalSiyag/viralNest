@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles } from 'lucide-react';
+import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User } from 'lucide-react';
+import JSZip from 'jszip';
 
 interface BoardPinItem {
   pin_id: string;
@@ -7,7 +8,16 @@ interface BoardPinItem {
   title: string;
   image_url: string;
   thumbnail_url: string;
+  video_url?: string | null;
   is_video: boolean;
+}
+
+interface MediaItem {
+  index: number;
+  type: 'image' | 'video';
+  url: string;
+  thumbnail_url?: string;
+  title?: string;
 }
 
 interface ExtractionResult {
@@ -23,8 +33,17 @@ interface ExtractionResult {
   dominant_color?: string;
   is_video: boolean;
   is_board?: boolean;
+  is_profile?: boolean;
+  is_carousel?: boolean;
+  media_count?: number;
+  media_items?: MediaItem[];
+  pin_id?: string;
   board_title?: string;
   board_url?: string;
+  profile_title?: string;
+  profile_url?: string;
+  username?: string | null;
+  pin_count?: number;
   pins?: BoardPinItem[];
 }
 
@@ -35,7 +54,79 @@ interface HistoryItem {
   timestamp: number;
 }
 
-export default function DownloaderForm() {
+/** Intent-specific form surface for SEO tool pages */
+export type FormVariant = 'hub' | 'pin' | 'video' | 'image' | 'board' | 'profile';
+
+const VARIANT_COPY: Record<
+  FormVariant,
+  {
+    worksLabel: string;
+    singleTab: string;
+    showBatch: boolean;
+    placeholder: string;
+    ariaLabel: string;
+    submitLabel: string;
+    hint: string;
+  }
+> = {
+  hub: {
+    worksLabel: 'Works with',
+    singleTab: 'Pin / Board / Profile',
+    showBatch: true,
+    placeholder: 'Pin, board, or profile URL… e.g. pinterest.com/user/board-name/',
+    ariaLabel: 'Pinterest Pin, board, or profile link',
+    submitLabel: 'Extract Media',
+    hint: 'Board or profile links list public pins — then use Download ZIP. Pin links download one file or full carousel.',
+  },
+  pin: {
+    worksLabel: 'Best for',
+    singleTab: 'Single Pin URL',
+    showBatch: true,
+    placeholder: 'Paste pin URL… https://pinterest.com/pin/… or pin.it/…',
+    ariaLabel: 'Pinterest pin link',
+    submitLabel: 'Download Pin',
+    hint: 'Supports image pins, video pins, GIFs, and multi-image carousels (all slides).',
+  },
+  video: {
+    worksLabel: 'Best for',
+    singleTab: 'Video Pin URL',
+    showBatch: true,
+    placeholder: 'Paste video pin URL… https://pinterest.com/pin/… or pin.it/…',
+    ariaLabel: 'Pinterest video pin link',
+    submitLabel: 'Download Video',
+    hint: 'Extracts HD MP4 (and optional MP3 audio) from public video pins and Idea Pins.',
+  },
+  image: {
+    worksLabel: 'Best for',
+    singleTab: 'Image Pin URL',
+    showBatch: true,
+    placeholder: 'Paste image pin URL… https://pinterest.com/pin/…',
+    ariaLabel: 'Pinterest image pin link',
+    submitLabel: 'Download Image',
+    hint: 'Saves original-resolution photos and artwork. Carousels return every slide.',
+  },
+  board: {
+    worksLabel: 'Best for',
+    singleTab: 'Board URL',
+    showBatch: false,
+    placeholder: 'Paste board URL… https://pinterest.com/username/board-name/',
+    ariaLabel: 'Pinterest board link',
+    submitLabel: 'Extract Board Pins',
+    hint: 'Paste a public board link to list pins, then Download ZIP for the full pack.',
+  },
+  profile: {
+    worksLabel: 'Best for',
+    singleTab: 'Profile URL',
+    showBatch: false,
+    placeholder: 'Paste profile URL… https://pinterest.com/username/',
+    ariaLabel: 'Pinterest profile link',
+    submitLabel: 'Extract Profile Pins',
+    hint: 'Paste a public profile link to list visible pins, then Download ZIP.',
+  },
+};
+
+export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVariant }) {
+  const copy = VARIANT_COPY[variant] || VARIANT_COPY.hub;
   const [mode, setMode] = useState<'single' | 'batch'>('single');
   const [url, setUrl] = useState('');
   const [batchUrls, setBatchUrls] = useState('');
@@ -50,6 +141,8 @@ export default function DownloaderForm() {
   const [activePlatform, setActivePlatform] = useState<'reels' | 'tiktok' | 'shorts'>('reels');
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [showPlayer, setShowPlayer] = useState(false);
+  const [zipping, setZipping] = useState(false);
+  const [zipProgress, setZipProgress] = useState({ done: 0, total: 0 });
 
   // Load download history from LocalStorage
   useEffect(() => {
@@ -66,8 +159,16 @@ export default function DownloaderForm() {
   const saveToHistory = (item: ExtractionResult, pinUrl: string) => {
     try {
       const newItem: HistoryItem = {
-        title: item.title || 'Pinterest Pin',
-        thumbnail: item.thumbnail_url || item.image_url,
+        title:
+          item.title ||
+          item.profile_title ||
+          item.board_title ||
+          (item.is_profile ? 'Pinterest Profile' : item.is_board ? 'Pinterest Board' : 'Pinterest Pin'),
+        thumbnail:
+          item.thumbnail_url ||
+          item.image_url ||
+          item.pins?.[0]?.thumbnail_url ||
+          item.pins?.[0]?.image_url,
         url: pinUrl,
         timestamp: Date.now()
       };
@@ -149,15 +250,17 @@ export default function DownloaderForm() {
           });
           const data = await res.json();
           if (res.ok) {
-            if (data.is_board && data.pins) {
-              results.push(...data.pins.map((p: any) => ({
-                platform: 'pinterest',
-                title: p.title,
-                image_url: p.image_url,
-                thumbnail_url: p.thumbnail_url,
-                is_video: false,
-                video_url: null,
-              })));
+            if ((data.is_board || data.is_profile) && data.pins) {
+              results.push(
+                ...data.pins.map((p: any) => ({
+                  platform: 'pinterest',
+                  title: p.title,
+                  image_url: p.image_url,
+                  thumbnail_url: p.thumbnail_url,
+                  is_video: !!p.is_video,
+                  video_url: p.video_url || null,
+                })),
+              );
             } else {
               results.push(data);
             }
@@ -195,44 +298,215 @@ export default function DownloaderForm() {
 
   const samplePalette = ['#E60023', '#2D3748', '#ED8936', '#319795', '#D69E2E'];
 
+  const slugify = (value: string) =>
+    value
+      .replace(/[^a-z0-9]+/gi, '_')
+      .replace(/^_+|_+$/g, '')
+      .toLowerCase()
+      .slice(0, 60) || 'pinterest';
+
+  const downloadUrlsAsZip = async (
+    entries: { url: string; filename: string }[],
+    archiveName: string,
+  ) => {
+    if (!entries.length || zipping) return;
+    setZipping(true);
+    setZipProgress({ done: 0, total: entries.length });
+    setError('');
+
+    try {
+      const zip = new JSZip();
+      const folderName = slugify(archiveName);
+      const folder = zip.folder(folderName) || zip;
+      let done = 0;
+      let packed = 0;
+      let failed = 0;
+
+      const concurrency = 4;
+      for (let i = 0; i < entries.length; i += concurrency) {
+        const batch = entries.slice(i, i + concurrency);
+        await Promise.all(
+          batch.map(async (entry) => {
+            try {
+              const res = await fetch(
+                `/api/download?url=${encodeURIComponent(entry.url)}&filename=${encodeURIComponent(entry.filename)}`,
+              );
+              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+              const blob = await res.blob();
+              folder.file(entry.filename, blob);
+              packed++;
+            } catch (e) {
+              console.warn('ZIP item failed:', entry.filename, e);
+              failed++;
+            } finally {
+              done++;
+              setZipProgress({ done, total: entries.length });
+            }
+          }),
+        );
+      }
+
+      if (packed === 0) {
+        throw new Error('Could not pack any media into the ZIP. Files may be unavailable.');
+      }
+
+      const zipBlob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
+      const objectUrl = URL.createObjectURL(zipBlob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = `${slugify(archiveName)}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(objectUrl);
+
+      if (failed > 0) {
+        setError(`ZIP ready with ${entries.length - failed} of ${entries.length} files (${failed} failed).`);
+      }
+    } catch (err: any) {
+      setError(err?.message || 'Failed to create ZIP archive.');
+    } finally {
+      setZipping(false);
+      setZipProgress({ done: 0, total: 0 });
+    }
+  };
+
+  const downloadCollectionAsZip = async (pins: BoardPinItem[], archiveName: string) => {
+    const entries = pins
+      .map((pin, idx) => {
+        const mediaUrl = pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
+        if (!mediaUrl) return null;
+        const ext = pin.is_video && pin.video_url ? 'mp4' : 'jpg';
+        return {
+          url: mediaUrl,
+          filename: `${String(idx + 1).padStart(2, '0')}_${slugify(pin.title || pin.pin_id)}.${ext}`,
+        };
+      })
+      .filter((e): e is { url: string; filename: string } => !!e);
+    return downloadUrlsAsZip(entries, archiveName);
+  };
+
+  const downloadCarouselAsZip = async (items: MediaItem[], archiveName: string) => {
+    const entries = items.map((item, idx) => ({
+      url: item.url,
+      filename: `${String(idx + 1).padStart(2, '0')}_slide_${slugify(item.title || String(idx + 1))}.${item.type === 'video' ? 'mp4' : 'jpg'}`,
+    }));
+    return downloadUrlsAsZip(entries, archiveName);
+  };
+
+  const isCollection = !!(result && (result.is_board || result.is_profile) && result.pins?.length);
+  const isCarousel = !!(
+    result &&
+    !result.is_board &&
+    !result.is_profile &&
+    ((result.media_items && result.media_items.length > 1) || result.is_carousel)
+  );
+
   return (
     <div className="w-full max-w-3xl mx-auto mt-4">
-      {/* Mode Switcher Tabs */}
-      <div className="flex items-center justify-center gap-2 mb-4 bg-slate-200/60 dark:bg-slate-800/80 p-1 rounded-2xl w-fit mx-auto border border-slate-300/60 dark:border-slate-700">
-        <button
-          type="button"
-          onClick={() => { setMode('single'); setError(''); }}
-          className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all ${
-            mode === 'single' ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+      {/* Intent chips — page-specific for SEO tool separation */}
+      <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+          {copy.worksLabel}
+        </span>
+        {(variant === 'hub' || variant === 'pin' || variant === 'video' || variant === 'image') && (
+          <a
+            href="/pinterest-pin-downloader"
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
+              variant === 'pin'
+                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023] font-extrabold'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E60023]'
+            }`}
+          >
+            Pin
+          </a>
+        )}
+        {(variant === 'hub' || variant === 'video') && (
+          <a
+            href="/pinterest-video-downloader"
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
+              variant === 'video'
+                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023] font-extrabold'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E60023]'
+            }`}
+          >
+            Video MP4
+          </a>
+        )}
+        {(variant === 'hub' || variant === 'image') && (
+          <a
+            href="/pinterest-image-downloader"
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
+              variant === 'image'
+                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023] font-extrabold'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E60023]'
+            }`}
+          >
+            HD Image
+          </a>
+        )}
+        <a
+          href="/pinterest-board-downloader"
+          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
+            variant === 'board'
+              ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023]'
+              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023]'
           }`}
         >
-          Single Pin
-        </button>
-        <button
-          type="button"
-          onClick={() => { setMode('batch'); setError(''); }}
-          className={`px-5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition-all ${
-            mode === 'batch' ? 'bg-white dark:bg-slate-900 text-[#E60023] shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+          <Archive className="w-3 h-3" aria-hidden />
+          Board → ZIP
+        </a>
+        <a
+          href="/pinterest-profile-downloader"
+          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
+            variant === 'profile'
+              ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023]'
+              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023]'
           }`}
         >
-          <Layers className="w-3.5 h-3.5" />
-          <span>Batch Downloader (Multi-Link)</span>
-        </button>
+          <User className="w-3 h-3" aria-hidden />
+          Profile → ZIP
+        </a>
       </div>
+
+      {/* Mode Switcher Tabs */}
+      {copy.showBatch && (
+        <div className="flex items-center justify-center gap-2 mb-4 bg-slate-200/60 dark:bg-slate-800/80 p-1 rounded-2xl w-fit mx-auto border border-slate-300/60 dark:border-slate-700">
+          <button
+            type="button"
+            onClick={() => { setMode('single'); setError(''); }}
+            className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all touch-manipulation ${
+              mode === 'single' ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            {copy.singleTab}
+          </button>
+          <button
+            type="button"
+            onClick={() => { setMode('batch'); setError(''); }}
+            className={`px-5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition-all touch-manipulation ${
+              mode === 'batch' ? 'bg-white dark:bg-slate-900 text-[#E60023] shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>Batch (multi-link)</span>
+          </button>
+        </div>
+      )}
 
       {/* Input Form */}
       <form onSubmit={handleSubmit} className="relative flex flex-col gap-3 items-center w-full">
-        {mode === 'single' ? (
+        {mode === 'single' || !copy.showBatch ? (
           <div className="relative w-full">
             <input
               type="url"
               name="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="Paste Pinterest link (e.g., https://pinterest.com/pin/... or https://pin.it/...)"
+              placeholder={copy.placeholder}
               className="w-full h-14 pl-5 pr-20 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E60023] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
               required
-              aria-label="Pinterest Link Input"
+              aria-label={copy.ariaLabel}
             />
             <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
               {url ? (
@@ -278,21 +552,29 @@ export default function DownloaderForm() {
 
         <button
           type="submit"
-          disabled={loading || (mode === 'single' ? !url.trim() : !batchUrls.trim())}
+          disabled={
+            loading ||
+            (mode === 'batch' && copy.showBatch ? !batchUrls.trim() : !url.trim())
+          }
           className="w-full h-14 px-8 rounded-2xl bg-[#E60023] hover:bg-[#CC0000] text-white font-bold text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-red-500/25 active:scale-95"
         >
           {loading ? (
             <>
               <Loader2 className="w-5 h-5 animate-spin" />
-              <span>{mode === 'single' ? 'Extracting Media...' : 'Processing Batch Links...'}</span>
+              <span>{mode === 'batch' && copy.showBatch ? 'Processing batch links…' : 'Extracting…'}</span>
             </>
           ) : (
             <>
               <Download className="w-5 h-5" />
-              <span>{mode === 'single' ? 'Download Pin' : 'Batch Download All'}</span>
+              <span>{mode === 'batch' && copy.showBatch ? 'Batch Extract All' : copy.submitLabel}</span>
             </>
           )}
         </button>
+        {(mode === 'single' || !copy.showBatch) && (
+          <p className="text-center text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl">
+            {copy.hint}
+          </p>
+        )}
       </form>
 
       {/* Error display */}
@@ -303,64 +585,242 @@ export default function DownloaderForm() {
         </div>
       )}
 
-      {/* Single / Board Result Card */}
-      {result && result.is_board ? (
+      {/* Carousel / multi-slide pin result */}
+      {isCarousel && result?.media_items ? (
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
-            <div>
+            <div className="min-w-0">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
-                📌 Extracted Pinterest Board
+                <Layers className="w-3.5 h-3.5" />
+                Carousel · {result.media_items.length} slides
               </span>
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight">
-                {result.board_title || 'Pinterest Board'}
+              <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight break-words">
+                {result.title || 'Pinterest Carousel'}
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Found {result.pins?.length || 0} downloadable Pins in this board
+                All carousel images &amp; videos extracted
+                {zipping ? ` · Packing ZIP ${zipProgress.done}/${zipProgress.total}…` : ''}
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-2 shrink-0 w-full sm:w-auto">
+              <button
+                type="button"
+                disabled={zipping}
+                onClick={() =>
+                  downloadCarouselAsZip(
+                    result.media_items || [],
+                    `carousel_${result.title || result.pin_id || 'pinterest'}`,
+                  )
+                }
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
+              >
+                {zipping ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>
+                      Zipping… {zipProgress.done}/{zipProgress.total}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <Archive className="w-4 h-4" />
+                    <span>Download ZIP ({result.media_items.length})</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {zipping && zipProgress.total > 0 && (
+            <div
+              className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden"
+              role="progressbar"
+              aria-valuenow={zipProgress.done}
+              aria-valuemin={0}
+              aria-valuemax={zipProgress.total}
+              aria-label="ZIP packing progress"
+            >
+              <div
+                className="h-full bg-[#E60023] transition-[width] duration-300 ease-out"
+                style={{ width: `${Math.round((zipProgress.done / zipProgress.total) * 100)}%` }}
+              />
+            </div>
+          )}
+
+          {result.description && (
+            <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3">{result.description}</p>
+          )}
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {result.media_items.map((item, idx) => {
+              const ext = item.type === 'video' ? 'mp4' : 'jpg';
+              const filename = `slide_${idx + 1}.${ext}`;
+              return (
+                <div
+                  key={idx}
+                  className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col gap-3 group min-w-0"
+                >
+                  <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
+                    <img
+                      src={item.thumbnail_url || (item.type === 'image' ? item.url : result.thumbnail_url) || ''}
+                      alt={item.title || `Slide ${idx + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold">
+                      {idx + 1}/{result.media_items!.length}
+                      {item.type === 'video' ? ' · VIDEO' : ''}
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate">
+                    {item.title || `Slide ${idx + 1}`}
+                  </span>
+                  <a
+                    href={`/api/download?url=${encodeURIComponent(item.url)}&filename=${encodeURIComponent(filename)}`}
+                    download
+                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E60023] font-bold text-xs flex items-center justify-center gap-1 transition-colors touch-manipulation"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>{item.type === 'video' ? 'Download MP4' : 'Download HD'}</span>
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : isCollection ? (
+        <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
+            <div className="min-w-0">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
+                {result!.is_profile ? (
+                  <>
+                    <User className="w-3.5 h-3.5" />
+                    Pinterest Profile
+                  </>
+                ) : (
+                  <>📌 Pinterest Board</>
+                )}
+              </span>
+              <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight break-words">
+                {result!.is_profile
+                  ? result!.profile_title || result!.board_title || 'Pinterest Profile'
+                  : result!.board_title || 'Pinterest Board'}
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Found {result!.pins?.length || 0} downloadable pins
+                {result!.username ? ` from @${result!.username}` : ''}
+                {zipping ? ` · Packing ZIP ${zipProgress.done}/${zipProgress.total}…` : ''}
               </p>
             </div>
 
-            {/* Sequential Download All Board Media Button */}
-            {result.pins && result.pins.length > 0 && (
-              <button
-                type="button"
-                onClick={() => {
-                  result.pins?.forEach((pin, idx) => {
-                    setTimeout(() => {
-                      const a = document.createElement('a');
-                      a.href = `/api/download?url=${encodeURIComponent(pin.image_url)}&filename=board_pin_${pin.pin_id}.jpg`;
-                      a.download = `board_pin_${pin.pin_id}.jpg`;
-                      document.body.appendChild(a);
-                      a.click();
-                      document.body.removeChild(a);
-                    }, idx * 600);
-                  });
-                }}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all shrink-0"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download All ({result.pins.length} Pins)</span>
-              </button>
+            {result!.pins && result!.pins.length > 0 && (
+              <div className="flex flex-col sm:flex-row gap-2 shrink-0 w-full sm:w-auto">
+                <button
+                  type="button"
+                  disabled={zipping}
+                  onClick={() =>
+                    downloadCollectionAsZip(
+                      result!.pins || [],
+                      result!.is_profile
+                        ? `profile_${result!.username || 'pinterest'}`
+                        : `board_${result!.board_title || 'pinterest'}`,
+                    )
+                  }
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
+                >
+                  {zipping ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>
+                        Zipping… {zipProgress.done}/{zipProgress.total}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <Archive className="w-4 h-4" />
+                      <span>Download ZIP ({result!.pins.length})</span>
+                    </>
+                  )}
+                </button>
+                <button
+                  type="button"
+                  disabled={zipping}
+                  onClick={() => {
+                    result!.pins?.forEach((pin, idx) => {
+                      setTimeout(() => {
+                        const mediaUrl =
+                          pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
+                        if (!mediaUrl) return;
+                        const ext = pin.is_video && pin.video_url ? 'mp4' : 'jpg';
+                        const a = document.createElement('a');
+                        a.href = `/api/download?url=${encodeURIComponent(mediaUrl)}&filename=${encodeURIComponent(`pin_${pin.pin_id}.${ext}`)}`;
+                        a.download = `pin_${pin.pin_id}.${ext}`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                      }, idx * 600);
+                    });
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold text-sm border border-slate-200 dark:border-slate-700 active:scale-95 transition-all disabled:opacity-60 touch-manipulation"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>One by one</span>
+                </button>
+              </div>
             )}
           </div>
 
-          {/* Grid of Board Pins */}
+          {zipping && zipProgress.total > 0 && (
+            <div
+              className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden"
+              role="progressbar"
+              aria-valuenow={zipProgress.done}
+              aria-valuemin={0}
+              aria-valuemax={zipProgress.total}
+              aria-label="ZIP packing progress"
+            >
+              <div
+                className="h-full bg-[#E60023] transition-[width] duration-300 ease-out"
+                style={{ width: `${Math.round((zipProgress.done / zipProgress.total) * 100)}%` }}
+              />
+            </div>
+          )}
+
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {result.pins?.map((pin, idx) => (
-              <div key={idx} className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col justify-between gap-3 group">
-                <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
-                  <img src={pin.thumbnail_url || pin.image_url} alt={pin.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                </div>
-                <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate">{pin.title}</span>
-                <a
-                  href={`/api/download?url=${encodeURIComponent(pin.image_url)}&filename=board_pin_${pin.pin_id}.jpg`}
-                  download
-                  className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E60023] font-bold text-xs flex items-center justify-center gap-1 transition-colors"
+            {result!.pins?.map((pin, idx) => {
+              const mediaUrl = pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
+              const ext = pin.is_video && pin.video_url ? 'mp4' : 'jpg';
+              return (
+                <div
+                  key={pin.pin_id || idx}
+                  className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col justify-between gap-3 group min-w-0"
                 >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download HD</span>
-                </a>
-              </div>
-            ))}
+                  <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
+                    <img
+                      src={pin.thumbnail_url || pin.image_url}
+                      alt={pin.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    {pin.is_video && (
+                      <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold">
+                        VIDEO
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate">
+                    {pin.title}
+                  </span>
+                  <a
+                    href={`/api/download?url=${encodeURIComponent(mediaUrl)}&filename=${encodeURIComponent(`pin_${pin.pin_id}.${ext}`)}`}
+                    download
+                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E60023] font-bold text-xs flex items-center justify-center gap-1 transition-colors touch-manipulation"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>{pin.is_video && pin.video_url ? 'Download MP4' : 'Download HD'}</span>
+                  </a>
+                </div>
+              );
+            })}
           </div>
         </div>
       ) : result && (

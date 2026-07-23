@@ -7,16 +7,20 @@ const HOST_DOMAIN = 'viralnest.com';
 
 const URL_LIST = [
   `https://${HOST_DOMAIN}/`,
+  `https://${HOST_DOMAIN}/pinterest-pin-downloader`,
   `https://${HOST_DOMAIN}/pinterest-video-downloader`,
+  `https://${HOST_DOMAIN}/pinterest-board-downloader`,
+  `https://${HOST_DOMAIN}/pinterest-profile-downloader`,
   `https://${HOST_DOMAIN}/pinterest-image-downloader`,
   `https://${HOST_DOMAIN}/pinterest-gif-downloader`,
   `https://${HOST_DOMAIN}/pinterest-story-downloader`,
   `https://${HOST_DOMAIN}/pinterest-audio-downloader`,
   `https://${HOST_DOMAIN}/pinterest-to-mp4`,
   `https://${HOST_DOMAIN}/pinterest-4k-downloader`,
-  `https://${HOST_DOMAIN}/pinterest-board-downloader`,
   `https://${HOST_DOMAIN}/how-to-download-pinterest-videos`,
   `https://${HOST_DOMAIN}/blog`,
+  `https://${HOST_DOMAIN}/rss.xml`,
+  `https://${HOST_DOMAIN}/llms.txt`,
 ];
 
 export const POST: APIRoute = async () => {

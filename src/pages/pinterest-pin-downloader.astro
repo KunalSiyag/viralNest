@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import CompareTable from '../components/seo/CompareTable.astro';
+import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
+
+const path = '/pinterest-pin-downloader';
+const pageUrl = `https://viralnest.com${path}`;
+const title = 'Pinterest Pin Downloader — Save Any Pin, Video, GIF or Carousel Free';
+const description =
+  'Free Pinterest pin downloader for single pin links. Download HD images, MP4 videos, GIFs, and every slide in multi-image carousels. No login, no watermark.';
+
+const faqs = [
+  {
+    q: 'What is a Pinterest pin link?',
+    a: 'A pin link points to one pin page, usually shaped like pinterest.com/pin/123456789/ or a short pin.it/… URL. It is different from a board link (username/board-name) or a profile link (username only).',
+  },
+  {
+    q: 'Can I download every image in a carousel pin?',
+    a: 'Yes. viralNest reads full carousel data and returns every slide so you can download each file or pack them into a ZIP. Cover-only tools stop at the first image.',
+  },
+  {
+    q: 'Does the pin downloader work with videos and GIFs?',
+    a: 'Yes. Public video pins export as MP4 when a downloadable stream is available. Static images and many animated GIFs save as image files. Private or deleted pins cannot be extracted.',
+  },
+  {
+    q: 'Why did my board or profile link not work here?',
+    a: 'This page is optimized for single pin URLs. For a full board ZIP use the Board Downloader; for a profile pack use the Profile Downloader. Using the correct tool matches the URL type and avoids empty results.',
+  },
+  {
+    q: 'Is the Pinterest pin downloader free?',
+    a: 'Yes. viralNest is free to use in the browser with no account required. Only public pins can be extracted.',
+  },
+];
+
+const steps = [
+  { title: 'Open the pin on Pinterest', body: 'On the app or website, open the exact pin you want (not the board grid).' },
+  { title: 'Copy the pin link', body: 'Tap <strong>Share → Copy link</strong>, or copy the browser address bar when it contains <code>/pin/</code>.' },
+  { title: 'Paste into viralNest', body: 'Paste the pin or pin.it URL in the box above and run extract.' },
+  { title: 'Download the file(s)', body: 'Save the HD image or MP4. For carousels, download each slide or use <strong>Download ZIP</strong>.' },
+];
+
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest Pin Downloader — viralNest',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to download a Pinterest pin',
+    description: 'Steps to download a single Pinterest pin image, video, GIF, or carousel.',
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
+  <article class="flex flex-col items-center py-8 sm:py-12 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+      Single pin · Carousel · Video · GIF
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
+      Pinterest <span class="text-[#E60023]">Pin Downloader</span>
+    </h1>
+
+    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+      Paste one public <strong class="text-slate-800 dark:text-slate-200">pin URL</strong> to download the original image, HD video, GIF,
+      or <strong class="text-slate-800 dark:text-slate-200">every carousel slide</strong> — free, no login, no watermark.
+    </p>
+
+    <DownloaderForm client:load variant="pin" />
+
+    <div class="mt-10 w-full max-w-3xl grid sm:grid-cols-3 gap-3 text-left text-sm">
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Pin URLs only</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Built for <code class="text-[10px]">/pin/…</code> and <code class="text-[10px]">pin.it</code> shortlinks — not boards or profiles.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Full carousels</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Multi-image pins return all slides so you are not stuck with the cover only.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">HD media</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Prefers original images and highest available MP4 when Pinterest exposes them publicly.</p>
+      </div>
+    </div>
+
+    <div class="w-full max-w-3xl">
+      <HowToSteps
+        title="How to download a Pinterest pin (step by step)"
+        intro="Use this flow when you have a single pin link. For entire boards or profiles, switch tools below."
+        exampleUrl="https://www.pinterest.com/pin/112027111109431342/"
+        exampleLabel="Example pin URL"
+        steps={steps}
+      />
+
+      <section class="mt-14 text-left" aria-labelledby="when-pin-heading">
+        <h2 id="when-pin-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 scroll-mt-24">
+          When to use the pin downloader (not board or profile)
+        </h2>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed list-disc pl-5">
+          <li>You need <strong class="text-slate-800 dark:text-slate-200">one</strong> idea, recipe video, outfit photo, or GIF.</li>
+          <li>The pin is a <strong class="text-slate-800 dark:text-slate-200">carousel</strong> and you want every slide offline.</li>
+          <li>You want MP4 quality options or image + caption/tags for reposting.</li>
+          <li>You do <em>not</em> need every pin on a board — that is the{' '}
+            <a href="/pinterest-board-downloader" class="text-[#E60023] font-semibold hover:underline">Board ZIP tool</a>.</li>
+        </ul>
+      </section>
+
+      <CompareTable highlight="pin" />
+      <FaqSection title="Pinterest pin downloader FAQ" items={faqs} />
+      <RelatedTools current={path} title="Need a board, profile, or video instead?" />
+    </div>
+  </article>
+</BaseLayout>

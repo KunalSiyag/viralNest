@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import CompareTable from '../components/seo/CompareTable.astro';
+import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
+
+const path = '/pinterest-profile-downloader';
+const pageUrl = `https://viralnest.com${path}`;
+const title = 'Pinterest Profile Downloader — Download Profile Pins as ZIP Free';
+const description =
+  'Free Pinterest profile downloader: paste a public profile URL, extract visible pins, and download them as a ZIP. Bulk save creator pins online without login.';
+
+const faqs = [
+  {
+    q: 'How do I download pins from a Pinterest profile?',
+    a: 'Open the public profile, copy the URL shaped like pinterest.com/username/, paste it into this profile downloader, extract pins, then download the ZIP of visible public pins.',
+  },
+  {
+    q: 'What is the difference between profile and board download?',
+    a: 'A profile URL is one path segment (the username). A board URL has username plus board slug. Profiles list pins shown on the creator page; boards are one curated collection.',
+  },
+  {
+    q: 'Can I download every pin a user ever posted?',
+    a: 'No bulk tool can guarantee a full historical dump of a large account. viralNest extracts public pins visible from the profile page response, up to a practical public limit.',
+  },
+  {
+    q: 'Do private profiles work?',
+    a: 'Private or restricted profiles cannot be scraped. Only public profiles and public pins are supported.',
+  },
+  {
+    q: 'Is profile download legal / allowed?',
+    a: 'Only download content you have rights to use. viralNest is a technical helper for public media links; respect creators, Pinterest terms, and copyright.',
+  },
+  {
+    q: 'Why use a profile ZIP instead of saving pins one by one?',
+    a: 'Creators, agencies, and researchers often need a quick offline pack of a public feed for moodboarding or backup. ZIP avoids dozens of manual downloads.',
+  },
+];
+
+const steps = [
+  { title: 'Open the public profile', body: 'Go to the creator’s Pinterest profile page (their avatar / username page).' },
+  { title: 'Copy the profile URL', body: 'Copy a link like <code>https://www.pinterest.com/username/</code> — no board slug after the name.' },
+  { title: 'Paste into the profile tool', body: 'Paste above and extract to list visible public pins from that profile.' },
+  { title: 'Download the ZIP', body: 'Use <strong>Download ZIP</strong> to save the pack, or download individual pins from the grid.' },
+];
+
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest Profile Downloader — viralNest',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to download a Pinterest profile as ZIP',
+    description: 'Steps to bulk download public pins from a Pinterest profile into a ZIP archive.',
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
+  <article class="flex flex-col items-center py-8 sm:py-12 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+      Profile URL → bulk pin ZIP
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
+      Pinterest <span class="text-[#E60023]">Profile Downloader</span>
+    </h1>
+
+    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+      Paste a public <strong class="text-slate-800 dark:text-slate-200">profile URL</strong> (<code class="text-xs">pinterest.com/username/</code>)
+      to extract visible pins and download them as a <strong class="text-slate-800 dark:text-slate-200">ZIP</strong>.
+      Ideal for creator research and bulk public saves — not for secret accounts.
+    </p>
+
+    <DownloaderForm client:load variant="profile" />
+
+    <div class="mt-10 w-full max-w-3xl grid sm:grid-cols-3 gap-3 text-left text-sm">
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Profile intent</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Targets “download Pinterest profile” queries with username-only URLs.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Bulk ZIP</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">One archive of public pins shown on the profile page for offline use.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Public only</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">No private profiles, no secret boards, no login-gated media.</p>
+      </div>
+    </div>
+
+    <div class="w-full max-w-3xl">
+      <HowToSteps
+        title="How to download Pinterest profile pins as a ZIP"
+        intro="Use a profile link only. If the URL has a board name after the username, switch to the Board Downloader."
+        exampleUrl="https://www.pinterest.com/pinterest/"
+        exampleLabel="Example profile URL"
+        steps={steps}
+      />
+
+      <section class="mt-14 text-left" aria-labelledby="profile-vs-board">
+        <h2 id="profile-vs-board" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 scroll-mt-24">
+          Profile downloader vs board downloader
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-3 text-sm">
+          <div class="p-4 rounded-2xl border-2 border-[#E60023]/30 bg-red-50/40 dark:bg-red-950/20 text-left">
+            <h3 class="font-extrabold text-[#E60023] mb-2">This page — Profile</h3>
+            <ul class="space-y-1.5 text-slate-700 dark:text-slate-300 text-xs leading-relaxed list-disc pl-4">
+              <li>URL: <code>pinterest.com/username/</code></li>
+              <li>Goal: bulk pins from a creator’s public page</li>
+              <li>Output: multi-pin ZIP of visible pins</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-left">
+            <h3 class="font-extrabold text-slate-900 dark:text-white mb-2">
+              <a href="/pinterest-board-downloader" class="hover:text-[#E60023]">Board Downloader →</a>
+            </h3>
+            <ul class="space-y-1.5 text-slate-600 dark:text-slate-400 text-xs leading-relaxed list-disc pl-4">
+              <li>URL: <code>pinterest.com/username/board/</code></li>
+              <li>Goal: one themed collection / moodboard</li>
+              <li>Output: multi-pin ZIP of that board</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <CompareTable highlight="profile" />
+      <FaqSection title="Pinterest profile downloader FAQ" items={faqs} />
+      <RelatedTools current={path} title="Related tools (pin, board, video)" />
+    </div>
+  </article>
+</BaseLayout>
