@@ -1,6 +1,6 @@
 /**
- * viralNest blog catalog — single source for index, post pages, RSS, sitemap.
- * Author attribution: viralNest Team
+ * PintDownload blog catalog — single source for index, post pages, RSS, sitemap.
+ * Author attribution: PintDownload Team
  * Posts are long-form articles with cover images.
  */
 
@@ -34,14 +34,14 @@ export interface BlogPost {
 }
 
 export const BLOG_AUTHOR = {
-  name: 'viralNest Team',
-  url: 'https://viralnest.com/about',
+  name: 'PintDownload Team',
+  url: 'https://pintdownload.app/about',
 } as const;
 
 export const BLOG_PUBLISHER = {
-  name: 'viralNest',
-  url: 'https://viralnest.com/',
-  logo: 'https://viralnest.com/favicon.svg',
+  name: 'PintDownload',
+  url: 'https://pintdownload.app/',
+  logo: 'https://pintdownload.app/favicon.svg',
 } as const;
 
 export const posts: BlogPost[] = [
@@ -49,9 +49,9 @@ export const posts: BlogPost[] = [
     slug: 'how-to-download-pinterest-videos-fast-and-easy',
     title: "How to Download Pinterest Videos Fast & Easy (2026 Guide)",
     description:
-      "Step-by-step guide to download Pinterest videos as MP4 on phone or desktop. Copy the pin link, paste into viralNest, and save HD video free.",
+      "Step-by-step guide to download Pinterest videos as MP4 on phone or desktop. Copy the pin link, paste into PintDownload, and save HD video free.",
     excerpt:
-      "A complete step-by-step guide to download Pinterest videos as MP4 with viralNest — desktop and mobile, URL tips, quality choices, and fixes when downloads fail.",
+      "A complete step-by-step guide to download Pinterest videos as MP4 with PintDownload — desktop and mobile, URL tips, quality choices, and fixes when downloads fail.",
     datePublished: '2026-07-22',
     dateModified: '2026-07-23',
     category: 'Guide',
@@ -60,7 +60,7 @@ export const posts: BlogPost[] = [
     coverImage: '/images/blog/cover-guide.jpg',
     coverAlt: "Abstract cover art for downloading Pinterest videos as MP4",
     content: `
-      <p>You found a recipe demo, workout clip, or DIY tutorial on Pinterest — and you want the real <strong>MP4 file</strong> on your phone or laptop, not just a saved pin that only plays inside the app. This long-form guide walks through the fastest reliable path using the <a href="/pinterest-video-downloader">Pinterest Video Downloader</a> on <a href="/">viralNest</a>, plus the decisions that usually trip people up on the first try.</p>
+      <p>You found a recipe demo, workout clip, or DIY tutorial on Pinterest — and you want the real <strong>MP4 file</strong> on your phone or laptop, not just a saved pin that only plays inside the app. This long-form guide walks through the fastest reliable path using the <a href="/pinterest-video-downloader">Pinterest Video Downloader</a> on <a href="/">PintDownload</a>, plus the decisions that usually trip people up on the first try.</p>
       <p>Pinterest is excellent for discovery and weak at “export this file cleanly.” That is not a bug in your workflow; it is how the platform is designed. A dedicated downloader bridges that gap for <em>public</em> pins by resolving the pin page, finding the media stream Pinterest already hosts, and handing you a file you can open in Photos, VLC, CapCut, or any offline player.</p>
       <p>Below you will get prerequisites, exact steps on desktop and mobile, URL cheatsheets, quality tips, and a troubleshooting path when something fails. Bookmark this page if you download Pinterest videos regularly.</p>
 
@@ -72,7 +72,7 @@ export const posts: BlogPost[] = [
       <ul>
         <li>A <strong>public</strong> video pin (secret boards and private profiles will not work).</li>
         <li>The pin link from the Pinterest app or browser — ideally a URL that contains <code>/pin/</code>, or a short <code>pin.it/…</code> link.</li>
-        <li>A modern browser on phone or desktop. You do not need to install an app for viralNest.</li>
+        <li>A modern browser on phone or desktop. You do not need to install an app for PintDownload.</li>
         <li>Enough free storage for the file (most clips are a few megabytes; long HD clips can be tens of megabytes).</li>
       </ul>
       <p>If you are unsure whether the pin is public, open the link in a private/incognito window while logged out of Pinterest. If it still plays, you are good to go.</p>
@@ -82,24 +82,24 @@ export const posts: BlogPost[] = [
       <p>From a board grid or the home feed, tap through until you see the player — not just a thumbnail card. Carousel and Idea Pin layouts can look like video when they are mostly stills; if you need multi-slide assets instead of one MP4, use the <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> and read our <a href="/blog/download-pinterest-carousel-all-slides">carousel guide</a>.</p>
       <h3>2. Copy the correct link</h3>
       <p>On mobile: Share → Copy link. On desktop: copy from the address bar when it clearly includes <code>/pin/</code>. Short links from Share often work, but if extraction fails, open the shortlink in a browser and re-copy the expanded pin URL. Deep dive: <a href="/blog/how-to-copy-correct-pinterest-pin-link">how to copy the correct pin link</a>.</p>
-      <h3>3. Paste into viralNest</h3>
+      <h3>3. Paste into PintDownload</h3>
       <p>Open the <a href="/pinterest-video-downloader">Pinterest Video Downloader</a>. If you are not sure whether the pin is video, image, or GIF, the <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> auto-detects media types and is a safe default. Paste the link into the input field and run extract.</p>
       <h3>4. Choose quality (when offered)</h3>
       <p>When multiple streams exist, pick the highest useful quality for your screen. Downloaders cannot invent pixels — quality is capped by what Pinterest published. Details in <a href="/blog/video-quality-on-pinterest-downloads">video quality expectations</a>.</p>
       <h3>5. Download the MP4</h3>
-      <p>Tap <strong>Download MP4</strong>. On Android, files usually land in Downloads; on iPhone, use the share sheet to Save Video to Photos when offered. For phone-specific tips, see <a href="/blog/using-viralnest-on-phone-android-ios">using viralNest on Android and iOS</a>.</p>
+      <p>Tap <strong>Download MP4</strong>. On Android, files usually land in Downloads; on iPhone, use the share sheet to Save Video to Photos when offered. For phone-specific tips, see <a href="/blog/using-pintdownload-on-phone-android-ios">using PintDownload on Android and iOS</a>.</p>
       
     <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Open Video Downloader</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Open Video Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
 
@@ -114,7 +114,7 @@ export const posts: BlogPost[] = [
 
       <h2>Desktop vs mobile workflow</h2>
       <p><strong>Desktop</strong> is ideal when you want larger previews, keyboard paste, and quick sorting into project folders. Extract on the <a href="/pinterest-video-downloader">Pinterest Video Downloader</a>, download, then rename immediately (for example <code>2026-07-tile-backsplash-demo.mp4</code>) so the file is findable later. Organization system: <a href="/blog/tips-to-organize-downloaded-pinterest-videos">keep downloads organized</a>.</p>
-      <p><strong>Mobile</strong> is ideal when discovery happens inside the Pinterest app. Copy link → switch to Safari/Chrome → paste into viralNest → download. Shared or work phones need extra care so corporate cloud sync does not vacuum up personal files — see <a href="/blog/download-on-shared-or-work-devices">shared/work device guide</a>.</p>
+      <p><strong>Mobile</strong> is ideal when discovery happens inside the Pinterest app. Copy link → switch to Safari/Chrome → paste into PintDownload → download. Shared or work phones need extra care so corporate cloud sync does not vacuum up personal files — see <a href="/blog/download-on-shared-or-work-devices">shared/work device guide</a>.</p>
 
       <h2>What “fast” actually depends on</h2>
       <p>Extraction is usually quick; download time depends on your network, the file size, and CDN latency. A short 720p clip may finish in a few seconds on broadband. Board ZIPs take longer because many files are fetched and packed. If things feel stuck, open <a href="/blog/download-times-what-is-normal">download times: what is normal</a> and the <a href="/blog/troubleshooting-pinterest-downloads">troubleshooting checklist</a>.</p>
@@ -136,9 +136,9 @@ export const posts: BlogPost[] = [
 
       
       <h2>Frequently asked questions</h2>
-      <h3>Is viralNest free?</h3><p>Yes. Public pin, video, board ZIP, and profile ZIP downloads on viralNest do not require an account or paid plan for normal personal use.</p>
+      <h3>Is PintDownload free?</h3><p>Yes. Public pin, video, board ZIP, and profile ZIP downloads on PintDownload do not require an account or paid plan for normal personal use.</p>
       <h3>Do I need a Pinterest account?</h3><p>Not for public pins. If the pin is only visible when logged in, it is not a public extraction target.</p>
-      <h3>Will the video have a watermark?</h3><p>viralNest aims to deliver the public media stream without adding its own watermark. Source quality still depends on the original upload.</p>
+      <h3>Will the video have a watermark?</h3><p>PintDownload aims to deliver the public media stream without adding its own watermark. Source quality still depends on the original upload.</p>
       <h3>Can I download an entire board as video files?</h3><p>Use the board downloader for bulk public pins. Individual pins may be images or videos; open single video pins in the video tool when you need a specific MP4.</p>
 
       <p>Next reads: <a href="/blog/things-to-know-before-downloading-pinterest-videos">things to know before downloading</a> · <a href="/blog/pinterest-downloader-what-it-is-how-it-works">what a Pinterest downloader is</a> · <a href="/how-to-download-pinterest-videos">how-to guide</a></p>
@@ -160,7 +160,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Diagnostic abstract cover for Pinterest download troubleshooting",
     content: `
       
-      <p>When <a href="/">viralNest</a> cannot extract a pin, the cause is almost always the <strong>link</strong>, the <strong>visibility</strong> of the content, the <strong>media type</strong>, or the <strong>network path</strong> — not a mysterious curse on your account. This article is a practical runbook. Work it top to bottom; most people fix the issue in the first three checks.</p>
+      <p>When <a href="/">PintDownload</a> cannot extract a pin, the cause is almost always the <strong>link</strong>, the <strong>visibility</strong> of the content, the <strong>media type</strong>, or the <strong>network path</strong> — not a mysterious curse on your account. This article is a practical runbook. Work it top to bottom; most people fix the issue in the first three checks.</p>
       <p>We wrote this from the same failure patterns users hit daily: board URLs pasted into pin forms, secret boards, expired shortlinks, corporate firewalls, and “videos” that were GIFs all along. Keep this page open while you retry.</p>
 
       <h2>Before you debug: gather three facts</h2>
@@ -191,7 +191,7 @@ export const posts: BlogPost[] = [
       <p>Corporate firewalls, school networks, aggressive ad blockers, privacy extensions, and some VPN exit nodes block or throttle CDN media hosts. Try:</p>
       <ul>
         <li>Another network (phone hotspot is a great A/B test)</li>
-        <li>Temporarily disabling blockers on viralNest only</li>
+        <li>Temporarily disabling blockers on PintDownload only</li>
         <li>A different browser profile without heavy extensions</li>
         <li>Retrying without VPN, or with a different VPN region</li>
       </ul>
@@ -216,7 +216,7 @@ export const posts: BlogPost[] = [
       <p>Bulk tools list public pins visible in the response up to practical limits. Very large boards are not infinite archives. Secret sections are skipped. Re-run later if the board grew, and prefer themed boards over giant catch-all profiles when you need completeness. Guides: <a href="/blog/how-to-download-pinterest-board-as-zip">board ZIP</a> · <a href="/blog/how-to-download-pinterest-profile-pins-as-zip">profile ZIP</a>.</p>
 
       <h2>9. Browser download quirks (especially iOS)</h2>
-      <p>Some mobile browsers open previews instead of saving, or require a long-press / share-sheet step. On iPhone, save to Files or Photos explicitly. On Android, check both Downloads and the notification shade. Full mobile walkthrough: <a href="/blog/using-viralnest-on-phone-android-ios">Android &amp; iOS guide</a>.</p>
+      <p>Some mobile browsers open previews instead of saving, or require a long-press / share-sheet step. On iPhone, save to Files or Photos explicitly. On Android, check both Downloads and the notification shade. Full mobile walkthrough: <a href="/blog/using-pintdownload-on-phone-android-ios">Android &amp; iOS guide</a>.</p>
 
       <h2>10. Retry strategy that wastes less time</h2>
       <ol>
@@ -239,16 +239,16 @@ export const posts: BlogPost[] = [
     
       
     <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-pin-downloader">Retry on Pin Downloader</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Retry on Pin Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -319,21 +319,21 @@ export const posts: BlogPost[] = [
     
       
     <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Try Video Downloader</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Try Video Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
       <h2>Frequently asked questions</h2>
-      <h3>Can viralNest convert GIF to MP4 automatically?</h3><p>The primary job is extraction of public media. If the source is a GIF, you typically receive a GIF; convert separately if your editor requires MP4.</p>
+      <h3>Can PintDownload convert GIF to MP4 automatically?</h3><p>The primary job is extraction of public media. If the source is a GIF, you typically receive a GIF; convert separately if your editor requires MP4.</p>
       <h3>Why does it move on Pinterest but not in my gallery?</h3><p>Some galleries freeze GIFs on the first frame. Open the file in a browser or a player that supports animation.</p>
       <p class="text-sm">Related tools: <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> · <a href="/pinterest-video-downloader">Pinterest Video Downloader</a> · <a href="/pinterest-board-downloader">Pinterest Board Downloader</a> · <a href="/pinterest-profile-downloader">Pinterest Profile Downloader</a></p>
     `,
@@ -342,9 +342,9 @@ export const posts: BlogPost[] = [
     slug: 'pin-vs-board-vs-profile-urls-explained',
     title: "Pin vs Board vs Profile URLs: Use the Right Pinterest Downloader",
     description:
-      "Learn the difference between Pinterest pin, board, and profile links — and which viralNest tool to use so downloads succeed the first time.",
+      "Learn the difference between Pinterest pin, board, and profile links — and which PintDownload tool to use so downloads succeed the first time.",
     excerpt:
-      "Wrong URL type is the #1 download failure. Learn pin, board, and profile URL shapes with examples and which viralNest tool matches each intent.",
+      "Wrong URL type is the #1 download failure. Learn pin, board, and profile URL shapes with examples and which PintDownload tool matches each intent.",
     datePublished: '2026-07-19',
     dateModified: '2026-07-23',
     category: 'Guide',
@@ -355,7 +355,7 @@ export const posts: BlogPost[] = [
     content: `
       
       <p>Pinterest links look similar until you read the path. Matching the URL to the tool is the difference between a clean download and a confusing error. This article is the URL field guide we wish every new user read first — with examples, decision rules, and the edge cases that waste the most time.</p>
-      <p>Think of Pinterest’s public web URLs as three different product surfaces: a <strong>single idea</strong> (pin), a <strong>themed collection</strong> (board), and a <strong>creator-level feed</strong> (profile). viralNest mirrors those surfaces with specialized pages so extraction can be precise.</p>
+      <p>Think of Pinterest’s public web URLs as three different product surfaces: a <strong>single idea</strong> (pin), a <strong>themed collection</strong> (board), and a <strong>creator-level feed</strong> (profile). PintDownload mirrors those surfaces with specialized pages so extraction can be precise.</p>
 
       <h2>Pin URLs — one idea, one (or multi-slide) media payload</h2>
       <p><strong>Shapes you will see:</strong></p>
@@ -416,21 +416,21 @@ export const posts: BlogPost[] = [
       </ul>
       <p>If you see query parameters like <code>?utm_source=</code>, that is fine — the path still decides the tool. Strip tracking params only if a tool is picky; most accept them.</p>
       <h2>Why specialized tools beat a single mega-form</h2>
-      <p>Pin extraction looks for media on a pin entity. Board extraction paginates a collection. Profile extraction surveys a user surface. Forcing one API path to accept every URL produces vague errors. viralNest keeps the tools separate so success and failure modes stay honest and actionable.</p>
+      <p>Pin extraction looks for media on a pin entity. Board extraction paginates a collection. Profile extraction surveys a user surface. Forcing one API path to accept every URL produces vague errors. PintDownload keeps the tools separate so success and failure modes stay honest and actionable.</p>
       <h2>Team handoff tip</h2>
       <p>When you send a colleague “the Pinterest link,” specify which of the three it is. “Board link for moodboard ZIP” is a complete instruction. “This Pinterest thing” is how wrong tools get opened.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-pin-downloader">Start with Pin Downloader</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Start with Pin Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -444,7 +444,7 @@ export const posts: BlogPost[] = [
     slug: 'how-to-download-pinterest-board-as-zip',
     title: "How to Download an Entire Pinterest Board as a ZIP",
     description:
-      "Download a public Pinterest board as a ZIP with viralNest. Paste the board URL, extract pins, and save images and videos in one archive.",
+      "Download a public Pinterest board as a ZIP with PintDownload. Paste the board URL, extract pins, and save images and videos in one archive.",
     excerpt:
       "Paste a public board URL, extract pins, and download a ZIP for offline moodboards — plus limits, carousels, and board vs profile differences.",
     datePublished: '2026-07-18',
@@ -525,16 +525,16 @@ export const posts: BlogPost[] = [
       <p>If a living board changes weekly, include the download date in the folder name: <code>kitchen-board-2026-07-23</code>. Future you will want to know which snapshot a decision was based on.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Open Board Downloader</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Open Board Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -549,7 +549,7 @@ export const posts: BlogPost[] = [
     slug: 'how-to-download-pinterest-profile-pins-as-zip',
     title: "How to Download Pinterest Profile Pins as a ZIP",
     description:
-      "Bulk download public pins from a Pinterest profile URL. Paste pinterest.com/username/ into viralNest Profile Downloader and save a ZIP.",
+      "Bulk download public pins from a Pinterest profile URL. Paste pinterest.com/username/ into PintDownload Profile Downloader and save a ZIP.",
     excerpt:
       "Paste a public profile URL, extract visible pins, and download a ZIP for creator research — with URL checks, limits, and ethics.",
     datePublished: '2026-07-17',
@@ -614,16 +614,16 @@ export const posts: BlogPost[] = [
       <p>Profile ZIPs can be large. Check free disk space first. Unpack on desktop, pull heroes, and delete the bulk archive if you do not need it. Keeping every profile ZIP “just in case” is how disks die.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Open Profile Downloader</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Open Profile Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -637,7 +637,7 @@ export const posts: BlogPost[] = [
     slug: 'download-pinterest-carousel-all-slides',
     title: "How to Download Every Slide in a Pinterest Carousel Pin",
     description:
-      "Multi-image Pinterest carousels often download as one cover image. Learn how viralNest extracts every carousel slide for ZIP or single downloads.",
+      "Multi-image Pinterest carousels often download as one cover image. Learn how PintDownload extracts every carousel slide for ZIP or single downloads.",
     excerpt:
       "Stop getting only the cover image. Use the Pin Downloader to extract every slide in a multi-image Pinterest carousel, with board ZIP caveats.",
     datePublished: '2026-07-16',
@@ -649,7 +649,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Cover art for downloading all slides from Pinterest carousel pins",
     content: `
       
-      <p>Carousel pins are product-style multi-image posts: swipe through angles, steps, or colorways on a single pin page. Many generic downloaders only grab the <strong>cover</strong>. viralNest’s <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> reads full carousel slot data when Pinterest exposes it so you can download <strong>all slides</strong>.</p>
+      <p>Carousel pins are product-style multi-image posts: swipe through angles, steps, or colorways on a single pin page. Many generic downloaders only grab the <strong>cover</strong>. PintDownload’s <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> reads full carousel slot data when Pinterest exposes it so you can download <strong>all slides</strong>.</p>
       <p>If you have ever saved a furniture pin and wondered where the side angles went, this is the missing piece. Below: how to confirm you are on a carousel, how to extract every slide, and how board ZIPs differ.</p>
 
       <h2>How to recognize a carousel</h2>
@@ -704,16 +704,16 @@ export const posts: BlogPost[] = [
       <p>Store carousel ZIPs under <code>Research/Product-Name/YYYY-MM/</code> including the pin URL. Prices and listings change; your offline slides remain a snapshot of what you evaluated.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-pin-downloader">Open Pin Downloader</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Open Pin Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -724,22 +724,22 @@ export const posts: BlogPost[] = [
     `,
   },
   {
-    slug: 'using-viralnest-on-phone-android-ios',
-    title: "Using viralNest on Your Phone: Android and iOS Guide",
+    slug: 'using-pintdownload-on-phone-android-ios',
+    title: "Using PintDownload on Your Phone: Android and iOS Guide",
     description:
-      "Download Pinterest videos and images on iPhone and Android without an app. Copy the pin link, paste in mobile browser, save with viralNest.",
+      "Download Pinterest videos and images on iPhone and Android without an app. Copy the pin link, paste in mobile browser, save with PintDownload.",
     excerpt:
-      "Full mobile walkthrough for viralNest on Android Chrome and iPhone Safari — copy link, paste, download, Photos/Gallery, and shared-phone hygiene.",
+      "Full mobile walkthrough for PintDownload on Android Chrome and iPhone Safari — copy link, paste, download, Photos/Gallery, and shared-phone hygiene.",
     datePublished: '2026-07-15',
     dateModified: '2026-07-23',
     category: 'Mobile',
     tags: ["android","iphone","mobile","ios"],
     readTimeMin: 6,
     coverImage: '/images/blog/cover-mobile.jpg',
-    coverAlt: "Mobile cover art for using viralNest on Android and iPhone",
+    coverAlt: "Mobile cover art for using PintDownload on Android and iPhone",
     content: `
       
-      <p>You do not need a separate app. viralNest runs in <strong>Safari</strong> and <strong>Chrome</strong> on phones — which is perfect when discovery happens inside the Pinterest app. This guide covers the complete mobile loop: copy, paste, download, file to Photos/Gallery, and stay safe on shared devices.</p>
+      <p>You do not need a separate app. PintDownload runs in <strong>Safari</strong> and <strong>Chrome</strong> on phones — which is perfect when discovery happens inside the Pinterest app. This guide covers the complete mobile loop: copy, paste, download, file to Photos/Gallery, and stay safe on shared devices.</p>
       <p>Mobile browsers differ in how they handle downloads. iOS often wants an explicit “Save Video” or Files step; Android usually lands files in Downloads with a notification. Knowing the difference prevents the “where did it go?” panic.</p>
 
       <h2>Universal mobile flow</h2>
@@ -764,7 +764,7 @@ export const posts: BlogPost[] = [
       <ul>
         <li>After download, use the share sheet to <strong>Save Video</strong> to Photos when offered.</li>
         <li>Otherwise save to Files, then export to Photos.</li>
-        <li>Add viralNest to your Home Screen for one-tap access (Share → Add to Home Screen).</li>
+        <li>Add PintDownload to your Home Screen for one-tap access (Share → Add to Home Screen).</li>
         <li>Low Power Mode and strict content blockers can interfere — retry with blockers paused for the site if needed.</li>
       </ul>
 
@@ -790,7 +790,7 @@ export const posts: BlogPost[] = [
     
       
     
-      <h2>Add viralNest to your Home Screen</h2>
+      <h2>Add PintDownload to your Home Screen</h2>
       <p>On iOS Safari: Share → Add to Home Screen. On Android Chrome: menu → Add to Home screen / Install app if offered. You get one-tap access after copying a link from Pinterest, which removes friction on the go.</p>
       <h2>Clipboard gotchas</h2>
       <p>Aggressive battery savers and multi-tasking can clear clipboards. If paste fails, return to Pinterest, re-copy, and paste immediately without opening other apps in between. On iOS, the paste permission prompt must be accepted for the field to receive the URL.</p>
@@ -799,24 +799,24 @@ export const posts: BlogPost[] = [
   
       
       <h2>One-handed field workflow</h2>
-      <p>Standing in a store or on a site: copy link in Pinterest → switch to Home Screen viralNest → paste → download → file later. Do not try to perfect folder taxonomy in the aisle. Capture now; organize tonight.</p>
+      <p>Standing in a store or on a site: copy link in Pinterest → switch to Home Screen PintDownload → paste → download → file later. Do not try to perfect folder taxonomy in the aisle. Capture now; organize tonight.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Open on Mobile</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Open on Mobile</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
       <h2>Frequently asked questions</h2>
-      <h3>Is there an official viralNest app?</h3><p>You can use the mobile browser — no install required. Add to Home Screen for app-like access.</p>
+      <h3>Is there an official PintDownload app?</h3><p>You can use the mobile browser — no install required. Add to Home Screen for app-like access.</p>
       <h3>Why can’t I find the file on iPhone?</h3><p>Check Files and the Safari download manager, then save to Photos via the share sheet.</p>
       <p class="text-sm">Related tools: <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> · <a href="/pinterest-video-downloader">Pinterest Video Downloader</a> · <a href="/pinterest-board-downloader">Pinterest Board Downloader</a> · <a href="/pinterest-profile-downloader">Pinterest Profile Downloader</a></p>
     `,
@@ -825,9 +825,9 @@ export const posts: BlogPost[] = [
     slug: 'save-pinterest-offline-without-account',
     title: "Save Pinterest Content Offline Without Creating an Account",
     description:
-      "Download Pinterest videos and images offline without signing up. viralNest is free, login-free, and works in any browser with a public pin link.",
+      "Download Pinterest videos and images offline without signing up. PintDownload is free, login-free, and works in any browser with a public pin link.",
     excerpt:
-      "No login, no signup. Download public Pinterest media offline with viralNest — what works, what does not, and privacy-minded tips.",
+      "No login, no signup. Download public Pinterest media offline with PintDownload — what works, what does not, and privacy-minded tips.",
     datePublished: '2026-07-14',
     dateModified: '2026-07-23',
     category: 'Tips',
@@ -837,7 +837,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Cover art for saving Pinterest offline without an account",
     content: `
       
-      <p>Some tools force accounts, email gates, or browser extensions before you can save a single clip. <a href="/">viralNest</a> is intentionally <strong>login-free</strong> for public pins: paste a link, extract, download. This article explains what that promise covers, where it ends, and how to build an offline habit without feeding another subscription funnel.</p>
+      <p>Some tools force accounts, email gates, or browser extensions before you can save a single clip. <a href="/">PintDownload</a> is intentionally <strong>login-free</strong> for public pins: paste a link, extract, download. This article explains what that promise covers, where it ends, and how to build an offline habit without feeding another subscription funnel.</p>
 
       <h2>Why people want login-free downloads</h2>
       <ul>
@@ -847,7 +847,7 @@ export const posts: BlogPost[] = [
         <li>Classroom or lab machines with locked-down app installs</li>
       </ul>
 
-      <h2>What works without an account on viralNest</h2>
+      <h2>What works without an account on PintDownload</h2>
       <ul>
         <li>Public video pins → <a href="/pinterest-video-downloader">Pinterest Video Downloader</a></li>
         <li>Public images and carousels → <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> / <a href="/pinterest-image-downloader">Pinterest Image Downloader</a></li>
@@ -862,11 +862,11 @@ export const posts: BlogPost[] = [
       <h2>Offline workflow without a Pinterest account</h2>
       <ol>
         <li>Open the public pin, board, or profile in a browser (or copy link from the app).</li>
-        <li>Paste into the matching viralNest tool.</li>
+        <li>Paste into the matching PintDownload tool.</li>
         <li>Download and file into your offline library.</li>
         <li>Optionally stay logged out of Pinterest entirely if you only consume via shared/public links.</li>
       </ol>
-      <p>Library system: <a href="/blog/beyond-the-download-personal-reference-library">reference library</a>. Mobile: <a href="/blog/using-viralnest-on-phone-android-ios">phone guide</a>.</p>
+      <p>Library system: <a href="/blog/beyond-the-download-personal-reference-library">reference library</a>. Mobile: <a href="/blog/using-pintdownload-on-phone-android-ios">phone guide</a>.</p>
 
       <h2>Privacy notes</h2>
       <p>Login-free does not mean “invisible on the internet.” Your network still carries traffic; downloaded files still live on disk. For shared devices, clean up deliberately. Read <a href="/blog/private-browsing-and-pinterest-downloads">private browsing &amp; downloads</a> and <a href="/blog/download-on-shared-or-work-devices">shared device safety</a>.</p>
@@ -881,36 +881,36 @@ export const posts: BlogPost[] = [
       <h2>Building a login-light stack</h2>
       <ul>
         <li>Public pin links in a notes doc</li>
-        <li>viralNest for extraction without another password</li>
+        <li>PintDownload for extraction without another password</li>
         <li>Local folders for the library</li>
         <li>Optional: personal cloud only for keepers</li>
       </ul>
       <p>You can be highly effective without signing into five “free download” sites that email you forever.</p>
       <h2>When an account still helps</h2>
-      <p>A Pinterest account helps you curate boards of candidates before bulk download. You do not need a viralNest account for the export step itself.</p>
+      <p>A Pinterest account helps you curate boards of candidates before bulk download. You do not need a PintDownload account for the export step itself.</p>
   
       
       <h2>Minimalist toolkit</h2>
-      <p>Browser, viralNest, a folder, and a video player. That is the whole stack for most people. You can add notes apps and cloud later. You do not need a paid “all-in-one content vault” to start saving public tutorials responsibly.</p>
+      <p>Browser, PintDownload, a folder, and a video player. That is the whole stack for most people. You can add notes apps and cloud later. You do not need a paid “all-in-one content vault” to start saving public tutorials responsibly.</p>
       <h2>Switching devices</h2>
-      <p>Because there is no viralNest login, your library lives where you put the files. That is empowering and easy to mess up. Pick a home for keepers early — phone album, laptop folder, or personal drive — and stick to it.</p>
+      <p>Because there is no PintDownload login, your library lives where you put the files. That is empowering and easy to mess up. Pick a home for keepers early — phone album, laptop folder, or personal drive — and stick to it.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/">Open viralNest Hub</a>
+        <a class="text-[#E11D48] hover:underline" href="/">Open PintDownload Hub</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
       <h2>Frequently asked questions</h2>
-      <h3>Do I need to register for board ZIP?</h3><p>No account is required for public board ZIP downloads on viralNest.</p>
+      <h3>Do I need to register for board ZIP?</h3><p>No account is required for public board ZIP downloads on PintDownload.</p>
       <h3>Can I download without the Pinterest app?</h3><p>Yes. Public web links work in any modern browser.</p>
       <p class="text-sm">Related tools: <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> · <a href="/pinterest-video-downloader">Pinterest Video Downloader</a> · <a href="/pinterest-board-downloader">Pinterest Board Downloader</a> · <a href="/pinterest-profile-downloader">Pinterest Profile Downloader</a></p>
     `,
@@ -919,7 +919,7 @@ export const posts: BlogPost[] = [
     slug: 'video-quality-on-pinterest-downloads',
     title: "Video Quality on Pinterest Downloads: What to Expect",
     description:
-      "Why some Pinterest videos look soft after download, what resolutions are available, and how to pick the best stream in viralNest.",
+      "Why some Pinterest videos look soft after download, what resolutions are available, and how to pick the best stream in PintDownload.",
     excerpt:
       "Why Pinterest videos can look soft offline, what actually limits resolution, and how to pick the best available stream without myths about magic 4K.",
     datePublished: '2026-07-13',
@@ -943,7 +943,7 @@ export const posts: BlogPost[] = [
         <li><strong>Re-encoding</strong> — exporting again in a social app can add a second generation of compression</li>
       </ul>
 
-      <h2>How to maximize quality on viralNest</h2>
+      <h2>How to maximize quality on PintDownload</h2>
       <ol>
         <li>Use a direct <code>/pin/</code> URL on the <a href="/pinterest-video-downloader">Pinterest Video Downloader</a>.</li>
         <li>Select the highest listed quality before download when options appear.</li>
@@ -985,16 +985,16 @@ export const posts: BlogPost[] = [
       <p>A clip that looks fine on a phone can fall apart on a classroom projector. Test on the real display before workshop day. If text is unreadable, switch to still slides from a carousel or find a higher-quality source.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Download Video in Best Quality</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Download Video in Best Quality</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1010,7 +1010,7 @@ export const posts: BlogPost[] = [
     description:
       "Pinterest media may be MP4 video, GIF animation, or JPG/PNG images. Learn which format you get and when to use each.",
     excerpt:
-      "A practical guide to Pinterest media formats — MP4, WEBM, GIF, JPG, PNG — how they behave offline, and which viralNest tool to open.",
+      "A practical guide to Pinterest media formats — MP4, WEBM, GIF, JPG, PNG — how they behave offline, and which PintDownload tool to open.",
     datePublished: '2026-07-12',
     dateModified: '2026-07-23',
     category: 'Technical',
@@ -1020,7 +1020,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Cover art illustrating media file formats for Pinterest downloads",
     content: `
       
-      <p>Knowing the format avoids the classic trap: expecting an MP4 and getting a photo. Pinterest hosts several media types under a similar UI chrome. This guide explains what each format is good for, how it behaves offline, and which viralNest tool to reach for.</p>
+      <p>Knowing the format avoids the classic trap: expecting an MP4 and getting a photo. Pinterest hosts several media types under a similar UI chrome. This guide explains what each format is good for, how it behaves offline, and which PintDownload tool to reach for.</p>
 
       <h2>MP4 — the workhorse for real video</h2>
       <p>MP4 (usually H.264 video + AAC audio) is the standard for true video pins. It plays almost everywhere: phones, desktops, smart TVs, and editors. Use the <a href="/pinterest-video-downloader">Pinterest Video Downloader</a> when you know you want motion with a duration timeline.</p>
@@ -1074,16 +1074,16 @@ export const posts: BlogPost[] = [
       <p>For long-term personal libraries: keep MP4 for motion, PNG/JPG for stills, and only keep GIFs when the loop itself is the point. Convert working copies as needed, but do not destroy originals.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-pin-downloader">Detect Format via Pin Tool</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Detect Format via Pin Tool</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1134,8 +1134,8 @@ export const posts: BlogPost[] = [
       <h3>Work device</h3>
       <p>Assume monitoring and sync exist. Prefer personal devices for personal media. If you must use work hardware, follow <a href="/blog/download-on-shared-or-work-devices">shared/work guidance</a>.</p>
 
-      <h2>viralNest and accounts</h2>
-      <p>viralNest does not require an account for public downloads — see <a href="/blog/save-pinterest-offline-without-account">offline without signup</a>. That reduces one class of credentials on shared machines, but it does not erase files you intentionally saved.</p>
+      <h2>PintDownload and accounts</h2>
+      <p>PintDownload does not require an account for public downloads — see <a href="/blog/save-pinterest-offline-without-account">offline without signup</a>. That reduces one class of credentials on shared machines, but it does not erase files you intentionally saved.</p>
 
       <h2>Private pins vs private browsing</h2>
       <p>These concepts are unrelated. Private browsing will not unlock secret boards. Public-only rules still apply. Troubleshooting: <a href="/blog/troubleshooting-pinterest-downloads">download troubleshooting</a>.</p>
@@ -1159,19 +1159,19 @@ export const posts: BlogPost[] = [
       <h2>Family iPads and shared Androids</h2>
       <p>Kids’ devices and living-room tablets accumulate random downloads. Create a dedicated offline folder for educational packs and periodically delete the rest. Private tabs will not stop Photos from becoming a junk drawer.</p>
       <h2>Password managers and autofill</h2>
-      <p>Private windows may limit autofill. That is fine for viralNest because you do not need an account. It becomes annoying only if you also log into Pinterest in the same session — prefer copying public links without logging in when you can.</p>
+      <p>Private windows may limit autofill. That is fine for PintDownload because you do not need an account. It becomes annoying only if you also log into Pinterest in the same session — prefer copying public links without logging in when you can.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/">Download Without an Account</a>
+        <a class="text-[#E11D48] hover:underline" href="/">Download Without an Account</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1197,7 +1197,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Organization cover art for managing downloaded Pinterest videos",
     content: `
       
-      <p>Downloading is easy; finding the clip three weeks later is hard. Build a lightweight system the same day you save files from <a href="/">viralNest</a>. This article gives folder recipes, naming patterns, cleanup rituals, and when to bulk vs single-download.</p>
+      <p>Downloading is easy; finding the clip three weeks later is hard. Build a lightweight system the same day you save files from <a href="/">PintDownload</a>. This article gives folder recipes, naming patterns, cleanup rituals, and when to bulk vs single-download.</p>
 
       <h2>The inbox rule</h2>
       <p>Treat the browser Downloads folder as a temporary inbox, not a library. Everything either moves to a project folder within 48 hours or gets deleted. This single habit prevents 80% of “I know I saved it somewhere” moments.</p>
@@ -1231,7 +1231,7 @@ export const posts: BlogPost[] = [
       <p>Deeper system: <a href="/blog/beyond-the-download-personal-reference-library">personal reference library</a>.</p>
 
       <h2>Mobile organization</h2>
-      <p>On phones, create album/folders (Photos albums, Files tags). Avoid letting everything sit in camera roll chaos. Mobile download steps: <a href="/blog/using-viralnest-on-phone-android-ios">Android &amp; iOS</a>.</p>
+      <p>On phones, create album/folders (Photos albums, Files tags). Avoid letting everything sit in camera roll chaos. Mobile download steps: <a href="/blog/using-pintdownload-on-phone-android-ios">Android &amp; iOS</a>.</p>
     
       
     
@@ -1259,16 +1259,16 @@ export const posts: BlogPost[] = [
       <p>If phone and laptop both download, pick one “library of record” (usually the laptop or a personal cloud drive). Phones capture; the library stores. Otherwise you will search three places forever.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Pack a Board as ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Pack a Board as ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1351,16 +1351,16 @@ export const posts: BlogPost[] = [
       <p>When sharing a folder with a partner or contractor, export a flat <code>_heroes</code> pack only. Do not dump your entire inbox. Curation is part of communication.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Build a Board Pack</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Build a Board Pack</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1406,7 +1406,7 @@ export const posts: BlogPost[] = [
       </ol>
 
       <h2>Mobile specifics</h2>
-      <p>Follow <a href="/blog/using-viralnest-on-phone-android-ios">the phone guide</a> so files actually land in Photos/Files. Organize with <a href="/blog/tips-to-organize-downloaded-pinterest-videos">organization tips</a>.</p>
+      <p>Follow <a href="/blog/using-pintdownload-on-phone-android-ios">the phone guide</a> so files actually land in Photos/Files. Organize with <a href="/blog/tips-to-organize-downloaded-pinterest-videos">organization tips</a>.</p>
 
       <h2>Respect and realism</h2>
       <p>Download public content for personal offline use. Do not hoard private content (you can’t, ethically). Storage fills faster than you think — prune after the trip and keep only evergreen references.</p>
@@ -1432,16 +1432,16 @@ export const posts: BlogPost[] = [
       <p>Short Pinterest-style videos are easier to absorb when you are exhausted than feature-length films. Build a low-cognitive-load pack: calm destinations, light stretching, simple language phrases. Save dense tutorials for after you sleep.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Pre-load Travel Videos</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Pre-load Travel Videos</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1522,16 +1522,16 @@ export const posts: BlogPost[] = [
       <p>Share a shortlist of public pin URLs with classmates rather than redistributing copyrighted ZIP packs. Let each person download what they need. That keeps access legitimate and reduces malware-style “notes packs” floating around group chats.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-pin-downloader">Save Study Pins</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Save Study Pins</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1606,16 +1606,16 @@ export const posts: BlogPost[] = [
       <p>Outdoor jobs kill phone brightness and battery. Download the night before, enable offline playback, and protect the device from dust with a simple bag between uses. The tutorial cannot help you if the phone is dead or unreadable in sun glare.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Download DIY Clips</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Download DIY Clips</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1687,21 +1687,21 @@ export const posts: BlogPost[] = [
       <p>Vertical text-heavy pins can be hard to read on desktop. Zoom the player or view on mobile. Soft quality plus tiny type is a double penalty — sometimes the still slides in a carousel are more readable than the motion version.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Download Vertical Videos</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Download Vertical Videos</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
       <h2>Frequently asked questions</h2>
-      <h3>Can viralNest convert vertical to landscape?</h3><p>Extraction preserves source framing. Conversion/cropping is an editing step you choose later.</p>
+      <h3>Can PintDownload convert vertical to landscape?</h3><p>Extraction preserves source framing. Conversion/cropping is an editing step you choose later.</p>
       <h3>Why do bars look gray in some players?</h3><p>Players use different backgrounds; the file is usually fine.</p>
       <p class="text-sm">Related tools: <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> · <a href="/pinterest-video-downloader">Pinterest Video Downloader</a> · <a href="/pinterest-board-downloader">Pinterest Board Downloader</a> · <a href="/pinterest-profile-downloader">Pinterest Profile Downloader</a></p>
     `,
@@ -1722,7 +1722,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Cover art about Pinterest download speed and performance",
     content: `
       
-      <p>A 20MB clip should finish in seconds on broadband; multi-pin ZIPs take longer because each media file is fetched then packed. When people say “viralNest is stuck,” they often mean “my network + a large board + a busy laptop.” This article calibrates expectations and gives fixes that actually move the needle.</p>
+      <p>A 20MB clip should finish in seconds on broadband; multi-pin ZIPs take longer because each media file is fetched then packed. When people say “PintDownload is stuck,” they often mean “my network + a large board + a busy laptop.” This article calibrates expectations and gives fixes that actually move the needle.</p>
 
       <h2>Speed factors</h2>
       <ul>
@@ -1772,16 +1772,16 @@ export const posts: BlogPost[] = [
       <p>Captive portals and throttled hotel networks are hostile to bulk media. Download packs before you travel when you can. Mid-trip, prefer single critical pins over heroic ZIP attempts on flaky Wi-Fi.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/">Try a Single Pin First</a>
+        <a class="text-[#E11D48] hover:underline" href="/">Try a Single Pin First</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1807,7 +1807,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Ethics-themed cover for using downloaded Pinterest content responsibly",
     content: `
       
-      <p>Tools like <a href="/">viralNest</a> make public media easier to save. That convenience comes with a digital handshake: <strong>respect creators</strong>, respect licenses, and do not pretend ownership of others’ work. Offline access should not become silent theft of livelihood.</p>
+      <p>Tools like <a href="/">PintDownload</a> make public media easier to save. That convenience comes with a digital handshake: <strong>respect creators</strong>, respect licenses, and do not pretend ownership of others’ work. Offline access should not become silent theft of livelihood.</p>
       <p>This article is not legal advice for every jurisdiction. It is a practical code of conduct for people who want to stay on the right side of creative communities while still learning offline.</p>
 
       <h2>Good uses</h2>
@@ -1834,7 +1834,7 @@ export const posts: BlogPost[] = [
       <h2>Commercial projects</h2>
       <p>For client work, prefer assets you created, stock licenses, or explicit creator permission. Inspiration is fine; reproduction is not a substitute for a license.</p>
 
-      <h2>How viralNest fits</h2>
+      <h2>How PintDownload fits</h2>
       <p>Practical tools remain the <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a>, <a href="/pinterest-video-downloader">Pinterest Video Downloader</a>, <a href="/pinterest-board-downloader">Pinterest Board Downloader</a>, and <a href="/pinterest-profile-downloader">Pinterest Profile Downloader</a> for <em>public</em> media only. We optimize for legitimate offline convenience — not for cracking private content.</p>
       <p>Related reading: <a href="/blog/save-pinterest-offline-without-account">offline without account</a> · <a href="/blog/things-to-know-before-downloading-pinterest-videos">pre-download checklist</a>.</p>
     
@@ -1858,16 +1858,16 @@ export const posts: BlogPost[] = [
       <p>Classroom use often has more leeway, but distribution of full media packs to students can cross lines. Prefer assigning public pin links and teaching students to download for personal study with attribution habits built in.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-pin-downloader">Download Public Pins Only</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Download Public Pins Only</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1893,7 +1893,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Beginner checklist cover for downloading Pinterest videos",
     content: `
       
-      <p>Before your first save on <a href="/">viralNest</a>, skim this pre-flight list so results match expectations. Ten minutes here prevents an hour of confusion later.</p>
+      <p>Before your first save on <a href="/">PintDownload</a>, skim this pre-flight list so results match expectations. Ten minutes here prevents an hour of confusion later.</p>
 
       <h2>The checklist</h2>
       <ol>
@@ -1903,7 +1903,7 @@ export const posts: BlogPost[] = [
         <li><strong>Quality caps</strong> — source limited (<a href="/blog/video-quality-on-pinterest-downloads">quality</a>).</li>
         <li><strong>Aspect ratio</strong> — vertical is normal (<a href="/blog/understanding-aspect-ratios-pinterest-media">ratios</a>).</li>
         <li><strong>Storage space</strong> — ZIPs from <a href="/pinterest-board-downloader">Pinterest Board Downloader</a> add up.</li>
-        <li><strong>Mobile save path</strong> — Photos vs Files (<a href="/blog/using-viralnest-on-phone-android-ios">phone guide</a>).</li>
+        <li><strong>Mobile save path</strong> — Photos vs Files (<a href="/blog/using-pintdownload-on-phone-android-ios">phone guide</a>).</li>
         <li><strong>Ethics</strong> — credit creators (<a href="/blog/using-downloaded-content-responsibly">responsible use</a>).</li>
         <li><strong>Organization</strong> — rename today (<a href="/blog/tips-to-organize-downloaded-pinterest-videos">organize</a>).</li>
         <li><strong>Fallback plan</strong> — troubleshooting list ready (<a href="/blog/troubleshooting-pinterest-downloads">fixes</a>).</li>
@@ -1945,22 +1945,22 @@ export const posts: BlogPost[] = [
       <p>Immediately file the file. Immediately try one more pin. Muscle memory forms on the second attempt, not the first. Then stop for the day if you only needed one tutorial — infinite browsing is how libraries rot.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Start Downloading</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Start Downloading</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
       <h2>Frequently asked questions</h2>
       <h3>What is the #1 beginner mistake?</h3><p>Pasting the wrong URL type (board into pin tool) or expecting private pins to work.</p>
-      <h3>Should I install a browser extension?</h3><p>Not required for viralNest — paste a link in the web app.</p>
+      <h3>Should I install a browser extension?</h3><p>Not required for PintDownload — paste a link in the web app.</p>
       <p class="text-sm">Related tools: <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> · <a href="/pinterest-video-downloader">Pinterest Video Downloader</a> · <a href="/pinterest-board-downloader">Pinterest Board Downloader</a> · <a href="/pinterest-profile-downloader">Pinterest Profile Downloader</a></p>
     `,
   },
@@ -1980,7 +1980,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Cover art for copying the correct Pinterest pin link",
     content: `
       
-      <p>If extraction fails, a large share of the time the URL is the wrong shape. Copy from the pin itself — not a random home feed card — and verify the path before you paste into <a href="/">viralNest</a>.</p>
+      <p>If extraction fails, a large share of the time the URL is the wrong shape. Copy from the pin itself — not a random home feed card — and verify the path before you paste into <a href="/">PintDownload</a>.</p>
 
       <h2>Valid pin links</h2>
       <ul>
@@ -2036,19 +2036,19 @@ export const posts: BlogPost[] = [
       <h2>Multiple pins in one message</h2>
       <p>When someone texts you three ideas, ask them to send three full pin links, not a screenshot collage. Screenshots cannot be extracted by URL tools. A little education up front saves everyone time.</p>
       <h2>International domains</h2>
-      <p>Pinterest regional domains still resolve to pin entities when the path contains <code>/pin/</code>. Do not panic if you see <code>pinterest.co.uk</code> or similar — focus on the path structure, then paste into viralNest as usual.</p>
+      <p>Pinterest regional domains still resolve to pin entities when the path contains <code>/pin/</code>. Do not panic if you see <code>pinterest.co.uk</code> or similar — focus on the path structure, then paste into PintDownload as usual.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-pin-downloader">Paste a Pin Link</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Paste a Pin Link</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2074,7 +2074,7 @@ export const posts: BlogPost[] = [
     coverAlt: "Cover art for safe downloads on shared or work devices",
     content: `
       
-      <p>Shared laptops and managed phones often auto-sync Downloads to corporate OneDrive/Google Drive. Plan the path before you paste a link into <a href="/">viralNest</a>. This guide is about operational hygiene — not paranoia theater.</p>
+      <p>Shared laptops and managed phones often auto-sync Downloads to corporate OneDrive/Google Drive. Plan the path before you paste a link into <a href="/">PintDownload</a>. This guide is about operational hygiene — not paranoia theater.</p>
 
       <h2>Risks unique to shared/work devices</h2>
       <ul>
@@ -2098,7 +2098,7 @@ export const posts: BlogPost[] = [
       <p>Incognito will not delete files you downloaded. Read <a href="/blog/private-browsing-and-pinterest-downloads">private browsing realities</a>.</p>
 
       <h2>Mobile work phones</h2>
-      <p>Managed phones may archive Photos to work tenants. Save to personal Files and transfer via a method your policy allows. Steps: <a href="/blog/using-viralnest-on-phone-android-ios">phone guide</a>.</p>
+      <p>Managed phones may archive Photos to work tenants. Save to personal Files and transfer via a method your policy allows. Steps: <a href="/blog/using-pintdownload-on-phone-android-ios">phone guide</a>.</p>
 
       <h2>Policy first</h2>
       <p>If your employer forbids personal media on work devices, do not do it. No blog post overrides your contract or acceptable use policy.</p>
@@ -2127,21 +2127,21 @@ export const posts: BlogPost[] = [
       <p>If the content is sensitive, personal, or would violate workplace policy, wait until you are on a personal device. Convenience is not worth an HR conversation or a data-loss incident on a monitored endpoint.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Download Then Move Files</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Download Then Move Files</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
       <h2>Frequently asked questions</h2>
-      <h3>Is viralNest blocked on some networks?</h3><p>Corporate filters sometimes block media CDNs. Try a personal network or device.</p>
+      <h3>Is PintDownload blocked on some networks?</h3><p>Corporate filters sometimes block media CDNs. Try a personal network or device.</p>
       <h3>Should I use a VPN at work?</h3><p>Follow company policy. Unauthorized VPNs can violate IT rules.</p>
       <p class="text-sm">Related tools: <a href="/pinterest-pin-downloader">Pinterest Pin Downloader</a> · <a href="/pinterest-video-downloader">Pinterest Video Downloader</a> · <a href="/pinterest-board-downloader">Pinterest Board Downloader</a> · <a href="/pinterest-profile-downloader">Pinterest Profile Downloader</a></p>
     `,
@@ -2152,7 +2152,7 @@ export const posts: BlogPost[] = [
     description:
       "What a Pinterest downloader does: parse public pin pages, find media streams, and save MP4/images offline. When to use pin, board, or profile tools.",
     excerpt:
-      "What a Pinterest downloader is, how public extraction works at a high level, and when to open pin, video, board ZIP, or profile tools on viralNest.",
+      "What a Pinterest downloader is, how public extraction works at a high level, and when to open pin, video, board ZIP, or profile tools on PintDownload.",
     datePublished: '2026-06-28',
     dateModified: '2026-07-23',
     category: 'Guide',
@@ -2162,14 +2162,14 @@ export const posts: BlogPost[] = [
     coverAlt: "Cover art explaining what a Pinterest downloader is and how it works",
     content: `
       
-      <p>A <strong>Pinterest downloader</strong> is a web tool that accepts a public Pinterest URL, locates downloadable media, and lets you save it — video, image, GIF, or multi-pin ZIP — without relying only on the native “save pin” workflow. This article explains the concept in plain language, how viralNest approaches the job, and when each specialized page is the right door.</p>
+      <p>A <strong>Pinterest downloader</strong> is a web tool that accepts a public Pinterest URL, locates downloadable media, and lets you save it — video, image, GIF, or multi-pin ZIP — without relying only on the native “save pin” workflow. This article explains the concept in plain language, how PintDownload approaches the job, and when each specialized page is the right door.</p>
 
       <h2>The problem downloaders solve</h2>
       <p>Pinterest optimizes for discovery and session time. Exporting a clean MP4 for offline use is a secondary concern for the platform. Users still have legitimate needs: study offline, prepare for travel, keep job-site tutorials, archive personal inspiration libraries. Downloaders fill that gap for <em>public</em> content.</p>
 
-      <h2>How viralNest works (simple model)</h2>
+      <h2>How PintDownload works (simple model)</h2>
       <ol>
-        <li>You paste a public link into <a href="/">viralNest</a> or a specialized page.</li>
+        <li>You paste a public link into <a href="/">PintDownload</a> or a specialized page.</li>
         <li>We resolve shortlinks and fetch public metadata/media endpoints.</li>
         <li>We present media options (and carousel slides when available).</li>
         <li>You download via our proxy for reliable filenames and CDN access.</li>
@@ -2210,8 +2210,8 @@ export const posts: BlogPost[] = [
       <p>Screen recording works in a pinch but hurts quality, includes UI chrome, and is clumsy for bulk. A downloader fetches the underlying media asset when available — cleaner files, faster packs, better archives.</p>
       <h2>Why results vary by pin</h2>
       <p>Not every pin exposes the same media ladder. Some have crisp progressive MP4s. Others are image-only, GIF, or stream-oriented. Honest tools surface what is available instead of fabricating formats.</p>
-      <h2>Where viralNest sits in your toolkit</h2>
-      <p>Use Pinterest for discovery and boards. Use viralNest when you need files. Use your folder system for memory. Use ethics for everything you might publish later. That stack stays simple even as your library grows.</p>
+      <h2>Where PintDownload sits in your toolkit</h2>
+      <p>Use Pinterest for discovery and boards. Use PintDownload when you need files. Use your folder system for memory. Use ethics for everything you might publish later. That stack stays simple even as your library grows.</p>
       <h2>Next actions</h2>
       <p>If you are brand new, follow the <a href="/blog/how-to-download-pinterest-videos-fast-and-easy">fast video guide</a> end to end once. Then read troubleshooting only when something fails — not before.</p>
   
@@ -2227,16 +2227,16 @@ export const posts: BlogPost[] = [
       <p>If a site promises private unlocks and perfect 4K for every pin, treat that as a warning label.</p>
   
       <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
-      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on viralNest</p>
+      <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E60023] hover:underline" href="/pinterest-video-downloader">Try the Video Downloader</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Try the Video Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E60023] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2280,5 +2280,26 @@ export function estimateWordCount(html: string): number {
 export function getCoverUrl(post: BlogPost): string {
   return post.coverImage.startsWith('http')
     ? post.coverImage
-    : `https://viralnest.com${post.coverImage}`;
+    : `https://pintdownload.app${post.coverImage}`;
+}
+
+/** Previous / next posts for Medium-style back-channel navigation */
+export function getAdjacentPosts(post: BlogPost): {
+  prev: BlogPost | null;
+  next: BlogPost | null;
+} {
+  const all = getAllPosts();
+  const idx = all.findIndex((p) => p.slug === post.slug);
+  if (idx < 0) return { prev: null, next: null };
+  return {
+    // chronological neighbors in the sorted (newest-first) list
+    next: all[idx + 1] ?? null, // older
+    prev: all[idx - 1] ?? null, // newer
+  };
+}
+
+export function getPostsByCategory(category: BlogCategory, excludeSlug?: string, limit = 4): BlogPost[] {
+  return getAllPosts()
+    .filter((p) => p.category === category && p.slug !== excludeSlug)
+    .slice(0, limit);
 }

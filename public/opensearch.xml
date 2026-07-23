@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-  <ShortName>viralNest</ShortName>
+  <ShortName>PintDownload</ShortName>
   <Description>Free Pinterest Video & Media Downloader</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image height="16" width="16" type="image/x-icon">https://viralnest.com/favicon.ico</Image>
-  <Url type="text/html" template="https://viralnest.com/?url={searchTerms}"/>
+  <Image height="16" width="16" type="image/x-icon">https://pintdownload.app/favicon.ico</Image>
+  <Url type="text/html" template="https://pintdownload.app/?url={searchTerms}"/>
 </OpenSearchDescription>

@@ -147,7 +147,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
   // Load download history from LocalStorage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('viralnest_history');
+      const saved = localStorage.getItem('pintdownload_history');
       if (saved) {
         setHistory(JSON.parse(saved));
       }
@@ -174,7 +174,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
       };
       const updated = [newItem, ...history.filter(h => h.url !== pinUrl)].slice(0, 4);
       setHistory(updated);
-      localStorage.setItem('viralnest_history', JSON.stringify(updated));
+      localStorage.setItem('pintdownload_history', JSON.stringify(updated));
     } catch (e) {
       console.warn('History save error:', e);
     }
@@ -296,7 +296,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
     setTimeout(() => setCopiedColor(null), 2000);
   };
 
-  const samplePalette = ['#E60023', '#2D3748', '#ED8936', '#319795', '#D69E2E'];
+  const samplePalette = ['#E11D48', '#2D3748', '#ED8936', '#319795', '#D69E2E'];
 
   const slugify = (value: string) =>
     value
@@ -414,8 +414,8 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
             href="/pinterest-pin-downloader"
             className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
               variant === 'pin'
-                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023] font-extrabold'
-                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E60023]'
+                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
             }`}
           >
             Pin
@@ -426,8 +426,8 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
             href="/pinterest-video-downloader"
             className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
               variant === 'video'
-                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023] font-extrabold'
-                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E60023]'
+                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
             }`}
           >
             Video MP4
@@ -438,8 +438,8 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
             href="/pinterest-image-downloader"
             className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
               variant === 'image'
-                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023] font-extrabold'
-                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E60023]'
+                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
             }`}
           >
             HD Image
@@ -449,8 +449,8 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
           href="/pinterest-board-downloader"
           className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
             variant === 'board'
-              ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023]'
-              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023]'
+              ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48]'
+              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E11D48]'
           }`}
         >
           <Archive className="w-3 h-3" aria-hidden />
@@ -460,8 +460,8 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
           href="/pinterest-profile-downloader"
           className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
             variant === 'profile'
-              ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E60023]'
-              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E60023]'
+              ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48]'
+              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E11D48]'
           }`}
         >
           <User className="w-3 h-3" aria-hidden />
@@ -485,7 +485,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
             type="button"
             onClick={() => { setMode('batch'); setError(''); }}
             className={`px-5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition-all touch-manipulation ${
-              mode === 'batch' ? 'bg-white dark:bg-slate-900 text-[#E60023] shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+              mode === 'batch' ? 'bg-white dark:bg-slate-900 text-[#E11D48] shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -504,7 +504,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder={copy.placeholder}
-              className="w-full h-14 pl-5 pr-20 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E60023] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
+              className="w-full h-14 pl-5 pr-20 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
               required
               aria-label={copy.ariaLabel}
             />
@@ -521,7 +521,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                 <button
                   type="button"
                   onClick={handlePaste}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-[#E60023] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-2.5 py-1.5 rounded-lg transition-colors"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-2.5 py-1.5 rounded-lg transition-colors"
                 >
                   <Clipboard className="w-3.5 h-3.5" />
                   <span>Paste</span>
@@ -536,13 +536,13 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
               value={batchUrls}
               onChange={(e) => setBatchUrls(e.target.value)}
               placeholder="Paste up to 5 Pinterest URLs (one per line):&#10;https://pinterest.com/pin/1234567/&#10;https://pin.it/abc1234"
-              className="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E60023] focus:ring-4 focus:ring-red-500/10 transition-all text-sm shadow-sm"
+              className="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-sm shadow-sm"
               required
             />
             <button
               type="button"
               onClick={handlePaste}
-              className="absolute right-3 top-3 inline-flex items-center gap-1 text-xs font-bold text-[#E60023] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-2.5 py-1.5 rounded-lg transition-colors"
+              className="absolute right-3 top-3 inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-2.5 py-1.5 rounded-lg transition-colors"
             >
               <Clipboard className="w-3.5 h-3.5" />
               <span>Paste Clipboard</span>
@@ -556,7 +556,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
             loading ||
             (mode === 'batch' && copy.showBatch ? !batchUrls.trim() : !url.trim())
           }
-          className="w-full h-14 px-8 rounded-2xl bg-[#E60023] hover:bg-[#CC0000] text-white font-bold text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-red-500/25 active:scale-95"
+          className="w-full h-14 px-8 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-red-500/25 active:scale-95"
         >
           {loading ? (
             <>
@@ -590,7 +590,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div className="min-w-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
                 <Layers className="w-3.5 h-3.5" />
                 Carousel · {result.media_items.length} slides
               </span>
@@ -612,7 +612,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                     `carousel_${result.title || result.pin_id || 'pinterest'}`,
                   )
                 }
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
               >
                 {zipping ? (
                   <>
@@ -641,7 +641,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
               aria-label="ZIP packing progress"
             >
               <div
-                className="h-full bg-[#E60023] transition-[width] duration-300 ease-out"
+                className="h-full bg-[#E11D48] transition-[width] duration-300 ease-out"
                 style={{ width: `${Math.round((zipProgress.done / zipProgress.total) * 100)}%` }}
               />
             </div>
@@ -677,7 +677,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                   <a
                     href={`/api/download?url=${encodeURIComponent(item.url)}&filename=${encodeURIComponent(filename)}`}
                     download
-                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E60023] font-bold text-xs flex items-center justify-center gap-1 transition-colors touch-manipulation"
+                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1 transition-colors touch-manipulation"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>{item.type === 'video' ? 'Download MP4' : 'Download HD'}</span>
@@ -691,7 +691,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div className="min-w-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
                 {result!.is_profile ? (
                   <>
                     <User className="w-3.5 h-3.5" />
@@ -726,7 +726,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                         : `board_${result!.board_title || 'pinterest'}`,
                     )
                   }
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
                 >
                   {zipping ? (
                     <>
@@ -780,7 +780,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
               aria-label="ZIP packing progress"
             >
               <div
-                className="h-full bg-[#E60023] transition-[width] duration-300 ease-out"
+                className="h-full bg-[#E11D48] transition-[width] duration-300 ease-out"
                 style={{ width: `${Math.round((zipProgress.done / zipProgress.total) * 100)}%` }}
               />
             </div>
@@ -813,7 +813,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                   <a
                     href={`/api/download?url=${encodeURIComponent(mediaUrl)}&filename=${encodeURIComponent(`pin_${pin.pin_id}.${ext}`)}`}
                     download
-                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E60023] font-bold text-xs flex items-center justify-center gap-1 transition-colors touch-manipulation"
+                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1 transition-colors touch-manipulation"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>{pin.is_video && pin.video_url ? 'Download MP4' : 'Download HD'}</span>
@@ -849,7 +849,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                       className="absolute inset-0 bg-black/40 flex items-center justify-center text-white group-hover:bg-black/50 transition-colors"
                       title="Play Preview"
                     >
-                      <div class="w-12 h-12 rounded-full bg-[#E60023] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <div class="w-12 h-12 rounded-full bg-[#E11D48] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <Play className="w-6 h-6 fill-white text-white ml-1" />
                       </div>
                     </button>
@@ -880,7 +880,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                     id="quality-select"
                     value={selectedQuality}
                     onChange={(e) => setSelectedQuality(e.target.value)}
-                    className="bg-slate-50 text-slate-900 text-sm font-semibold border border-slate-300 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#E60023] w-full sm:w-auto"
+                    className="bg-slate-50 text-slate-900 text-sm font-semibold border border-slate-300 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#E11D48] w-full sm:w-auto"
                   >
                     {result.qualities.map((q, idx) => (
                       <option key={idx} value={q.url}>
@@ -898,7 +898,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                     <a
                       href={`/api/download?url=${encodeURIComponent(selectedQuality || result.video_url!)}&filename=${encodeURIComponent((result.title || 'pinterest_video').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.mp4`}
                       download={`${(result.title || 'pinterest_video').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.mp4`}
-                      className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E60023] hover:bg-[#CC0000] text-white font-bold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95"
+                      className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95"
                     >
                       <Download className="w-4 h-4" />
                       <span>Download MP4 Video</span>
@@ -922,7 +922,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                     download={`${(result.title || 'pinterest_image').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.jpg`}
                     className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95"
                   >
-                    <ImageIcon className="w-4 h-4 text-[#E60023]" />
+                    <ImageIcon className="w-4 h-4 text-[#E11D48]" />
                     <span>Download HD Image</span>
                   </a>
                 )}
@@ -935,7 +935,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
             <div className="pt-5 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                  <Palette className="w-3.5 h-3.5 text-[#E60023]" />
+                  <Palette className="w-3.5 h-3.5 text-[#E11D48]" />
                   <span>Extracted Pin Color Palette</span>
                 </div>
                 <span className="text-[10px] text-slate-400">Click chip to copy hex</span>
@@ -961,13 +961,13 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
             <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                  <Tag className="w-3.5 h-3.5 text-[#E60023]" />
+                  <Tag className="w-3.5 h-3.5 text-[#E11D48]" />
                   <span>Pin Keywords & Hashtags</span>
                 </div>
                 <button
                   type="button"
                   onClick={copyTagsToClipboard}
-                  className="inline-flex items-center gap-1.5 text-xs text-[#E60023] hover:text-red-700 dark:hover:text-red-400 font-bold transition-colors bg-red-50 dark:bg-red-950/40 px-2.5 py-1 rounded-lg"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#E11D48] hover:text-red-700 dark:hover:text-red-400 font-bold transition-colors bg-red-50 dark:bg-red-950/40 px-2.5 py-1 rounded-lg"
                 >
                   {copiedTags ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                   <span>{copiedTags ? 'Copied All!' : 'Copy Tags'}</span>
@@ -1032,7 +1032,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
             <div className="relative p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-wrap">
               {activePlatform === 'reels' && (
                 <>
-                  {`✨ ${result.title}\n\nTag someone who needs to see this! 👇\n\n📌 Saved via viralNest\n\n${(result.tags || []).map(t => `#${t}`).join(' ')} #reels #viral #aesthetic`}
+                  {`✨ ${result.title}\n\nTag someone who needs to see this! 👇\n\n📌 Saved via PintDownload\n\n${(result.tags || []).map(t => `#${t}`).join(' ')} #reels #viral #aesthetic`}
                 </>
               )}
               {activePlatform === 'tiktok' && (
@@ -1042,7 +1042,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
               )}
               {activePlatform === 'shorts' && (
                 <>
-                  {`🔥 ${result.title} | Pinterest Aesthetic\n\nLike & Subscribe for more daily visual content!\n\n${(result.tags || []).map(t => `#${t}`).join(' ')} #shorts #viralnest #pinterest`}
+                  {`🔥 ${result.title} | Pinterest Aesthetic\n\nLike & Subscribe for more daily visual content!\n\n${(result.tags || []).map(t => `#${t}`).join(' ')} #shorts #pintdownload #pinterest`}
                 </>
               )}
 
@@ -1051,9 +1051,9 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                 onClick={() => {
                   let text = '';
                   const tagsStr = (result.tags || []).map(t => `#${t}`).join(' ');
-                  if (activePlatform === 'reels') text = `✨ ${result.title}\n\nTag someone who needs to see this! 👇\n\n📌 Saved via viralNest\n\n${tagsStr} #reels #viral #aesthetic`;
+                  if (activePlatform === 'reels') text = `✨ ${result.title}\n\nTag someone who needs to see this! 👇\n\n📌 Saved via PintDownload\n\n${tagsStr} #reels #viral #aesthetic`;
                   if (activePlatform === 'tiktok') text = `POV: ${result.title} 🌿🔥\n\nFollow for more daily aesthetic pins & inspo!\n\n${tagsStr} #fyp #viral #pinterest #foryou`;
-                  if (activePlatform === 'shorts') text = `🔥 ${result.title} | Pinterest Aesthetic\n\nLike & Subscribe for more daily visual content!\n\n${tagsStr} #shorts #viralnest #pinterest`;
+                  if (activePlatform === 'shorts') text = `🔥 ${result.title} | Pinterest Aesthetic\n\nLike & Subscribe for more daily visual content!\n\n${tagsStr} #shorts #pintdownload #pinterest`;
                   
                   navigator.clipboard.writeText(text);
                   setCopiedCaption(true);
@@ -1074,7 +1074,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
         <div className="mt-8 flex flex-col gap-4 text-left animate-in fade-in duration-300">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
             <h3 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-              <Layers className="w-5 h-5 text-[#E60023]" />
+              <Layers className="w-5 h-5 text-[#E11D48]" />
               <span>Extracted Batch Media ({batchResults.length} items)</span>
             </h3>
 
@@ -1097,7 +1097,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                   }, idx * 500);
                 });
               }}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-[#E60023] hover:bg-[#CC0000] text-white font-bold text-xs shadow-md shadow-red-500/20 transition-all active:scale-95 shrink-0"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-xs shadow-md shadow-red-500/20 transition-all active:scale-95 shrink-0"
             >
               <Download className="w-4 h-4" />
               <span>Download All ({batchResults.length} Items)</span>
@@ -1117,7 +1117,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                 <a
                   href={`/api/download?url=${encodeURIComponent(res.video_url || res.image_url!)}&filename=${encodeURIComponent((res.title || 'pin').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.${res.is_video ? 'mp4' : 'jpg'}`}
                   download
-                  className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-[#E60023] hover:text-white text-slate-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                  className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-[#E11D48] hover:text-white text-slate-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download {res.is_video ? 'MP4' : 'Image'}</span>
@@ -1132,7 +1132,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
       {history.length > 0 && !result && batchResults.length === 0 && (
         <div className="mt-10 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-left shadow-xs">
           <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-3">
-            <History className="w-3.5 h-3.5 text-[#E60023]" />
+            <History className="w-3.5 h-3.5 text-[#E11D48]" />
             <span>Recent Downloads</span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -1146,7 +1146,7 @@ export default function DownloaderForm({ variant = 'hub' }: { variant?: FormVari
                 {item.thumbnail && (
                   <img src={item.thumbnail} alt={item.title} className="w-9 h-9 rounded-lg object-cover shrink-0 border border-slate-200 dark:border-slate-700" />
                 )}
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-[#E60023] truncate">{item.title}</span>
+                <span className="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-[#E11D48] truncate">{item.title}</span>
               </button>
             ))}
           </div>

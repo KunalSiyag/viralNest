@@ -1,21 +1,95 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BRAND } from '../lib/brand';
 ---
 
-<BaseLayout title="About viralNest — Free Pinterest Media Saver" description="About viralNest Pinterest Downloader tool.">
-  <div class="max-w-3xl mx-auto py-8 text-left bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-sm">
-    <h1 class="text-3xl font-extrabold text-slate-900 mb-4">About viralNest</h1>
-    <p class="text-slate-600 text-sm leading-relaxed mb-6">
-      viralNest is a high-performance online media extraction utility created to help designers, video creators, students, and researchers save public Pinterest videos, images, Idea Pins, and GIFs.
-    </p>
+<BaseLayout
+  title={`About ${BRAND.name} — Pinterest Downloader on ${BRAND.domain}`}
+  description={`Learn about ${BRAND.name}: a free, privacy-minded Pinterest pin, video, board, and profile downloader built for creators, students, and makers.`}
+  clean
+>
+  <article class="max-w-3xl mx-auto">
+    <nav class="text-sm font-medium text-ink-500 mb-8 flex flex-wrap items-center gap-2" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span class="text-ink-300" aria-hidden="true">/</span>
+      <span class="text-ink-700 dark:text-slate-300">About</span>
+    </nav>
 
-    <h2 class="text-xl font-bold text-slate-900 mb-3">Our Mission</h2>
-    <p class="text-slate-600 text-sm leading-relaxed mb-6">
-      Our goal is to deliver a clean, fast, 100% free tool without annoying ads, popups, or required account signups.
-    </p>
-
-    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-500">
-      <strong>Disclaimer:</strong> viralNest is an independent utility and is not affiliated, sponsored, or endorsed by Pinterest Inc.
+    <div class="mb-10">
+      <p class="text-brand-600 font-semibold text-sm tracking-wide uppercase mb-3">About us</p>
+      <h1 class="font-display text-4xl sm:text-5xl text-ink-900 dark:text-white tracking-tight mb-5" style="text-wrap: balance;">
+        Downloads should feel effortless.
+      </h1>
+      <p class="text-xl text-ink-600 dark:text-slate-300 leading-relaxed">
+        {BRAND.name} is a free web tool for saving public Pinterest media — pins, videos, boards, and profiles — without accounts, watermarks from us, or clutter.
+      </p>
     </div>
-  </div>
+
+    <div class="rounded-[2rem] overflow-hidden border border-black/[0.06] dark:border-white/[0.08] shadow-soft mb-12 aspect-[21/9] bg-gradient-to-br from-orange-200 via-rose-200 to-violet-200 dark:from-rose-950 dark:via-ink-900 dark:to-violet-950 flex items-center justify-center">
+      <img src="/images/logo.svg" alt={`${BRAND.name} logo`} width="96" height="96" class="w-24 h-24 drop-shadow-xl" />
+    </div>
+
+    <div class="prose-about space-y-10 text-lg text-ink-700 dark:text-slate-300 leading-relaxed">
+      <section>
+        <h2 class="font-display text-2xl sm:text-3xl text-ink-900 dark:text-white mb-4">Why we built {BRAND.name}</h2>
+        <p class="mb-4">
+          Pinterest is excellent for discovery and weak at exporting clean files. Designers, students, travelers, and DIY makers still need offline copies of <em>public</em> tutorials and references — especially on phones, flights, and job sites.
+        </p>
+        <p>
+          We built {BRAND.domain} to be the calm middle layer: paste a public link, get a real file, leave. No engagement traps. No forced signup. No pretending we can unlock private content.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl sm:text-3xl text-ink-900 dark:text-white mb-4">What we stand for</h2>
+        <ul class="space-y-3 list-none pl-0">
+          <li class="flex gap-3"><span class="text-brand-600 font-bold">→</span><span><strong class="text-ink-900 dark:text-white">Public only.</strong> Secret boards and private pins are out of scope on purpose.</span></li>
+          <li class="flex gap-3"><span class="text-brand-600 font-bold">→</span><span><strong class="text-ink-900 dark:text-white">Honest quality.</strong> We deliver the best stream Pinterest publishes — we do not invent 4K.</span></li>
+          <li class="flex gap-3"><span class="text-brand-600 font-bold">→</span><span><strong class="text-ink-900 dark:text-white">Creator respect.</strong> Offline study and personal reference are the sweet spot; commercial reuse needs real rights.</span></li>
+          <li class="flex gap-3"><span class="text-brand-600 font-bold">→</span><span><strong class="text-ink-900 dark:text-white">Premium simplicity.</strong> Apple-like clarity: large type, fewer distractions, tools that match URL intent.</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl sm:text-3xl text-ink-900 dark:text-white mb-4">The product surface</h2>
+        <p class="mb-4">Specialized pages keep extraction accurate:</p>
+        <div class="grid sm:grid-cols-2 gap-3 not-prose text-base">
+          <a href="/pinterest-pin-downloader" class="p-4 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 hover:border-brand-300 transition-colors font-medium text-ink-800 dark:text-slate-100">Pin / carousel</a>
+          <a href="/pinterest-video-downloader" class="p-4 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 hover:border-brand-300 transition-colors font-medium text-ink-800 dark:text-slate-100">Video MP4</a>
+          <a href="/pinterest-board-downloader" class="p-4 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 hover:border-brand-300 transition-colors font-medium text-ink-800 dark:text-slate-100">Board ZIP</a>
+          <a href="/pinterest-profile-downloader" class="p-4 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 hover:border-brand-300 transition-colors font-medium text-ink-800 dark:text-slate-100">Profile ZIP</a>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl sm:text-3xl text-ink-900 dark:text-white mb-4">Writing &amp; education</h2>
+        <p>
+          Our <a href="/blog" class="text-brand-600 font-semibold hover:underline">blog</a> is written Medium-style: long-form guides, clear structure, and back-links between tools and articles so you always have a next step. Start with the
+          <a href="/how-to-download-pinterest-videos" class="text-brand-600 font-semibold hover:underline">how-to guide</a>
+          or <a href="/blog/troubleshooting-pinterest-downloads" class="text-brand-600 font-semibold hover:underline">troubleshooting checklist</a>.
+        </p>
+      </section>
+
+      <section class="rounded-3xl bg-ink-50 dark:bg-white/[0.04] border border-black/[0.05] dark:border-white/[0.08] p-6 sm:p-8">
+        <h2 class="font-display text-2xl text-ink-900 dark:text-white mb-3">Disclaimer</h2>
+        <p class="text-base text-ink-600 dark:text-slate-400">
+          {BRAND.name} is an independent product at {BRAND.domain}. We are <strong>not</strong> affiliated with, sponsored by, or endorsed by Pinterest Inc. Use downloaded media responsibly and respect copyright and creator rights.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl sm:text-3xl text-ink-900 dark:text-white mb-4">Contact</h2>
+        <p>
+          Questions, feedback, or takedown requests: visit
+          <a href="/contact" class="text-brand-600 font-semibold hover:underline">Contact</a>
+          or email <a href={`mailto:${BRAND.email.support}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.support}</a>.
+        </p>
+      </section>
+    </div>
+
+    <div class="mt-14 flex flex-wrap gap-3">
+      <a href="/" class="inline-flex h-12 items-center px-6 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors">Try the downloader</a>
+      <a href="/blog" class="inline-flex h-12 items-center px-6 rounded-full border border-black/[0.08] dark:border-white/15 bg-white dark:bg-ink-900 font-semibold text-ink-800 dark:text-white hover:border-brand-300 transition-colors">Read the blog</a>
+    </div>
+  </article>
 </BaseLayout>

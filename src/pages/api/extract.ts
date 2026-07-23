@@ -58,9 +58,9 @@ interface MediaItem {
 
 // Helper to generate 5 harmonious colors from a dominant hex color
 function generatePalette(baseHex?: string | null): string[] {
-  let hex = (baseHex || '#E60023').replace('#', '');
+  let hex = (baseHex || '#E11D48').replace('#', '');
   if (hex.length === 3) hex = hex.split('').map((c) => c + c).join('');
-  if (!/^[0-9a-f]{6}$/i.test(hex)) hex = 'E60023';
+  if (!/^[0-9a-f]{6}$/i.test(hex)) hex = 'E11D48';
 
   const r = parseInt(hex.substring(0, 2), 16);
   const g = parseInt(hex.substring(2, 4), 16);

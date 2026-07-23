@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 export const prerender = false;
 
 const INDEXNOW_KEY = '43a9f021b38e4a99ab60a4f5c9e2b174';
-const HOST_DOMAIN = 'viralnest.com';
+const HOST_DOMAIN = 'pintdownload.app';
 
 const URL_LIST = [
   `https://${HOST_DOMAIN}/`,

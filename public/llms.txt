@@ -1,25 +1,25 @@
-# viralNest — Free Pinterest Downloaders (Pin, Video, Board, Profile)
+# PintDownload — Free Pinterest Downloaders (Pin, Video, Board, Profile)
 
-> viralNest is a free online suite for downloading public Pinterest media: single pins (image/video/GIF/carousel), HD videos (MP4), board ZIPs, and profile ZIPs. No registration required. Private and secret content is not supported.
+> PintDownload is a free online suite for downloading public Pinterest media: single pins (image/video/GIF/carousel), HD videos (MP4), board ZIPs, and profile ZIPs. No registration required. Private and secret content is not supported.
 
 ## Primary tools (distinct SEO intents)
 
-- [Pinterest Pin Downloader](https://viralnest.com/pinterest-pin-downloader): Single pin URL → image, video, GIF, or full carousel slides.
-- [Pinterest Video Downloader](https://viralnest.com/pinterest-video-downloader): Video pin → HD MP4 (and optional audio).
-- [Pinterest Board Downloader](https://viralnest.com/pinterest-board-downloader): Board URL (`/username/board/`) → multi-pin ZIP.
-- [Pinterest Profile Downloader](https://viralnest.com/pinterest-profile-downloader): Profile URL (`/username/`) → visible pins ZIP.
-- [Pinterest Image Downloader](https://viralnest.com/pinterest-image-downloader): Original-resolution still photos from pin links.
-- [Pinterest GIF Downloader](https://viralnest.com/pinterest-gif-downloader): Animated GIF pins.
-- [Pinterest Audio Downloader](https://viralnest.com/pinterest-audio-downloader): MP3 extraction from video pins.
+- [Pinterest Pin Downloader](https://pintdownload.app/pinterest-pin-downloader): Single pin URL → image, video, GIF, or full carousel slides.
+- [Pinterest Video Downloader](https://pintdownload.app/pinterest-video-downloader): Video pin → HD MP4 (and optional audio).
+- [Pinterest Board Downloader](https://pintdownload.app/pinterest-board-downloader): Board URL (`/username/board/`) → multi-pin ZIP.
+- [Pinterest Profile Downloader](https://pintdownload.app/pinterest-profile-downloader): Profile URL (`/username/`) → visible pins ZIP.
+- [Pinterest Image Downloader](https://pintdownload.app/pinterest-image-downloader): Original-resolution still photos from pin links.
+- [Pinterest GIF Downloader](https://pintdownload.app/pinterest-gif-downloader): Animated GIF pins.
+- [Pinterest Audio Downloader](https://pintdownload.app/pinterest-audio-downloader): MP3 extraction from video pins.
 
 ## Hub & guides
 
-- [Home](https://viralnest.com/): Tool hub and general extractor.
-- [How to download Pinterest videos](https://viralnest.com/how-to-download-pinterest-videos): Mobile and desktop guide.
-- [Blog](https://viralnest.com/blog): 20+ guides by the viralNest Team (schema-rich BlogPosting).
-- [RSS](https://viralnest.com/rss.xml): Full blog feed for subscribers and discovery.
-- [Sitemap](https://viralnest.com/sitemap.xml): All public URLs for crawlers.
-- [robots.txt](https://viralnest.com/robots.txt): Crawl rules.
+- [Home](https://pintdownload.app/): Tool hub and general extractor.
+- [How to download Pinterest videos](https://pintdownload.app/how-to-download-pinterest-videos): Mobile and desktop guide.
+- [Blog](https://pintdownload.app/blog): 20+ guides by the PintDownload Team (schema-rich BlogPosting).
+- [RSS](https://pintdownload.app/rss.xml): Full blog feed for subscribers and discovery.
+- [Sitemap](https://pintdownload.app/sitemap.xml): All public URLs for crawlers.
+- [robots.txt](https://pintdownload.app/robots.txt): Crawl rules.
 
 ## URL types
 

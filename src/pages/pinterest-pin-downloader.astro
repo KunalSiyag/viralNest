@@ -8,7 +8,7 @@ import CompareTable from '../components/seo/CompareTable.astro';
 import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 
 const path = '/pinterest-pin-downloader';
-const pageUrl = `https://viralnest.com${path}`;
+const pageUrl = `https://pintdownload.app${path}`;
 const title = 'Pinterest Pin Downloader — Save Any Pin, Video, GIF or Carousel Free';
 const description =
   'Free Pinterest pin downloader for single pin links. Download HD images, MP4 videos, GIFs, and every slide in multi-image carousels. No login, no watermark.';
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: 'Can I download every image in a carousel pin?',
-    a: 'Yes. viralNest reads full carousel data and returns every slide so you can download each file or pack them into a ZIP. Cover-only tools stop at the first image.',
+    a: 'Yes. PintDownload reads full carousel data and returns every slide so you can download each file or pack them into a ZIP. Cover-only tools stop at the first image.',
   },
   {
     q: 'Does the pin downloader work with videos and GIFs?',
@@ -32,21 +32,21 @@ const faqs = [
   },
   {
     q: 'Is the Pinterest pin downloader free?',
-    a: 'Yes. viralNest is free to use in the browser with no account required. Only public pins can be extracted.',
+    a: 'Yes. PintDownload is free to use in the browser with no account required. Only public pins can be extracted.',
   },
 ];
 
 const steps = [
   { title: 'Open the pin on Pinterest', body: 'On the app or website, open the exact pin you want (not the board grid).' },
   { title: 'Copy the pin link', body: 'Tap <strong>Share → Copy link</strong>, or copy the browser address bar when it contains <code>/pin/</code>.' },
-  { title: 'Paste into viralNest', body: 'Paste the pin or pin.it URL in the box above and run extract.' },
+  { title: 'Paste into PintDownload', body: 'Paste the pin or pin.it URL in the box above and run extract.' },
   { title: 'Download the file(s)', body: 'Save the HD image or MP4. For carousels, download each slide or use <strong>Download ZIP</strong>.' },
 ];
 
 const jsonLd = [
   webPageSchema({ name: title, description, url: pageUrl }),
   softwareAppSchema({
-    name: 'Pinterest Pin Downloader — viralNest',
+    name: 'Pinterest Pin Downloader — PintDownload',
     description,
     url: pageUrl,
   }),
@@ -61,12 +61,12 @@ const jsonLd = [
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
   <article class="flex flex-col items-center py-8 sm:py-12 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
       Single pin · Carousel · Video · GIF
     </div>
 
     <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
-      Pinterest <span class="text-[#E60023]">Pin Downloader</span>
+      Pinterest <span class="text-[#E11D48]">Pin Downloader</span>
     </h1>
 
     <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
@@ -109,7 +109,7 @@ const jsonLd = [
           <li>The pin is a <strong class="text-slate-800 dark:text-slate-200">carousel</strong> and you want every slide offline.</li>
           <li>You want MP4 quality options or image + caption/tags for reposting.</li>
           <li>You do <em>not</em> need every pin on a board — that is the{' '}
-            <a href="/pinterest-board-downloader" class="text-[#E60023] font-semibold hover:underline">Board ZIP tool</a>.</li>
+            <a href="/pinterest-board-downloader" class="text-[#E11D48] font-semibold hover:underline">Board ZIP tool</a>.</li>
         </ul>
       </section>
 

@@ -4,11 +4,14 @@ import {
   getAllPosts,
   getPostBySlug,
   getRelatedPosts,
+  getAdjacentPosts,
+  getPostsByCategory,
   BLOG_AUTHOR,
   BLOG_PUBLISHER,
   getCoverUrl,
   estimateWordCount,
 } from '../../data/blog';
+import { BRAND } from '../../lib/brand';
 
 export function getStaticPaths() {
   return getAllPosts().map((post) => ({
@@ -24,9 +27,18 @@ if (!post) {
 }
 
 const related = getRelatedPosts(post, 4);
-const pageUrl = `https://viralnest.com/blog/${post.slug}`;
+const sameCategory = getPostsByCategory(post.category, post.slug, 3);
+const { prev, next } = getAdjacentPosts(post);
+const pageUrl = `${BRAND.url}/blog/${post.slug}`;
 const coverUrl = getCoverUrl(post);
 const wordCount = estimateWordCount(post.content);
+
+// Extract H2s for a light Medium-style outline
+const headingMatches = [...post.content.matchAll(/<h2[^>]*>(.*?)<\/h2>/gi)];
+const outline = headingMatches
+  .map((m) => m[1].replace(/<[^>]+>/g, '').trim())
+  .filter(Boolean)
+  .slice(0, 8);
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -45,15 +57,9 @@ const articleSchema = {
     '@type': 'Organization',
     name: BLOG_PUBLISHER.name,
     url: BLOG_PUBLISHER.url,
-    logo: {
-      '@type': 'ImageObject',
-      url: BLOG_PUBLISHER.logo,
-    },
+    logo: { '@type': 'ImageObject', url: BLOG_PUBLISHER.logo },
   },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': pageUrl,
-  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
   articleSection: post.category,
   keywords: post.tags.join(', '),
   inLanguage: 'en-US',
@@ -65,62 +71,90 @@ const breadcrumbExtra = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://viralnest.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://viralnest.com/blog' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BRAND.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BRAND.url}/blog` },
     { '@type': 'ListItem', position: 3, name: post.title, item: pageUrl },
   ],
 };
+
+const toolLinks = [
+  { href: '/pinterest-video-downloader', label: 'Video MP4' },
+  { href: '/pinterest-pin-downloader', label: 'Pin / Carousel' },
+  { href: '/pinterest-board-downloader', label: 'Board ZIP' },
+  { href: '/pinterest-profile-downloader', label: 'Profile ZIP' },
+];
 ---
 
 <BaseLayout
-  title={`${post.title} — viralNest Blog`}
+  title={`${post.title} — ${BRAND.name} Blog`}
   description={post.description}
   canonicalUrl={pageUrl}
   image={post.coverImage}
   ogType="article"
+  clean
+  fullBleed
   jsonLd={[articleSchema, breadcrumbExtra]}
 >
-  <article class="max-w-3xl mx-auto py-8 text-left w-full">
-    <nav class="text-xs font-semibold text-slate-500 mb-6 flex flex-wrap items-center gap-1.5" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-[#E60023]">Home</a>
-      <span aria-hidden="true">/</span>
-      <a href="/blog" class="hover:text-[#E60023]">Blog</a>
-      <span aria-hidden="true">/</span>
-      <span class="text-slate-700 dark:text-slate-300 line-clamp-1">{post.category}</span>
-    </nav>
+  <article class="w-full">
+    <!-- Medium-style top meta -->
+    <header class="max-w-medium mx-auto px-4 sm:px-6 pt-6 sm:pt-10">
+      <nav class="text-sm font-medium text-ink-500 mb-8 flex flex-wrap items-center gap-2" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-brand-600">Home</a>
+        <span class="text-ink-300" aria-hidden="true">/</span>
+        <a href="/blog" class="hover:text-brand-600">Blog</a>
+        <span class="text-ink-300" aria-hidden="true">/</span>
+        <a href={`/blog?cat=${encodeURIComponent(post.category)}`} class="hover:text-brand-600">{post.category}</a>
+      </nav>
 
-    <div class="flex flex-wrap items-center gap-2 mb-4">
-      <span class="px-2.5 py-1 rounded-md bg-red-50 dark:bg-red-950/50 text-[#E60023] text-xs font-bold uppercase tracking-wider">
-        {post.category}
-      </span>
-      {post.tags.slice(0, 3).map((tag) => (
-        <span class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-semibold">
-          {tag}
-        </span>
-      ))}
-    </div>
+      <p class="text-brand-600 font-semibold text-sm tracking-wide mb-4">{post.category}</p>
 
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 leading-tight text-wrap balance">
-      {post.title}
-    </h1>
+      <h1
+        class="font-display text-[2.35rem] sm:text-5xl text-ink-900 dark:text-white tracking-tight leading-[1.12] mb-6"
+        style="text-wrap: balance;"
+      >
+        {post.title}
+      </h1>
 
-    <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex flex-wrap items-center gap-x-2 gap-y-1">
-      <span>
-        By <a href="/about" class="font-bold text-slate-800 dark:text-slate-200 hover:text-[#E60023]">viralNest Team</a>
-      </span>
-      <span class="text-slate-300" aria-hidden="true">·</span>
-      <time datetime={post.datePublished}>Published {post.datePublished}</time>
-      <span class="text-slate-300" aria-hidden="true">·</span>
-      <time datetime={post.dateModified}>Updated {post.dateModified}</time>
-      <span class="text-slate-300" aria-hidden="true">·</span>
-      <span>~{post.readTimeMin} min read</span>
-      <span class="text-slate-300" aria-hidden="true">·</span>
-      <span class="tabular-nums">{wordCount.toLocaleString()} words</span>
-    </p>
+      <p class="text-xl sm:text-2xl text-ink-500 dark:text-slate-400 leading-relaxed mb-8 font-serif" style="text-wrap: pretty;">
+        {post.excerpt}
+      </p>
 
-    <!-- Cover image -->
-    <figure class="not-prose mb-8 -mx-0">
-      <div class="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm bg-slate-100 dark:bg-slate-900 aspect-[16/9]">
+      <!-- Author row (Medium-style) -->
+      <div class="flex flex-wrap items-center gap-4 pb-8 border-b border-black/[0.06] dark:border-white/[0.08]">
+        <a href="/about" class="flex items-center gap-3 group min-w-0">
+          <img
+            src="/images/logo.svg"
+            alt=""
+            width="48"
+            height="48"
+            class="w-12 h-12 rounded-full border border-black/[0.06] shadow-soft"
+          />
+          <div class="min-w-0 text-left">
+            <p class="font-semibold text-ink-900 dark:text-white group-hover:text-brand-600 transition-colors truncate">
+              {BLOG_AUTHOR.name}
+            </p>
+            <p class="text-sm text-ink-500 tabular-nums">
+              <time datetime={post.datePublished}>{post.datePublished}</time>
+              <span class="mx-1.5 text-ink-300">·</span>
+              {post.readTimeMin} min read
+              <span class="mx-1.5 text-ink-300">·</span>
+              {wordCount.toLocaleString()} words
+            </p>
+          </div>
+        </a>
+        <div class="flex flex-wrap gap-2 sm:ml-auto">
+          {post.tags.slice(0, 4).map((tag) => (
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-ink-50 dark:bg-white/[0.06] text-ink-600 dark:text-slate-300">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <!-- Cover -->
+    <figure class="max-w-3xl mx-auto px-4 sm:px-6 mt-10 mb-10">
+      <div class="overflow-hidden rounded-2xl sm:rounded-3xl border border-black/[0.06] dark:border-white/[0.08] shadow-soft aspect-[16/9] bg-ink-100 dark:bg-ink-900">
         <img
           src={post.coverImage}
           alt={post.coverAlt}
@@ -132,72 +166,219 @@ const breadcrumbExtra = {
           fetchpriority="high"
         />
       </div>
-      <figcaption class="sr-only">{post.coverAlt}</figcaption>
     </figure>
 
-    <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed border-l-4 border-[#E60023]/pl-4">
-      {post.excerpt}
-    </p>
+    <!-- Outline + body -->
+    <div class="max-w-medium mx-auto px-4 sm:px-6">
+      {outline.length >= 3 && (
+        <aside class="mb-10 p-5 sm:p-6 rounded-2xl bg-ink-50/80 dark:bg-white/[0.04] border border-black/[0.05] dark:border-white/[0.08]">
+          <p class="text-sm font-semibold uppercase tracking-wider text-ink-500 mb-3">In this article</p>
+          <ol class="space-y-2 text-base text-ink-700 dark:text-slate-300 list-decimal list-inside">
+            {outline.map((h) => (
+              <li class="leading-snug">{h}</li>
+            ))}
+          </ol>
+        </aside>
+      )}
 
-    <div
-      class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm prose prose-slate dark:prose-invert max-w-none prose-headings:scroll-mt-24 prose-headings:font-extrabold prose-h2:text-2xl prose-h2:mt-10 prose-h3:text-lg prose-a:text-[#E60023] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-900 dark:prose-strong:text-white prose-li:my-1 leading-relaxed"
-      set:html={post.content}
-    />
+      <div
+        class="medium-body font-serif text-ink-800 dark:text-slate-200"
+        set:html={post.content}
+      />
 
-    <!-- Tool strip -->
-    <aside class="mt-10 p-6 rounded-3xl bg-gradient-to-br from-white to-red-50/60 dark:from-slate-900 dark:to-red-950/20 border border-red-200 dark:border-red-900/40 text-center shadow-sm">
-      <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2">Try viralNest now</h2>
-      <p class="text-slate-600 dark:text-slate-400 text-sm mb-5 max-w-md mx-auto">
-        Paste a public Pinterest link and download free — pin, video, board ZIP, or profile ZIP.
-      </p>
-      <div class="flex flex-wrap justify-center gap-2">
-        <a href="/pinterest-video-downloader" class="inline-flex h-11 px-5 items-center rounded-xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-md shadow-red-500/20 transition-all touch-manipulation">Video MP4</a>
-        <a href="/pinterest-pin-downloader" class="inline-flex h-11 px-5 items-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-bold text-sm hover:border-red-200 transition-all touch-manipulation">Pin / Carousel</a>
-        <a href="/pinterest-board-downloader" class="inline-flex h-11 px-5 items-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-bold text-sm hover:border-red-200 transition-all touch-manipulation">Board ZIP</a>
-        <a href="/pinterest-profile-downloader" class="inline-flex h-11 px-5 items-center rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-bold text-sm hover:border-red-200 transition-all touch-manipulation">Profile ZIP</a>
-      </div>
-    </aside>
+      <!-- Author footer card -->
+      <aside class="mt-14 p-6 sm:p-8 rounded-3xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 shadow-soft flex flex-col sm:flex-row gap-5 items-start">
+        <img src="/images/logo.svg" alt="" width="64" height="64" class="w-16 h-16 rounded-full border border-black/[0.06]" />
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-ink-400 mb-1">Written by</p>
+          <a href="/about" class="text-xl font-semibold text-ink-900 dark:text-white hover:text-brand-600">
+            {BLOG_AUTHOR.name}
+          </a>
+          <p class="mt-2 text-base text-ink-500 dark:text-slate-400 leading-relaxed">
+            Guides and tooling notes from the team behind {BRAND.name} — free public Pinterest downloads on {BRAND.domain}.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+            <a href="/about" class="text-brand-600 hover:underline">About</a>
+            <a href="/blog" class="text-brand-600 hover:underline">More articles</a>
+            <a href="/rss.xml" class="text-brand-600 hover:underline">RSS</a>
+          </div>
+        </div>
+      </aside>
 
-    <!-- Related posts -->
-    {related.length > 0 && (
-      <section class="mt-12" aria-labelledby="related-heading">
-        <h2 id="related-heading" class="text-xl font-extrabold text-slate-900 dark:text-white mb-4">
-          Keep reading
-        </h2>
-        <ul class="grid sm:grid-cols-2 gap-4">
-          {related.map((r) => (
-            <li>
-              <a
-                href={`/blog/${r.slug}`}
-                class="group block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-red-200 dark:hover:border-red-900 transition-colors h-full overflow-hidden"
-              >
-                <div class="aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-slate-800">
-                  <img
-                    src={r.coverImage}
-                    alt={r.coverAlt}
-                    width={640}
-                    height={360}
-                    class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div class="p-4">
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E60023]">{r.category}</span>
-                  <span class="block mt-1 font-bold text-sm text-slate-900 dark:text-white leading-snug">{r.title}</span>
-                  <span class="block mt-1 text-[11px] text-slate-500 tabular-nums">{r.readTimeMin}&nbsp;min read</span>
-                </div>
-              </a>
-            </li>
+      <!-- Tool back-channel -->
+      <aside class="mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-brand-50 to-orange-50 dark:from-brand-950/30 dark:to-ink-900 border border-brand-100 dark:border-brand-900/40 text-center">
+        <h2 class="font-display text-2xl text-ink-900 dark:text-white mb-2">Try it on {BRAND.name}</h2>
+        <p class="text-base text-ink-600 dark:text-slate-400 mb-5 max-w-md mx-auto">
+          Paste a public Pinterest link — pin, video, board ZIP, or profile ZIP.
+        </p>
+        <div class="flex flex-wrap justify-center gap-2">
+          {toolLinks.map((t) => (
+            <a
+              href={t.href}
+              class="inline-flex h-11 px-5 items-center rounded-full bg-white dark:bg-ink-950 border border-black/[0.08] dark:border-white/10 text-ink-900 dark:text-white font-semibold text-sm hover:border-brand-300 hover:text-brand-700 transition-colors"
+            >
+              {t.label}
+            </a>
           ))}
-        </ul>
-      </section>
-    )}
+        </div>
+      </aside>
 
-    <p class="mt-10 text-center text-sm">
-      <a href="/blog" class="font-bold text-[#E60023] hover:underline">← All viralNest guides</a>
-      <span class="text-slate-300 mx-2">·</span>
-      <a href="/rss.xml" class="font-semibold text-slate-600 dark:text-slate-400 hover:text-[#E60023]">RSS</a>
-    </p>
+      <!-- Prev / Next (Medium back channel) -->
+      <nav class="mt-12 grid sm:grid-cols-2 gap-4" aria-label="Adjacent articles">
+        {prev ? (
+          <a
+            href={`/blog/${prev.slug}`}
+            class="group p-5 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 hover:border-brand-300 transition-colors text-left"
+          >
+            <span class="text-sm font-medium text-ink-400">← Newer</span>
+            <span class="block mt-1 font-semibold text-ink-900 dark:text-white group-hover:text-brand-600 leading-snug">
+              {prev.title}
+            </span>
+          </a>
+        ) : (
+          <div></div>
+        )}
+        {next ? (
+          <a
+            href={`/blog/${next.slug}`}
+            class="group p-5 rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 hover:border-brand-300 transition-colors text-left sm:text-right"
+          >
+            <span class="text-sm font-medium text-ink-400">Older →</span>
+            <span class="block mt-1 font-semibold text-ink-900 dark:text-white group-hover:text-brand-600 leading-snug">
+              {next.title}
+            </span>
+          </a>
+        ) : null}
+      </nav>
+
+      <!-- Same category channel -->
+      {sameCategory.length > 0 && (
+        <section class="mt-12" aria-labelledby="same-cat-heading">
+          <h2 id="same-cat-heading" class="text-sm font-semibold uppercase tracking-wider text-ink-400 mb-4">
+            More in {post.category}
+          </h2>
+          <ul class="space-y-3">
+            {sameCategory.map((r) => (
+              <li>
+                <a href={`/blog/${r.slug}`} class="text-lg font-medium text-ink-800 dark:text-slate-200 hover:text-brand-600 underline-offset-4 hover:underline">
+                  {r.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <!-- Related with covers -->
+      {related.length > 0 && (
+        <section class="mt-14 mb-20" aria-labelledby="related-heading">
+          <h2 id="related-heading" class="font-display text-2xl sm:text-3xl text-ink-900 dark:text-white mb-6">
+            Keep reading
+          </h2>
+          <ul class="grid sm:grid-cols-2 gap-5">
+            {related.map((r) => (
+              <li>
+                <a
+                  href={`/blog/${r.slug}`}
+                  class="group block rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 overflow-hidden hover:shadow-lift transition-shadow h-full"
+                >
+                  <div class="aspect-[16/9] overflow-hidden bg-ink-100 dark:bg-ink-800">
+                    <img
+                      src={r.coverImage}
+                      alt={r.coverAlt}
+                      width={640}
+                      height={360}
+                      class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="p-4 sm:p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-brand-600">{r.category}</span>
+                    <span class="block mt-1 font-semibold text-ink-900 dark:text-white leading-snug group-hover:text-brand-600">
+                      {r.title}
+                    </span>
+                    <span class="block mt-2 text-sm text-ink-400 tabular-nums">{r.readTimeMin} min read</span>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <p class="mb-16 text-center text-base">
+        <a href="/blog" class="font-semibold text-brand-600 hover:underline">← All articles</a>
+        <span class="text-ink-300 mx-2">·</span>
+        <a href="/" class="font-semibold text-brand-600 hover:underline">Downloader</a>
+      </p>
+    </div>
   </article>
 </BaseLayout>
+
+<style is:global>
+  /* Medium-like article body */
+  .medium-body {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+  .medium-body > *:first-child {
+    margin-top: 0;
+  }
+  .medium-body p {
+    margin: 1.35em 0;
+  }
+  .medium-body h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    font-weight: 400;
+    color: inherit;
+    margin: 2.25em 0 0.75em;
+    scroll-margin-top: 6rem;
+  }
+  .medium-body h3 {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 650;
+    margin: 1.75em 0 0.5em;
+    scroll-margin-top: 6rem;
+  }
+  .medium-body a {
+    color: #E11D48;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .medium-body a:hover {
+    text-decoration-thickness: 2px;
+  }
+  .medium-body ul,
+  .medium-body ol {
+    margin: 1.25em 0;
+    padding-left: 1.35em;
+  }
+  .medium-body li {
+    margin: 0.45em 0;
+  }
+  .medium-body strong {
+    font-weight: 650;
+    color: #0f172a;
+  }
+  .dark .medium-body strong {
+    color: #f8fafc;
+  }
+  .medium-body code {
+    font-size: 0.88em;
+    padding: 0.15em 0.4em;
+    border-radius: 0.4em;
+    background: rgba(15, 23, 42, 0.06);
+  }
+  .dark .medium-body code {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .medium-body .not-prose {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+</style>

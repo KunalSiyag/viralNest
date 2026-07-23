@@ -1,5 +1,5 @@
 /* No-op service worker — stops /sw.js 404 noise from browsers/extensions.
-   viralNest is not a PWA; this file unregisters any previously installed SW. */
+   PintDownload is not a PWA; this file unregisters any previously installed SW. */
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });

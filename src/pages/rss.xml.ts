@@ -16,8 +16,8 @@ export const GET: APIRoute = async () => {
   const posts = getAllPosts();
   const items = posts
     .map((post) => {
-      const link = `https://viralnest.com/blog/${post.slug}`;
-      const image = `https://viralnest.com${post.coverImage}`;
+      const link = `https://pintdownload.app/blog/${post.slug}`;
+      const image = `https://pintdownload.app${post.coverImage}`;
       return `
     <item>
       <title>${escapeXml(post.title)}</title>
@@ -38,12 +38,12 @@ export const GET: APIRoute = async () => {
   xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>viralNest Blog — Pinterest Download Guides</title>
-    <link>https://viralnest.com/blog</link>
-    <description>Tips, guides, and troubleshooting for Pinterest pin, video, board ZIP, and profile ZIP downloads. By the viralNest Team.</description>
+    <title>PintDownload Blog — Pinterest Download Guides</title>
+    <link>https://pintdownload.app/blog</link>
+    <description>Tips, guides, and troubleshooting for Pinterest pin, video, board ZIP, and profile ZIP downloads. By the PintDownload Team.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="https://viralnest.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://pintdownload.app/rss.xml" rel="self" type="application/rss+xml"/>
     <managingEditor>${escapeXml(BLOG_AUTHOR.name)}</managingEditor>
     <webMaster>${escapeXml(BLOG_PUBLISHER.name)}</webMaster>
     ${items}

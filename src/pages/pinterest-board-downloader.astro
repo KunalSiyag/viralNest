@@ -8,7 +8,7 @@ import CompareTable from '../components/seo/CompareTable.astro';
 import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 
 const path = '/pinterest-board-downloader';
-const pageUrl = `https://viralnest.com${path}`;
+const pageUrl = `https://pintdownload.app${path}`;
 const title = 'Pinterest Board Downloader — Download Entire Board as ZIP Free';
 const description =
   'Free Pinterest board downloader: paste a public board URL, extract pins (images & videos), and download the board as a ZIP. Batch board pin saver online — no login.';
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'Can I download secret or private boards?',
-    a: 'No. viralNest only extracts public boards. Secret boards, private profiles, and login-only pins cannot be accessed by this tool.',
+    a: 'No. PintDownload only extracts public boards. Secret boards, private profiles, and login-only pins cannot be accessed by this tool.',
   },
   {
     q: 'How many pins can I get from a board?',
@@ -50,7 +50,7 @@ const steps = [
 const jsonLd = [
   webPageSchema({ name: title, description, url: pageUrl }),
   softwareAppSchema({
-    name: 'Pinterest Board Downloader — viralNest',
+    name: 'Pinterest Board Downloader — PintDownload',
     description,
     url: pageUrl,
   }),
@@ -65,12 +65,12 @@ const jsonLd = [
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
   <article class="flex flex-col items-center py-8 sm:py-12 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
       Board URL → multi-pin ZIP
     </div>
 
     <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
-      Pinterest <span class="text-[#E60023]">Board Downloader</span>
+      Pinterest <span class="text-[#E11D48]">Board Downloader</span>
     </h1>
 
     <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
@@ -123,8 +123,8 @@ const jsonLd = [
         </h2>
         <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
           <li class="flex gap-2"><span class="text-emerald-600 font-bold">✓</span> <span><code class="text-xs">pinterest.com/username/board-name/</code> — correct board link</span></li>
-          <li class="flex gap-2"><span class="text-red-500 font-bold">✗</span> <span><code class="text-xs">pinterest.com/pin/123/</code> — that is a pin; use the <a href="/pinterest-pin-downloader" class="text-[#E60023] font-semibold hover:underline">Pin Downloader</a></span></li>
-          <li class="flex gap-2"><span class="text-red-500 font-bold">✗</span> <span><code class="text-xs">pinterest.com/username/</code> only — that is a profile; use the <a href="/pinterest-profile-downloader" class="text-[#E60023] font-semibold hover:underline">Profile Downloader</a></span></li>
+          <li class="flex gap-2"><span class="text-red-500 font-bold">✗</span> <span><code class="text-xs">pinterest.com/pin/123/</code> — that is a pin; use the <a href="/pinterest-pin-downloader" class="text-[#E11D48] font-semibold hover:underline">Pin Downloader</a></span></li>
+          <li class="flex gap-2"><span class="text-red-500 font-bold">✗</span> <span><code class="text-xs">pinterest.com/username/</code> only — that is a profile; use the <a href="/pinterest-profile-downloader" class="text-[#E11D48] font-semibold hover:underline">Profile Downloader</a></span></li>
           <li class="flex gap-2"><span class="text-red-500 font-bold">✗</span> <span>Secret boards or private accounts — not publicly extractable</span></li>
         </ul>
       </section>

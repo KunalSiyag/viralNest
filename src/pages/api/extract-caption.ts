@@ -15,7 +15,7 @@ function generateSmartCaption(
     .map(t => `#${t.replace(/[^a-z0-9]/gi, '')}`)
     .join(' ');
 
-  const creditLine = `📌 Reposted via @viralNest`;
+  const creditLine = `📌 Reposted via @PintDownload`;
 
   if (platform === 'reels') {
     if (tone === 'aesthetic') {
@@ -40,7 +40,7 @@ function generateSmartCaption(
   }
 
   // Pinterest Repost Caption
-  return `📌 ${cleanTitle}\n\n${description ? description.slice(0, 150) + '...' : 'Aesthetic inspiration saved for your boards.'}\n\nSaved with @viralNest\n\n${hashtagStr}`;
+  return `📌 ${cleanTitle}\n\n${description ? description.slice(0, 150) + '...' : 'Aesthetic inspiration saved for your boards.'}\n\nSaved with @PintDownload\n\n${hashtagStr}`;
 }
 
 export const POST: APIRoute = async ({ request }) => {

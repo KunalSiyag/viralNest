@@ -1,18 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getAllPosts, getCategories, BLOG_PUBLISHER, getCoverUrl } from '../../data/blog';
+import {
+  getAllPosts,
+  getCategories,
+  BLOG_PUBLISHER,
+  getCoverUrl,
+} from '../../data/blog';
+import { BRAND } from '../../lib/brand';
 
 const articles = getAllPosts();
 const categories = getCategories();
 const featured = articles[0];
+const rest = articles.slice(1);
+const BLOG_AUTHOR_NAME = 'PintDownload Team';
 
 const blogHubSchema = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
-  name: 'viralNest Blog — Pinterest Download Guides',
-  description:
-    'In-depth tips, guides, and troubleshooting for downloading Pinterest videos, boards, profiles, GIFs, and images. Written by the viralNest Team.',
-  url: 'https://viralnest.com/blog',
+  name: `${BRAND.name} Blog — Pinterest Download Guides`,
+  description: `In-depth Medium-style guides for downloading Pinterest videos, boards, profiles, GIFs, and images. By the ${BRAND.name} Team.`,
+  url: `${BRAND.url}/blog`,
   publisher: {
     '@type': 'Organization',
     name: BLOG_PUBLISHER.name,
@@ -22,141 +29,145 @@ const blogHubSchema = {
   blogPost: articles.map((a) => ({
     '@type': 'BlogPosting',
     headline: a.title,
-    url: `https://viralnest.com/blog/${a.slug}`,
+    url: `${BRAND.url}/blog/${a.slug}`,
     image: getCoverUrl(a),
     datePublished: a.datePublished,
     dateModified: a.dateModified,
-    author: { '@type': 'Organization', name: 'viralNest Team' },
+    author: { '@type': 'Organization', name: BLOG_AUTHOR_NAME },
   })),
 };
 ---
 
 <BaseLayout
-  title="Pinterest Blog & Guides — viralNest Team Tutorials"
-  description="In-depth tips, guides, and troubleshooting for downloading Pinterest videos, boards, profiles, GIFs, and images. Written by the viralNest Team."
-  canonicalUrl="https://viralnest.com/blog"
+  title={`Blog & Guides — ${BRAND.name}`}
+  description={`Long-form Pinterest download guides: video MP4, board ZIP, troubleshooting, mobile tips, and more. Written by the ${BRAND.name} Team.`}
+  canonicalUrl={`${BRAND.url}/blog`}
   image={featured?.coverImage}
+  clean
+  fullBleed
   jsonLd={blogHubSchema}
 >
-  <div class="flex flex-col items-center py-8 sm:py-12 text-center w-full">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
-      viralNest Blog · Long-form guides · By viralNest Team
+  <div class="w-full">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 text-center mb-12">
+      <p class="text-brand-600 font-semibold text-sm tracking-wide uppercase mb-3">Journal</p>
+      <h1 class="font-display text-4xl sm:text-6xl text-ink-900 dark:text-white tracking-tight mb-4" style="text-wrap: balance;">
+        Guides worth reading slowly
+      </h1>
+      <p class="text-xl text-ink-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
+        Medium-style articles on pins, videos, boards, and offline workflows — with clear paths back to the tools.
+      </p>
+      <p class="mt-6 text-base text-ink-400">
+        <a href="/rss.xml" class="font-semibold text-brand-600 hover:underline">RSS</a>
+        <span class="mx-2">·</span>
+        <a href="/" class="hover:text-brand-600">Downloader</a>
+        <span class="mx-2">·</span>
+        <a href="/about" class="hover:text-brand-600">About</a>
+      </p>
     </div>
 
-    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight leading-tight max-w-3xl">
-      Pinterest <span class="text-[#E60023]">Blog & Guides</span>
-    </h1>
-
-    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mb-4 leading-relaxed">
-      In-depth articles on pin, video, board ZIP, and profile ZIP downloads — practical steps, troubleshooting, and workflows written like real guides, not stubs.
-    </p>
-
-    <p class="text-xs text-slate-500 mb-8 flex flex-wrap justify-center gap-3">
-      <a href="/rss.xml" class="font-bold text-[#E60023] hover:underline">RSS feed</a>
-      <span aria-hidden="true">·</span>
-      <a href="/pinterest-video-downloader" class="hover:text-[#E60023]">Video</a>
-      <a href="/pinterest-board-downloader" class="hover:text-[#E60023]">Board ZIP</a>
-      <a href="/pinterest-profile-downloader" class="hover:text-[#E60023]">Profile ZIP</a>
-      <a href="/pinterest-pin-downloader" class="hover:text-[#E60023]">Pin</a>
-    </p>
-
     <!-- Category chips -->
-    <div class="flex flex-wrap justify-center gap-2 mb-10 max-w-3xl">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 flex flex-wrap justify-center gap-2 mb-12">
       {categories.map((cat) => (
         <a
           href={`#cat-${cat.replace(/\s+/g, '-').toLowerCase()}`}
-          class="px-3 py-1.5 rounded-full text-xs font-bold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-red-200 hover:text-[#E60023] transition-colors touch-manipulation"
+          class="px-4 py-2 rounded-full text-sm font-medium bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.08] text-ink-700 dark:text-slate-200 hover:border-brand-300 hover:text-brand-700 transition-colors"
         >
           {cat}
         </a>
       ))}
     </div>
 
-    <!-- Featured article -->
+    <!-- Featured (Medium magazine) -->
     {featured && (
       <a
         href={`/blog/${featured.slug}`}
-        class="group w-full mb-8 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-red-200 dark:hover:border-red-900 transition-all text-left"
+        class="group block max-w-5xl mx-auto px-4 sm:px-6 mb-14"
       >
-        <div class="grid md:grid-cols-2 gap-0">
-          <div class="aspect-[16/10] md:aspect-auto md:min-h-[280px] overflow-hidden bg-slate-100 dark:bg-slate-800">
-            <img
-              src={featured.coverImage}
-              alt={featured.coverAlt}
-              width={1200}
-              height={675}
-              class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-              loading="eager"
-              decoding="async"
-              fetchpriority="high"
-            />
-          </div>
-          <div class="p-6 sm:p-8 flex flex-col justify-center min-w-0">
-            <div class="flex items-center gap-2 mb-3 flex-wrap">
-              <span class="px-2.5 py-1 rounded-md bg-red-50 dark:bg-red-950/50 text-[#E60023] text-[10px] font-bold uppercase tracking-wider">
-                Featured · {featured.category}
-              </span>
-              <span class="text-[11px] font-medium text-slate-400 tabular-nums">
-                {featured.datePublished} · {featured.readTimeMin}&nbsp;min
-              </span>
+        <div class="rounded-[1.75rem] overflow-hidden border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 shadow-soft hover:shadow-lift transition-shadow">
+          <div class="grid md:grid-cols-2">
+            <div class="aspect-[16/10] md:aspect-auto md:min-h-[320px] overflow-hidden bg-ink-100">
+              <img
+                src={featured.coverImage}
+                alt={featured.coverAlt}
+                width={1200}
+                height={675}
+                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                loading="eager"
+                fetchpriority="high"
+              />
             </div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 group-hover:text-[#E60023] transition-colors leading-snug">
-              {featured.title}
-            </h2>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3 mb-4">
-              {featured.excerpt}
-            </p>
-            <span class="text-xs font-extrabold text-[#E60023]">Read full article →</span>
+            <div class="p-7 sm:p-10 flex flex-col justify-center text-left">
+              <span class="text-sm font-semibold text-brand-600 mb-3">{featured.category}</span>
+              <h2 class="font-display text-3xl sm:text-4xl text-ink-900 dark:text-white leading-tight mb-4 group-hover:text-brand-600 transition-colors" style="text-wrap: balance;">
+                {featured.title}
+              </h2>
+              <p class="text-lg text-ink-500 dark:text-slate-400 leading-relaxed mb-5 line-clamp-3">
+                {featured.excerpt}
+              </p>
+              <p class="text-sm text-ink-400 tabular-nums">
+                {featured.datePublished} · {featured.readTimeMin} min read
+              </p>
+            </div>
           </div>
         </div>
       </a>
     )}
 
-    <div class="grid sm:grid-cols-2 gap-5 w-full text-left">
-      {articles.slice(1).map((art) => (
+    <!-- Story list (Medium-like rows on desktop) -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 pb-20 space-y-10">
+      {rest.map((art) => (
         <a
           href={`/blog/${art.slug}`}
-          class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-red-200 dark:hover:border-red-900 transition-all flex flex-col group min-w-0 overflow-hidden"
+          class="group grid sm:grid-cols-[1fr_140px] gap-5 sm:gap-8 items-start text-left border-b border-black/[0.06] dark:border-white/[0.08] pb-10 last:border-0"
         >
-          <div class="aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-slate-800">
+          <div class="min-w-0 order-2 sm:order-1">
+            <div class="flex items-center gap-2 mb-2 text-sm">
+              <span
+                id={`cat-${art.category.replace(/\s+/g, '-').toLowerCase()}`}
+                class="font-semibold text-brand-600"
+              >
+                {art.category}
+              </span>
+              <span class="text-ink-300">·</span>
+              <span class="text-ink-400 tabular-nums">{art.readTimeMin} min</span>
+            </div>
+            <h2 class="font-display text-2xl sm:text-3xl text-ink-900 dark:text-white leading-snug mb-2 group-hover:text-brand-600 transition-colors" style="text-wrap: balance;">
+              {art.title}
+            </h2>
+            <p class="text-base sm:text-lg text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-2 mb-3">
+              {art.excerpt}
+            </p>
+            <p class="text-sm text-ink-400">
+              {BLOG_AUTHOR_NAME}
+              <span class="mx-1.5">·</span>
+              <time datetime={art.datePublished}>{art.datePublished}</time>
+            </p>
+          </div>
+          <div class="order-1 sm:order-2 aspect-[16/10] sm:aspect-square rounded-xl overflow-hidden bg-ink-100 dark:bg-ink-800 border border-black/[0.04]">
             <img
               src={art.coverImage}
               alt={art.coverAlt}
-              width={640}
-              height={360}
-              class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              width={280}
+              height={280}
+              class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
               loading="lazy"
-              decoding="async"
             />
-          </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
-                <span
-                  id={`cat-${art.category.replace(/\s+/g, '-').toLowerCase()}`}
-                  class="px-2.5 py-1 rounded-md bg-red-50 dark:bg-red-950/50 text-[#E60023] text-[10px] font-bold uppercase tracking-wider"
-                >
-                  {art.category}
-                </span>
-                <span class="text-[11px] font-medium text-slate-400 tabular-nums">
-                  {art.datePublished} · {art.readTimeMin}&nbsp;min
-                </span>
-              </div>
-              <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[#E60023] transition-colors leading-snug">
-                {art.title}
-              </h2>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-3 mb-3">
-                {art.excerpt}
-              </p>
-              <p class="text-[11px] font-semibold text-slate-500">By viralNest Team</p>
-            </div>
-            <div class="mt-4 flex items-center gap-1.5 text-xs font-extrabold text-[#E60023] group-hover:translate-x-1 transition-transform">
-              <span>Read full article</span>
-              <span aria-hidden="true">→</span>
-            </div>
           </div>
         </a>
       ))}
+    </div>
+
+    <!-- Back channel footer -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 pb-20 text-center">
+      <div class="p-8 rounded-3xl bg-ink-50 dark:bg-white/[0.04] border border-black/[0.05]">
+        <p class="font-display text-2xl text-ink-900 dark:text-white mb-2">Ready to download?</p>
+        <p class="text-base text-ink-500 mb-5">Jump back to the tools from any article.</p>
+        <div class="flex flex-wrap justify-center gap-2">
+          <a href="/" class="inline-flex h-11 px-5 items-center rounded-full bg-brand-600 text-white font-semibold text-sm hover:bg-brand-700">Home downloader</a>
+          <a href="/pinterest-video-downloader" class="inline-flex h-11 px-5 items-center rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] font-semibold text-sm">Video</a>
+          <a href="/pinterest-board-downloader" class="inline-flex h-11 px-5 items-center rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] font-semibold text-sm">Board ZIP</a>
+        </div>
+      </div>
     </div>
   </div>
 </BaseLayout>

@@ -1,23 +1,50 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BRAND } from '../lib/brand';
 ---
 
-<BaseLayout title="Contact Us — viralNest" description="Contact viralNest team for support or inquiry.">
-  <div class="max-w-3xl mx-auto py-8 text-left bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-sm">
-    <h1 class="text-3xl font-extrabold text-slate-900 mb-4">Contact Us</h1>
-    <p class="text-slate-600 text-sm leading-relaxed mb-8">
-      Have a question, feedback, or need to report an issue with viralNest? Get in touch with our team.
+<BaseLayout
+  title={`Contact ${BRAND.name} — Support & DMCA`}
+  description={`Contact the ${BRAND.name} team for product support, feedback, or copyright inquiries at ${BRAND.domain}.`}
+  clean
+>
+  <div class="max-w-2xl mx-auto">
+    <nav class="text-sm font-medium text-ink-500 mb-8 flex flex-wrap items-center gap-2" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span class="text-ink-300" aria-hidden="true">/</span>
+      <span class="text-ink-700 dark:text-slate-300">Contact</span>
+    </nav>
+
+    <h1 class="font-display text-4xl sm:text-5xl text-ink-900 dark:text-white tracking-tight mb-4">Contact</h1>
+    <p class="text-xl text-ink-600 dark:text-slate-300 leading-relaxed mb-10">
+      Support, feedback, partnerships, and copyright requests — we read every message.
     </p>
 
-    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
-      <div>
-        <h3 class="text-sm font-bold text-slate-900">Email Support</h3>
-        <p class="text-xs text-slate-600">support@viralnest.com</p>
+    <div class="space-y-4">
+      <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.08] shadow-soft">
+        <h2 class="text-lg font-semibold text-ink-900 dark:text-white mb-1">Product support</h2>
+        <p class="text-base text-ink-500 mb-3">Download issues, tool feedback, feature ideas.</p>
+        <a href={`mailto:${BRAND.email.support}`} class="text-lg font-semibold text-brand-600 hover:underline">{BRAND.email.support}</a>
       </div>
-      <div>
-        <h3 class="text-sm font-bold text-slate-900">DMCA & Copyright Inquiries</h3>
-        <p class="text-xs text-slate-600">dmca@viralnest.com</p>
+      <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.08] shadow-soft">
+        <h2 class="text-lg font-semibold text-ink-900 dark:text-white mb-1">DMCA &amp; copyright</h2>
+        <p class="text-base text-ink-500 mb-3">Rights holders and formal takedown notices.</p>
+        <a href={`mailto:${BRAND.email.dmca}`} class="text-lg font-semibold text-brand-600 hover:underline">{BRAND.email.dmca}</a>
       </div>
     </div>
+
+    <div class="mt-10 p-6 rounded-3xl bg-ink-50 dark:bg-white/[0.04] border border-black/[0.05] text-base text-ink-600 dark:text-slate-400 leading-relaxed">
+      <p class="mb-2"><strong class="text-ink-900 dark:text-white">Before you write:</strong> private and secret pins cannot be extracted — that is by design.</p>
+      <p>
+        See <a href="/blog/troubleshooting-pinterest-downloads" class="text-brand-600 font-semibold hover:underline">troubleshooting</a>
+        and <a href="/blog/pin-vs-board-vs-profile-urls-explained" class="text-brand-600 font-semibold hover:underline">URL types</a> for the most common fixes.
+      </p>
+    </div>
+
+    <p class="mt-10 text-base">
+      <a href="/about" class="font-semibold text-brand-600 hover:underline">About {BRAND.name}</a>
+      <span class="text-ink-300 mx-2">·</span>
+      <a href="/" class="font-semibold text-brand-600 hover:underline">Back to downloader</a>
+    </p>
   </div>
 </BaseLayout>

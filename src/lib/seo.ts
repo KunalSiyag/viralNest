@@ -76,8 +76,8 @@ export function webPageSchema(opts: {
     url: opts.url,
     isPartOf: {
       '@type': 'WebSite',
-      name: 'viralNest',
-      url: 'https://viralnest.com/',
+      name: 'PintDownload',
+      url: 'https://pintdownload.app/',
     },
   };
 }

@@ -7,7 +7,7 @@ import HowToSteps from '../components/seo/HowToSteps.astro';
 import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 
 const path = '/pinterest-image-downloader';
-const pageUrl = `https://viralnest.com${path}`;
+const pageUrl = `https://pintdownload.app${path}`;
 const title = 'Pinterest Image Downloader — Save Full HD Original Photos Free';
 const description =
   'Free Pinterest image downloader for original-resolution photos, wallpapers, and artwork. Paste a pin URL and save HD JPG without login or watermark.';
@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'Will I get the original size or a tiny thumbnail?',
-    a: 'viralNest prefers originals when available (not the small grid thumbnail). Some pins only expose mid-size CDN variants.',
+    a: 'PintDownload prefers originals when available (not the small grid thumbnail). Some pins only expose mid-size CDN variants.',
   },
   {
     q: 'Can I download multi-image carousels?',
@@ -40,7 +40,7 @@ const steps = [
 
 const jsonLd = [
   webPageSchema({ name: title, description, url: pageUrl }),
-  softwareAppSchema({ name: 'Pinterest Image Downloader — viralNest', description, url: pageUrl }),
+  softwareAppSchema({ name: 'Pinterest Image Downloader — PintDownload', description, url: pageUrl }),
   howToSchema({
     name: 'How to download Pinterest images in full resolution',
     description: 'Steps to save original HD photos from Pinterest pin links.',
@@ -52,12 +52,12 @@ const jsonLd = [
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
   <article class="flex flex-col items-center py-8 sm:py-12 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
       Original resolution · Photos · Artwork
     </div>
 
     <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
-      Pinterest <span class="text-[#E60023]">Image Downloader</span>
+      Pinterest <span class="text-[#E11D48]">Image Downloader</span>
     </h1>
 
     <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">

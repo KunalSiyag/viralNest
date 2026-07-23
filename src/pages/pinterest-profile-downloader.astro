@@ -8,7 +8,7 @@ import CompareTable from '../components/seo/CompareTable.astro';
 import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 
 const path = '/pinterest-profile-downloader';
-const pageUrl = `https://viralnest.com${path}`;
+const pageUrl = `https://pintdownload.app${path}`;
 const title = 'Pinterest Profile Downloader — Download Profile Pins as ZIP Free';
 const description =
   'Free Pinterest profile downloader: paste a public profile URL, extract visible pins, and download them as a ZIP. Bulk save creator pins online without login.';
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'Can I download every pin a user ever posted?',
-    a: 'No bulk tool can guarantee a full historical dump of a large account. viralNest extracts public pins visible from the profile page response, up to a practical public limit.',
+    a: 'No bulk tool can guarantee a full historical dump of a large account. PintDownload extracts public pins visible from the profile page response, up to a practical public limit.',
   },
   {
     q: 'Do private profiles work?',
@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: 'Is profile download legal / allowed?',
-    a: 'Only download content you have rights to use. viralNest is a technical helper for public media links; respect creators, Pinterest terms, and copyright.',
+    a: 'Only download content you have rights to use. PintDownload is a technical helper for public media links; respect creators, Pinterest terms, and copyright.',
   },
   {
     q: 'Why use a profile ZIP instead of saving pins one by one?',
@@ -50,7 +50,7 @@ const steps = [
 const jsonLd = [
   webPageSchema({ name: title, description, url: pageUrl }),
   softwareAppSchema({
-    name: 'Pinterest Profile Downloader — viralNest',
+    name: 'Pinterest Profile Downloader — PintDownload',
     description,
     url: pageUrl,
   }),
@@ -65,12 +65,12 @@ const jsonLd = [
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
   <article class="flex flex-col items-center py-8 sm:py-12 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
       Profile URL → bulk pin ZIP
     </div>
 
     <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
-      Pinterest <span class="text-[#E60023]">Profile Downloader</span>
+      Pinterest <span class="text-[#E11D48]">Profile Downloader</span>
     </h1>
 
     <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
@@ -110,8 +110,8 @@ const jsonLd = [
           Profile downloader vs board downloader
         </h2>
         <div class="grid sm:grid-cols-2 gap-3 text-sm">
-          <div class="p-4 rounded-2xl border-2 border-[#E60023]/30 bg-red-50/40 dark:bg-red-950/20 text-left">
-            <h3 class="font-extrabold text-[#E60023] mb-2">This page — Profile</h3>
+          <div class="p-4 rounded-2xl border-2 border-[#E11D48]/30 bg-red-50/40 dark:bg-red-950/20 text-left">
+            <h3 class="font-extrabold text-[#E11D48] mb-2">This page — Profile</h3>
             <ul class="space-y-1.5 text-slate-700 dark:text-slate-300 text-xs leading-relaxed list-disc pl-4">
               <li>URL: <code>pinterest.com/username/</code></li>
               <li>Goal: bulk pins from a creator’s public page</li>
@@ -120,7 +120,7 @@ const jsonLd = [
           </div>
           <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-left">
             <h3 class="font-extrabold text-slate-900 dark:text-white mb-2">
-              <a href="/pinterest-board-downloader" class="hover:text-[#E60023]">Board Downloader →</a>
+              <a href="/pinterest-board-downloader" class="hover:text-[#E11D48]">Board Downloader →</a>
             </h3>
             <ul class="space-y-1.5 text-slate-600 dark:text-slate-400 text-xs leading-relaxed list-disc pl-4">
               <li>URL: <code>pinterest.com/username/board/</code></li>

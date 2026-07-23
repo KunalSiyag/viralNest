@@ -8,7 +8,7 @@ import CompareTable from '../components/seo/CompareTable.astro';
 import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 
 const path = '/pinterest-video-downloader';
-const pageUrl = `https://viralnest.com${path}`;
+const pageUrl = `https://pintdownload.app${path}`;
 const title = 'Pinterest Video Downloader — Save Pins to MP4 HD Free Online';
 const description =
   'Free Pinterest video downloader: paste a video pin link and save HD MP4 without watermarks. Works with pin.it shortlinks. No app install, no login.';
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: 'What quality can I get?',
-    a: 'When Pinterest exposes multiple streams, viralNest lists available qualities (for example 720p/1080p-class MP4). Exact options depend on the pin.',
+    a: 'When Pinterest exposes multiple streams, PintDownload lists available qualities (for example 720p/1080p-class MP4). Exact options depend on the pin.',
   },
   {
     q: 'Can I extract audio only?',
@@ -46,7 +46,7 @@ const steps = [
 const jsonLd = [
   webPageSchema({ name: title, description, url: pageUrl }),
   softwareAppSchema({
-    name: 'Pinterest Video Downloader — viralNest',
+    name: 'Pinterest Video Downloader — PintDownload',
     description,
     url: pageUrl,
   }),
@@ -61,12 +61,12 @@ const jsonLd = [
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
   <article class="flex flex-col items-center py-8 sm:py-12 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
       Video pin → HD MP4
     </div>
 
     <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
-      Pinterest <span class="text-[#E60023]">Video Downloader</span>
+      Pinterest <span class="text-[#E11D48]">Video Downloader</span>
     </h1>
 
     <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">

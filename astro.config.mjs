@@ -6,18 +6,20 @@ import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://viralnest.com',
+  site: 'https://pintdownload.app',
   output: 'static',
   adapter: node({
     mode: 'standalone',
   }),
   integrations: [tailwind(), react()],
   redirects: {
-    // Preserve old blog URLs → new SEO posts
+    // Legacy blog URLs
     '/blog/why-pinterest-downloader-is-not-working':
       '/blog/troubleshooting-pinterest-downloads',
     '/blog/how-to-download-pinterest-content-on-phone-android-iphone':
-      '/blog/using-viralnest-on-phone-android-ios',
+      '/blog/using-pintdownload-on-phone-android-ios',
+    '/blog/using-viralnest-on-phone-android-ios':
+      '/blog/using-pintdownload-on-phone-android-ios',
     '/blog/how-to-save-and-organize-pinterest-ideas':
       '/blog/tips-to-organize-downloaded-pinterest-videos',
     '/blog/why-pinterest-does-not-always-let-you-download-videos-directly':
@@ -28,4 +30,3 @@ export default defineConfig({
       '/blog/understanding-file-formats-mp4-webm-gif-jpg-png',
   },
 });
-

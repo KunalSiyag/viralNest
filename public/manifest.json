@@ -1,11 +1,11 @@
 {
-  "name": "viralNest - Pinterest Downloader",
-  "short_name": "viralNest",
+  "name": "PintDownload - Pinterest Downloader",
+  "short_name": "PintDownload",
   "description": "Download Pinterest videos, images, GIFs, and Idea Pins online for free.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAFAFA",
-  "theme_color": "#E60023",
+  "theme_color": "#E11D48",
   "icons": [
     {
       "src": "/favicon.svg",
