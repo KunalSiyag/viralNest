@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BRAND } from '../lib/brand';
+
+export const prerender = true;
+---
+
+<BaseLayout
+  title={`Page not found — ${BRAND.name}`}
+  description={`This page does not exist on ${BRAND.domain}. Head home or try a Pinterest downloader tool.`}
+  clean
+>
+  <section class="relative flex flex-col items-center justify-center text-center py-16 sm:py-24 min-h-[60vh]">
+    <div
+      class="absolute inset-0 -z-10 pointer-events-none opacity-80"
+      aria-hidden="true"
+      style="
+        background:
+          radial-gradient(80% 60% at 50% 0%, rgba(251,146,60,0.28) 0%, rgba(251,113,133,0.12) 40%, transparent 70%);
+      "
+    ></div>
+
+    <p class="font-display text-7xl sm:text-8xl text-brand-600/90 tracking-tight mb-2" aria-hidden="true">404</p>
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-ink-400 mb-4">Page not found</p>
+    <h1
+      class="font-display text-3xl sm:text-5xl text-ink-900 dark:text-white tracking-tight mb-4 max-w-xl"
+      style="text-wrap: balance;"
+    >
+      This pin isn’t on the board.
+    </h1>
+    <p class="text-lg sm:text-xl text-ink-500 dark:text-slate-400 max-w-lg mb-10 leading-relaxed">
+      The link may be old, mistyped, or removed. Try the downloader, browse guides, or jump to a tool below.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+      <a
+        href="/"
+        class="inline-flex h-12 items-center px-7 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-base font-semibold shadow-soft transition-colors touch-manipulation"
+      >
+        Go home
+      </a>
+      <a
+        href="/blog"
+        class="inline-flex h-12 items-center px-7 rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] dark:border-white/15 text-ink-800 dark:text-white text-base font-semibold hover:border-brand-300 transition-colors touch-manipulation"
+      >
+        Read the blog
+      </a>
+      <a
+        href="/contact"
+        class="inline-flex h-12 items-center px-7 rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] dark:border-white/15 text-ink-800 dark:text-white text-base font-semibold hover:border-brand-300 transition-colors touch-manipulation"
+      >
+        Contact
+      </a>
+    </div>
+
+    <div class="w-full max-w-2xl grid sm:grid-cols-2 gap-3 text-left">
+      {[
+        { href: '/pinterest-video-downloader', label: 'Video → MP4', blurb: 'Save public video pins' },
+        { href: '/pinterest-pin-downloader', label: 'Pin / carousel', blurb: 'Images, GIFs, multi-slide' },
+        { href: '/pinterest-board-downloader', label: 'Board ZIP', blurb: 'Bulk public board packs' },
+        { href: '/how-to-download-pinterest-videos', label: 'How-to guide', blurb: 'Phone & desktop steps' },
+      ].map((item) => (
+        <a
+          href={item.href}
+          class="p-5 rounded-2xl bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.08] shadow-soft hover:border-brand-300 hover:shadow-lift transition-all"
+        >
+          <span class="block font-semibold text-ink-900 dark:text-white mb-1">{item.label}</span>
+          <span class="text-sm text-ink-500 dark:text-slate-400">{item.blurb}</span>
+        </a>
+      ))}
+    </div>
+
+    <p class="mt-12 text-sm text-ink-400">
+      Think this is a bug?
+      <a href={`mailto:${BRAND.email.support}`} class="font-semibold text-brand-600 hover:underline">{BRAND.email.support}</a>
+    </p>
+  </section>
+</BaseLayout>

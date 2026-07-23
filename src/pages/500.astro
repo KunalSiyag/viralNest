@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BRAND } from '../lib/brand';
+
+// Server error page (SSR / Node adapter). Safe to prerender the shell.
+export const prerender = true;
+---
+
+<BaseLayout
+  title={`Something went wrong — ${BRAND.name}`}
+  description={`A server error occurred on ${BRAND.domain}. Please try again or contact support.`}
+  clean
+>
+  <section class="relative flex flex-col items-center justify-center text-center py-16 sm:py-24 min-h-[60vh]">
+    <div
+      class="absolute inset-0 -z-10 pointer-events-none opacity-80"
+      aria-hidden="true"
+      style="
+        background:
+          radial-gradient(80% 60% at 50% 0%, rgba(225,29,72,0.18) 0%, rgba(251,146,60,0.1) 45%, transparent 70%);
+      "
+    ></div>
+
+    <p class="font-display text-7xl sm:text-8xl text-brand-600/90 tracking-tight mb-2" aria-hidden="true">500</p>
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-ink-400 mb-4">Server error</p>
+    <h1
+      class="font-display text-3xl sm:text-5xl text-ink-900 dark:text-white tracking-tight mb-4 max-w-xl"
+      style="text-wrap: balance;"
+    >
+      Something broke on our side.
+    </h1>
+    <p class="text-lg sm:text-xl text-ink-500 dark:text-slate-400 max-w-lg mb-10 leading-relaxed">
+      We’re sorry — the request failed unexpectedly. Refresh in a moment, try the home page, or email us if it keeps happening.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+      <a
+        href="/"
+        class="inline-flex h-12 items-center px-7 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-base font-semibold shadow-soft transition-colors touch-manipulation"
+      >
+        Back to home
+      </a>
+      <a
+        href="/contact"
+        class="inline-flex h-12 items-center px-7 rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] dark:border-white/15 text-ink-800 dark:text-white text-base font-semibold hover:border-brand-300 transition-colors touch-manipulation"
+      >
+        Contact support
+      </a>
+      <button
+        type="button"
+        onclick="window.location.reload()"
+        class="inline-flex h-12 items-center px-7 rounded-full bg-ink-900 dark:bg-white text-white dark:text-ink-900 text-base font-semibold hover:opacity-90 transition-opacity touch-manipulation"
+      >
+        Try again
+      </button>
+    </div>
+
+    <div class="w-full max-w-md p-6 rounded-3xl bg-ink-50 dark:bg-white/[0.04] border border-black/[0.05] dark:border-white/[0.08] text-left text-base text-ink-600 dark:text-slate-400">
+      <p class="font-semibold text-ink-900 dark:text-white mb-2">Report it</p>
+      <p class="mb-3 leading-relaxed">
+        Include the page URL and what you were doing. We read every message.
+      </p>
+      <a href={`mailto:${BRAND.email.support}?subject=${encodeURIComponent('500 error on ' + BRAND.domain)}`} class="font-semibold text-brand-600 hover:underline break-all">
+        {BRAND.email.support}
+      </a>
+      <span class="text-ink-300 mx-2">·</span>
+      <a href={`mailto:${BRAND.email.feedback}`} class="font-semibold text-brand-600 hover:underline break-all">
+        {BRAND.email.feedback}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -31,3 +31,7 @@ Thumbs.db
 !.vscode/extensions.json
 !.vscode/launch.json
 
+
+# Legacy backups
+_nextjs_backup/
+.next/
