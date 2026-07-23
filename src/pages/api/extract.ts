@@ -124,25 +124,48 @@ export const POST: APIRoute = async ({ request }) => {
       const uniquePinIds = Array.from(new Set(pinIdMatches)).slice(0, 16);
 
       if (uniquePinIds.length > 0) {
-        const boardPins = uniquePinIds.map(id => ({
-          pin_id: id,
-          url: `https://www.pinterest.com/pin/${id}/`,
-          title: `${boardTitle} - Pin #${id.slice(-4)}`,
-          image_url: `https://i.pinimg.com/736x/${id.slice(0,2)}/${id.slice(2,4)}/${id.slice(4,6)}/${id}.jpg`,
-          thumbnail_url: `https://i.pinimg.com/236x/${id.slice(0,2)}/${id.slice(2,4)}/${id.slice(4,6)}/${id}.jpg`,
-          is_video: false,
-        }));
+        // Fetch real image URLs concurrently for each Pin ID via Widget CDN API
+        const boardPins = (await Promise.all(
+          uniquePinIds.map(async (id) => {
+            try {
+              const widgetRes = await fetch(`https://widgets.pinterest.com/v3/pincdn/pins/${id}/`);
+              if (widgetRes.ok) {
+                const widgetJson = await widgetRes.json();
+                const data = widgetJson?.data;
+                if (data) {
+                  const pinTitle = data.title || data.grid_title || `${boardTitle} - Pin #${id.slice(-4)}`;
+                  const img = data.images?.originals?.url || data.images?.['736x']?.url || data.images?.['236x']?.url;
+                  if (img) {
+                    return {
+                      pin_id: id,
+                      url: `https://www.pinterest.com/pin/${id}/`,
+                      title: pinTitle,
+                      image_url: img,
+                      thumbnail_url: data.images?.['236x']?.url || img,
+                      is_video: false,
+                    };
+                  }
+                }
+              }
+            } catch (e) {
+              console.warn(`Widget API error for pin ${id}:`, e);
+            }
+            return null;
+          })
+        )).filter((p): p is NonNullable<typeof p> => p !== null);
 
-        return new Response(JSON.stringify({
-          platform: 'pinterest',
-          is_board: true,
-          board_title: boardTitle,
-          board_url: targetUrl,
-          pins: boardPins,
-        }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' }
-        });
+        if (boardPins.length > 0) {
+          return new Response(JSON.stringify({
+            platform: 'pinterest',
+            is_board: true,
+            board_title: boardTitle,
+            board_url: targetUrl,
+            pins: boardPins,
+          }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
       }
     }
 
