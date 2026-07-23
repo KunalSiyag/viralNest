@@ -191,9 +191,45 @@ function classifyPinterestUrl(rawUrl: string): {
   }
 }
 
-function extractPinIdsFromHtml(html: string, limit = 40): string[] {
-  const ids = [...html.matchAll(/\/pin\/(\d{6,})\//g)].map((m) => m[1]);
-  return Array.from(new Set(ids)).slice(0, limit);
+function extractPinIdsFromHtml(html: string, limit = 120): string[] {
+  const idsSet = new Set<string>();
+  const pinUrls = [...html.matchAll(/\/pin\/(\d{6,})\//g)].map((m) => m[1]);
+  pinUrls.forEach((id) => idsSet.add(id));
+
+  const scripts = [...html.matchAll(/<script[^>]*type="application\/json"[^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const s of scripts) {
+    try {
+      const content = s[1];
+      const matches = [...content.matchAll(/"id"\s*:\s*"(\d{10,})"/g)].map((m) => m[1]);
+      matches.forEach((id) => idsSet.add(id));
+    } catch {}
+  }
+
+  return Array.from(idsSet).slice(0, limit);
+}
+
+function extractBoardsFromReduxState(html: string): { name: string; url: string; pin_count?: number }[] {
+  const boards: { name: string; url: string; pin_count?: number }[] = [];
+  const scriptMatches = [...html.matchAll(/<script[^>]*type="application\/json"[^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const s of scriptMatches) {
+    try {
+      const obj = JSON.parse(s[1]);
+      const reduxState = obj?.initialReduxState;
+      if (reduxState?.boards) {
+        const rawBoards = Object.values(reduxState.boards) as any[];
+        for (const b of rawBoards) {
+          if (b && b.name && b.url) {
+            boards.push({
+              name: String(b.name),
+              url: b.url.startsWith('http') ? b.url : `https://www.pinterest.com${b.url}`,
+              pin_count: typeof b.pin_count === 'number' ? b.pin_count : b.pinCount,
+            });
+          }
+        }
+      }
+    } catch {}
+  }
+  return boards;
 }
 
 function upgradePinImageUrl(url?: string | null): string | null {
@@ -731,7 +767,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // ── Board / Profile collection extraction ────────────────────────────
     if ((classified.kind === 'board' || classified.kind === 'profile') && html) {
-      const pinIds = extractPinIdsFromHtml(html, classified.kind === 'profile' ? 40 : 40);
+      const pinIds = extractPinIdsFromHtml(html, classified.kind === 'profile' ? 120 : 80);
       if (pinIds.length > 0) {
         const pins = await hydrateCollectionPins(pinIds);
         if (pins.length > 0) {
@@ -755,6 +791,8 @@ export const POST: APIRoute = async ({ request }) => {
             });
           }
 
+          const profileBoards = extractBoardsFromReduxState(html);
+
           return jsonResponse({
             platform: 'pinterest',
             is_board: false,
@@ -762,8 +800,9 @@ export const POST: APIRoute = async ({ request }) => {
             profile_title: title,
             profile_url: targetUrl,
             username: classified.username || null,
-            board_title: title, // reuse UI field for display
+            board_title: title,
             board_url: targetUrl,
+            boards: profileBoards,
             pins,
             pin_count: pins.length,
           });

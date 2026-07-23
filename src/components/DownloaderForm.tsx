@@ -20,6 +20,12 @@ interface MediaItem {
   title?: string;
 }
 
+interface ProfileBoardItem {
+  name: string;
+  url: string;
+  pin_count?: number;
+}
+
 interface ExtractionResult {
   platform: string;
   video_url: string | null;
@@ -45,6 +51,7 @@ interface ExtractionResult {
   username?: string | null;
   pin_count?: number;
   pins?: BoardPinItem[];
+  boards?: ProfileBoardItem[];
 }
 
 interface HistoryItem {
@@ -888,6 +895,48 @@ export default function DownloaderForm({
                 className="h-full bg-[#E11D48] transition-[width] duration-300 ease-out"
                 style={{ width: `${Math.round((zipProgress.done / zipProgress.total) * 100)}%` }}
               />
+            </div>
+          )}
+
+          {/* Profile Boards Listing */}
+          {result!.is_profile && result!.boards && result!.boards.length > 0 && (
+            <div className="flex flex-col gap-3 p-4.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
+                  <Archive className="w-4 h-4 text-[#E11D48]" />
+                  Profile Boards ({result!.boards.length})
+                </span>
+                <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Select a board to extract its full dedicated pin pack
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+                {result!.boards.map((b, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      setUrl(b.url);
+                      extractSingle(b.url);
+                    }}
+                    className="p-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-800 text-left flex items-center justify-between gap-2 group transition-all shadow-xs touch-manipulation"
+                  >
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-[#E11D48] truncate">
+                        📌 {b.name}
+                      </p>
+                      {typeof b.pin_count === 'number' && (
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold mt-0.5">
+                          {b.pin_count} pins
+                        </p>
+                      )}
+                    </div>
+                    <span className="text-[10px] font-extrabold text-[#E11D48] bg-red-50 dark:bg-red-950/60 px-2 py-1 rounded-md shrink-0 group-hover:scale-105 transition-transform">
+                      Extract →
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
 
