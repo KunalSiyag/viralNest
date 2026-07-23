@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles } from 'lucide-react';
 
+interface BoardPinItem {
+  pin_id: string;
+  url: string;
+  title: string;
+  image_url: string;
+  thumbnail_url: string;
+  is_video: boolean;
+}
+
 interface ExtractionResult {
   platform: string;
   video_url: string | null;
@@ -13,6 +22,10 @@ interface ExtractionResult {
   colors?: string[];
   dominant_color?: string;
   is_video: boolean;
+  is_board?: boolean;
+  board_title?: string;
+  board_url?: string;
+  pins?: BoardPinItem[];
 }
 
 interface HistoryItem {
@@ -267,8 +280,67 @@ export default function DownloaderForm() {
         </div>
       )}
 
-      {/* Single Result Card */}
-      {result && (
+      {/* Single / Board Result Card */}
+      {result && result.is_board ? (
+        <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
+            <div>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E60023] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
+                📌 Extracted Pinterest Board
+              </span>
+              <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight">
+                {result.board_title || 'Pinterest Board'}
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Found {result.pins?.length || 0} downloadable Pins in this board
+              </p>
+            </div>
+
+            {/* Sequential Download All Board Media Button */}
+            {result.pins && result.pins.length > 0 && (
+              <button
+                type="button"
+                onClick={() => {
+                  result.pins?.forEach((pin, idx) => {
+                    setTimeout(() => {
+                      const a = document.createElement('a');
+                      a.href = `/api/download?url=${encodeURIComponent(pin.image_url)}&filename=board_pin_${pin.pin_id}.jpg`;
+                      a.download = `board_pin_${pin.pin_id}.jpg`;
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                    }, idx * 600);
+                  });
+                }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all shrink-0"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download All ({result.pins.length} Pins)</span>
+              </button>
+            )}
+          </div>
+
+          {/* Grid of Board Pins */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {result.pins?.map((pin, idx) => (
+              <div key={idx} className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col justify-between gap-3 group">
+                <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
+                  <img src={pin.thumbnail_url || pin.image_url} alt={pin.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                </div>
+                <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate">{pin.title}</span>
+                <a
+                  href={`/api/download?url=${encodeURIComponent(pin.image_url)}&filename=board_pin_${pin.pin_id}.jpg`}
+                  download
+                  className="w-full py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E60023] font-bold text-xs flex items-center justify-center gap-1 transition-colors"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download HD</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : result && (
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             {/* Preview Section */}

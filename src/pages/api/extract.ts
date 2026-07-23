@@ -114,6 +114,38 @@ export const POST: APIRoute = async ({ request }) => {
       console.error('Fetch error for Pinterest URL:', fetchErr);
     }
 
+    // Check if link is a Board URL
+    const isBoardUrl = !targetUrl.includes('/pin/') && !targetUrl.includes('pin.it');
+    if (isBoardUrl && html) {
+      const ogTitleMatch = html.match(/<meta\s+(?:property|name)=["']og:title["']\s+content=["']([^"']+)["']/i);
+      const boardTitle = ogTitleMatch ? ogTitleMatch[1].replace(/&amp;/g, '&') : 'Pinterest Board';
+
+      const pinIdMatches = [...html.matchAll(/\/pin\/(\d+)\//g)].map(m => m[1]);
+      const uniquePinIds = Array.from(new Set(pinIdMatches)).slice(0, 16);
+
+      if (uniquePinIds.length > 0) {
+        const boardPins = uniquePinIds.map(id => ({
+          pin_id: id,
+          url: `https://www.pinterest.com/pin/${id}/`,
+          title: `${boardTitle} - Pin #${id.slice(-4)}`,
+          image_url: `https://i.pinimg.com/736x/${id.slice(0,2)}/${id.slice(2,4)}/${id.slice(4,6)}/${id}.jpg`,
+          thumbnail_url: `https://i.pinimg.com/236x/${id.slice(0,2)}/${id.slice(2,4)}/${id.slice(4,6)}/${id}.jpg`,
+          is_video: false,
+        }));
+
+        return new Response(JSON.stringify({
+          platform: 'pinterest',
+          is_board: true,
+          board_title: boardTitle,
+          board_url: targetUrl,
+          pins: boardPins,
+        }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
     let videoUrl: string | null = null;
     let thumbnailUrl: string | null = null;
     let imageUrl: string | null = null;
