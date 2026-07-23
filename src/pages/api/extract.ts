@@ -799,6 +799,15 @@ export const POST: APIRoute = async ({ request }) => {
         if (resourceData) {
           const built = buildResponseFromPinResource(resourceData, pinId);
           if (built) {
+            // If Pidgets returned no video, check HTML for HLS .m3u8 or expMp4 video streams
+            if (!built.is_video && html) {
+              const scannedVideos = extractVideoUrlsFromHtml(html);
+              if (scannedVideos.length > 0) {
+                built.video_url = scannedVideos[0].url;
+                built.is_video = true;
+                built.qualities = scannedVideos;
+              }
+            }
             return jsonResponse(built);
           }
         }
