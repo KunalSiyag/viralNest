@@ -1,0 +1,244 @@
+---
+// src/layouts/BaseLayout.astro
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  jsonLd?: Record<string, any> | Record<string, any>[];
+}
+
+const { title, description, canonicalUrl, jsonLd } = Astro.props;
+const currentCanonical = canonicalUrl || Astro.url.href;
+const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={currentCanonical} />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="viralNest" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="viralNest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={currentCanonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://viralnest.com/og-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={currentCanonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://viralnest.com/og-image.png" />
+    
+    <meta name="theme-color" content="#E60023" />
+
+    <!-- Theme Inline Script to prevent FOUC -->
+    <script is:inline>
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        } else {
+          document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+
+    <!-- JSON-LD Structured Data for Google Rich Snippets -->
+    {jsonLdItems.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#FAFAFA] dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col font-sans selection:bg-[#E60023] selection:text-white transition-colors duration-300">
+    <!-- Header -->
+    <header class="w-full border-b border-gray-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 shadow-sm transition-colors duration-300">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2.5 group focus:outline-none">
+          <div class="w-9 h-9 rounded-full bg-[#E60023] text-white flex items-center justify-center shadow-md shadow-red-500/20 group-hover:scale-105 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+          </div>
+          <span class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">viral<span class="text-[#E60023]">Nest</span></span>
+        </a>
+        <nav class="hidden md:flex gap-5 items-center text-sm font-semibold">
+          <a href="/" class="text-slate-700 dark:text-slate-200 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Video Downloader</a>
+          <a href="/pinterest-image-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Images</a>
+          <a href="/pinterest-gif-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">GIFs</a>
+          <a href="/pinterest-story-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Idea Pins</a>
+          <a href="/pinterest-audio-downloader" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Audio MP3</a>
+          <a href="/how-to-download-pinterest-videos" class="text-slate-600 dark:text-slate-300 hover:text-[#E60023] dark:hover:text-red-400 transition-colors">Guide</a>
+        </nav>
+        <button
+          id="theme-toggle-btn"
+          onclick="const h = document.documentElement; if(h.classList.contains('dark')){h.classList.remove('dark');h.classList.add('light');localStorage.setItem('theme','light');}else{h.classList.remove('light');h.classList.add('dark');localStorage.setItem('theme','dark');}"
+          class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-xs font-bold flex items-center gap-1.5"
+          title="Toggle Light / Dark Mode"
+        >
+          <span class="hidden dark:inline">☀️ Light</span>
+          <span class="inline dark:hidden">🌙 Dark</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Container with Floating Side Collage Cards -->
+    <div class="relative w-full overflow-x-hidden flex-1">
+      <!-- Left Side Floating Pin Collage Cards (Visible on XL screens) -->
+      <div class="hidden xl:block absolute left-4 top-24 w-48 pointer-events-none select-none z-0">
+        <div class="transform -rotate-6 transition-all duration-500 hover:rotate-0 hover:scale-105 hover:opacity-100 opacity-60 pointer-events-auto">
+          <div class="p-2 bg-white rounded-2xl border border-slate-200/80 shadow-2xl shadow-red-950/10 backdrop-blur-sm">
+            <img src="/images/side_pin_1.jpg" alt="Aesthetic Interior Pin" class="w-full h-56 object-cover rounded-xl" />
+            <div class="p-2 text-left">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#E60023] block">Interior • Pin</span>
+              <p class="text-xs font-bold text-slate-800 truncate">Cozy Home Decor</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="transform rotate-3 translate-y-12 translate-x-6 transition-all duration-500 hover:rotate-0 hover:scale-105 hover:opacity-100 opacity-50 pointer-events-auto">
+          <div class="p-2 bg-white rounded-2xl border border-slate-200/80 shadow-2xl shadow-slate-900/10 backdrop-blur-sm">
+            <img src="/images/side_pin_3.jpg" alt="Aesthetic Coffee Pin" class="w-full h-48 object-cover rounded-xl" />
+            <div class="p-2 text-left">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#E60023] block">Lifestyle • Pin</span>
+              <p class="text-xs font-bold text-slate-800 truncate">Matcha & Pastry</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side Floating Pin Collage Cards (Visible on XL screens) -->
+      <div class="hidden xl:block absolute right-4 top-28 w-48 pointer-events-none select-none z-0">
+        <div class="transform rotate-6 transition-all duration-500 hover:rotate-0 hover:scale-105 hover:opacity-100 opacity-60 pointer-events-auto">
+          <div class="p-2 bg-white rounded-2xl border border-slate-200/80 shadow-2xl shadow-red-950/10 backdrop-blur-sm">
+            <img src="/images/side_pin_2.jpg" alt="Aesthetic Travel Pin" class="w-full h-56 object-cover rounded-xl" />
+            <div class="p-2 text-left">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#E60023] block">Travel • Pin</span>
+              <p class="text-xs font-bold text-slate-800 truncate">Golden Hour Views</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="transform -rotate-3 translate-y-10 -translate-x-6 transition-all duration-500 hover:rotate-0 hover:scale-105 hover:opacity-100 opacity-50 pointer-events-auto">
+          <div class="p-2 bg-white rounded-2xl border border-slate-200/80 shadow-2xl shadow-slate-900/10 backdrop-blur-sm">
+            <img src="/images/side_pin_4.jpg" alt="Aesthetic Fashion Pin" class="w-full h-48 object-cover rounded-xl" />
+            <div class="p-2 text-left">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#E60023] block">Fashion • Pin</span>
+              <p class="text-xs font-bold text-slate-800 truncate">Street Style Chic</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main class="relative z-10 flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 flex flex-col">
+        <slot />
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-gray-200 bg-white py-12 text-sm text-slate-500">
+      <div class="max-w-5xl mx-auto px-4 flex flex-col gap-8">
+        <!-- Footer Nav Grid -->
+        <div class="grid sm:grid-cols-4 gap-6 text-left border-b border-slate-100 pb-8">
+          <div>
+            <h4 class="font-bold text-slate-900 mb-3 text-base">Media Tools</h4>
+            <ul class="space-y-2 text-xs font-semibold">
+              <li><a href="/" class="hover:text-[#E60023] transition-colors">Pinterest Video Downloader</a></li>
+              <li><a href="/pinterest-image-downloader" class="hover:text-[#E60023] transition-colors">Pinterest Image Downloader</a></li>
+              <li><a href="/pinterest-gif-downloader" class="hover:text-[#E60023] transition-colors">Pinterest GIF Downloader</a></li>
+              <li><a href="/pinterest-story-downloader" class="hover:text-[#E60023] transition-colors">Idea Pin & Story Downloader</a></li>
+              <li><a href="/pinterest-audio-downloader" class="hover:text-[#E60023] transition-colors">MP3 Audio Extractor</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-slate-900 mb-3 text-base">Blog & Tutorials</h4>
+            <ul class="space-y-2 text-xs font-semibold">
+              <li><a href="/blog" class="hover:text-[#E60023] transition-colors">Blog Hub & Guides</a></li>
+              <li><a href="/how-to-download-pinterest-videos" class="hover:text-[#E60023] transition-colors">How to Download Pinterest Videos</a></li>
+              <li><a href="/blog/why-pinterest-downloader-is-not-working" class="hover:text-[#E60023] transition-colors">Fix Downloader Errors</a></li>
+              <li><a href="/blog/how-to-copy-correct-pinterest-pin-link" class="hover:text-[#E60023] transition-colors">Copy Pin Links Correctly</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-slate-900 mb-3 text-base">Trust & Legal</h4>
+            <ul class="space-y-2 text-xs font-semibold">
+              <li><a href="/about" class="hover:text-[#E60023] transition-colors">About viralNest</a></li>
+              <li><a href="/privacy-policy" class="hover:text-[#E60023] transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms-of-service" class="hover:text-[#E60023] transition-colors">Terms of Service</a></li>
+              <li><a href="/contact" class="hover:text-[#E60023] transition-colors">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-slate-900 mb-3 text-base">About viralNest</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              viralNest is a free online media extraction engine allowing creators, designers, and users to save Pinterest videos, images, GIFs, and audio files cleanly without watermarks.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-slate-800">viral<span class="text-[#E60023]">Nest</span></span>
+            <span>&copy; {new Date().getFullYear()} — Free Online Pinterest Media Downloader</span>
+          </div>
+          <p class="text-xs text-slate-400 max-w-md text-center md:text-right">
+            viralNest is an independent tool and is not affiliated with Pinterest Inc.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    touch-action: manipulation;
+    font-family: var(--font-sans);
+  }
+  
+  *:focus-visible {
+    outline: 2px solid #E60023;
+    outline-offset: 2px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F1F1F1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+  }
+</style>
+
+

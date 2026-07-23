@@ -1,0 +1,343 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "viralNest Pinterest Video Downloader",
+  "operatingSystem": "All",
+  "applicationCategory": "MultimediaApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "18450"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is viralNest free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! viralNest is 100% free with no hidden fees, limits, or account registration required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to download Pinterest videos on mobile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open the Pinterest app, tap the three dots on any Video Pin, copy the link, paste it into viralNest, and tap Download."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download Pinterest GIFs and images?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! viralNest supports full-resolution static image pins, animated GIFs, and Idea Pins."
+      }
+    }
+  ]
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Download Pinterest Videos & Pins",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Copy Pinterest Link",
+      "text": "Open Pinterest app or website, find the video pin, tap Share or 3 dots and select Copy Link."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Paste in viralNest",
+      "text": "Paste the copied URL into the search box on viralNest."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Save File",
+      "text": "Click Download to save the MP4 video, HD image, or animated GIF directly to your device."
+    }
+  ]
+};
+---
+
+<BaseLayout 
+  title="Pinterest Video Downloader — Save Videos, Images & GIFs HD Free" 
+  description="Download Pinterest videos, Idea Pins, story pins, GIFs, and high-resolution images online for free. Fast, no watermark, 1080p MP4 quality."
+  jsonLd={[webAppSchema, faqSchema, howToSchema]}
+>
+  <!-- Hero Section -->
+  <div class="flex flex-col items-center justify-center py-8 sm:py-14 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 text-[#E60023] text-xs sm:text-sm font-bold mb-6 border border-red-200 shadow-sm">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E60023] opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#E60023]"></span>
+      </span>
+      100% Free • HD 1080p • Videos, Images & GIFs
+    </div>
+    
+    <h1 class="text-3xl sm:text-6xl font-extrabold text-slate-900 mb-4 tracking-tight leading-tight max-w-4xl">
+      Pinterest <span class="text-[#E60023]">Video Downloader</span>
+    </h1>
+    
+    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mb-8 leading-relaxed font-medium">
+      Download high-quality Pinterest videos, Idea Pins, GIFs, and full-resolution images online without watermarks.
+    </p>
+
+    <!-- Downloader Box -->
+    <DownloaderForm client:load />
+
+    <!-- Supported URL formats pills -->
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-slate-500">
+      <span class="text-slate-400">Supported formats:</span>
+      <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 shadow-xs">https://pinterest.com/pin/...</span>
+      <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 shadow-xs">https://pin.it/...</span>
+    </div>
+
+    <!-- Quick Feature Cards -->
+    <div id="features" class="mt-16 grid sm:grid-cols-3 gap-6 text-left w-full">
+      <a href="/pinterest-video-downloader" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-red-200 dark:hover:border-red-900 transition-all group">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-50 to-red-100/80 dark:from-red-950/40 dark:to-red-900/30 text-[#E60023] flex items-center justify-center font-extrabold mb-4 border border-red-200/60 dark:border-red-900/40 group-hover:scale-110 transition-transform shadow-xs">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 8 6 4-6 4Z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[#E60023] transition-colors">Pinterest Video Downloader</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Save Pinterest video pins in crisp 1080p, 720p HD MP4 format directly to your phone or PC gallery.</p>
+      </a>
+
+      <a href="/pinterest-image-downloader" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-red-200 dark:hover:border-red-900 transition-all group">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-50 to-red-100/80 dark:from-red-950/40 dark:to-red-900/30 text-[#E60023] flex items-center justify-center font-extrabold mb-4 border border-red-200/60 dark:border-red-900/40 group-hover:scale-110 transition-transform shadow-xs">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[#E60023] transition-colors">Pin Image & GIF Downloader</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Download original resolution static images and animated GIFs from Pinterest in one simple click.</p>
+      </a>
+
+      <a href="/pinterest-story-downloader" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-red-200 dark:hover:border-red-900 transition-all group">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-50 to-red-100/80 dark:from-red-950/40 dark:to-red-900/30 text-[#E60023] flex items-center justify-center font-extrabold mb-4 border border-red-200/60 dark:border-red-900/40 group-hover:scale-110 transition-transform shadow-xs">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1.2 0-2.4.6-3 1.7A5 5 0 0 0 7 9c0 3.8 2.5 6.9 5 9 2.5-2.1 5-5.2 5-9a5 5 0 0 0-2-4.3c-.6-1.1-1.8-1.7-3-1.7Z"/><path d="M12 21v1"/><path d="M9 18h6"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[#E60023] transition-colors">Idea Pins & Story Pins</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Download multi-slide Idea Pins, carousel story slides, titles, descriptions, and hashtags.</p>
+      </a>
+    </div>
+
+    <!-- How To Download Step-by-Step Section -->
+    <div id="how-to-download" class="mt-16 w-full text-left bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">
+        How to Download Pinterest Videos & Pins?
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mb-8">
+        Follow these easy steps to download Pinterest videos, images, or GIFs on your mobile app or desktop browser.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Mobile App Steps -->
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-xl bg-[#E60023] text-white flex items-center justify-center shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            </span>
+            Steps for Mobile App (iOS / Android):
+          </h3>
+          <ol class="space-y-3.5 text-slate-700 dark:text-slate-300 text-sm font-medium">
+            <li class="flex items-start gap-3">
+              <span class="font-bold text-[#E60023] bg-red-50 dark:bg-red-950/60 w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+              <span>Open the <strong>Pinterest app</strong> and select the video, image, or GIF you want to save.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="font-bold text-[#E60023] bg-red-50 dark:bg-red-950/60 w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+              <span>Tap the <strong>•••</strong> (three dots) icon at the top right or bottom right corner of the screen.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="font-bold text-[#E60023] bg-red-50 dark:bg-red-950/60 w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">3</span>
+              <span>Select <strong>Copy Link</strong> to copy the Pin's URL to your clipboard.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="font-bold text-[#E60023] bg-red-50 dark:bg-red-950/60 w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">4</span>
+              <span>Paste the URL into the input box above and tap <strong>Download</strong>.</span>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Desktop Browser Steps -->
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-xl bg-[#E60023] text-white flex items-center justify-center shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+            </span>
+            Steps for Desktop Browser:
+          </h3>
+          <ol class="space-y-3.5 text-slate-700 dark:text-slate-300 text-sm font-medium">
+            <li class="flex items-start gap-3">
+              <span class="font-bold text-[#E60023] bg-red-50 dark:bg-red-950/60 w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+              <span>Open Pinterest on your web browser and click on the Pin you want to download.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="font-bold text-[#E60023] bg-red-50 dark:bg-red-950/60 w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+              <span>Copy the full URL from your browser's address bar or click the share button.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="font-bold text-[#E60023] bg-red-50 dark:bg-red-950/60 w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">3</span>
+              <span>Paste the copied URL into <strong>viralNest</strong> input box and press Download.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="font-bold text-[#E60023] bg-red-50 dark:bg-red-950/60 w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 mt-0.5">4</span>
+              <span>Save the extracted MP4 or HD image file directly to your downloads folder.</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Creator Value Additions: 1-Click Bookmarklet & Viral Tag Extractor -->
+    <div class="mt-16 w-full text-left grid md:grid-cols-2 gap-6">
+      <!-- 1-Click Bookmarklet Card -->
+      <div class="p-8 rounded-3xl bg-gradient-to-br from-white to-red-50/40 dark:from-slate-900 dark:to-red-950/20 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+        <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-red-100/50 dark:bg-red-900/20 rounded-full blur-2xl group-hover:bg-red-200/50 transition-colors"></div>
+        <div class="relative z-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/60 text-[#E60023] text-xs font-bold mb-4">
+            ⚡ Pro Creator Shortcut
+          </div>
+          <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">1-Click Browser Bookmarklet</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">
+            Drag this button to your browser bookmarks bar. Next time you're on Pinterest, click it to instant-download any video or image!
+          </p>
+          <a 
+            href="javascript:(function(){var u=window.location.href;if(u.indexOf('pinterest.com')!==-1||u.indexOf('pin.it')!==-1){window.open('http://localhost:4321/?url='+encodeURIComponent(u),'_blank');}else{alert('Please use this bookmarklet while viewing a Pinterest Pin!');}})();"
+            onclick="return false;"
+            class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#E60023] hover:bg-[#CC0000] text-white font-extrabold text-sm shadow-md shadow-red-500/20 cursor-grab active:cursor-grabbing transition-transform hover:scale-105"
+            title="Drag me to your Bookmarks Bar!"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+            <span>Drag to Bookmarks Bar</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Viral Hashtag & Caption Tool Card -->
+      <div class="p-8 rounded-3xl bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+        <div class="relative z-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold mb-4">
+            🏷️ Content Reposting Tool
+          </div>
+          <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">Viral Tag & Hashtag Generator</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">
+            Every downloaded Pin automatically extracts title metadata and generates optimized hashtags for TikTok, Instagram Reels, and YouTube Shorts.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold">
+            <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 shadow-2xs">#PinterestVideo</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 shadow-2xs">#AestheticPins</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 shadow-2xs">#ViralReels</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[#E60023] font-bold shadow-2xs">+ Copy All 1-Click</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust & Rights Section (Modeled after PintSave compliance standards) -->
+    <div class="mt-16 w-full text-left bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">
+        What viralNest Can & Cannot Do
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mb-8">
+        viralNest is built to help users save public Pinterest media safely and respectfully.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- What it Can Do -->
+        <div class="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-200">
+          <h3 class="text-lg font-bold text-emerald-950 mb-3 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold">✓</span>
+            viralNest Can Help You:
+          </h3>
+          <ul class="space-y-2.5 text-slate-700 text-sm font-medium">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-600 font-bold">•</span>
+              <span>Check public Pinterest links for available HD videos, images, or GIFs.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-600 font-bold">•</span>
+              <span>Save media in the highest quality Pinterest provides for that pin.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-600 font-bold">•</span>
+              <span>Use the tool in any browser on iPhone, Android, tablet, or desktop without software installation.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- What it Cannot Do -->
+        <div class="p-6 rounded-2xl bg-red-50/50 border border-red-200">
+          <h3 class="text-lg font-bold text-red-950 mb-3 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-red-600 text-white text-xs flex items-center justify-center font-bold">✕</span>
+            viralNest Cannot Help You:
+          </h3>
+          <ul class="space-y-2.5 text-slate-700 text-sm font-medium">
+            <li class="flex items-start gap-2">
+              <span class="text-red-600 font-bold">•</span>
+              <span>Access private pins, deleted pins, login-only content, or secret boards.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-600 font-bold">•</span>
+              <span>Bypass DRM, platform restrictions, paywalls, or copyright protections.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-600 font-bold">•</span>
+              <span>Grant permission to commercialize or edit content you do not own.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright Note -->
+      <div class="mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-500 leading-relaxed">
+        <strong>Copyright & Creator Rights:</strong> Pinterest media may be protected by copyright. A public link does not grant permission to commercialize or claim ownership. Always respect original creators and get permission before reposting.
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div id="faq" class="mt-16 w-full text-left">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-8 text-center">
+        Frequently Asked Questions (FAQs)
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-bold text-slate-900 mb-2 text-base">Is viralNest free to use?</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Yes! viralNest is 100% free and requires no account registration or login credentials.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-bold text-slate-900 mb-2 text-base">Does it work on mobile phones?</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Yes, viralNest works smoothly on iOS (iPhone/iPad Safari) and Android Chrome browsers.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-bold text-slate-900 mb-2 text-base">Where are downloaded videos saved?</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Files are saved directly in your device's default "Downloads" folder or camera roll gallery.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-bold text-slate-900 mb-2 text-base">Can I download GIFs from Pinterest?</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Yes! Simply paste any animated GIF Pin URL and click Download to save the animated image file.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+
+

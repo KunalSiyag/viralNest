@@ -1,0 +1,21 @@
+# viralNest — Free Pinterest Video & Media Downloader
+
+> viralNest is a fast, free, online tool for downloading Pinterest videos, high-resolution images, animated GIFs, Idea Pins, and extracting MP3 audio without watermarks or registration.
+
+## Core Capabilities
+- **Pinterest Video Downloader**: Extracts 1080p, 720p HD MP4 video streams from public Pinterest pins and pin.it shortlinks.
+- **Pinterest Image Downloader**: Downloads full-resolution original static images and artwork.
+- **Pinterest GIF Downloader**: Downloads animated GIF pins directly to camera roll or gallery.
+- **Pinterest Idea Pin & Story Downloader**: Downloads multi-slide story pins and slideshow carousels.
+- **Pinterest Audio Downloader**: Extracts audio tracks and background music from Pinterest videos.
+
+## Pages & Tools
+- [Pinterest Video Downloader](https://viralnest.com/): Primary online video extraction tool.
+- [Pinterest Image Downloader](https://viralnest.com/pinterest-image-downloader): High-resolution photo downloader.
+- [Pinterest GIF Downloader](https://viralnest.com/pinterest-gif-downloader): Animated GIF downloader.
+- [Pinterest Idea Pin Downloader](https://viralnest.com/pinterest-story-downloader): Story Pin & Carousel downloader.
+- [Pinterest Audio Downloader](https://viralnest.com/pinterest-audio-downloader): Audio & MP3 extractor.
+- [Step-by-Step Guide](https://viralnest.com/how-to-download-pinterest-videos): Guide for iOS, Android, and Desktop users.
+
+## API Endpoint
+- POST `https://viralnest.com/api/extract` — Accepts JSON `{ "url": "<pinterest_pin_url>" }` and returns `{ "video_url": "...", "image_url": "...", "title": "...", "qualities": [...] }`.
