@@ -1,381 +1,135 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloaderForm from '../components/DownloaderForm';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import CompareTable from '../components/seo/CompareTable.astro';
+import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 import { BRAND } from '../lib/brand';
 
-const webAppSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'Pinterest Video Downloader — PintDownload',
-  operatingSystem: 'Web, iOS, Android, Windows, macOS',
-  applicationCategory: 'MultimediaApplication',
-  url: BRAND.url,
-  description:
-    'Free Pinterest video downloader to save public Pinterest videos as MP4, plus images, GIFs, boards, and profiles. No account required.',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    ratingCount: '18450',
-    bestRating: '5',
-    worstRating: '1',
-  },
-};
+const path = '/';
+const pageUrl = `${BRAND.url}/`;
+const title = 'Pinterest Video Downloader — Free HD MP4, Photos & GIFs | PintDownload';
+const description =
+  'Free Pinterest video downloader online. Paste a public pin link to save HD MP4 videos, photos, GIFs, boards, and profiles. No account, no watermark from us.';
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Is PintDownload free?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. PintDownload is free for public Pinterest pins with no account required.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I download a Pinterest video?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Copy the public pin link from Pinterest, paste it into PintDownload, then download the MP4.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can I download Pinterest images and GIFs?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. Public image pins, GIFs, carousels, boards, and profiles are supported when available.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Should I credit original creators?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. If you reuse someone else’s clip or image in content you publish, credit the original creator and follow copyright rules. Public access is not a commercial license.',
-      },
-    },
-  ],
-};
+const faqs = [
+  {
+    q: 'Is PintDownload free?',
+    a: 'Yes. PintDownload is free for public Pinterest media with no account required.',
+  },
+  {
+    q: 'How do I download a Pinterest video as MP4?',
+    a: 'Copy the public pin link from the Pinterest app or browser, paste it above, extract, then download the MP4. Prefer links with /pin/ or pin.it.',
+  },
+  {
+    q: 'Can I download images, GIFs, boards, and profiles?',
+    a: 'Yes. Use this hub for any public link, or open the dedicated Pin, Photo, Board ZIP, Profile ZIP, and GIF tools for clearer intent.',
+  },
+  {
+    q: 'Should I credit original creators?',
+    a: 'Yes. If you reuse someone’s clip or image in content you publish, credit the creator and follow copyright rules. Public access is not a commercial license.',
+  },
+  {
+    q: 'What does not work?',
+    a: 'Private, secret, login-only, deleted, or restricted pins cannot be extracted. We do not invent higher quality than the source provides.',
+  },
+];
 
-const howToSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: 'How to download Pinterest videos on mobile or desktop',
-  description: 'Copy a public Pinterest link, paste it into PintDownload, preview, and save the file.',
-  step: [
-    {
-      '@type': 'HowToStep',
-      name: 'Copy the Pinterest link',
-      text: 'Open the pin, tap Share or ⋯, then Copy link (or copy the browser URL with /pin/).',
-    },
-    {
-      '@type': 'HowToStep',
-      name: 'Paste into PintDownload',
-      text: 'Paste the link into the download box on pintdownload.app.',
-    },
-    {
-      '@type': 'HowToStep',
-      name: 'Preview and download',
-      text: 'Choose quality if offered, then save the video, image, or GIF to your device.',
-    },
-  ],
-};
+const steps = [
+  {
+    title: 'Copy the Pinterest link',
+    body: 'Open the pin in the app or browser. Share → Copy link, or copy a full URL with <code>/pin/</code>. Short <code>pin.it</code> links work too.',
+    image: '/images/step1.jpg',
+    imageAlt: 'Copy a Pinterest pin link from the share menu',
+  },
+  {
+    title: 'Paste into PintDownload',
+    body: 'Paste the public link in the box above and tap <strong>Download</strong>. Works for pins, boards, and profiles.',
+    image: '/images/step2.jpg',
+    imageAlt: 'Paste the Pinterest URL into PintDownload',
+  },
+  {
+    title: 'Preview and save',
+    body: 'Choose quality if offered, then save to Downloads, Photos, or Gallery. Board and profile links pack into a ZIP.',
+    image: '/images/step3.jpg',
+    imageAlt: 'Preview and download the Pinterest media file',
+  },
+];
 
-const tools = [
-  {
-    href: '/pinterest-video-downloader',
-    title: 'Pinterest Video Downloader',
-    blurb: 'Save public video pins as MP4 in the best available quality.',
-  },
-  {
-    href: '/pinterest-pin-downloader',
-    title: 'Pinterest Pin Downloader',
-    blurb: 'One pin → image, video, GIF, or every carousel slide.',
-  },
-  {
-    href: '/pinterest-board-downloader',
-    title: 'Pinterest Board Downloader',
-    blurb: 'Paste a board URL and download public pins as a ZIP.',
-  },
-  {
-    href: '/pinterest-image-downloader',
-    title: 'Pinterest Photo Downloader',
-    blurb: 'Original-resolution photos and artwork from pin links.',
-  },
-  {
-    href: '/pinterest-profile-downloader',
-    title: 'Pinterest Profile Downloader',
-    blurb: 'Pack visible public pins from a profile into a ZIP.',
-  },
-  {
-    href: '/pinterest-gif-downloader',
-    title: 'Pinterest GIF Downloader',
-    blurb: 'Download animated GIF pins without an account.',
-  },
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest Video Downloader — PintDownload',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to download Pinterest videos on phone or desktop',
+    description: 'Copy a public Pinterest link, paste it into PintDownload, preview, and save the file.',
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
+  }),
+  faqSchema(faqs),
 ];
 ---
 
-<BaseLayout
-  title="Pinterest Video Downloader — Free HD MP4, Photos & GIFs | PintDownload"
-  description="Free Pinterest video downloader online. Paste a public pin link to save HD MP4 videos, photos, GIFs, boards, and profiles. No account, no watermark from us."
-  fullBleed
-  clean
-  jsonLd={[webAppSchema, faqSchema, howToSchema]}
->
-  <!-- Hero: tool first (Pinpea-inspired) -->
-  <section class="relative overflow-hidden">
-    <div
-      class="absolute inset-0 -z-10"
-      aria-hidden="true"
-      style="
-        background:
-          radial-gradient(ellipse 90% 70% at 50% 20%, rgba(251,113,133,0.35) 0%, rgba(254,202,202,0.2) 35%, rgba(255,251,251,0) 70%),
-          linear-gradient(180deg, #FFF5F5 0%, #FFFBFB 55%, #FFFBFB 100%);
-      "
-    ></div>
-    <!-- Soft wave lines -->
-    <div
-      class="absolute inset-0 -z-10 opacity-[0.35] dark:opacity-10 pointer-events-none"
-      aria-hidden="true"
-      style="
-        background-image: repeating-radial-gradient(circle at 50% 120%, transparent 0, transparent 28px, rgba(225,29,72,0.06) 29px, transparent 30px);
-      "
-    ></div>
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd}>
+  <article class="flex flex-col items-center py-8 sm:py-12 text-center w-full">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40">
+      Free · HD MP4 · Pins, boards &amp; profiles
+    </div>
 
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-12 sm:pb-16 text-center">
-      <img
-        src="/images/logo.svg"
-        alt=""
-        width="64"
-        height="64"
-        class="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-6 rounded-[22%] shadow-glow"
-        decoding="async"
+    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
+      Pinterest <span class="text-[#E11D48]">Video Downloader</span>
+    </h1>
+
+    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+      Paste a public Pinterest link and save <strong class="text-slate-800 dark:text-slate-200">videos as MP4</strong>,
+      photos, GIFs, full carousels, or board/profile ZIPs — free, no account, no watermark from us.
+    </p>
+
+    <DownloaderForm client:load variant="hub" />
+
+    <div class="mt-10 w-full max-w-3xl grid sm:grid-cols-3 gap-3 text-left text-sm">
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Video, photo &amp; GIF</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">One hub for common pin types — or open a dedicated tool page for clearer intent.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Board &amp; profile ZIP</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Paste a board or profile URL to list public pins and download a pack.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Credit creators</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">If you reuse clips in public content, credit the original creator and follow copyright rules.</p>
+      </div>
+    </div>
+
+    <div class="w-full max-w-4xl">
+      <HowToSteps
+        title="How to download Pinterest videos on phone or desktop"
+        intro="Three steps. Public pins only — no login required."
+        exampleUrl="https://pin.it/…"
+        exampleLabel="Common shortlink"
+        steps={steps}
+        visual
       />
 
-      <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-ink-900 dark:text-white mb-8 leading-[1.15]">
-        Pinterest Video Downloader
-      </h1>
-
-      <!-- Tool on top -->
-      <div id="download" class="scroll-mt-28">
-        <DownloaderForm client:load variant="hub" layout="hero" />
-      </div>
-
-      <ul class="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-ink-500 dark:text-slate-400 font-medium">
-        <li class="inline-flex items-center gap-1.5">
-          <span class="text-brand-600" aria-hidden="true">HD</span>
-          Full HD downloads
-        </li>
-        <li class="inline-flex items-center gap-1.5">
-          <span class="text-brand-600" aria-hidden="true">✓</span>
-          Free · no account
-        </li>
-        <li class="inline-flex items-center gap-1.5">
-          <span class="text-brand-600" aria-hidden="true">↓</span>
-          Videos, photos &amp; GIFs
-        </li>
-      </ul>
-
-      <p class="mt-8 text-sm text-ink-400">
-        <a href="#how-to" class="inline-flex items-center gap-1.5 font-medium text-ink-600 dark:text-slate-300 hover:text-brand-600 transition-colors">
-          <span aria-hidden="true">?</span> How to use PintDownload
-        </a>
-      </p>
-    </div>
-  </section>
-
-  <!-- How to (visual 3-step like Pinpea) -->
-  <section id="how-to" class="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20 scroll-mt-24">
-    <div class="text-center mb-10 sm:mb-12">
-      <h2 class="text-2xl sm:text-4xl font-bold text-ink-900 dark:text-white tracking-tight mb-3" style="text-wrap: balance;">
-        How to download Pinterest videos on mobile or desktop
-      </h2>
-      <p class="text-base sm:text-lg text-ink-500 dark:text-slate-400 max-w-xl mx-auto">
-        Three steps. Public pins only — no login required.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-5 sm:gap-6">
-      <div class="rounded-3xl bg-white dark:bg-ink-900 border border-black/[0.05] dark:border-white/[0.08] p-6 sm:p-7 shadow-soft text-left">
-        <div class="h-36 sm:h-40 rounded-2xl bg-gradient-to-br from-rose-100 to-orange-50 dark:from-rose-950/40 dark:to-ink-950 mb-5 flex items-center justify-center text-4xl font-bold text-brand-600/80">
-          1
-        </div>
-        <h3 class="text-lg font-bold text-ink-900 dark:text-white mb-2">Copy the Pinterest link</h3>
-        <p class="text-base text-ink-500 dark:text-slate-400 leading-relaxed">
-          Open the pin in the app or browser. Share → Copy link, or copy a full URL with <code class="text-sm">/pin/</code>. Short <code class="text-sm">pin.it</code> links work too.
+      <!-- Creator credit -->
+      <aside class="mt-10 p-5 sm:p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20 text-left">
+        <h2 class="font-extrabold text-slate-900 dark:text-white text-base sm:text-lg mb-2">Credit original creators</h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+          If you use someone else’s Pinterest video or image in content you publish (Reels, TikTok, YouTube, ads),
+          <strong class="text-slate-800 dark:text-slate-200">credit the original creator</strong>.
+          Personal offline reference is fine; republishing without credit or a license is not.
+          <a href="/blog/using-downloaded-content-responsibly" class="font-bold text-[#E11D48] hover:underline">Ethics guide →</a>
         </p>
-      </div>
-      <div class="rounded-3xl bg-white dark:bg-ink-900 border border-black/[0.05] dark:border-white/[0.08] p-6 sm:p-7 shadow-soft text-left">
-        <div class="h-36 sm:h-40 rounded-2xl bg-gradient-to-br from-rose-100 to-orange-50 dark:from-rose-950/40 dark:to-ink-950 mb-5 flex items-center justify-center text-4xl font-bold text-brand-600/80">
-          2
-        </div>
-        <h3 class="text-lg font-bold text-ink-900 dark:text-white mb-2">Paste into PintDownload</h3>
-        <p class="text-base text-ink-500 dark:text-slate-400 leading-relaxed">
-          Paste the public link in the box above and tap <strong class="text-ink-800 dark:text-slate-200">Download</strong>. We fetch available media from public pins, boards, and profiles.
-        </p>
-      </div>
-      <div class="rounded-3xl bg-white dark:bg-ink-900 border border-black/[0.05] dark:border-white/[0.08] p-6 sm:p-7 shadow-soft text-left">
-        <div class="h-36 sm:h-40 rounded-2xl bg-gradient-to-br from-rose-100 to-orange-50 dark:from-rose-950/40 dark:to-ink-950 mb-5 flex items-center justify-center text-4xl font-bold text-brand-600/80">
-          3
-        </div>
-        <h3 class="text-lg font-bold text-ink-900 dark:text-white mb-2">Preview and save</h3>
-        <p class="text-base text-ink-500 dark:text-slate-400 leading-relaxed">
-          Pick quality if offered, then save to Downloads, Photos, or Gallery. Board and profile links pack into a ZIP.
-        </p>
-      </div>
-    </div>
+      </aside>
 
-    <div class="mt-10 text-center">
-      <a
-        href="#download"
-        class="inline-flex h-12 items-center px-8 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold text-base transition-colors touch-manipulation"
-      >
-        Download Pinterest videos
-      </a>
+      <CompareTable highlight="pin" title="Pin vs board vs profile — which tool?" />
+      <FaqSection title="Pinterest downloader FAQ" items={faqs} />
+      <RelatedTools current={path} title="Specialized Pinterest download tools" />
     </div>
-  </section>
-
-  <!-- Why / benefits -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
-    <h2 class="text-2xl sm:text-4xl font-bold text-ink-900 dark:text-white tracking-tight text-center mb-10" style="text-wrap: balance;">
-      Why use PintDownload
-    </h2>
-    <div class="grid sm:grid-cols-3 gap-6 sm:gap-8">
-      <div class="text-left sm:text-center">
-        <p class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">HD · SD</p>
-        <h3 class="text-lg font-bold text-ink-900 dark:text-white mb-2">Download in available quality</h3>
-        <p class="text-base text-ink-500 dark:text-slate-400 leading-relaxed">
-          We return the streams Pinterest publishes — often HD or 1080p when the source allows. We do not invent 4K.
-        </p>
-      </div>
-      <div class="text-left sm:text-center">
-        <p class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Free</p>
-        <h3 class="text-lg font-bold text-ink-900 dark:text-white mb-2">No account required</h3>
-        <p class="text-base text-ink-500 dark:text-slate-400 leading-relaxed">
-          Paste a public link and download. No signup, no app install, works in mobile and desktop browsers.
-        </p>
-      </div>
-      <div class="text-left sm:text-center">
-        <p class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Clean</p>
-        <h3 class="text-lg font-bold text-ink-900 dark:text-white mb-2">No watermark from us</h3>
-        <p class="text-base text-ink-500 dark:text-slate-400 leading-relaxed">
-          We don’t stamp our brand on your file. Private and secret pins stay unsupported on purpose.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Creator credit callout -->
-  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
-    <div class="rounded-3xl border border-brand-200/80 dark:border-brand-900/40 bg-brand-50/60 dark:bg-brand-950/20 p-6 sm:p-8 text-left">
-      <h2 class="text-xl sm:text-2xl font-bold text-ink-900 dark:text-white mb-3">
-        Credit original creators
-      </h2>
-      <p class="text-base sm:text-lg text-ink-600 dark:text-slate-300 leading-relaxed mb-3">
-        If you use someone else’s Pinterest video or image in content you publish (Reels, TikTok, YouTube, ads, decks), <strong class="text-ink-900 dark:text-white">credit the original creator</strong> and only use media you’re allowed to reuse.
-      </p>
-      <p class="text-base text-ink-500 dark:text-slate-400 leading-relaxed">
-        Downloading a public pin for personal reference is different from republishing it as your own. When in doubt, ask permission or link the source.
-        <a href="/blog/using-downloaded-content-responsibly" class="font-semibold text-brand-600 hover:underline">Read our ethics guide →</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- Tools grid (SEO internal links) -->
-  <section id="tools" class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
-    <div class="text-center mb-10">
-      <h2 class="text-2xl sm:text-4xl font-bold text-ink-900 dark:text-white tracking-tight mb-3">
-        All Pinterest download tools
-      </h2>
-      <p class="text-base sm:text-lg text-ink-500 dark:text-slate-400">
-        Dedicated pages for every common search — pin, video, board, photo, profile, GIF.
-      </p>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {tools.map((t) => (
-        <a
-          href={t.href}
-          class="group p-6 rounded-3xl bg-white dark:bg-ink-900 border border-black/[0.05] dark:border-white/[0.08] shadow-soft hover:border-brand-300 dark:hover:border-brand-800 hover:shadow-lift transition-all text-left"
-        >
-          <h3 class="text-base font-bold text-ink-900 dark:text-white mb-1.5 group-hover:text-brand-600 transition-colors">
-            {t.title}
-          </h3>
-          <p class="text-sm sm:text-base text-ink-500 dark:text-slate-400 leading-relaxed">{t.blurb}</p>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- What works -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
-    <div class="rounded-[2rem] bg-white dark:bg-ink-900 border border-black/[0.05] dark:border-white/[0.08] shadow-soft p-7 sm:p-10">
-      <h2 class="text-2xl sm:text-3xl font-bold text-ink-900 dark:text-white mb-6">What works / what doesn’t</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div>
-          <h3 class="text-base font-bold text-emerald-700 dark:text-emerald-400 mb-3">Works</h3>
-          <ul class="space-y-2 text-base text-ink-600 dark:text-slate-300">
-            <li>Public pin and pin.it links</li>
-            <li>Public videos, photos, GIFs, carousels</li>
-            <li>Public boards and profiles (ZIP packs)</li>
-            <li>Phone and desktop browsers</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-base font-bold text-rose-700 dark:text-rose-400 mb-3">Doesn’t work</h3>
-          <ul class="space-y-2 text-base text-ink-600 dark:text-slate-300">
-            <li>Private, secret, or login-only pins</li>
-            <li>Deleted or restricted content</li>
-            <li>Bypassing Pinterest access controls</li>
-            <li>Inventing higher quality than the source</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="max-w-3xl mx-auto px-4 sm:px-6 pb-20 sm:pb-28">
-    <h2 class="text-2xl sm:text-4xl font-bold text-ink-900 dark:text-white tracking-tight text-center mb-8">
-      Frequently asked questions
-    </h2>
-    <div class="space-y-3">
-      {[
-        {
-          q: 'Is PintDownload free?',
-          a: 'Yes — free for public Pinterest media, no account required.',
-        },
-        {
-          q: 'How do I download on iPhone or Android?',
-          a: 'Copy the pin link from the Pinterest app, open pintdownload.app in Safari or Chrome, paste, and download. Save to Photos/Gallery if offered.',
-        },
-        {
-          q: 'Where are files saved?',
-          a: 'Usually your browser Downloads folder. On iPhone, use Save Video / Files; on Android, Downloads or Gallery.',
-        },
-        {
-          q: 'Do I need to credit creators?',
-          a: 'Yes if you publish or remix their work. Personal offline reference is fine; reposting without credit or a license is not.',
-        },
-      ].map((item) => (
-        <details class="group rounded-2xl bg-white dark:bg-ink-900 border border-black/[0.05] dark:border-white/[0.08] p-5 sm:p-6 open:shadow-soft">
-          <summary class="cursor-pointer list-none font-semibold text-ink-900 dark:text-white text-base sm:text-lg flex items-center justify-between gap-3 touch-manipulation">
-            {item.q}
-            <span class="text-ink-400 group-open:rotate-45 transition-transform text-xl leading-none" aria-hidden="true">+</span>
-          </summary>
-          <p class="mt-3 text-base text-ink-500 dark:text-slate-400 leading-relaxed">{item.a}</p>
-        </details>
-      ))}
-    </div>
-    <p class="mt-8 text-center text-base">
-      <a href="/how-to-download-pinterest-videos" class="font-semibold text-brand-600 hover:underline">Full how-to guide</a>
-      <span class="text-ink-300 mx-2">·</span>
-      <a href="/blog" class="font-semibold text-brand-600 hover:underline">Blog</a>
-      <span class="text-ink-300 mx-2">·</span>
-      <a href="/contact" class="font-semibold text-brand-600 hover:underline">Contact</a>
-    </p>
-  </section>
+  </article>
 </BaseLayout>

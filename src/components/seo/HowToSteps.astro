@@ -2,6 +2,9 @@
 interface Step {
   title: string;
   body: string;
+  /** Optional illustration path under /public */
+  image?: string;
+  imageAlt?: string;
 }
 
 interface Props {
@@ -10,9 +13,13 @@ interface Props {
   steps: Step[];
   exampleUrl?: string;
   exampleLabel?: string;
+  /** When true, show image cards in a responsive grid */
+  visual?: boolean;
 }
 
-const { title, intro, steps, exampleUrl, exampleLabel } = Astro.props;
+const { title, intro, steps, exampleUrl, exampleLabel, visual = false } = Astro.props;
+const hasImages = steps.some((s) => s.image);
+const useVisual = visual || hasImages;
 ---
 
 <section class="mt-14 w-full text-left" aria-labelledby="howto-heading">
@@ -20,7 +27,7 @@ const { title, intro, steps, exampleUrl, exampleLabel } = Astro.props;
     {title}
   </h2>
   {intro && (
-    <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 max-w-2xl leading-relaxed">{intro}</p>
+    <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-5 max-w-2xl leading-relaxed">{intro}</p>
   )}
   {exampleUrl && (
     <p class="mb-5 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
@@ -28,17 +35,49 @@ const { title, intro, steps, exampleUrl, exampleLabel } = Astro.props;
       <code class="text-[11px] sm:text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg break-all">{exampleUrl}</code>
     </p>
   )}
-  <ol class="space-y-3">
-    {steps.map((step, i) => (
-      <li class="flex gap-3 sm:gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-        <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E11D48] text-white text-sm font-extrabold flex items-center justify-center shadow-sm">
-          {i + 1}
-        </span>
-        <div class="min-w-0">
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base mb-1">{step.title}</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" set:html={step.body} />
-        </div>
-      </li>
-    ))}
-  </ol>
+
+  {useVisual ? (
+    <ol class="grid sm:grid-cols-3 gap-4 sm:gap-5 list-none p-0 m-0">
+      {steps.map((step, i) => (
+        <li class="flex flex-col rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden h-full">
+          {step.image && (
+            <div class="aspect-[3/2] overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img
+                src={step.image}
+                alt={step.imageAlt || step.title}
+                width={900}
+                height={600}
+                class="w-full h-full object-cover rounded-t-3xl"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          )}
+          <div class="p-4 sm:p-5 flex gap-3 flex-1">
+            <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E11D48] text-white text-sm font-extrabold flex items-center justify-center shadow-sm">
+              {i + 1}
+            </span>
+            <div class="min-w-0">
+              <h3 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base mb-1">{step.title}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" set:html={step.body} />
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <ol class="space-y-3">
+      {steps.map((step, i) => (
+        <li class="flex gap-3 sm:gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E11D48] text-white text-sm font-extrabold flex items-center justify-center shadow-sm">
+            {i + 1}
+          </span>
+          <div class="min-w-0">
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base mb-1">{step.title}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" set:html={step.body} />
+          </div>
+        </li>
+      ))}
+    </ol>
+  )}
 </section>

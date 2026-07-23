@@ -20,9 +20,10 @@ export const BRAND = {
   },
   accent: '#E11D48',
   accentHover: '#BE123C',
-  logo: '/images/logo.svg',
+  logo: '/images/logo.png',
   logoPng: '/images/logo.png',
-  ogImage: '/images/og-default.png',
+  logoSvg: '/images/logo.svg',
+  ogImage: '/images/logo.png',
 } as const;
 
 export const SITE_URL = BRAND.url;

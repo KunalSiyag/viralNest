@@ -87,8 +87,9 @@ const mobileNav = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/images/logo-icon.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href={BRAND.logoPng} />
+    <link rel="apple-touch-icon" href="/images/logo-icon.png" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -170,11 +171,11 @@ const mobileNav = [
       <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-[4.25rem] flex items-center justify-between gap-3">
         <a href="/" class="flex items-center gap-2.5 group min-w-0 focus-visible:outline-none shrink-0">
           <img
-            src="/images/logo.svg"
+            src="/images/logo.png"
             alt=""
-            width="36"
-            height="36"
-            class="w-9 h-9 rounded-[22%] shadow-soft"
+            width="40"
+            height="56"
+            class="h-9 w-auto object-contain object-center drop-shadow-sm"
             decoding="async"
           />
           <span class="font-bold text-[1.125rem] tracking-tight text-ink-900 dark:text-white truncate">
@@ -253,17 +254,46 @@ const mobileNav = [
     <div class="relative w-full overflow-x-hidden flex-1">
       {!clean && (
         <>
-          <div class="hidden 2xl:block absolute left-6 top-28 w-44 pointer-events-none select-none z-0 opacity-70">
-            <div class="transform -rotate-6">
-              <div class="p-1.5 bg-white/90 dark:bg-ink-900/90 rounded-2xl border border-black/[0.05] shadow-lift">
-                <img src="/images/side_pin_1.jpg" alt="" class="w-full h-52 object-cover rounded-xl" width="176" height="208" loading="lazy" />
+          {/* Left floating pin collage */}
+          <div class="hidden xl:block absolute left-3 2xl:left-6 top-20 w-44 2xl:w-48 pointer-events-none select-none z-0">
+            <div class="transform -rotate-6 opacity-80 hover:opacity-100 transition-opacity pointer-events-auto">
+              <div class="p-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-2xl shadow-red-950/10">
+                <img src="/images/side_pin_1.jpg" alt="" class="w-full h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
+                <div class="p-2 text-left">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Interior · Pin</span>
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Cozy home decor</p>
+                </div>
+              </div>
+            </div>
+            <div class="transform rotate-3 translate-y-8 translate-x-5 opacity-70 hover:opacity-100 transition-opacity pointer-events-auto">
+              <div class="p-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-2xl shadow-slate-900/10">
+                <img src="/images/side_pin_3.jpg" alt="" class="w-full h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
+                <div class="p-2 text-left">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Lifestyle · Pin</span>
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Matcha &amp; pastry</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="hidden 2xl:block absolute right-6 top-32 w-44 pointer-events-none select-none z-0 opacity-70">
-            <div class="transform rotate-6">
-              <div class="p-1.5 bg-white/90 dark:bg-ink-900/90 rounded-2xl border border-black/[0.05] shadow-lift">
-                <img src="/images/side_pin_2.jpg" alt="" class="w-full h-52 object-cover rounded-xl" width="176" height="208" loading="lazy" />
+
+          {/* Right floating pin collage */}
+          <div class="hidden xl:block absolute right-3 2xl:right-6 top-24 w-44 2xl:w-48 pointer-events-none select-none z-0">
+            <div class="transform rotate-6 opacity-80 hover:opacity-100 transition-opacity pointer-events-auto">
+              <div class="p-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-2xl shadow-red-950/10">
+                <img src="/images/side_pin_2.jpg" alt="" class="w-full h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
+                <div class="p-2 text-left">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Travel · Pin</span>
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Golden hour views</p>
+                </div>
+              </div>
+            </div>
+            <div class="transform -rotate-3 translate-y-8 -translate-x-5 opacity-70 hover:opacity-100 transition-opacity pointer-events-auto">
+              <div class="p-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-2xl shadow-slate-900/10">
+                <img src="/images/side_pin_4.jpg" alt="" class="w-full h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
+                <div class="p-2 text-left">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Fashion · Pin</span>
+                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Street style chic</p>
+                </div>
               </div>
             </div>
           </div>
@@ -286,7 +316,7 @@ const mobileNav = [
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
           <div class="sm:col-span-2 lg:col-span-1">
             <a href="/" class="inline-flex items-center gap-2.5 mb-4">
-              <img src="/images/logo.svg" alt="" width="32" height="32" class="w-8 h-8 rounded-[22%]" />
+              <img src="/images/logo.png" alt="" width="32" height="48" class="h-8 w-auto object-contain" />
               <span class="font-semibold text-lg text-ink-900 dark:text-white tracking-tight">
                 Pint<span class="text-brand-600">Download</span>
               </span>
