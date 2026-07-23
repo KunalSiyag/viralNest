@@ -79,11 +79,28 @@ import { BRAND } from '../lib/brand';
 
       <section>
         <h2 class="font-display text-2xl sm:text-3xl text-ink-900 dark:text-white mb-4">Contact</h2>
-        <p>
-          Questions, feedback, or takedown requests: visit
-          <a href="/contact" class="text-brand-600 font-semibold hover:underline">Contact</a>
-          or email <a href={`mailto:${BRAND.email.support}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.support}</a>.
+        <p class="mb-4">
+          Prefer the full list on
+          <a href="/contact" class="text-brand-600 font-semibold hover:underline">Contact</a>:
         </p>
+        <ul class="space-y-2 text-base">
+          <li>
+            Support —
+            <a href={`mailto:${BRAND.email.support}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.support}</a>
+          </li>
+          <li>
+            Feedback —
+            <a href={`mailto:${BRAND.email.feedback}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.feedback}</a>
+          </li>
+          <li>
+            Privacy —
+            <a href={`mailto:${BRAND.email.privacy}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.privacy}</a>
+          </li>
+          <li>
+            DMCA —
+            <a href={`mailto:${BRAND.email.dmca}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.dmca}</a>
+          </li>
+        </ul>
       </section>
     </div>
 

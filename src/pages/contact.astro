@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { BRAND } from '../lib/brand';
+import { BRAND, CONTACT_CHANNELS } from '../lib/brand';
 ---
 
 <BaseLayout
-  title={`Contact ${BRAND.name} — Support & DMCA`}
-  description={`Contact the ${BRAND.name} team for product support, feedback, or copyright inquiries at ${BRAND.domain}.`}
+  title={`Contact ${BRAND.name} — Support, Feedback & DMCA`}
+  description={`Contact ${BRAND.name}: support, feedback, privacy, and DMCA at ${BRAND.domain}.`}
   clean
 >
   <div class="max-w-2xl mx-auto">
@@ -17,34 +17,43 @@ import { BRAND } from '../lib/brand';
 
     <h1 class="font-display text-4xl sm:text-5xl text-ink-900 dark:text-white tracking-tight mb-4">Contact</h1>
     <p class="text-xl text-ink-600 dark:text-slate-300 leading-relaxed mb-10">
-      Support, feedback, partnerships, and copyright requests — we read every message.
+      Support, feedback, privacy, and copyright — use the address that matches your topic so we can route it faster.
     </p>
 
     <div class="space-y-4">
-      <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.08] shadow-soft">
-        <h2 class="text-lg font-semibold text-ink-900 dark:text-white mb-1">Product support</h2>
-        <p class="text-base text-ink-500 mb-3">Download issues, tool feedback, feature ideas.</p>
-        <a href={`mailto:${BRAND.email.support}`} class="text-lg font-semibold text-brand-600 hover:underline">{BRAND.email.support}</a>
-      </div>
-      <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.08] shadow-soft">
-        <h2 class="text-lg font-semibold text-ink-900 dark:text-white mb-1">DMCA &amp; copyright</h2>
-        <p class="text-base text-ink-500 mb-3">Rights holders and formal takedown notices.</p>
-        <a href={`mailto:${BRAND.email.dmca}`} class="text-lg font-semibold text-brand-600 hover:underline">{BRAND.email.dmca}</a>
-      </div>
+      {CONTACT_CHANNELS.map((ch) => (
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.08] shadow-soft">
+          <h2 class="text-lg font-semibold text-ink-900 dark:text-white mb-1">{ch.title}</h2>
+          <p class="text-base text-ink-500 mb-3">{ch.blurb}</p>
+          <a
+            href={`mailto:${ch.address}`}
+            class="text-lg font-semibold text-brand-600 hover:underline break-all"
+          >
+            {ch.address}
+          </a>
+        </div>
+      ))}
     </div>
 
     <div class="mt-10 p-6 rounded-3xl bg-ink-50 dark:bg-white/[0.04] border border-black/[0.05] text-base text-ink-600 dark:text-slate-400 leading-relaxed">
-      <p class="mb-2"><strong class="text-ink-900 dark:text-white">Before you write:</strong> private and secret pins cannot be extracted — that is by design.</p>
+      <p class="mb-2">
+        <strong class="text-ink-900 dark:text-white">Before you write:</strong> private and secret pins cannot be extracted — that is by design.
+      </p>
       <p>
-        See <a href="/blog/troubleshooting-pinterest-downloads" class="text-brand-600 font-semibold hover:underline">troubleshooting</a>
-        and <a href="/blog/pin-vs-board-vs-profile-urls-explained" class="text-brand-600 font-semibold hover:underline">URL types</a> for the most common fixes.
+        See
+        <a href="/blog/troubleshooting-pinterest-downloads" class="text-brand-600 font-semibold hover:underline">troubleshooting</a>
+        and
+        <a href="/blog/pin-vs-board-vs-profile-urls-explained" class="text-brand-600 font-semibold hover:underline">URL types</a>
+        for the most common fixes.
       </p>
     </div>
 
     <p class="mt-10 text-base">
       <a href="/about" class="font-semibold text-brand-600 hover:underline">About {BRAND.name}</a>
       <span class="text-ink-300 mx-2">·</span>
-      <a href="/" class="font-semibold text-brand-600 hover:underline">Back to downloader</a>
+      <a href="/privacy-policy" class="font-semibold text-brand-600 hover:underline">Privacy</a>
+      <span class="text-ink-300 mx-2">·</span>
+      <a href="/" class="font-semibold text-brand-600 hover:underline">Downloader</a>
     </p>
   </div>
 </BaseLayout>

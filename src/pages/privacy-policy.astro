@@ -1,26 +1,73 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { BRAND } from '../lib/brand';
 ---
 
-<BaseLayout title="Privacy Policy — PintDownload" description="Privacy Policy for PintDownload Pinterest Media Downloader.">
-  <div class="max-w-3xl mx-auto py-8 text-left bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-sm">
-    <h1 class="font-display text-4xl sm:text-5xl text-slate-900 mb-4">Privacy Policy</h1>
-    <p class="text-xs text-slate-400 mb-6">Last updated: July 23, 2026</p>
-    
-    <div class="prose max-w-none text-slate-700 text-base sm:text-lg leading-relaxed space-y-4 font-medium">
-      <p>At PintDownload (accessible from https://pintdownload.app), one of our main priorities is the privacy of our visitors. This Privacy Policy document outlines the types of information collected and recorded by PintDownload and how we use it.</p>
-      
-      <h2 class="text-lg font-bold text-slate-900 mt-6 mb-2">No Personal Data Collection</h2>
-      <p>PintDownload is a free online utility. We do not require users to register, create accounts, or provide personal information (such as names, emails, or phone numbers) to use our service.</p>
-      
-      <h2 class="text-lg font-bold text-slate-900 mt-6 mb-2">Log Files</h2>
-      <p>Like standard web services, PintDownload logs basic technical metadata (such as IP addresses, browser types, timestamp, and requested URLs) solely for system diagnostic purposes, server performance maintenance, and rate limiting.</p>
-      
-      <h2 class="text-lg font-bold text-slate-900 mt-6 mb-2">Cookies & Local Storage</h2>
-      <p>PintDownload does not use tracking cookies. We utilize browser LocalStorage exclusively to store your 4 most recent download links locally on your device for user convenience.</p>
+<BaseLayout
+  title={`Privacy Policy — ${BRAND.name}`}
+  description={`Privacy Policy for ${BRAND.name} Pinterest media downloader at ${BRAND.domain}.`}
+  clean
+>
+  <div class="max-w-3xl mx-auto py-8 text-left">
+    <nav class="text-sm font-medium text-ink-500 mb-8 flex flex-wrap items-center gap-2" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-brand-600">Home</a>
+      <span class="text-ink-300" aria-hidden="true">/</span>
+      <span class="text-ink-700 dark:text-slate-300">Privacy Policy</span>
+    </nav>
 
-      <h2 class="text-lg font-bold text-slate-900 mt-6 mb-2">Contact Us</h2>
-      <p>If you have any questions or require more information about our Privacy Policy, feel free to contact us at privacy@pintdownload.app.</p>
+    <h1 class="font-display text-4xl sm:text-5xl text-ink-900 dark:text-white mb-4">Privacy Policy</h1>
+    <p class="text-sm text-ink-400 mb-8">Last updated: July 24, 2026</p>
+
+    <div class="space-y-6 text-ink-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-medium">
+      <p>
+        At {BRAND.name} (accessible from {BRAND.url}), one of our main priorities is the privacy of our visitors. This Privacy Policy outlines the types of information collected and recorded by {BRAND.name} and how we use it.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink-900 dark:text-white mt-8">No account data</h2>
+      <p>
+        {BRAND.name} is a free online utility. We do not require users to register, create accounts, or provide personal information (such as names, emails, or phone numbers) to use the downloader.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink-900 dark:text-white mt-8">Log files</h2>
+      <p>
+        Like standard web services, {BRAND.name} may log basic technical metadata (such as IP addresses, browser types, timestamps, and requested URLs) for diagnostics, performance, abuse prevention, and rate limiting.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink-900 dark:text-white mt-8">Cookies &amp; local storage</h2>
+      <p>
+        {BRAND.name} does not use tracking cookies for advertising. We may use browser LocalStorage to store a small number of recent download links on your device for convenience.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink-900 dark:text-white mt-8">Email contact</h2>
+      <p>
+        If you email us, we receive the content of your message and your email address so we can respond. We do not sell that information.
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>
+          Privacy inquiries:
+          <a href={`mailto:${BRAND.email.privacy}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.privacy}</a>
+        </li>
+        <li>
+          Product support:
+          <a href={`mailto:${BRAND.email.support}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.support}</a>
+        </li>
+        <li>
+          Feedback:
+          <a href={`mailto:${BRAND.email.feedback}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.feedback}</a>
+        </li>
+        <li>
+          DMCA / copyright:
+          <a href={`mailto:${BRAND.email.dmca}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.dmca}</a>
+        </li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold text-ink-900 dark:text-white mt-8">Contact</h2>
+      <p>
+        Questions about this Privacy Policy:
+        <a href={`mailto:${BRAND.email.privacy}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.privacy}</a>
+        or see our
+        <a href="/contact" class="text-brand-600 font-semibold hover:underline">Contact page</a>.
+      </p>
     </div>
   </div>
 </BaseLayout>
