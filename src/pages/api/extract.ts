@@ -243,6 +243,46 @@ function upgradePinImageUrl(url?: string | null): string | null {
     .replace(/\/736x\//, '/originals/');
 }
 
+function extractVideoUrlsFromHtml(
+  html: string,
+): { label: string; url: string; width?: number; height?: number }[] {
+  const qualities: { label: string; url: string; width?: number; height?: number }[] = [];
+  const seen = new Set<string>();
+
+  // 1. Scan for HLS .m3u8 streams and convert them to progressive expMp4 URLs
+  const m3u8Matches = [
+    ...html.matchAll(/(https?:\\?\/\\?[^"\s']+\.m3u8[^"\s']*)/gi),
+  ].map((m) => m[1].replace(/\\/g, ''));
+
+  for (const m3u8 of m3u8Matches) {
+    if (m3u8.includes('pinimg.com/videos/')) {
+      const mp4_720w = m3u8.replace('/hls/', '/expMp4/').replace('.m3u8', '_720w.mp4');
+      if (!seen.has(mp4_720w)) {
+        seen.add(mp4_720w);
+        qualities.push({ label: '720p HD MP4', url: mp4_720w });
+      }
+    }
+  }
+
+  // 2. Scan for direct mp4 URLs
+  const mp4Matches = [
+    ...html.matchAll(/(https?:\\?\/\\?[^"\s']+\.mp4[^"\s']*)/gi),
+  ].map((m) => m[1].replace(/\\/g, ''));
+
+  for (const mp4 of mp4Matches) {
+    if (mp4.includes('pinimg.com/videos/') && !seen.has(mp4)) {
+      seen.add(mp4);
+      let label = 'SD MP4';
+      if (mp4.includes('720w') || mp4.includes('720p')) label = '720p HD MP4';
+      else if (mp4.includes('1080w') || mp4.includes('1080p')) label = '1080p Full HD';
+      else if (mp4.includes('540w') || mp4.includes('540p')) label = '540p MP4';
+      qualities.push({ label, url: mp4 });
+    }
+  }
+
+  return qualities;
+}
+
 function pickBestImageFromImagesMap(images: any): string | null {
   if (!images || typeof images !== 'object') return null;
   const order = ['orig', 'originals', '1360x', '1200x', '736x', '750x', '564x', '474x', '236x'];
@@ -966,6 +1006,14 @@ export const POST: APIRoute = async ({ request }) => {
           } catch (e) {
             console.warn('Error parsing __PWS_DATA__ JSON:', e);
           }
+        }
+      }
+
+      // Strategy 3: Scan HTML for HLS .m3u8 and progressive MP4 video streams
+      const scannedVideos = extractVideoUrlsFromHtml(html);
+      for (const sv of scannedVideos) {
+        if (!videoQualities.some((q) => q.url === sv.url)) {
+          videoQualities.push(sv);
         }
       }
 
