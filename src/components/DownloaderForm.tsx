@@ -82,7 +82,7 @@ const VARIANT_COPY: Record<
     worksLabel: 'Works with',
     singleTab: 'Pin / Board / Profile',
     showBatch: true,
-    placeholder: 'Paste Pinterest link here',
+    placeholder: 'Paste Pinterest link here… e.g. https://pin.it/…',
     ariaLabel: 'Pinterest pin, board, or profile link',
     submitLabel: 'Download',
     hint: 'Public pin, board, or profile URLs. Board & profile links download as ZIP.',
@@ -579,35 +579,36 @@ export default function DownloaderForm({
       >
         {mode === 'single' || !copy.showBatch || isHero ? (
           isHero ? (
-            <div className="relative w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 rounded-[2rem] sm:rounded-full bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.1] shadow-pill p-1.5 sm:p-1.5 sm:pl-5">
-              <div className="flex items-center gap-2 flex-1 min-w-0 px-3 sm:px-0">
-                <Clipboard className="w-5 h-5 text-ink-400 shrink-0 hidden sm:block" aria-hidden />
+            <div className="relative w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 rounded-2xl sm:rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] dark:border-white/[0.12] shadow-pill p-2 sm:p-1.5 sm:pl-5 transition-all focus-within:ring-2 focus-within:ring-[#E11D48]">
+              <div className="flex items-center gap-2 flex-1 min-w-0 px-2 sm:px-0">
+                <Clipboard className="w-5 h-5 text-ink-400 shrink-0 hidden sm:block" aria-hidden="true" />
                 <input
                   type="url"
                   name="url"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder={copy.placeholder}
-                  className="w-full h-12 sm:h-14 bg-transparent border-0 text-ink-900 dark:text-white placeholder:text-ink-400 focus:outline-none focus:ring-0 text-base sm:text-[1.05rem] min-w-0"
+                  className="w-full h-12 sm:h-14 bg-transparent border-0 text-ink-900 dark:text-white placeholder:text-ink-400 focus:outline-none text-base sm:text-[1.05rem] min-w-0"
                   required
                   aria-label={copy.ariaLabel}
                   autoComplete="url"
                   inputMode="url"
+                  spellCheck={false}
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading || !url.trim()}
-                className="h-12 sm:h-14 px-7 sm:px-8 rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white font-semibold text-base flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0 touch-manipulation shadow-soft"
+                className="h-12 sm:h-14 px-7 sm:px-8 rounded-xl sm:rounded-full bg-[#E11D48] hover:bg-[#BE123C] active:bg-[#9F1239] text-white font-semibold text-base flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0 touch-manipulation shadow-soft focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E11D48]"
               >
                 {loading ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
                     <span>Working…</span>
                   </>
                 ) : (
                   <>
-                    <Download className="w-5 h-5" />
+                    <Download className="w-5 h-5" aria-hidden="true" />
                     <span>Download</span>
                   </>
                 )}
@@ -621,16 +622,20 @@ export default function DownloaderForm({
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder={copy.placeholder}
-                className="w-full h-14 pl-5 pr-20 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
+                className="w-full h-14 pl-5 pr-24 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
                 required
                 aria-label={copy.ariaLabel}
+                autoComplete="url"
+                inputMode="url"
+                spellCheck={false}
               />
               <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
                 {url ? (
                   <button
                     type="button"
                     onClick={() => setUrl('')}
-                    className="text-xs font-semibold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 px-2 py-1 rounded-md"
+                    className="text-xs font-semibold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 px-2.5 py-1.5 rounded-lg min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
+                    aria-label="Clear input field"
                   >
                     Clear
                   </button>
@@ -638,9 +643,10 @@ export default function DownloaderForm({
                   <button
                     type="button"
                     onClick={handlePaste}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-2.5 py-1.5 rounded-lg transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
+                    aria-label="Paste URL from clipboard"
                   >
-                    <Clipboard className="w-3.5 h-3.5" />
+                    <Clipboard className="w-3.5 h-3.5" aria-hidden="true" />
                     <span>Paste</span>
                   </button>
                 )}
@@ -654,15 +660,18 @@ export default function DownloaderForm({
               value={batchUrls}
               onChange={(e) => setBatchUrls(e.target.value)}
               placeholder="Paste up to 5 Pinterest URLs (one per line):&#10;https://pinterest.com/pin/1234567/&#10;https://pin.it/abc1234"
-              className="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-sm shadow-sm"
+              className="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-sm shadow-sm"
               required
+              spellCheck={false}
+              aria-label="Batch Pinterest URLs"
             />
             <button
               type="button"
               onClick={handlePaste}
-              className="absolute right-3 top-3 inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-2.5 py-1.5 rounded-lg transition-colors"
+              className="absolute right-3 top-3 inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
+              aria-label="Paste clipboard text into batch input"
             >
-              <Clipboard className="w-3.5 h-3.5" />
+              <Clipboard className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Paste Clipboard</span>
             </button>
           </div>
@@ -675,16 +684,16 @@ export default function DownloaderForm({
               loading ||
               (mode === 'batch' && copy.showBatch ? !batchUrls.trim() : !url.trim())
             }
-            className="w-full h-14 px-8 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-red-500/25 active:scale-95"
+            className="w-full h-14 px-8 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-red-500/25 active:scale-95 touch-manipulation focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E11D48]"
           >
             {loading ? (
               <>
-                <Loader2 className="w-5 h-5 animate-spin" />
+                <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
                 <span>{mode === 'batch' && copy.showBatch ? 'Processing batch links…' : 'Extracting…'}</span>
               </>
             ) : (
               <>
-                <Download className="w-5 h-5" />
+                <Download className="w-5 h-5" aria-hidden="true" />
                 <span>{mode === 'batch' && copy.showBatch ? 'Batch Extract All' : copy.submitLabel}</span>
               </>
             )}

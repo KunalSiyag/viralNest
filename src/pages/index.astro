@@ -85,40 +85,40 @@ const jsonLd = [
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
   <!-- Hero card with curved background image + page margins -->
   <section
-    class="relative mx-3 sm:mx-6 lg:mx-8 xl:mx-10 mt-2 sm:mt-3 mb-4 sm:mb-6 rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center py-10 sm:py-14 border border-red-100/80 dark:border-red-900/30 shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
+    class="relative mx-3 sm:mx-6 lg:mx-8 xl:mx-10 mt-2 sm:mt-3 mb-4 sm:mb-6 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-8 sm:py-14 border border-red-100/80 dark:border-red-900/30 shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
     aria-labelledby="hero-heading"
   >
     <!-- Light theme hero background -->
     <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden opacity-90"
       style="background-image: url('/images/hero_background.webp');"
       aria-hidden="true"
     />
     <!-- Dark theme hero background -->
     <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block opacity-90"
       style="background-image: url('/images/hero_background_dark.webp');"
       aria-hidden="true"
     />
     <div
-      class="absolute inset-0 bg-gradient-to-b from-white/45 via-white/65 to-white/85 dark:from-ink-950/60 dark:via-ink-950/75 dark:to-ink-950/90"
+      class="absolute inset-0 bg-gradient-to-b from-white/60 via-white/75 to-white/95 dark:from-ink-950/70 dark:via-ink-950/85 dark:to-ink-950/95"
       aria-hidden="true"
     />
 
-    <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-8 lg:px-12 pt-12 sm:pt-14 lg:pt-16 pb-6 sm:pb-8 lg:pb-10 w-full my-auto">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/80 dark:bg-ink-900/80 text-[#E11D48] text-xs font-bold mb-2.5 border border-red-200/80 dark:border-red-900/40 shadow-sm backdrop-blur-sm">
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-8 lg:px-12 pt-16 sm:pt-14 lg:pt-16 pb-6 sm:pb-8 lg:pb-10 w-full my-auto">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 dark:bg-ink-900/90 text-[#E11D48] text-xs font-bold mb-3 border border-red-200/80 dark:border-red-900/40 shadow-sm backdrop-blur-md">
         Free · HD MP4 · Photos · GIFs · Boards &amp; profiles
       </div>
 
       <h1
         id="hero-heading"
-        class="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-2"
+        class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-3"
         style="text-wrap: balance;"
       >
         Free <span class="text-[#E11D48]">Pinterest Downloader</span>
       </h1>
 
-      <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-3.5 leading-relaxed">
+      <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-5 leading-relaxed">
         Paste a public Pinterest link and save <strong class="text-slate-900 dark:text-white">videos as MP4</strong>,
         photos, GIFs, carousels, or full <strong class="text-slate-900 dark:text-white">board &amp; profile ZIPs</strong>
         — free, no account, no watermark from us.
@@ -128,9 +128,9 @@ const jsonLd = [
         <DownloaderForm client:load variant="hub" layout="hero" />
       </div>
 
-      <p class="mt-2.5 text-xs text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
-        Works with <code class="text-[11px] bg-white/70 dark:bg-ink-900/70 px-1.5 py-0.5 rounded">/pin/</code>,
-        <code class="text-[11px] bg-white/70 dark:bg-ink-900/70 px-1.5 py-0.5 rounded">pin.it</code>,
+      <p class="mt-3 text-xs text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
+        Works with <code class="text-[11px] bg-white/80 dark:bg-ink-900/80 px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-800">/pin/</code>,
+        <code class="text-[11px] bg-white/80 dark:bg-ink-900/80 px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-800">pin.it</code>,
         boards, and profiles. Public media only.
       </p>
     </div>

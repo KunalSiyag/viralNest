@@ -26,9 +26,9 @@ const useVisual = visual || hasImages;
 
 <section
   class:list={[
-    "mt-12 w-full text-left",
+    "mt-8 sm:mt-12 w-full text-left",
     stripe
-      ? "w-full py-14 sm:py-20 bg-slate-100/80 dark:bg-slate-900/70 border-y border-slate-200/80 dark:border-slate-800/80 shadow-inner"
+      ? "w-full py-10 sm:py-16 bg-slate-100/80 dark:bg-slate-900/70 border-y border-slate-200/80 dark:border-slate-800/80 shadow-inner"
       : ""
   ]}
   aria-labelledby="howto-heading"
@@ -48,24 +48,24 @@ const useVisual = visual || hasImages;
     )}
 
     {useVisual ? (
-      <ol class="grid sm:grid-cols-3 gap-4 sm:gap-6 list-none p-0 m-0">
+      <ol class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 list-none p-0 m-0">
         {steps.map((step, i) => (
-          <li class="flex flex-col rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden h-full">
+          <li class="flex flex-col rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden h-full">
             {step.image && (
-              <div class="aspect-[3/2] overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <div class="aspect-[16/9] sm:aspect-[3/2] overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <img
                   src={step.image}
                   alt={step.imageAlt || step.title}
                   width={900}
                   height={600}
-                  class="w-full h-full object-cover rounded-t-3xl"
+                  class="w-full h-full object-cover rounded-t-2xl sm:rounded-t-3xl"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
             )}
             <div class="p-4 sm:p-5 flex gap-3 flex-1">
-              <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E11D48] text-white text-sm font-extrabold flex items-center justify-center shadow-sm">
+              <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E11D48] text-white text-sm font-extrabold flex items-center justify-center shadow-sm tabular-nums">
                 {i + 1}
               </span>
               <div class="min-w-0">
@@ -80,7 +80,7 @@ const useVisual = visual || hasImages;
       <ol class="space-y-3">
         {steps.map((step, i) => (
           <li class="flex gap-3 sm:gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-            <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E11D48] text-white text-sm font-extrabold flex items-center justify-center shadow-sm">
+            <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E11D48] text-white text-sm font-extrabold flex items-center justify-center shadow-sm tabular-nums">
               {i + 1}
             </span>
             <div class="min-w-0">

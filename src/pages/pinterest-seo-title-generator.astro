@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TitleGenerator from '../components/TitleGenerator';
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pinterest SEO Title & Tag Generator — PintDownload",
+  "operatingSystem": "All",
+  "applicationCategory": "BusinessApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the Pinterest Title & Tag Generator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter any keyword or topic, select your niche category, and our tool generates search-optimized pin titles, click-through descriptions, and trending hashtag clusters instantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this Pinterest SEO generator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! The PintDownload Pinterest SEO Generator is 100% free with unlimited generations and no account sign-up required."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Free Pinterest SEO Title & Tag Generator (2026) — Boost Pin CTR"
+  description="Free online Pinterest SEO generator. Instantly create high click-through-rate pin titles, search-optimized pin descriptions, and viral hashtag clusters for creators, bloggers, and Etsy sellers."
+  jsonLd={[webAppSchema, faqSchema]}
+>
+  <div class="flex flex-col items-center justify-center py-8 sm:py-12 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs sm:text-sm font-bold mb-6 border border-red-200 dark:border-red-900/40 shadow-xs">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+      <span>Free Creator Utility</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-4">
+      Pinterest <span class="text-[#E11D48]">SEO Title & Tag Generator</span>
+    </h1>
+
+    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+      Boost your pin click-through rate and rank higher in Pinterest guided search with AI-optimized titles, descriptions, and trending hashtag clusters.
+    </p>
+
+    {/* React Generator Component */}
+    <TitleGenerator client:load />
+  </div>
+
+  <section class="max-w-4xl mx-auto my-12 p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
+    <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-4">Why Pinterest Pin Titles & Hashtags Matter for Ranking</h2>
+    <p class="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-4">
+      Pinterest operates as a visual search engine. When you upload a pin, Pinterest's search algorithm reads your pin title, text overlay, and pin description to index your content under specific search clusters.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">High CTR Titles</h3>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Including numbers, power words, and primary keywords near the front of your pin title increases user clicks by up to 40%.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">Long-Tail Hashtags</h3>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Adding 5-10 relevant niche hashtags helps Pinterest categorize your fresh pins under related visual search topics.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

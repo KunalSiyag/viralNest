@@ -54,43 +54,43 @@ const colClass = (col: 'pin' | 'board' | 'profile') =>
     : 'text-slate-600 dark:text-slate-400';
 ---
 
-<section class="mt-14 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left" aria-labelledby="compare-heading">
+<section class="mt-10 sm:mt-14 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left" aria-labelledby="compare-heading">
   <h2 id="compare-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
     {title}
   </h2>
   <p class="text-sm text-slate-600 dark:text-slate-400 mb-5">
     Use the tool that matches your link type. Wrong URL type is the #1 reason downloads fail.
   </p>
-  <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-    <table class="w-full text-left text-xs sm:text-sm min-w-[560px]">
+  <div class="overflow-x-auto scrollbar-thin touch-pan-x rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+    <table class="w-full text-left text-xs sm:text-sm min-w-[560px] tabular-nums">
       <thead>
-        <tr class="border-b border-slate-200 dark:border-slate-800">
-          <th scope="col" class="p-3 sm:p-4 font-extrabold text-slate-900 dark:text-white">Feature</th>
-          <th scope="col" class={`p-3 sm:p-4 font-extrabold ${highlight === 'pin' ? 'text-[#E11D48]' : 'text-slate-900 dark:text-white'}`}>
-            <a href="/pinterest-pin-downloader" class="hover:underline">Pin</a>
+        <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/30">
+          <th scope="col" class="p-3.5 sm:p-4 font-extrabold text-slate-900 dark:text-white">Feature</th>
+          <th scope="col" class={`p-3.5 sm:p-4 font-extrabold ${highlight === 'pin' ? 'text-[#E11D48]' : 'text-slate-900 dark:text-white'}`}>
+            <a href="/pinterest-pin-downloader" class="hover:underline focus-visible:ring-2 focus-visible:ring-[#E11D48]">Pin</a>
           </th>
-          <th scope="col" class={`p-3 sm:p-4 font-extrabold ${highlight === 'board' ? 'text-[#E11D48]' : 'text-slate-900 dark:text-white'}`}>
-            <a href="/pinterest-board-downloader" class="hover:underline">Board ZIP</a>
+          <th scope="col" class={`p-3.5 sm:p-4 font-extrabold ${highlight === 'board' ? 'text-[#E11D48]' : 'text-slate-900 dark:text-white'}`}>
+            <a href="/pinterest-board-downloader" class="hover:underline focus-visible:ring-2 focus-visible:ring-[#E11D48]">Board ZIP</a>
           </th>
-          <th scope="col" class={`p-3 sm:p-4 font-extrabold ${highlight === 'profile' ? 'text-[#E11D48]' : 'text-slate-900 dark:text-white'}`}>
-            <a href="/pinterest-profile-downloader" class="hover:underline">Profile ZIP</a>
+          <th scope="col" class={`p-3.5 sm:p-4 font-extrabold ${highlight === 'profile' ? 'text-[#E11D48]' : 'text-slate-900 dark:text-white'}`}>
+            <a href="/pinterest-profile-downloader" class="hover:underline focus-visible:ring-2 focus-visible:ring-[#E11D48]">Profile ZIP</a>
           </th>
         </tr>
       </thead>
       <tbody>
         {rows.map((row) => (
-          <tr class="border-b border-slate-100 dark:border-slate-800 last:border-0">
-            <th scope="row" class="p-3 sm:p-4 font-bold text-slate-800 dark:text-slate-200 align-top">{row.feature}</th>
-            <td class={`p-3 sm:p-4 align-top ${colClass('pin')}`}>{row.pin}</td>
-            <td class={`p-3 sm:p-4 align-top ${colClass('board')}`}>{row.board}</td>
-            <td class={`p-3 sm:p-4 align-top ${colClass('profile')}`}>{row.profile}</td>
+          <tr class="border-b border-slate-100 dark:border-slate-800 last:border-0 hover:bg-slate-50/40 dark:hover:bg-slate-800/30 transition-colors">
+            <th scope="row" class="p-3.5 sm:p-4 font-bold text-slate-800 dark:text-slate-200 align-top">{row.feature}</th>
+            <td class={`p-3.5 sm:p-4 align-top ${colClass('pin')}`}>{row.pin}</td>
+            <td class={`p-3.5 sm:p-4 align-top ${colClass('board')}`}>{row.board}</td>
+            <td class={`p-3.5 sm:p-4 align-top ${colClass('profile')}`}>{row.profile}</td>
           </tr>
         ))}
       </tbody>
     </table>
   </div>
-  <p class="mt-2 text-[11px] text-slate-500 dark:text-slate-500">
+  <p class="mt-2.5 text-[11px] text-slate-500 dark:text-slate-500">
     * For full carousel slides of a pin inside a board/profile pack, open that pin with the{' '}
-    <a href="/pinterest-pin-downloader" class="text-[#E11D48] font-semibold hover:underline">Pin Downloader</a>.
+    <a href="/pinterest-pin-downloader" class="text-[#E11D48] font-semibold hover:underline focus-visible:ring-2 focus-visible:ring-[#E11D48]">Pin Downloader</a>.
   </p>
 </section>

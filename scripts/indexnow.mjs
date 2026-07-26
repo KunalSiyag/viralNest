@@ -16,6 +16,7 @@ const staticPages = [
   `https://${HOST}/pinterest-gif-downloader`,
   `https://${HOST}/pinterest-pin-downloader`,
   `https://${HOST}/pinterest-to-mp4`,
+  `https://${HOST}/pinterest-seo-title-generator`,
   `https://${HOST}/how-to-download-pinterest-videos`,
   `https://${HOST}/about`,
   `https://${HOST}/contact`,
