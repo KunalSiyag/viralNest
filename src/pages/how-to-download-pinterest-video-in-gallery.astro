@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
+import { BRAND } from '../lib/brand';
+
+const path = '/how-to-download-pinterest-video-in-gallery';
+const pageUrl = `${BRAND.url}${path}`;
+const title = 'How to Download Pinterest Video in Gallery (Step-by-Step Free Guide)';
+const description =
+  'Learn how to download Pinterest videos directly in your phone gallery or camera roll. Step-by-step free online guide for iPhone, iPad, and Android users.';
+
+const steps = [
+  {
+    num: 1,
+    title: 'Copy Pinterest Video Link',
+    desc: 'Open the Pinterest app on your phone, tap the Share icon on the video, and click "Copy Link".',
+  },
+  {
+    num: 2,
+    title: 'Paste Link in Online Tool',
+    desc: 'Open Safari or Chrome browser, paste the link in our downloader above, and tap "Download MP4".',
+  },
+  {
+    num: 3,
+    title: 'Save to Phone Gallery / Photos',
+    desc: 'Tap your browser downloads manager, select the MP4 file, and tap "Save Video" to store it directly in your Gallery app.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How to download Pinterest video in gallery without any app?',
+    a: 'Paste the copied Pinterest link into PintDownload on your phone web browser (Safari or Chrome), tap Download MP4, and save the downloaded file to your device Photos / Gallery app.',
+  },
+  {
+    q: 'Why does my downloaded Pinterest video not show up in my gallery?',
+    a: 'On iOS iPhones, downloaded files first land in the Safari Downloads folder inside the Files app. Open Files -> Downloads, tap the video, tap Share, and choose "Save Video" so iOS moves it into your main Camera Roll gallery.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Download Pinterest Video in Gallery',
+    step: steps.map((s) => ({
+      '@type': 'HowToStep',
+      name: s.title,
+      text: s.desc,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
+    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
+      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
+        📌 Gallery Video Download Guide
+      </div>
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
+        How to Download Pinterest <span className="text-[#E11D48]">Video in Gallery</span>
+      </h1>
+      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
+        Save any Pinterest video directly into your phone gallery in HD MP4 format — works on iPhone, iPad, and Android without installing apps.
+      </p>
+
+      <div className="w-full max-w-3xl">
+        <DownloaderForm client:load variant="video" layout="hero" />
+      </div>
+    </div>
+  </section>
+
+  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+    <HowToSteps title="How to save Pinterest video in gallery" intro="Follow these 3 simple steps to save videos to your phone photos gallery." exampleUrl="https://pin.it/…" exampleLabel="Pinterest Video URL" steps={steps} visual stripe={true} />
+    <BookmarkletGuide />
+    <FaqSection faqs={faqs} title="Gallery Download FAQs" />
+    <RelatedTools currentPath={path} />
+  </article>
+</BaseLayout>

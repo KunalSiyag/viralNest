@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
+import { BRAND } from '../lib/brand';
+
+const path = '/how-to-download-pinterest-video-on-laptop';
+const pageUrl = `${BRAND.url}${path}`;
+const title = 'How to Download Pinterest Video on Laptop & PC (Free 1080p MP4)';
+const description =
+  'Learn how to download Pinterest videos on your laptop, Mac, or Windows PC. Free online tool to save 1080p HD videos from Pinterest to your computer.';
+
+const steps = [
+  {
+    num: 1,
+    title: 'Copy Video Link on Laptop',
+    desc: 'Open Pinterest on your laptop web browser, right-click the video pin (or click the Share icon), and click "Copy link".',
+  },
+  {
+    num: 2,
+    title: 'Paste Link in Computer Downloader',
+    desc: 'Paste the copied URL into the box above and click "Download".',
+  },
+  {
+    num: 3,
+    title: 'Save MP4 File to Downloads Folder',
+    desc: 'Click "Download MP4" to save the high-definition video file directly into your Mac or PC Downloads folder.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How to download Pinterest videos on Windows PC or Mac laptop?',
+    a: 'Simply copy the video URL from Pinterest, paste it into PintDownload on Chrome, Safari, Edge, or Firefox, and click "Download MP4". The file will save directly to your desktop or downloads directory.',
+  },
+  {
+    q: 'Can I download full 1080p HD videos on laptop?',
+    a: 'Yes! We extract the highest quality 1080p / 720p MP4 video stream provided by Pinterest.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Download Pinterest Video on Laptop & PC',
+    step: steps.map((s) => ({
+      '@type': 'HowToStep',
+      name: s.title,
+      text: s.desc,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
+    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
+      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
+        💻 Laptop &amp; PC Video Downloader
+      </div>
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
+        How to Download Pinterest <span className="text-[#E11D48]">Video on Laptop &amp; PC</span>
+      </h1>
+      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
+        Save public 1080p HD Pinterest videos &amp; animations directly to your Windows PC, Mac, or Chromebook laptop — free, fast, no software install.
+      </p>
+
+      <div className="w-full max-w-3xl">
+        <DownloaderForm client:load variant="video" layout="hero" />
+      </div>
+    </div>
+  </section>
+
+  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+    <HowToSteps title="How to save Pinterest video on laptop or computer" intro="Follow these 3 easy steps on Windows or Mac." exampleUrl="https://pin.it/…" exampleLabel="Pinterest Video URL" steps={steps} visual stripe={true} />
+    <BookmarkletGuide />
+    <FaqSection faqs={faqs} title="Laptop & PC Download FAQs" />
+    <RelatedTools currentPath={path} />
+  </article>
+</BaseLayout>

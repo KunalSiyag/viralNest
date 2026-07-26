@@ -6,11 +6,13 @@ interface FaqItem {
 
 interface Props {
   title?: string;
-  items: FaqItem[];
+  items?: FaqItem[];
+  faqs?: FaqItem[];
   stripe?: boolean;
 }
 
-const { title = 'Frequently asked questions', items, stripe = true } = Astro.props;
+const { title = 'Frequently asked questions', items, faqs, stripe = true } = Astro.props;
+const faqList = items || faqs || [];
 ---
 
 <section
@@ -27,7 +29,7 @@ const { title = 'Frequently asked questions', items, stripe = true } = Astro.pro
       {title}
     </h2>
     <div class="space-y-3">
-      {items.map((item, i) => (
+      {faqList.map((item, i) => (
         <details
           class="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 open:border-red-200 dark:open:border-red-900/50 open:shadow-sm transition-colors"
           open={i === 0}

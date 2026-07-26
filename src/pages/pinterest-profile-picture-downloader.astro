@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
+import { BRAND } from '../lib/brand';
+
+const path = '/pinterest-profile-picture-downloader';
+const pageUrl = `${BRAND.url}${path}`;
+const title = 'Pinterest Profile Picture Downloader — Save Full HD Profile Photos & Avatars';
+const description =
+  'Free Pinterest profile picture downloader online. Save original full-resolution profile pictures, avatars, and header photos from any public Pinterest profile.';
+
+const steps = [
+  {
+    num: 1,
+    title: 'Copy Pinterest Profile Link',
+    desc: 'Copy the profile URL of any user or brand on Pinterest (e.g., https://pinterest.com/username/).',
+  },
+  {
+    num: 2,
+    title: 'Paste Profile Link',
+    desc: 'Paste the profile URL into our online profile avatar extractor above.',
+  },
+  {
+    num: 3,
+    title: 'Download Full HD Profile Picture',
+    desc: 'Click "Download Profile Picture" to save the original high-resolution avatar photo to your phone or computer.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How to download a Pinterest profile picture in full high resolution?',
+    a: 'Paste the user profile URL into PintDownload. Our tool automatically fetches the original uncompressed HD avatar image source from Pinterest CDN and gives you a 1-click HD download.',
+  },
+  {
+    q: 'Can I download private profile pictures?',
+    a: 'Only public profile pictures and public avatar photos can be extracted.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
+    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
+      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
+        👤 HD Profile Picture &amp; Avatar Downloader
+      </div>
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
+        Pinterest <span className="text-[#E11D48]">Profile Picture Downloader</span>
+      </h1>
+      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
+        Download original full-resolution profile pictures, avatars, and profile icons from any public Pinterest account — free, fast, no account needed.
+      </p>
+
+      <div className="w-full max-w-3xl">
+        <DownloaderForm client:load variant="profile" layout="hero" />
+      </div>
+    </div>
+  </section>
+
+  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+    <HowToSteps title="How to download Pinterest profile picture in HD" intro="Save full-size profile avatars in 3 steps." exampleUrl="https://pinterest.com/username/" exampleLabel="Pinterest Profile URL" steps={steps} visual stripe={true} />
+    <BookmarkletGuide />
+    <FaqSection faqs={faqs} title="Profile Picture Downloader FAQs" />
+    <RelatedTools currentPath={path} />
+  </article>
+</BaseLayout>

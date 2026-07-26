@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
+import { BRAND } from '../lib/brand';
+
+const path = '/pinterest-video-downloader-chrome';
+const pageUrl = `${BRAND.url}${path}`;
+const title = 'Pinterest Video Downloader Chrome Extension & Browser Tool';
+const description =
+  '1-Click Pinterest video downloader for Google Chrome, Safari, Edge, and Firefox. Save Pinterest videos, photos, and boards without switching tabs.';
+
+const steps = [
+  {
+    num: 1,
+    title: 'Install 1-Click Bookmarklet',
+    desc: 'Drag our PintDownload bookmarklet button to your Chrome or Safari bookmarks bar.',
+  },
+  {
+    num: 2,
+    title: 'Browse Pinterest',
+    desc: 'Open any Pinterest pin, video, or board on Pinterest.com.',
+  },
+  {
+    num: 3,
+    title: 'Click Bookmarklet to Download',
+    desc: 'Click your PintDownload bookmarklet once — it opens with the pin prefilled and ready to download in 1080p HD.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Does PintDownload work as a Chrome Extension?',
+    a: 'Yes! You can install our 1-click drag-and-drop bookmarklet on Chrome, Edge, Safari, and Brave, giving you instant extension-like downloader functionality without installing untrusted browser plugins.',
+  },
+  {
+    q: 'Is it safe to use this Chrome bookmarklet tool?',
+    a: '100% safe. Our bookmarklet uses standard browser JavaScript to open PintDownload with your current pin URL. It does not track your browsing history or require special permissions.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
+    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
+      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
+        🌐 Chrome &amp; Browser Downloader Tool
+      </div>
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
+        Pinterest Video Downloader <span className="text-[#E11D48]">Chrome &amp; Browser Tool</span>
+      </h1>
+      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
+        1-Click download tool for Google Chrome, Safari, and Edge. Save HD MP4 videos, images, and full boards directly while browsing Pinterest.
+      </p>
+
+      <div className="w-full max-w-3xl">
+        <DownloaderForm client:load variant="hub" layout="hero" />
+      </div>
+    </div>
+  </section>
+
+  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+    <BookmarkletGuide />
+    <HowToSteps title="How to use Pinterest downloader in Chrome" intro="3 steps for 1-click Chrome downloads." exampleUrl="https://pin.it/…" exampleLabel="Pinterest Link" steps={steps} visual stripe={true} />
+    <FaqSection faqs={faqs} title="Chrome Extension FAQs" />
+    <RelatedTools currentPath={path} />
+  </article>
+</BaseLayout>

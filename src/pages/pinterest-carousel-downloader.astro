@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
+import { BRAND } from '../lib/brand';
+
+const path = '/pinterest-carousel-downloader';
+const pageUrl = `${BRAND.url}${path}`;
+const title = 'Pinterest Carousel Downloader — Download All Carousel Slides & Photos';
+const description =
+  'Free Pinterest carousel downloader. Download all slides, images, and videos from multi-image Pinterest carousel pins in full HD resolution or as a ZIP pack.';
+
+const steps = [
+  {
+    num: 1,
+    title: 'Copy Pinterest Carousel URL',
+    desc: 'Copy the URL of any multi-image carousel pin or Idea Pin from Pinterest.',
+  },
+  {
+    num: 2,
+    title: 'Paste Carousel Link',
+    desc: 'Paste the link into our online carousel extractor above.',
+  },
+  {
+    num: 3,
+    title: 'Download All Slides or ZIP',
+    desc: 'Extract every slide photo/video individually or save all carousel items together in one ZIP package.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Can I download all slides from a Pinterest carousel pin?',
+    a: 'Yes! PintDownload automatically parses all media slides inside multi-image carousel pins, allowing you to download each slide individually or pack them all into a ZIP file.',
+  },
+  {
+    q: 'Are carousel images extracted in full high resolution?',
+    a: 'Yes. We extract original 1080p and high-res source images directly from Pinterest CDN servers.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
+    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
+      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
+        🖼️ Multi-Image &amp; Carousel Downloader
+      </div>
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
+        Pinterest Carousel Downloader — <span className="text-[#E11D48]">All Slides &amp; Photos</span>
+      </h1>
+      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
+        Extract all photos, videos, and graphics from Pinterest carousel pins. Save individual slides or download the full carousel pack in one click.
+      </p>
+
+      <div className="w-full max-w-3xl">
+        <DownloaderForm client:load variant="image" layout="hero" />
+      </div>
+    </div>
+  </section>
+
+  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+    <HowToSteps title="How to download all slides from Pinterest carousel" intro="Save all multi-image carousel slides in 3 steps." exampleUrl="https://pin.it/…" exampleLabel="Carousel Pin Link" steps={steps} visual stripe={true} />
+    <BookmarkletGuide />
+    <FaqSection faqs={faqs} title="Pinterest Carousel FAQs" />
+    <RelatedTools currentPath={path} />
+  </article>
+</BaseLayout>

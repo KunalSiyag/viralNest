@@ -119,4 +119,40 @@ export const TOOL_LINKS = [
     blurb: 'Download animated GIF pins without quality loss.',
     badge: 'GIF',
   },
+  {
+    href: '/download-pinterest-videos-iphone-android',
+    title: 'iPhone & Android Gallery Saver',
+    blurb: 'Save Pinterest videos directly to your phone camera roll.',
+    badge: 'Mobile',
+  },
+  {
+    href: '/pinterest-carousel-downloader',
+    title: 'Carousel Downloader',
+    blurb: 'Download all photos and slides from multi-image pins.',
+    badge: 'Slides',
+  },
+  {
+    href: '/pinterest-video-downloader-chrome',
+    title: 'Chrome Extension Tool',
+    blurb: '1-click browser download tool for Chrome, Safari, and Edge.',
+    badge: 'Chrome',
+  },
+  {
+    href: '/how-to-download-pinterest-video-in-gallery',
+    title: 'Gallery Video Saver',
+    blurb: 'Step-by-step guide to saving Pinterest videos in phone gallery.',
+    badge: 'Gallery',
+  },
+  {
+    href: '/how-to-download-pinterest-video-on-laptop',
+    title: 'Laptop & PC Downloader',
+    blurb: 'Download 1080p HD Pinterest videos on Mac, Windows, & PC.',
+    badge: 'PC',
+  },
+  {
+    href: '/pinterest-profile-picture-downloader',
+    title: 'Profile Picture Downloader',
+    blurb: 'Extract full HD profile pictures & avatar icons.',
+    badge: 'PFP',
+  },
 ] as const;

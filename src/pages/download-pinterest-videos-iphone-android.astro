@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
+import { BRAND } from '../lib/brand';
+
+const path = '/download-pinterest-videos-iphone-android';
+const pageUrl = `${BRAND.url}${path}`;
+const title = 'How to Download Pinterest Videos to iPhone & Android Gallery (Free HD MP4)';
+const description =
+  'Save Pinterest videos directly to your iPhone Camera Roll or Android Gallery. Free online Pinterest video downloader for mobile devices — no app required.';
+
+const steps = [
+  {
+    num: 1,
+    title: 'Copy Pinterest Video Link on Phone',
+    desc: 'Open the Pinterest app on iPhone or Android, tap the Share icon on any video or Idea Pin, and select "Copy Link".',
+  },
+  {
+    num: 2,
+    title: 'Paste URL in Mobile Downloader',
+    desc: 'Open Safari or Chrome on your phone, paste the link into the box above, and tap "Download".',
+  },
+  {
+    num: 3,
+    title: 'Save MP4 to Phone Gallery / Photos',
+    desc: 'Tap "Download MP4". On iPhone Safari, tap the download manager icon and select "Save Video" to store it in your Camera Roll.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How do I save a Pinterest video to my iPhone Camera Roll?',
+    a: 'Paste the video link into PintDownload on Safari. After tapping "Download MP4", tap the blue download arrow in Safari, select the downloaded MP4 file, tap Share, and choose "Save Video". It will immediately appear in your Photos app gallery.',
+  },
+  {
+    q: 'How do I download Pinterest videos on Android gallery?',
+    a: 'On Android Chrome, paste the link and tap "Download MP4". The video will automatically save to your Downloads folder and render inside your Google Photos or Gallery app.',
+  },
+  {
+    q: 'Do I need to install a mobile app to download Pinterest videos?',
+    a: 'No app is needed. PintDownload works 100% in your mobile web browser (Safari, Chrome, Firefox, Brave, Opera).',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Download Pinterest Videos to iPhone & Android Gallery',
+    step: steps.map((s) => ({
+      '@type': 'HowToStep',
+      name: s.title,
+      text: s.desc,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
+    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
+      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
+        📱 iPhone &amp; Android Gallery Downloader
+      </div>
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
+        Download Pinterest Videos to <span className="text-[#E11D48]">iPhone &amp; Android Gallery</span>
+      </h1>
+      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
+        Save public Pinterest videos &amp; Idea Pins directly into your iPhone Camera Roll or Android Photos app in HD MP4 — no app installation needed.
+      </p>
+
+      <div className="w-full max-w-3xl">
+        <DownloaderForm client:load variant="video" layout="hero" />
+      </div>
+    </div>
+  </section>
+
+  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+    <HowToSteps title="How to save Pinterest video to phone gallery" intro="Follow these 3 easy steps on iOS Safari or Android Chrome." exampleUrl="https://pin.it/…" exampleLabel="Pinterest Mobile Link" steps={steps} visual stripe={true} />
+    <BookmarkletGuide />
+    <FaqSection faqs={faqs} title="Mobile Gallery Download FAQs" />
+    <RelatedTools currentPath={path} />
+  </article>
+</BaseLayout>
