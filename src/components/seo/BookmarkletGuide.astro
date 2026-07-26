@@ -1,0 +1,77 @@
+---
+const bookmarkletCode = `javascript:(function(){var u=location.href;if(u.indexOf('pinterest.com')===-1&&u.indexOf('pin.it')===-1){alert('Please open a Pinterest page first!');return;}window.open('https://pintdownload.app/?url='+encodeURIComponent(u)+'&auto=true','_blank');})();`;
+---
+
+<section class="w-full max-w-4xl mx-auto my-8 px-4 sm:px-6" aria-labelledby="bookmarklet-heading">
+  <div class="p-6 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6 mb-6">
+      <div>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-extrabold border border-red-200 dark:border-red-900/40 mb-2">
+          1-Click Power Tool
+        </span>
+        <h2 id="bookmarklet-heading" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+          PintDownload 1-Click Bookmarklet
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+          Save Pinterest videos, photos, and boards directly while browsing Pinterest—no tab switching required!
+        </p>
+      </div>
+
+      <!-- Draggable Bookmarklet Button -->
+      <a
+        href={bookmarkletCode}
+        onclick="alert('Drag this button to your browser Bookmarks Bar to install!'); return false;"
+        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-black text-sm shadow-lg shadow-red-500/25 active:scale-95 transition-all shrink-0 cursor-grab active:cursor-grabbing border-2 border-white/20"
+        title="Drag me to your Bookmarks Bar!"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+        <span>+ Drag to Bookmarks Bar</span>
+      </a>
+    </div>
+
+    <!-- Visual Bookmark Guide Banner Image -->
+    <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-sm mb-6">
+      <img
+        src="/images/bookmark.webp"
+        alt="How to bookmark PintDownload in Chrome: open the menu, go to Bookmarks, choose Bookmark this tab, and save to the bookmarks bar"
+        width={1200}
+        height={675}
+        class="w-full h-auto object-cover"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Browser Installation Instructions Grid -->
+    <div class="grid sm:grid-cols-3 gap-4 text-xs">
+      <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+        <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-[#E11D48] flex items-center justify-center text-[11px]">1</span>
+          Chrome / Edge
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          Press <kbd class="px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-mono text-[10px]">Ctrl+Shift+B</kbd> (or Cmd+Shift+B on Mac) to show your bookmarks bar, then drag the button above onto it.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+        <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-[#E11D48] flex items-center justify-center text-[11px]">2</span>
+          Safari (Mac &amp; iOS)
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          Drag button to Favorites. On iPhone/iPad, bookmark any page, edit bookmark URL, and paste the bookmarklet JavaScript snippet.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+        <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-[#E11D48] flex items-center justify-center text-[11px]">3</span>
+          How to Use
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          Whenever you are viewing a pin or board on Pinterest, click your <strong>PintDownload</strong> bookmarklet—we instantly open with the link ready to download!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

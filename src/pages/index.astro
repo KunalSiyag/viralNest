@@ -4,6 +4,7 @@ import DownloaderForm from '../components/DownloaderForm';
 import RelatedTools from '../components/seo/RelatedTools.astro';
 import FaqSection from '../components/seo/FaqSection.astro';
 import HowToSteps from '../components/seo/HowToSteps.astro';
+import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
 import CompareTable from '../components/seo/CompareTable.astro';
 import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 import { BRAND } from '../lib/brand';
@@ -83,21 +84,21 @@ const jsonLd = [
 ---
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
-  <!-- Hero card with curved background image + page margins -->
+  <!-- Hero card with background image + vertical centering & maximum mobile width -->
   <section
-    class="relative mx-3 sm:mx-6 lg:mx-8 xl:mx-10 mt-2 sm:mt-3 mb-4 sm:mb-6 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-8 sm:py-14 border border-red-100/80 dark:border-red-900/30 shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
+    class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[85vh] sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
     aria-labelledby="hero-heading"
   >
     <!-- Light theme hero background -->
     <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden opacity-90"
-      style="background-image: url('/images/hero_background.webp');"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden opacity-90 transition-all duration-300"
+      style="background-image: url('/images/hero_background.webp'); background-size: cover; background-position: center center;"
       aria-hidden="true"
     />
     <!-- Dark theme hero background -->
     <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block opacity-90"
-      style="background-image: url('/images/hero_background_dark.webp');"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block opacity-90 transition-all duration-300"
+      style="background-image: url('/images/hero_background_dark.webp'); background-size: cover; background-position: center center;"
       aria-hidden="true"
     />
     <div
@@ -105,8 +106,21 @@ const jsonLd = [
       aria-hidden="true"
     />
 
-    <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-8 lg:px-12 pt-16 sm:pt-14 lg:pt-16 pb-6 sm:pb-8 lg:pb-10 w-full my-auto">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 dark:bg-ink-900/90 text-[#E11D48] text-xs font-bold mb-3 border border-red-200/80 dark:border-red-900/40 shadow-sm backdrop-blur-md">
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-6 sm:pt-10 pb-6 sm:pb-8 w-full my-auto">
+      {/* Mobile Floating Pin Preview Badges */}
+      <div class="flex lg:hidden items-center justify-center gap-2 mb-4">
+        <div class="flex -space-x-2 overflow-hidden p-1">
+          <img src="/images/side_pin_1.jpg" alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" />
+          <img src="/images/side_pin_2.jpg" alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" />
+          <img src="/images/side_pin_3.jpg" alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" />
+          <img src="/images/side_pin_4.jpg" alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" />
+        </div>
+        <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 bg-white/80 dark:bg-slate-900/80 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-sm">
+          Viral Pin Saver
+        </span>
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 dark:bg-ink-900/90 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40 shadow-sm backdrop-blur-md">
         Free · HD MP4 · Photos · GIFs · Boards &amp; profiles
       </div>
 
@@ -118,7 +132,7 @@ const jsonLd = [
         Free <span class="text-[#E11D48]">Pinterest Downloader</span>
       </h1>
 
-      <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-5 leading-relaxed">
+      <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
         Paste a public Pinterest link and save <strong class="text-slate-900 dark:text-white">videos as MP4</strong>,
         photos, GIFs, carousels, or full <strong class="text-slate-900 dark:text-white">board &amp; profile ZIPs</strong>
         — free, no account, no watermark from us.
@@ -128,7 +142,7 @@ const jsonLd = [
         <DownloaderForm client:load variant="hub" layout="hero" />
       </div>
 
-      <p class="mt-3 text-xs text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
+      <p class="mt-4 text-xs text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
         Works with <code class="text-[11px] bg-white/80 dark:bg-ink-900/80 px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-800">/pin/</code>,
         <code class="text-[11px] bg-white/80 dark:bg-ink-900/80 px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-800">pin.it</code>,
         boards, and profiles. Public media only.
@@ -164,103 +178,8 @@ const jsonLd = [
       stripe={true}
     />
 
-    <!-- STRIPE 2: Bookmark site + one-click bookmarklet (Boxed Floating Card) -->
-    <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      <section class="w-full text-left p-6 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl" aria-labelledby="bookmark-heading">
-        <h2 id="bookmark-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
-          Bookmark PintDownload for one-click downloads
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-6 max-w-2xl leading-relaxed">
-          Save the site to your bookmarks bar for fast access — or install the <strong class="text-slate-800 dark:text-slate-200">download bookmarklet</strong>:
-          open any public Pinterest pin, board, or profile, click the bookmark once, and we start the download with that link prefilled.
-        </p>
-
-        <div class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-sm mb-6">
-          <img
-            src="/images/bookmark.webp"
-            alt="How to bookmark PintDownload in Chrome: open the menu, go to Bookmarks, choose Bookmark this tab, and save to the bookmarks bar"
-            width="1200"
-            height="800"
-            class="w-full h-auto object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/50 text-left">
-            <h3 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base mb-2">1. Bookmark the website</h3>
-            <ol class="text-sm text-slate-600 dark:text-slate-400 space-y-1.5 list-decimal list-inside leading-relaxed">
-              <li>Open this page in Chrome (or Edge / Brave).</li>
-              <li>Click the <strong class="text-slate-800 dark:text-slate-200">⋮</strong> menu → Bookmarks → Bookmark this tab…</li>
-              <li>Or press <kbd class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-semibold">Ctrl</kbd>+<kbd class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-semibold">D</kbd> (Mac: <kbd class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-semibold">⌘</kbd>+<kbd class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-semibold">D</kbd>).</li>
-              <li>Save to the Bookmarks bar for one-tap return.</li>
-            </ol>
-          </div>
-
-          <div class="p-5 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20 text-left">
-            <h3 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base mb-2">2. Install the download bookmarklet</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-              Drag the button below to your bookmarks bar. On a Pinterest page, click it to open PintDownload with that URL and auto-start extract.
-            </p>
-            <a
-              id="pintdownload-bookmarklet"
-              href="javascript:void(0)"
-              class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-sm shadow-sm touch-manipulation cursor-grab active:cursor-grabbing select-none"
-              draggable="true"
-              title="Drag me to your bookmarks bar"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-              ↓ Download Pin
-            </a>
-            <p class="mt-3 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              On mobile, create a bookmark, then edit its URL and paste the bookmarklet code from the copy button below.
-            </p>
-            <button
-              type="button"
-              id="copy-bookmarklet"
-              class="mt-3 text-xs font-bold text-[#E11D48] hover:underline touch-manipulation"
-            >
-              Copy bookmarklet code…
-            </button>
-            <p id="bookmarklet-copy-status" class="mt-1 text-xs text-emerald-600 dark:text-emerald-400 hidden" role="status" aria-live="polite">
-              Copied — paste as the bookmark URL.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <script is:inline>
-      (function () {
-        var CODE =
-          "javascript:(function(){var u=location.href;if(!/pinterest\\.|pin\\.it/i.test(u)){alert('Open a public Pinterest pin, board, or profile first.');return;}location.href='https://pintdownload.app/?url='+encodeURIComponent(u)+'&auto=1';})();";
-        var link = document.getElementById('pintdownload-bookmarklet');
-        var copyBtn = document.getElementById('copy-bookmarklet');
-        var status = document.getElementById('bookmarklet-copy-status');
-        if (link) {
-          link.setAttribute('href', CODE);
-          link.addEventListener('click', function (e) {
-            if (!/pinterest\.|pin\.it/i.test(location.hostname)) {
-              e.preventDefault();
-              alert('Drag this button to your bookmarks bar. Then open a Pinterest page and click the bookmark to download.');
-            }
-          });
-        }
-        if (copyBtn) {
-          copyBtn.addEventListener('click', function () {
-            navigator.clipboard.writeText(CODE).then(function () {
-              if (status) {
-                status.classList.remove('hidden');
-                setTimeout(function () {
-                  status.classList.add('hidden');
-                }, 3000);
-              }
-            });
-          });
-        }
-      })();
-    </script>
+    <!-- STRIPE 2: Interactive Drag-and-Drop Bookmarklet Installer Guide -->
+    <BookmarkletGuide />
 
     <!-- STRIPE 3: Creator credit (Full Bleed Accent Stripe) -->
     <section class="w-full py-12 sm:py-16 bg-red-50/70 dark:bg-red-950/40 border-y border-red-200/80 dark:border-red-900/40 text-left">

@@ -1,5 +1,6 @@
 ---
 import { BRAND } from '../lib/brand';
+import StickyPasteBar from '../components/StickyPasteBar';
 
 interface Props {
   title: string;
@@ -304,7 +305,7 @@ const mobileNav = [
       {!clean && (
         <>
           {/* Left floating pin collage with water droplet bubbles on hover */}
-          <div class="hidden xl:block absolute left-2 2xl:left-6 top-16 w-44 2xl:w-52 pointer-events-none select-none z-20">
+          <div class="hidden lg:block absolute left-1 lg:left-3 2xl:left-6 top-16 w-36 lg:w-44 2xl:w-52 pointer-events-none select-none z-20">
             <div class="transform -rotate-6 pointer-events-auto group/pin relative mb-6">
               <!-- Water droplet background bubbles -->
               <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-br from-pink-400/50 to-red-500/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-4 group-hover/pin:-translate-x-2 group-hover/pin:scale-125 transition-all duration-500 ease-out z-0 border border-white/50 shadow-md shadow-red-500/20"></div>
@@ -312,10 +313,10 @@ const mobileNav = [
               <div class="absolute top-1/2 -right-4 w-6 h-6 rounded-full bg-gradient-to-r from-rose-300/50 to-pink-500/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-x-4 group-hover/pin:-translate-y-3 group-hover/pin:scale-125 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
               <div class="absolute -top-4 right-4 w-5 h-5 rounded-full bg-gradient-to-b from-red-400/40 to-pink-300/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-5 group-hover/pin:scale-110 transition-all duration-500 delay-150 ease-out z-0 border border-white/40"></div>
 
-              <div class="relative z-10 p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_1.jpg" alt="" class="w-full h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
-                <div class="p-2 text-left">
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Interior · Pin</span>
+              <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
+                <img src="/images/side_pin_1.jpg" alt="" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
+                <div class="p-1.5 text-left">
+                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Interior · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Cozy home decor</p>
                 </div>
               </div>
@@ -327,10 +328,10 @@ const mobileNav = [
               <div class="absolute -bottom-2 -left-3 w-7 h-7 rounded-full bg-gradient-to-tr from-rose-500/40 to-pink-400/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-y-3 group-hover/pin:-translate-x-3 transition-all duration-500 delay-75 ease-out z-0 border border-white/40"></div>
               <div class="absolute top-1/3 -left-4 w-5 h-5 rounded-full bg-gradient-to-r from-pink-300/50 to-rose-400/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-x-4 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
 
-              <div class="relative z-10 p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_3.jpg" alt="" class="w-full h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
-                <div class="p-2 text-left">
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Lifestyle · Pin</span>
+              <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
+                <img src="/images/side_pin_3.jpg" alt="" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
+                <div class="p-1.5 text-left">
+                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Lifestyle · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Matcha &amp; pastry</p>
                 </div>
               </div>
@@ -338,17 +339,17 @@ const mobileNav = [
           </div>
 
           {/* Right floating pin collage with water droplet bubbles on hover */}
-          <div class="hidden xl:block absolute right-2 2xl:right-6 top-20 w-44 2xl:w-52 pointer-events-none select-none z-20">
+          <div class="hidden lg:block absolute right-1 lg:right-3 2xl:right-6 top-20 w-36 lg:w-44 2xl:w-52 pointer-events-none select-none z-20">
             <div class="transform rotate-6 pointer-events-auto group/pin relative mb-6">
               <!-- Water droplet background bubbles -->
               <div class="absolute -top-3 -right-3 w-9 h-9 rounded-full bg-gradient-to-br from-pink-400/50 to-red-500/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-4 group-hover/pin:translate-x-2 group-hover/pin:scale-125 transition-all duration-500 ease-out z-0 border border-white/50 shadow-md shadow-red-500/20"></div>
               <div class="absolute -bottom-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-tr from-red-500/40 to-rose-400/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-y-3 group-hover/pin:-translate-x-2 group-hover/pin:scale-110 transition-all duration-500 delay-75 ease-out z-0 border border-white/40 shadow-md"></div>
               <div class="absolute top-1/2 -left-4 w-6 h-6 rounded-full bg-gradient-to-r from-rose-300/50 to-pink-500/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-x-3 group-hover/pin:-translate-y-2 group-hover/pin:scale-125 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
 
-              <div class="relative z-10 p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_2.jpg" alt="" class="w-full h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
-                <div class="p-2 text-left">
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Travel · Pin</span>
+              <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
+                <img src="/images/side_pin_2.jpg" alt="" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
+                <div class="p-1.5 text-left">
+                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Travel · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Golden hour views</p>
                 </div>
               </div>
@@ -359,10 +360,10 @@ const mobileNav = [
               <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-br from-red-400/40 to-pink-500/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-3 group-hover/pin:-translate-x-2 group-hover/pin:scale-125 transition-all duration-500 ease-out z-0 border border-white/50 shadow-md shadow-red-500/20"></div>
               <div class="absolute -bottom-2 -right-3 w-7 h-7 rounded-full bg-gradient-to-tr from-rose-500/40 to-pink-400/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-y-3 group-hover/pin:translate-x-2 transition-all duration-500 delay-75 ease-out z-0 border border-white/40"></div>
 
-              <div class="relative z-10 p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_4.jpg" alt="" class="w-full h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
-                <div class="p-2 text-left">
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Fashion · Pin</span>
+              <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
+                <img src="/images/side_pin_4.jpg" alt="" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
+                <div class="p-1.5 text-left">
+                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Fashion · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Street style chic</p>
                 </div>
               </div>
@@ -451,6 +452,7 @@ const mobileNav = [
         </div>
       </div>
     </footer>
+    <StickyPasteBar client:idle />
   </body>
 </html>
 

@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight, Crop, Scissors } from 'lucide-react';
 import JSZip from 'jszip';
+import ImageCropperModal from './ImageCropperModal';
+import AudioTrimmer from './AudioTrimmer';
 
 interface BoardPinItem {
   pin_id: string;
@@ -160,6 +162,20 @@ export default function DownloaderForm({
   const [showPlayer, setShowPlayer] = useState(false);
   const [zipping, setZipping] = useState(false);
   const [zipProgress, setZipProgress] = useState({ done: 0, total: 0 });
+  const [showCropper, setShowCropper] = useState(false);
+  const [showTrimmer, setShowTrimmer] = useState(false);
+  const [selectedPins, setSelectedPins] = useState<Record<string, boolean>>({});
+  const [mediaFilter, setMediaFilter] = useState<'all' | 'video' | 'image'>('all');
+
+  const triggerHaptic = () => {
+    if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+      try {
+        navigator.vibrate([15, 30]);
+      } catch (e) {
+        // Ignore haptic failures
+      }
+    }
+  };
 
   // Pagination limit for board/profile pins & scroll refs
   const [displayLimit, setDisplayLimit] = useState<number>(12);
@@ -1064,7 +1080,7 @@ export default function DownloaderForm({
           </div>
         </div>
       ) : result && (
-        <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
+        <div className="mt-8 p-4 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             {/* Preview Section */}
             <div className="w-full md:w-64 aspect-square bg-slate-100 rounded-2xl overflow-hidden shrink-0 border border-slate-200 relative shadow-inner group">
@@ -1174,18 +1190,46 @@ export default function DownloaderForm({
                         </>
                       )}
                     </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        triggerHaptic();
+                        setShowTrimmer(true);
+                      }}
+                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold transition-all text-sm border border-slate-700 shadow-md active:scale-95 touch-manipulation"
+                      title="Trim sound hook and save custom audio clip"
+                    >
+                      <Scissors className="w-4 h-4 text-[#E11D48]" />
+                      <span>Trim Sound Hook (MP3)</span>
+                    </button>
                   </>
                 )}
 
                 {result.image_url && (
-                  <a
-                    href={`/api/download?url=${encodeURIComponent(result.image_url)}&filename=${encodeURIComponent((result.title || 'pinterest_image').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.jpg`}
-                    download={`${(result.title || 'pinterest_image').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.jpg`}
-                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation"
-                  >
-                    <ImageIcon className="w-4 h-4 text-[#E11D48]" />
-                    <span>Download HD Image</span>
-                  </a>
+                  <>
+                    <a
+                      href={`/api/download?url=${encodeURIComponent(result.image_url)}&filename=${encodeURIComponent((result.title || 'pinterest_image').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.jpg`}
+                      download={`${(result.title || 'pinterest_image').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.jpg`}
+                      className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation"
+                    >
+                      <ImageIcon className="w-4 h-4 text-[#E11D48]" />
+                      <span>Download HD Image</span>
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        triggerHaptic();
+                        setShowCropper(true);
+                      }}
+                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-[#E11D48] dark:text-rose-300 font-extrabold transition-all text-sm border border-rose-200 dark:border-rose-800/80 active:scale-95 touch-manipulation"
+                      title="Crop photo to 9:16 Story/Reel, 1:1 Instagram Post, or 16:9 Landscape"
+                    >
+                      <Crop className="w-4 h-4" />
+                      <span>Crop / Resize (Social Presets)</span>
+                    </button>
+                  </>
                 )}
               </div>
             </div>
@@ -1412,6 +1456,23 @@ export default function DownloaderForm({
             ))}
           </div>
         </div>
+      )}
+      {/* Image Cropper Modal */}
+      {showCropper && result?.image_url && (
+        <ImageCropperModal
+          imageUrl={result.image_url}
+          title={result.title || 'pinterest_image'}
+          onClose={() => setShowCropper(false)}
+        />
+      )}
+
+      {/* Audio Trimmer Modal */}
+      {showTrimmer && (result?.video_url || selectedQuality) && (
+        <AudioTrimmer
+          audioUrl={selectedQuality || result!.video_url!}
+          title={result?.title || 'pinterest_audio'}
+          onClose={() => setShowTrimmer(false)}
+        />
       )}
     </div>
   );
