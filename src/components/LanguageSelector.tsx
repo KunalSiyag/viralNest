@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LANGUAGES, type LanguageCode } from '../lib/i18n';
+import { applyDOMTranslations } from '../lib/i18n-client';
 
 export default function LanguageSelector() {
   const [currentLang, setCurrentLang] = useState<LanguageCode>('en');
@@ -10,11 +11,7 @@ export default function LanguageSelector() {
     const saved = localStorage.getItem('preferred_lang') as LanguageCode;
     if (saved && LANGUAGES.some((l) => l.code === saved)) {
       setCurrentLang(saved);
-      document.documentElement.lang = saved;
-      const langConfig = LANGUAGES.find((l) => l.code === saved);
-      if (langConfig) {
-        document.documentElement.dir = langConfig.dir;
-      }
+      applyDOMTranslations(saved);
     }
   }, []);
 
@@ -31,8 +28,7 @@ export default function LanguageSelector() {
   const handleSelectLanguage = (code: LanguageCode, dir: string) => {
     setCurrentLang(code);
     localStorage.setItem('preferred_lang', code);
-    document.documentElement.lang = code;
-    document.documentElement.dir = dir;
+    applyDOMTranslations(code);
     setIsOpen(false);
 
     // Dispatch global custom event for reactive UI updates

@@ -147,6 +147,29 @@ export default function DownloaderForm({
 }) {
   const isHero = layout === 'hero';
   const copy = VARIANT_COPY[variant] || VARIANT_COPY.hub;
+  const [currentLang, setCurrentLang] = useState<LanguageCode>('en');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('preferred_lang') as LanguageCode;
+    if (saved && TRANSLATIONS[saved]) {
+      setCurrentLang(saved);
+    }
+
+    const handleLangChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ lang: LanguageCode }>;
+      if (customEvent.detail?.lang && TRANSLATIONS[customEvent.detail.lang]) {
+        setCurrentLang(customEvent.detail.lang);
+      }
+    };
+
+    window.addEventListener('languageChange', handleLangChange);
+    return () => window.removeEventListener('languageChange', handleLangChange);
+  }, []);
+
+  const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
+  const activePlaceholder = currentLang !== 'en' ? t.downloadPlaceholder : copy.placeholder;
+  const activeSubmitLabel = currentLang !== 'en' ? t.downloadButton : copy.submitLabel;
+
   const [mode, setMode] = useState<'single' | 'batch'>('single');
   const [url, setUrl] = useState('');
   const [batchUrls, setBatchUrls] = useState('');
@@ -604,8 +627,8 @@ export default function DownloaderForm({
                   name="url"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  placeholder={copy.placeholder}
-                  className="w-full h-12 sm:h-14 bg-transparent border-0 text-ink-900 dark:text-white placeholder:text-ink-400 focus:outline-none text-base sm:text-[1.05rem] min-w-0"
+                  placeholder={activePlaceholder}
+                  className="w-full h-12 sm:h-14 bg-transparent border-0 text-ink-900 dark:text-white placeholder:text-ink-400 dark:placeholder:text-slate-400 focus:outline-none text-base sm:text-[1.05rem] min-w-0"
                   required
                   aria-label={copy.ariaLabel}
                   autoComplete="url"
@@ -621,12 +644,12 @@ export default function DownloaderForm({
                 {loading ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
-                    <span>Working…</span>
+                    <span>{t.processingText}</span>
                   </>
                 ) : (
                   <>
                     <Download className="w-5 h-5" aria-hidden="true" />
-                    <span>Download</span>
+                    <span>{activeSubmitLabel}</span>
                   </>
                 )}
               </button>
@@ -638,7 +661,7 @@ export default function DownloaderForm({
                 name="url"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                placeholder={copy.placeholder}
+                placeholder={activePlaceholder}
                 className="w-full h-14 pl-5 pr-24 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
                 required
                 aria-label={copy.ariaLabel}
