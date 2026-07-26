@@ -3,6 +3,7 @@ import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, C
 import JSZip from 'jszip';
 import ImageCropperModal from './ImageCropperModal';
 import AudioTrimmer from './AudioTrimmer';
+import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
 
 interface BoardPinItem {
   pin_id: string;

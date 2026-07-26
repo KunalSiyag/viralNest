@@ -2,6 +2,7 @@
 import { BRAND } from '../lib/brand';
 import StickyPasteBar from '../components/StickyPasteBar';
 import FooterKeywordMatrix from '../components/FooterKeywordMatrix.astro';
+import LanguageSelector from '../components/LanguageSelector';
 
 interface Props {
   title: string;
@@ -224,7 +225,8 @@ const mobileNav = [
           </a>
         </nav>
 
-        <div class="flex items-center gap-3 shrink-0">
+        <div class="flex items-center gap-2.5 shrink-0">
+          <LanguageSelector client:load />
           <!-- Slide Theme Toggle Button -->
           <button
             id="theme-toggle-btn"
