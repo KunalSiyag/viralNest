@@ -23,7 +23,7 @@ export const BRAND = {
   logo: '/images/logo.png',
   logoPng: '/images/logo.png',
   logoSvg: '/images/logo.svg',
-  ogImage: '/images/logo.png',
+  ogImage: '/images/og-cover.png',
 } as const;
 
 export const SITE_URL = BRAND.url;
