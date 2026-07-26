@@ -1,0 +1,96 @@
+---
+const MATRIX_GROUPS = [
+  {
+    category: 'Device & Mobile Downloaders',
+    links: [
+      { href: '/download-pinterest-videos-iphone-android', label: 'iPhone & Android Camera Roll Saver' },
+      { href: '/how-to-download-pinterest-video-in-gallery', label: 'How to Download Video in Phone Gallery' },
+      { href: '/how-to-download-pinterest-video-on-laptop', label: 'How to Download Pinterest Video on Laptop & PC' },
+      { href: '/pinterest-video-downloader-chrome', label: 'Pinterest Video Downloader Chrome Extension' },
+      { href: '/how-to-download-pinterest-videos', label: 'Step-by-Step Pinterest Download Guide' },
+    ],
+  },
+  {
+    category: 'Format & Quality Downloaders',
+    links: [
+      { href: '/pinterest-video-downloader', label: 'Pinterest Video Downloader (HD MP4)' },
+      { href: '/pinterest-carousel-downloader', label: 'Pinterest Carousel & Slide Downloader' },
+      { href: '/pinterest-image-downloader', label: 'Pinterest Photo & Image Downloader (HD)' },
+      { href: '/pinterest-gif-downloader', label: 'Pinterest Animated GIF Downloader' },
+      { href: '/pinterest-audio-downloader', label: 'Pinterest MP3 Audio Extractor' },
+      { href: '/pinterest-4k-downloader', label: 'Pinterest 4K Ultra HD Downloader' },
+      { href: '/pinterest-story-downloader', label: 'Pinterest Story & Idea Pin Downloader' },
+    ],
+  },
+  {
+    category: 'Batch & Archive Downloaders',
+    links: [
+      { href: '/pinterest-board-downloader', label: 'Pinterest Board Downloader (ZIP Pack)' },
+      { href: '/pinterest-profile-downloader', label: 'Pinterest Profile Downloader (ZIP Pack)' },
+      { href: '/pinterest-profile-picture-downloader', label: 'Pinterest Profile Picture Downloader (HD PFP)' },
+      { href: '/pinterest-pin-downloader', label: 'Pinterest Pin Downloader' },
+      { href: '/pinterest-to-mp4', label: 'Pinterest Link to MP4 Converter' },
+      { href: '/pinterest-seo-title-generator', label: 'Pinterest SEO Title & Tag Generator' },
+    ],
+  },
+  {
+    category: 'Creator Growth & Monetization Guides',
+    links: [
+      { href: '/blog/make-money-on-pinterest-without-website', label: 'Make Money on Pinterest Without a Website' },
+      { href: '/blog/viral-pinterest-swipe-file-growth-strategy', label: 'Viral Pinterest Swipe File Growth Strategy' },
+      { href: '/blog/pinterest-account-backup-shadowban-protection-guide', label: 'Account Backup & Shadowban Protection' },
+      { href: '/blog/high-converting-pinterest-mood-boards-client-pitch-guide', label: 'High-Converting Mood Boards Pitch Guide' },
+      { href: '/blog', label: 'View All Pinterest Marketing Guides' },
+    ],
+  },
+];
+---
+
+<footer class="w-full bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800 text-left text-xs">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-8 pb-6 border-b border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <h2 class="text-sm font-extrabold text-white uppercase tracking-wider mb-1">
+          PintDownload Keyword &amp; SEO Interlinking Matrix
+        </h2>
+        <p class="text-slate-400 text-xs">
+          Explore all specialized search intent downloaders, device tools, and Pinterest creator growth guides.
+        </p>
+      </div>
+      <div class="shrink-0 px-3 py-1 rounded-full bg-red-950/60 text-[#E11D48] font-bold border border-red-900/50 text-[11px]">
+        68 Indexed Tool &amp; Guide Pages
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+      {MATRIX_GROUPS.map((group) => (
+        <div>
+          <h3 class="font-extrabold text-white text-xs uppercase tracking-wider mb-3.5 pb-1 border-b border-slate-800/80">
+            {group.category}
+          </h3>
+          <ul class="space-y-2">
+            {group.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-slate-400 hover:text-white hover:underline transition-colors block leading-relaxed"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+      <p>© {new Date().getFullYear()} PintDownload.app — Free Online Pinterest Downloader. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="/privacy-policy" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
+        <a href="/terms-of-service" class="hover:text-slate-300 transition-colors">Terms of Service</a>
+        <a href="/contact" class="hover:text-slate-300 transition-colors">Contact Support</a>
+      </div>
+    </div>
+  </div>
+</footer>
