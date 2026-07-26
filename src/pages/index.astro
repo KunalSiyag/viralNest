@@ -5,6 +5,7 @@ import RelatedTools from '../components/seo/RelatedTools.astro';
 import FaqSection from '../components/seo/FaqSection.astro';
 import HowToSteps from '../components/seo/HowToSteps.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
+import EmbedWidget from '../components/seo/EmbedWidget.astro';
 import CompareTable from '../components/seo/CompareTable.astro';
 import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
 import { BRAND } from '../lib/brand';
@@ -231,6 +232,8 @@ const jsonLd = [
 
     <!-- STRIPE 6: FAQ Section (Full Bleed Edge-to-Edge Stripe) -->
     <FaqSection title="Pinterest downloader FAQ" items={faqs} stripe={true} />
+
+    <EmbedWidget />
 
     <!-- STRIPE 7: Related Tools -->
     <div class="w-full py-8">

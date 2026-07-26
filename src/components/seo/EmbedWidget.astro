@@ -1,0 +1,60 @@
+---
+---
+
+<div class="w-full max-w-4xl mx-auto my-12 p-6 sm:p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-xl text-left">
+  <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/70 text-[#E11D48] text-xs font-bold mb-2 border border-red-900/50">
+        🔗 Free Backlink &amp; Creator Tool
+      </div>
+      <h3 class="text-xl sm:text-2xl font-black text-white">Embed PintDownload Widget on Your Site</h3>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1">
+        Are you a blogger or tech creator? Embed our 1-click Pinterest Downloader widget directly on your site for free!
+      </p>
+    </div>
+  </div>
+
+  <div class="relative group mb-4">
+    <textarea
+      id="embed-code-textarea"
+      readonly
+      rows="3"
+      class="w-full font-mono text-xs p-4 rounded-xl bg-slate-950 text-slate-300 border border-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500/50 select-all cursor-pointer"
+    >&lt;!-- PintDownload Pinterest Downloader Widget --&gt;
+&lt;iframe src="https://pintdownload.app/embed" width="100%" height="220" frameborder="0" style="border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.15);" title="Free Pinterest Downloader"&gt;&lt;/iframe&gt;
+&lt;p style="font-size:11px;text-align:center;color:#64748b;margin-top:6px;"&gt;Powered by &lt;a href="https://pintdownload.app/" target="_blank" rel="noopener"&gt;PintDownload Pinterest Downloader&lt;/a&gt;&lt;/p&gt;</textarea>
+  </div>
+
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-xs text-slate-400">
+      Copying this snippet gives your readers 1-click downloads while helping credit <strong class="text-white">PintDownload.app</strong>.
+    </p>
+    <button
+      id="copy-embed-btn"
+      type="button"
+      class="shrink-0 px-6 py-2.5 rounded-xl bg-[#E11D48] hover:bg-red-700 text-white font-bold text-xs transition-colors shadow-lg shadow-red-900/30 flex items-center gap-2 cursor-pointer"
+    >
+      📋 Copy HTML Embed Code
+    </button>
+  </div>
+</div>
+
+<script>
+  const copyBtn = document.getElementById('copy-embed-btn');
+  const textarea = document.getElementById('embed-code-textarea') as HTMLTextAreaElement;
+
+  if (copyBtn && textarea) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(textarea.value);
+        const originalText = copyBtn.innerText;
+        copyBtn.innerText = '✅ Copied to Clipboard!';
+        setTimeout(() => {
+          copyBtn.innerText = originalText;
+        }, 3000);
+      } catch (e) {
+        textarea.select();
+      }
+    });
+  }
+</script>
