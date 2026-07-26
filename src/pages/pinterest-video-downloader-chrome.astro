@@ -6,6 +6,7 @@ import FaqSection from '../components/seo/FaqSection.astro';
 import RelatedTools from '../components/seo/RelatedTools.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
 import { BRAND } from '../lib/brand';
+import { webPageSchema, softwareAppSchema, howToSchema, faqSchema } from '../lib/seo';
 
 const path = '/pinterest-video-downloader-chrome';
 const pageUrl = `${BRAND.url}${path}`;
@@ -15,69 +16,123 @@ const description =
 
 const steps = [
   {
-    num: 1,
-    title: 'Install 1-Click Bookmarklet',
-    desc: 'Drag our PintDownload bookmarklet button to your Chrome or Safari bookmarks bar.',
+    title: 'Drag Bookmarklet to Chrome Bookmarks Bar',
+    body: 'Drag our interactive "PintDownload" button directly to your Chrome, Safari, or Edge bookmarks bar.',
   },
   {
-    num: 2,
-    title: 'Browse Pinterest',
-    desc: 'Open any Pinterest pin, video, or board on Pinterest.com.',
+    title: 'Browse Pinterest.com',
+    body: 'Browse Pinterest normally. When you find a video, pin, or board you want to save, stay on that page.',
   },
   {
-    num: 3,
-    title: 'Click Bookmarklet to Download',
-    desc: 'Click your PintDownload bookmarklet once — it opens with the pin prefilled and ready to download in 1080p HD.',
+    title: 'Click Bookmarklet to Instantly Download',
+    body: 'Click your PintDownload bookmarklet once in your toolbar — it instantly launches PintDownload with your current pin URL prefilled.',
   },
 ];
 
 const faqs = [
   {
     q: 'Does PintDownload work as a Chrome Extension?',
-    a: 'Yes! You can install our 1-click drag-and-drop bookmarklet on Chrome, Edge, Safari, and Brave, giving you instant extension-like downloader functionality without installing untrusted browser plugins.',
+    a: 'Yes! You can install our 1-click drag-and-drop bookmarklet on Google Chrome, Edge, Safari, and Brave. It acts just like a Chrome extension without consuming browser RAM or requiring background extension permissions.',
   },
   {
-    q: 'Is it safe to use this Chrome bookmarklet tool?',
-    a: '100% safe. Our bookmarklet uses standard browser JavaScript to open PintDownload with your current pin URL. It does not track your browsing history or require special permissions.',
+    q: 'Why is a bookmarklet safer than installing Chrome web store extensions?',
+    a: 'Web store extensions often request invasive browser permissions (reading all site data, tracking tabs). Our bookmarklet uses pure client-side JavaScript that only runs when you click it.',
+  },
+  {
+    q: 'Can I use this Chrome downloader tool on Mac and Windows?',
+    a: 'Yes. It works seamlessly across Windows 11/10, macOS, Linux, and Chromebook desktops running Chrome, Edge, Safari, or Opera.',
   },
 ];
 
 const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  },
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest Video Downloader Chrome & Browser Tool',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to Use Pinterest Video Downloader in Chrome',
+    description,
+    steps: steps.map((s) => ({ name: s.title, text: s.body })),
+  }),
+  faqSchema(faqs),
 ];
 ---
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
-  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
-    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
-      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
-        🌐 Chrome &amp; Browser Downloader Tool
-      </div>
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
-        Pinterest Video Downloader <span className="text-[#E11D48]">Chrome &amp; Browser Tool</span>
-      </h1>
-      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
-        1-Click download tool for Google Chrome, Safari, and Edge. Save HD MP4 videos, images, and full boards directly while browsing Pinterest.
-      </p>
+  <!-- Minimalist Hero card matching original downloader layout -->
+  <section
+    class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-4 sm:mb-6 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-6 sm:py-14 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
+    aria-labelledby="hero-heading"
+  >
+    <!-- Light theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
+      style="background-image: url('/images/hero_background.webp');"
+      aria-hidden="true"
+    ></div>
+    <!-- Dark theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
+      style="background-image: url('/images/hero_background_dark.webp');"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-white/45 via-white/65 to-white/85 dark:from-slate-950/60 dark:via-slate-950/75 dark:to-slate-950/90"
+      aria-hidden="true"
+    ></div>
 
-      <div className="w-full max-w-3xl">
-        <DownloaderForm client:load variant="hub" layout="hero" />
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-8 sm:pt-14 lg:pt-16 pb-4 sm:pb-8 lg:pb-10 w-full my-auto">
+      <h1
+        id="hero-heading"
+        class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-4xl leading-tight mb-6 sm:mb-8"
+        style="text-wrap: balance;"
+      >
+        Pinterest Video Downloader <span class="text-[#E11D48]">Chrome Tool</span>
+      </h1>
+
+      <div class="w-full max-w-4xl">
+        <DownloaderForm client:load variant="hub" />
       </div>
     </div>
   </section>
 
-  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+  <!-- SEO Content downside -->
+  <article class="flex flex-col items-center text-center w-full max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
+    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/40 text-[#E11D48] text-xs font-bold mb-3 border border-red-200/80 dark:border-red-900/40 shadow-sm">
+        🌐 Chrome, Edge, &amp; Safari 1-Click Tool
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
+        1-Click download tool for <strong class="text-slate-900 dark:text-white">Google Chrome, Safari, and Edge</strong> browsers — save HD MP4 videos and pins without leaving Pinterest.
+      </p>
+    </div>
+
+    <!-- Unique Chrome Feature Cards -->
+    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm mb-12">
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">🌐</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Chrome &amp; Edge Integration</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Drag-and-drop bookmarklet bar integration provides instant extension functionality directly inside Chrome and Edge.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">🛡️</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Zero Permission Risks</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">No store extensions tracking your private data or history. Safe, lightweight, and zero RAM overhead.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">🚀</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">1-Click Tab prefills</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Clicking the bookmarklet on any Pinterest pin opens PintDownload with the video URL prefilled and ready to export.</p>
+      </div>
+    </div>
+
     <BookmarkletGuide />
     <HowToSteps title="How to use Pinterest downloader in Chrome" intro="3 steps for 1-click Chrome downloads." exampleUrl="https://pin.it/…" exampleLabel="Pinterest Link" steps={steps} visual stripe={true} />
-    <FaqSection faqs={faqs} title="Chrome Extension FAQs" />
+    <FaqSection items={faqs} title="Chrome Extension FAQs" />
     <RelatedTools currentPath={path} />
   </article>
 </BaseLayout>

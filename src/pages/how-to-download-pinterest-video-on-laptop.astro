@@ -6,6 +6,7 @@ import FaqSection from '../components/seo/FaqSection.astro';
 import RelatedTools from '../components/seo/RelatedTools.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
 import { BRAND } from '../lib/brand';
+import { webPageSchema, softwareAppSchema, howToSchema, faqSchema } from '../lib/seo';
 
 const path = '/how-to-download-pinterest-video-on-laptop';
 const pageUrl = `${BRAND.url}${path}`;
@@ -15,19 +16,16 @@ const description =
 
 const steps = [
   {
-    num: 1,
-    title: 'Copy Video Link on Laptop',
-    desc: 'Open Pinterest on your laptop web browser, right-click the video pin (or click the Share icon), and click "Copy link".',
+    title: 'Copy Video Link on Laptop Browser',
+    body: 'Open Pinterest on your laptop web browser, right-click the video pin (or click the Share icon), and select "Copy link".',
   },
   {
-    num: 2,
-    title: 'Paste Link in Computer Downloader',
-    desc: 'Paste the copied URL into the box above and click "Download".',
+    title: 'Paste Link into Computer Downloader',
+    body: 'Head over to PintDownload in a new browser tab, paste the copied URL into the box above, and hit Enter.',
   },
   {
-    num: 3,
-    title: 'Save MP4 File to Downloads Folder',
-    desc: 'Click "Download MP4" to save the high-definition video file directly into your Mac or PC Downloads folder.',
+    title: 'Save 1080p MP4 to Computer Downloads Folder',
+    body: 'Click "Download MP4" to save the high-definition video file directly into your Mac, Windows PC, or Chromebook Downloads folder.',
   },
 ];
 
@@ -40,54 +38,101 @@ const faqs = [
     q: 'Can I download full 1080p HD videos on laptop?',
     a: 'Yes! We extract the highest quality 1080p / 720p MP4 video stream provided by Pinterest.',
   },
+  {
+    q: 'Does this laptop downloader work on Chromebooks?',
+    a: 'Yes. PintDownload is a web app that works on ChromeOS, macOS, Windows 11/10, and Linux without installing software.',
+  },
 ];
 
 const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
     name: 'How to Download Pinterest Video on Laptop & PC',
-    step: steps.map((s) => ({
-      '@type': 'HowToStep',
-      name: s.title,
-      text: s.desc,
-    })),
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  },
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to Download Pinterest Video on Laptop & PC',
+    description,
+    steps: steps.map((s) => ({ name: s.title, text: s.body })),
+  }),
+  faqSchema(faqs),
 ];
 ---
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
-  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
-    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
-      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
-        💻 Laptop &amp; PC Video Downloader
-      </div>
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
-        How to Download Pinterest <span className="text-[#E11D48]">Video on Laptop &amp; PC</span>
-      </h1>
-      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
-        Save public 1080p HD Pinterest videos &amp; animations directly to your Windows PC, Mac, or Chromebook laptop — free, fast, no software install.
-      </p>
+  <!-- Minimalist Hero card matching original downloader layout -->
+  <section
+    class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-4 sm:mb-6 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-6 sm:py-14 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
+    aria-labelledby="hero-heading"
+  >
+    <!-- Light theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
+      style="background-image: url('/images/hero_background.webp');"
+      aria-hidden="true"
+    ></div>
+    <!-- Dark theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
+      style="background-image: url('/images/hero_background_dark.webp');"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-white/45 via-white/65 to-white/85 dark:from-slate-950/60 dark:via-slate-950/75 dark:to-slate-950/90"
+      aria-hidden="true"
+    ></div>
 
-      <div className="w-full max-w-3xl">
-        <DownloaderForm client:load variant="video" layout="hero" />
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-8 sm:pt-14 lg:pt-16 pb-4 sm:pb-8 lg:pb-10 w-full my-auto">
+      <h1
+        id="hero-heading"
+        class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-4xl leading-tight mb-6 sm:mb-8"
+        style="text-wrap: balance;"
+      >
+        How to Download Pinterest <span class="text-[#E11D48]">Video on Laptop</span>
+      </h1>
+
+      <div class="w-full max-w-4xl">
+        <DownloaderForm client:load variant="video" />
       </div>
     </div>
   </section>
 
-  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+  <!-- SEO Content downside -->
+  <article class="flex flex-col items-center text-center w-full max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
+    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/40 text-[#E11D48] text-xs font-bold mb-3 border border-red-200/80 dark:border-red-900/40 shadow-sm">
+        💻 Laptop &amp; PC Video Downloader
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
+        Save public <strong class="text-slate-900 dark:text-white">1080p HD Pinterest videos</strong> directly to your Windows PC, Mac, or Chromebook laptop.
+      </p>
+    </div>
+
+    <!-- Unique Laptop Feature Cards -->
+    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm mb-12">
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">💻</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Windows &amp; macOS Desktop</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Works seamlessly on Windows 11/10 PCs, Mac Laptops (MacBook Air/Pro), and ChromeOS.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">⚡</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Keyboard Shortlink Ready</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Fast desktop workflow: press Cmd/Ctrl + V to paste and hit Enter to immediately start downloading.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">📽️</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">High Resolution 1080p MP4</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Extracts maximum bitrate video streams directly into your computer Downloads folder.</p>
+      </div>
+    </div>
+
     <HowToSteps title="How to save Pinterest video on laptop or computer" intro="Follow these 3 easy steps on Windows or Mac." exampleUrl="https://pin.it/…" exampleLabel="Pinterest Video URL" steps={steps} visual stripe={true} />
     <BookmarkletGuide />
-    <FaqSection faqs={faqs} title="Laptop & PC Download FAQs" />
+    <FaqSection items={faqs} title="Laptop & PC Download FAQs" />
     <RelatedTools currentPath={path} />
   </article>
 </BaseLayout>

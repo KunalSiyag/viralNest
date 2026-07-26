@@ -6,6 +6,7 @@ import FaqSection from '../components/seo/FaqSection.astro';
 import RelatedTools from '../components/seo/RelatedTools.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
 import { BRAND } from '../lib/brand';
+import { webPageSchema, softwareAppSchema, howToSchema, faqSchema } from '../lib/seo';
 
 const path = '/pinterest-carousel-downloader';
 const pageUrl = `${BRAND.url}${path}`;
@@ -15,69 +16,123 @@ const description =
 
 const steps = [
   {
-    num: 1,
-    title: 'Copy Pinterest Carousel URL',
-    desc: 'Copy the URL of any multi-image carousel pin or Idea Pin from Pinterest.',
+    title: 'Copy Multi-Image Carousel URL',
+    body: 'Open Pinterest and locate any carousel pin containing multiple photos or video slides. Tap Share -> Copy Link.',
   },
   {
-    num: 2,
-    title: 'Paste Carousel Link',
-    desc: 'Paste the link into our online carousel extractor above.',
+    title: 'Extract Every Carousel Slide',
+    body: 'Paste the link into PintDownload above. Our parser automatically scans the pin and extracts all individual slide assets.',
   },
   {
-    num: 3,
-    title: 'Download All Slides or ZIP',
-    desc: 'Extract every slide photo/video individually or save all carousel items together in one ZIP package.',
+    title: 'Download Slides Individually or as ZIP',
+    body: 'Save each high-resolution slide image/video one-by-one or click "Download Board / Carousel ZIP" to get all slides in a single archive.',
   },
 ];
 
 const faqs = [
   {
-    q: 'Can I download all slides from a Pinterest carousel pin?',
-    a: 'Yes! PintDownload automatically parses all media slides inside multi-image carousel pins, allowing you to download each slide individually or pack them all into a ZIP file.',
+    q: 'Can I download all slides from a Pinterest carousel pin at once?',
+    a: 'Yes! PintDownload detects multi-image carousel pins and Idea Pins, providing single-click options to download individual slides or batch download all slides inside a ZIP file.',
   },
   {
-    q: 'Are carousel images extracted in full high resolution?',
-    a: 'Yes. We extract original 1080p and high-res source images directly from Pinterest CDN servers.',
+    q: 'Are carousel images extracted in original full resolution?',
+    a: 'Yes. We extract original uncompressed 1080p source graphics directly from Pinterest CDN servers, avoiding screenshot compression quality loss.',
+  },
+  {
+    q: 'What happens if a carousel contains both videos and photos?',
+    a: 'PintDownload processes each slide type natively — video slides render as downloadable MP4 streams, and image slides render as high-res PNG/JPG files.',
   },
 ];
 
 const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  },
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest Carousel & Multi-Slide Downloader',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to Download Pinterest Carousel Pins & All Slides',
+    description,
+    steps: steps.map((s) => ({ name: s.title, text: s.body })),
+  }),
+  faqSchema(faqs),
 ];
 ---
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
-  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
-    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
-      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
-        🖼️ Multi-Image &amp; Carousel Downloader
-      </div>
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
-        Pinterest Carousel Downloader — <span className="text-[#E11D48]">All Slides &amp; Photos</span>
-      </h1>
-      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
-        Extract all photos, videos, and graphics from Pinterest carousel pins. Save individual slides or download the full carousel pack in one click.
-      </p>
+  <!-- Minimalist Hero card matching original downloader layout -->
+  <section
+    class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-4 sm:mb-6 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-6 sm:py-14 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
+    aria-labelledby="hero-heading"
+  >
+    <!-- Light theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
+      style="background-image: url('/images/hero_background.webp');"
+      aria-hidden="true"
+    ></div>
+    <!-- Dark theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
+      style="background-image: url('/images/hero_background_dark.webp');"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-white/45 via-white/65 to-white/85 dark:from-slate-950/60 dark:via-slate-950/75 dark:to-slate-950/90"
+      aria-hidden="true"
+    ></div>
 
-      <div className="w-full max-w-3xl">
-        <DownloaderForm client:load variant="image" layout="hero" />
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-8 sm:pt-14 lg:pt-16 pb-4 sm:pb-8 lg:pb-10 w-full my-auto">
+      <h1
+        id="hero-heading"
+        class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-4xl leading-tight mb-6 sm:mb-8"
+        style="text-wrap: balance;"
+      >
+        Pinterest <span class="text-[#E11D48]">Carousel Downloader</span>
+      </h1>
+
+      <div class="w-full max-w-4xl">
+        <DownloaderForm client:load variant="image" />
       </div>
     </div>
   </section>
 
-  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+  <!-- SEO Content downside -->
+  <article class="flex flex-col items-center text-center w-full max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
+    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/40 text-[#E11D48] text-xs font-bold mb-3 border border-red-200/80 dark:border-red-900/40 shadow-sm">
+        🖼️ Multi-Image Carousel → All Slides &amp; ZIP
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
+        Extract all <strong class="text-slate-900 dark:text-white">photos, videos, and slides</strong> from multi-image Pinterest carousel pins in full HD resolution.
+      </p>
+    </div>
+
+    <!-- Unique Carousel Feature Cards -->
+    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm mb-12">
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">🖼️</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Full Carousel Parsing</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Automatically detects multi-slide carousel pins and lists every individual photo and video slide for download.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">📦</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">1-Click ZIP Archive</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Download all slides bundled together in a clean ZIP archive with one tap instead of clicking each slide separately.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">✨</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">No Compression Loss</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Extract original 1080p source graphics directly from CDN servers without pixelation or quality degradation.</p>
+      </div>
+    </div>
+
     <HowToSteps title="How to download all slides from Pinterest carousel" intro="Save all multi-image carousel slides in 3 steps." exampleUrl="https://pin.it/…" exampleLabel="Carousel Pin Link" steps={steps} visual stripe={true} />
     <BookmarkletGuide />
-    <FaqSection faqs={faqs} title="Pinterest Carousel FAQs" />
+    <FaqSection items={faqs} title="Pinterest Carousel FAQs" />
     <RelatedTools currentPath={path} />
   </article>
 </BaseLayout>

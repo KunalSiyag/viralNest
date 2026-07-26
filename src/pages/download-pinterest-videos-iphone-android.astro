@@ -6,92 +6,133 @@ import FaqSection from '../components/seo/FaqSection.astro';
 import RelatedTools from '../components/seo/RelatedTools.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
 import { BRAND } from '../lib/brand';
+import { webPageSchema, softwareAppSchema, howToSchema, faqSchema } from '../lib/seo';
 
 const path = '/download-pinterest-videos-iphone-android';
 const pageUrl = `${BRAND.url}${path}`;
-const title = 'How to Download Pinterest Videos to iPhone & Android Gallery (Free HD MP4)';
+const title = 'Download Pinterest Videos to iPhone & Android Gallery (Free HD MP4)';
 const description =
   'Save Pinterest videos directly to your iPhone Camera Roll or Android Gallery. Free online Pinterest video downloader for mobile devices — no app required.';
 
 const steps = [
   {
-    num: 1,
-    title: 'Copy Pinterest Video Link on Phone',
-    desc: 'Open the Pinterest app on iPhone or Android, tap the Share icon on any video or Idea Pin, and select "Copy Link".',
+    title: 'Copy Video Link from Pinterest App',
+    body: 'Open the official Pinterest app on your iPhone or Android phone. Tap the Share icon on any video or Idea Pin and select "Copy Link".',
   },
   {
-    num: 2,
-    title: 'Paste URL in Mobile Downloader',
-    desc: 'Open Safari or Chrome on your phone, paste the link into the box above, and tap "Download".',
+    title: 'Paste in Safari or Chrome Mobile Browser',
+    body: 'Open Safari on iOS or Chrome on Android, head to PintDownload, paste the copied link into the input box above, and tap "Download".',
   },
   {
-    num: 3,
-    title: 'Save MP4 to Phone Gallery / Photos',
-    desc: 'Tap "Download MP4". On iPhone Safari, tap the download manager icon and select "Save Video" to store it in your Camera Roll.',
+    title: 'Export to Photos / Camera Roll',
+    body: 'Tap "Download MP4". On iOS Safari, open the download manager, tap the file, hit Share, and select "Save Video" to store it in your Camera Roll.',
   },
 ];
 
 const faqs = [
   {
-    q: 'How do I save a Pinterest video to my iPhone Camera Roll?',
-    a: 'Paste the video link into PintDownload on Safari. After tapping "Download MP4", tap the blue download arrow in Safari, select the downloaded MP4 file, tap Share, and choose "Save Video". It will immediately appear in your Photos app gallery.',
+    q: 'How do I save Pinterest videos directly to my iPhone Camera Roll?',
+    a: 'Paste the video URL into PintDownload using Safari. Once the video processes, tap Download MP4. Next, tap the blue Safari download arrow, open the MP4 file, tap the Share icon, and select "Save Video" so iOS transfers it into your Photos app.',
   },
   {
-    q: 'How do I download Pinterest videos on Android gallery?',
-    a: 'On Android Chrome, paste the link and tap "Download MP4". The video will automatically save to your Downloads folder and render inside your Google Photos or Gallery app.',
+    q: 'How do Android users save Pinterest videos to Google Photos / Gallery?',
+    a: 'On Android Chrome, simply paste the link and tap Download MP4. Your Android browser saves the video file straight to your internal Downloads folder, which immediately appears inside your Google Photos or Samsung Gallery app.',
   },
   {
-    q: 'Do I need to install a mobile app to download Pinterest videos?',
-    a: 'No app is needed. PintDownload works 100% in your mobile web browser (Safari, Chrome, Firefox, Brave, Opera).',
+    q: 'Why do I not need to install an App Store or Play Store app?',
+    a: 'PintDownload is built with web technologies that execute directly inside mobile browsers (Safari, Chrome, Firefox, Brave). It saves your phone battery, storage, and privacy.',
   },
 ];
 
 const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: 'How to Download Pinterest Videos to iPhone & Android Gallery',
-    step: steps.map((s) => ({
-      '@type': 'HowToStep',
-      name: s.title,
-      text: s.desc,
-    })),
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  },
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'iPhone & Android Pinterest Video Downloader',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to Save Pinterest Videos on iPhone & Android',
+    description,
+    steps: steps.map((s) => ({ name: s.title, text: s.body })),
+  }),
+  faqSchema(faqs),
 ];
 ---
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
-  <section className="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[80vh] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30">
-    <div className="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 w-full my-auto">
-      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40">
-        📱 iPhone &amp; Android Gallery Downloader
-      </div>
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white max-w-3xl leading-tight mb-3">
-        Download Pinterest Videos to <span className="text-[#E11D48]">iPhone &amp; Android Gallery</span>
-      </h1>
-      <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
-        Save public Pinterest videos &amp; Idea Pins directly into your iPhone Camera Roll or Android Photos app in HD MP4 — no app installation needed.
-      </p>
+  <!-- Minimalist Hero card matching original downloader layout -->
+  <section
+    class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-4 sm:mb-6 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-6 sm:py-14 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
+    aria-labelledby="hero-heading"
+  >
+    <!-- Light theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
+      style="background-image: url('/images/hero_background.webp');"
+      aria-hidden="true"
+    ></div>
+    <!-- Dark theme hero background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
+      style="background-image: url('/images/hero_background_dark.webp');"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-white/45 via-white/65 to-white/85 dark:from-slate-950/60 dark:via-slate-950/75 dark:to-slate-950/90"
+      aria-hidden="true"
+    ></div>
 
-      <div className="w-full max-w-3xl">
-        <DownloaderForm client:load variant="video" layout="hero" />
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-8 sm:pt-14 lg:pt-16 pb-4 sm:pb-8 lg:pb-10 w-full my-auto">
+      <h1
+        id="hero-heading"
+        class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-4xl leading-tight mb-6 sm:mb-8"
+        style="text-wrap: balance;"
+      >
+        Pinterest Videos to <span class="text-[#E11D48]">iPhone &amp; Android Gallery</span>
+      </h1>
+
+      <div class="w-full max-w-4xl">
+        <DownloaderForm client:load variant="video" />
       </div>
     </div>
   </section>
 
-  <article className="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
+  <!-- SEO Content downside -->
+  <article class="flex flex-col items-center text-center w-full max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
+    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/40 text-[#E11D48] text-xs font-bold mb-3 border border-red-200/80 dark:border-red-900/40 shadow-sm">
+        📱 iPhone Camera Roll &amp; Android Photos Tool
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
+        Save public <strong class="text-slate-900 dark:text-white">Pinterest videos &amp; Idea Pins</strong> directly into your phone photos app in <strong class="text-slate-900 dark:text-white">HD MP4</strong> format — no app store download required.
+      </p>
+    </div>
+
+    <!-- Unique Mobile Feature Cards -->
+    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm mb-12">
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">📱</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">iOS Camera Roll Export</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Seamless step-by-step export from Safari downloads directly into Apple Photos app Camera Roll.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">🤖</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Android Gallery Auto-Sync</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Downloads store straight into Android internal storage and render inside Google Photos &amp; Samsung Gallery.</p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">⚡</div>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Zero Mobile App Needed</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">No need to download bloated third-party apps from App Store or Play Store. Works 100% in mobile browser.</p>
+      </div>
+    </div>
+
     <HowToSteps title="How to save Pinterest video to phone gallery" intro="Follow these 3 easy steps on iOS Safari or Android Chrome." exampleUrl="https://pin.it/…" exampleLabel="Pinterest Mobile Link" steps={steps} visual stripe={true} />
     <BookmarkletGuide />
-    <FaqSection faqs={faqs} title="Mobile Gallery Download FAQs" />
+    <FaqSection items={faqs} title="Mobile Gallery Download FAQs" />
     <RelatedTools currentPath={path} />
   </article>
 </BaseLayout>
