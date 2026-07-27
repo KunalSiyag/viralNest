@@ -20,7 +20,7 @@ export const BRAND = {
   },
   accent: '#E11D48',
   accentHover: '#BE123C',
-  logo: '/images/logo.png',
+  logo: '/images/logo.svg',
   logoPng: '/images/logo.png',
   logoSvg: '/images/logo.svg',
   ogImage: '/images/og-cover.png',
