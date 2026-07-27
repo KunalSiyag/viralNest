@@ -717,6 +717,22 @@ function collectionTitleFromHtml(
   return kind === 'board' ? 'Pinterest Board' : 'Pinterest Profile';
 }
 
+const BLOCKED_USER_AGENTS = [
+  'pinterest',
+  'pinterestbot',
+  'markmonitor',
+  'corsearch',
+  'opsec',
+  'brandsec',
+  'removeyourmedia',
+  'picscout',
+];
+
+/** Registered DMCA / Takedown Pin IDs (populatable upon request) */
+const BLOCKED_PINS = new Set<string>([
+  // Example: '123456789'
+]);
+
 function jsonResponse(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
@@ -726,6 +742,30 @@ function jsonResponse(body: unknown, status = 200) {
 
 export const POST: APIRoute = async ({ request }) => {
   try {
+    // 1. DMCA / Bot User-Agent Protection
+    const ua = (request.headers.get('user-agent') || '').toLowerCase();
+    if (BLOCKED_USER_AGENTS.some((bot) => ua.includes(bot))) {
+      return jsonResponse({ error: 'Access denied.' }, 403);
+    }
+
+    // 2. Origin & Referer Verification (Protects against external API scraping)
+    const referer = request.headers.get('referer') || '';
+    const origin = request.headers.get('origin') || '';
+
+    const isAllowedOrigin =
+      !origin ||
+      origin.includes('pintdownload.app') ||
+      origin.includes('vercel.app') ||
+      origin.includes('localhost') ||
+      origin.includes('127.0.0.1') ||
+      referer.includes('pintdownload.app') ||
+      referer.includes('vercel.app') ||
+      referer.includes('localhost');
+
+    if (!isAllowedOrigin) {
+      return jsonResponse({ error: 'Direct API scraping is unauthorized.' }, 403);
+    }
+
     const body = await request.json().catch(() => ({}));
     const { url } = body;
 
@@ -736,6 +776,12 @@ export const POST: APIRoute = async ({ request }) => {
     let targetUrl = url.trim();
     if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
       targetUrl = `https://${targetUrl}`;
+    }
+
+    // 3. Pin Takedown / Blacklist Check
+    const pinIdCheck = targetUrl.match(/\/pin\/(?:[\w-]+--)?(\d+)/);
+    if (pinIdCheck?.[1] && BLOCKED_PINS.has(pinIdCheck[1])) {
+      return jsonResponse({ error: 'This content has been removed upon author request.' }, 451);
     }
 
     const isPinterestUrl =
