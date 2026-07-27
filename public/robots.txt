@@ -3,6 +3,19 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+# Block Pinterest Crawlers
+User-agent: Pinterest
+Disallow: /
+
+User-agent: Pinterestbot
+Disallow: /
+
+User-agent: Pinterest/1.0
+Disallow: /
+
+User-agent: Pinterestbot/1.0
+Disallow: /
+
 # Explicit Bot Directives
 User-agent: Bingbot
 Allow: /

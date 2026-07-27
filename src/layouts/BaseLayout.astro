@@ -34,7 +34,7 @@ const ogImage = image
   ? image.startsWith('http')
     ? image
     : `${BRAND.url}${image.startsWith('/') ? image : `/${image}`}`
-  : `${BRAND.url}${BRAND.logoPng}`;
+  : `${BRAND.url}${BRAND.ogImage}`;
 
 const pathName = Astro.url.pathname.replace(/\/$/, '');
 const breadcrumbSchema = {
