@@ -17,53 +17,57 @@ async function publishToWordPress(post) {
     return false;
   }
 
-  // Handle WordPress.com hosted domains vs self-hosted domains
-  let cleanDomain = WP_SITE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
-  let primaryEndpoint;
-  let fallbackEndpoint = `https://${cleanDomain}/wp-json/wp/v2/posts`;
-
-  if (cleanDomain.includes('wordpress.com')) {
-    primaryEndpoint = `https://public-api.wordpress.com/wp/v2/sites/${cleanDomain}/posts`;
-  } else {
-    primaryEndpoint = fallbackEndpoint;
-  }
-
+  const cleanDomain = WP_SITE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
   const authHeader = 'Basic ' + Buffer.from(`${WP_USERNAME}:${WP_APP_PASSWORD}`).toString('base64');
 
-  async function tryEndpoint(url) {
-    console.log(`📡 Publishing post to WordPress endpoint (${url})...`);
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': authHeader,
-      },
-      body: JSON.stringify({
+  // Candidate endpoints for WordPress.com vs Self-Hosted WordPress
+  const endpoints = [];
+  if (cleanDomain.includes('wordpress.com')) {
+    endpoints.push(`https://public-api.wordpress.com/wp/v2/sites/${cleanDomain}/posts`);
+    endpoints.push(`https://public-api.wordpress.com/rest/v1.1/sites/${cleanDomain}/posts/new`);
+  }
+  endpoints.push(`https://${cleanDomain}/wp-json/wp/v2/posts`);
+
+  for (const url of endpoints) {
+    try {
+      console.log(`📡 Publishing post to WordPress endpoint (${url})...`);
+      const isV1 = url.includes('/rest/v1.1/');
+      const bodyPayload = isV1 ? {
+        title: post.title,
+        content: post.contentHtml,
+        status: 'publish',
+        tags: post.tags ? post.tags.join(',') : '',
+      } : {
         title: post.title,
         content: post.contentHtml,
         status: 'publish',
         tags: post.tags,
-      }),
-    });
+      };
 
-    if (res.ok) {
-      const data = await res.json();
-      console.log(`✅ Successfully published to WordPress! Post ID: ${data.id}, Link: ${data.link || data.URL}`);
-      return true;
-    } else {
-      const errText = await res.text();
-      console.error(`⚠️ WordPress endpoint (${url}) returned Status ${res.status}: ${errText.substring(0, 300)}`);
-      return false;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': authHeader,
+        },
+        body: JSON.stringify(bodyPayload),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        console.log(`✅ Successfully published to WordPress! Post ID: ${data.id || data.ID}, Link: ${data.link || data.URL}`);
+        return true;
+      } else {
+        const errText = await res.text();
+        console.error(`⚠️ Endpoint (${url}) returned Status ${res.status}: ${errText.substring(0, 200)}`);
+      }
+    } catch (err) {
+      console.error(`⚠️ Request error for ${url}:`, err.message);
     }
   }
 
-  let success = await tryEndpoint(primaryEndpoint);
-  if (!success && primaryEndpoint !== fallbackEndpoint) {
-    console.log(`🔄 Retrying with fallback endpoint (${fallbackEndpoint})...`);
-    success = await tryEndpoint(fallbackEndpoint);
-  }
-
-  return success;
+  console.error(`❌ Failed to publish to WordPress across all candidate endpoints.`);
+  return false;
 }
 
 async function publishToBlogger(post) {
