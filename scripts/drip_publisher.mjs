@@ -21,6 +21,9 @@ function cleanErrorMessage(rawText) {
   }
   try {
     const parsed = JSON.parse(rawText);
+    if (parsed.error && typeof parsed.error === 'object') {
+      return parsed.error.message || JSON.stringify(parsed.error).substring(0, 200);
+    }
     return parsed.message || parsed.error_description || parsed.error || JSON.stringify(parsed).substring(0, 200);
   } catch {
     return rawText.substring(0, 200);
