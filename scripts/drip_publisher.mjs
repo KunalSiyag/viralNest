@@ -30,6 +30,69 @@ function cleanErrorMessage(rawText) {
   }
 }
 
+function escapeXml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+async function publishToWordPressXMLRPC(cleanDomain, username, password, post) {
+  const url = `https://${cleanDomain}/xmlrpc.php`;
+  console.log(`📡 Publishing post to WordPress XML-RPC endpoint (${url})...`);
+
+  const tagsXml = post.tags && post.tags.length > 0
+    ? `<member><name>terms_names</name><value><struct><member><name>post_tag</name><value><array><data>${post.tags.map(t => `<value><string>${escapeXml(t)}</string></value>`).join('')}</data></array></value></member></struct></value></member>`
+    : '';
+
+  const xmlPayload = `<?xml version="1.0"?>
+<methodCall>
+  <methodName>wp.newPost</methodName>
+  <params>
+    <param><value><int>0</int></value></param>
+    <param><value><string>${escapeXml(username)}</string></value></param>
+    <param><value><string>${escapeXml(password)}</string></value></param>
+    <param>
+      <value>
+        <struct>
+          <member><name>post_type</name><value><string>post</string></value></member>
+          <member><name>post_status</name><value><string>publish</string></value></member>
+          <member><name>post_title</name><value><string>${escapeXml(post.title)}</string></value></member>
+          <member><name>post_content</name><value><string>${escapeXml(post.contentHtml)}</string></value></member>
+          ${tagsXml}
+        </struct>
+      </value>
+    </param>
+  </params>
+</methodCall>`;
+
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/xml' },
+      body: xmlPayload,
+    });
+
+    const text = await res.text();
+    if (res.ok && text.includes('<methodResponse>') && !text.includes('<fault>')) {
+      const match = text.match(/<string>(\d+)<\/string>/) || text.match(/<int>(\d+)<\/int>/);
+      const postId = match ? match[1] : 'created';
+      console.log(`✅ Successfully published to WordPress via XML-RPC! Post ID: ${postId}`);
+      return true;
+    } else {
+      const faultMatch = text.match(/<faultString><string>(.*?)<\/string><\/faultString>/s);
+      const errReason = faultMatch ? faultMatch[1].trim() : text.substring(0, 150);
+      console.error(`⚠️ XML-RPC endpoint (${url}) returned Error: ${errReason}`);
+      return false;
+    }
+  } catch (err) {
+    console.error(`⚠️ XML-RPC request error for ${url}:`, err.message);
+    return false;
+  }
+}
+
 async function publishToWordPress(post) {
   if (!WP_SITE_URL || !WP_USERNAME || !WP_APP_PASSWORD) {
     console.log('⚠️ Skipping WordPress publishing: WP credentials missing from environment (WP_SITE_URL, WP_USERNAME, or WP_APP_PASSWORD).');
@@ -41,13 +104,20 @@ async function publishToWordPress(post) {
   const rawPass = WP_APP_PASSWORD.trim();
   const strippedPass = rawPass.replace(/\s+/g, '');
 
+  // 1. First try XML-RPC (most reliable on free WordPress.com subdomains)
+  console.log(`📡 Trying WordPress XML-RPC publishing for ${cleanDomain}...`);
+  if (await publishToWordPressXMLRPC(cleanDomain, WP_USERNAME.trim(), rawPass, post)) return true;
+  if (rawPass !== strippedPass) {
+    if (await publishToWordPressXMLRPC(cleanDomain, WP_USERNAME.trim(), strippedPass, post)) return true;
+  }
+
+  // 2. Fallback to WordPress REST APIs
   const authHeaders = [
     { name: 'Basic (raw password)', value: 'Basic ' + Buffer.from(`${WP_USERNAME.trim()}:${rawPass}`).toString('base64') },
     { name: 'Basic (stripped spaces)', value: 'Basic ' + Buffer.from(`${WP_USERNAME.trim()}:${strippedPass}`).toString('base64') },
     { name: 'Bearer Token', value: `Bearer ${strippedPass}` }
   ];
 
-  // Candidate endpoints for WordPress.com vs Self-Hosted WordPress
   const endpoints = [];
   if (cleanDomain.endsWith('wordpress.com')) {
     endpoints.push(`https://public-api.wordpress.com/wp/v2/sites/${cleanDomain}/posts`);
@@ -95,7 +165,7 @@ async function publishToWordPress(post) {
     }
   }
 
-  console.error(`❌ Failed to publish to WordPress across all candidate endpoints.`);
+  console.error(`❌ Failed to publish to WordPress across XML-RPC and REST endpoints.`);
   return false;
 }
 
