@@ -4,7 +4,7 @@ import path from 'path';
 const POSTS_DIR = path.join(process.cwd(), 'content', 'posts');
 
 // Environment Variables
-const WP_SITE_URL = process.env.WP_SITE_URL; // e.g. https://yourblog.wordpress.com or https://yourblog.com
+const WP_SITE_URL = process.env.WP_SITE_URL; // e.g. https://pinmediahub.wordpress.com or https://yourblog.com
 const WP_USERNAME = process.env.WP_USERNAME;
 const WP_APP_PASSWORD = process.env.WP_APP_PASSWORD;
 
@@ -13,16 +13,26 @@ const BLOGGER_API_TOKEN = process.env.BLOGGER_API_TOKEN;
 
 async function publishToWordPress(post) {
   if (!WP_SITE_URL || !WP_USERNAME || !WP_APP_PASSWORD) {
-    console.log('⚠️ Skipping WordPress publishing: WP credentials missing from environment.');
+    console.log('⚠️ Skipping WordPress publishing: WP credentials missing from environment (WP_SITE_URL, WP_USERNAME, or WP_APP_PASSWORD).');
     return false;
   }
 
-  const endpoint = `${WP_SITE_URL.replace(/\/$/, '')}/wp-json/wp/v2/posts`;
+  // Handle WordPress.com hosted domains vs self-hosted domains
+  let cleanDomain = WP_SITE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  let primaryEndpoint;
+  let fallbackEndpoint = `https://${cleanDomain}/wp-json/wp/v2/posts`;
+
+  if (cleanDomain.includes('wordpress.com')) {
+    primaryEndpoint = `https://public-api.wordpress.com/wp/v2/sites/${cleanDomain}/posts`;
+  } else {
+    primaryEndpoint = fallbackEndpoint;
+  }
+
   const authHeader = 'Basic ' + Buffer.from(`${WP_USERNAME}:${WP_APP_PASSWORD}`).toString('base64');
 
-  try {
-    console.log(`📡 Publishing post to WordPress (${endpoint})...`);
-    const res = await fetch(endpoint, {
+  async function tryEndpoint(url) {
+    console.log(`📡 Publishing post to WordPress endpoint (${url})...`);
+    const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,29 +48,34 @@ async function publishToWordPress(post) {
 
     if (res.ok) {
       const data = await res.json();
-      console.log(`✅ Successfully published to WordPress! Post ID: ${data.id}, Link: ${data.link}`);
+      console.log(`✅ Successfully published to WordPress! Post ID: ${data.id}, Link: ${data.link || data.URL}`);
       return true;
     } else {
       const errText = await res.text();
-      console.error(`❌ WordPress publish failed (Status ${res.status}): ${errText}`);
+      console.error(`⚠️ WordPress endpoint (${url}) returned Status ${res.status}: ${errText.substring(0, 300)}`);
       return false;
     }
-  } catch (err) {
-    console.error(`❌ WordPress publish error:`, err.message);
-    return false;
   }
+
+  let success = await tryEndpoint(primaryEndpoint);
+  if (!success && primaryEndpoint !== fallbackEndpoint) {
+    console.log(`🔄 Retrying with fallback endpoint (${fallbackEndpoint})...`);
+    success = await tryEndpoint(fallbackEndpoint);
+  }
+
+  return success;
 }
 
 async function publishToBlogger(post) {
   if (!BLOGGER_BLOG_ID || !BLOGGER_API_TOKEN) {
-    console.log('⚠️ Skipping Blogger API publishing: BLOGGER_BLOG_ID or BLOGGER_API_TOKEN missing.');
+    console.log('⚠️ Skipping Blogger API publishing: BLOGGER_BLOG_ID or BLOGGER_API_TOKEN missing from environment.');
     return false;
   }
 
   const endpoint = `https://www.googleapis.com/blogger/v3/blogs/${BLOGGER_BLOG_ID}/posts/`;
 
   try {
-    console.log(`📡 Publishing post to Blogger API (${BLOGGER_BLOG_ID})...`);
+    console.log(`📡 Publishing post to Blogger API (Blog ID: ${BLOGGER_BLOG_ID})...`);
     const res = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -128,7 +143,7 @@ async function runDripPublisher() {
     fs.writeFileSync(targetPostFile, JSON.stringify(targetPost, null, 2), 'utf-8');
     console.log(`💾 Updated ${path.basename(targetPostFile)} status to published: true`);
   } else {
-    console.log('ℹ️ No platforms updated. Configure secrets in GitHub repository to start auto-publishing.');
+    console.log('ℹ️ No platforms updated. Check credentials in GitHub repository secrets.');
   }
 }
 
