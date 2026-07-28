@@ -169,9 +169,44 @@ async function publishToWordPress(post) {
   return false;
 }
 
+const BLOGGER_CLIENT_ID = process.env.BLOGGER_CLIENT_ID;
+const BLOGGER_CLIENT_SECRET = process.env.BLOGGER_CLIENT_SECRET;
+const BLOGGER_REFRESH_TOKEN = process.env.BLOGGER_REFRESH_TOKEN;
+
+async function getBloggerAccessToken() {
+  if (BLOGGER_CLIENT_ID && BLOGGER_CLIENT_SECRET && BLOGGER_REFRESH_TOKEN) {
+    try {
+      console.log('🔄 Refreshing Google Blogger OAuth2 access token...');
+      const res = await fetch('https://oauth2.googleapis.com/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          client_id: BLOGGER_CLIENT_ID.trim(),
+          client_secret: BLOGGER_CLIENT_SECRET.trim(),
+          refresh_token: BLOGGER_REFRESH_TOKEN.trim(),
+          grant_type: 'refresh_token',
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        console.log('✅ Successfully refreshed Blogger access token!');
+        return data.access_token;
+      } else {
+        const errText = await res.text();
+        console.error('⚠️ Blogger token refresh failed:', cleanErrorMessage(errText));
+      }
+    } catch (err) {
+      console.error('⚠️ Blogger token refresh error:', err.message);
+    }
+  }
+  return BLOGGER_API_TOKEN ? BLOGGER_API_TOKEN.trim() : null;
+}
+
 async function publishToBlogger(post) {
-  if (!BLOGGER_BLOG_ID || !BLOGGER_API_TOKEN) {
-    console.log('⚠️ Skipping Blogger API publishing: BLOGGER_BLOG_ID or BLOGGER_API_TOKEN missing from environment.');
+  const activeToken = await getBloggerAccessToken();
+
+  if (!BLOGGER_BLOG_ID || !activeToken) {
+    console.log('⚠️ Skipping Blogger API publishing: BLOGGER_BLOG_ID or valid token missing from environment.');
     return false;
   }
 
@@ -183,7 +218,7 @@ async function publishToBlogger(post) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${BLOGGER_API_TOKEN}`,
+        'Authorization': `Bearer ${activeToken}`,
       },
       body: JSON.stringify({
         kind: 'blogger#post',
