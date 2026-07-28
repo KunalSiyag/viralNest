@@ -7,12 +7,19 @@ on:
   workflow_dispatch:
     # Allows manual trigger anytime from GitHub Actions tab
 
+permissions:
+  contents: write
+
 jobs:
   drip-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
