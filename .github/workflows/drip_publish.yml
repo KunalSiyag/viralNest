@@ -42,4 +42,19 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add content/posts/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(drip-publisher): update published status [skip ci]" && git fetch origin main && git rebase origin/main && git push origin main)
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git commit -m "chore(drip-publisher): update published status [skip ci]"
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin main; then
+                break
+              fi
+              if [ "$attempt" -eq 3 ]; then
+                echo "❌ Failed to push drip-publisher updates after $attempt attempts."
+                exit 1
+              fi
+              echo "⚠️ Push attempt $attempt failed due to concurrent updates. Retrying..."
+              sleep 3
+            done
+          fi
