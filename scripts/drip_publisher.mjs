@@ -17,12 +17,13 @@ async function publishToWordPress(post) {
     return false;
   }
 
-  const cleanDomain = WP_SITE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  // Extract clean hostname ONLY (e.g. pinmediahub.wordpress.com) even if user pasted full path
+  const cleanDomain = WP_SITE_URL.replace(/^https?:\/\//, '').split('/')[0].trim();
   const authHeader = 'Basic ' + Buffer.from(`${WP_USERNAME}:${WP_APP_PASSWORD}`).toString('base64');
 
   // Candidate endpoints for WordPress.com vs Self-Hosted WordPress
   const endpoints = [];
-  if (cleanDomain.includes('wordpress.com')) {
+  if (cleanDomain.endsWith('wordpress.com')) {
     endpoints.push(`https://public-api.wordpress.com/wp/v2/sites/${cleanDomain}/posts`);
     endpoints.push(`https://public-api.wordpress.com/rest/v1.1/sites/${cleanDomain}/posts/new`);
   }
