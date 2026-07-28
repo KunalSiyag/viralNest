@@ -35,8 +35,14 @@ async function publishToWordPress(post) {
 
   // Extract clean hostname ONLY (e.g. pinmediahub.wordpress.com) even if user pasted full path
   const cleanDomain = WP_SITE_URL.replace(/^https?:\/\//, '').split('/')[0].trim();
-  const basicAuth = 'Basic ' + Buffer.from(`${WP_USERNAME}:${WP_APP_PASSWORD}`).toString('base64');
-  const bearerAuth = `Bearer ${WP_APP_PASSWORD}`;
+  const rawPass = WP_APP_PASSWORD.trim();
+  const strippedPass = rawPass.replace(/\s+/g, '');
+
+  const authHeaders = [
+    { name: 'Basic (raw password)', value: 'Basic ' + Buffer.from(`${WP_USERNAME.trim()}:${rawPass}`).toString('base64') },
+    { name: 'Basic (stripped spaces)', value: 'Basic ' + Buffer.from(`${WP_USERNAME.trim()}:${strippedPass}`).toString('base64') },
+    { name: 'Bearer Token', value: `Bearer ${strippedPass}` }
+  ];
 
   // Candidate endpoints for WordPress.com vs Self-Hosted WordPress
   const endpoints = [];
@@ -48,7 +54,6 @@ async function publishToWordPress(post) {
 
   for (const url of endpoints) {
     const isV1 = url.includes('/rest/v1.1/');
-    // Standard /wp/v2/posts expects integer IDs for tags; omit string tag names to prevent 400 rest_invalid_param
     const bodyPayload = isV1 ? {
       title: post.title,
       content: post.contentHtml,
@@ -60,16 +65,14 @@ async function publishToWordPress(post) {
       status: 'publish',
     };
 
-    // Try Basic Auth first, fallback to Bearer Auth if unauthorized
-    const authHeaders = [basicAuth, bearerAuth];
-    for (const authHeader of authHeaders) {
+    for (const auth of authHeaders) {
       try {
-        console.log(`📡 Publishing post to WordPress endpoint (${url})...`);
+        console.log(`📡 Publishing post to WordPress endpoint (${url}) using ${auth.name}...`);
         const res = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': authHeader,
+            'Authorization': auth.value,
           },
           body: JSON.stringify(bodyPayload),
         });
@@ -81,17 +84,11 @@ async function publishToWordPress(post) {
         } else {
           const errText = await res.text();
           const cleanErr = cleanErrorMessage(errText);
-          console.error(`⚠️ Endpoint (${url}) returned Status ${res.status}: ${cleanErr}`);
-          // If authorization failed, try next auth scheme (Bearer) for same endpoint
-          if ((res.status === 401 || res.status === 403) && authHeader === basicAuth) {
-            console.log(`🔄 Retrying endpoint with Bearer auth token...`);
-            continue;
-          }
+          console.error(`⚠️ Endpoint (${url}) [${auth.name}] returned Status ${res.status}: ${cleanErr}`);
         }
       } catch (err) {
-        console.error(`⚠️ Request error for ${url}:`, err.message);
+        console.error(`⚠️ Request error for ${url} [${auth.name}]:`, err.message);
       }
-      break; // Move to next endpoint if this auth attempt was not 401/403
     }
   }
 
