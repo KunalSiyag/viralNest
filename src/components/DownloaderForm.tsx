@@ -43,6 +43,7 @@ interface ExtractionResult {
   is_video: boolean;
   is_board?: boolean;
   is_profile?: boolean;
+  is_avatar_only?: boolean;
   is_carousel?: boolean;
   media_count?: number;
   media_items?: MediaItem[];
@@ -301,7 +302,7 @@ export default function DownloaderForm({
       const res = await fetch('/api/extract', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: target }),
+        body: JSON.stringify({ url: target, ...(variant === 'profile-picture' ? { intent: 'avatar' } : {}) }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to extract media from Pinterest.');
@@ -890,6 +891,71 @@ export default function DownloaderForm({
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
+        </div>
+      ) : result?.is_avatar_only ? (
+        /* ── Avatar-only result (profile picture downloader) ─────────── */
+        <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-center flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-white dark:to-slate-900 border-2 border-red-200 dark:border-red-900/50 shadow-xl flex flex-col items-center text-center gap-5 w-full">
+            {result.profile_avatar_url ? (
+              <div className="relative group">
+                <img
+                  src={result.profile_avatar_url}
+                  alt={`${result.profile_title || 'User'} profile picture`}
+                  className="w-40 h-40 sm:w-52 sm:h-52 rounded-full object-cover border-4 border-[#E11D48] shadow-2xl transition-transform group-hover:scale-105"
+                />
+                <span className="absolute bottom-2 right-2 px-3 py-1.5 rounded-full bg-[#E11D48] text-white text-xs font-black shadow-md">
+                  HD Avatar
+                </span>
+              </div>
+            ) : (
+              <div className="w-36 h-36 rounded-full bg-red-100 dark:bg-red-950 flex items-center justify-center text-5xl">
+                👤
+              </div>
+            )}
+
+            <div>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/80 text-[#E11D48] text-xs font-extrabold mb-2 border border-red-200 dark:border-red-900/50">
+                <User className="w-3.5 h-3.5" />
+                Profile Picture Extracted
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight">
+                {result.profile_title || `@${result.username}`}
+              </h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                Full-resolution uncropped profile avatar photo ({result.username ? `@${result.username}` : 'Pinterest User'})
+              </p>
+            </div>
+
+            {result.profile_avatar_url && (
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md">
+                <a
+                  href={`/api/download?url=${encodeURIComponent(result.profile_avatar_url)}&filename=${encodeURIComponent(`pinterest_avatar_${result.username || 'user'}.jpg`)}`}
+                  download
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>Download HD Profile Picture</span>
+                </a>
+                <a
+                  href={result.profile_avatar_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold text-sm transition-colors w-full sm:w-auto touch-manipulation"
+                >
+                  <ImageIcon className="w-4 h-4" />
+                  <span>Open Full Size</span>
+                </a>
+              </div>
+            )}
+          </div>
+
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            Want all pins from this profile? Use the{' '}
+            <a href="/pinterest-profile-downloader" className="text-[#E11D48] hover:underline font-semibold">
+              Profile Downloader (ZIP)
+            </a>{' '}
+            instead.
+          </p>
         </div>
       ) : isCollection ? (
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">

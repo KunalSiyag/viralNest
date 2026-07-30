@@ -696,6 +696,83 @@ async function hydrateCollectionPins(pinIds: string[]): Promise<CollectionPin[]>
   return pinIds.map((id) => byId.get(id)).filter((p): p is CollectionPin => !!p);
 }
 
+/** Paginate Pinterest resource APIs to fetch pins beyond the initial HTML page. */
+async function paginateResourcePins(
+  resourceName: string,
+  resourceOptions: Record<string, any>,
+  existingIds: Set<string>,
+  maxTotal: number,
+  maxPages: number = 6,
+): Promise<CollectionPin[]> {
+  const collected: CollectionPin[] = [];
+  let bookmark: string | null | undefined = undefined;
+
+  for (let page = 0; page < maxPages; page++) {
+    if (existingIds.size + collected.length >= maxTotal) break;
+
+    const payload: any = {
+      options: {
+        ...resourceOptions,
+        field_set_key: 'unauth_react_main_pin',
+        page_size: 25,
+      },
+      context: {},
+    };
+    if (bookmark) {
+      payload.options.bookmarks = [bookmark];
+    }
+
+    try {
+      const sourceUrl = resourceOptions.username
+        ? `/${resourceOptions.username}/`
+        : resourceOptions.board_url || '/';
+      const endpoint = `https://www.pinterest.com/resource/${resourceName}/get/?data=${encodeURIComponent(
+        JSON.stringify(payload),
+      )}&source_url=${encodeURIComponent(sourceUrl)}`;
+
+      const res = await fetch(endpoint, {
+        headers: {
+          'User-Agent': BROWSER_UA,
+          Accept: 'application/json, text/javascript, */*; q=0.01',
+          'X-Requested-With': 'XMLHttpRequest',
+          Referer: `https://www.pinterest.com${sourceUrl}`,
+        },
+      });
+
+      if (!res.ok) {
+        console.warn(`Pagination ${resourceName} page ${page}: HTTP ${res.status}`);
+        break;
+      }
+
+      const json = await res.json();
+      const data = json?.resource_response?.data;
+      const newBookmark = json?.resource_response?.bookmark;
+
+      if (!Array.isArray(data) || data.length === 0) break;
+
+      for (const pin of data) {
+        const pinId = String(pin?.id || '');
+        if (pinId && !existingIds.has(pinId)) {
+          existingIds.add(pinId);
+          const mapped = mapPidgetPin(pin);
+          if (mapped) collected.push(mapped);
+        }
+      }
+
+      if (!newBookmark || newBookmark === '-end-') break;
+      bookmark = newBookmark;
+
+      // Respectful delay between pagination requests (avoid rate limits)
+      await new Promise((r) => setTimeout(r, 350));
+    } catch (e) {
+      console.warn(`Pagination ${resourceName} page ${page} error:`, e);
+      break;
+    }
+  }
+
+  return collected;
+}
+
 function collectionTitleFromHtml(
   html: string,
   kind: 'board' | 'profile',
@@ -767,7 +844,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const body = await request.json().catch(() => ({}));
-    const { url } = body;
+    const { url, intent } = body;
 
     if (!url || typeof url !== 'string' || !url.trim()) {
       return jsonResponse({ error: 'Please enter a valid Pinterest link.' }, 400);
@@ -835,6 +912,88 @@ export const POST: APIRoute = async ({ request }) => {
 
     const classified = classifyPinterestUrl(targetUrl);
 
+    // ── Avatar-only intent (profile-picture downloader) ──────────────
+    if (intent === 'avatar' && (classified.kind === 'profile' || classified.kind === 'board')) {
+      const rawAvatar =
+        metaContent(html, 'og:image') ||
+        metaContent(html, 'twitter:image') ||
+        null;
+
+      let profileAvatarUrl = rawAvatar;
+      if (profileAvatarUrl) {
+        // Upgrade to highest available resolution
+        profileAvatarUrl = profileAvatarUrl.replace(
+          /\/(75x75_RS|140x140_RS|280x280_RS|150x150)\//g,
+          '/originals/',
+        );
+      }
+
+      // Also try Pinterest's UserResource API for better avatar quality
+      if (classified.username) {
+        try {
+          const userPayload = {
+            options: { username: classified.username, field_set_key: 'unauth_react' },
+            context: {},
+          };
+          const userEndpoint = `https://www.pinterest.com/resource/UserResource/get/?data=${encodeURIComponent(
+            JSON.stringify(userPayload),
+          )}&source_url=/${classified.username}/`;
+          const userRes = await fetch(userEndpoint, {
+            headers: {
+              'User-Agent': BROWSER_UA,
+              Accept: 'application/json',
+              'X-Requested-With': 'XMLHttpRequest',
+              Referer: `https://www.pinterest.com/${classified.username}/`,
+            },
+          });
+          if (userRes.ok) {
+            const userJson = await userRes.json();
+            const userData = userJson?.resource_response?.data;
+            if (userData) {
+              const apiAvatar =
+                userData.image_xlarge_url ||
+                userData.image_large_url ||
+                userData.image_medium_url ||
+                null;
+              if (apiAvatar) {
+                profileAvatarUrl = apiAvatar.replace(
+                  /\/(75x75_RS|140x140_RS|280x280_RS|150x150|170x)\//g,
+                  '/originals/',
+                );
+              }
+            }
+          }
+        } catch (e) {
+          console.warn('UserResource avatar fetch warning:', e);
+        }
+      }
+
+      const profileTitle = collectionTitleFromHtml(
+        html,
+        'profile',
+        classified.username,
+      );
+
+      if (!profileAvatarUrl) {
+        return jsonResponse(
+          {
+            error:
+              'Could not find a profile picture for this Pinterest user. The profile may be private.',
+          },
+          400,
+        );
+      }
+
+      return jsonResponse({
+        platform: 'pinterest',
+        is_avatar_only: true,
+        is_profile: true,
+        profile_avatar_url: profileAvatarUrl,
+        username: classified.username || null,
+        profile_title: profileTitle,
+      });
+    }
+
     // ── Single pin via PinResource (carousel + story slides) ─────────────
     // Prefer this over HTML: pidgets/og only return the cover image.
     if (classified.kind === 'pin' || targetUrl.includes('/pin/')) {
@@ -862,10 +1021,39 @@ export const POST: APIRoute = async ({ request }) => {
 
     // ── Board / Profile collection extraction ────────────────────────────
     if ((classified.kind === 'board' || classified.kind === 'profile') && html) {
-      const pinIds = extractPinIdsFromHtml(html, classified.kind === 'profile' ? 120 : 80);
-      if (pinIds.length > 0) {
-        const pins = await hydrateCollectionPins(pinIds);
-        if (pins.length > 0) {
+      const pinIds = extractPinIdsFromHtml(html, classified.kind === 'profile' ? 200 : 250);
+      let pins = pinIds.length > 0 ? await hydrateCollectionPins(pinIds) : [];
+
+      // Paginate for more pins beyond the initial HTML page
+      const existingIds = new Set(pins.map((p) => p.pin_id));
+      const maxTotal = classified.kind === 'profile' ? 200 : 250;
+
+      if (pins.length < maxTotal) {
+        try {
+          const resourceName =
+            classified.kind === 'profile' ? 'UserPinsResource' : 'BoardFeedResource';
+          const resourceOptions =
+            classified.kind === 'profile'
+              ? { username: classified.username }
+              : { board_url: `/${classified.username}/${classified.boardSlug}/` };
+
+          const paginatedPins = await paginateResourcePins(
+            resourceName,
+            resourceOptions,
+            existingIds,
+            maxTotal,
+            8,
+          );
+
+          if (paginatedPins.length > 0) {
+            pins = [...pins, ...paginatedPins];
+          }
+        } catch (e) {
+          console.warn('Pagination failed, using HTML-only pins:', e);
+        }
+      }
+
+      if (pins.length > 0) {
           const title = collectionTitleFromHtml(
             html,
             classified.kind,
@@ -913,7 +1101,6 @@ export const POST: APIRoute = async ({ request }) => {
             pin_count: pins.length,
           });
         }
-      }
 
       return jsonResponse(
         {
