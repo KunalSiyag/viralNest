@@ -66,7 +66,7 @@ interface HistoryItem {
 }
 
 /** Intent-specific form surface for SEO tool pages */
-export type FormVariant = 'hub' | 'pin' | 'video' | 'image' | 'board' | 'profile';
+export type FormVariant = 'hub' | 'pin' | 'video' | 'image' | 'board' | 'profile' | 'profile-picture';
 
 export type FormLayout = 'default' | 'hero';
 
@@ -133,8 +133,17 @@ const VARIANT_COPY: Record<
     showBatch: false,
     placeholder: 'Paste profile URL… https://pinterest.com/username/',
     ariaLabel: 'Pinterest profile link',
-    submitLabel: 'Extract Profile Pins',
-    hint: 'Paste a public profile link to list visible pins, then Download ZIP.',
+    submitLabel: 'Extract Profile Pins (ZIP)',
+    hint: 'Downloads all public pins posted by this user account as a ZIP archive.',
+  },
+  'profile-picture': {
+    worksLabel: 'Best for',
+    singleTab: 'Profile Avatar URL',
+    showBatch: false,
+    placeholder: 'Paste profile URL… https://pinterest.com/username/',
+    ariaLabel: 'Pinterest profile link for avatar DP',
+    submitLabel: 'Get Profile Picture (HD)',
+    hint: 'Extracts full-resolution uncropped avatar photo & DP image from any Pinterest account.',
   },
 };
 
@@ -884,32 +893,51 @@ export default function DownloaderForm({
         </div>
       ) : isCollection ? (
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          {result!.is_profile && result!.profile_avatar_url && (
-            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-red-500/10 via-rose-500/5 to-transparent border border-red-200/80 dark:border-red-900/40 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3.5 min-w-0 w-full sm:w-auto">
-                <img
-                  src={result!.profile_avatar_url}
-                  alt={`${result!.profile_title || 'User'} profile avatar`}
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-[#E11D48] shadow-md shrink-0"
-                />
-                <div className="min-w-0 text-left">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#E11D48] block">Profile Avatar (HD DP)</span>
-                  <h3 className="font-extrabold text-slate-900 dark:text-white truncate text-base sm:text-lg">
-                    {result!.profile_title || `@${result!.username}`}
-                  </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">Original High-Resolution Profile Picture</p>
+          {result!.is_profile && (
+            <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-white dark:to-slate-900 border-2 border-red-200 dark:border-red-900/50 shadow-xl flex flex-col items-center text-center gap-5">
+              {result!.profile_avatar_url ? (
+                <div className="relative group">
+                  <img
+                    src={result!.profile_avatar_url}
+                    alt={`${result!.profile_title || 'User'} profile picture`}
+                    className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-[#E11D48] shadow-2xl transition-transform group-hover:scale-105"
+                  />
+                  <span className="absolute bottom-1 right-1 px-2.5 py-1 rounded-full bg-[#E11D48] text-white text-xs font-black shadow-md">
+                    HD Avatar
+                  </span>
                 </div>
+              ) : (
+                <div className="w-28 h-28 rounded-full bg-red-100 dark:bg-red-950 flex items-center justify-center text-4xl">
+                  👤
+                </div>
+              )}
+
+              <div>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/80 text-[#E11D48] text-xs font-extrabold mb-2 border border-red-200 dark:border-red-900/50">
+                  Profile Avatar Extracted
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight">
+                  {result!.profile_title || `@${result!.username}`}
+                </h2>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                  Full-size uncropped profile avatar photo ({result!.username ? `@${result!.username}` : 'Pinterest User'})
+                </p>
               </div>
-              <a
-                href={result!.profile_avatar_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                download={`pinterest_avatar_${result!.username || 'user'}.jpg`}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 text-xs font-bold shadow-md transition-all shrink-0 w-full sm:w-auto touch-manipulation"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download HD Avatar</span>
-              </a>
+
+              {result!.profile_avatar_url && (
+                <div className="flex flex-wrap items-center justify-center gap-3 w-full max-w-md">
+                  <a
+                    href={result!.profile_avatar_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download={`pinterest_avatar_${result!.username || 'user'}.jpg`}
+                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
+                  >
+                    <Download className="w-5 h-5" />
+                    <span>Download HD Profile Picture (DP)</span>
+                  </a>
+                </div>
+              )}
             </div>
           )}
 
