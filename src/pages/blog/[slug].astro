@@ -81,13 +81,28 @@ const toolLinks = [
   { href: '/pinterest-video-downloader', label: 'Video MP4' },
   { href: '/pinterest-pin-downloader', label: 'Pin / Carousel' },
   { href: '/pinterest-board-downloader', label: 'Board ZIP' },
-  { href: '/pinterest-profile-downloader', label: 'Profile ZIP' },
 ];
+
+let postTitle = `${post.title} — ${BRAND.name} Blog`;
+if (postTitle.length > 65) {
+  postTitle = post.title.length <= 65 ? post.title : `${post.title.slice(0, 62)}...`;
+}
+if (postTitle.length < 30) {
+  postTitle = `${postTitle} | ${BRAND.domain}`;
+}
+
+let postDesc = post.description.trim();
+if (postDesc.length < 110) {
+  postDesc = `${postDesc} Learn more in this step-by-step Pinterest guide from ${BRAND.name}.`;
+}
+if (postDesc.length > 160) {
+  postDesc = `${postDesc.slice(0, 157)}...`;
+}
 ---
 
 <BaseLayout
-  title={`${post.title} — ${BRAND.name} Blog`}
-  description={post.description}
+  title={postTitle}
+  description={postDesc}
   canonicalUrl={pageUrl}
   image={post.coverImage}
   ogType="article"
@@ -124,7 +139,7 @@ const toolLinks = [
         <a href="/about" class="flex items-center gap-3 group min-w-0">
           <img
             src="/images/logo.png"
-            alt=""
+            alt={`${BLOG_AUTHOR.name} profile avatar`}
             width="48"
             height="48"
             class="w-12 h-12 object-contain p-1 rounded-full border border-black/[0.06] shadow-soft bg-white"
@@ -188,7 +203,7 @@ const toolLinks = [
 
       <!-- Author footer card -->
       <aside class="mt-14 p-6 sm:p-8 rounded-3xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 shadow-soft flex flex-col sm:flex-row gap-5 items-start">
-        <img src="/images/logo.png" alt="" width="64" height="64" class="w-16 h-16 object-contain p-1.5 rounded-full border border-black/[0.06] bg-white" />
+        <img src="/images/logo.png" alt={`${BLOG_AUTHOR.name} profile avatar`} width="64" height="64" class="w-16 h-16 object-contain p-1.5 rounded-full border border-black/[0.06] bg-white" />
         <div>
           <p class="text-sm font-semibold uppercase tracking-wider text-ink-400 mb-1">Written by</p>
           <a href="/about" class="text-xl font-semibold text-ink-900 dark:text-white hover:text-brand-600">

@@ -886,6 +886,16 @@ export const POST: APIRoute = async ({ request }) => {
             });
           }
 
+          const rawAvatar =
+            metaContent(html, 'og:image') ||
+            metaContent(html, 'twitter:image') ||
+            null;
+
+          let profileAvatarUrl = rawAvatar;
+          if (profileAvatarUrl) {
+            profileAvatarUrl = profileAvatarUrl.replace(/\/(75x75_RS|140x140_RS|280x280_RS|150x150)\//g, '/736x/');
+          }
+
           const profileBoards = extractBoardsFromReduxState(html);
 
           return jsonResponse({
@@ -894,6 +904,7 @@ export const POST: APIRoute = async ({ request }) => {
             is_profile: true,
             profile_title: title,
             profile_url: targetUrl,
+            profile_avatar_url: profileAvatarUrl,
             username: classified.username || null,
             board_title: title,
             board_url: targetUrl,

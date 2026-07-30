@@ -51,6 +51,7 @@ interface ExtractionResult {
   board_url?: string;
   profile_title?: string;
   profile_url?: string;
+  profile_avatar_url?: string;
   username?: string | null;
   pin_count?: number;
   pins?: BoardPinItem[];
@@ -883,6 +884,35 @@ export default function DownloaderForm({
         </div>
       ) : isCollection ? (
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          {result!.is_profile && result!.profile_avatar_url && (
+            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-red-500/10 via-rose-500/5 to-transparent border border-red-200/80 dark:border-red-900/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5 min-w-0 w-full sm:w-auto">
+                <img
+                  src={result!.profile_avatar_url}
+                  alt={`${result!.profile_title || 'User'} profile avatar`}
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-[#E11D48] shadow-md shrink-0"
+                />
+                <div className="min-w-0 text-left">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#E11D48] block">Profile Avatar (HD DP)</span>
+                  <h3 className="font-extrabold text-slate-900 dark:text-white truncate text-base sm:text-lg">
+                    {result!.profile_title || `@${result!.username}`}
+                  </h3>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">Original High-Resolution Profile Picture</p>
+                </div>
+              </div>
+              <a
+                href={result!.profile_avatar_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                download={`pinterest_avatar_${result!.username || 'user'}.jpg`}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 text-xs font-bold shadow-md transition-all shrink-0 w-full sm:w-auto touch-manipulation"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download HD Avatar</span>
+              </a>
+            </div>
+          )}
+
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div className="min-w-0">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">

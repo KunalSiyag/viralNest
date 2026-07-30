@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "python3 scripts/seo_health_check.py",
     "preview": "astro preview",
     "astro": "astro"
   },

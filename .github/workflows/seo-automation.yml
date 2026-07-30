@@ -1,0 +1,47 @@
+name: Reusable Master SEO Automation CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Run daily at 02:00 UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  seo-build-check-index:
+    name: Build, Audit SEO Health & Instant Index
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build Web Application
+        run: npm run build
+
+      - name: Automated Build-Time SEO Health Check (0 Errors Enforced)
+        run: python3 scripts/seo_health_check.py
+
+      - name: Submit URLs to IndexNow API (Bing, Yandex, Naver)
+        run: python3 scripts/index_now.py
+
+      - name: Submit URLs to Google Indexing API
+        env:
+          SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+        run: python3 scripts/index_pages.py

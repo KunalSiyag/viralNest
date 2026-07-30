@@ -15,6 +15,7 @@ interface Props {
   /** Hide decorative side pins */
   clean?: boolean;
   jsonLd?: Record<string, any> | Record<string, any>[];
+  noindex?: boolean;
 }
 
 const {
@@ -26,6 +27,7 @@ const {
   fullBleed = false,
   clean = false,
   jsonLd,
+  noindex = false,
 } = Astro.props;
 
 const currentCanonical = canonicalUrl || Astro.url.href;
@@ -67,11 +69,22 @@ const websiteSearchSchema = {
   },
 };
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${BRAND.url}/#organization`,
+  name: BRAND.name,
+  url: `${BRAND.url}/`,
+  logo: `${BRAND.url}/images/logo.png`,
+  sameAs: ['https://github.com/kunalsiyag', 'https://x.com/pintdownload'],
+};
+
 /** Primary nav — full tool names with Pinterest prefix */
 const nav = [
   { href: '/pinterest-video-downloader', label: 'Pinterest Video Downloader' },
   { href: '/pinterest-pin-downloader', label: 'Pinterest Pin Downloader' },
   { href: '/pinterest-board-downloader', label: 'Pinterest Board Downloader' },
+  { href: '/pinterest-profile-picture-downloader', label: 'Pinterest Avatar / DP Downloader' },
   { href: '/pinterest-profile-downloader', label: 'Pinterest Profile Downloader' },
   { href: '/pinterest-gif-downloader', label: 'Pinterest GIF Downloader' },
 ];
@@ -80,6 +93,7 @@ const mobileNav = [
   { href: '/pinterest-video-downloader', label: 'Pinterest Video Downloader' },
   { href: '/pinterest-pin-downloader', label: 'Pinterest Pin Downloader' },
   { href: '/pinterest-board-downloader', label: 'Pinterest Board Downloader' },
+  { href: '/pinterest-profile-picture-downloader', label: 'Pinterest Avatar / DP Downloader' },
   { href: '/pinterest-profile-downloader', label: 'Pinterest Profile Downloader' },
   { href: '/pinterest-gif-downloader', label: 'Pinterest GIF Downloader' },
   { href: '/pinterest-image-downloader', label: 'Pinterest Photo Downloader' },
@@ -105,13 +119,17 @@ const mobileNav = [
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    )}
     <link rel="canonical" href={currentCanonical} />
     <link rel="alternate" hreflang="en" href={currentCanonical} />
-    <link rel="alternate" hreflang="es" href={currentCanonical} />
-    <link rel="alternate" hreflang="pt" href={currentCanonical} />
-    <link rel="alternate" hreflang="fr" href={currentCanonical} />
-    <link rel="alternate" hreflang="de" href={currentCanonical} />
-    <link rel="alternate" hreflang="it" href={currentCanonical} />
+    <link rel="alternate" hreflang="hi" href={currentCanonical} />
+    <link rel="alternate" hreflang="ta" href={currentCanonical} />
+    <link rel="alternate" hreflang="te" href={currentCanonical} />
+    <link rel="alternate" hreflang="mr" href={currentCanonical} />
     <link rel="alternate" hreflang="x-default" href={currentCanonical} />
     <link rel="manifest" href="/manifest.json" />
     <link
@@ -145,6 +163,7 @@ const mobileNav = [
     <meta name="theme-color" content="#E11D48" />
     <meta name="color-scheme" content="light dark" />
 
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSearchSchema)} />
     {jsonLdItems.map((schema) => (
@@ -197,7 +216,7 @@ const mobileNav = [
         <a href="/" class="flex items-center gap-2.5 group min-w-0 focus-visible:outline-none shrink-0">
           <img
             src="/images/logo.png"
-            alt=""
+            alt={`${BRAND.name} Header Logo`}
             width="40"
             height="56"
             class="h-9 w-auto object-contain object-center drop-shadow-sm"
@@ -329,7 +348,7 @@ const mobileNav = [
               <div class="absolute -top-4 right-4 w-5 h-5 rounded-full bg-gradient-to-b from-red-400/40 to-pink-300/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-5 group-hover/pin:scale-110 transition-all duration-500 delay-150 ease-out z-0 border border-white/40"></div>
 
               <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_1.jpg" alt="" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
+                <img src="/images/side_pin_1.jpg" alt="Pinterest interior home decor pin preview" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
                 <div class="p-1.5 text-left">
                   <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Interior · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Cozy home decor</p>
@@ -344,7 +363,7 @@ const mobileNav = [
               <div class="absolute top-1/3 -left-4 w-5 h-5 rounded-full bg-gradient-to-r from-pink-300/50 to-rose-400/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-x-4 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
 
               <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_3.jpg" alt="" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
+                <img src="/images/side_pin_3.jpg" alt="Pinterest lifestyle matcha pastry pin preview" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
                 <div class="p-1.5 text-left">
                   <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Lifestyle · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Matcha &amp; pastry</p>
@@ -362,7 +381,7 @@ const mobileNav = [
               <div class="absolute top-1/2 -left-4 w-6 h-6 rounded-full bg-gradient-to-r from-rose-300/50 to-pink-500/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-x-3 group-hover/pin:-translate-y-2 group-hover/pin:scale-125 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
 
               <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_2.jpg" alt="" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
+                <img src="/images/side_pin_2.jpg" alt="Pinterest travel golden hour pin preview" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
                 <div class="p-1.5 text-left">
                   <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Travel · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Golden hour views</p>
@@ -376,7 +395,7 @@ const mobileNav = [
               <div class="absolute -bottom-2 -right-3 w-7 h-7 rounded-full bg-gradient-to-tr from-rose-500/40 to-pink-400/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-y-3 group-hover/pin:translate-x-2 transition-all duration-500 delay-75 ease-out z-0 border border-white/40"></div>
 
               <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_4.jpg" alt="" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
+                <img src="/images/side_pin_4.jpg" alt="Pinterest fashion street style pin preview" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
                 <div class="p-1.5 text-left">
                   <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Fashion · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Street style chic</p>
@@ -404,7 +423,7 @@ const mobileNav = [
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
           <div class="sm:col-span-2 lg:col-span-1">
             <a href="/" class="inline-flex items-center gap-2.5 mb-4">
-              <img src="/images/logo.png" alt="" width="32" height="48" class="h-8 w-auto object-contain" />
+              <img src="/images/logo.png" alt={`${BRAND.name} Footer Logo`} width="32" height="48" class="h-8 w-auto object-contain" />
               <span class="font-semibold text-lg text-ink-900 dark:text-white tracking-tight">
                 Pint<span class="text-brand-600">Download</span>
               </span>
