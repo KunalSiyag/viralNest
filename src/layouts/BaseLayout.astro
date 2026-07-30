@@ -79,14 +79,17 @@ const organizationSchema = {
   sameAs: ['https://github.com/kunalsiyag', 'https://x.com/pintdownload'],
 };
 
-/** Primary nav — full tool names with Pinterest prefix */
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+/** Header navigation — concise labels for clean header spacing */
 const nav = [
-  { href: '/pinterest-video-downloader', label: 'Pinterest Video Downloader' },
-  { href: '/pinterest-pin-downloader', label: 'Pinterest Pin Downloader' },
-  { href: '/pinterest-board-downloader', label: 'Pinterest Board Downloader' },
-  { href: '/pinterest-profile-picture-downloader', label: 'Pinterest Avatar / DP Downloader' },
-  { href: '/pinterest-profile-downloader', label: 'Pinterest Profile Downloader' },
-  { href: '/pinterest-gif-downloader', label: 'Pinterest GIF Downloader' },
+  { href: '/pinterest-video-downloader', label: 'Videos' },
+  { href: '/pinterest-pin-downloader', label: 'Pins' },
+  { href: '/pinterest-board-downloader', label: 'Boards' },
+  { href: '/pinterest-profile-picture-downloader', label: 'Avatar / DP' },
+  { href: '/pinterest-profile-downloader', label: 'Profiles' },
+  { href: '/pinterest-gif-downloader', label: 'GIFs' },
+  { href: '/blog', label: 'Guides' },
 ];
 
 const mobileNav = [
@@ -97,10 +100,10 @@ const mobileNav = [
   { href: '/pinterest-profile-downloader', label: 'Pinterest Profile Downloader' },
   { href: '/pinterest-gif-downloader', label: 'Pinterest GIF Downloader' },
   { href: '/pinterest-image-downloader', label: 'Pinterest Photo Downloader' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/how-to-download-pinterest-videos', label: 'How to download' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/blog', label: 'Blog & Guides' },
+  { href: '/how-to-download-pinterest-videos', label: 'How to Download' },
+  { href: '/about', label: 'About Us' },
+  { href: '/contact', label: 'Contact Support' },
 ];
 ---
 
@@ -227,24 +230,26 @@ const mobileNav = [
           </span>
         </a>
 
-        <nav class="hidden xl:flex items-center gap-1.5 2xl:gap-3 text-[0.78rem] 2xl:text-[0.85rem] font-semibold" aria-label="Main">
-          {nav.map((item) => (
-            <a
-              href={item.href}
-              class="px-2.5 py-1.5 rounded-full text-ink-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50/60 dark:hover:bg-brand-950/40 transition-all whitespace-nowrap"
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="/blog"
-            class="px-2.5 py-1.5 rounded-full text-ink-600 dark:text-slate-300 hover:text-brand-600 hover:bg-brand-50/60 dark:hover:bg-brand-950/40 transition-all"
-          >
-            Blog
-          </a>
+        <nav class="hidden lg:flex items-center justify-center flex-1 max-w-2xl mx-auto gap-1 xl:gap-2 text-xs sm:text-sm font-semibold" aria-label="Main Navigation">
+          {nav.map((item) => {
+            const isActive = currentPath === item.href;
+            return (
+              <a
+                href={item.href}
+                class:list={[
+                  'px-3 py-1.5 rounded-full transition-all whitespace-nowrap',
+                  isActive
+                    ? 'bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 font-bold shadow-xs'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60',
+                ]}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </nav>
 
-        <div class="flex items-center gap-2.5 shrink-0">
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
           <LanguageSelector client:load />
           <!-- Slide Theme Toggle Button -->
           <button
@@ -269,7 +274,7 @@ const mobileNav = [
           <button
             id="mobile-nav-toggle"
             type="button"
-            class="xl:hidden h-10 w-10 inline-flex items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.08] text-ink-800 dark:text-slate-100 touch-manipulation"
+            class="lg:hidden h-10 w-10 inline-flex items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.08] text-ink-800 dark:text-slate-100 touch-manipulation"
             aria-expanded="false"
             aria-controls="mobile-nav-panel"
             aria-label="Open menu"
@@ -279,7 +284,7 @@ const mobileNav = [
         </div>
       </div>
 
-      <div id="mobile-nav-panel" class="hidden xl:hidden border-t border-black/[0.05] dark:border-white/[0.08] bg-white/95 dark:bg-ink-950/95 backdrop-blur-xl">
+      <div id="mobile-nav-panel" class="hidden lg:hidden border-t border-black/[0.05] dark:border-white/[0.08] bg-white/95 dark:bg-ink-950/95 backdrop-blur-xl">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3 grid grid-cols-1 gap-1.5 text-[0.95rem] font-medium" aria-label="Tools">
           {mobileNav.map((item) => (
             <a
