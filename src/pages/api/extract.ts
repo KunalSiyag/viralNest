@@ -35,6 +35,17 @@ const RESERVED_PATHS = new Set([
   'webapp',
 ]);
 
+/** Profile sub-paths that look like a second segment but still mean "profile" */
+const PROFILE_SUB_PATHS = new Set([
+  '_saved',
+  '_pins',
+  '_created',
+  '_activity',
+  '_followers',
+  '_following',
+  '_tried',
+]);
+
 type UrlKind = 'pin' | 'board' | 'profile' | 'other';
 
 interface CollectionPin {
@@ -175,6 +186,11 @@ function classifyPinterestUrl(rawUrl: string): {
     if (first === 'pin') return { kind: 'pin' };
     if (RESERVED_PATHS.has(first)) return { kind: 'other' };
 
+    // /username/_saved, /username/_pins, etc. are still profile pages
+    if (parts.length >= 2 && PROFILE_SUB_PATHS.has(parts[1].toLowerCase())) {
+      return { kind: 'profile', username: parts[0] };
+    }
+
     // /username/board-slug[/...]
     if (parts.length >= 2 && !RESERVED_PATHS.has(parts[1].toLowerCase())) {
       return { kind: 'board', username: parts[0], boardSlug: parts[1] };
@@ -230,6 +246,106 @@ function extractBoardsFromReduxState(html: string): { name: string; url: string;
     } catch {}
   }
   return boards;
+}
+
+/**
+ * Upgrade any avatar-sized Pinterest image URL to the highest resolution.
+ * Handles all known size prefixes including RS (resize) and plain dimension variants.
+ */
+function upgradeAvatarUrl(url: string): string {
+  return url.replace(
+    /\/(30x30_RS|50x50_RS|75x75_RS|140x140_RS|280x280_RS|600x600_RS|150x150|170x|280x280|600x600)\//g,
+    '/originals/',
+  );
+}
+
+/**
+ * Check if a pinimg URL looks like a profile avatar (as opposed to a pin/board image).
+ * Avatar URLs typically live under specific size-prefixed directories.
+ */
+function isPinimgAvatarUrl(url: string): boolean {
+  return /i\.pinimg\.com\/(?:30x30_RS|50x50_RS|75x75_RS|140x140_RS|280x280_RS|600x600_RS|150x150|170x|280x280|originals)\//.test(url);
+}
+
+/**
+ * Extract the user's profile avatar URL from the page HTML.
+ * Strategy (in priority order):
+ *   1. Parse initialReduxState.users for image_xlarge_url / image_large_url
+ *   2. Scan <img> tags whose src matches pinimg.com avatar size patterns
+ *   3. Look for avatar URLs in JSON-LD or inline script data
+ */
+function extractAvatarFromHtml(html: string, targetUsername?: string): string | null {
+  // ── 1. Redux state: users object ────────────────────────────────
+  const scriptMatches = [...html.matchAll(/<script[^>]*type="application\/json"[^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const s of scriptMatches) {
+    try {
+      const obj = JSON.parse(s[1]);
+      const reduxState = obj?.initialReduxState;
+      if (reduxState?.users) {
+        const rawUsers = Object.values(reduxState.users) as any[];
+        for (const u of rawUsers) {
+          // Match by username if available, otherwise take the first user with an avatar
+          if (targetUsername && u?.username?.toLowerCase() !== targetUsername.toLowerCase()) continue;
+          const avatarUrl =
+            u?.image_xlarge_url ||
+            u?.image_large_url ||
+            u?.image_medium_url ||
+            u?.image_small_url ||
+            null;
+          if (avatarUrl && avatarUrl.includes('pinimg.com')) {
+            return upgradeAvatarUrl(avatarUrl);
+          }
+        }
+        // If username didn't match, try any user as fallback
+        if (targetUsername) {
+          for (const u of rawUsers) {
+            const avatarUrl =
+              u?.image_xlarge_url ||
+              u?.image_large_url ||
+              u?.image_medium_url ||
+              u?.image_small_url ||
+              null;
+            if (avatarUrl && avatarUrl.includes('pinimg.com')) {
+              return upgradeAvatarUrl(avatarUrl);
+            }
+          }
+        }
+      }
+    } catch {}
+  }
+
+  // ── 2. Scan for avatar-sized <img> tags ─────────────────────────
+  // Pinterest renders the profile picture as <img class="..." src="https://i.pinimg.com/280x280_RS/...">
+  const imgMatches = [
+    ...html.matchAll(/<img[^>]+src=["'](https:\/\/i\.pinimg\.com\/(?:280x280_RS|150x150|170x|75x75_RS|140x140_RS|600x600_RS)\/[^"']+)["'][^>]*>/gi),
+  ];
+  if (imgMatches.length > 0) {
+    // Prefer the largest available avatar
+    const sizeOrder = ['600x600_RS', '280x280_RS', '170x', '150x150', '140x140_RS', '75x75_RS'];
+    imgMatches.sort((a, b) => {
+      const aIdx = sizeOrder.findIndex((s) => a[1].includes(s));
+      const bIdx = sizeOrder.findIndex((s) => b[1].includes(s));
+      return (aIdx === -1 ? 99 : aIdx) - (bIdx === -1 ? 99 : bIdx);
+    });
+    return upgradeAvatarUrl(imgMatches[0][1]);
+  }
+
+  // ── 3. Look for avatar in inline JSON (non-Redux script blocks) ─
+  // Sometimes the avatar URL appears in <script> blocks as "profile_image" or "image_url" near the username
+  const inlineScripts = [...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const s of inlineScripts) {
+    try {
+      // Look for avatar-sized pinimg URLs near "image" keys
+      const avatarInScript = s[1].match(
+        /["'](?:image_xlarge_url|image_large_url|image_medium_url|profile_image|user_image|avatar)["']\s*:\s*["'](https?:\/\/i\.pinimg\.com\/[^"']+)["']/i,
+      );
+      if (avatarInScript?.[1]) {
+        return upgradeAvatarUrl(avatarInScript[1]);
+      }
+    } catch {}
+  }
+
+  return null;
 }
 
 function upgradePinImageUrl(url?: string | null): string | null {
@@ -914,22 +1030,18 @@ export const POST: APIRoute = async ({ request }) => {
 
     // ── Avatar-only intent (profile-picture downloader) ──────────────
     if (intent === 'avatar' && (classified.kind === 'profile' || classified.kind === 'board')) {
-      const rawAvatar =
-        metaContent(html, 'og:image') ||
-        metaContent(html, 'twitter:image') ||
-        null;
+      // Strategy: extract the actual avatar (not pin collage) in priority order:
+      //  1. Parse avatar from embedded HTML/Redux state (most reliable)
+      //  2. Pinterest UserResource API
+      //  3. og:image ONLY if it looks like an avatar URL (not a pin collage)
 
-      let profileAvatarUrl = rawAvatar;
-      if (profileAvatarUrl) {
-        // Upgrade to highest available resolution
-        profileAvatarUrl = profileAvatarUrl.replace(
-          /\/(75x75_RS|140x140_RS|280x280_RS|150x150)\//g,
-          '/originals/',
-        );
-      }
+      let profileAvatarUrl: string | null = null;
 
-      // Also try Pinterest's UserResource API for better avatar quality
-      if (classified.username) {
+      // ── 1. Extract avatar from HTML (Redux state + <img> tags) ──────
+      profileAvatarUrl = extractAvatarFromHtml(html, classified.username);
+
+      // ── 2. Pinterest UserResource API ──────────────────────────────
+      if (!profileAvatarUrl && classified.username) {
         try {
           const userPayload = {
             options: { username: classified.username, field_set_key: 'unauth_react' },
@@ -956,15 +1068,27 @@ export const POST: APIRoute = async ({ request }) => {
                 userData.image_medium_url ||
                 null;
               if (apiAvatar) {
-                profileAvatarUrl = apiAvatar.replace(
-                  /\/(75x75_RS|140x140_RS|280x280_RS|150x150|170x)\//g,
-                  '/originals/',
-                );
+                profileAvatarUrl = upgradeAvatarUrl(apiAvatar);
               }
             }
           }
         } catch (e) {
           console.warn('UserResource avatar fetch warning:', e);
+        }
+      }
+
+      // ── 3. og:image fallback — ONLY if it's actually an avatar ─────
+      if (!profileAvatarUrl) {
+        const ogImage =
+          metaContent(html, 'og:image') ||
+          metaContent(html, 'twitter:image') ||
+          null;
+        // Only use og:image if it looks like an avatar (contains avatar size prefix).
+        // Pinterest og:image for profiles usually returns a pin collage which is NOT
+        // an avatar — those use /736x/ or /564x/ or /474x/ prefixes and contain
+        // different hash paths.
+        if (ogImage && isPinimgAvatarUrl(ogImage)) {
+          profileAvatarUrl = upgradeAvatarUrl(ogImage);
         }
       }
 
@@ -1074,14 +1198,16 @@ export const POST: APIRoute = async ({ request }) => {
             });
           }
 
-          const rawAvatar =
-            metaContent(html, 'og:image') ||
-            metaContent(html, 'twitter:image') ||
-            null;
-
-          let profileAvatarUrl = rawAvatar;
-          if (profileAvatarUrl) {
-            profileAvatarUrl = profileAvatarUrl.replace(/\/(75x75_RS|140x140_RS|280x280_RS|150x150)\//g, '/736x/');
+          // Extract the real avatar (not pin collage from og:image)
+          let profileAvatarUrl = extractAvatarFromHtml(html, classified.username);
+          if (!profileAvatarUrl) {
+            const ogImage =
+              metaContent(html, 'og:image') ||
+              metaContent(html, 'twitter:image') ||
+              null;
+            if (ogImage && isPinimgAvatarUrl(ogImage)) {
+              profileAvatarUrl = upgradeAvatarUrl(ogImage);
+            }
           }
 
           const profileBoards = extractBoardsFromReduxState(html);
