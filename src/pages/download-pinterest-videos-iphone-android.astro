@@ -7,9 +7,10 @@ import RelatedTools from '../components/seo/RelatedTools.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
 import { BRAND } from '../lib/brand';
 import { webPageSchema, softwareAppSchema, howToSchema, faqSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
 
 const path = '/download-pinterest-videos-iphone-android';
-const pageUrl = `${BRAND.url}${path}`;
+const pageUrl = absoluteUrl(path);
 const title = 'Download Pinterest Videos to iPhone & Android (Free HD MP4)';
 const description =
   'Save Pinterest videos directly to your iPhone Camera Roll or Android Gallery. Free online Pinterest video downloader for mobile devices — no app required.';

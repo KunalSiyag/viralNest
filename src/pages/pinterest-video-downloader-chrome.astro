@@ -7,9 +7,10 @@ import RelatedTools from '../components/seo/RelatedTools.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
 import { BRAND } from '../lib/brand';
 import { webPageSchema, softwareAppSchema, howToSchema, faqSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
 
 const path = '/pinterest-video-downloader-chrome';
-const pageUrl = `${BRAND.url}${path}`;
+const pageUrl = absoluteUrl(path);
 const title = 'Pinterest Video Downloader Chrome Extension & Browser Tool';
 const description =
   '1-Click Pinterest video downloader for Google Chrome, Safari, Edge, and Firefox. Save Pinterest videos, photos, and boards without switching tabs.';

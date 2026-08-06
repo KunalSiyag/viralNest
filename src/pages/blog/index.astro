@@ -2,34 +2,39 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import {
   getAllPosts,
+  getIndexablePosts,
   getCategories,
   BLOG_PUBLISHER,
   getCoverUrl,
 } from '../../data/blog';
 import { BRAND } from '../../lib/brand';
+import { absoluteUrl } from '../../lib/urls';
 
+// UI can list all posts; schema + SEO priority only references indexable guides
 const articles = getAllPosts();
+const indexableArticles = getIndexablePosts();
 const categories = getCategories();
-const featured = articles[0];
-const rest = articles.slice(1);
+const featured = indexableArticles[0] ?? articles[0];
+const rest = articles.filter((a) => a.slug !== featured?.slug);
 const BLOG_AUTHOR_NAME = 'PintDownload Team';
+const blogUrl = absoluteUrl('/blog');
 
 const blogHubSchema = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
   name: `${BRAND.name} Blog — Pinterest Download Guides`,
-  description: `In-depth Medium-style guides for downloading Pinterest videos, boards, profiles, GIFs, and images. By the ${BRAND.name} Team.`,
-  url: `${BRAND.url}/blog`,
+  description: `In-depth guides for downloading Pinterest videos, boards, profiles, GIFs, and images. By the ${BRAND.name} Team.`,
+  url: blogUrl,
   publisher: {
     '@type': 'Organization',
     name: BLOG_PUBLISHER.name,
     url: BLOG_PUBLISHER.url,
     logo: { '@type': 'ImageObject', url: BLOG_PUBLISHER.logo },
   },
-  blogPost: articles.map((a) => ({
+  blogPost: indexableArticles.map((a) => ({
     '@type': 'BlogPosting',
     headline: a.title,
-    url: `${BRAND.url}/blog/${a.slug}`,
+    url: absoluteUrl(`/blog/${a.slug}`),
     image: getCoverUrl(a),
     datePublished: a.datePublished,
     dateModified: a.dateModified,
@@ -41,7 +46,7 @@ const blogHubSchema = {
 <BaseLayout
   title={`Pinterest Download Guides & Tips — ${BRAND.name}`}
   description={`Long-form Pinterest download guides: video MP4, board ZIP, troubleshooting, mobile tips, and more. Written by the ${BRAND.name} Team.`}
-  canonicalUrl={`${BRAND.url}/blog`}
+  canonicalUrl={blogUrl}
   image={featured?.coverImage}
   clean
   fullBleed

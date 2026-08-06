@@ -1,4 +1,6 @@
-/** Shared JSON-LD builders for intent-specific tool pages */
+/** Shared JSON-LD builders + sitemap route registry for intent-specific tool pages */
+
+import { absoluteUrl } from './urls';
 
 export function softwareAppSchema(opts: {
   name: string;
@@ -6,6 +8,7 @@ export function softwareAppSchema(opts: {
   url: string;
   applicationCategory?: string;
 }) {
+  // Do NOT include fake aggregateRating — Google may ignore or penalize fabricated reviews.
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -18,13 +21,6 @@ export function softwareAppSchema(opts: {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'USD',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '18450',
-      bestRating: '5',
-      worstRating: '1',
     },
   };
 }
@@ -77,7 +73,7 @@ export function webPageSchema(opts: {
     isPartOf: {
       '@type': 'WebSite',
       name: 'PintDownload',
-      url: 'https://pintdownload.app/',
+      url: absoluteUrl('/'),
     },
   };
 }
@@ -156,3 +152,42 @@ export const TOOL_LINKS = [
     badge: 'PFP',
   },
 ] as const;
+
+/** Static marketing / tool routes included in the XML sitemap (priority 0–1). */
+export type SitemapRoute = {
+  path: string;
+  changefreq: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
+  priority: number;
+};
+
+/**
+ * Money + support pages only. Legal pages stay crawlable but low priority.
+ * Do not list /rss.xml, /api/*, embed, or 404/500 here.
+ */
+export const SITEMAP_ROUTES: SitemapRoute[] = [
+  { path: '/', changefreq: 'daily', priority: 1.0 },
+  // Core money tools (highest priority)
+  { path: '/pinterest-video-downloader', changefreq: 'weekly', priority: 0.98 },
+  { path: '/pinterest-profile-picture-downloader', changefreq: 'weekly', priority: 0.97 },
+  { path: '/pinterest-pin-downloader', changefreq: 'weekly', priority: 0.96 },
+  { path: '/pinterest-board-downloader', changefreq: 'weekly', priority: 0.96 },
+  { path: '/pinterest-image-downloader', changefreq: 'weekly', priority: 0.95 },
+  { path: '/pinterest-profile-downloader', changefreq: 'weekly', priority: 0.94 },
+  { path: '/pinterest-gif-downloader', changefreq: 'weekly', priority: 0.9 },
+  { path: '/pinterest-to-mp4', changefreq: 'weekly', priority: 0.9 },
+  { path: '/pinterest-carousel-downloader', changefreq: 'weekly', priority: 0.9 },
+  { path: '/download-pinterest-videos-iphone-android', changefreq: 'weekly', priority: 0.9 },
+  { path: '/pinterest-video-downloader-chrome', changefreq: 'weekly', priority: 0.88 },
+  { path: '/how-to-download-pinterest-video-in-gallery', changefreq: 'weekly', priority: 0.88 },
+  { path: '/how-to-download-pinterest-video-on-laptop', changefreq: 'weekly', priority: 0.88 },
+  { path: '/pinterest-4k-downloader', changefreq: 'weekly', priority: 0.85 },
+  { path: '/pinterest-story-downloader', changefreq: 'weekly', priority: 0.85 },
+  { path: '/pinterest-audio-downloader', changefreq: 'weekly', priority: 0.82 },
+  { path: '/pinterest-seo-title-generator', changefreq: 'weekly', priority: 0.75 },
+  { path: '/how-to-download-pinterest-videos', changefreq: 'monthly', priority: 0.8 },
+  { path: '/blog', changefreq: 'weekly', priority: 0.85 },
+  { path: '/about', changefreq: 'monthly', priority: 0.4 },
+  { path: '/contact', changefreq: 'monthly', priority: 0.4 },
+  { path: '/privacy-policy', changefreq: 'yearly', priority: 0.2 },
+  { path: '/terms-of-service', changefreq: 'yearly', priority: 0.2 },
+];

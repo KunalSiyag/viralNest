@@ -7,9 +7,10 @@ import RelatedTools from '../components/seo/RelatedTools.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
 import { BRAND } from '../lib/brand';
 import { webPageSchema, softwareAppSchema, howToSchema, faqSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
 
 const path = '/pinterest-carousel-downloader';
-const pageUrl = `${BRAND.url}${path}`;
+const pageUrl = absoluteUrl(path);
 const title = 'Pinterest Carousel Downloader — Save All Carousel Slides Free';
 const description =
   'Save all image slides, multi-photo pins, and gallery graphics from Pinterest carousels in full HD resolution with 1-click easy download.';

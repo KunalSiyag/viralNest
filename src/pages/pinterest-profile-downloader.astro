@@ -6,9 +6,10 @@ import FaqSection from '../components/seo/FaqSection.astro';
 import HowToSteps from '../components/seo/HowToSteps.astro';
 import CompareTable from '../components/seo/CompareTable.astro';
 import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
 
 const path = '/pinterest-profile-downloader';
-const pageUrl = `https://pintdownload.app${path}`;
+const pageUrl = absoluteUrl(path);
 const title = 'Pinterest Profile Downloader — Save User Pins as ZIP Free';
 const description =
   'Download all public pins, videos, and photos from any Pinterest user profile in high resolution ZIP archives fast and free with no login.';
@@ -142,11 +143,11 @@ const jsonLd = [
 
       <section class="mt-14 text-left" aria-labelledby="profile-vs-board">
         <h2 id="profile-vs-board" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 scroll-mt-24">
-          Profile downloader vs board downloader
+          Profile ZIP vs board ZIP vs profile picture
         </h2>
-        <div class="grid sm:grid-cols-2 gap-3 text-sm">
+        <div class="grid sm:grid-cols-3 gap-3 text-sm">
           <div class="p-4 rounded-2xl border-2 border-[#E11D48]/30 bg-red-50/40 dark:bg-red-950/20 text-left">
-            <h3 class="font-extrabold text-[#E11D48] mb-2">This page — Profile</h3>
+            <h3 class="font-extrabold text-[#E11D48] mb-2">This page — Profile ZIP</h3>
             <ul class="space-y-1.5 text-slate-700 dark:text-slate-300 text-xs leading-relaxed list-disc pl-4">
               <li>URL: <code>pinterest.com/username/</code></li>
               <li>Goal: bulk pins from a creator's public page</li>
@@ -161,6 +162,16 @@ const jsonLd = [
               <li>URL: <code>pinterest.com/username/board/</code></li>
               <li>Goal: one themed collection / moodboard</li>
               <li>Output: multi-pin ZIP of that board</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-left">
+            <h3 class="font-extrabold text-slate-900 dark:text-white mb-2">
+              <a href="/pinterest-profile-picture-downloader" class="hover:text-[#E11D48]">Avatar / DP only →</a>
+            </h3>
+            <ul class="space-y-1.5 text-slate-600 dark:text-slate-400 text-xs leading-relaxed list-disc pl-4">
+              <li>Same profile URL shape</li>
+              <li>Goal: HD profile picture only</li>
+              <li>Output: single avatar image (not ZIP)</li>
             </ul>
           </div>
         </div>

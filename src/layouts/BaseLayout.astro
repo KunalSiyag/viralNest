@@ -1,5 +1,6 @@
 ---
 import { BRAND } from '../lib/brand';
+import { absoluteUrl, normalizeCanonical } from '../lib/urls';
 import StickyPasteBar from '../components/StickyPasteBar';
 import FooterKeywordMatrix from '../components/FooterKeywordMatrix.astro';
 import LanguageSelector from '../components/LanguageSelector';
@@ -30,20 +31,23 @@ const {
   noindex = false,
 } = Astro.props;
 
-const currentCanonical = canonicalUrl || Astro.url.href;
+// Always normalize: no trailing slash except homepage
+const currentCanonical = normalizeCanonical(
+  canonicalUrl || absoluteUrl(Astro.url.pathname),
+);
 const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 const ogImage = image
   ? image.startsWith('http')
     ? image
-    : `${BRAND.url}${image.startsWith('/') ? image : `/${image}`}`
-  : `${BRAND.url}${BRAND.ogImage}`;
+    : absoluteUrl(image.startsWith('/') ? image : `/${image}`)
+  : absoluteUrl(BRAND.ogImage);
 
 const pathName = Astro.url.pathname.replace(/\/$/, '');
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${BRAND.url}/` },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl('/') },
     ...(pathName
       ? [
           {
@@ -61,10 +65,10 @@ const websiteSearchSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: BRAND.name,
-  url: `${BRAND.url}/`,
+  url: absoluteUrl('/'),
   potentialAction: {
     '@type': 'SearchAction',
-    target: `${BRAND.url}/?url={search_term_string}`,
+    target: `${absoluteUrl('/')}?url={search_term_string}`,
     'query-input': 'required name=search_term_string',
   },
 };
@@ -72,10 +76,10 @@ const websiteSearchSchema = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': `${BRAND.url}/#organization`,
+  '@id': `${absoluteUrl('/')}#organization`,
   name: BRAND.name,
-  url: `${BRAND.url}/`,
-  logo: `${BRAND.url}/images/logo.png`,
+  url: absoluteUrl('/'),
+  logo: absoluteUrl('/images/logo.png'),
   sameAs: ['https://github.com/kunalsiyag', 'https://x.com/pintdownload'],
 };
 
@@ -85,10 +89,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const nav = [
   { href: '/pinterest-video-downloader', label: 'Videos' },
   { href: '/pinterest-pin-downloader', label: 'Pins' },
+  { href: '/pinterest-image-downloader', label: 'Images' },
   { href: '/pinterest-board-downloader', label: 'Boards' },
   { href: '/pinterest-profile-picture-downloader', label: 'Avatar / DP' },
   { href: '/pinterest-profile-downloader', label: 'Profiles' },
-  { href: '/pinterest-gif-downloader', label: 'GIFs' },
   { href: '/blog', label: 'Guides' },
 ];
 
@@ -128,24 +132,17 @@ const mobileNav = [
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     )}
     <link rel="canonical" href={currentCanonical} />
+    {/* Only declare real locale URLs. Fake multi-locale hreflang pointing at English hurts SEO. */}
     <link rel="alternate" hreflang="en" href={currentCanonical} />
-    <link rel="alternate" hreflang="hi" href={currentCanonical} />
-    <link rel="alternate" hreflang="ta" href={currentCanonical} />
-    <link rel="alternate" hreflang="te" href={currentCanonical} />
-    <link rel="alternate" hreflang="mr" href={currentCanonical} />
     <link rel="alternate" hreflang="x-default" href={currentCanonical} />
     <link rel="manifest" href="/manifest.json" />
     <link
       rel="alternate"
       type="application/rss+xml"
       title={`${BRAND.name} Blog`}
-      href={`${BRAND.url}/rss.xml`}
+      href={absoluteUrl('/rss.xml')}
     />
     <link rel="search" type="application/opensearchdescription+xml" title={BRAND.name} href="/opensearch.xml" />
-
-    <meta name="msvalidate.01" content="BING_WEBMASTER_VERIFICATION_KEY" />
-    <meta name="yandex-verification" content="YANDEX_VERIFICATION_KEY" />
-    <meta name="baidu-site-verification" content="BAIDU_VERIFICATION_KEY" />
 
     <meta property="og:site_name" content={BRAND.name} />
     <meta property="og:type" content={ogType} />

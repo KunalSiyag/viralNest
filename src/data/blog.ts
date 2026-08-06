@@ -3,6 +3,7 @@
  * Author attribution: PintDownload Team
  * Posts are long-form articles with cover images.
  */
+import { absoluteUrl } from '../lib/urls';
 
 export type BlogCategory =
   | 'Guide'
@@ -35,13 +36,13 @@ export interface BlogPost {
 
 export const BLOG_AUTHOR = {
   name: 'PintDownload Team',
-  url: 'https://pintdownload.app/about',
+  url: absoluteUrl('/about'),
 } as const;
 
 export const BLOG_PUBLISHER = {
   name: 'PintDownload',
-  url: 'https://pintdownload.app/',
-  logo: 'https://pintdownload.app/favicon.svg',
+  url: absoluteUrl('/'),
+  logo: absoluteUrl('/images/logo.png'),
 } as const;
 
 export const posts: BlogPost[] = [
@@ -3519,17 +3520,60 @@ export function getAllPosts(): BlogPost[] {
   );
 }
 
+/**
+ * Blog posts allowed in Google index + XML sitemap.
+ * Everything else is noindex so crawl budget focuses on money tools + strong guides.
+ * Expand this list only when a post is substantially unique and targets a real query.
+ */
+export const INDEXABLE_BLOG_SLUGS = new Set<string>([
+  // Core downloader how-tos
+  'how-to-download-pinterest-videos-fast-and-easy',
+  'how-to-download-entire-pinterest-board-zip',
+  'how-to-download-pinterest-profile-pins-as-zip',
+  'download-pinterest-profile-full-guide',
+  'download-pinterest-carousel-all-slides',
+  'download-pinterest-idea-story-pins-guide',
+  'using-pintdownload-on-phone-android-ios',
+  'save-pinterest-offline-without-account',
+  'how-to-copy-correct-pinterest-pin-link',
+  'pin-vs-board-vs-profile-urls-explained',
+  'pinterest-downloader-what-it-is-how-it-works',
+  'troubleshooting-pinterest-downloads',
+  'why-pinterest-video-downloaded-as-photo',
+  'video-quality-on-pinterest-downloads',
+  'understanding-file-formats-mp4-webm-gif-jpg-png',
+  'things-to-know-before-downloading-pinterest-videos',
+  'pinterest-4k-hd-video-downloader-guide',
+  'pinterest-mp3-audio-extractor-guide',
+  'best-pinterest-downloader-reddit-community-recommendations',
+  // High-intent creator guides that still support product discovery
+  'pinterest-account-backup-shadowban-protection-guide',
+  'how-to-make-money-on-pinterest',
+]);
+
+export function isPostIndexable(post: BlogPost | string): boolean {
+  const slug = typeof post === 'string' ? post : post.slug;
+  return INDEXABLE_BLOG_SLUGS.has(slug);
+}
+
+export function getIndexablePosts(): BlogPost[] {
+  return getAllPosts().filter((p) => isPostIndexable(p));
+}
+
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return posts.find((p) => p.slug === slug);
 }
 
 export function getRelatedPosts(post: BlogPost, limit = 4): BlogPost[] {
-  const sameCat = getAllPosts().filter(
-    (p) => p.slug !== post.slug && p.category === post.category,
-  );
-  const rest = getAllPosts().filter(
-    (p) => p.slug !== post.slug && p.category !== post.category,
-  );
+  // Prefer indexable posts so internal links pass equity to pages Google will keep
+  const pool = getAllPosts().filter((p) => p.slug !== post.slug);
+  const rank = (p: BlogPost) => (isPostIndexable(p) ? 0 : 1);
+  const sameCat = pool
+    .filter((p) => p.category === post.category)
+    .sort((a, b) => rank(a) - rank(b));
+  const rest = pool
+    .filter((p) => p.category !== post.category)
+    .sort((a, b) => rank(a) - rank(b));
   return [...sameCat, ...rest].slice(0, limit);
 }
 
@@ -3545,7 +3589,7 @@ export function estimateWordCount(html: string): number {
 export function getCoverUrl(post: BlogPost): string {
   return post.coverImage.startsWith('http')
     ? post.coverImage
-    : `https://pintdownload.app${post.coverImage}`;
+    : absoluteUrl(post.coverImage);
 }
 
 /** Previous / next posts for Medium-style back-channel navigation */

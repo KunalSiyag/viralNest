@@ -9,6 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "postbuild": "python3 scripts/seo_health_check.py",
+    "test": "node tests/seo-invariants.test.mjs",
+    "test:seo-build": "python3 scripts/verify_seo_build_artifacts.py",
     "preview": "astro preview",
     "astro": "astro"
   },

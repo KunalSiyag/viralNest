@@ -1,9 +1,12 @@
 # PintDownload Robots.txt
+# https://pintdownload.app
+
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /embed
 
-# Block Pinterest Crawlers
+# Block Pinterest crawlers (not needed for SEO discovery)
 User-agent: Pinterest
 Disallow: /
 
@@ -16,7 +19,10 @@ Disallow: /
 User-agent: Pinterestbot/1.0
 Disallow: /
 
-# Explicit Bot Directives
+# Major search engines
+User-agent: Googlebot
+Allow: /
+
 User-agent: Bingbot
 Allow: /
 
@@ -29,10 +35,7 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
-User-agent: Baiduspider
-Allow: /
-
-# AI Agent Crawlers
+# AI / answer-engine crawlers (optional discovery)
 User-agent: GPTBot
 Allow: /
 
@@ -45,9 +48,5 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-# Sitemaps & discovery
+# Canonical sitemap (dynamic — no rss.xml listed as a page)
 Sitemap: https://pintdownload.app/sitemap.xml
-# Blog RSS (not a sitemap, but useful for feed readers / some crawlers)
-# https://pintdownload.app/rss.xml
-# LLM-oriented site summary
-# https://pintdownload.app/llms.txt

@@ -5,42 +5,54 @@ import HowToSteps from '../components/seo/HowToSteps.astro';
 import FaqSection from '../components/seo/FaqSection.astro';
 import RelatedTools from '../components/seo/RelatedTools.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
-import { BRAND } from '../lib/brand';
 import { webPageSchema, softwareAppSchema, howToSchema, faqSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
 
 const path = '/pinterest-profile-picture-downloader';
-const pageUrl = `${BRAND.url}${path}`;
-const title = 'Pinterest Profile Picture Downloader — Save HD Avatars Free';
+const pageUrl = absoluteUrl(path);
+const title = 'Pinterest Profile Picture Downloader (HD Full Size)';
 const description =
-  'Download full size, high resolution profile pictures and avatar photos from any Pinterest user account instantly in HD quality for free.';
+  'Download Pinterest profile picture HD full size free. Save original avatars & DP from any public profile — no login, no watermark, works on phone & desktop.';
 
 const steps = [
   {
-    title: 'Copy Pinterest Profile Link',
-    body: 'Copy the URL of any user or brand profile on Pinterest (e.g., https://pinterest.com/username/).',
+    title: 'Copy the Pinterest profile URL',
+    body: 'Open any public user or brand profile. Share → Copy link, or copy <code>pinterest.com/username/</code> from the browser. Mobile share links work too.',
   },
   {
-    title: 'Paste Profile Link Above',
-    body: 'Paste the profile URL into our online profile avatar extractor above and click Download.',
+    title: 'Paste into the avatar downloader',
+    body: 'Paste the profile link in the box above and run extract. PintDownload resolves the highest-resolution public avatar on the Pinterest CDN.',
   },
   {
-    title: 'Download Uncompressed HD Avatar',
-    body: 'Click "Download Profile Picture" to save the original high-resolution profile photo directly to your device.',
+    title: 'Download the full-size profile picture',
+    body: 'Save the HD profile photo (JPG/PNG) to your device. Use it for moodboards, offline reference, or personal archives — credit creators when you publish.',
   },
 ];
 
 const faqs = [
   {
-    q: 'How to download a Pinterest profile picture in full high resolution?',
-    a: 'Paste the user profile URL into PintDownload. Our tool automatically fetches the original uncompressed HD avatar image source from Pinterest CDN and gives you a 1-click HD download.',
+    q: 'How do I download a Pinterest profile picture in HD / full size?',
+    a: 'Copy the public profile URL (pinterest.com/username/), paste it into PintDownload’s profile picture tool, then download. We request the highest-resolution public avatar source available on the CDN — not the tiny feed thumbnail.',
   },
   {
-    q: 'Can I download private profile pictures?',
-    a: 'Only public profile pictures and public avatar photos can be extracted.',
+    q: 'Is this the same as the Pinterest profile downloader (ZIP)?',
+    a: 'No. Profile picture download saves only the avatar/DP image. The Profile Downloader packs visible public pins from a profile into a ZIP. Use Avatar/DP for the photo; use Profile ZIP for bulk pins.',
   },
   {
-    q: 'What resolution are the downloaded profile pictures?',
-    a: 'Pinterest profile avatars are stored on CDN servers up to 600x600 HD resolution. PintDownload extracts the highest resolution source available.',
+    q: 'Can I download private or secret profile pictures?',
+    a: 'Only public profile pictures can be extracted. Private, secret, or login-only accounts are not accessible.',
+  },
+  {
+    q: 'What resolution will I get?',
+    a: 'Pinterest typically serves profile avatars up to about 600×600. PintDownload extracts the largest public source available for that user — we do not invent pixels beyond the original file.',
+  },
+  {
+    q: 'Does this work without a Pinterest account or app?',
+    a: 'Yes. You only need a public profile link. No Pinterest login, no extension, and no install required on phone or desktop.',
+  },
+  {
+    q: 'What file format is the downloaded profile picture?',
+    a: 'Usually JPG or PNG, depending on the source file Pinterest hosts. Files are clean — no PintDownload watermark or app frame overlay.',
   },
 ];
 
@@ -52,27 +64,24 @@ const jsonLd = [
     url: pageUrl,
   }),
   howToSchema({
-    name: 'How to Download Pinterest Profile Picture in HD',
+    name: 'How to download a Pinterest profile picture in HD full size',
     description,
-    steps: steps.map((s) => ({ name: s.title, text: s.body })),
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
   }),
   faqSchema(faqs),
 ];
 ---
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
-  <!-- Minimalist Hero card matching original downloader layout -->
   <section
     class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-4 sm:mb-6 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-6 sm:py-14 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
     aria-labelledby="hero-heading"
   >
-    <!-- Light theme hero background -->
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
       style="background-image: url('/images/hero_background.webp');"
       aria-hidden="true"
     ></div>
-    <!-- Dark theme hero background -->
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
       style="background-image: url('/images/hero_background_dark.webp');"
@@ -86,11 +95,14 @@ const jsonLd = [
     <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-8 sm:pt-14 lg:pt-16 pb-4 sm:pb-8 lg:pb-10 w-full my-auto">
       <h1
         id="hero-heading"
-        class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-4xl leading-tight mb-6 sm:mb-8"
+        class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-4xl leading-tight mb-4 sm:mb-6"
         style="text-wrap: balance;"
       >
         Pinterest <span class="text-[#E11D48]">Profile Picture Downloader</span>
       </h1>
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+        Free HD / full-size avatar &amp; DP saver — paste any public profile link.
+      </p>
 
       <div class="w-full max-w-4xl">
         <DownloaderForm client:load variant="profile-picture" />
@@ -98,41 +110,74 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- SEO Content downside -->
   <article class="flex flex-col items-center text-center w-full max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
     <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-8 text-center">
       <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/40 text-[#E11D48] text-xs font-bold mb-3 border border-red-200/80 dark:border-red-900/40 shadow-sm">
-        👤 HD Profile Picture &amp; Avatar Downloader
+        HD Profile Picture &amp; Avatar Downloader
       </div>
       <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
-        Download original <strong class="text-slate-900 dark:text-white">full-resolution profile pictures</strong> and avatar icons from public Pinterest accounts.
+        Download original <strong class="text-slate-900 dark:text-white">full-resolution profile pictures</strong> from public Pinterest accounts.
+        Perfect when you need a clean avatar — not a tiny grid thumbnail — for offline reference or design moodboards.
       </p>
     </div>
 
-    <!-- Unique Profile Feature Cards -->
-    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm mb-12">
+    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm mb-10">
       <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">👤</div>
-        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Original HD Avatars</h3>
-        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Fetches original uncompressed 600x600 avatar image files directly from CDN servers.</p>
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3" aria-hidden="true">HD</div>
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Full-size HD avatars</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          Pulls the highest public avatar source from the CDN — better than long-pressing a blurry mobile thumbnail.
+        </p>
       </div>
 
       <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">⚡</div>
-        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Username Link Parsing</h3>
-        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Supports full profile URLs, username links, and mobile profile share links.</p>
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3" aria-hidden="true">URL</div>
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Profile &amp; username links</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          Works with full profile URLs, username paths, and many mobile share links. No Pinterest login required.
+        </p>
       </div>
 
       <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3">🖼️</div>
-        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Clean JPG / PNG Format</h3>
-        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Exports clean profile picture graphics without watermarks or app frame overlays.</p>
+        <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#E11D48] flex items-center justify-center font-bold mb-3" aria-hidden="true">PNG</div>
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Clean JPG / PNG export</h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          Saves the profile photo without our watermark or app chrome. Use responsibly and credit creators when you republish.
+        </p>
       </div>
     </div>
 
-    <HowToSteps title="How to download Pinterest profile picture in HD" intro="Save full-size profile avatars in 3 steps." exampleUrl="https://pinterest.com/username/" exampleLabel="Pinterest Profile URL" steps={steps} visual stripe={true} />
+    <section class="w-full max-w-3xl text-left mb-12 space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white text-center mb-2">
+        Download Pinterest profile picture vs full profile ZIP
+      </h2>
+      <p>
+        Searching for <strong>pinterest profile picture download</strong> or <strong>download pinterest profile picture full size</strong>?
+        Use this page. It only extracts the circular avatar / DP image for a user.
+      </p>
+      <p>
+        If you need every visible public pin from that account, open the
+        <a href="/pinterest-profile-downloader" class="text-[#E11D48] font-semibold underline-offset-2 hover:underline">Pinterest Profile Downloader</a>
+        (ZIP pack) instead. For one pin, video, or board, use the matching tool in the nav.
+      </p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Profile picture / DP / avatar</strong> → this tool (single image).</li>
+        <li><strong>Profile pins bulk backup</strong> → <a href="/pinterest-profile-downloader" class="text-[#E11D48] font-semibold underline-offset-2 hover:underline">Profile ZIP</a>.</li>
+        <li><strong>Board as ZIP</strong> → <a href="/pinterest-board-downloader" class="text-[#E11D48] font-semibold underline-offset-2 hover:underline">Board Downloader</a>.</li>
+      </ul>
+    </section>
+
+    <HowToSteps
+      title="How to download a Pinterest profile picture in HD"
+      intro="Save a full-size public avatar in three steps — free, no signup."
+      exampleUrl="https://pinterest.com/username/"
+      exampleLabel="Pinterest Profile URL"
+      steps={steps}
+      visual
+      stripe={true}
+    />
     <BookmarkletGuide />
-    <FaqSection items={faqs} title="Profile Picture Downloader FAQs" />
+    <FaqSection items={faqs} title="Pinterest profile picture download FAQs" />
     <RelatedTools currentPath={path} />
   </article>
 </BaseLayout>

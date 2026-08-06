@@ -6,12 +6,13 @@ import FaqSection from '../components/seo/FaqSection.astro';
 import HowToSteps from '../components/seo/HowToSteps.astro';
 import CompareTable from '../components/seo/CompareTable.astro';
 import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
 
 const path = '/pinterest-board-downloader';
-const pageUrl = `https://pintdownload.app${path}`;
+const pageUrl = absoluteUrl(path);
 const title = 'Pinterest Board Downloader — Download Full Board as ZIP Free';
 const description =
-  'Download all pins and videos from any public Pinterest board in bulk as a single ZIP archive. Fast, free, and no registration required.';
+  'Free Pinterest board downloader: paste a public board URL and save pins as one ZIP. Bulk download images & videos — no login, no registration.';
 
 const faqs = [
   {

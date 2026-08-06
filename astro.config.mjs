@@ -7,6 +7,8 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://pintdownload.app',
+  // Canonical form: no trailing slash (except homepage). Matches vercel.json trailingSlash: false.
+  trailingSlash: 'never',
   output: 'static',
   adapter: vercel(),
   integrations: [tailwind(), react()],

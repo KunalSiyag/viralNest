@@ -7,9 +7,10 @@ import RelatedTools from '../components/seo/RelatedTools.astro';
 import BookmarkletGuide from '../components/seo/BookmarkletGuide.astro';
 import { BRAND } from '../lib/brand';
 import { webPageSchema, softwareAppSchema, howToSchema, faqSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
 
 const path = '/how-to-download-pinterest-video-on-laptop';
-const pageUrl = `${BRAND.url}${path}`;
+const pageUrl = absoluteUrl(path);
 const title = 'How to Download Pinterest Video on Laptop & PC (Free MP4)';
 const description =
   'Learn how to download Pinterest videos on your laptop, Mac, or Windows PC. Free online tool to save 1080p HD videos from Pinterest to your computer.';

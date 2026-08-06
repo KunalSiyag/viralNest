@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
-import { getAllPosts, BLOG_AUTHOR, BLOG_PUBLISHER } from '../data/blog';
+import { getIndexablePosts, BLOG_AUTHOR, BLOG_PUBLISHER } from '../data/blog';
+import { absoluteUrl } from '../lib/urls';
 
 export const prerender = true;
 
@@ -13,11 +14,14 @@ function escapeXml(s: string): string {
 }
 
 export const GET: APIRoute = async () => {
-  const posts = getAllPosts();
+  // RSS only includes indexable posts — matches sitemap + noindex policy
+  const posts = getIndexablePosts();
   const items = posts
     .map((post) => {
-      const link = `https://pintdownload.app/blog/${post.slug}`;
-      const image = `https://pintdownload.app${post.coverImage}`;
+      const link = absoluteUrl(`/blog/${post.slug}`);
+      const image = post.coverImage.startsWith('http')
+        ? post.coverImage
+        : absoluteUrl(post.coverImage);
       return `
     <item>
       <title>${escapeXml(post.title)}</title>
