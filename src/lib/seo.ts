@@ -70,6 +70,7 @@ export function webPageSchema(opts: {
     name: opts.name,
     description: opts.description,
     url: opts.url,
+    inLanguage: 'en-US',
     isPartOf: {
       '@type': 'WebSite',
       name: 'PintDownload',
@@ -150,6 +151,18 @@ export const TOOL_LINKS = [
     title: 'Profile Picture Downloader',
     blurb: 'Extract full HD profile pictures & avatar icons.',
     badge: 'PFP',
+  },
+  {
+    href: '/pinterest-to-mp4',
+    title: 'Pinterest to MP4',
+    blurb: 'Convert a Pinterest video link to a downloadable MP4.',
+    badge: 'MP4',
+  },
+  {
+    href: '/pinterest-audio-downloader',
+    title: 'Audio / MP3 Extractor',
+    blurb: 'Save the sound track from a public Pinterest video pin.',
+    badge: 'MP3',
   },
 ] as const;
 

@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const body = await request.json();
     const { keyword, category, apiKey: userApiKey } = body;
@@ -14,7 +14,13 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const apiKey = userApiKey || process.env.GEMINI_API_KEY;
+    // Cloudflare Workers: secrets live on locals.runtime.env; local/dev may use import.meta.env
+    const runtimeEnv = (locals as { runtime?: { env?: Record<string, string> } })?.runtime?.env;
+    const apiKey =
+      userApiKey ||
+      runtimeEnv?.GEMINI_API_KEY ||
+      import.meta.env.GEMINI_API_KEY ||
+      (typeof process !== 'undefined' ? process.env.GEMINI_API_KEY : undefined);
 
     if (apiKey) {
       // Call Google Gemini 1.5 Flash API

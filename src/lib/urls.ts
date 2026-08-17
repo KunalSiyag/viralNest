@@ -1,4 +1,4 @@
-/** Canonical URL helpers — always no trailing slash except homepage `/` */
+/** Canonical URL helpers — apex host, no trailing slash except homepage `/` */
 
 import { BRAND } from './brand';
 
@@ -17,7 +17,8 @@ export function absoluteUrl(path = '/'): string {
 
 /**
  * Normalize any absolute or relative URL to the site canonical form.
- * Strips trailing slashes on non-root paths; drops hash/query for canonicals.
+ * Forces https + apex host, strips trailing slashes on non-root paths,
+ * and drops hash/query so filtered URLs do not become extra index targets.
  */
 export function normalizeCanonical(urlOrPath: string): string {
   try {
@@ -29,10 +30,8 @@ export function normalizeCanonical(urlOrPath: string): string {
     if (pathname !== '/' && pathname.endsWith('/')) {
       pathname = pathname.replace(/\/+$/, '');
     }
-    // Prefer apex brand host in canonicals
-    const origin = BASE;
-    if (pathname === '/') return `${origin}/`;
-    return `${origin}${pathname}`;
+    if (pathname === '/') return `${BASE}/`;
+    return `${BASE}${pathname}`;
   } catch {
     return absoluteUrl('/');
   }

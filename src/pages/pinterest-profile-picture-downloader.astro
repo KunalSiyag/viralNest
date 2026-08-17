@@ -10,9 +10,9 @@ import { absoluteUrl } from '../lib/urls';
 
 const path = '/pinterest-profile-picture-downloader';
 const pageUrl = absoluteUrl(path);
-const title = 'Pinterest Profile Picture Downloader (HD Full Size)';
+const title = 'Pinterest Profile Picture Downloader — HD PFP / DP Free';
 const description =
-  'Download Pinterest profile picture HD full size free. Save original avatars & DP from any public profile — no login, no watermark, works on phone & desktop.';
+  'Download a Pinterest profile picture full size (PFP, DP, avatar). Paste a public profile URL and save the HD photo — no login, no watermark, phone or desktop.';
 
 const steps = [
   {
@@ -35,8 +35,16 @@ const faqs = [
     a: 'Copy the public profile URL (pinterest.com/username/), paste it into PintDownload’s profile picture tool, then download. We request the highest-resolution public avatar source available on the CDN — not the tiny feed thumbnail.',
   },
   {
+    q: 'How do I download a Pinterest PFP or DP?',
+    a: 'PFP (profile picture) and DP (display picture) are the same avatar file. Use this page — not the Profile ZIP tool — then save the JPG/PNG. Same steps on iPhone, Android, and desktop.',
+  },
+  {
     q: 'Is this the same as the Pinterest profile downloader (ZIP)?',
     a: 'No. Profile picture download saves only the avatar/DP image. The Profile Downloader packs visible public pins from a profile into a ZIP. Use Avatar/DP for the photo; use Profile ZIP for bulk pins.',
+  },
+  {
+    q: 'Can I view a Pinterest profile picture full size before downloading?',
+    a: 'Yes. After you paste the profile URL and extract, the preview is the largest public file we found. Then tap download to save it.',
   },
   {
     q: 'Can I download private or secret profile pictures?',
@@ -99,6 +107,7 @@ const jsonLd = [
         style="text-wrap: balance;"
       >
         Pinterest <span class="text-[#E11D48]">Profile Picture Downloader</span>
+        <span class="block text-2xl sm:text-3xl lg:text-4xl font-bold mt-2 text-slate-800 dark:text-slate-100">HD PFP, DP &amp; full-size avatar</span>
       </h1>
       <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed">
         Free HD / full-size avatar &amp; DP saver — paste any public profile link.
@@ -152,8 +161,10 @@ const jsonLd = [
         Download Pinterest profile picture vs full profile ZIP
       </h2>
       <p>
-        Searching for <strong>pinterest profile picture download</strong> or <strong>download pinterest profile picture full size</strong>?
+        Searching for <strong>pinterest profile picture download</strong>, <strong>pinterest pfp download</strong>,
+        or <strong>download pinterest profile picture full size</strong>?
         Use this page. It only extracts the circular avatar / DP image for a user.
+        Step-by-step writeup: <a href="/blog/how-to-download-pinterest-profile-picture" class="text-[#E11D48] font-semibold underline-offset-2 hover:underline">how to download a Pinterest profile picture</a>.
       </p>
       <p>
         If you need every visible public pin from that account, open the

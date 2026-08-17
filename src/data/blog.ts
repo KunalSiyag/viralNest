@@ -47,6 +47,88 @@ export const BLOG_PUBLISHER = {
 
 export const posts: BlogPost[] = [
   {
+    slug: 'how-to-download-pinterest-profile-picture',
+    title: 'How to Download a Pinterest Profile Picture (HD PFP / DP)',
+    description:
+      'Download a Pinterest profile picture full size: copy the public profile URL, paste it into PintDownload, and save the HD avatar, PFP, or DP — no login.',
+    excerpt:
+      'Step-by-step: save a public Pinterest profile picture in the largest available size — including PFP, DP, and avatar links — without an account.',
+    datePublished: '2026-08-18',
+    dateModified: '2026-08-18',
+    category: 'Guide',
+    tags: [
+      'pinterest profile picture download',
+      'pinterest pfp',
+      'pinterest dp',
+      'full size avatar',
+      'how-to',
+    ],
+    readTimeMin: 8,
+    coverImage: '/images/blog/cover-guide.webp',
+    coverAlt: 'Guide to downloading a Pinterest profile picture in HD full size',
+    content: `
+      <p>Most people who search for <strong>pinterest profile picture download</strong> want one thing: the <em>real</em> avatar file, not the tiny circle shown in the Pinterest app. Long-pressing the photo on a phone usually saves a compressed thumbnail. This guide shows how to download a public Pinterest profile picture in HD / full size — also called a PFP, DP, or profile photo — using the <a href="/pinterest-profile-picture-downloader">Pinterest Profile Picture Downloader</a>.</p>
+      <p>This is different from downloading <em>every pin</em> on a profile. If you want a ZIP of public pins, use the <a href="/pinterest-profile-downloader">Pinterest Profile Downloader</a> instead.</p>
+
+      <h2>What you can (and cannot) download</h2>
+      <ul>
+        <li><strong>Works:</strong> public profile avatars. If you can open <code>pinterest.com/username/</code> while logged out, the picture is in scope.</li>
+        <li><strong>Does not work:</strong> private or secret accounts, deleted profiles, or login-only pages.</li>
+        <li><strong>Quality cap:</strong> Pinterest typically hosts avatars around 600×600. A downloader cannot invent 4K pixels that were never uploaded.</li>
+      </ul>
+      <p>If you only need to <strong>view a Pinterest profile picture full size</strong> before saving, extract first — PintDownload shows the largest public CDN file, then you download.</p>
+
+      <h2>How to download a Pinterest profile picture (desktop or phone)</h2>
+      <ol>
+        <li><strong>Open the public profile.</strong> Go to the user’s Pinterest page (the one with their avatar and name), not a single pin and not a board.</li>
+        <li><strong>Copy the profile URL.</strong> It should look like <code>https://www.pinterest.com/username/</code>. App share links often work too. If extract fails, open the shortlink in a browser and copy the expanded URL.</li>
+        <li><strong>Paste into the avatar tool.</strong> Open the <a href="/pinterest-profile-picture-downloader">profile picture downloader</a>, paste the link, and run extract.</li>
+        <li><strong>Save the HD file.</strong> Download the JPG or PNG. On iPhone, use the share sheet → Save Image. On Android, check Downloads or Photos.</li>
+      </ol>
+
+      <h2>PFP vs DP vs profile ZIP — which tool?</h2>
+      <ul>
+        <li><strong>Pinterest PFP / DP / avatar / profile photo</strong> → <a href="/pinterest-profile-picture-downloader">Profile Picture Downloader</a> (one image).</li>
+        <li><strong>All visible public pins from that account</strong> → <a href="/pinterest-profile-downloader">Profile ZIP</a>.</li>
+        <li><strong>One board of pins</strong> → <a href="/pinterest-board-downloader">Board ZIP</a>.</li>
+        <li><strong>One pin, video, or GIF</strong> → <a href="/pinterest-pin-downloader">Pin Downloader</a> or the matching media tool.</li>
+      </ul>
+      <p>Pasting a <code>/pin/</code> link into the avatar tool will not return a profile picture. Match the URL type. Full primer: <a href="/blog/pin-vs-board-vs-profile-urls-explained">pin vs board vs profile URLs</a>.</p>
+
+      <h2>Why the in-app save looks blurry</h2>
+      <p>Pinterest serves small, cropped circles in the feed and comments. Those files are sized for a 40–80px UI, then upscaled by your gallery. The profile picture downloader requests the public avatar source on the CDN (often a <code>280x280</code> or larger path rewritten to a bigger public size) so you get the file Pinterest actually hosts — not the feed thumbnail.</p>
+
+      <h2>Mobile tips (iPhone and Android)</h2>
+      <p>From the Pinterest app: open the profile → Share → Copy link → switch to Safari or Chrome → paste into PintDownload. You do not need a Pinterest account to save a <em>public</em> avatar. More phone notes: <a href="/blog/using-pintdownload-on-phone-android-ios">using PintDownload on Android and iOS</a>.</p>
+
+      <h2>Responsible use</h2>
+      <p>A public profile picture is still someone else’s photo. Personal reference, mockups you do not publish, or saving your own account’s avatar is the intended use. Do not scrape celebrities or brands to impersonate them. Credit the person if you republish. See <a href="/blog/using-downloaded-content-responsibly">using downloaded content responsibly</a>.</p>
+
+      <div class="not-prose my-8 p-6 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/50 dark:bg-red-950/20">
+        <p class="font-extrabold text-slate-900 dark:text-white mb-2">Download a Pinterest profile picture now</p>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public profile URL and save the HD PFP / DP — free, no login.</p>
+        <p class="flex flex-wrap gap-2 text-sm font-bold">
+          <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-picture-downloader">Open Profile Picture Downloader</a>
+          <span class="text-slate-300">·</span>
+          <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+          <span class="text-slate-300">·</span>
+          <a class="text-[#E11D48] hover:underline" href="/">All downloaders</a>
+        </p>
+      </div>
+
+      <h2>Frequently asked questions</h2>
+      <h3>How do I download a Pinterest profile picture in HD?</h3>
+      <p>Copy the public profile URL, paste it into the <a href="/pinterest-profile-picture-downloader">Pinterest Profile Picture Downloader</a>, then save the largest public file. That is the same flow for “Pinterest PFP download” and “Pinterest DP downloader” searches.</p>
+      <h3>Can I download a Pinterest profile picture without an account?</h3>
+      <p>Yes, for public profiles. No Pinterest login is required on PintDownload.</p>
+      <h3>Is this the same as “download Pinterest profile”?</h3>
+      <p>People use that phrase both ways. This article is the <em>avatar</em>. A “Pinterest profile downloader” ZIP saves pins from the profile feed, not the circle photo.</p>
+      <h3>What size is a full-size Pinterest profile picture?</h3>
+      <p>Whatever the user uploaded, usually capped near 600×600 by Pinterest. If the result is still soft, the original upload was small.</p>
+      <p class="text-sm">Related: <a href="/pinterest-profile-picture-downloader">Pinterest Profile Picture Downloader</a> · <a href="/pinterest-profile-downloader">Pinterest Profile Downloader</a> · <a href="/pinterest-image-downloader">Pinterest Image Downloader</a></p>
+    `,
+  },
+  {
     slug: 'best-pinterest-downloader-reddit-community-recommendations',
     title: 'Best Pinterest Downloader in 2026: Reddit Community Recommendations & Tests',
     description:
@@ -3530,6 +3612,7 @@ export const INDEXABLE_BLOG_SLUGS = new Set<string>([
   'how-to-download-pinterest-videos-fast-and-easy',
   'how-to-download-entire-pinterest-board-zip',
   'how-to-download-pinterest-profile-pins-as-zip',
+  'how-to-download-pinterest-profile-picture',
   'download-pinterest-profile-full-guide',
   'download-pinterest-carousel-all-slides',
   'download-pinterest-idea-story-pins-guide',
@@ -3549,6 +3632,9 @@ export const INDEXABLE_BLOG_SLUGS = new Set<string>([
   // High-intent creator guides that still support product discovery
   'pinterest-account-backup-shadowban-protection-guide',
   'how-to-make-money-on-pinterest',
+  'make-money-on-pinterest-without-website',
+  'pinterest-affiliate-marketing-beginners',
+  'sell-digital-products-with-pinterest',
 ]);
 
 export function isPostIndexable(post: BlogPost | string): boolean {

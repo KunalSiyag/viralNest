@@ -6,6 +6,9 @@ out/
 dist/
 .astro/
 .vercel/
+.wrangler/
+.dev.vars
+.cf-types/
 
 # dependencies
 node_modules/

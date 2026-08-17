@@ -11,16 +11,18 @@ const URL_LIST = [
   `https://${HOST_DOMAIN}/pinterest-video-downloader`,
   `https://${HOST_DOMAIN}/pinterest-board-downloader`,
   `https://${HOST_DOMAIN}/pinterest-profile-downloader`,
+  `https://${HOST_DOMAIN}/pinterest-profile-picture-downloader`,
   `https://${HOST_DOMAIN}/pinterest-image-downloader`,
   `https://${HOST_DOMAIN}/pinterest-gif-downloader`,
   `https://${HOST_DOMAIN}/pinterest-story-downloader`,
   `https://${HOST_DOMAIN}/pinterest-audio-downloader`,
   `https://${HOST_DOMAIN}/pinterest-to-mp4`,
   `https://${HOST_DOMAIN}/pinterest-4k-downloader`,
+  `https://${HOST_DOMAIN}/pinterest-video-downloader-chrome`,
   `https://${HOST_DOMAIN}/how-to-download-pinterest-videos`,
   `https://${HOST_DOMAIN}/blog`,
-  `https://${HOST_DOMAIN}/rss.xml`,
-  `https://${HOST_DOMAIN}/llms.txt`,
+  `https://${HOST_DOMAIN}/blog/how-to-download-pinterest-profile-picture`,
+  `https://${HOST_DOMAIN}/blog/save-pinterest-offline-without-account`,
 ];
 
 export const POST: APIRoute = async () => {

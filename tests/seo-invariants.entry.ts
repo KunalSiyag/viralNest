@@ -7,6 +7,12 @@ import assert from 'node:assert/strict';
 import { absoluteUrl, normalizeCanonical } from '../src/lib/urls';
 import { softwareAppSchema, SITEMAP_ROUTES, faqSchema, howToSchema } from '../src/lib/seo';
 import {
+  isMediaContentType,
+  pinMediaCandidates,
+  toPlayablePinVideoUrl,
+  toPublicPinImageUrl,
+} from '../src/lib/pin-media';
+import {
   isPostIndexable,
   INDEXABLE_BLOG_SLUGS,
   getIndexablePosts,
@@ -45,6 +51,17 @@ describe('absoluteUrl / normalizeCanonical', () => {
   it('normalizeCanonical accepts relative paths', () => {
     assert.equal(normalizeCanonical('/blog'), 'https://pintdownload.app/blog');
     assert.equal(normalizeCanonical('/blog/'), 'https://pintdownload.app/blog');
+  });
+
+  it('normalizeCanonical forces apex https and drops query/hash', () => {
+    assert.equal(
+      normalizeCanonical('https://www.pintdownload.app/about/'),
+      'https://pintdownload.app/about',
+    );
+    assert.equal(
+      normalizeCanonical('http://www.pintdownload.app/blog?cat=Guide#x'),
+      'https://pintdownload.app/blog',
+    );
   });
 });
 
@@ -87,7 +104,10 @@ describe('FAQ and HowTo schema builders', () => {
 describe('blog indexation allowlist', () => {
   it('core guides are indexable; lifestyle fluff is not', () => {
     assert.equal(isPostIndexable('how-to-download-pinterest-videos-fast-and-easy'), true);
+    assert.equal(isPostIndexable('how-to-download-pinterest-profile-picture'), true);
+    assert.equal(isPostIndexable('make-money-on-pinterest-without-website'), true);
     assert.equal(isPostIndexable('pinterest-for-long-flights-and-layovers'), false);
+    assert.equal(isPostIndexable('pinterest-fashion-style-trends-guide-2026'), false);
     assert.equal(INDEXABLE_BLOG_SLUGS.size > 10, true);
   });
 
@@ -120,5 +140,61 @@ describe('SITEMAP_ROUTES money coverage', () => {
     assert.equal(paths.has('/rss.xml'), false);
     assert.equal(paths.has('/api/download'), false);
     assert.equal(paths.has('/embed'), false);
+  });
+});
+
+describe('pin media URL rewrites', () => {
+  it('upgrades blocked originals/avatar sizes to 1200x', () => {
+    assert.equal(
+      toPublicPinImageUrl(
+        'https://i.pinimg.com/originals/b1/71/d9/b171d958b797bb678f34c4193e5ffa28.jpg',
+      ),
+      'https://i.pinimg.com/1200x/b1/71/d9/b171d958b797bb678f34c4193e5ffa28.jpg',
+    );
+    assert.equal(
+      toPublicPinImageUrl(
+        'https://i.pinimg.com/280x280_RS/1c/b5/61/1cb561c8e7b9c709f78d110a4b5f0863.jpg',
+      ),
+      'https://i.pinimg.com/1200x/1c/b5/61/1cb561c8e7b9c709f78d110a4b5f0863.jpg',
+    );
+  });
+
+  it('converts expMp4 and HLS URLs to progressive 720p MP4', () => {
+    assert.equal(
+      toPlayablePinVideoUrl(
+        'https://v1.pinimg.com/videos/mc/expMp4/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100_720w.mp4',
+      ),
+      'https://v1.pinimg.com/videos/mc/720p/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100.mp4',
+    );
+    assert.equal(
+      toPlayablePinVideoUrl(
+        'https://v1.pinimg.com/videos/mc/hls/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100.m3u8',
+      ),
+      'https://v1.pinimg.com/videos/mc/720p/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100.mp4',
+    );
+  });
+
+  it('lists public image/video candidates before blocked originals', () => {
+    const image = pinMediaCandidates(
+      'https://i.pinimg.com/originals/b1/71/d9/b171d958b797bb678f34c4193e5ffa28.jpg',
+    );
+    assert.equal(image[0], 'https://i.pinimg.com/1200x/b1/71/d9/b171d958b797bb678f34c4193e5ffa28.jpg');
+    assert.equal(image.includes('https://i.pinimg.com/736x/b1/71/d9/b171d958b797bb678f34c4193e5ffa28.jpg'), true);
+
+    const video = pinMediaCandidates(
+      'https://v1.pinimg.com/videos/mc/expMp4/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100_720w.mp4',
+    );
+    assert.equal(
+      video[0],
+      'https://v1.pinimg.com/videos/mc/720p/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100.mp4',
+    );
+  });
+
+  it('rejects HTML/XML as downloadable media types', () => {
+    assert.equal(isMediaContentType('video/mp4'), true);
+    assert.equal(isMediaContentType('image/jpeg'), true);
+    assert.equal(isMediaContentType('text/html'), false);
+    assert.equal(isMediaContentType('application/xml'), false);
+    assert.equal(isMediaContentType('text/plain'), false);
   });
 });

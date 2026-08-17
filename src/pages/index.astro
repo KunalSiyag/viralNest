@@ -12,9 +12,9 @@ import { absoluteUrl } from '../lib/urls';
 
 const path = '/';
 const pageUrl = absoluteUrl('/');
-const title = 'Pinterest Downloader — Free Video & Photo | PintDownload';
+const title = 'Pinterest Downloader — Free Video, Photo & GIF | PintDownload';
 const description =
-  'Free Pinterest downloader online. Paste any public pin link to save HD MP4 videos, photos, GIFs, boards & profiles — no login, mobile & desktop.';
+  'Free Pinterest download online. Save public videos as MP4, photos, GIFs, boards, profiles, and HD profile pictures — no login, phone or desktop.';
 
 const faqs = [
   {
@@ -48,6 +48,18 @@ const faqs = [
   {
     q: 'What does not work?',
     a: 'Private, secret, login-only, deleted, or restricted pins cannot be extracted. We do not invent higher quality than the source provides.',
+  },
+  {
+    q: 'How do I convert Pinterest to MP4?',
+    a: 'Paste a public video pin into the hub form above or open the Pinterest to MP4 page. Extract, then download the MP4 — the same file a “Pinterest to MP4” converter should give you.',
+  },
+  {
+    q: 'Can I download GIFs from Pinterest?',
+    a: 'Yes. Paste the GIF pin URL here or use the Pinterest GIF Downloader so the file stays an animated GIF instead of a still frame.',
+  },
+  {
+    q: 'Can I use Pinterest offline?',
+    a: 'Pinterest itself needs a network. Download public pins, videos, or boards first, then open the files in Photos, Gallery, or VLC with no account and no app. See the offline-without-account guide.',
   },
 ];
 
@@ -166,6 +178,9 @@ const jsonLd = [
       </h2>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto text-center leading-relaxed">
         Each tool matches a different URL type and search intent. Start here, or paste any public link in the hub form above.
+        Popular: <a href="/pinterest-profile-picture-downloader" class="font-semibold text-[#E11D48] hover:underline">profile picture / PFP</a>,
+        <a href="/pinterest-to-mp4" class="font-semibold text-[#E11D48] hover:underline">Pinterest to MP4</a>,
+        <a href="/blog/how-to-download-pinterest-profile-picture" class="font-semibold text-[#E11D48] hover:underline">how to download a Pinterest profile picture</a>.
       </p>
       <nav aria-label="Core Pinterest download tools" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
         <a href="/pinterest-video-downloader" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
@@ -197,6 +212,21 @@ const jsonLd = [
           <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">PFP</p>
           <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Profile Picture / DP</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Extract full-size HD avatars from public profiles.</p>
+        </a>
+        <a href="/pinterest-gif-downloader" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
+          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">GIF</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">GIF Downloader</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Save animated Pinterest GIFs without flattening them to a photo.</p>
+        </a>
+        <a href="/pinterest-to-mp4" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
+          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">Convert</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Pinterest to MP4</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Convert a Pinterest video link to an MP4 you can keep offline.</p>
+        </a>
+        <a href="/pinterest-video-downloader-chrome" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
+          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">Chrome</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Chrome / browser tool</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">One-click bookmarklet for Chrome, Edge, and Safari — no store extension.</p>
         </a>
       </nav>
     </section>
@@ -269,6 +299,21 @@ const jsonLd = [
             <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">Boards</p>
             <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Download a board as ZIP</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Bulk-save public moodboards for offline reference.</p>
+          </a>
+          <a href="/blog/how-to-download-pinterest-profile-picture" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all text-left group">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">PFP / DP</p>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Download a profile picture in HD</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Full-size Pinterest avatar, PFP, and DP — not the tiny app thumbnail.</p>
+          </a>
+          <a href="/blog/make-money-on-pinterest-without-website" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all text-left group">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">No blog</p>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Make money without a website</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Affiliate and product paths that do not require a blog on day one.</p>
+          </a>
+          <a href="/blog/save-pinterest-offline-without-account" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all text-left group">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">Offline</p>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Save Pinterest offline, no account</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Download public pins first, then watch or browse files with no login.</p>
           </a>
         </div>
       </div>

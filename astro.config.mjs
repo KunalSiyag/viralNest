@@ -2,17 +2,38 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
-import vercel from '@astrojs/vercel';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://pintdownload.app',
-  // Canonical form: no trailing slash (except homepage). Matches vercel.json trailingSlash: false.
+  // Canonical form: no trailing slash (except homepage).
   trailingSlash: 'never',
+  // Static by default; API routes set `export const prerender = false`.
   output: 'static',
-  adapter: vercel(),
+  adapter: cloudflare({
+    imageService: 'compile',
+    platformProxy: {
+      enabled: true,
+    },
+  }),
   integrations: [tailwind(), react()],
+  // React 19 SSR defaults to server.browser which uses MessageChannel (missing on Workers).
+  // Always use the edge build so Cloudflare Worker startup succeeds.
+  vite: {
+    resolve: {
+      alias: {
+        'react-dom/server': 'react-dom/server.edge',
+      },
+    },
+  },
   redirects: {
+    // Ranking vanity aliases for the profile-picture cluster
+    '/pinterest-pfp-downloader': '/pinterest-profile-picture-downloader',
+    '/pinterest-dp-downloader': '/pinterest-profile-picture-downloader',
+    '/pinterest-profile-pic-downloader': '/pinterest-profile-picture-downloader',
+    '/pinterest-avatar-downloader': '/pinterest-profile-picture-downloader',
+    '/pinterest-profile-photo-downloader': '/pinterest-profile-picture-downloader',
     // Legacy blog URLs
     '/blog/why-pinterest-downloader-is-not-working':
       '/blog/troubleshooting-pinterest-downloads',

@@ -1,10 +1,11 @@
 # PintDownload Robots.txt
-# https://pintdownload.app
+# Preferred host + URL form: https://pintdownload.app/path (apex, no trailing slash)
 
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /embed
+Disallow: /embed/
 
 # Block Pinterest crawlers (not needed for SEO discovery)
 User-agent: Pinterest

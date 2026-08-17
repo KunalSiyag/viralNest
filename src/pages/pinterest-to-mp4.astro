@@ -1,67 +1,127 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloaderForm from '../components/DownloaderForm';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
 
-const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Pinterest to MP4 Converter — PintDownload",
-  "operatingSystem": "All",
-  "applicationCategory": "MultimediaApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-};
+const path = '/pinterest-to-mp4';
+const pageUrl = absoluteUrl(path);
+const title = 'Pinterest to MP4 — Convert Pinterest Video Free';
+const description =
+  'Convert Pinterest video to MP4 online. Paste a public pin link and download a playable MP4 — no signup, no watermark, works on phone and desktop.';
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How do I convert a Pinterest video to MP4?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Copy any Pinterest Pin URL, paste it into the PintDownload converter, and click Download MP4 Video to save the converted 1080p MP4 file to your device."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is converting Pinterest videos to MP4 free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! PintDownload is 100% free with no registration, no subscription, and no watermarks."
-      }
-    }
-  ]
-};
+const steps = [
+  {
+    title: 'Copy the Pinterest video link',
+    body: 'Open a pin that actually plays video. Share → Copy link, or copy a <code>/pin/</code> or <code>pin.it</code> URL.',
+  },
+  {
+    title: 'Paste into the converter',
+    body: 'Paste the link above and extract. PintDownload finds the public progressive MP4 stream Pinterest already hosts.',
+  },
+  {
+    title: 'Download the MP4',
+    body: 'Save the file and open it in Photos, VLC, or any editor. Quality matches the source pin — we do not invent 4K.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How do I convert a Pinterest video to MP4?',
+    a: 'Copy the public video pin URL, paste it here, extract, then download the MP4. That is the whole “Pinterest to MP4” conversion — no desktop app.',
+  },
+  {
+    q: 'Is converting Pinterest videos to MP4 free?',
+    a: 'Yes. PintDownload is free for public media. No registration and no watermark added by us.',
+  },
+  {
+    q: 'Pinterest to MP4 vs the video downloader — which page?',
+    a: 'Same job, different search wording. Use this page if you searched “Pinterest to MP4” or “convert Pinterest video”. Use the video downloader if you want quality options spelled out as HD MP4.',
+  },
+  {
+    q: 'Can I convert a GIF to MP4 here?',
+    a: 'If the source is a GIF, start with the GIF downloader. This page is for real video pins that already have an MP4 stream.',
+  },
+  {
+    q: 'Does this work on iPhone and Android?',
+    a: 'Yes. Paste the pin.it link from the Pinterest app into Safari or Chrome, then save the MP4 to Files or Photos.',
+  },
+];
+
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest to MP4 Converter — PintDownload',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to convert a Pinterest video to MP4',
+    description: 'Paste a public Pinterest video pin and download it as MP4.',
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
+  }),
+  faqSchema(faqs),
+];
 ---
 
-<BaseLayout
-  title="Pinterest to MP4 Converter — Convert Pinterest Video Online"
-  description="Convert and download any Pinterest video link to high quality MP4 format. Fast, free online video converter with no registration required."
-  jsonLd={[webAppSchema, faqSchema]}
->
-  <div class="flex flex-col items-center justify-center py-6 sm:py-12 text-center w-full px-2 sm:px-6">
-    <h1 class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-6 sm:mb-8">
-      Convert <span class="text-[#E11D48]">Pinterest Videos to MP4</span> Online
-    </h1>
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+  <section
+    class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-4 sm:mb-6 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-6 sm:py-14 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
+    aria-labelledby="hero-heading"
+  >
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
+      style="background-image: url('/images/hero_background.webp');"
+      aria-hidden="true"
+    />
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
+      style="background-image: url('/images/hero_background_dark.webp');"
+      aria-hidden="true"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-white/45 via-white/65 to-white/85 dark:from-ink-950/60 dark:via-ink-950/75 dark:to-ink-950/90"
+      aria-hidden="true"
+    />
 
-    <div class="w-full max-w-3xl">
-      <DownloaderForm client:load />
-    </div>
-
-    <!-- SEO Intro & Subtitle Banner -->
-    <div class="w-full max-w-2xl mx-auto mt-6 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs sm:text-sm font-bold mb-3 border border-red-200 dark:border-red-900/40 shadow-xs">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 8 6 4-6 4Z"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
-        <span>Free Pinterest to MP4 Converter</span>
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-8 sm:pt-14 lg:pt-16 pb-4 sm:pb-8 lg:pb-10 w-full my-auto">
+      <h1
+        id="hero-heading"
+        class="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight max-w-3xl leading-tight mb-6 sm:mb-8"
+        style="text-wrap: balance;"
+      >
+        Convert <span class="text-[#E11D48]">Pinterest Videos to MP4</span>
+      </h1>
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-6 leading-relaxed">
+        Pinterest to MP4 in one paste — keep the clip offline with audio when the source has it.
+      </p>
+      <div class="w-full max-w-4xl">
+        <DownloaderForm client:load variant="video" />
       </div>
-      <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-        Convert any video Pin, Idea Pin, or clip from Pinterest into high-definition MP4 format with audio. Free, fast, and no software installation required.
+    </div>
+  </section>
+
+  <article class="flex flex-col items-center text-center w-full max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
+    <div class="w-full max-w-3xl mx-auto mb-8 text-center">
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+        Use this converter when you searched <strong>Pinterest to MP4</strong>, <strong>pint to MP4</strong>,
+        or <strong>convert Pinterest video to MP4</strong>. Same public MP4 as the
+        <a href="/pinterest-video-downloader" class="text-[#E11D48] font-semibold underline-offset-2 hover:underline">video downloader</a>,
+        worded for conversion intent.
       </p>
     </div>
-  </div>
+    <HowToSteps
+      title="How to convert Pinterest to MP4"
+      intro="Public video pins only. No desktop software."
+      exampleUrl="https://pin.it/…"
+      exampleLabel="Video pin link"
+      steps={steps}
+      stripe={true}
+    />
+    <FaqSection items={faqs} title="Pinterest to MP4 FAQs" />
+    <RelatedTools currentPath={path} />
+  </article>
 </BaseLayout>

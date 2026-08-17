@@ -150,8 +150,12 @@ def main() -> int:
                     errors.append(f"sitemap missing {loc}")
         if "/blog/how-to-download-pinterest-videos-fast-and-easy" not in sm:
             errors.append("sitemap missing indexable blog post")
+        if "/blog/how-to-download-pinterest-profile-picture" not in sm:
+            errors.append("sitemap missing profile-picture guide")
         if "/blog/pinterest-for-long-flights-and-layovers" in sm:
             errors.append("sitemap must not list noindex weak blog post")
+        if "/blog/pinterest-fashion-style-trends-guide-2026" in sm:
+            errors.append("sitemap must not list noindex fashion post")
 
     # Blog robots policy
     idx_blog = out / INDEXABLE_BLOG
@@ -186,6 +190,8 @@ def main() -> int:
         "/pinterest-board-downloader",
         "/pinterest-profile-downloader",
         "/pinterest-profile-picture-downloader",
+        "/pinterest-gif-downloader",
+        "/pinterest-to-mp4",
     ]:
         if f'href="{href}"' not in home:
             errors.append(f"homepage missing crawlable link {href}")

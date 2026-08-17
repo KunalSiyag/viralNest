@@ -122,7 +122,7 @@ if (postDesc.length > 160) {
         <span class="text-ink-300" aria-hidden="true">/</span>
         <a href="/blog" class="hover:text-brand-600">Blog</a>
         <span class="text-ink-300" aria-hidden="true">/</span>
-        <a href={`/blog?cat=${encodeURIComponent(post.category)}`} class="hover:text-brand-600">{post.category}</a>
+        <a href={`/blog#cat-${post.category.replace(/\s+/g, '-').toLowerCase()}`} class="hover:text-brand-600">{post.category}</a>
       </nav>
 
       <p class="text-brand-600 font-semibold text-sm tracking-wide mb-4">{post.category}</p>

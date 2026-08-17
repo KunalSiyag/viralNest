@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type MouseEvent } from 'react';
 import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight, Crop, Scissors } from 'lucide-react';
 import JSZip from 'jszip';
 import ImageCropperModal from './ImageCropperModal';
 import AudioTrimmer from './AudioTrimmer';
 import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
+import { isMediaContentType } from '../lib/pin-media';
 
 interface BoardPinItem {
   pin_id: string;
@@ -201,6 +202,7 @@ export default function DownloaderForm({
   const [showTrimmer, setShowTrimmer] = useState(false);
   const [selectedPins, setSelectedPins] = useState<Record<string, boolean>>({});
   const [mediaFilter, setMediaFilter] = useState<'all' | 'video' | 'image'>('all');
+  const [savingFile, setSavingFile] = useState<string | null>(null);
 
   const triggerHaptic = () => {
     if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
@@ -411,6 +413,46 @@ export default function DownloaderForm({
       .toLowerCase()
       .slice(0, 60) || 'pinterest';
 
+  const proxyDownloadHref = (mediaUrl: string, filename: string) =>
+    `/api/download?url=${encodeURIComponent(mediaUrl)}&filename=${encodeURIComponent(filename)}`;
+
+  const saveProxyDownload = async (mediaUrl: string, filename: string) => {
+    setError('');
+    setSavingFile(filename);
+    try {
+      const res = await fetch(proxyDownloadHref(mediaUrl, filename));
+      const type = res.headers.get('content-type') || '';
+      if (!res.ok || !isMediaContentType(type)) {
+        throw new Error(
+          'Could not download this file. The pin may be private, or Pinterest is no longer serving that media URL.',
+        );
+      }
+      const blob = await res.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(objectUrl);
+    } catch (err: any) {
+      setError(err?.message || 'Download failed.');
+    } finally {
+      setSavingFile(null);
+    }
+  };
+
+  const onProxyDownloadClick = (
+    e: MouseEvent<HTMLAnchorElement>,
+    mediaUrl: string,
+    filename: string,
+  ) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    void saveProxyDownload(mediaUrl, filename);
+  };
+
   const downloadUrlsAsZip = async (
     entries: { url: string; filename: string }[],
     archiveName: string,
@@ -437,7 +479,8 @@ export default function DownloaderForm({
               const res = await fetch(
                 `/api/download?url=${encodeURIComponent(entry.url)}&filename=${encodeURIComponent(entry.filename)}`,
               );
-              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+              const type = res.headers.get('content-type') || '';
+              if (!res.ok || !isMediaContentType(type)) throw new Error(`HTTP ${res.status}`);
               const blob = await res.blob();
               folder.file(entry.filename, blob);
               packed++;
@@ -870,8 +913,10 @@ export default function DownloaderForm({
                       {item.title || `Slide ${idx + 1}`}
                     </span>
                     <a
-                      href={`/api/download?url=${encodeURIComponent(item.url)}&filename=${encodeURIComponent(filename)}`}
-                      download
+                      href={proxyDownloadHref(item.url, filename)}
+                      download={filename}
+                      onClick={(e) => onProxyDownloadClick(e, item.url, filename)}
+                      aria-busy={savingFile === filename}
                       className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
                     >
                       <Download className="w-3.5 h-3.5" />
@@ -929,8 +974,15 @@ export default function DownloaderForm({
             {result.profile_avatar_url && (
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md">
                 <a
-                  href={`/api/download?url=${encodeURIComponent(result.profile_avatar_url)}&filename=${encodeURIComponent(`pinterest_avatar_${result.username || 'user'}.jpg`)}`}
-                  download
+                  href={proxyDownloadHref(result.profile_avatar_url, `pinterest_avatar_${result.username || 'user'}.jpg`)}
+                  download={`pinterest_avatar_${result.username || 'user'}.jpg`}
+                  onClick={(e) =>
+                    onProxyDownloadClick(
+                      e,
+                      result.profile_avatar_url!,
+                      `pinterest_avatar_${result.username || 'user'}.jpg`,
+                    )
+                  }
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
                 >
                   <Download className="w-5 h-5" />
@@ -993,10 +1045,18 @@ export default function DownloaderForm({
               {result!.profile_avatar_url && (
                 <div className="flex flex-wrap items-center justify-center gap-3 w-full max-w-md">
                   <a
-                    href={result!.profile_avatar_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={proxyDownloadHref(
+                      result!.profile_avatar_url,
+                      `pinterest_avatar_${result!.username || 'user'}.jpg`,
+                    )}
                     download={`pinterest_avatar_${result!.username || 'user'}.jpg`}
+                    onClick={(e) =>
+                      onProxyDownloadClick(
+                        e,
+                        result!.profile_avatar_url!,
+                        `pinterest_avatar_${result!.username || 'user'}.jpg`,
+                      )
+                    }
                     className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
                   >
                     <Download className="w-5 h-5" />
@@ -1178,8 +1238,9 @@ export default function DownloaderForm({
                       {pin.title || `Pin #${idx + 1}`}
                     </span>
                     <a
-                      href={`/api/download?url=${encodeURIComponent(mediaUrl)}&filename=${encodeURIComponent(`pin_${pin.pin_id}.${ext}`)}`}
-                      download
+                      href={proxyDownloadHref(mediaUrl, `pin_${pin.pin_id}.${ext}`)}
+                      download={`pin_${pin.pin_id}.${ext}`}
+                      onClick={(e) => onProxyDownloadClick(e, mediaUrl, `pin_${pin.pin_id}.${ext}`)}
                       className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
                     >
                       <Download className="w-3.5 h-3.5" />
@@ -1300,8 +1361,15 @@ export default function DownloaderForm({
                 {result.is_video && (selectedQuality || result.video_url) && (
                   <>
                     <a
-                      href={`/api/download?url=${encodeURIComponent(selectedQuality || result.video_url!)}&filename=${encodeURIComponent((result.title || 'pinterest_video').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.mp4`}
-                      download={`${(result.title || 'pinterest_video').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.mp4`}
+                      href={proxyDownloadHref(selectedQuality || result.video_url!, `${slugify(result.title || 'pinterest_video')}.mp4`)}
+                      download={`${slugify(result.title || 'pinterest_video')}.mp4`}
+                      onClick={(e) =>
+                        onProxyDownloadClick(
+                          e,
+                          selectedQuality || result.video_url!,
+                          `${slugify(result.title || 'pinterest_video')}.mp4`,
+                        )
+                      }
                       className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation"
                       title="Download full HD MP4 video with embedded audio sound"
                     >
@@ -1310,8 +1378,15 @@ export default function DownloaderForm({
                     </a>
                     
                     <a
-                      href={`/api/download?url=${encodeURIComponent(selectedQuality || result.video_url!)}&filename=${encodeURIComponent((result.title || 'pinterest_audio').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.mp3`}
-                      download={`${(result.title || 'pinterest_audio').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.mp3`}
+                      href={proxyDownloadHref(selectedQuality || result.video_url!, `${slugify(result.title || 'pinterest_audio')}.mp3`)}
+                      download={`${slugify(result.title || 'pinterest_audio')}.mp3`}
+                      onClick={(e) =>
+                        onProxyDownloadClick(
+                          e,
+                          selectedQuality || result.video_url!,
+                          `${slugify(result.title || 'pinterest_audio')}.mp3`,
+                        )
+                      }
                       className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all text-sm shadow-md shadow-purple-500/20 active:scale-95 touch-manipulation"
                       title="Extract and download original MP3 audio stream"
                     >
@@ -1357,8 +1432,15 @@ export default function DownloaderForm({
                 {result.image_url && (
                   <>
                     <a
-                      href={`/api/download?url=${encodeURIComponent(result.image_url)}&filename=${encodeURIComponent((result.title || 'pinterest_image').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.jpg`}
-                      download={`${(result.title || 'pinterest_image').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.jpg`}
+                      href={proxyDownloadHref(result.image_url, `${slugify(result.title || 'pinterest_image')}.jpg`)}
+                      download={`${slugify(result.title || 'pinterest_image')}.jpg`}
+                      onClick={(e) =>
+                        onProxyDownloadClick(
+                          e,
+                          result.image_url!,
+                          `${slugify(result.title || 'pinterest_image')}.jpg`,
+                        )
+                      }
                       className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation"
                     >
                       <ImageIcon className="w-4 h-4 text-[#E11D48]" />
@@ -1539,15 +1621,13 @@ export default function DownloaderForm({
                   setTimeout(() => {
                     const downloadUrl = res.video_url || res.image_url;
                     if (downloadUrl) {
-                      const a = document.createElement('a');
                       const ext = res.is_video ? 'mp4' : 'jpg';
-                      a.href = `/api/download?url=${encodeURIComponent(downloadUrl)}&filename=${encodeURIComponent((res.title || 'pin').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.${ext}`;
-                      a.download = `pinterest_${idx + 1}.${ext}`;
-                      document.body.appendChild(a);
-                      a.click();
-                      document.body.removeChild(a);
+                      void saveProxyDownload(
+                        downloadUrl,
+                        `${slugify(res.title || 'pin')}.${ext}`,
+                      );
                     }
-                  }, idx * 500);
+                  }, idx * 800);
                 });
               }}
               className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-xs shadow-md shadow-red-500/20 transition-all active:scale-95 shrink-0"
@@ -1568,8 +1648,18 @@ export default function DownloaderForm({
                   </div>
                 </div>
                 <a
-                  href={`/api/download?url=${encodeURIComponent(res.video_url || res.image_url!)}&filename=${encodeURIComponent((res.title || 'pin').replace(/[^a-z0-9]+/gi, '_').toLowerCase())}.${res.is_video ? 'mp4' : 'jpg'}`}
-                  download
+                  href={proxyDownloadHref(
+                    res.video_url || res.image_url!,
+                    `${slugify(res.title || 'pin')}.${res.is_video ? 'mp4' : 'jpg'}`,
+                  )}
+                  download={`${slugify(res.title || 'pin')}.${res.is_video ? 'mp4' : 'jpg'}`}
+                  onClick={(e) =>
+                    onProxyDownloadClick(
+                      e,
+                      res.video_url || res.image_url!,
+                      `${slugify(res.title || 'pin')}.${res.is_video ? 'mp4' : 'jpg'}`,
+                    )
+                  }
                   className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-[#E11D48] hover:text-white text-slate-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />

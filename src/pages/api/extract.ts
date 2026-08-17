@@ -1,4 +1,8 @@
 import type { APIRoute } from 'astro';
+import {
+  toPlayablePinVideoUrl,
+  toPublicPinImageUrl,
+} from '../../lib/pin-media';
 
 export const prerender = false;
 
@@ -253,10 +257,8 @@ function extractBoardsFromReduxState(html: string): { name: string; url: string;
  * Handles all known size prefixes including RS (resize) and plain dimension variants.
  */
 function upgradeAvatarUrl(url: string): string {
-  return url.replace(
-    /\/(30x30_RS|50x50_RS|75x75_RS|140x140_RS|280x280_RS|600x600_RS|150x150|170x|280x280|600x600)\//g,
-    '/originals/',
-  );
+  // /originals/ is 403 from Akamai now; 1200x is the largest public size.
+  return toPublicPinImageUrl(url);
 }
 
 /**
@@ -350,13 +352,7 @@ function extractAvatarFromHtml(html: string, targetUsername?: string): string | 
 
 function upgradePinImageUrl(url?: string | null): string | null {
   if (!url) return null;
-  return url
-    .replace(/\/\d+x\//, '/originals/')
-    .replace(/\/\d+x\d+\//, '/originals/')
-    .replace(/\/236x\//, '/originals/')
-    .replace(/\/474x\//, '/originals/')
-    .replace(/\/564x\//, '/originals/')
-    .replace(/\/736x\//, '/originals/');
+  return toPublicPinImageUrl(url);
 }
 
 function extractVideoUrlsFromHtml(
@@ -365,35 +361,36 @@ function extractVideoUrlsFromHtml(
   const qualities: { label: string; url: string; width?: number; height?: number }[] = [];
   const seen = new Set<string>();
 
-  // 1. Scan for HLS .m3u8 streams and convert them to progressive expMp4 URLs
+  // 1. Scan for HLS .m3u8 streams and convert them to progressive /720p MP4
   const m3u8Matches = [
     ...html.matchAll(/(https?:\\?\/\\?[^"\s']+\.m3u8[^"\s']*)/gi),
   ].map((m) => m[1].replace(/\\/g, ''));
 
   for (const m3u8 of m3u8Matches) {
     if (m3u8.includes('pinimg.com/videos/')) {
-      const mp4_720w = m3u8.replace('/hls/', '/expMp4/').replace('.m3u8', '_720w.mp4');
-      if (!seen.has(mp4_720w)) {
-        seen.add(mp4_720w);
-        qualities.push({ label: '720p HD MP4', url: mp4_720w });
+      const mp4 = toPlayablePinVideoUrl(m3u8);
+      if (!seen.has(mp4)) {
+        seen.add(mp4);
+        qualities.push({ label: '720p HD MP4', url: mp4 });
       }
     }
   }
 
-  // 2. Scan for direct mp4 URLs
+  // 2. Scan for direct mp4 URLs (rewrite blocked expMp4 variants)
   const mp4Matches = [
     ...html.matchAll(/(https?:\\?\/\\?[^"\s']+\.mp4[^"\s']*)/gi),
   ].map((m) => m[1].replace(/\\/g, ''));
 
-  for (const mp4 of mp4Matches) {
-    if (mp4.includes('pinimg.com/videos/') && !seen.has(mp4)) {
-      seen.add(mp4);
-      let label = 'SD MP4';
-      if (mp4.includes('720w') || mp4.includes('720p')) label = '720p HD MP4';
-      else if (mp4.includes('1080w') || mp4.includes('1080p')) label = '1080p Full HD';
-      else if (mp4.includes('540w') || mp4.includes('540p')) label = '540p MP4';
-      qualities.push({ label, url: mp4 });
-    }
+  for (const raw of mp4Matches) {
+    if (!raw.includes('pinimg.com/videos/')) continue;
+    const mp4 = toPlayablePinVideoUrl(raw);
+    if (seen.has(mp4)) continue;
+    seen.add(mp4);
+    let label = 'SD MP4';
+    if (mp4.includes('720w') || mp4.includes('/720p/')) label = '720p HD MP4';
+    else if (mp4.includes('1080w') || mp4.includes('/1080p/')) label = '1080p Full HD';
+    else if (mp4.includes('540w') || mp4.includes('/540p/')) label = '540p MP4';
+    qualities.push({ label, url: mp4 });
   }
 
   return qualities;
@@ -401,7 +398,7 @@ function extractVideoUrlsFromHtml(
 
 function pickBestImageFromImagesMap(images: any): string | null {
   if (!images || typeof images !== 'object') return null;
-  const order = ['orig', 'originals', '1360x', '1200x', '736x', '750x', '564x', '474x', '236x'];
+  const order = ['1200x', '736x', '750x', '564x', '474x', 'orig', 'originals', '1360x', '236x'];
   for (const key of order) {
     const entry = images[key];
     if (entry?.url) return upgradePinImageUrl(entry.url) || entry.url;
@@ -431,6 +428,12 @@ function pickBestVideoUrl(videos: any): string | null {
   if (!list || typeof list !== 'object') return null;
 
   const entries = Object.entries(list) as [string, any][];
+  const score = (url: string) => {
+    if (/\/1080p\//i.test(url) || /1080w/i.test(url)) return 4;
+    if (/\/720p\//i.test(url) || /720w/i.test(url)) return 3;
+    if (/expMp4/i.test(url)) return 0;
+    return 1;
+  };
   const mp4s = entries
     .filter(([, v]) => v?.url && typeof v.url === 'string' && v.url.includes('.mp4'))
     .map(([key, v]) => ({
@@ -439,9 +442,9 @@ function pickBestVideoUrl(videos: any): string | null {
       height: Number(v.height || 0),
       width: Number(v.width || 0),
     }))
-    .sort((a, b) => b.height - a.height || b.width - a.width);
+    .sort((a, b) => score(b.url) - score(a.url) || b.height - a.height || b.width - a.width);
 
-  return mp4s[0]?.url || null;
+  return mp4s[0]?.url ? toPlayablePinVideoUrl(mp4s[0].url) : null;
 }
 
 function videoQualitiesFromList(videos: any): { label: string; url: string; width?: number; height?: number }[] {
@@ -451,9 +454,11 @@ function videoQualitiesFromList(videos: any): { label: string; url: string; widt
   const out: { label: string; url: string; width?: number; height?: number }[] = [];
   for (const [key, item] of Object.entries(list) as [string, any][]) {
     if (item?.url && String(item.url).includes('.mp4')) {
+      const url = toPlayablePinVideoUrl(item.url);
+      if (out.some((q) => q.url === url)) continue;
       out.push({
         label: key.replace(/^V_/, '').replace(/EXP/i, 'HD '),
-        url: item.url,
+        url,
         width: item.width,
         height: item.height,
       });
@@ -949,10 +954,14 @@ export const POST: APIRoute = async ({ request }) => {
       !origin ||
       origin.includes('pintdownload.app') ||
       origin.includes('vercel.app') ||
+      origin.includes('workers.dev') ||
+      origin.includes('pages.dev') ||
       origin.includes('localhost') ||
       origin.includes('127.0.0.1') ||
       referer.includes('pintdownload.app') ||
       referer.includes('vercel.app') ||
+      referer.includes('workers.dev') ||
+      referer.includes('pages.dev') ||
       referer.includes('localhost');
 
     if (!isAllowedOrigin) {
@@ -1282,50 +1291,44 @@ export const POST: APIRoute = async ({ request }) => {
 
             if (pinData.videos?.videoUrls && Array.isArray(pinData.videos.videoUrls)) {
               const seenUrls = new Set<string>();
-              for (const vUrl of pinData.videos.videoUrls) {
-                if (typeof vUrl === 'string' && !seenUrls.has(vUrl)) {
-                  seenUrls.add(vUrl);
-                  let label = 'SD MP4';
-                  if (vUrl.includes('1080w')) label = '1080p Full HD';
-                  else if (vUrl.includes('720w')) label = '720p HD';
-                  else if (vUrl.includes('540w')) label = '540p';
-                  else if (vUrl.includes('360w')) label = '360p';
+              for (const rawUrl of pinData.videos.videoUrls) {
+                if (typeof rawUrl !== 'string') continue;
+                const vUrl = toPlayablePinVideoUrl(rawUrl);
+                if (seenUrls.has(vUrl)) continue;
+                seenUrls.add(vUrl);
+                let label = 'SD MP4';
+                if (vUrl.includes('1080w') || vUrl.includes('/1080p/')) label = '1080p Full HD';
+                else if (vUrl.includes('720w') || vUrl.includes('/720p/')) label = '720p HD';
+                else if (vUrl.includes('540w') || vUrl.includes('/540p/')) label = '540p';
+                else if (vUrl.includes('360w') || vUrl.includes('/360p/')) label = '360p';
 
-                  videoQualities.push({ label, url: vUrl });
-                }
+                videoQualities.push({ label, url: vUrl });
               }
             }
 
             if (pinData.videos?.video_list && typeof pinData.videos.video_list === 'object') {
               const list = pinData.videos.video_list;
-              Object.keys(list).forEach((key) => {
+              for (const key of Object.keys(list)) {
                 const item = list[key];
                 if (item && item.url && String(item.url).includes('.mp4')) {
+                  const url = toPlayablePinVideoUrl(item.url);
+                  if (videoQualities.some((q) => q.url === url)) continue;
                   videoQualities.push({
                     label: key.replace('V_', '').replace('EXP', 'HD '),
-                    url: item.url,
+                    url,
                     width: item.width,
                     height: item.height,
                   });
                 }
-              });
+              }
             }
 
             if (pinData.images_236x?.url) {
               thumbnailUrl = pinData.images_236x.url;
-              imageUrl =
-                pinData.images_236x.url.replace('/236x/', '/originals/') ||
-                pinData.images_236x.url.replace('/236x/', '/736x/');
+              imageUrl = upgradePinImageUrl(pinData.images_236x.url) || pinData.images_236x.url;
             } else if (pinData.images && typeof pinData.images === 'object') {
-              const orig =
-                pinData.images.originals ||
-                pinData.images['1360x'] ||
-                pinData.images['736x'] ||
-                Object.values(pinData.images)[0];
-              if (orig && typeof orig === 'object' && 'url' in orig) {
-                imageUrl = (orig as any).url;
-                thumbnailUrl = (orig as any).url;
-              }
+              imageUrl = pickBestImageFromImagesMap(pinData.images);
+              thumbnailUrl = pickThumbFromImagesMap(pinData.images) || imageUrl;
             }
           }
         } catch (e) {
@@ -1364,15 +1367,8 @@ export const POST: APIRoute = async ({ request }) => {
                   dominantColor = pinData.dominant_color || pinData.dominantColor || null;
 
                 if (pinData.images && typeof pinData.images === 'object') {
-                  const orig =
-                    pinData.images.originals ||
-                    pinData.images['1360x'] ||
-                    pinData.images['736x'] ||
-                    Object.values(pinData.images)[0];
-                  if (orig && typeof orig === 'object' && 'url' in orig) {
-                    imageUrl = (orig as any).url;
-                    thumbnailUrl = (orig as any).url;
-                  }
+                  imageUrl = pickBestImageFromImagesMap(pinData.images);
+                  thumbnailUrl = pickThumbFromImagesMap(pinData.images) || imageUrl;
                 }
 
                 if (Array.isArray(pinData.pin_join?.annotations)) {
@@ -1410,14 +1406,16 @@ export const POST: APIRoute = async ({ request }) => {
         const hdMatch =
           videoQualities.find(
             (q) =>
-              q.label.includes('720p') ||
               q.label.includes('1080p') ||
-              q.url.includes('expMp4') ||
+              q.url.includes('/1080p/') ||
+              q.label.includes('720p') ||
+              q.url.includes('/720p/') ||
               q.url.includes('720w'),
           ) || videoQualities[0];
-        videoUrl = hdMatch.url;
+        videoUrl = toPlayablePinVideoUrl(hdMatch.url);
       } else {
-        videoUrl = metaContent(html, 'og:video') || metaContent(html, 'og:video:secure_url');
+        const ogVideo = metaContent(html, 'og:video') || metaContent(html, 'og:video:secure_url');
+        videoUrl = ogVideo ? toPlayablePinVideoUrl(ogVideo) : null;
       }
 
       if (!videoUrl) {
@@ -1425,7 +1423,7 @@ export const POST: APIRoute = async ({ request }) => {
           html.match(/https:\/\/v1\.pinimg\.com\/videos\/[^\s"'\\]+\.mp4/g) ||
           html.match(/https:\/\/736x\.pinimg\.com\/videos\/[^\s"'\\]+\.mp4/g);
         if (mp4RegexMatch && mp4RegexMatch.length > 0) {
-          videoUrl = mp4RegexMatch[0];
+          videoUrl = toPlayablePinVideoUrl(mp4RegexMatch[0]);
         }
       }
 

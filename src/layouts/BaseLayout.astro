@@ -79,7 +79,12 @@ const organizationSchema = {
   '@id': `${absoluteUrl('/')}#organization`,
   name: BRAND.name,
   url: absoluteUrl('/'),
-  logo: absoluteUrl('/images/logo.png'),
+  description: BRAND.description,
+  logo: {
+    '@type': 'ImageObject',
+    url: absoluteUrl('/images/logo.png'),
+  },
+  email: BRAND.email.support,
   sameAs: ['https://github.com/kunalsiyag', 'https://x.com/pintdownload'],
 };
 
@@ -126,12 +131,14 @@ const mobileNav = [
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={BRAND.name} />
     {noindex ? (
       <meta name="robots" content="noindex, nofollow" />
     ) : (
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     )}
     <link rel="canonical" href={currentCanonical} />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href={absoluteUrl('/sitemap.xml')} />
     {/* Only declare real locale URLs. Fake multi-locale hreflang pointing at English hurts SEO. */}
     <link rel="alternate" hreflang="en" href={currentCanonical} />
     <link rel="alternate" hreflang="x-default" href={currentCanonical} />
@@ -145,6 +152,7 @@ const mobileNav = [
     <link rel="search" type="application/opensearchdescription+xml" title={BRAND.name} href="/opensearch.xml" />
 
     <meta property="og:site_name" content={BRAND.name} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={currentCanonical} />
     <meta property="og:title" content={title} />
@@ -155,6 +163,7 @@ const mobileNav = [
     <meta property="og:image:alt" content={title} />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pintdownload" />
     <meta name="twitter:url" content={currentCanonical} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

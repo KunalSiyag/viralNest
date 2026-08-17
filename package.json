@@ -1,5 +1,5 @@
 {
-  "name": "temp-astro",
+  "name": "pintdownload",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -11,14 +11,18 @@
     "postbuild": "python3 scripts/seo_health_check.py",
     "test": "node tests/seo-invariants.test.mjs",
     "test:seo-build": "python3 scripts/verify_seo_build_artifacts.py",
-    "preview": "astro preview",
+    "preview": "astro build && node -e \"require('fs').writeFileSync('dist/.assetsignore','_worker.js\\n_routes.json\\n')\" && wrangler dev",
+    "deploy": "astro build && node -e \"require('fs').writeFileSync('dist/.assetsignore','_worker.js\\n_routes.json\\n')\" && wrangler deploy",
+    "deploy:prod": "npm run deploy",
+    "cf:login": "wrangler login",
+    "cf:whoami": "wrangler whoami",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.13",
     "@astrojs/node": "^9.5.5",
     "@astrojs/react": "^5.0.7",
     "@astrojs/tailwind": "^6.0.2",
-    "@astrojs/vercel": "^8.2.11",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.18.2",
@@ -26,7 +30,8 @@
     "lucide-react": "^1.17.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "tailwindcss": "^3.4.19"
+    "tailwindcss": "^3.4.19",
+    "wrangler": "^4.59.2"
   },
   "devDependencies": {
     "@types/jszip": "^3.4.0"

@@ -1,0 +1,39 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pintdownload",
+  "compatibility_date": "2025-05-05",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": true,
+  "preview_urls": true,
+  "main": "dist/_worker.js/index.js",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    // Default "auto-trailing-slash" 307s /about → /about/ while canonicals + sitemap
+    // use no slash. That loop is why GSC lists money pages as "Discovered – not indexed".
+    "html_handling": "drop-trailing-slash"
+    // After deploy, in Cloudflare dashboard also set:
+    // 1) SSL/TLS → Always Use HTTPS = On (HTTP currently serves 200).
+    // 2) Rules → Redirects: www.pintdownload.app/* → https://pintdownload.app/${1} (301).
+    // Workers _redirects cannot match on hostname.
+  },
+  // Astro sessions binding (app does not use sessions; required by adapter defaults).
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "bb6408e9b56e457e9df7782970831caa"
+    }
+  ],
+  // Zone routes (same account as pintdownload.app). Prefer routes over "Custom domain"
+  // when the UI only offers "Add site". Patterns cover apex + www.
+  "routes": [
+    { "pattern": "pintdownload.app", "zone_name": "pintdownload.app" },
+    { "pattern": "pintdownload.app/*", "zone_name": "pintdownload.app" },
+    { "pattern": "www.pintdownload.app", "zone_name": "pintdownload.app" },
+    { "pattern": "www.pintdownload.app/*", "zone_name": "pintdownload.app" }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

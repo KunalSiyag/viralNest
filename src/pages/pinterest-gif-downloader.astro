@@ -1,35 +1,82 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloaderForm from '../components/DownloaderForm';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
 
-const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Pinterest GIF Downloader",
-  "operatingSystem": "All",
-  "applicationCategory": "MultimediaApplication",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-};
+const path = '/pinterest-gif-downloader';
+const pageUrl = absoluteUrl(path);
+const title = 'Pinterest GIF Downloader — Save Animated GIFs Free';
+const description =
+  'Download GIFs from Pinterest without losing animation. Paste a public GIF pin and save the original looping file — no login, no watermark, phone or desktop.';
+
+const steps = [
+  {
+    title: 'Open the GIF pin',
+    body: 'Confirm it loops like a GIF (often no audio and no timeline scrubber). A real MP4 video belongs on the video tool instead.',
+  },
+  {
+    title: 'Copy the pin link',
+    body: 'Share → Copy link, or copy a URL with <code>/pin/</code>. Short <code>pin.it</code> links work too.',
+  },
+  {
+    title: 'Paste and save the GIF',
+    body: 'Paste above, extract, then download. Open the file in a browser or Photos app that plays animation — some galleries freeze on the first frame.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How do I download a GIF from Pinterest?',
+    a: 'Copy the public GIF pin URL, paste it into this Pinterest GIF downloader, extract, and save the .gif file. Do not use the video tool first if the pin has no real MP4 stream.',
+  },
+  {
+    q: 'Why did my Pinterest GIF download as a photo?',
+    a: 'Some “moving” pins are still images, Idea Pin covers, or tools that only grab a poster frame. Use this GIF page, or read why a video sometimes saves as a photo.',
+  },
+  {
+    q: 'Is this different from Pinterest to MP4?',
+    a: 'Yes. This page keeps animated GIFs as GIFs. Use Pinterest to MP4 or the video downloader when you need a real MP4 with a duration bar.',
+  },
+  {
+    q: 'Do I need a Pinterest account?',
+    a: 'No. Public GIF pins only. Private or secret pins cannot be extracted.',
+  },
+  {
+    q: 'Will the GIF stay animated in my gallery?',
+    a: 'Most Android galleries play GIFs. Some iOS views show the first frame until you open the file. Try Safari or a GIF-capable app if it looks frozen.',
+  },
+];
+
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest GIF Downloader — PintDownload',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to download a GIF from Pinterest',
+    description: 'Copy a public GIF pin, paste it into PintDownload, and save the animated file.',
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
+  }),
+  faqSchema(faqs),
+];
 ---
 
-<BaseLayout
-  title="Pinterest GIF Downloader — Save Animated GIFs in HD Free"
-  description="Download animated GIFs from Pinterest in high quality original format. Save fast to gallery on iPhone, Android, PC, or Mac with no watermark."
-  jsonLd={webAppSchema}
-  fullBleed
->
-  <!-- Hero card with curved background image -->
+<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
   <section
     class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-4 sm:mb-6 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-6 sm:py-14 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
     aria-labelledby="hero-heading"
   >
-    <!-- Light theme hero background -->
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
       style="background-image: url('/images/hero_background.webp');"
       aria-hidden="true"
     />
-    <!-- Dark theme hero background -->
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
       style="background-image: url('/images/hero_background_dark.webp');"
@@ -48,34 +95,36 @@ const webAppSchema = {
       >
         Pinterest <span class="text-[#E11D48]">GIF Downloader</span>
       </h1>
-
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+        Save animated Pinterest GIFs — keep the loop, skip the still-frame surprise.
+      </p>
       <div class="w-full max-w-4xl">
-        <DownloaderForm client:load />
+        <DownloaderForm client:load variant="image" />
       </div>
     </div>
   </section>
 
   <article class="flex flex-col items-center text-center w-full max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
-    <!-- SEO Intro & Subtitle Banner -->
-    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-6 text-center">
+    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-8 text-center">
       <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/40 text-[#E11D48] text-xs font-bold mb-3 border border-red-200/80 dark:border-red-900/40 shadow-sm">
         Free Animated GIF Downloader
       </div>
-      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-3 leading-relaxed">
-        Download high-speed animated GIFs posted on Pinterest directly to your phone or computer.
-      </p>
-      <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-        Works with animated pin URLs. Public GIF pins only.
+      <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
+        Searching for <strong class="text-slate-900 dark:text-white">gif download Pinterest</strong> or
+        <strong class="text-slate-900 dark:text-white">download GIF from Pinterest</strong>?
+        This tool extracts the public animated file instead of a static JPG cover.
       </p>
     </div>
-    <!-- Info Box -->
-    <div class="mt-2 w-full max-w-3xl text-left bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">How to Save GIFs from Pinterest?</h2>
-      <ol class="space-y-3 text-slate-600 dark:text-slate-400 text-sm font-medium">
-        <li>1. Copy the animated GIF Pin URL from the Pinterest app or site.</li>
-        <li>2. Paste the link into the box above and tap Download.</li>
-        <li>3. Save the GIF file straight to your gallery or camera roll.</li>
-      </ol>
-    </div>
+
+    <HowToSteps
+      title="How to save GIFs from Pinterest"
+      intro="Three steps. Public GIF pins only — no account required."
+      exampleUrl="https://pin.it/…"
+      exampleLabel="GIF pin link"
+      steps={steps}
+      stripe={true}
+    />
+    <FaqSection items={faqs} title="Pinterest GIF download FAQs" />
+    <RelatedTools currentPath={path} />
   </article>
 </BaseLayout>
