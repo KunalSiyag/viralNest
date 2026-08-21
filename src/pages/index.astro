@@ -14,7 +14,7 @@ const path = '/';
 const pageUrl = absoluteUrl('/');
 const title = 'Pinterest Downloader — Free Video, Photo & GIF | PintDownload';
 const description =
-  'Free Pinterest download online. Save public videos as MP4, photos, GIFs, boards, profiles, and HD profile pictures — no login, phone or desktop.';
+  'Free Pinterest downloader online. Save public videos as MP4, photos, GIFs, boards, and profiles in HD — no login or watermark, on any phone or desktop.';
 
 const faqs = [
   {
@@ -101,44 +101,31 @@ const jsonLd = [
 ---
 
 <BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
-  <!-- Hero card with background image + vertical centering & maximum mobile width -->
+  <!-- Hero card: calm, scannable, above-the-fold next step visible -->
   <section
-    class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[85vh] sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-8 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
+    class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-6 sm:mb-8 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-[68svh] sm:min-h-[64svh] flex flex-col justify-center items-center py-12 sm:py-16 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
     aria-labelledby="hero-heading"
   >
-    <!-- Light theme hero background -->
+    <!-- Light theme hero background (soft, low-opacity so text stays primary) -->
     <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden opacity-90 transition-all duration-300"
+      class="absolute inset-0 bg-no-repeat dark:hidden opacity-40"
       style="background-image: url('/images/hero_background.webp'); background-size: cover; background-position: center center;"
       aria-hidden="true"
     />
     <!-- Dark theme hero background -->
     <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block opacity-90 transition-all duration-300"
+      class="absolute inset-0 bg-no-repeat hidden dark:block opacity-30"
       style="background-image: url('/images/hero_background_dark.webp'); background-size: cover; background-position: center center;"
       aria-hidden="true"
     />
     <div
-      class="absolute inset-0 bg-gradient-to-b from-white/60 via-white/75 to-white/95 dark:from-ink-950/70 dark:via-ink-950/85 dark:to-ink-950/95"
+      class="absolute inset-0 bg-gradient-to-b from-white/85 via-white/85 to-white dark:from-ink-950/90 dark:via-ink-950/90 dark:to-ink-950"
       aria-hidden="true"
     />
 
-    <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-6 sm:pt-10 pb-6 sm:pb-8 w-full my-auto">
-      {/* Mobile Floating Pin Preview Badges */}
-      <div class="flex lg:hidden items-center justify-center gap-2 mb-4">
-        <div class="flex -space-x-2 overflow-hidden p-1">
-          <img src="/images/side_pin_1.jpg" alt="Pinterest decor pin thumbnail" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" />
-          <img src="/images/side_pin_2.jpg" alt="Pinterest travel pin thumbnail" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" />
-          <img src="/images/side_pin_3.jpg" alt="Pinterest food pin thumbnail" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" />
-          <img src="/images/side_pin_4.jpg" alt="Pinterest fashion pin thumbnail" class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" />
-        </div>
-        <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 bg-white/80 dark:bg-slate-900/80 px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-sm">
-          Viral Pin Saver
-        </span>
-      </div>
-
+    <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-4 sm:pt-8 pb-6 sm:pb-8 w-full my-auto">
       <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 dark:bg-ink-900/90 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40 shadow-sm backdrop-blur-md">
-        Free · HD MP4 · Photos · GIFs · Boards &amp; profiles
+        Free forever · No login required
       </div>
 
       <h1
@@ -149,17 +136,33 @@ const jsonLd = [
         Free <span class="text-[#E11D48]">Pinterest Downloader</span>
       </h1>
 
-      <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-8 leading-relaxed">
-        Paste a public Pinterest link and save <strong class="text-slate-900 dark:text-white">videos as MP4</strong>,
-        photos, GIFs, carousels, or full <strong class="text-slate-900 dark:text-white">board &amp; profile ZIPs</strong>
-        — free, no account, no watermark from us.
+      <p class="text-slate-700 dark:text-slate-300 text-sm sm:text-base lg:text-lg max-w-2xl mb-6 sm:mb-7 leading-relaxed">
+        Paste any public Pinterest link to save <strong class="text-slate-900 dark:text-white">videos as HD MP4</strong>,
+        photos in original quality, GIFs, or entire <strong class="text-slate-900 dark:text-white">boards &amp; profiles as one ZIP</strong>
+        — right on your phone or desktop.
       </p>
 
       <div class="w-full max-w-3xl">
         <DownloaderForm client:load variant="hub" layout="hero" />
       </div>
 
-      <p class="mt-4 text-xs text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
+      <!-- Scannable capability checks (replaces cramped feature pill) -->
+      <ul class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+        <li class="inline-flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0 text-[#E11D48]" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          MP4 videos &amp; photos
+        </li>
+        <li class="inline-flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0 text-[#E11D48]" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          GIFs &amp; carousels
+        </li>
+        <li class="inline-flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0 text-[#E11D48]" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          Boards &amp; profiles as ZIP
+        </li>
+      </ul>
+
+      <p class="mt-3 text-xs text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
         Works with <code class="text-[11px] bg-white/80 dark:bg-ink-900/80 px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-800">/pin/</code>,
         <code class="text-[11px] bg-white/80 dark:bg-ink-900/80 px-1.5 py-0.5 rounded border border-slate-200/60 dark:border-slate-800">pin.it</code>,
         boards, and profiles. Public media only.
