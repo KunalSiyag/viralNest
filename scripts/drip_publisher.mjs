@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { submitIndexNow, pingAggregators } from './lib/announce.mjs';
 
 const POSTS_DIR = path.join(process.cwd(), 'content', 'posts');
 
@@ -80,23 +81,24 @@ async function publishToWordPressXMLRPC(cleanDomain, username, password, post) {
       const match = text.match(/<string>(\d+)<\/string>/) || text.match(/<int>(\d+)<\/int>/);
       const postId = match ? match[1] : 'created';
       console.log(`✅ Successfully published to WordPress via XML-RPC! Post ID: ${postId}`);
-      return true;
+      const postUrl = /^\d+$/.test(postId) ? `https://${cleanDomain}/?p=${postId}` : null;
+      return { ok: true, url: postUrl };
     } else {
       const faultMatch = text.match(/<faultString><string>(.*?)<\/string><\/faultString>/s);
       const errReason = faultMatch ? faultMatch[1].trim() : text.substring(0, 150);
       console.error(`⚠️ XML-RPC endpoint (${url}) returned Error: ${errReason}`);
-      return false;
+      return { ok: false, url: null };
     }
   } catch (err) {
     console.error(`⚠️ XML-RPC request error for ${url}:`, err.message);
-    return false;
+    return { ok: false, url: null };
   }
 }
 
 async function publishToWordPress(post) {
   if (!WP_SITE_URL || !WP_USERNAME || !WP_APP_PASSWORD) {
     console.log('⚠️ Skipping WordPress publishing: WP credentials missing from environment (WP_SITE_URL, WP_USERNAME, or WP_APP_PASSWORD).');
-    return false;
+    return { ok: false, url: null };
   }
 
   // Extract clean hostname ONLY (e.g. pinmediahub.wordpress.com) even if user pasted full path
@@ -106,9 +108,11 @@ async function publishToWordPress(post) {
 
   // 1. First try XML-RPC (most reliable on free WordPress.com subdomains)
   console.log(`📡 Trying WordPress XML-RPC publishing for ${cleanDomain}...`);
-  if (await publishToWordPressXMLRPC(cleanDomain, WP_USERNAME.trim(), rawPass, post)) return true;
+  const xmlRpcResult = await publishToWordPressXMLRPC(cleanDomain, WP_USERNAME.trim(), rawPass, post);
+  if (xmlRpcResult.ok) return xmlRpcResult;
   if (rawPass !== strippedPass) {
-    if (await publishToWordPressXMLRPC(cleanDomain, WP_USERNAME.trim(), strippedPass, post)) return true;
+    const retry = await publishToWordPressXMLRPC(cleanDomain, WP_USERNAME.trim(), strippedPass, post);
+    if (retry.ok) return retry;
   }
 
   // 2. Fallback to WordPress REST APIs
@@ -152,8 +156,9 @@ async function publishToWordPress(post) {
 
         if (res.ok) {
           const data = await res.json();
-          console.log(`✅ Successfully published to WordPress! Post ID: ${data.id || data.ID}, Link: ${data.link || data.URL}`);
-          return true;
+          const postUrl = data.link || data.URL || null;
+          console.log(`✅ Successfully published to WordPress! Post ID: ${data.id || data.ID}, Link: ${postUrl}`);
+          return { ok: true, url: postUrl };
         } else {
           const errText = await res.text();
           const cleanErr = cleanErrorMessage(errText);
@@ -166,7 +171,7 @@ async function publishToWordPress(post) {
   }
 
   console.error(`❌ Failed to publish to WordPress across XML-RPC and REST endpoints.`);
-  return false;
+  return { ok: false, url: null };
 }
 
 const BLOGGER_CLIENT_ID = process.env.BLOGGER_CLIENT_ID;
@@ -207,7 +212,7 @@ async function publishToBlogger(post) {
 
   if (!BLOGGER_BLOG_ID || !activeToken) {
     console.log('⚠️ Skipping Blogger API publishing: BLOGGER_BLOG_ID or valid token missing from environment.');
-    return false;
+    return { ok: false, url: null };
   }
 
   const endpoint = `https://www.googleapis.com/blogger/v3/blogs/${BLOGGER_BLOG_ID}/posts/`;
@@ -231,16 +236,16 @@ async function publishToBlogger(post) {
     if (res.ok) {
       const data = await res.json();
       console.log(`✅ Successfully published to Blogger! Post ID: ${data.id}, URL: ${data.url}`);
-      return true;
+      return { ok: true, url: data.url || null };
     } else {
       const errText = await res.text();
       const cleanErr = cleanErrorMessage(errText);
       console.error(`❌ Blogger publish failed (Status ${res.status}): ${cleanErr}`);
-      return false;
+      return { ok: false, url: null };
     }
   } catch (err) {
     console.error(`❌ Blogger publish error:`, err.message);
-    return false;
+    return { ok: false, url: null };
   }
 }
 
@@ -276,14 +281,29 @@ async function runDripPublisher() {
   const wpConfigured = Boolean(WP_SITE_URL && WP_USERNAME && WP_APP_PASSWORD);
   const bloggerConfigured = Boolean(BLOGGER_BLOG_ID && BLOGGER_API_TOKEN);
 
-  const wpSuccess = await publishToWordPress(targetPost);
-  const bloggerSuccess = await publishToBlogger(targetPost);
+  const wpResult = await publishToWordPress(targetPost);
+  const bloggerResult = await publishToBlogger(targetPost);
 
-  if (wpSuccess || bloggerSuccess) {
+  if (wpResult.ok || bloggerResult.ok) {
     targetPost.published = true;
     targetPost.publishedAt = new Date().toISOString();
     fs.writeFileSync(targetPostFile, JSON.stringify(targetPost, null, 2), 'utf-8');
     console.log(`💾 Updated ${path.basename(targetPostFile)} status to published: true`);
+
+    const publishedUrls = [wpResult.url, bloggerResult.url].filter(Boolean);
+    try {
+      if (publishedUrls.length) {
+        await submitIndexNow(publishedUrls, targetPost.title);
+      }
+      for (const postUrl of publishedUrls) {
+        const origin = new URL(postUrl).origin;
+        const feedPath = origin.includes('blogspot') ? '/feeds/posts/default' : '/feed/';
+        await pingAggregators({ title: targetPost.title, url: origin, rss: `${origin}${feedPath}` });
+      }
+      console.log('📣 Discovery pings sent (IndexNow + RSS aggregators).');
+    } catch (err) {
+      console.warn(`⚠️ Discovery announcement failed (non-fatal): ${err.message}`);
+    }
   } else if (wpConfigured || bloggerConfigured) {
     console.error('❌ Failed to publish to configured platforms. Check API credentials in GitHub secrets.');
     process.exit(1);

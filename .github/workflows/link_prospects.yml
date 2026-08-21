@@ -1,0 +1,55 @@
+name: 🔗 Weekly Link Prospect Scanner
+
+on:
+  schedule:
+    # Mondays 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scan-prospects:
+    name: Scan Reddit & HN for Link Opportunities
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 🔍 Run Link Prospect Scanner
+        run: node scripts/link_ops.mjs --days 7 --limit 10
+
+      - name: 💾 Commit Updated Prospect CSV
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/data/
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(link-ops): weekly prospect scan [skip ci]"
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin main; then
+                break
+              fi
+              if [ "$attempt" -eq 3 ]; then
+                echo "❌ Failed to push link-ops updates after $attempt attempts."
+                exit 1
+              fi
+              echo "⚠️ Push attempt $attempt failed due to concurrent updates. Retrying..."
+              sleep 10
+            done
+          else
+            echo "No new link opportunities this week."
+          fi
