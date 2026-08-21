@@ -3,7 +3,8 @@
   "name": "pintdownload",
   "compatibility_date": "2025-05-05",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "workers_dev": true,
+  // Avoid a second indexable origin (pintdownload.dazzbuilds.workers.dev).
+  "workers_dev": false,
   "preview_urls": true,
   "main": "dist/_worker.js/index.js",
   "assets": {
@@ -12,11 +13,10 @@
     "not_found_handling": "404-page",
     // Default "auto-trailing-slash" 307s /about → /about/ while canonicals + sitemap
     // use no slash. That loop is why GSC lists money pages as "Discovered – not indexed".
+    // Do NOT set run_worker_first=true: static HTML would invoke the Worker on every
+    // hit and kill the ~80% cache-hit / low-invocation profile. Host 301s live in
+    // zone Always Use HTTPS + Single Redirect (www → apex).
     "html_handling": "drop-trailing-slash"
-    // After deploy, in Cloudflare dashboard also set:
-    // 1) SSL/TLS → Always Use HTTPS = On (HTTP currently serves 200).
-    // 2) Rules → Redirects: www.pintdownload.app/* → https://pintdownload.app/${1} (301).
-    // Workers _redirects cannot match on hostname.
   },
   // Astro sessions binding (app does not use sessions; required by adapter defaults).
   "kv_namespaces": [

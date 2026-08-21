@@ -1,35 +1,17 @@
 import { defineMiddleware } from 'astro:middleware';
-
-const APEX_HOST = 'pintdownload.app';
+import { hostRedirectUrl } from './lib/host-redirect';
 
 /**
- * Host + protocol + slash consolidation for requests that hit the Worker
- * (API + any run_worker_first paths). Static HTML slash policy is owned by
- * wrangler `assets.html_handling = drop-trailing-slash`.
+ * Backup host/protocol/slash 301s for SSR/API routes that go through Astro.
+ * Prerendered HTML is redirected in `src/worker.ts` (this middleware never
+ * runs for static assets — the adapter serves them before `app.render`).
  */
 export const onRequest = defineMiddleware((context, next) => {
-  // Never rewrite during static prerender or on preview/dev hosts.
+  // Skip build-time prerender so `/about/` file output is not 301'd away.
   if (context.isPrerendered) return next();
-
-  const url = new URL(context.request.url);
-  const host = url.hostname.toLowerCase().replace(/\.$/, '');
-  if (host !== APEX_HOST && host !== `www.${APEX_HOST}`) return next();
-
-  let changed = false;
-
-  if (url.protocol === 'http:') {
-    url.protocol = 'https:';
-    changed = true;
+  const location = hostRedirectUrl(context.request.url);
+  if (location) {
+    return context.redirect(location, 301);
   }
-
-  if (host === `www.${APEX_HOST}`) {
-    url.hostname = APEX_HOST;
-    changed = true;
-  }
-
-  if (changed) {
-    return context.redirect(url.toString(), 301);
-  }
-
   return next();
 });

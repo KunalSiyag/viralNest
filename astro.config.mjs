@@ -13,6 +13,9 @@ export default defineConfig({
   output: 'static',
   adapter: cloudflare({
     imageService: 'compile',
+    workerEntryPoint: {
+      path: 'src/worker.ts',
+    },
     platformProxy: {
       enabled: true,
     },

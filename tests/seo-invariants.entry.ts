@@ -5,6 +5,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { absoluteUrl, normalizeCanonical } from '../src/lib/urls';
+import { hostRedirectUrl } from '../src/lib/host-redirect';
 import { softwareAppSchema, SITEMAP_ROUTES, faqSchema, howToSchema } from '../src/lib/seo';
 import {
   isMediaContentType,
@@ -62,6 +63,36 @@ describe('absoluteUrl / normalizeCanonical', () => {
       normalizeCanonical('http://www.pintdownload.app/blog?cat=Guide#x'),
       'https://pintdownload.app/blog',
     );
+  });
+});
+
+describe('hostRedirectUrl', () => {
+  it('301s http, www, and trailing slash to https apex', () => {
+    assert.equal(
+      hostRedirectUrl('http://pintdownload.app/'),
+      'https://pintdownload.app/',
+    );
+    assert.equal(
+      hostRedirectUrl('https://www.pintdownload.app/pinterest-video-downloader'),
+      'https://pintdownload.app/pinterest-video-downloader',
+    );
+    assert.equal(
+      hostRedirectUrl('https://pintdownload.app/pinterest-video-downloader/'),
+      'https://pintdownload.app/pinterest-video-downloader',
+    );
+    assert.equal(
+      hostRedirectUrl('http://www.pintdownload.app/about/?ref=gsc'),
+      'https://pintdownload.app/about?ref=gsc',
+    );
+  });
+
+  it('leaves canonical https apex URLs and preview hosts alone', () => {
+    assert.equal(hostRedirectUrl('https://pintdownload.app/'), null);
+    assert.equal(
+      hostRedirectUrl('https://pintdownload.app/pinterest-video-downloader'),
+      null,
+    );
+    assert.equal(hostRedirectUrl('https://pintdownload.workers.dev/'), null);
   });
 });
 
