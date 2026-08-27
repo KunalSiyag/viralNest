@@ -12,6 +12,7 @@ import { softwareAppSchema, SITEMAP_ROUTES, faqSchema, howToSchema } from '../sr
 import {
   isMediaContentType,
   pinMediaCandidates,
+  toDownloadablePinUrl,
   toPlayablePinVideoUrl,
   toPublicPinImageUrl,
 } from '../src/lib/pin-media';
@@ -212,9 +213,21 @@ describe('pin media URL rewrites', () => {
     );
     assert.equal(
       toPlayablePinVideoUrl(
+        'https://v1.pinimg.com/videos/iht/expMp4/13/00/77/1300779bf3e1236e58e7bf9bd21a007c_720w.mp4',
+      ),
+      'https://v1.pinimg.com/videos/iht/720p/13/00/77/1300779bf3e1236e58e7bf9bd21a007c.mp4',
+    );
+    assert.equal(
+      toPlayablePinVideoUrl(
         'https://v1.pinimg.com/videos/mc/hls/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100.m3u8',
       ),
       'https://v1.pinimg.com/videos/mc/720p/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100.mp4',
+    );
+    assert.equal(
+      toDownloadablePinUrl(
+        'https://v1-c.pinimg.com/videos/iht/expMp4/13/00/77/1300779bf3e1236e58e7bf9bd21a007c_720w.mp4',
+      ),
+      'https://v1-c.pinimg.com/videos/iht/720p/13/00/77/1300779bf3e1236e58e7bf9bd21a007c.mp4',
     );
   });
 
@@ -231,6 +244,20 @@ describe('pin media URL rewrites', () => {
     assert.equal(
       video[0],
       'https://v1.pinimg.com/videos/mc/720p/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100.mp4',
+    );
+
+    const iht = pinMediaCandidates(
+      'https://v1.pinimg.com/videos/iht/expMp4/13/00/77/1300779bf3e1236e58e7bf9bd21a007c_720w.mp4',
+    );
+    assert.equal(
+      iht[0],
+      'https://v1.pinimg.com/videos/iht/720p/13/00/77/1300779bf3e1236e58e7bf9bd21a007c.mp4',
+    );
+    assert.equal(
+      iht.includes(
+        'https://v1-c.pinimg.com/videos/iht/720p/13/00/77/1300779bf3e1236e58e7bf9bd21a007c.mp4',
+      ),
+      true,
     );
   });
 

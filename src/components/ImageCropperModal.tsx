@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Crop, Download, X, Check, RefreshCw } from 'lucide-react';
+import { toDownloadablePinUrl } from '../lib/pin-media';
 
 export interface ImageCropperModalProps {
   imageUrl: string;
@@ -29,7 +30,7 @@ export default function ImageCropperModal({ imageUrl, title, onClose }: ImageCro
     let isCancelled = false;
     const loadProxyImage = async () => {
       try {
-        const proxyUrl = `/api/download?url=${encodeURIComponent(imageUrl)}`;
+        const proxyUrl = `/api/download?url=${encodeURIComponent(toDownloadablePinUrl(imageUrl))}`;
         const res = await fetch(proxyUrl);
         const blob = await res.blob();
         const objectUrl = URL.createObjectURL(blob);

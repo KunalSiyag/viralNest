@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Music, Play, Pause, Download, Scissors, RefreshCw, X } from 'lucide-react';
+import { toDownloadablePinUrl } from '../lib/pin-media';
 
 export interface AudioTrimmerProps {
   audioUrl: string;
@@ -24,7 +25,7 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
     let isCancelled = false;
     const fetchAudio = async () => {
       try {
-        const proxyUrl = `/api/download?url=${encodeURIComponent(audioUrl)}`;
+        const proxyUrl = `/api/download?url=${encodeURIComponent(toDownloadablePinUrl(audioUrl))}`;
         const res = await fetch(proxyUrl);
         const arrayBuffer = await res.arrayBuffer();
         const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();

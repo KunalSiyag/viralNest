@@ -1,11 +1,18 @@
 /**
- * Pinterest CDN (Akamai) now 403s unauthenticated /originals/ images and
- * /videos/.../expMp4/ streams. Public sized variants still work:
+ * Pinterest CDN (Akamai/CloudFront) 403s unauthenticated /originals/ images
+ * and /videos/.../expMp4/ streams. Public sized variants still work:
  *   images: 1200x > 736x > 564x
  *   videos: /720p/*.mp4 and /1080p/*.mp4 (not expMp4/*_720w.mp4)
+ *
+ * Video path prefixes rotate (mc/, iht/, …). Treat any non-quality folder
+ * under /videos/ as a prefix so expMp4→720p rewrites keep working.
  */
 
 const PINIMG_HOST = /^https?:\/\/[a-z0-9.-]*\.pinimg\.com\//i;
+
+/** Optional folder before the quality dir: /videos/mc/, /videos/iht/, or /videos/. */
+const VIDEO_PREFIX =
+  /^(https?:\/\/[^/?#]+\/videos\/(?:(?!expMp4|hls|\d+p)[^/]+\/)?)/i;
 
 /** Largest image size Akamai still serves without auth. */
 export const PUBLIC_IMAGE_SIZE = '1200x';
@@ -52,14 +59,34 @@ export function toPlayablePinVideoUrl(url: string): string {
     return url.replace(/\/hls\//i, '/720p/').replace(/\.m3u8(\?|$)/i, '.mp4$1');
   }
 
-  const exp = url.match(
-    /^(https?:\/\/[^/?#]+\/videos\/(?:mc\/)?)expMp4\/(.+)_(\d+)w\.mp4(\?.*)?$/i,
-  );
-  if (exp) {
-    return `${exp[1]}${exp[3]}p/${exp[2]}.mp4${exp[4] || ''}`;
+  const prefix = url.match(VIDEO_PREFIX)?.[1];
+  const exp = prefix
+    ? url.slice(prefix.length).match(/^expMp4\/(.+)_(\d+)w\.mp4(\?.*)?$/i)
+    : null;
+  if (prefix && exp) {
+    return `${prefix}${exp[2]}p/${exp[1]}.mp4${exp[3] || ''}`;
+  }
+
+  if (/\/expMp4\//i.test(url) && /_\d+w\.mp4/i.test(url)) {
+    return url.replace(/\/expMp4\//i, '/720p/').replace(/_(\d+)w\.mp4/i, '.mp4');
   }
 
   return url;
+}
+
+/** Image + video rewrites so the download proxy is not given a known-403 URL. */
+export function toDownloadablePinUrl(url: string): string {
+  return toPlayablePinVideoUrl(toPublicPinImageUrl(url));
+}
+
+function hostVariants(url: string): string[] {
+  if (/\/\/v1-c\.pinimg\.com\//i.test(url)) {
+    return [url, url.replace(/\/\/v1-c\.pinimg\.com\//i, '//v1.pinimg.com/')];
+  }
+  if (/\/\/v1\.pinimg\.com\//i.test(url)) {
+    return [url, url.replace(/\/\/v1\.pinimg\.com\//i, '//v1-c.pinimg.com/')];
+  }
+  return [url];
 }
 
 function uniquePinimg(urls: string[]): string[] {
@@ -95,15 +122,18 @@ export function pinMediaCandidates(url: string): string[] {
     candidates.push(imageStem.replace('/__SIZE__/', '/564x/'));
   }
 
-  const video = url.match(
-    /^(https?:\/\/[^/?#]+\/videos\/(?:mc\/)?)(?:expMp4|hls|720p|1080p|540p|360p)\/(.+?)(?:_\d+w)?\.(?:mp4|m3u8)(\?.*)?$/i,
+  const prefix = url.match(VIDEO_PREFIX)?.[1];
+  const rest = prefix ? url.slice(prefix.length) : '';
+  const videoFile = rest.match(
+    /^(?:expMp4|hls|720p|1080p|540p|360p)\/(.+?)(?:_\d+w)?\.(?:mp4|m3u8)(\?.*)?$/i,
   );
-  if (video) {
-    const [, prefix, hash, query = ''] = video;
+  if (prefix && videoFile) {
+    const hash = videoFile[1];
+    const query = videoFile[2] || '';
     candidates.push(`${prefix}1080p/${hash}.mp4${query}`);
     candidates.push(`${prefix}720p/${hash}.mp4${query}`);
     candidates.push(`${prefix}540p/${hash}.mp4${query}`);
   }
 
-  return uniquePinimg(candidates);
+  return uniquePinimg(candidates.flatMap(hostVariants));
 }

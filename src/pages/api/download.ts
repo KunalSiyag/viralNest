@@ -16,13 +16,20 @@ const FETCH_ATTEMPTS: Record<string, string>[] = [
   {
     'User-Agent': DESKTOP_UA,
     Referer: 'https://www.pinterest.com/',
+    Origin: 'https://www.pinterest.com',
     Accept: '*/*',
     'Accept-Language': 'en-US,en;q=0.9',
     'Cache-Control': 'no-cache',
   },
   {
     'User-Agent': IOS_UA,
-    Accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+    Referer: 'https://www.pinterest.com/',
+    Origin: 'https://www.pinterest.com',
+    Accept: 'video/mp4,video/*,image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
+  },
+  {
+    'User-Agent': DESKTOP_UA,
+    Accept: '*/*',
   },
 ];
 
@@ -41,7 +48,8 @@ async function fetchMedia(url: string): Promise<Response | null> {
       const res = await fetch(url, { headers, redirect: 'follow' });
       if (!res.ok || !res.body) continue;
       const contentType = res.headers.get('content-type');
-      if (!isMediaContentType(contentType)) {
+      const looksLikeFile = /\.(mp4|webm|gif|jpe?g|png|webp)(\?|$)/i.test(url);
+      if (!isMediaContentType(contentType) && !(looksLikeFile && !contentType)) {
         // Do not proxy HTML/XML error pages as "downloads".
         continue;
       }

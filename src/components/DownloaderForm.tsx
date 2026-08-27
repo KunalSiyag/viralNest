@@ -4,7 +4,7 @@ import JSZip from 'jszip';
 import ImageCropperModal from './ImageCropperModal';
 import AudioTrimmer from './AudioTrimmer';
 import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
-import { isMediaContentType } from '../lib/pin-media';
+import { isMediaContentType, toDownloadablePinUrl } from '../lib/pin-media';
 
 interface BoardPinItem {
   pin_id: string;
@@ -451,7 +451,7 @@ export default function DownloaderForm({
       .slice(0, 60) || 'pinterest';
 
   const proxyDownloadHref = (mediaUrl: string, filename: string) =>
-    `/api/download?url=${encodeURIComponent(mediaUrl)}&filename=${encodeURIComponent(filename)}`;
+    `/api/download?url=${encodeURIComponent(toDownloadablePinUrl(mediaUrl))}&filename=${encodeURIComponent(filename)}`;
 
   const saveProxyDownload = async (mediaUrl: string, filename: string) => {
     setError('');
@@ -514,7 +514,7 @@ export default function DownloaderForm({
           batch.map(async (entry) => {
             try {
               const res = await fetch(
-                `/api/download?url=${encodeURIComponent(entry.url)}&filename=${encodeURIComponent(entry.filename)}`,
+                `/api/download?url=${encodeURIComponent(toDownloadablePinUrl(entry.url))}&filename=${encodeURIComponent(entry.filename)}`,
               );
               const type = res.headers.get('content-type') || '';
               if (!res.ok || !isMediaContentType(type)) throw new Error(`HTTP ${res.status}`);
