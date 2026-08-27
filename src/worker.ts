@@ -22,6 +22,7 @@ export function createExports(manifest: SSRManifest) {
             status: 301,
             headers: {
               Location: location,
+              'Cache-Control': 'public, max-age=31536000, immutable',
               'Strict-Transport-Security': 'max-age=2592000',
             },
           });

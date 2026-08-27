@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type MouseEvent } from 'react';
-import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight, Crop, Scissors } from 'lucide-react';
+import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight, Crop, Scissors, QrCode } from 'lucide-react';
 import JSZip from 'jszip';
 import ImageCropperModal from './ImageCropperModal';
 import AudioTrimmer from './AudioTrimmer';
@@ -203,6 +203,10 @@ export default function DownloaderForm({
   const [selectedPins, setSelectedPins] = useState<Record<string, boolean>>({});
   const [mediaFilter, setMediaFilter] = useState<'all' | 'video' | 'image'>('all');
   const [savingFile, setSavingFile] = useState<string | null>(null);
+  const [qrOpen, setQrOpen] = useState(false);
+  const [qrDataUrl, setQrDataUrl] = useState('');
+  const [qrLoading, setQrLoading] = useState(false);
+  const [qrFor, setQrFor] = useState('');
 
   const triggerHaptic = () => {
     if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
@@ -219,6 +223,38 @@ export default function DownloaderForm({
   const collectionScrollRef = useRef<HTMLDivElement>(null);
   const carouselScrollRef = useRef<HTMLDivElement>(null);
 
+  const primaryMediaUrl = selectedQuality || result?.video_url || result?.image_url || '';
+
+  useEffect(() => {
+    setQrOpen(false);
+    setQrDataUrl('');
+    setQrFor('');
+  }, [result, selectedQuality]);
+
+  const toggleQrPanel = async () => {
+    const next = !qrOpen;
+    setQrOpen(next);
+    triggerHaptic();
+    if (!next || !primaryMediaUrl) return;
+    if (qrDataUrl && qrFor === primaryMediaUrl) return;
+    setQrLoading(true);
+    try {
+      const QRCode = (await import('qrcode')).default;
+      const dataUrl = await QRCode.toDataURL(primaryMediaUrl, {
+        width: 256,
+        margin: 1,
+        errorCorrectionLevel: 'M',
+        color: { dark: '#0F172A', light: '#FFFFFF' },
+      });
+      setQrDataUrl(dataUrl);
+      setQrFor(primaryMediaUrl);
+    } catch {
+      setError('Could not generate QR code. Copy the link instead.');
+    } finally {
+      setQrLoading(false);
+    }
+  };
+
   // Load download history from LocalStorage
   useEffect(() => {
     try {
@@ -231,18 +267,19 @@ export default function DownloaderForm({
     }
   }, []);
 
-  // Prefill from ?url= (bookmarklet / deep links) and optionally auto-extract
+  // Prefill from ?url= / ?link= (bookmarklet / deep links) or ?text= (PWA share target),
+  // optionally auto-extracting. Shared text may embed the link in a sentence.
   useEffect(() => {
     if (typeof window === 'undefined') return;
     try {
       const params = new URLSearchParams(window.location.search);
-      const q = params.get('url') || params.get('link');
-      if (!q) return;
-      const cleaned = q.trim();
+      const raw = params.get('url') || params.get('link') || params.get('text') || '';
+      const match = raw.match(/https?:\/\/[^\s"'<>]*(?:pinterest\.[^\s/"']*|pin\.it)[^\s"'<>]*/i);
+      const cleaned = (match ? match[0] : raw).trim();
       if (!cleaned) return;
       setUrl(cleaned);
       setMode('single');
-      if (params.get('auto') === '1' || params.get('auto') === 'true') {
+      if (match && (params.get('auto') === '1' || params.get('auto') === 'true')) {
         // Defer so state settles, then submit extract
         const t = window.setTimeout(() => {
           void extractSingle(cleaned);
@@ -1462,6 +1499,41 @@ export default function DownloaderForm({
                   </>
                 )}
               </div>
+
+              {primaryMediaUrl && (
+                <div className="mt-1">
+                  <button
+                    type="button"
+                    onClick={() => void toggleQrPanel()}
+                    aria-expanded={qrOpen}
+                    aria-controls="phone-qr-panel"
+                    className="inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#E11D48]/60 hover:text-[#E11D48] dark:hover:text-rose-300 transition-colors text-xs font-bold touch-manipulation"
+                  >
+                    <QrCode className="w-4 h-4" aria-hidden="true" />
+                    <span>{qrOpen ? 'Hide phone QR' : 'Send to phone'}</span>
+                  </button>
+                  <div
+                    id="phone-qr-panel"
+                    hidden={!qrOpen}
+                    className="mt-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex items-center gap-4"
+                  >
+                    {qrLoading ? (
+                      <div className="h-[136px] w-[136px] shrink-0 animate-pulse rounded-xl bg-slate-200 dark:bg-slate-700" aria-hidden="true" />
+                    ) : qrDataUrl ? (
+                      <img
+                        src={qrDataUrl}
+                        width="128"
+                        height="128"
+                        alt={`QR code linking to the extracted ${result.is_video ? 'video' : 'image'} file — scan to open it on your phone`}
+                        className="h-[136px] w-[136px] shrink-0 rounded-xl border border-slate-200 dark:border-slate-600 bg-white p-1"
+                      />
+                    ) : null}
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed min-w-0">
+                      Scan with your phone camera to open this file instantly — then long-press to save it to your gallery. No app or login needed.
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

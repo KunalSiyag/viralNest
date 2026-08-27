@@ -11,12 +11,11 @@
     "binding": "ASSETS",
     "directory": "./dist",
     "not_found_handling": "404-page",
-    // Default "auto-trailing-slash" 307s /about → /about/ while canonicals + sitemap
-    // use no slash. That loop is why GSC lists money pages as "Discovered – not indexed".
-    // Do NOT set run_worker_first=true: static HTML would invoke the Worker on every
-    // hit and kill the ~80% cache-hit / low-invocation profile. Host 301s live in
-    // zone Always Use HTTPS + Single Redirect (www → apex).
-    "html_handling": "drop-trailing-slash"
+    // Asset html_handling always 307s. Google will not consolidate slash URLs on 307.
+    // Send only trailing-slash paths to the Worker (src/worker.ts 301s them). Canonical
+    // no-slash HTML stays asset-first so cache/invocation stay unchanged.
+    "html_handling": "drop-trailing-slash",
+    "run_worker_first": ["/*/", "/*/*/"]
   },
   // Astro sessions binding (app does not use sessions; required by adapter defaults).
   "kv_namespaces": [

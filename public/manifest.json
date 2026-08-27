@@ -12,6 +12,51 @@
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/logo-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "shortcuts": [
+    {
+      "name": "Video Downloader",
+      "short_name": "Video",
+      "description": "Save a public Pinterest video as HD MP4.",
+      "url": "/pinterest-video-downloader",
+      "icons": [{ "src": "/images/logo-icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Board to ZIP",
+      "short_name": "Board ZIP",
+      "description": "Pack a public Pinterest board into one ZIP download.",
+      "url": "/pinterest-board-downloader",
+      "icons": [{ "src": "/images/logo-icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Profile Picture (PFP)",
+      "short_name": "PFP",
+      "description": "Extract a full-size HD Pinterest profile picture.",
+      "url": "/pinterest-profile-picture-downloader",
+      "icons": [{ "src": "/images/logo-icon.png", "sizes": "192x192" }]
     }
   ]
 }
