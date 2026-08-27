@@ -12,10 +12,12 @@
     "directory": "./dist",
     "not_found_handling": "404-page",
     // Asset html_handling always 307s. Google will not consolidate slash URLs on 307.
-    // Send only trailing-slash paths to the Worker (src/worker.ts 301s them). Canonical
-    // no-slash HTML stays asset-first so cache/invocation stay unchanged.
     "html_handling": "drop-trailing-slash",
-    "run_worker_first": ["/*/", "/*/*/"]
+    // Trailing-slash HTML → Worker (src/worker.ts 301s). Canonical no-slash HTML
+    // stays asset-first. An array disables the default "non-navigation misses go
+    // to the Worker" fallback, so SSR routes MUST be listed. Without `/api/*`,
+    // POST /api/extract hits 404-page asset serving and Cloudflare returns 405.
+    "run_worker_first": ["/api/*", "/_image", "/_server-islands/*", "/*/", "/*/*/"]
   },
   // Astro sessions binding (app does not use sessions; required by adapter defaults).
   "kv_namespaces": [

@@ -4,6 +4,8 @@
  */
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 import { absoluteUrl, normalizeCanonical } from '../src/lib/urls';
 import { hostRedirectUrl } from '../src/lib/host-redirect';
 import { softwareAppSchema, SITEMAP_ROUTES, faqSchema, howToSchema } from '../src/lib/seo';
@@ -93,6 +95,17 @@ describe('hostRedirectUrl', () => {
       null,
     );
     assert.equal(hostRedirectUrl('https://pintdownload.workers.dev/'), null);
+  });
+});
+
+describe('wrangler assets routing', () => {
+  it('runs the Worker first for /api/* so POST extract is not a static 405', () => {
+    const wrangler = fs.readFileSync(path.join(process.cwd(), 'wrangler.jsonc'), 'utf8');
+    assert.match(
+      wrangler,
+      /"run_worker_first"\s*:\s*\[[^\]]*"\/api\/\*"/s,
+      'assets.run_worker_first must list /api/* or Cloudflare serves POST /api/extract as 405',
+    );
   });
 });
 

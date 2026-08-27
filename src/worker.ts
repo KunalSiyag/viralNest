@@ -5,7 +5,9 @@ import { hostRedirectUrl } from './lib/host-redirect';
 
 /**
  * Runs before Astro's asset short-circuit so www/http/slash 301s apply to
- * prerendered HTML. Pair with wrangler `assets.run_worker_first`.
+ * prerendered HTML. Pair with wrangler `assets.run_worker_first` (must include
+ * `/api/*` — an array run_worker_first does not fall back to the Worker for
+ * unmatched POST routes, which otherwise 405 against 404-page asset serving).
  */
 export function createExports(manifest: SSRManifest) {
   const app = new App(manifest);
