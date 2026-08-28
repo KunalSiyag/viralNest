@@ -1,11 +1,10 @@
 /**
- * Pinterest CDN (Akamai/CloudFront) 403s unauthenticated /originals/ images
- * and /videos/.../expMp4/ streams. Public sized variants still work:
- *   images: 1200x > 736x > 564x
- *   videos: /720p/*.mp4 and /1080p/*.mp4 (not expMp4/*_720w.mp4)
+ * Pinterest CDN (Akamai/CloudFront) sometimes 403s unauthenticated
+ * /originals/ images and certain video paths.
  *
- * Video path prefixes rotate (mc/, iht/, …). Treat any non-quality folder
- * under /videos/ as a prefix so expMp4→720p rewrites keep working.
+ *   Images: 1200x > 736x > 564x
+ *   Videos: expMp4 and progressive (/720p, /1080p) availability rotates
+ *           per CDN prefix (mc/, iht/, …). Candidates tries both.
  */
 
 const PINIMG_HOST = /^https?:\/\/[a-z0-9.-]*\.pinimg\.com\//i;
@@ -50,25 +49,15 @@ export function toPublicPinImageUrl(url: string): string {
 }
 
 /**
- * Convert blocked HLS / expMp4 video URLs to progressive /720p (or matching height) MP4.
+ * Convert blocked HLS m3u8 playlist URLs to progressive /720p MP4.
+ * expMp4 URLs are left as-is — Pinterest CDN rotates between expMp4 and
+ * progressive being accessible; pinMediaCandidates tries both variants.
  */
 export function toPlayablePinVideoUrl(url: string): string {
   if (!url || !isPinimgUrl(url)) return url;
 
   if (/\.m3u8(\?|$)/i.test(url) && /\/hls\//i.test(url)) {
     return url.replace(/\/hls\//i, '/720p/').replace(/\.m3u8(\?|$)/i, '.mp4$1');
-  }
-
-  const prefix = url.match(VIDEO_PREFIX)?.[1];
-  const exp = prefix
-    ? url.slice(prefix.length).match(/^expMp4\/(.+)_(\d+)w\.mp4(\?.*)?$/i)
-    : null;
-  if (prefix && exp) {
-    return `${prefix}${exp[2]}p/${exp[1]}.mp4${exp[3] || ''}`;
-  }
-
-  if (/\/expMp4\//i.test(url) && /_\d+w\.mp4/i.test(url)) {
-    return url.replace(/\/expMp4\//i, '/720p/').replace(/_(\d+)w\.mp4/i, '.mp4');
   }
 
   return url;
@@ -130,9 +119,12 @@ export function pinMediaCandidates(url: string): string[] {
   if (prefix && videoFile) {
     const hash = videoFile[1];
     const query = videoFile[2] || '';
+    // Progressive variants (higher quality first)
     candidates.push(`${prefix}1080p/${hash}.mp4${query}`);
     candidates.push(`${prefix}720p/${hash}.mp4${query}`);
     candidates.push(`${prefix}540p/${hash}.mp4${query}`);
+    // Also try the expMp4 variant — Pinterest rotates which path is accessible
+    candidates.push(`${prefix}expMp4/${hash}_720w.mp4${query}`);
   }
 
   return uniquePinimg(candidates.flatMap(hostVariants));
