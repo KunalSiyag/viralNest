@@ -203,6 +203,7 @@ export default function DownloaderForm({
   const [selectedPins, setSelectedPins] = useState<Record<string, boolean>>({});
   const [mediaFilter, setMediaFilter] = useState<'all' | 'video' | 'image'>('all');
   const [savingFile, setSavingFile] = useState<string | null>(null);
+  const [downloadProgress, setDownloadProgress] = useState<{ loaded: number; total: number } | null>(null);
   const [qrOpen, setQrOpen] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState('');
   const [qrLoading, setQrLoading] = useState(false);
@@ -456,6 +457,7 @@ export default function DownloaderForm({
   const saveProxyDownload = async (mediaUrl: string, filename: string) => {
     setError('');
     setSavingFile(filename);
+    setDownloadProgress({ loaded: 0, total: 0 });
     try {
       const res = await fetch(proxyDownloadHref(mediaUrl, filename));
       const type = res.headers.get('content-type') || '';
@@ -464,7 +466,23 @@ export default function DownloaderForm({
           'Could not download this file. The pin may be private, or Pinterest is no longer serving that media URL.',
         );
       }
-      const blob = await res.blob();
+      const contentLength = res.headers.get('content-length');
+      const total = contentLength ? parseInt(contentLength, 10) : 0;
+
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error('No response body');
+
+      const chunks: Uint8Array[] = [];
+      let loaded = 0;
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+        loaded += value.byteLength;
+        setDownloadProgress({ loaded, total });
+      }
+
+      const blob = new Blob(chunks, { type: type || 'application/octet-stream' });
       const objectUrl = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = objectUrl;
@@ -477,6 +495,7 @@ export default function DownloaderForm({
       setError(err?.message || 'Download failed.');
     } finally {
       setSavingFile(null);
+      setDownloadProgress(null);
     }
   };
 
@@ -1397,39 +1416,57 @@ export default function DownloaderForm({
               <div className="mt-4 flex flex-wrap gap-3">
                 {result.is_video && (selectedQuality || result.video_url) && (
                   <>
-                    <a
-                      href={proxyDownloadHref(selectedQuality || result.video_url!, `${slugify(result.title || 'pinterest_video')}.mp4`)}
-                      download={`${slugify(result.title || 'pinterest_video')}.mp4`}
-                      onClick={(e) =>
-                        onProxyDownloadClick(
-                          e,
+                    <button
+                      type="button"
+                      disabled={!!savingFile}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        void saveProxyDownload(
                           selectedQuality || result.video_url!,
                           `${slugify(result.title || 'pinterest_video')}.mp4`,
-                        )
-                      }
-                      className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation"
+                        );
+                      }}
+                      className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation disabled:opacity-70"
                       title="Download full HD MP4 video with embedded audio sound"
                     >
-                      <Download className="w-4 h-4" />
-                      <span>Download MP4 (Video + Audio)</span>
-                    </a>
+                      {savingFile?.endsWith('.mp4') ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>{downloadProgress?.total ? `${Math.round((downloadProgress.loaded / downloadProgress.total) * 100)}%` : 'Downloading MP4…'}</span>
+                        </>
+                      ) : (
+                        <>
+                          <Download className="w-4 h-4" />
+                          <span>Download MP4 (Video + Audio)</span>
+                        </>
+                      )}
+                    </button>
                     
-                    <a
-                      href={proxyDownloadHref(selectedQuality || result.video_url!, `${slugify(result.title || 'pinterest_audio')}.mp3`)}
-                      download={`${slugify(result.title || 'pinterest_audio')}.mp3`}
-                      onClick={(e) =>
-                        onProxyDownloadClick(
-                          e,
+                    <button
+                      type="button"
+                      disabled={!!savingFile}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        void saveProxyDownload(
                           selectedQuality || result.video_url!,
                           `${slugify(result.title || 'pinterest_audio')}.mp3`,
-                        )
-                      }
-                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all text-sm shadow-md shadow-purple-500/20 active:scale-95 touch-manipulation"
+                        );
+                      }}
+                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all text-sm shadow-md shadow-purple-500/20 active:scale-95 touch-manipulation disabled:opacity-70"
                       title="Extract and download original MP3 audio stream"
                     >
-                      <Music className="w-4 h-4" />
-                      <span>Download MP3 Audio</span>
-                    </a>
+                      {savingFile?.endsWith('.mp3') ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>{downloadProgress?.total ? `${Math.round((downloadProgress.loaded / downloadProgress.total) * 100)}%` : 'Downloading MP3…'}</span>
+                        </>
+                      ) : (
+                        <>
+                          <Music className="w-4 h-4" />
+                          <span>Download MP3 Audio</span>
+                        </>
+                      )}
+                    </button>
 
                     <button
                       type="button"
