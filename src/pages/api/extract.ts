@@ -1389,7 +1389,15 @@ export const POST: APIRoute = async ({ request }) => {
               }
             }
 
-            if (pinData.images_236x?.url) {
+            const gifCandidate =
+              findGifUrlFromImages(pinData.images) ||
+              (pinData.images_orig?.url && isGifUrl(pinData.images_orig.url) ? pinData.images_orig.url : null) ||
+              (pinData.images_originals?.url && isGifUrl(pinData.images_originals.url) ? pinData.images_originals.url : null);
+
+            if (gifCandidate) {
+              imageUrl = gifCandidate;
+              thumbnailUrl = pinData.images_236x?.url || gifCandidate;
+            } else if (pinData.images_236x?.url) {
               thumbnailUrl = pinData.images_236x.url;
               imageUrl = upgradePinImageUrl(pinData.images_236x.url) || pinData.images_236x.url;
             } else if (pinData.images && typeof pinData.images === 'object') {
@@ -1507,9 +1515,6 @@ export const POST: APIRoute = async ({ request }) => {
       const htmlGifs = extractGifUrlsFromHtml(html);
       if (htmlGifs[0]) {
         imageUrl = htmlGifs[0];
-      } else if (imageUrl && !isGifUrl(imageUrl) && /gif/i.test(title || '')) {
-        const guessed = gifCandidateUrls(imageUrl)[0];
-        if (guessed) imageUrl = guessed;
       }
     }
 
@@ -1570,7 +1575,10 @@ export const POST: APIRoute = async ({ request }) => {
     const finalTags = Array.from(tagsSet).slice(0, 8);
     const colorPalette = generatePalette(dominantColor);
 
-    const isGif = !!(imageUrl && isGifUrl(imageUrl));
+    const isGif =
+      !!(imageUrl && isGifUrl(imageUrl)) ||
+      /(?:^|\b)gif(?:s|\b)/i.test(title || '') ||
+      /(?:^|\b)gif(?:s|\b)/i.test(description || '');
     const mediaItems: MediaItem[] = [];
     if (isGif && imageUrl) {
       mediaItems.push({

@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef, type MouseEvent } from 'react';
-import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight, Crop, Scissors, QrCode, ExternalLink } from 'lucide-react';
+import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight, Crop, Scissors, QrCode, ExternalLink, RefreshCw, X, Film } from 'lucide-react';
 import ImageCropperModal from './ImageCropperModal';
 import AudioTrimmer from './AudioTrimmer';
 import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
-import { gifCandidateUrls, isGifUrl, isMediaContentType, mediaFileExtension, toDownloadablePinUrl } from '../lib/pin-media';
+import { isGifUrl, isMediaContentType, mediaFileExtension, toDownloadablePinUrl } from '../lib/pin-media';
+import { classifyPinterestInput, getSuitableToolForMedia } from '../lib/pinterest-route';
+import { convertVideoToGif } from '../lib/gif-encoder';
 
 interface BoardPinItem {
   pin_id: string;
@@ -167,7 +169,18 @@ export default function DownloaderForm({
   layout?: FormLayout;
 }) {
   const isHero = layout === 'hero';
-  const copy = VARIANT_COPY[variant] || VARIANT_COPY.hub;
+  const [activeVariant, setActiveVariant] = useState<FormVariant>(variant);
+  const [routeNotice, setRouteNotice] = useState<{ badge: string; message: string; path: string } | null>(null);
+  const [gifSpeed, setGifSpeed] = useState<number>(1);
+  const [gifPlaying, setGifPlaying] = useState<boolean>(true);
+  const [convertingGif, setConvertingGif] = useState<boolean>(false);
+  const [convertProgress, setConvertProgress] = useState<{ phase: string; percent: number }>({ phase: '', percent: 0 });
+
+  useEffect(() => {
+    setActiveVariant(variant);
+  }, [variant]);
+
+  const copy = VARIANT_COPY[activeVariant] || VARIANT_COPY.hub;
   const [currentLang, setCurrentLang] = useState<LanguageCode>('en');
 
   useEffect(() => {
@@ -329,12 +342,53 @@ export default function DownloaderForm({
     }
   };
 
+  const handleUrlInput = (rawText: string) => {
+    setUrl(rawText);
+    const trimmed = rawText.trim();
+    if (!trimmed) {
+      setRouteNotice(null);
+      return;
+    }
+    const classification = classifyPinterestInput(trimmed);
+    if (classification) {
+      if (classification.type === 'board' && activeVariant !== 'board') {
+        setActiveVariant('board');
+        setRouteNotice({
+          badge: classification.badge,
+          message: 'Pinterest Board link detected — automatically switched to Board Downloader',
+          path: classification.path,
+        });
+        if (typeof window !== 'undefined' && window.history?.pushState) {
+          window.history.pushState(null, '', `${classification.path}?url=${encodeURIComponent(trimmed)}`);
+        }
+      } else if (
+        classification.type === 'profile' &&
+        activeVariant !== 'profile' &&
+        activeVariant !== 'profile-picture'
+      ) {
+        setActiveVariant('profile');
+        setRouteNotice({
+          badge: classification.badge,
+          message: 'Pinterest Profile link detected — automatically switched to Profile Downloader',
+          path: classification.path,
+        });
+        if (typeof window !== 'undefined' && window.history?.pushState) {
+          window.history.pushState(null, '', `${classification.path}?url=${encodeURIComponent(trimmed)}`);
+        }
+      }
+    }
+  };
+
   const handlePaste = async () => {
     try {
       const text = await navigator.clipboard.readText();
       if (text) {
-        if (mode === 'single') setUrl(text.trim());
-        else setBatchUrls(prev => prev ? `${prev}\n${text.trim()}` : text.trim());
+        if (mode === 'single') {
+          handleUrlInput(text);
+          triggerHaptic();
+        } else {
+          setBatchUrls(prev => prev ? `${prev}\n${text.trim()}` : text.trim());
+        }
       }
     } catch (e) {
       console.warn('Clipboard read failed:', e);
@@ -355,13 +409,64 @@ export default function DownloaderForm({
       const res = await fetch('/api/extract', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: target, ...(variant === 'profile-picture' ? { intent: 'avatar' } : {}) }),
+        body: JSON.stringify({ url: target, ...(activeVariant === 'profile-picture' ? { intent: 'avatar' } : {}) }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to extract media from Pinterest.');
       setResult(data);
       if (data.video_url) setSelectedQuality(data.video_url);
       saveToHistory(data, target);
+
+      // Smart Media-Type Auto-Routing:
+      const suitable = getSuitableToolForMedia(data);
+      if (data.is_gif && activeVariant !== 'gif') {
+        setActiveVariant('gif');
+        setRouteNotice({
+          badge: suitable.badge,
+          message: 'Looping animated GIF detected — switched to GIF Downloader suite',
+          path: suitable.path,
+        });
+        if (typeof window !== 'undefined' && window.history?.pushState) {
+          window.history.pushState(null, '', `${suitable.path}?url=${encodeURIComponent(target)}`);
+        }
+      } else if (data.is_video && !data.is_gif && activeVariant !== 'video' && activeVariant !== 'hub') {
+        setActiveVariant('video');
+        setRouteNotice({
+          badge: suitable.badge,
+          message: 'HD Video pin detected — switched to Video Downloader suite',
+          path: suitable.path,
+        });
+        if (typeof window !== 'undefined' && window.history?.pushState) {
+          window.history.pushState(null, '', `${suitable.path}?url=${encodeURIComponent(target)}`);
+        }
+      } else if (data.is_carousel && activeVariant !== 'image' && activeVariant !== 'hub') {
+        setActiveVariant('image');
+        setRouteNotice({
+          badge: suitable.badge,
+          message: `Multi-slide carousel detected (${data.media_items?.length || 0} slides) — switched to Carousel Downloader`,
+          path: suitable.path,
+        });
+      } else if (data.is_board && activeVariant !== 'board') {
+        setActiveVariant('board');
+        setRouteNotice({
+          badge: suitable.badge,
+          message: 'Pinterest Board detected — switched to Board Downloader',
+          path: suitable.path,
+        });
+        if (typeof window !== 'undefined' && window.history?.pushState) {
+          window.history.pushState(null, '', `${suitable.path}?url=${encodeURIComponent(target)}`);
+        }
+      } else if (data.is_profile && activeVariant !== 'profile' && activeVariant !== 'profile-picture') {
+        setActiveVariant('profile');
+        setRouteNotice({
+          badge: suitable.badge,
+          message: 'Pinterest Profile detected — switched to Profile Downloader',
+          path: suitable.path,
+        });
+        if (typeof window !== 'undefined' && window.history?.pushState) {
+          window.history.pushState(null, '', `${suitable.path}?url=${encodeURIComponent(target)}`);
+        }
+      }
     } catch (err: any) {
       setError(err.message || 'An error occurred. Check the Pinterest URL.');
     } finally {
@@ -493,16 +598,34 @@ export default function DownloaderForm({
   const resolvedGifUrl = (res: ExtractionResult | null): string | null => {
     if (!res) return null;
     if (res.image_url && isGifUrl(res.image_url)) return res.image_url;
-    if (res.is_gif && res.image_url) {
-      return isGifUrl(res.image_url) ? res.image_url : (gifCandidateUrls(res.image_url)[0] || res.image_url);
-    }
     const gifItem = res.media_items?.find((m) => m.type === 'gif' || isGifUrl(m.url));
-    if (gifItem?.url) return gifItem.url;
-    if (res.image_url && (res.is_gif || variant === 'gif')) {
-      const candidates = gifCandidateUrls(res.image_url);
-      if (candidates.length > 0) return candidates[0];
-    }
+    if (gifItem?.url && isGifUrl(gifItem.url)) return gifItem.url;
+    if (res.is_gif && res.image_url && isGifUrl(res.image_url)) return res.image_url;
     return null;
+  };
+
+  const handleConvertAndDownloadGif = async (videoUrl: string, filename: string) => {
+    setConvertingGif(true);
+    setError('');
+    try {
+      const proxied = proxyDownloadHref(videoUrl, 'source.mp4', true);
+      const blob = await convertVideoToGif(proxied, {
+        onProgress: (p) => setConvertProgress(p),
+      });
+      const objectUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(objectUrl);
+    } catch (err: any) {
+      setError(err?.message || 'Could not convert video to GIF. You can download the MP4 directly.');
+    } finally {
+      setConvertingGif(false);
+      setConvertProgress({ phase: '', percent: 0 });
+    }
   };
 
   const saveProxyDownload = async (mediaUrl: string, filename: string) => {
@@ -675,17 +798,27 @@ export default function DownloaderForm({
   const downloadSinglePinCompletePack = async (res: ExtractionResult) => {
     if (zipping) return;
     const vUrl = selectedQuality || res.video_url;
+    const gUrl = resolvedGifUrl(res);
     const safeTitle = slugify(res.title || res.pin_id || 'pinterest_pin');
     const entries: { url: string; filename: string }[] = [];
+
+    if (gUrl) {
+      entries.push({ url: gUrl, filename: `${safeTitle}_animation.gif` });
+    }
 
     if (vUrl) {
       entries.push({ url: vUrl, filename: `${safeTitle}_video.mp4` });
       entries.push({ url: vUrl, filename: `${safeTitle}_audio.mp3` });
     }
 
-    if (res.image_url || res.thumbnail_url) {
+    if (res.image_url && res.image_url !== gUrl) {
       entries.push({
-        url: res.image_url || res.thumbnail_url!,
+        url: res.image_url,
+        filename: `${safeTitle}_cover.jpg`,
+      });
+    } else if (res.thumbnail_url && res.thumbnail_url !== gUrl) {
+      entries.push({
+        url: res.thumbnail_url,
         filename: `${safeTitle}_cover.jpg`,
       });
     }
@@ -711,7 +844,7 @@ export default function DownloaderForm({
         <a
           href="/pinterest-gif-downloader"
           className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-black transition-all touch-manipulation shadow-xs ${
-            variant === 'gif'
+            activeVariant === 'gif'
               ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
               : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:border-red-300'
           }`}
@@ -722,7 +855,7 @@ export default function DownloaderForm({
         <a
           href="/pinterest-video-downloader"
           className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            variant === 'video'
+            activeVariant === 'video'
               ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
               : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
           }`}
@@ -733,7 +866,7 @@ export default function DownloaderForm({
         <a
           href="/pinterest-image-downloader"
           className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            variant === 'image'
+            activeVariant === 'image'
               ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
               : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
           }`}
@@ -744,7 +877,7 @@ export default function DownloaderForm({
         <a
           href="/pinterest-board-downloader"
           className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            variant === 'board'
+            activeVariant === 'board'
               ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
               : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
           }`}
@@ -755,7 +888,7 @@ export default function DownloaderForm({
         <a
           href="/pinterest-profile-picture-downloader"
           className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            variant === 'profile-picture'
+            activeVariant === 'profile-picture'
               ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
               : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
           }`}
@@ -764,6 +897,26 @@ export default function DownloaderForm({
           <span>Avatar DP</span>
         </a>
       </div>
+
+      {/* Auto-Route Alert Banner */}
+      {routeNotice && (
+        <div className="mb-4 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-red-500/10 via-rose-500/10 to-amber-500/10 dark:from-red-950/50 dark:via-rose-950/50 dark:to-amber-950/50 border border-red-200 dark:border-red-900/60 flex items-center justify-between gap-3 text-xs font-bold text-rose-900 dark:text-rose-200 animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="px-2.5 py-1 rounded-lg bg-[#E11D48] text-white text-[10px] font-black uppercase tracking-wider shrink-0 shadow-xs">
+              {routeNotice.badge}
+            </span>
+            <span className="truncate">{routeNotice.message}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setRouteNotice(null)}
+            className="p-1 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white shrink-0 transition-colors"
+            aria-label="Dismiss notice"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
 
       {/* Mode Switcher — not on hero */}
       {!isHero && copy.showBatch && (
@@ -808,7 +961,11 @@ export default function DownloaderForm({
                   type="url"
                   name="url"
                   value={url}
-                  onChange={(e) => setUrl(e.target.value)}
+                  onChange={(e) => handleUrlInput(e.target.value)}
+                  onPaste={(e) => {
+                    const text = e.clipboardData?.getData('text');
+                    if (text) handleUrlInput(text);
+                  }}
                   placeholder={activePlaceholder}
                   className="w-full h-12 sm:h-14 bg-transparent border-0 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none text-base sm:text-[1.05rem] min-w-0"
                   required
@@ -846,7 +1003,11 @@ export default function DownloaderForm({
                 type="url"
                 name="url"
                 value={url}
-                onChange={(e) => setUrl(e.target.value)}
+                onChange={(e) => handleUrlInput(e.target.value)}
+                onPaste={(e) => {
+                  const text = e.clipboardData?.getData('text');
+                  if (text) handleUrlInput(text);
+                }}
                 placeholder={activePlaceholder}
                 className="w-full h-14 pl-5 pr-24 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
                 required
@@ -1453,22 +1614,24 @@ export default function DownloaderForm({
         <div className="mt-8 p-4 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             {/* Preview Section */}
-            <div className="w-full md:w-64 aspect-square bg-slate-100 rounded-2xl overflow-hidden shrink-0 border border-slate-200 relative shadow-inner group">
+            <div className="w-full md:w-72 aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700 relative shadow-inner group">
               {showPlayer && (selectedQuality || result.video_url) ? (
                 <video
                   src={proxyDownloadHref(selectedQuality || result.video_url!, 'preview.mp4', true)}
                   controls
                   autoPlay
+                  loop
                   playsInline
                   preload="auto"
                   className="w-full h-full object-contain bg-black"
                 />
               ) : (
-                <>
+                <div className="relative w-full h-full flex items-center justify-center bg-slate-100 dark:bg-slate-800">
                   <img
                     src={resolvedGifUrl(result) || result.thumbnail_url || result.image_url}
                     alt={result.title}
-                    className="w-full h-full object-contain bg-slate-100"
+                    style={gifPlaying ? undefined : { filter: 'grayscale(25%) opacity(0.8)' }}
+                    className="w-full h-full object-contain"
                     onError={(e) => {
                       const gif = resolvedGifUrl(result);
                       if (!gif) return;
@@ -1478,7 +1641,9 @@ export default function DownloaderForm({
                       el.src = proxyDownloadHref(gif, 'preview.gif', true);
                     }}
                   />
-                  {result.is_video && (
+
+                  {/* Play video overlay if video available */}
+                  {result.is_video && !showPlayer && (
                     <button
                       type="button"
                       onClick={() => setShowPlayer(true)}
@@ -1490,30 +1655,51 @@ export default function DownloaderForm({
                       </div>
                     </button>
                   )}
-                </>
+
+                  {/* GIF Badge & Looping indicator */}
+                  {(resolvedGifUrl(result) || result.is_gif || activeVariant === 'gif') && (
+                    <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-xs text-white text-[11px] font-black border border-white/20 shadow-md pointer-events-none">
+                      <Sparkles className="w-3.5 h-3.5 text-rose-400" />
+                      <span>Looping GIF</span>
+                    </div>
+                  )}
+
+                  {/* GIF Play/Pause animation toggle */}
+                  {resolvedGifUrl(result) && (
+                    <button
+                      type="button"
+                      onClick={() => setGifPlaying(!gifPlaying)}
+                      className="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-black/75 hover:bg-black/90 text-white text-[10px] font-bold border border-white/20 transition-all shadow-md flex items-center gap-1"
+                    >
+                      {gifPlaying ? 'Freeze' : 'Play Loop'}
+                    </button>
+                  )}
+                </div>
               )}
             </div>
 
             <div className="flex flex-col flex-1 gap-3 w-full">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold w-fit border border-emerald-200">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold w-fit border border-emerald-200 dark:border-emerald-800">
                 <Check className="w-3.5 h-3.5" />{' '}
-                {resolvedGifUrl(result)
-                  ? 'Animated GIF ready'
-                  : result.is_video
-                    ? 'Video ready — HD MP4'
-                    : 'Media ready HD'}
+                {resolvedGifUrl(result) || (result.is_gif && !result.is_video)
+                  ? 'Animated GIF ready — Full loop preserved'
+                  : result.is_video && (result.is_gif || activeVariant === 'gif')
+                    ? 'Looping animation ready — GIF & MP4 available'
+                    : result.is_video
+                      ? 'Video ready — HD MP4'
+                      : 'Media ready HD'}
               </span>
 
-              <h2 className="text-xl font-bold text-slate-900 line-clamp-2 leading-snug">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug">
                 {result.title}
               </h2>
               {result.description && (
-                <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
                   {result.description}
                 </p>
               )}
 
-              {/* Quality Selector */}
+              {/* Quality Selector for videos */}
               {result.qualities && result.qualities.length > 1 && (
                 <div className="mt-1">
                   <label htmlFor="quality-select" className="text-xs text-slate-500 block mb-1.5 font-bold uppercase tracking-wider">Select Stream Quality:</label>
@@ -1521,7 +1707,7 @@ export default function DownloaderForm({
                     id="quality-select"
                     value={selectedQuality}
                     onChange={(e) => setSelectedQuality(e.target.value)}
-                    className="bg-slate-50 text-slate-900 text-sm font-semibold border border-slate-300 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#E11D48] w-full sm:w-auto"
+                    className="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-semibold border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#E11D48] w-full sm:w-auto"
                   >
                     {result.qualities.map((q, idx) => (
                       <option key={idx} value={q.url}>
@@ -1534,6 +1720,7 @@ export default function DownloaderForm({
 
               {/* Action Buttons */}
               <div className="mt-4 flex flex-wrap gap-3">
+                {/* 1. Direct Native GIF Download */}
                 {resolvedGifUrl(result) && (
                   <a
                     href={proxyDownloadHref(
@@ -1550,7 +1737,7 @@ export default function DownloaderForm({
                       )
                     }
                     className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation"
-                    title="Download the looping animated GIF"
+                    title="Download original looping animated GIF"
                   >
                     {savingFile?.endsWith('.gif') ? (
                       <>
@@ -1560,143 +1747,209 @@ export default function DownloaderForm({
                     ) : (
                       <>
                         <Download className="w-4 h-4" />
-                        <span>Download GIF</span>
+                        <span>Download Looping GIF (.gif)</span>
                       </>
                     )}
                   </a>
                 )}
 
-                {result.is_video && (selectedQuality || result.video_url) && (
-                  <>
-                    <a
-                      href={proxyDownloadHref(
+                {/* 2. Convert Video Pin to Animated GIF (for GIF downloader or video-based GIF pins) */}
+                {!resolvedGifUrl(result) && result.video_url && (result.is_gif || activeVariant === 'gif') && (
+                  <button
+                    type="button"
+                    disabled={convertingGif}
+                    onClick={() =>
+                      handleConvertAndDownloadGif(
                         selectedQuality || result.video_url!,
-                        `${slugify(result.title || 'pinterest_video')}.mp4`,
-                      )}
-                      download={`${slugify(result.title || 'pinterest_video')}.mp4`}
-                      aria-busy={savingFile?.endsWith('.mp4')}
-                      onClick={(e) =>
-                        onProxyDownloadClick(
-                          e,
-                          selectedQuality || result.video_url!,
-                          `${slugify(result.title || 'pinterest_video')}.mp4`,
-                        )
-                      }
-                      className={`inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl font-extrabold transition-all text-sm shadow-md active:scale-95 touch-manipulation ${
-                        resolvedGifUrl(result)
-                          ? 'bg-slate-800 hover:bg-slate-700 text-white shadow-slate-900/20'
-                          : 'bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-red-500/20'
-                      }`}
-                      title="Download HD MP4 video with audio"
-                    >
-                      {savingFile?.endsWith('.mp4') ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>{downloadStatusLabel() || 'Downloading MP4…'}</span>
-                        </>
-                      ) : (
-                        <>
-                          <Download className="w-4 h-4" />
-                          <span>Download MP4 (Video + Audio)</span>
-                        </>
-                      )}
-                    </a>
-                    
-                    <button
-                      type="button"
-                      disabled={!!savingFile}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        void saveProxyDownload(
-                          selectedQuality || result.video_url!,
-                          `${slugify(result.title || 'pinterest_audio')}.mp3`,
-                        );
-                      }}
-                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all text-sm shadow-md shadow-purple-500/20 active:scale-95 touch-manipulation disabled:opacity-70"
-                      title="Extract and download original MP3 audio stream"
-                    >
-                      {savingFile?.endsWith('.mp3') ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>{downloadProgress?.total ? `${Math.round((downloadProgress.loaded / downloadProgress.total) * 100)}%` : 'Downloading MP3…'}</span>
-                        </>
-                      ) : (
-                        <>
-                          <Music className="w-4 h-4" />
-                          <span>Download MP3 Audio</span>
-                        </>
-                      )}
-                    </button>
-
-                    <button
-                      type="button"
-                      disabled={zipping}
-                      onClick={() => downloadSinglePinCompletePack(result)}
-                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-extrabold transition-all text-sm shadow-md shadow-amber-500/20 active:scale-95 touch-manipulation disabled:opacity-60"
-                      title="Download MP4 Video, MP3 Sound, and HD Photo Image together in one ZIP package"
-                    >
-                      {zipping ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>Zipping Pack…</span>
-                        </>
-                      ) : (
-                        <>
-                          <Archive className="w-4 h-4" />
-                          <span>Download Pack (MP4 + MP3 + HD Image)</span>
-                        </>
-                      )}
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        triggerHaptic();
-                        setShowTrimmer(true);
-                      }}
-                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold transition-all text-sm border border-slate-700 shadow-md active:scale-95 touch-manipulation"
-                      title="Trim sound hook and save custom audio clip"
-                    >
-                      <Scissors className="w-4 h-4 text-[#E11D48]" />
-                      <span>Trim Sound Hook (MP3)</span>
-                    </button>
-                  </>
+                        `${slugify(result.title || 'pinterest_gif')}.gif`,
+                      )
+                    }
+                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation disabled:opacity-75"
+                    title="Convert and download this pin as a looping animated GIF"
+                  >
+                    {convertingGif ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>{convertProgress.phase || 'Rendering GIF…'} {convertProgress.percent ? `(${convertProgress.percent}%)` : ''}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-4 h-4" />
+                        <span>Download Animated GIF (.gif)</span>
+                      </>
+                    )}
+                  </button>
                 )}
 
-                {result.image_url && !resolvedGifUrl(result) && (
-                  <>
-                    <a
-                      href={proxyDownloadHref(
-                        result.image_url,
-                        `${slugify(result.title || 'pinterest_image')}.${mediaFileExtension(result.image_url, 'jpg')}`,
-                      )}
-                      download={`${slugify(result.title || 'pinterest_image')}.${mediaFileExtension(result.image_url, 'jpg')}`}
-                      onClick={(e) =>
-                        onProxyDownloadClick(
-                          e,
-                          result.image_url!,
-                          `${slugify(result.title || 'pinterest_image')}.${mediaFileExtension(result.image_url, 'jpg')}`,
-                        )
-                      }
-                      className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation"
-                    >
-                      <ImageIcon className="w-4 h-4 text-[#E11D48]" />
-                      <span>Download HD Image</span>
-                    </a>
+                {/* 3. Download MP4 Video */}
+                {result.is_video && (selectedQuality || result.video_url) && (
+                  <a
+                    href={proxyDownloadHref(
+                      selectedQuality || result.video_url!,
+                      `${slugify(result.title || 'pinterest_video')}.mp4`,
+                    )}
+                    download={`${slugify(result.title || 'pinterest_video')}.mp4`}
+                    aria-busy={savingFile?.endsWith('.mp4')}
+                    onClick={(e) =>
+                      onProxyDownloadClick(
+                        e,
+                        selectedQuality || result.video_url!,
+                        `${slugify(result.title || 'pinterest_video')}.mp4`,
+                      )
+                    }
+                    className={`inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl font-extrabold transition-all text-sm shadow-md active:scale-95 touch-manipulation ${
+                      resolvedGifUrl(result) || (activeVariant === 'gif' && !resolvedGifUrl(result))
+                        ? 'bg-slate-800 hover:bg-slate-700 text-white shadow-slate-900/20'
+                        : 'bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-red-500/20'
+                    }`}
+                    title="Download HD MP4 video with audio"
+                  >
+                    {savingFile?.endsWith('.mp4') ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>{downloadStatusLabel() || 'Downloading MP4…'}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Download className="w-4 h-4" />
+                        <span>Download MP4 (Video)</span>
+                      </>
+                    )}
+                  </a>
+                )}
 
-                    <button
-                      type="button"
-                      onClick={() => {
-                        triggerHaptic();
-                        setShowCropper(true);
-                      }}
-                      className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-[#E11D48] dark:text-rose-300 font-extrabold transition-all text-sm border border-rose-200 dark:border-rose-800/80 active:scale-95 touch-manipulation"
-                      title="Crop photo to 9:16 Story/Reel, 1:1 Instagram Post, or 16:9 Landscape"
-                    >
-                      <Crop className="w-4 h-4" />
-                      <span>Crop / Resize (Social Presets)</span>
-                    </button>
-                  </>
+                {/* 4. Convert video pin to GIF (secondary button when on video tool) */}
+                {result.is_video && !resolvedGifUrl(result) && activeVariant !== 'gif' && !result.is_gif && (
+                  <button
+                    type="button"
+                    disabled={convertingGif}
+                    onClick={() =>
+                      handleConvertAndDownloadGif(
+                        selectedQuality || result.video_url!,
+                        `${slugify(result.title || 'pinterest_gif')}.gif`,
+                      )
+                    }
+                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation disabled:opacity-60"
+                    title="Convert this video pin into an animated looping GIF"
+                  >
+                    {convertingGif ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>{convertProgress.phase || 'Converting…'} {convertProgress.percent ? `(${convertProgress.percent}%)` : ''}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-4 h-4 text-[#E11D48]" />
+                        <span>Save as Looping GIF</span>
+                      </>
+                    )}
+                  </button>
+                )}
+
+                {/* 5. Download MP3 Audio */}
+                {result.is_video && (selectedQuality || result.video_url) && (
+                  <button
+                    type="button"
+                    disabled={!!savingFile}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      void saveProxyDownload(
+                        selectedQuality || result.video_url!,
+                        `${slugify(result.title || 'pinterest_audio')}.mp3`,
+                      );
+                    }}
+                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all text-sm shadow-md shadow-purple-500/20 active:scale-95 touch-manipulation disabled:opacity-70"
+                    title="Extract and download original MP3 audio stream"
+                  >
+                    {savingFile?.endsWith('.mp3') ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>{downloadProgress?.total ? `${Math.round((downloadProgress.loaded / downloadProgress.total) * 100)}%` : 'Downloading MP3…'}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Music className="w-4 h-4" />
+                        <span>Download MP3 Audio</span>
+                      </>
+                    )}
+                  </button>
+                )}
+
+                {/* 6. Complete ZIP Pack */}
+                {(result.is_video || resolvedGifUrl(result) || result.is_gif) && (
+                  <button
+                    type="button"
+                    disabled={zipping}
+                    onClick={() => downloadSinglePinCompletePack(result)}
+                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-extrabold transition-all text-sm shadow-md shadow-amber-500/20 active:scale-95 touch-manipulation disabled:opacity-60"
+                    title="Download Looping GIF, MP4 Video, and HD Cover Image together in one ZIP package"
+                  >
+                    {zipping ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Zipping Pack…</span>
+                      </>
+                    ) : (
+                      <>
+                        <Archive className="w-4 h-4" />
+                        <span>Download Pack ({resolvedGifUrl(result) ? 'GIF + ' : ''}MP4 + Cover)</span>
+                      </>
+                    )}
+                  </button>
+                )}
+
+                {/* 7. Trim Audio Hook */}
+                {result.is_video && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      triggerHaptic();
+                      setShowTrimmer(true);
+                    }}
+                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold transition-all text-sm border border-slate-700 shadow-md active:scale-95 touch-manipulation"
+                    title="Trim sound hook and save custom audio clip"
+                  >
+                    <Scissors className="w-4 h-4 text-[#E11D48]" />
+                    <span>Trim Sound Hook (MP3)</span>
+                  </button>
+                )}
+
+                {/* 8. Download HD Cover Image */}
+                {result.image_url && (
+                  <a
+                    href={proxyDownloadHref(
+                      result.image_url,
+                      `${slugify(result.title || 'pinterest_cover')}.${mediaFileExtension(result.image_url, 'jpg')}`,
+                    )}
+                    download={`${slugify(result.title || 'pinterest_cover')}.${mediaFileExtension(result.image_url, 'jpg')}`}
+                    onClick={(e) =>
+                      onProxyDownloadClick(
+                        e,
+                        result.image_url!,
+                        `${slugify(result.title || 'pinterest_cover')}.${mediaFileExtension(result.image_url, 'jpg')}`,
+                      )
+                    }
+                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation"
+                  >
+                    <ImageIcon className="w-4 h-4 text-[#E11D48]" />
+                    <span>{resolvedGifUrl(result) || result.is_video ? 'Download Cover JPG' : 'Download HD Image'}</span>
+                  </a>
+                )}
+
+                {/* 9. Crop / Resize Tool */}
+                {result.image_url && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      triggerHaptic();
+                      setShowCropper(true);
+                    }}
+                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-[#E11D48] dark:text-rose-300 font-extrabold transition-all text-sm border border-rose-200 dark:border-rose-800/80 active:scale-95 touch-manipulation"
+                    title="Crop photo to 9:16 Story/Reel, 1:1 Instagram Post, or 16:9 Landscape"
+                  >
+                    <Crop className="w-4 h-4" />
+                    <span>Crop / Resize (Social Presets)</span>
+                  </button>
                 )}
               </div>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Clipboard, Download, ArrowUp, X } from 'lucide-react';
+import { classifyPinterestInput } from '../lib/pinterest-route';
 
 export default function StickyPasteBar() {
   const [visible, setVisible] = useState(false);
@@ -42,11 +43,16 @@ export default function StickyPasteBar() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!url.trim()) return;
+    const cleanUrl = url.trim();
+    if (!cleanUrl) return;
     triggerHaptic();
-    // Redirect to main downloader with prefilled url query
-    const targetUrl = `/?url=${encodeURIComponent(url.trim())}&auto=true`;
-    window.location.href = targetUrl;
+    const classification = classifyPinterestInput(cleanUrl);
+    const targetPath = classification?.type === 'board'
+      ? '/pinterest-board-downloader'
+      : classification?.type === 'profile'
+        ? '/pinterest-profile-downloader'
+        : '/';
+    window.location.href = `${targetPath}?url=${encodeURIComponent(cleanUrl)}&auto=true`;
   };
 
   const scrollToTop = () => {
