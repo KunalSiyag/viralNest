@@ -6,7 +6,7 @@ const bookmarkletCode = `javascript:(function(){var u=location.href;if(u.indexOf
   <div class="p-6 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6 mb-6">
       <div>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-extrabold border border-red-200 dark:border-red-900/40 mb-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-rose-700 dark:text-rose-300 text-xs font-extrabold border border-red-200 dark:border-red-900/40 mb-2">
           1-Click Power Tool
         </span>
         <h2 id="bookmarklet-heading" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
@@ -30,14 +30,15 @@ const bookmarkletCode = `javascript:(function(){var u=location.href;if(u.indexOf
     </div>
 
     <!-- Visual Bookmark Guide Banner Image -->
-    <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-sm mb-6">
+    <div class="aspect-[16/9] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-sm mb-6">
       <img
         src="/images/bookmark.webp"
         alt="How to bookmark PintDownload in Chrome: open the menu, go to Bookmarks, choose Bookmark this tab, and save to the bookmarks bar"
         width={1200}
         height={675}
-        class="w-full h-auto object-cover"
+        class="w-full h-full object-cover"
         loading="lazy"
+        decoding="async"
       />
     </div>
 
@@ -45,7 +46,7 @@ const bookmarkletCode = `javascript:(function(){var u=location.href;if(u.indexOf
     <div class="grid sm:grid-cols-3 gap-4 text-xs">
       <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
         <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-1.5">
-          <span class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-[#E11D48] flex items-center justify-center text-[11px]">1</span>
+          <span class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-rose-700 dark:text-rose-300 flex items-center justify-center text-[11px] font-bold">1</span>
           Chrome / Edge
         </h3>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -55,7 +56,7 @@ const bookmarkletCode = `javascript:(function(){var u=location.href;if(u.indexOf
 
       <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
         <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-1.5">
-          <span class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-[#E11D48] flex items-center justify-center text-[11px]">2</span>
+          <span class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-rose-700 dark:text-rose-300 flex items-center justify-center text-[11px] font-bold">2</span>
           Safari (Mac &amp; iOS)
         </h3>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -65,7 +66,7 @@ const bookmarkletCode = `javascript:(function(){var u=location.href;if(u.indexOf
 
       <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
         <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-1.5">
-          <span class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-[#E11D48] flex items-center justify-center text-[11px]">3</span>
+          <span class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-rose-700 dark:text-rose-300 flex items-center justify-center text-[11px] font-bold">3</span>
           How to Use
         </h3>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">

@@ -62,7 +62,7 @@ export default function StickyPasteBar() {
         <button
           type="button"
           onClick={() => setDismissed(true)}
-          className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
+          className="p-1.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
           aria-label="Close sticky paste bar"
         >
           <X className="w-4 h-4" />
@@ -70,11 +70,17 @@ export default function StickyPasteBar() {
 
         <form onSubmit={handleSubmit} className="flex-1 flex items-center gap-1.5 min-w-0">
           <div className="relative flex-1 min-w-0">
+            <label htmlFor="sticky-bar-url-input" className="sr-only">
+              Paste Pinterest link
+            </label>
             <input
+              id="sticky-bar-url-input"
+              name="url"
               type="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Paste Pinterest link…"
+              aria-label="Paste Pinterest link"
               className="w-full h-11 pl-3 pr-14 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-[#E11D48]"
               required
             />
@@ -82,7 +88,7 @@ export default function StickyPasteBar() {
               <button
                 type="button"
                 onClick={handlePaste}
-                className="absolute right-1 top-1/2 -translate-y-1/2 px-2 py-1 rounded-lg bg-red-950/60 text-[#E11D48] hover:bg-red-900/80 text-[10px] font-bold flex items-center gap-1 border border-red-900/40"
+                className="absolute right-1 top-1/2 -translate-y-1/2 px-2 py-1 rounded-lg bg-red-950/80 text-rose-300 hover:bg-red-900/80 text-[10px] font-bold flex items-center gap-1 border border-red-800/60"
               >
                 <Clipboard className="w-3 h-3" />
                 Paste
@@ -103,7 +109,7 @@ export default function StickyPasteBar() {
         <button
           type="button"
           onClick={scrollToTop}
-          className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors shrink-0"
+          className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white transition-colors shrink-0"
           title="Scroll to top"
           aria-label="Scroll to top"
         >

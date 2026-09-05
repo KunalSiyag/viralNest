@@ -71,7 +71,7 @@ export default function TitleGenerator() {
       >
         <div className="flex items-center justify-between gap-3 mb-6">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-2xl bg-red-100 dark:bg-red-950/60 text-[#E11D48]">
+            <div className="p-2.5 rounded-2xl bg-red-100 dark:bg-red-950/60 text-rose-700 dark:text-rose-300">
               <Cpu className="w-6 h-6" />
             </div>
             <div>
@@ -87,7 +87,7 @@ export default function TitleGenerator() {
           <button
             type="button"
             onClick={() => setShowKeyInput(!showKeyInput)}
-            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-[#E11D48] text-slate-600 dark:text-slate-400 hover:text-[#E11D48] transition-all"
+            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-rose-500 text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-all"
             title="Custom Gemini API Key"
           >
             <Key className="w-3.5 h-3.5" />
@@ -98,10 +98,12 @@ export default function TitleGenerator() {
         {/* Optional Custom API Key Input */}
         {showKeyInput && (
           <div className="mb-6 p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 animate-fadeIn">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+            <label htmlFor="gemini-api-key-input" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
               Google Gemini API Key (Optional)
             </label>
             <input
+              id="gemini-api-key-input"
+              name="apiKey"
               type="password"
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
@@ -119,10 +121,12 @@ export default function TitleGenerator() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <div className="sm:col-span-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+            <label htmlFor="seo-topic-keyword-input" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Topic or Keyword
             </label>
             <input
+              id="seo-topic-keyword-input"
+              name="keyword"
               type="text"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
@@ -135,10 +139,12 @@ export default function TitleGenerator() {
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+            <label htmlFor="seo-niche-category-select" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Niche Category
             </label>
             <select
+              id="seo-niche-category-select"
+              name="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               className="w-full px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E11D48] text-base"
@@ -182,7 +188,7 @@ export default function TitleGenerator() {
           {/* Action Bar */}
           <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-2">
-              <span className="text-xs px-2.5 py-1 rounded-full font-bold uppercase bg-red-100 dark:bg-red-950 text-[#E11D48]">
+              <span className="text-xs px-2.5 py-1 rounded-full font-bold uppercase bg-red-100 dark:bg-red-950 text-rose-700 dark:text-rose-300">
                 {result.mode === 'ai-gemini' ? 'Direct LLM Mode' : 'AI Reasoning Mode'}
               </span>
               <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">
@@ -191,7 +197,7 @@ export default function TitleGenerator() {
             </div>
             <button
               onClick={handleGenerate}
-              className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#E11D48] hover:underline"
+              className="inline-flex items-center gap-1.5 text-xs font-extrabold text-rose-700 dark:text-rose-400 hover:underline"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Regenerate Creative Ideas</span>
@@ -200,7 +206,7 @@ export default function TitleGenerator() {
 
           {/* Titles Section */}
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg">
-            <div className="flex items-center gap-2 mb-4 text-[#E11D48] font-bold">
+            <div className="flex items-center gap-2 mb-4 text-rose-600 dark:text-rose-400 font-bold">
               <FileText className="w-5 h-5" />
               <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
                 AI Generated Pin Titles
@@ -217,11 +223,11 @@ export default function TitleGenerator() {
                   </span>
                   <button
                     onClick={() => copyToClipboard(title, `title-${i}`)}
-                    className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-[#E11D48] hover:border-[#E11D48] transition-all shrink-0"
+                    className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 hover:border-rose-400 transition-all shrink-0"
                     title="Copy Title"
                   >
                     {copiedIndex === `title-${i}` ? (
-                      <Check className="w-4 h-4 text-emerald-500" />
+                       <Check className="w-4 h-4 text-emerald-500" />
                     ) : (
                       <Copy className="w-4 h-4" />
                     )}
@@ -233,7 +239,7 @@ export default function TitleGenerator() {
 
           {/* Descriptions Section */}
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg">
-            <div className="flex items-center gap-2 mb-4 text-[#E11D48] font-bold">
+            <div className="flex items-center gap-2 mb-4 text-rose-600 dark:text-rose-400 font-bold">
               <Sparkles className="w-5 h-5" />
               <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
                 AI Copywritten Pin Descriptions
@@ -250,7 +256,7 @@ export default function TitleGenerator() {
                   </p>
                   <button
                     onClick={() => copyToClipboard(desc, `desc-${i}`)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-[#E11D48] hover:border-[#E11D48] transition-all"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 hover:border-rose-400 transition-all"
                   >
                     {copiedIndex === `desc-${i}` ? (
                       <Check className="w-3.5 h-3.5 text-emerald-500" />
@@ -267,7 +273,7 @@ export default function TitleGenerator() {
           {/* Hashtags Section */}
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg">
             <div className="flex items-center justify-between gap-4 mb-4">
-              <div className="flex items-center gap-2 text-[#E11D48] font-bold">
+              <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400 font-bold">
                 <Hash className="w-5 h-5" />
                 <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
                   Targeted Hashtags

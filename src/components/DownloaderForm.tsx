@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef, type MouseEvent } from 'react';
-import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight, Crop, Scissors, QrCode } from 'lucide-react';
-import JSZip from 'jszip';
+import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight, Crop, Scissors, QrCode, ExternalLink } from 'lucide-react';
 import ImageCropperModal from './ImageCropperModal';
 import AudioTrimmer from './AudioTrimmer';
 import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
-import { isMediaContentType, toDownloadablePinUrl } from '../lib/pin-media';
+import { gifCandidateUrls, isGifUrl, isMediaContentType, mediaFileExtension, toDownloadablePinUrl } from '../lib/pin-media';
 
 interface BoardPinItem {
   pin_id: string;
@@ -18,7 +17,7 @@ interface BoardPinItem {
 
 interface MediaItem {
   index: number;
-  type: 'image' | 'video';
+  type: 'image' | 'video' | 'gif';
   url: string;
   thumbnail_url?: string;
   title?: string;
@@ -42,6 +41,7 @@ interface ExtractionResult {
   colors?: string[];
   dominant_color?: string;
   is_video: boolean;
+  is_gif?: boolean;
   is_board?: boolean;
   is_profile?: boolean;
   is_avatar_only?: boolean;
@@ -68,7 +68,7 @@ interface HistoryItem {
 }
 
 /** Intent-specific form surface for SEO tool pages */
-export type FormVariant = 'hub' | 'pin' | 'video' | 'image' | 'board' | 'profile' | 'profile-picture';
+export type FormVariant = 'hub' | 'pin' | 'video' | 'image' | 'gif' | 'board' | 'profile' | 'profile-picture';
 
 export type FormLayout = 'default' | 'hero';
 
@@ -119,6 +119,15 @@ const VARIANT_COPY: Record<
     ariaLabel: 'Pinterest image pin link',
     submitLabel: 'Download Image',
     hint: 'Saves original-resolution photos and artwork. Carousels return every slide.',
+  },
+  gif: {
+    worksLabel: 'Best for',
+    singleTab: 'GIF Pin URL',
+    showBatch: true,
+    placeholder: 'Paste GIF pin URL… https://pinterest.com/pin/… or pin.it/…',
+    ariaLabel: 'Pinterest GIF pin link',
+    submitLabel: 'Download GIF',
+    hint: 'Saves the looping animated GIF — not a still JPG of the first frame.',
   },
   board: {
     worksLabel: 'Best for',
@@ -203,7 +212,11 @@ export default function DownloaderForm({
   const [selectedPins, setSelectedPins] = useState<Record<string, boolean>>({});
   const [mediaFilter, setMediaFilter] = useState<'all' | 'video' | 'image'>('all');
   const [savingFile, setSavingFile] = useState<string | null>(null);
-  const [downloadProgress, setDownloadProgress] = useState<{ loaded: number; total: number } | null>(null);
+  const [downloadProgress, setDownloadProgress] = useState<{
+    loaded: number;
+    total: number;
+    phase: 'connecting' | 'transferring';
+  } | null>(null);
   const [qrOpen, setQrOpen] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState('');
   const [qrLoading, setQrLoading] = useState(false);
@@ -451,13 +464,51 @@ export default function DownloaderForm({
       .toLowerCase()
       .slice(0, 60) || 'pinterest';
 
-  const proxyDownloadHref = (mediaUrl: string, filename: string) =>
-    `/api/download?url=${encodeURIComponent(toDownloadablePinUrl(mediaUrl))}&filename=${encodeURIComponent(filename)}`;
+  const formatBytes = (n: number) => {
+    if (!n) return '0 B';
+    const units = ['B', 'KB', 'MB', 'GB'];
+    let i = 0;
+    let v = n;
+    while (v >= 1024 && i < units.length - 1) {
+      v /= 1024;
+      i++;
+    }
+    return `${v < 10 && i > 0 ? v.toFixed(1) : Math.round(v)}\u00a0${units[i]}`;
+  };
+
+  /** iOS Safari ignores the download attribute and navigates instead. */
+  const needsBlobDownload = () => {
+    if (typeof navigator === 'undefined') return false;
+    const ua = navigator.userAgent;
+    if (/iPad|iPhone|iPod/.test(ua)) return true;
+    if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) return true;
+    return false;
+  };
+
+  const proxyDownloadHref = (mediaUrl: string, filename: string, inline = false) => {
+    const href = `/api/download?url=${encodeURIComponent(toDownloadablePinUrl(mediaUrl))}&filename=${encodeURIComponent(filename)}`;
+    return inline ? `${href}&inline=1` : href;
+  };
+
+  const resolvedGifUrl = (res: ExtractionResult | null): string | null => {
+    if (!res) return null;
+    if (res.image_url && isGifUrl(res.image_url)) return res.image_url;
+    if (res.is_gif && res.image_url) {
+      return isGifUrl(res.image_url) ? res.image_url : (gifCandidateUrls(res.image_url)[0] || res.image_url);
+    }
+    const gifItem = res.media_items?.find((m) => m.type === 'gif' || isGifUrl(m.url));
+    if (gifItem?.url) return gifItem.url;
+    if (res.image_url && (res.is_gif || variant === 'gif')) {
+      const candidates = gifCandidateUrls(res.image_url);
+      if (candidates.length > 0) return candidates[0];
+    }
+    return null;
+  };
 
   const saveProxyDownload = async (mediaUrl: string, filename: string) => {
     setError('');
     setSavingFile(filename);
-    setDownloadProgress({ loaded: 0, total: 0 });
+    setDownloadProgress({ loaded: 0, total: 0, phase: 'connecting' });
     try {
       const res = await fetch(proxyDownloadHref(mediaUrl, filename));
       const type = res.headers.get('content-type') || '';
@@ -479,7 +530,7 @@ export default function DownloaderForm({
         if (done) break;
         chunks.push(value);
         loaded += value.byteLength;
-        setDownloadProgress({ loaded, total });
+        setDownloadProgress({ loaded, total, phase: 'transferring' });
       }
 
       const blob = new Blob(chunks, { type: type || 'application/octet-stream' });
@@ -505,8 +556,23 @@ export default function DownloaderForm({
     filename: string,
   ) => {
     if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    // Desktop: let the browser stream the file so the OS download bar moves
+    // immediately instead of looking paused while we buffer a blob.
+    if (!needsBlobDownload()) return;
     e.preventDefault();
     void saveProxyDownload(mediaUrl, filename);
+  };
+
+  const downloadStatusLabel = () => {
+    if (!savingFile || !downloadProgress) return '';
+    if (downloadProgress.phase === 'connecting' || downloadProgress.loaded === 0) {
+      return 'Connecting to Pinterest…';
+    }
+    if (downloadProgress.total > 0) {
+      const pct = Math.min(100, Math.round((downloadProgress.loaded / downloadProgress.total) * 100));
+      return `Downloading… ${formatBytes(downloadProgress.loaded)} of ${formatBytes(downloadProgress.total)} (${pct}%)`;
+    }
+    return `Downloading… ${formatBytes(downloadProgress.loaded)}`;
   };
 
   const downloadUrlsAsZip = async (
@@ -519,6 +585,7 @@ export default function DownloaderForm({
     setError('');
 
     try {
+      const JSZip = (await import('jszip')).default;
       const zip = new JSZip();
       const folderName = slugify(archiveName);
       const folder = zip.folder(folderName) || zip;
@@ -581,7 +648,7 @@ export default function DownloaderForm({
       .map((pin, idx) => {
         const mediaUrl = pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
         if (!mediaUrl) return null;
-        const ext = pin.is_video && pin.video_url ? 'mp4' : 'jpg';
+        const ext = pin.is_video && pin.video_url ? 'mp4' : mediaFileExtension(pin.image_url, 'jpg');
         return {
           url: mediaUrl,
           filename: `${String(idx + 1).padStart(2, '0')}_${slugify(pin.title || pin.pin_id)}.${ext}`,
@@ -594,7 +661,13 @@ export default function DownloaderForm({
   const downloadCarouselAsZip = async (items: MediaItem[], archiveName: string) => {
     const entries = items.map((item, idx) => ({
       url: item.url,
-      filename: `${String(idx + 1).padStart(2, '0')}_slide_${slugify(item.title || String(idx + 1))}.${item.type === 'video' ? 'mp4' : 'jpg'}`,
+      filename: `${String(idx + 1).padStart(2, '0')}_slide_${slugify(item.title || String(idx + 1))}.${
+        item.type === 'video'
+          ? 'mp4'
+          : item.type === 'gif' || isGifUrl(item.url)
+            ? 'gif'
+            : mediaFileExtension(item.url, 'jpg')
+      }`,
     }));
     return downloadUrlsAsZip(entries, archiveName);
   };
@@ -630,72 +703,67 @@ export default function DownloaderForm({
 
   return (
     <div className={`w-full mx-auto ${isHero ? 'max-w-2xl mt-0' : 'max-w-3xl mt-4'}`}>
-      {/* Intent chips — hidden on hero for a clean Pinpea-style first fold */}
-      {!isHero && (
-        <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            {copy.worksLabel}
-          </span>
-          {(variant === 'hub' || variant === 'pin' || variant === 'video' || variant === 'image') && (
-            <a
-              href="/pinterest-pin-downloader"
-              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
-                variant === 'pin'
-                  ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
-                  : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
-              }`}
-            >
-              Pin
-            </a>
-          )}
-          {(variant === 'hub' || variant === 'video') && (
-            <a
-              href="/pinterest-video-downloader"
-              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
-                variant === 'video'
-                  ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
-                  : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
-              }`}
-            >
-              Video MP4
-            </a>
-          )}
-          {(variant === 'hub' || variant === 'image') && (
-            <a
-              href="/pinterest-image-downloader"
-              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-bold transition-colors touch-manipulation ${
-                variant === 'image'
-                  ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48] font-extrabold'
-                  : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#E11D48]'
-              }`}
-            >
-              HD Image
-            </a>
-          )}
-          <a
-            href="/pinterest-board-downloader"
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
-              variant === 'board'
-                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48]'
-                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E11D48]'
-            }`}
-          >
-            <Archive className="w-3 h-3" aria-hidden />
-            Board → ZIP
-          </a>
-          <a
-            href="/pinterest-profile-downloader"
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] font-extrabold transition-colors touch-manipulation ${
-              variant === 'profile'
-                ? 'bg-red-50 dark:bg-red-950/50 border-red-200 dark:border-red-900/40 text-[#E11D48]'
-                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#E11D48]'
-            }`}
-          >
-            <User className="w-3 h-3" aria-hidden />
-            Profile → ZIP
-          </a>
-        </div>
-      )}
+      {/* Intent Switcher: Quick 1-click access to GIF, Video, Image, and Board tools */}
+      <div className="mb-3 sm:mb-4 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
+        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mr-1">
+          {copy.worksLabel}:
+        </span>
+        <a
+          href="/pinterest-gif-downloader"
+          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-black transition-all touch-manipulation shadow-xs ${
+            variant === 'gif'
+              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
+              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:border-red-300'
+          }`}
+        >
+          <Sparkles className="w-3.5 h-3.5 text-[#E11D48]" aria-hidden="true" />
+          <span>GIF Downloader</span>
+        </a>
+        <a
+          href="/pinterest-video-downloader"
+          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
+            variant === 'video'
+              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
+              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
+          }`}
+        >
+          <Play className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
+          <span>Video (MP4)</span>
+        </a>
+        <a
+          href="/pinterest-image-downloader"
+          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
+            variant === 'image'
+              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
+              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
+          }`}
+        >
+          <ImageIcon className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
+          <span>HD Photo</span>
+        </a>
+        <a
+          href="/pinterest-board-downloader"
+          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
+            variant === 'board'
+              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
+              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
+          }`}
+        >
+          <Archive className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
+          <span>Board ZIP</span>
+        </a>
+        <a
+          href="/pinterest-profile-picture-downloader"
+          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
+            variant === 'profile-picture'
+              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
+              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
+          }`}
+        >
+          <User className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
+          <span>Avatar DP</span>
+        </a>
+      </div>
 
       {/* Mode Switcher — not on hero */}
       {!isHero && copy.showBatch && (
@@ -730,15 +798,19 @@ export default function DownloaderForm({
         {mode === 'single' || !copy.showBatch || isHero ? (
           isHero ? (
             <div className="relative w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 rounded-2xl sm:rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] dark:border-white/[0.12] shadow-pill p-2 sm:p-1.5 sm:pl-5 transition-all focus-within:ring-2 focus-within:ring-[#E11D48]">
+              <label htmlFor="pinterest-url-input-hero" className="sr-only">
+                {copy.ariaLabel}
+              </label>
               <div className="flex items-center gap-2 flex-1 min-w-0 px-2 sm:px-0">
-                <Clipboard className="w-5 h-5 text-ink-400 shrink-0 hidden sm:block" aria-hidden="true" />
+                <Clipboard className="w-5 h-5 text-slate-500 dark:text-slate-400 shrink-0 hidden sm:block" aria-hidden="true" />
                 <input
+                  id="pinterest-url-input-hero"
                   type="url"
                   name="url"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder={activePlaceholder}
-                  className="w-full h-12 sm:h-14 bg-transparent border-0 text-ink-900 dark:text-white placeholder:text-ink-400 dark:placeholder:text-slate-400 focus:outline-none text-base sm:text-[1.05rem] min-w-0"
+                  className="w-full h-12 sm:h-14 bg-transparent border-0 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none text-base sm:text-[1.05rem] min-w-0"
                   required
                   aria-label={copy.ariaLabel}
                   autoComplete="url"
@@ -766,13 +838,17 @@ export default function DownloaderForm({
             </div>
           ) : (
             <div className="relative w-full">
+              <label htmlFor="pinterest-url-input-standard" className="sr-only">
+                {copy.ariaLabel}
+              </label>
               <input
+                id="pinterest-url-input-standard"
                 type="url"
                 name="url"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder={activePlaceholder}
-                className="w-full h-14 pl-5 pr-24 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
+                className="w-full h-14 pl-5 pr-24 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
                 required
                 aria-label={copy.ariaLabel}
                 autoComplete="url"
@@ -784,7 +860,7 @@ export default function DownloaderForm({
                   <button
                     type="button"
                     onClick={() => setUrl('')}
-                    className="text-xs font-semibold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 px-2.5 py-1.5 rounded-lg min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
+                    className="text-xs font-semibold text-slate-600 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 px-2.5 py-1.5 rounded-lg min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
                     aria-label="Clear input field"
                   >
                     Clear
@@ -793,7 +869,7 @@ export default function DownloaderForm({
                   <button
                     type="button"
                     onClick={handlePaste}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-rose-700 dark:text-rose-300 bg-red-50 dark:bg-red-950/70 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
                     aria-label="Paste URL from clipboard"
                   >
                     <Clipboard className="w-3.5 h-3.5" aria-hidden="true" />
@@ -805,12 +881,17 @@ export default function DownloaderForm({
           )
         ) : (
           <div className="relative w-full">
+            <label htmlFor="batch-urls-input" className="sr-only">
+              Batch Pinterest URLs (up to 5 URLs, one per line)
+            </label>
             <textarea
+              id="batch-urls-input"
+              name="batchUrls"
               rows={4}
               value={batchUrls}
               onChange={(e) => setBatchUrls(e.target.value)}
               placeholder="Paste up to 5 Pinterest URLs (one per line):&#10;https://pinterest.com/pin/1234567/&#10;https://pin.it/abc1234"
-              className="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-sm shadow-sm"
+              className="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-sm shadow-sm"
               required
               spellCheck={false}
               aria-label="Batch Pinterest URLs"
@@ -818,7 +899,7 @@ export default function DownloaderForm({
             <button
               type="button"
               onClick={handlePaste}
-              className="absolute right-3 top-3 inline-flex items-center gap-1 text-xs font-bold text-[#E11D48] bg-red-50 dark:bg-red-950/50 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
+              className="absolute right-3 top-3 inline-flex items-center gap-1 text-xs font-bold text-rose-700 dark:text-rose-300 bg-red-50 dark:bg-red-950/70 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
               aria-label="Paste clipboard text into batch input"
             >
               <Clipboard className="w-3.5 h-3.5" aria-hidden="true" />
@@ -850,7 +931,7 @@ export default function DownloaderForm({
           </button>
         )}
         {!isHero && (mode === 'single' || !copy.showBatch) && (
-          <p className="text-center text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl">
+          <p className="text-center text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
             {copy.hint}
           </p>
         )}
@@ -946,7 +1027,12 @@ export default function DownloaderForm({
               className="flex flex-row overflow-x-auto gap-4 pb-4 pt-1 snap-x scroll-smooth scrollbar-thin scrollbar-thumb-rose-400 dark:scrollbar-thumb-rose-600"
             >
               {result.media_items.map((item, idx) => {
-                const ext = item.type === 'video' ? 'mp4' : 'jpg';
+                const ext =
+                  item.type === 'video'
+                    ? 'mp4'
+                    : item.type === 'gif' || isGifUrl(item.url)
+                      ? 'gif'
+                      : mediaFileExtension(item.url, 'jpg');
                 const filename = `slide_${idx + 1}.${ext}`;
                 return (
                   <div
@@ -976,7 +1062,13 @@ export default function DownloaderForm({
                       className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
                     >
                       <Download className="w-3.5 h-3.5" />
-                      <span>{item.type === 'video' ? 'Download MP4' : 'Download HD'}</span>
+                      <span>
+                        {item.type === 'video'
+                          ? 'Download MP4'
+                          : ext === 'gif'
+                            ? 'Download GIF'
+                            : 'Download HD'}
+                      </span>
                     </a>
                   </div>
                 );
@@ -1001,7 +1093,7 @@ export default function DownloaderForm({
               <div className="relative group">
                 <img
                   src={result.profile_avatar_url}
-                  alt={`${result.profile_title || 'User'} profile picture`}
+                  alt={`${result.profile_title || 'User'} avatar`}
                   className="w-40 h-40 sm:w-52 sm:h-52 rounded-full object-cover border-4 border-[#E11D48] shadow-2xl transition-transform group-hover:scale-105"
                 />
                 <span className="absolute bottom-2 right-2 px-3 py-1.5 rounded-full bg-[#E11D48] text-white text-xs font-black shadow-md">
@@ -1015,7 +1107,7 @@ export default function DownloaderForm({
             )}
 
             <div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/80 text-[#E11D48] text-xs font-extrabold mb-2 border border-red-200 dark:border-red-900/50">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/80 text-rose-700 dark:text-rose-300 text-xs font-extrabold mb-2 border border-red-200 dark:border-red-900/50">
                 <User className="w-3.5 h-3.5" />
                 Profile Picture Extracted
               </span>
@@ -1057,9 +1149,9 @@ export default function DownloaderForm({
             )}
           </div>
 
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <p className="text-xs text-slate-600 dark:text-slate-400">
             Want all pins from this profile? Use the{' '}
-            <a href="/pinterest-profile-downloader" className="text-[#E11D48] hover:underline font-semibold">
+            <a href="/pinterest-profile-downloader" className="text-rose-600 dark:text-rose-400 hover:underline font-bold">
               Profile Downloader (ZIP)
             </a>{' '}
             instead.
@@ -1073,7 +1165,7 @@ export default function DownloaderForm({
                 <div className="relative group">
                   <img
                     src={result!.profile_avatar_url}
-                    alt={`${result!.profile_title || 'User'} profile picture`}
+                    alt={`${result!.profile_title || 'User'} avatar`}
                     className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-[#E11D48] shadow-2xl transition-transform group-hover:scale-105"
                   />
                   <span className="absolute bottom-1 right-1 px-2.5 py-1 rounded-full bg-[#E11D48] text-white text-xs font-black shadow-md">
@@ -1268,7 +1360,10 @@ export default function DownloaderForm({
             >
               {result!.pins?.slice(0, displayLimit).map((pin, idx) => {
                 const mediaUrl = pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
-                const ext = pin.is_video && pin.video_url ? 'mp4' : 'jpg';
+                const ext =
+                  pin.is_video && pin.video_url
+                    ? 'mp4'
+                    : mediaFileExtension(pin.image_url, 'jpg');
                 return (
                   <div
                     key={pin.pin_id || idx}
@@ -1281,11 +1376,15 @@ export default function DownloaderForm({
                         className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />
-                      {pin.is_video && (
+                      {pin.is_video ? (
                         <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/80 text-white text-[10px] font-extrabold tracking-wider">
                           MP4 VIDEO
                         </span>
-                      )}
+                      ) : ext === 'gif' ? (
+                        <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/80 text-white text-[10px] font-extrabold tracking-wider">
+                          GIF
+                        </span>
+                      ) : null}
                       <span className="absolute bottom-2 left-2 px-1.5 py-0.5 rounded-md bg-black/60 text-white text-[10px] font-mono">
                         #{idx + 1}
                       </span>
@@ -1300,7 +1399,13 @@ export default function DownloaderForm({
                       className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
                     >
                       <Download className="w-3.5 h-3.5" />
-                      <span>{pin.is_video && pin.video_url ? 'Download MP4' : 'Download HD'}</span>
+                      <span>
+                        {pin.is_video && pin.video_url
+                          ? 'Download MP4'
+                          : ext === 'gif'
+                            ? 'Download GIF'
+                            : 'Download HD'}
+                      </span>
                     </a>
                   </div>
                 );
@@ -1351,17 +1456,27 @@ export default function DownloaderForm({
             <div className="w-full md:w-64 aspect-square bg-slate-100 rounded-2xl overflow-hidden shrink-0 border border-slate-200 relative shadow-inner group">
               {showPlayer && (selectedQuality || result.video_url) ? (
                 <video
-                  src={selectedQuality || result.video_url!}
+                  src={proxyDownloadHref(selectedQuality || result.video_url!, 'preview.mp4', true)}
                   controls
                   autoPlay
+                  playsInline
+                  preload="auto"
                   className="w-full h-full object-contain bg-black"
                 />
               ) : (
                 <>
                   <img
-                    src={result.thumbnail_url || result.image_url}
+                    src={resolvedGifUrl(result) || result.thumbnail_url || result.image_url}
                     alt={result.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain bg-slate-100"
+                    onError={(e) => {
+                      const gif = resolvedGifUrl(result);
+                      if (!gif) return;
+                      const el = e.currentTarget;
+                      if (el.dataset.proxied) return;
+                      el.dataset.proxied = '1';
+                      el.src = proxyDownloadHref(gif, 'preview.gif', true);
+                    }}
                   />
                   {result.is_video && (
                     <button
@@ -1370,7 +1485,7 @@ export default function DownloaderForm({
                       className="absolute inset-0 bg-black/40 flex items-center justify-center text-white group-hover:bg-black/50 transition-colors"
                       title="Play Preview"
                     >
-                      <div class="w-12 h-12 rounded-full bg-[#E11D48] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 rounded-full bg-[#E11D48] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <Play className="w-6 h-6 fill-white text-white ml-1" />
                       </div>
                     </button>
@@ -1381,7 +1496,12 @@ export default function DownloaderForm({
 
             <div className="flex flex-col flex-1 gap-3 w-full">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold w-fit border border-emerald-200">
-                <Check className="w-3.5 h-3.5" /> Media Ready HD
+                <Check className="w-3.5 h-3.5" />{' '}
+                {resolvedGifUrl(result)
+                  ? 'Animated GIF ready'
+                  : result.is_video
+                    ? 'Video ready — HD MP4'
+                    : 'Media ready HD'}
               </span>
 
               <h2 className="text-xl font-bold text-slate-900 line-clamp-2 leading-snug">
@@ -1414,25 +1534,65 @@ export default function DownloaderForm({
 
               {/* Action Buttons */}
               <div className="mt-4 flex flex-wrap gap-3">
+                {resolvedGifUrl(result) && (
+                  <a
+                    href={proxyDownloadHref(
+                      resolvedGifUrl(result)!,
+                      `${slugify(result.title || 'pinterest_gif')}.gif`,
+                    )}
+                    download={`${slugify(result.title || 'pinterest_gif')}.gif`}
+                    aria-busy={savingFile?.endsWith('.gif')}
+                    onClick={(e) =>
+                      onProxyDownloadClick(
+                        e,
+                        resolvedGifUrl(result)!,
+                        `${slugify(result.title || 'pinterest_gif')}.gif`,
+                      )
+                    }
+                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation"
+                    title="Download the looping animated GIF"
+                  >
+                    {savingFile?.endsWith('.gif') ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>{downloadStatusLabel() || 'Downloading GIF…'}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Download className="w-4 h-4" />
+                        <span>Download GIF</span>
+                      </>
+                    )}
+                  </a>
+                )}
+
                 {result.is_video && (selectedQuality || result.video_url) && (
                   <>
-                    <button
-                      type="button"
-                      disabled={!!savingFile}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        void saveProxyDownload(
+                    <a
+                      href={proxyDownloadHref(
+                        selectedQuality || result.video_url!,
+                        `${slugify(result.title || 'pinterest_video')}.mp4`,
+                      )}
+                      download={`${slugify(result.title || 'pinterest_video')}.mp4`}
+                      aria-busy={savingFile?.endsWith('.mp4')}
+                      onClick={(e) =>
+                        onProxyDownloadClick(
+                          e,
                           selectedQuality || result.video_url!,
                           `${slugify(result.title || 'pinterest_video')}.mp4`,
-                        );
-                      }}
-                      className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation disabled:opacity-70"
-                      title="Download full HD MP4 video with embedded audio sound"
+                        )
+                      }
+                      className={`inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl font-extrabold transition-all text-sm shadow-md active:scale-95 touch-manipulation ${
+                        resolvedGifUrl(result)
+                          ? 'bg-slate-800 hover:bg-slate-700 text-white shadow-slate-900/20'
+                          : 'bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-red-500/20'
+                      }`}
+                      title="Download HD MP4 video with audio"
                     >
                       {savingFile?.endsWith('.mp4') ? (
                         <>
                           <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>{downloadProgress?.total ? `${Math.round((downloadProgress.loaded / downloadProgress.total) * 100)}%` : 'Downloading MP4…'}</span>
+                          <span>{downloadStatusLabel() || 'Downloading MP4…'}</span>
                         </>
                       ) : (
                         <>
@@ -1440,7 +1600,7 @@ export default function DownloaderForm({
                           <span>Download MP4 (Video + Audio)</span>
                         </>
                       )}
-                    </button>
+                    </a>
                     
                     <button
                       type="button"
@@ -1503,16 +1663,19 @@ export default function DownloaderForm({
                   </>
                 )}
 
-                {result.image_url && (
+                {result.image_url && !resolvedGifUrl(result) && (
                   <>
                     <a
-                      href={proxyDownloadHref(result.image_url, `${slugify(result.title || 'pinterest_image')}.jpg`)}
-                      download={`${slugify(result.title || 'pinterest_image')}.jpg`}
+                      href={proxyDownloadHref(
+                        result.image_url,
+                        `${slugify(result.title || 'pinterest_image')}.${mediaFileExtension(result.image_url, 'jpg')}`,
+                      )}
+                      download={`${slugify(result.title || 'pinterest_image')}.${mediaFileExtension(result.image_url, 'jpg')}`}
                       onClick={(e) =>
                         onProxyDownloadClick(
                           e,
                           result.image_url!,
-                          `${slugify(result.title || 'pinterest_image')}.jpg`,
+                          `${slugify(result.title || 'pinterest_image')}.${mediaFileExtension(result.image_url, 'jpg')}`,
                         )
                       }
                       className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation"
@@ -1536,6 +1699,39 @@ export default function DownloaderForm({
                   </>
                 )}
               </div>
+
+              {savingFile && downloadProgress && (
+                <div className="mt-3" aria-live="polite">
+                  <p className="text-xs font-bold text-slate-600 dark:text-slate-300 tabular-nums">
+                    {downloadStatusLabel()}
+                  </p>
+                  <div
+                    className="mt-1.5 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden"
+                    role="progressbar"
+                    aria-valuemin={0}
+                    aria-valuemax={downloadProgress.total || 100}
+                    aria-valuenow={
+                      downloadProgress.total
+                        ? Math.round((downloadProgress.loaded / downloadProgress.total) * 100)
+                        : undefined
+                    }
+                    aria-label="Download progress"
+                  >
+                    <div
+                      className={`h-full bg-[#E11D48] origin-left ${
+                        downloadProgress.total > 0 ? '' : 'w-1/3 animate-pulse'
+                      }`}
+                      style={
+                        downloadProgress.total > 0
+                          ? {
+                              transform: `scaleX(${Math.min(1, downloadProgress.loaded / downloadProgress.total)})`,
+                            }
+                          : undefined
+                      }
+                    />
+                  </div>
+                </div>
+              )}
 
               {primaryMediaUrl && (
                 <div className="mt-1">
@@ -1582,7 +1778,7 @@ export default function DownloaderForm({
                   <Palette className="w-3.5 h-3.5 text-[#E11D48]" />
                   <span>Extracted Pin Color Palette</span>
                 </div>
-                <span className="text-[10px] text-slate-400">Click chip to copy hex</span>
+                <span className="text-[10px] font-medium text-slate-600 dark:text-slate-400">Click chip to copy hex</span>
               </div>
               <div className="flex flex-wrap items-center gap-2.5 mt-1">
                 {result.colors.map((hex, idx) => (
@@ -1611,7 +1807,7 @@ export default function DownloaderForm({
                 <button
                   type="button"
                   onClick={copyTagsToClipboard}
-                  className="inline-flex items-center gap-1.5 text-xs text-[#E11D48] hover:text-red-700 dark:hover:text-red-400 font-bold transition-colors bg-red-50 dark:bg-red-950/40 px-2.5 py-1 rounded-lg"
+                  className="inline-flex items-center gap-1.5 text-xs text-rose-700 dark:text-rose-300 hover:text-rose-800 dark:hover:text-rose-200 font-bold transition-colors bg-red-50 dark:bg-red-950/60 px-2.5 py-1 rounded-lg"
                 >
                   {copiedTags ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                   <span>{copiedTags ? 'Copied All!' : 'Copy Tags'}</span>
@@ -1728,9 +1924,10 @@ export default function DownloaderForm({
               onClick={() => {
                 batchResults.forEach((res, idx) => {
                   setTimeout(() => {
-                    const downloadUrl = res.video_url || res.image_url;
+                    const gif = resolvedGifUrl(res);
+                    const downloadUrl = gif || res.video_url || res.image_url;
                     if (downloadUrl) {
-                      const ext = res.is_video ? 'mp4' : 'jpg';
+                      const ext = gif ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(downloadUrl, 'jpg');
                       void saveProxyDownload(
                         downloadUrl,
                         `${slugify(res.title || 'pin')}.${ext}`,
@@ -1753,26 +1950,30 @@ export default function DownloaderForm({
                   <img src={res.thumbnail_url || res.image_url || ''} alt={res.title} className="w-20 h-20 rounded-xl object-cover border border-slate-200 dark:border-slate-800 shrink-0" />
                   <div className="flex flex-col justify-center">
                     <h4 className="font-bold text-slate-900 dark:text-white text-xs line-clamp-2">{res.title}</h4>
-                    <span className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 uppercase font-bold">{res.is_video ? 'Video Pin' : 'Image Pin'}</span>
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 uppercase font-bold">
+                      {resolvedGifUrl(res) ? 'GIF Pin' : res.is_video ? 'Video Pin' : 'Image Pin'}
+                    </span>
                   </div>
                 </div>
                 <a
                   href={proxyDownloadHref(
-                    res.video_url || res.image_url!,
-                    `${slugify(res.title || 'pin')}.${res.is_video ? 'mp4' : 'jpg'}`,
+                    resolvedGifUrl(res) || res.video_url || res.image_url!,
+                    `${slugify(res.title || 'pin')}.${resolvedGifUrl(res) ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg')}`,
                   )}
-                  download={`${slugify(res.title || 'pin')}.${res.is_video ? 'mp4' : 'jpg'}`}
+                  download={`${slugify(res.title || 'pin')}.${resolvedGifUrl(res) ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg')}`}
                   onClick={(e) =>
                     onProxyDownloadClick(
                       e,
-                      res.video_url || res.image_url!,
-                      `${slugify(res.title || 'pin')}.${res.is_video ? 'mp4' : 'jpg'}`,
+                      resolvedGifUrl(res) || res.video_url || res.image_url!,
+                      `${slugify(res.title || 'pin')}.${resolvedGifUrl(res) ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg')}`,
                     )
                   }
                   className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-[#E11D48] hover:text-white text-slate-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Download {res.is_video ? 'MP4' : 'Image'}</span>
+                  <span>
+                    Download {resolvedGifUrl(res) ? 'GIF' : res.is_video ? 'MP4' : 'Image'}
+                  </span>
                 </a>
               </div>
             ))}

@@ -42,3 +42,6 @@ service_account.json
 # Legacy backups
 _nextjs_backup/
 .next/
+
+# Data archives
+*.zip

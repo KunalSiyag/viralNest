@@ -3,6 +3,7 @@
  * /originals/ images and certain video paths.
  *
  *   Images: 1200x > 736x > 564x
+ *   GIFs: keep .gif (rewriting originals → 1200x often returns a still JPG)
  *   Videos: expMp4 and progressive (/720p, /1080p) availability rotates
  *           per CDN prefix (mc/, iht/, …). Candidates tries both.
  */
@@ -13,11 +14,22 @@ const PINIMG_HOST = /^https?:\/\/[a-z0-9.-]*\.pinimg\.com\//i;
 const VIDEO_PREFIX =
   /^(https?:\/\/[^/?#]+\/videos\/(?:(?!expMp4|hls|\d+p)[^/]+\/)?)/i;
 
+/**
+ * Image CDN path: /{size}/{aa}/{bb}/{cc}/{hash}[.{ext}]
+ * Does not match /videos/… streams.
+ */
+const PINIMG_IMAGE_HASH =
+  /^https?:\/\/([^/?#]+)\/([^/?#]+)\/([0-9a-f]{2}\/[0-9a-f]{2}\/[0-9a-f]{2}\/[0-9a-f]+)(\.[a-z0-9]+)?/i;
+
 /** Largest image size Akamai still serves without auth. */
 export const PUBLIC_IMAGE_SIZE = '1200x';
 
 export function isPinimgUrl(url: string): boolean {
   return PINIMG_HOST.test(url);
+}
+
+export function isGifUrl(url: string): boolean {
+  return /\.gif(?:[?#]|$)/i.test(url);
 }
 
 export function isMediaContentType(contentType: string | null | undefined): boolean {
@@ -31,12 +43,45 @@ export function isMediaContentType(contentType: string | null | undefined): bool
   );
 }
 
+/** Filename extension from a CDN URL, ignoring query/hash. */
+export function mediaFileExtension(url: string, fallback = 'jpg'): string {
+  if (!url) return fallback;
+  const clean = url.split(/[?#]/)[0];
+  const m = clean.match(/\.([a-z0-9]{2,5})$/i);
+  if (!m) return fallback;
+  const ext = m[1].toLowerCase();
+  if (ext === 'jpeg') return 'jpg';
+  return ext;
+}
+
+/**
+ * Animated GIF candidates. Pinterest often 403s /originals/*.gif from
+ * unauthenticated clients, but 1200x/736x .gif still loops.
+ * Passing a .jpg/.png pin image URL still yields .gif guesses from the hash.
+ */
+export function gifCandidateUrls(url: string): string[] {
+  if (!url || !isPinimgUrl(url) || /\/videos\//i.test(url)) return [];
+  const m = url.match(PINIMG_IMAGE_HASH);
+  if (!m) return isGifUrl(url) ? [url] : [];
+  const host = m[1];
+  const hash = m[3];
+  const sizes = ['originals', '1200x', '736x', '564x'];
+  const out: string[] = [];
+  if (isGifUrl(url)) out.push(url);
+  for (const size of sizes) {
+    out.push(`https://${host}/${size}/${hash}.gif`);
+  }
+  return uniquePinimg(out);
+}
+
 /**
  * Rewrite a pin/avatar image URL to the largest publicly fetchable size.
  * Leaves already-public sizes (1200x/736x/…) upgraded to 1200x.
  */
 export function toPublicPinImageUrl(url: string): string {
   if (!url || !isPinimgUrl(url)) return url;
+  // Rewriting a GIF to 1200x usually returns a still JPEG of frame 1.
+  if (isGifUrl(url)) return url;
   return url
     .replace(/\/originals\//gi, `/${PUBLIC_IMAGE_SIZE}/`)
     .replace(/\/orig\//gi, `/${PUBLIC_IMAGE_SIZE}/`)
@@ -97,6 +142,11 @@ export function pinMediaCandidates(url: string): string[] {
   const playable = toPlayablePinVideoUrl(url);
   const publicImg = toPublicPinImageUrl(url);
 
+  // Animated GIFs first so the proxy never waits on a flattened 1200x JPG.
+  if (isGifUrl(url)) {
+    candidates.push(...gifCandidateUrls(url));
+  }
+
   if (playable !== url) candidates.push(playable);
   if (publicImg !== url) candidates.push(publicImg);
   candidates.push(url);
@@ -105,7 +155,7 @@ export function pinMediaCandidates(url: string): string[] {
     /\/(?:originals|orig|1920x|1360x|1080x|1200x|736x|750x|564x|474x|236x|30x30_RS|50x50_RS|75x75_RS|140x140_RS|280x280_RS|600x600_RS|150x150|170x|280x280|600x600)\//i,
     '/__SIZE__/',
   );
-  if (imageStem !== url) {
+  if (imageStem !== url && !isGifUrl(url)) {
     candidates.push(imageStem.replace('/__SIZE__/', '/1200x/'));
     candidates.push(imageStem.replace('/__SIZE__/', '/736x/'));
     candidates.push(imageStem.replace('/__SIZE__/', '/564x/'));
@@ -119,13 +169,17 @@ export function pinMediaCandidates(url: string): string[] {
   if (prefix && videoFile) {
     const hash = videoFile[1];
     const query = videoFile[2] || '';
-    // Progressive variants (higher quality first)
-    candidates.push(`${prefix}1080p/${hash}.mp4${query}`);
+    // 720p first — most likely to be public and much smaller than 1080p,
+    // so the download starts streaming sooner. 1080p is next if it exists.
     candidates.push(`${prefix}720p/${hash}.mp4${query}`);
+    candidates.push(`${prefix}1080p/${hash}.mp4${query}`);
     candidates.push(`${prefix}540p/${hash}.mp4${query}`);
-    // Also try the expMp4 variant — Pinterest rotates which path is accessible
     candidates.push(`${prefix}expMp4/${hash}_720w.mp4${query}`);
   }
 
-  return uniquePinimg(candidates.flatMap(hostVariants));
+  // Primary hosts first so a v1 + v1-c pair of the same 403 path is not
+  // the first probe batch (that delayed first-byte by ~3s).
+  const primary = uniquePinimg(candidates);
+  const extras = primary.flatMap(hostVariants).filter((u) => !primary.includes(u));
+  return [...primary, ...extras];
 }

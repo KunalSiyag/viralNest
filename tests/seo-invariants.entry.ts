@@ -10,7 +10,10 @@ import { absoluteUrl, normalizeCanonical } from '../src/lib/urls';
 import { hostRedirectUrl } from '../src/lib/host-redirect';
 import { softwareAppSchema, SITEMAP_ROUTES, faqSchema, howToSchema } from '../src/lib/seo';
 import {
+  gifCandidateUrls,
+  isGifUrl,
   isMediaContentType,
+  mediaFileExtension,
   pinMediaCandidates,
   toDownloadablePinUrl,
   toPlayablePinVideoUrl,
@@ -178,6 +181,7 @@ describe('SITEMAP_ROUTES money coverage', () => {
       '/pinterest-board-downloader',
       '/pinterest-profile-downloader',
       '/pinterest-profile-picture-downloader',
+      '/pinterest-gif-downloader',
       '/blog',
     ]) {
       assert.equal(paths.has(required), true, `missing ${required}`);
@@ -252,6 +256,14 @@ describe('pin media URL rewrites', () => {
       ),
       true,
     );
+    // Alternate CDN host is a fallback — not paired with the first 403 in the probe batch
+    const i720 = video.indexOf(
+      'https://v1.pinimg.com/videos/mc/720p/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100.mp4',
+    );
+    const iAltHost = video.indexOf(
+      'https://v1-c.pinimg.com/videos/mc/expMp4/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100_720w.mp4',
+    );
+    assert.equal(i720 >= 0 && iAltHost >= 0 && i720 < iAltHost, true);
     assert.equal(
       video.includes(
         'https://v1.pinimg.com/videos/mc/expMp4/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100_720w.mp4',
@@ -283,8 +295,50 @@ describe('pin media URL rewrites', () => {
   it('rejects HTML/XML as downloadable media types', () => {
     assert.equal(isMediaContentType('video/mp4'), true);
     assert.equal(isMediaContentType('image/jpeg'), true);
+    assert.equal(isMediaContentType('image/gif'), true);
     assert.equal(isMediaContentType('text/html'), false);
     assert.equal(isMediaContentType('application/xml'), false);
     assert.equal(isMediaContentType('text/plain'), false);
+  });
+
+  it('does not flatten animated GIFs to 1200x JPEG', () => {
+    const origGif =
+      'https://i.pinimg.com/originals/36/52/d4/3652d4e5e12887d36c4908efecd0f425.gif';
+    assert.equal(isGifUrl(origGif), true);
+    assert.equal(toPublicPinImageUrl(origGif), origGif);
+    assert.equal(toDownloadablePinUrl(origGif), origGif);
+    assert.equal(mediaFileExtension(origGif), 'gif');
+
+    const candidates = pinMediaCandidates(origGif);
+    assert.equal(candidates[0], origGif);
+    assert.equal(
+      candidates.includes(
+        'https://i.pinimg.com/1200x/36/52/d4/3652d4e5e12887d36c4908efecd0f425.gif',
+      ),
+      true,
+    );
+    assert.equal(
+      candidates.includes(
+        'https://i.pinimg.com/736x/36/52/d4/3652d4e5e12887d36c4908efecd0f425.gif',
+      ),
+      true,
+    );
+    // Must not rewrite the GIF to a still JPG size folder.
+    assert.equal(
+      candidates.some((u) => u.endsWith('.jpg')),
+      false,
+    );
+  });
+
+  it('guesses GIF originals from a static pin image URL', () => {
+    const jpg =
+      'https://i.pinimg.com/736x/36/52/d4/3652d4e5e12887d36c4908efecd0f425.jpg';
+    const gifs = gifCandidateUrls(jpg);
+    assert.equal(
+      gifs[0],
+      'https://i.pinimg.com/originals/36/52/d4/3652d4e5e12887d36c4908efecd0f425.gif',
+    );
+    assert.equal(mediaFileExtension(jpg, 'png'), 'jpg');
+    assert.equal(mediaFileExtension('https://v1.pinimg.com/videos/mc/720p/ab.mp4'), 'mp4');
   });
 });

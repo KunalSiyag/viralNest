@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 import {
+  gifCandidateUrls,
+  isGifUrl,
   toPlayablePinVideoUrl,
   toPublicPinImageUrl,
 } from '../../lib/pin-media';
@@ -65,7 +67,7 @@ interface CollectionPin {
 /** One slide of a carousel / multi-page Idea Pin */
 interface MediaItem {
   index: number;
-  type: 'image' | 'video';
+  type: 'image' | 'video' | 'gif';
   url: string;
   thumbnail_url?: string;
   title?: string;
@@ -396,8 +398,52 @@ function extractVideoUrlsFromHtml(
   return qualities;
 }
 
+function pinLooksLikeGif(data: any, imageUrl?: string | null): boolean {
+  if (imageUrl && isGifUrl(imageUrl)) return true;
+  if (data?.is_gif === true || data?.isGif === true) return true;
+  const type = String(data?.type || data?.native_format_type || data?.content_type || '').toLowerCase();
+  if (type === 'gif' || type.includes('gif')) return true;
+  if (typeof data?.embed?.src === 'string' && isGifUrl(data.embed.src)) return true;
+  return false;
+}
+
+function findGifUrlFromImages(images: any): string | null {
+  if (!images || typeof images !== 'object') return null;
+  const preferKeys = ['orig', 'originals', '1200x', '736x', '564x', '474x'];
+  for (const key of preferKeys) {
+    const url = images[key]?.url;
+    if (typeof url === 'string' && isGifUrl(url)) return url;
+  }
+  for (const entry of Object.values(images) as any[]) {
+    if (entry?.url && typeof entry.url === 'string' && isGifUrl(entry.url)) return entry.url;
+  }
+  return null;
+}
+
+function extractGifUrlsFromHtml(html: string): string[] {
+  const matches = [
+    ...html.matchAll(/(https?:\\?\/\\?[^"'\s<>]+\.gif(?:\?[^"'\s<>]*)?)/gi),
+  ].map((m) => m[1].replace(/\\/g, ''));
+  return matches.filter((u) => u.includes('pinimg.com') && isGifUrl(u));
+}
+
+function resolveGifUrl(data: any, imageUrl?: string | null): string | null {
+  const fromImages = findGifUrlFromImages(data?.images);
+  if (fromImages) return fromImages;
+  if (imageUrl && isGifUrl(imageUrl)) return imageUrl;
+  if (imageUrl && pinLooksLikeGif(data, imageUrl)) {
+    return gifCandidateUrls(imageUrl)[0] || null;
+  }
+  if (typeof data?.embed?.src === 'string' && isGifUrl(data.embed.src) && data.embed.src.includes('pinimg.com')) {
+    return data.embed.src;
+  }
+  return null;
+}
+
 function pickBestImageFromImagesMap(images: any): string | null {
   if (!images || typeof images !== 'object') return null;
+  const gif = findGifUrlFromImages(images);
+  if (gif) return gif;
   const order = ['1200x', '736x', '750x', '564x', '474x', 'orig', 'originals', '1360x', '236x'];
   for (const key of order) {
     const entry = images[key];
@@ -523,7 +569,7 @@ function mediaItemsFromCarousel(carouselData: any): MediaItem[] {
     } else if (imageUrl) {
       items.push({
         index: idx,
-        type: 'image',
+        type: isGifUrl(imageUrl) ? 'gif' : 'image',
         url: imageUrl,
         thumbnail_url: thumb,
         title: slot?.title || slot?.details || `Slide ${idx + 1}`,
@@ -578,7 +624,7 @@ function mediaItemsFromStoryPages(pages: any[]): MediaItem[] {
     } else if (imageUrl) {
       items.push({
         index: idx,
-        type: 'image',
+        type: isGifUrl(imageUrl) ? 'gif' : 'image',
         url: imageUrl,
         thumbnail_url: thumb,
         title: `Page ${idx + 1}`,
@@ -630,6 +676,10 @@ function buildResponseFromPinResource(data: any, pinId: string) {
   let thumbnailUrl =
     pickThumbFromImagesMap(data.images) || imageUrl;
 
+  const gifUrl = resolveGifUrl(data, imageUrl);
+  const isGif = pinLooksLikeGif(data, gifUrl || imageUrl) || !!gifUrl;
+  if (gifUrl) imageUrl = gifUrl;
+
   // If multi-slide, use first slide as primary preview
   if (mediaItems.length > 0) {
     const first = mediaItems[0];
@@ -640,13 +690,21 @@ function buildResponseFromPinResource(data: any, pinId: string) {
       }
     }
     if (first.thumbnail_url) thumbnailUrl = first.thumbnail_url;
-    if (first.type === 'image') imageUrl = first.url;
+    if (first.type === 'image' || first.type === 'gif') imageUrl = first.url;
     else if (!imageUrl && first.thumbnail_url) imageUrl = first.thumbnail_url;
   }
 
   // Single cover-only pin: still expose one media item for consistent UI
   if (mediaItems.length === 0) {
-    if (videoUrl) {
+    if (isGif && imageUrl) {
+      mediaItems.push({
+        index: 0,
+        type: 'gif',
+        url: imageUrl,
+        thumbnail_url: thumbnailUrl || imageUrl,
+        title,
+      });
+    } else if (videoUrl) {
       mediaItems.push({
         index: 0,
         type: 'video',
@@ -692,6 +750,7 @@ function buildResponseFromPinResource(data: any, pinId: string) {
     colors: colorPalette,
     dominant_color: dominantColor || colorPalette[0],
     is_video: !!videoUrl,
+    is_gif: isGif || mediaItems.some((m) => m.type === 'gif'),
     is_carousel: isCarousel,
     media_count: mediaItems.length,
     media_items: mediaItems,
@@ -1146,6 +1205,13 @@ export const POST: APIRoute = async ({ request }) => {
                 built.qualities = scannedVideos;
               }
             }
+            if (!built.is_gif && html) {
+              const htmlGifs = extractGifUrlsFromHtml(html);
+              if (htmlGifs[0]) {
+                built.image_url = htmlGifs[0];
+                built.is_gif = true;
+              }
+            }
             return jsonResponse(built);
           }
         }
@@ -1437,6 +1503,14 @@ export const POST: APIRoute = async ({ request }) => {
           imageUrl = upgradePinImageUrl(thumbnailUrl) || thumbnailUrl;
         }
       }
+
+      const htmlGifs = extractGifUrlsFromHtml(html);
+      if (htmlGifs[0]) {
+        imageUrl = htmlGifs[0];
+      } else if (imageUrl && !isGifUrl(imageUrl) && /gif/i.test(title || '')) {
+        const guessed = gifCandidateUrls(imageUrl)[0];
+        if (guessed) imageUrl = guessed;
+      }
     }
 
     // Strategy 3: OEmbed API Fallback if media is still missing
@@ -1496,8 +1570,17 @@ export const POST: APIRoute = async ({ request }) => {
     const finalTags = Array.from(tagsSet).slice(0, 8);
     const colorPalette = generatePalette(dominantColor);
 
+    const isGif = !!(imageUrl && isGifUrl(imageUrl));
     const mediaItems: MediaItem[] = [];
-    if (videoUrl) {
+    if (isGif && imageUrl) {
+      mediaItems.push({
+        index: 0,
+        type: 'gif',
+        url: imageUrl,
+        thumbnail_url: thumbnailUrl || imageUrl,
+        title: title || 'Pinterest Pin',
+      });
+    } else if (videoUrl) {
       mediaItems.push({
         index: 0,
         type: 'video',
@@ -1527,6 +1610,7 @@ export const POST: APIRoute = async ({ request }) => {
       colors: colorPalette,
       dominant_color: dominantColor || colorPalette[0],
       is_video: !!videoUrl,
+      is_gif: isGif,
       is_carousel: false,
       media_count: mediaItems.length,
       media_items: mediaItems,

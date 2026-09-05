@@ -95,6 +95,7 @@ const nav = [
   { href: '/pinterest-video-downloader', label: 'Videos' },
   { href: '/pinterest-pin-downloader', label: 'Pins' },
   { href: '/pinterest-image-downloader', label: 'Images' },
+  { href: '/pinterest-gif-downloader', label: 'GIFs' },
   { href: '/pinterest-board-downloader', label: 'Boards' },
   { href: '/pinterest-profile-picture-downloader', label: 'Avatar / DP' },
   { href: '/pinterest-profile-downloader', label: 'Profiles' },
@@ -198,9 +199,22 @@ const mobileNav = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
   </head>
   <body
     class="bg-[#FFFBFB] dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col font-sans selection:bg-brand-600/20 selection:text-brand-800 dark:selection:text-brand-100 relative overflow-x-hidden"
@@ -225,10 +239,10 @@ const mobileNav = [
         <a href="/" class="flex items-center gap-2.5 group min-w-0 focus-visible:outline-none shrink-0">
           <img
             src="/images/logo.png"
-            alt={`${BRAND.name} Header Logo`}
-            width="40"
-            height="56"
-            class="h-9 w-auto object-contain object-center drop-shadow-sm"
+            alt="PintDownload"
+            width="36"
+            height="36"
+            class="h-9 w-9 object-contain object-center drop-shadow-sm shrink-0"
             decoding="async"
           />
           <span class="font-bold text-[1.2rem] tracking-tight text-ink-900 dark:text-white truncate">
@@ -256,7 +270,7 @@ const mobileNav = [
         </nav>
 
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-          <LanguageSelector client:load />
+          <LanguageSelector client:idle />
           <!-- Slide Theme Toggle Button -->
           <button
             id="theme-toggle-btn"
@@ -359,9 +373,9 @@ const mobileNav = [
               <div class="absolute -top-4 right-4 w-5 h-5 rounded-full bg-gradient-to-b from-red-400/40 to-pink-300/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-5 group-hover/pin:scale-110 transition-all duration-500 delay-150 ease-out z-0 border border-white/40"></div>
 
               <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_1.jpg" alt="Pinterest interior home decor pin preview" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
+                <img src="/images/side_pin_1.webp" alt="Cozy home decor design" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
                 <div class="p-1.5 text-left">
-                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Interior · Pin</span>
+                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 block">Interior · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Cozy home decor</p>
                 </div>
               </div>
@@ -374,9 +388,9 @@ const mobileNav = [
               <div class="absolute top-1/3 -left-4 w-5 h-5 rounded-full bg-gradient-to-r from-pink-300/50 to-rose-400/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-x-4 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
 
               <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_3.jpg" alt="Pinterest lifestyle matcha pastry pin preview" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
+                <img src="/images/side_pin_3.webp" alt="Matcha and fresh pastry" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
                 <div class="p-1.5 text-left">
-                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Lifestyle · Pin</span>
+                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 block">Lifestyle · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Matcha &amp; pastry</p>
                 </div>
               </div>
@@ -392,9 +406,9 @@ const mobileNav = [
               <div class="absolute top-1/2 -left-4 w-6 h-6 rounded-full bg-gradient-to-r from-rose-300/50 to-pink-500/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-x-3 group-hover/pin:-translate-y-2 group-hover/pin:scale-125 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
 
               <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_2.jpg" alt="Pinterest travel golden hour pin preview" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
+                <img src="/images/side_pin_2.webp" alt="Golden hour landscape" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
                 <div class="p-1.5 text-left">
-                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Travel · Pin</span>
+                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 block">Travel · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Golden hour views</p>
                 </div>
               </div>
@@ -406,9 +420,9 @@ const mobileNav = [
               <div class="absolute -bottom-2 -right-3 w-7 h-7 rounded-full bg-gradient-to-tr from-rose-500/40 to-pink-400/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-y-3 group-hover/pin:translate-x-2 transition-all duration-500 delay-75 ease-out z-0 border border-white/40"></div>
 
               <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_4.jpg" alt="Pinterest fashion street style pin preview" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
+                <img src="/images/side_pin_4.webp" alt="Street style chic outfit" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
                 <div class="p-1.5 text-left">
-                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-[#E11D48] block">Fashion · Pin</span>
+                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 block">Fashion · Pin</span>
                   <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Street style chic</p>
                 </div>
               </div>
@@ -425,21 +439,22 @@ const mobileNav = [
         ]}
       >
         <slot />
+      </main>
     </div>
 
     <FooterKeywordMatrix />
 
-    <footer class="w-full border-t border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-950 py-14 sm:py-16 text-base text-ink-500 dark:text-slate-400">
+    <footer class="w-full border-t border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-950 py-14 sm:py-16 text-base text-slate-600 dark:text-slate-300">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
           <div class="sm:col-span-2 lg:col-span-1">
             <a href="/" class="inline-flex items-center gap-2.5 mb-4">
-              <img src="/images/logo.png" alt={`${BRAND.name} Footer Logo`} width="32" height="48" class="h-8 w-auto object-contain" />
+              <img src="/images/logo.png" alt="PintDownload" width="32" height="32" class="h-8 w-8 object-contain shrink-0" />
               <span class="font-semibold text-lg text-ink-900 dark:text-white tracking-tight">
                 Pint<span class="text-brand-600">Download</span>
               </span>
             </a>
-            <p class="text-[0.95rem] leading-relaxed text-ink-500 dark:text-slate-400 max-w-xs">
+            <p class="text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-300 max-w-xs">
               {BRAND.tagline}. Free public pin, video, board, and profile downloads — no account, no watermark from us.
             </p>
           </div>
@@ -489,10 +504,10 @@ const mobileNav = [
         </div>
 
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-black/[0.06] dark:border-white/[0.08] text-[0.9rem]">
-          <p class="text-ink-500">
+          <p class="text-slate-600 dark:text-slate-400">
             © {new Date().getFullYear()} {BRAND.name} · {BRAND.domain}
           </p>
-          <p class="text-ink-400 dark:text-slate-500 text-center md:text-right max-w-lg">
+          <p class="text-slate-600 dark:text-slate-400 text-center md:text-right max-w-lg">
             Credit original creators when you reuse clips. Independent tool — not affiliated with Pinterest Inc.
           </p>
         </div>

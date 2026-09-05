@@ -124,7 +124,7 @@ const jsonLd = [
     />
 
     <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-4 sm:pt-8 pb-6 sm:pb-8 w-full my-auto">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 dark:bg-ink-900/90 text-[#E11D48] text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40 shadow-sm backdrop-blur-md">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 dark:bg-ink-900/90 text-rose-700 dark:text-rose-400 text-xs font-bold mb-4 border border-red-200/80 dark:border-red-900/40 shadow-sm backdrop-blur-md">
         Free forever · No login required
       </div>
 
@@ -149,15 +149,15 @@ const jsonLd = [
       <!-- Scannable capability checks (replaces cramped feature pill) -->
       <ul class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
         <li class="inline-flex items-center gap-1.5">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0 text-[#E11D48]" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
           MP4 videos &amp; photos
         </li>
         <li class="inline-flex items-center gap-1.5">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0 text-[#E11D48]" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
           GIFs &amp; carousels
         </li>
         <li class="inline-flex items-center gap-1.5">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0 text-[#E11D48]" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
           Boards &amp; profiles as ZIP
         </li>
       </ul>
@@ -170,65 +170,79 @@ const jsonLd = [
     </div>
   </section>
 
-  <article class="flex flex-col items-center text-center w-full pb-12 sm:pb-16">
-    <!-- Crawlable money-tool hub (equity + discovery for core intents) -->
-    <section
-      class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 text-left"
-      aria-labelledby="tools-hub-heading"
-    >
-      <h2 id="tools-hub-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24 text-center">
-        Choose the right Pinterest downloader
+  <!-- CONTENT CONTAINER -->
+  <article class="flex flex-col items-center text-center w-full pb-16">
+    <!-- STRIPE 1: Core Process / How-To (Boxed Floating Container) -->
+    <div class="w-full">
+      <HowToSteps
+        title="How to download from Pinterest (3 steps)"
+        intro="Works in any browser on iPhone, Android, Mac, or PC. Public pins only — no login, no software to install."
+        exampleUrl="https://www.pinterest.com/pin/112027111109431342/"
+        exampleLabel="Example pin or board URL"
+        steps={steps}
+        visual={true}
+      />
+    </div>
+
+    <!-- STRIPE 2: Bookmarklet Power Tool (Full Bleed Edge-to-Edge Stripe) -->
+    <div class="w-full my-6">
+      <BookmarkletGuide />
+    </div>
+
+    <!-- STRIPE 3: Specialized Money Pages Grid (Boxed Floating Container) -->
+    <section class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10" aria-labelledby="specialized-heading">
+      <h2 id="specialized-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
+        Specialized download tools
       </h2>
-      <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto text-center leading-relaxed">
-        Each tool matches a different URL type and search intent. Start here, or paste any public link in the hub form above.
-        Popular: <a href="/pinterest-profile-picture-downloader" class="font-semibold text-[#E11D48] hover:underline">profile picture / PFP</a>,
-        <a href="/pinterest-to-mp4" class="font-semibold text-[#E11D48] hover:underline">Pinterest to MP4</a>,
-        <a href="/blog/how-to-download-pinterest-profile-picture" class="font-semibold text-[#E11D48] hover:underline">how to download a Pinterest profile picture</a>.
+      <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-6 max-w-3xl mx-auto leading-relaxed">
+        Every tool is tuned for a specific Pinterest URL pattern so you never get a 0-byte file or the wrong media type. Also see
+        <a href="/pinterest-to-mp4" class="font-bold text-rose-600 dark:text-rose-400 hover:underline">Pinterest to MP4</a>,
+        <a href="/blog/how-to-download-pinterest-profile-picture" class="font-bold text-rose-600 dark:text-rose-400 hover:underline">how to download a Pinterest profile picture</a>.
       </p>
       <nav aria-label="Core Pinterest download tools" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
         <a href="/pinterest-video-downloader" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">MP4</p>
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Video Downloader</h3>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1">MP4</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1">Video Downloader</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Save public video pins as HD MP4 on phone or desktop.</p>
         </a>
         <a href="/pinterest-pin-downloader" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">Pin</p>
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Pin Downloader</h3>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1">Pin</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1">Pin Downloader</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">One pin URL → image, video, GIF, or full carousel.</p>
         </a>
         <a href="/pinterest-image-downloader" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">HD</p>
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Image Downloader</h3>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1">HD</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1">Image Downloader</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Original-resolution photos, wallpapers, and artwork.</p>
         </a>
         <a href="/pinterest-board-downloader" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">ZIP</p>
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Board Downloader</h3>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1">ZIP</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1">Board Downloader</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Download a full public board as one ZIP pack.</p>
         </a>
         <a href="/pinterest-profile-downloader" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">ZIP</p>
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Profile Downloader</h3>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1">ZIP</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1">Profile Downloader</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Bulk-save visible public pins from a user profile.</p>
         </a>
         <a href="/pinterest-profile-picture-downloader" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">PFP</p>
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Profile Picture / DP</h3>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1">PFP</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1">Profile Picture / DP</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Extract full-size HD avatars from public profiles.</p>
         </a>
         <a href="/pinterest-gif-downloader" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">GIF</p>
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">GIF Downloader</h3>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1">GIF</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1">GIF Downloader</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Save animated Pinterest GIFs without flattening them to a photo.</p>
         </a>
         <a href="/pinterest-to-mp4" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">Convert</p>
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Pinterest to MP4</h3>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1">Convert</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1">Pinterest to MP4</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Convert a Pinterest video link to an MP4 you can keep offline.</p>
         </a>
         <a href="/pinterest-video-downloader-chrome" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all group">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1">Chrome</p>
-          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-1">Chrome / browser tool</h3>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1">Chrome</p>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-1">Chrome / browser tool</h3>
           <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">One-click bookmarklet for Chrome, Edge, and Safari — no store extension.</p>
         </a>
       </nav>
@@ -272,7 +286,7 @@ const jsonLd = [
           If you use someone else’s Pinterest video or image in content you publish (Reels, TikTok, YouTube, ads),
           <strong class="text-slate-800 dark:text-slate-200">credit the original creator</strong>.
           Personal offline reference is fine; republishing without credit or a license is not.
-          <a href="/blog/things-to-know-before-downloading-pinterest-videos" class="font-bold text-[#E11D48] hover:underline">Before you download guide →</a>
+          <a href="/blog/things-to-know-before-downloading-pinterest-videos" class="font-bold text-rose-700 dark:text-rose-400 hover:underline">Before you download guide →</a>
         </p>
       </div>
     </section>
@@ -289,33 +303,33 @@ const jsonLd = [
         </p>
         <div class="grid sm:grid-cols-3 gap-5">
           <a href="/blog/how-to-make-money-on-pinterest" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all text-left group">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">Creators</p>
-            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Make money on Pinterest (2026)</h3>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1.5">Creators</p>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-2">Make money on Pinterest (2026)</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Affiliate, products, and creator paths in plain English.</p>
           </a>
           <a href="/blog/how-to-download-pinterest-videos-fast-and-easy" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all text-left group">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">Guide</p>
-            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Download videos fast &amp; easy</h3>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1.5">Guide</p>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-2">Download videos fast &amp; easy</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Step-by-step MP4 workflow for phone and desktop.</p>
           </a>
           <a href="/blog/how-to-download-entire-pinterest-board-zip" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all text-left group">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">Boards</p>
-            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Download a board as ZIP</h3>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1.5">Boards</p>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-2">Download a board as ZIP</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Bulk-save public moodboards for offline reference.</p>
           </a>
           <a href="/blog/how-to-download-pinterest-profile-picture" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all text-left group">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">PFP / DP</p>
-            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Download a profile picture in HD</h3>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1.5">PFP / DP</p>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-2">Download a profile picture in HD</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Full-size Pinterest avatar, PFP, and DP — not the tiny app thumbnail.</p>
           </a>
           <a href="/blog/make-money-on-pinterest-without-website" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all text-left group">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">No blog</p>
-            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Make money without a website</h3>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1.5">No blog</p>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-2">Make money without a website</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Affiliate and product paths that do not require a blog on day one.</p>
           </a>
           <a href="/blog/save-pinterest-offline-without-account" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md transition-all text-left group">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-[#E11D48] mb-1.5">Offline</p>
-            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-[#E11D48] transition-colors mb-2">Save Pinterest offline, no account</h3>
+            <p class="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1.5">Offline</p>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors mb-2">Save Pinterest offline, no account</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Download public pins first, then watch or browse files with no login.</p>
           </a>
         </div>

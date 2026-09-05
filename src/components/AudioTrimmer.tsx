@@ -229,31 +229,37 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
         {/* Start & End Sliders */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-slate-500 mb-1">
+            <label htmlFor="audio-trim-start-time" className="block text-xs font-bold text-slate-500 mb-1">
               Start Time: <span className="text-[#E11D48] font-mono">{startTime.toFixed(1)}s</span>
             </label>
             <input
+              id="audio-trim-start-time"
+              name="startTime"
               type="range"
               min={0}
               max={Math.max(0, endTime - 0.5)}
               step={0.1}
               value={startTime}
               onChange={(e) => setStartTime(parseFloat(e.target.value))}
+              aria-label="Audio trim start time in seconds"
               className="w-full accent-[#E11D48]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-500 mb-1">
+            <label htmlFor="audio-trim-end-time" className="block text-xs font-bold text-slate-500 mb-1">
               End Time: <span className="text-[#E11D48] font-mono">{endTime.toFixed(1)}s</span>
             </label>
             <input
+              id="audio-trim-end-time"
+              name="endTime"
               type="range"
               min={startTime + 0.5}
               max={duration || 60}
               step={0.1}
               value={endTime}
               onChange={(e) => setEndTime(parseFloat(e.target.value))}
+              aria-label="Audio trim end time in seconds"
               className="w-full accent-[#E11D48]"
             />
           </div>

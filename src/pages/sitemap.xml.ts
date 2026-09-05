@@ -22,13 +22,13 @@ type UrlEntry = {
 };
 
 export const GET: APIRoute = () => {
-  const today = new Date().toISOString().slice(0, 10);
   const entries: UrlEntry[] = [];
 
   for (const route of SITEMAP_ROUTES) {
     entries.push({
       loc: absoluteUrl(route.path),
-      lastmod: today,
+      // Do not stamp "today" on every build — Google treats a sitemap
+      // whose lastmod always moves as untrustworthy and may ignore it.
       changefreq: route.changefreq,
       priority: route.priority,
     });
