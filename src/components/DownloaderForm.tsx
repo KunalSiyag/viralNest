@@ -5,7 +5,6 @@ import AudioTrimmer from './AudioTrimmer';
 import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
 import { gifCandidateUrls, isGifUrl, isMediaContentType, mediaFileExtension, toDownloadablePinUrl } from '../lib/pin-media';
 import { classifyPinterestInput, getSuitableToolForMedia } from '../lib/pinterest-route';
-import { convertVideoToGif } from '../lib/gif-encoder';
 
 interface BoardPinItem {
   pin_id: string;
@@ -171,10 +170,7 @@ export default function DownloaderForm({
   const isHero = layout === 'hero';
   const [activeVariant, setActiveVariant] = useState<FormVariant>(variant);
   const [routeNotice, setRouteNotice] = useState<{ badge: string; message: string; path: string } | null>(null);
-  const [gifSpeed, setGifSpeed] = useState<number>(1);
   const [gifPlaying, setGifPlaying] = useState<boolean>(true);
-  const [convertingGif, setConvertingGif] = useState<boolean>(false);
-  const [convertProgress, setConvertProgress] = useState<{ phase: string; percent: number }>({ phase: '', percent: 0 });
 
   useEffect(() => {
     setActiveVariant(variant);
@@ -605,30 +601,6 @@ export default function DownloaderForm({
       return gifCandidateUrls(guessSrc)[0] || null;
     }
     return null;
-  };
-
-  const handleConvertAndDownloadGif = async (videoUrl: string, filename: string) => {
-    setConvertingGif(true);
-    setError('');
-    try {
-      const proxied = proxyDownloadHref(videoUrl, 'source.mp4', true);
-      const blob = await convertVideoToGif(proxied, {
-        onProgress: (p) => setConvertProgress(p),
-      });
-      const objectUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = objectUrl;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(objectUrl);
-    } catch (err: any) {
-      setError(err?.message || 'Could not convert video to GIF. You can download the MP4 directly.');
-    } finally {
-      setConvertingGif(false);
-      setConvertProgress({ phase: '', percent: 0 });
-    }
   };
 
   const saveProxyDownload = async (mediaUrl: string, filename: string) => {
@@ -1664,7 +1636,7 @@ export default function DownloaderForm({
                   )}
 
                   {/* GIF Badge & Looping indicator */}
-                  {(resolvedGifUrl(result) || result.is_gif || activeVariant === 'gif') && (
+                  {(resolvedGifUrl(result) || (result.is_gif && !result.is_video)) && (
                     <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-xs text-white text-[11px] font-black border border-white/20 shadow-md pointer-events-none">
                       <Sparkles className="w-3.5 h-3.5 text-rose-400" />
                       <span>Looping GIF</span>
@@ -1690,11 +1662,9 @@ export default function DownloaderForm({
                 <Check className="w-3.5 h-3.5" />{' '}
                 {resolvedGifUrl(result) || (result.is_gif && !result.is_video)
                   ? 'Animated GIF ready — Full loop preserved'
-                  : result.is_video && (result.is_gif || activeVariant === 'gif')
-                    ? 'Looping animation ready — GIF & MP4 available'
-                    : result.is_video
-                      ? 'Video ready — HD MP4'
-                      : 'Media ready HD'}
+                  : result.is_video
+                    ? 'Video ready — HD MP4'
+                    : 'Media ready HD'}
               </span>
 
               <h2 className="text-xl font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug">
@@ -1760,35 +1730,7 @@ export default function DownloaderForm({
                   </a>
                 )}
 
-                {/* 2. Convert Video Pin to Animated GIF (for GIF downloader or video-based GIF pins) */}
-                {!resolvedGifUrl(result) && result.video_url && (result.is_gif || activeVariant === 'gif') && (
-                  <button
-                    type="button"
-                    disabled={convertingGif}
-                    onClick={() =>
-                      handleConvertAndDownloadGif(
-                        selectedQuality || result.video_url!,
-                        `${slugify(result.title || 'pinterest_gif')}.gif`,
-                      )
-                    }
-                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation disabled:opacity-75"
-                    title="Convert and download this pin as a looping animated GIF"
-                  >
-                    {convertingGif ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>{convertProgress.phase || 'Rendering GIF…'} {convertProgress.percent ? `(${convertProgress.percent}%)` : ''}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Sparkles className="w-4 h-4" />
-                        <span>Download Animated GIF (.gif)</span>
-                      </>
-                    )}
-                  </button>
-                )}
-
-                {/* 3. Download MP4 Video */}
+                {/* 2. Download MP4 Video */}
                 {result.is_video && (selectedQuality || result.video_url) && (
                   <a
                     href={proxyDownloadHref(
@@ -1805,7 +1747,7 @@ export default function DownloaderForm({
                       )
                     }
                     className={`inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl font-extrabold transition-all text-sm shadow-md active:scale-95 touch-manipulation ${
-                      resolvedGifUrl(result) || (activeVariant === 'gif' && !resolvedGifUrl(result))
+                      resolvedGifUrl(result)
                         ? 'bg-slate-800 hover:bg-slate-700 text-white shadow-slate-900/20'
                         : 'bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-red-500/20'
                     }`}
@@ -1825,35 +1767,7 @@ export default function DownloaderForm({
                   </a>
                 )}
 
-                {/* 4. Convert video pin to GIF (secondary button when on video tool) */}
-                {result.is_video && !resolvedGifUrl(result) && activeVariant !== 'gif' && !result.is_gif && (
-                  <button
-                    type="button"
-                    disabled={convertingGif}
-                    onClick={() =>
-                      handleConvertAndDownloadGif(
-                        selectedQuality || result.video_url!,
-                        `${slugify(result.title || 'pinterest_gif')}.gif`,
-                      )
-                    }
-                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation disabled:opacity-60"
-                    title="Convert this video pin into an animated looping GIF"
-                  >
-                    {convertingGif ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>{convertProgress.phase || 'Converting…'} {convertProgress.percent ? `(${convertProgress.percent}%)` : ''}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Sparkles className="w-4 h-4 text-[#E11D48]" />
-                        <span>Save as Looping GIF</span>
-                      </>
-                    )}
-                  </button>
-                )}
-
-                {/* 5. Download MP3 Audio */}
+                {/* 3. Download MP3 Audio */}
                 {result.is_video && (selectedQuality || result.video_url) && (
                   <button
                     type="button"
@@ -1889,7 +1803,11 @@ export default function DownloaderForm({
                     disabled={zipping}
                     onClick={() => downloadSinglePinCompletePack(result)}
                     className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-extrabold transition-all text-sm shadow-md shadow-amber-500/20 active:scale-95 touch-manipulation disabled:opacity-60"
-                    title="Download Looping GIF, MP4 Video, and HD Cover Image together in one ZIP package"
+                    title={
+                      resolvedGifUrl(result)
+                        ? 'Download GIF, MP4, and cover image in one ZIP'
+                        : 'Download MP4 video and cover image in one ZIP'
+                    }
                   >
                     {zipping ? (
                       <>
