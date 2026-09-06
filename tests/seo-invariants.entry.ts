@@ -10,11 +10,14 @@ import { absoluteUrl, normalizeCanonical } from '../src/lib/urls';
 import { hostRedirectUrl } from '../src/lib/host-redirect';
 import { softwareAppSchema, SITEMAP_ROUTES, faqSchema, howToSchema } from '../src/lib/seo';
 import {
+  findGifUrlFromImages,
   gifCandidateUrls,
   isGifUrl,
   isMediaContentType,
   mediaFileExtension,
+  pinLooksLikeGif,
   pinMediaCandidates,
+  resolvePinGifUrl,
   toDownloadablePinUrl,
   toPlayablePinVideoUrl,
   toPublicPinImageUrl,
@@ -340,5 +343,45 @@ describe('pin media URL rewrites', () => {
     );
     assert.equal(mediaFileExtension(jpg, 'png'), 'jpg');
     assert.equal(mediaFileExtension('https://v1.pinimg.com/videos/mc/720p/ab.mp4'), 'mp4');
+  });
+
+  it('prefers orig.gif over sized JPEG stills in PinResource images', () => {
+    const origGif =
+      'https://i.pinimg.com/originals/76/0c/ea/760cea7ffe1046b20ce4c262589a0201.gif';
+    const images = {
+      '236x': {
+        url: 'https://i.pinimg.com/236x/76/0c/ea/760cea7ffe1046b20ce4c262589a0201.jpg',
+      },
+      '736x': {
+        url: 'https://i.pinimg.com/736x/76/0c/ea/760cea7ffe1046b20ce4c262589a0201.jpg',
+      },
+      orig: { width: 500, height: 700, url: origGif },
+    };
+    const embed = { src: origGif, height: 700, width: 500, type: 'gif' };
+
+    assert.equal(findGifUrlFromImages(images), origGif);
+    assert.equal(pinLooksLikeGif({ type: 'pin', embed }, images['736x'].url), true);
+    assert.equal(resolvePinGifUrl({ type: 'pin', images, embed }, images['736x'].url), origGif);
+    assert.equal(
+      resolvePinGifUrl({ type: 'pin', images, embed }, toPublicPinImageUrl(images['736x'].url)),
+      origGif,
+    );
+    assert.notEqual(resolvePinGifUrl({ type: 'pin', images, embed }), null);
+    assert.equal(isGifUrl(resolvePinGifUrl({ type: 'pin', images, embed }) || ''), true);
+  });
+
+  it('uses embed.gif when images map has only JPEGs', () => {
+    const origGif =
+      'https://i.pinimg.com/originals/76/0c/ea/760cea7ffe1046b20ce4c262589a0201.gif';
+    const jpg = 'https://i.pinimg.com/736x/76/0c/ea/760cea7ffe1046b20ce4c262589a0201.jpg';
+    const resolved = resolvePinGifUrl(
+      {
+        type: 'pin',
+        images: { orig: { url: jpg }, '736x': { url: jpg } },
+        embed: { src: origGif, type: 'gif' },
+      },
+      jpg,
+    );
+    assert.equal(resolved, origGif);
   });
 });

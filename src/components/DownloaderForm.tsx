@@ -3,7 +3,7 @@ import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, C
 import ImageCropperModal from './ImageCropperModal';
 import AudioTrimmer from './AudioTrimmer';
 import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
-import { isGifUrl, isMediaContentType, mediaFileExtension, toDownloadablePinUrl } from '../lib/pin-media';
+import { gifCandidateUrls, isGifUrl, isMediaContentType, mediaFileExtension, toDownloadablePinUrl } from '../lib/pin-media';
 import { classifyPinterestInput, getSuitableToolForMedia } from '../lib/pinterest-route';
 import { convertVideoToGif } from '../lib/gif-encoder';
 
@@ -600,7 +600,10 @@ export default function DownloaderForm({
     if (res.image_url && isGifUrl(res.image_url)) return res.image_url;
     const gifItem = res.media_items?.find((m) => m.type === 'gif' || isGifUrl(m.url));
     if (gifItem?.url && isGifUrl(gifItem.url)) return gifItem.url;
-    if (res.is_gif && res.image_url && isGifUrl(res.image_url)) return res.image_url;
+    const guessSrc = gifItem?.url || res.image_url || res.thumbnail_url || null;
+    if (guessSrc && (res.is_gif || gifItem?.type === 'gif')) {
+      return gifCandidateUrls(guessSrc)[0] || null;
+    }
     return null;
   };
 
@@ -1628,17 +1631,21 @@ export default function DownloaderForm({
               ) : (
                 <div className="relative w-full h-full flex items-center justify-center bg-slate-100 dark:bg-slate-800">
                   <img
-                    src={resolvedGifUrl(result) || result.thumbnail_url || result.image_url}
+                    src={
+                      resolvedGifUrl(result)
+                        ? proxyDownloadHref(resolvedGifUrl(result)!, 'preview.gif', true)
+                        : result.thumbnail_url || result.image_url
+                    }
                     alt={result.title}
                     style={gifPlaying ? undefined : { filter: 'grayscale(25%) opacity(0.8)' }}
                     className="w-full h-full object-contain"
                     onError={(e) => {
-                      const gif = resolvedGifUrl(result);
-                      if (!gif) return;
                       const el = e.currentTarget;
-                      if (el.dataset.proxied) return;
-                      el.dataset.proxied = '1';
-                      el.src = proxyDownloadHref(gif, 'preview.gif', true);
+                      if (el.dataset.fallback) return;
+                      el.dataset.fallback = '1';
+                      if (result.thumbnail_url && el.src !== result.thumbnail_url) {
+                        el.src = result.thumbnail_url;
+                      }
                     }}
                   />
 

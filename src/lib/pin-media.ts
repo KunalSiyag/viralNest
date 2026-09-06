@@ -3,7 +3,8 @@
  * /originals/ images and certain video paths.
  *
  *   Images: 1200x > 736x > 564x
- *   GIFs: keep .gif (rewriting originals → 1200x often returns a still JPG)
+ *   GIFs: keep /originals/*.gif (1200x/736x .gif 403s; rewriting to 1200x
+ *         returns a still JPEG of frame 1)
  *   Videos: expMp4 and progressive (/720p, /1080p) availability rotates
  *           per CDN prefix (mc/, iht/, …). Candidates tries both.
  */
@@ -55,8 +56,8 @@ export function mediaFileExtension(url: string, fallback = 'jpg'): string {
 }
 
 /**
- * Animated GIF candidates. Pinterest often 403s /originals/*.gif from
- * unauthenticated clients, but 1200x/736x .gif still loops.
+ * Animated GIF candidates. /originals/{hash}.gif is the public looping file.
+ * Sized folders (1200x/736x) often 403 for .gif even when the JPG still works.
  * Passing a .jpg/.png pin image URL still yields .gif guesses from the hash.
  */
 export function gifCandidateUrls(url: string): string[] {
@@ -65,13 +66,69 @@ export function gifCandidateUrls(url: string): string[] {
   if (!m) return isGifUrl(url) ? [url] : [];
   const host = m[1];
   const hash = m[3];
-  const sizes = ['originals', '1200x', '736x', '564x'];
+  // Originals first — that is the file that still 200s as image/gif.
+  const sizes = ['originals', '736x', '564x', '1200x'];
   const out: string[] = [];
   if (isGifUrl(url)) out.push(url);
   for (const size of sizes) {
     out.push(`https://${host}/${size}/${hash}.gif`);
   }
   return uniquePinimg(out);
+}
+
+type PinGifSource = {
+  images?: unknown;
+  embed?: { src?: string; type?: string } | null;
+  is_gif?: boolean;
+  isGif?: boolean;
+  type?: string;
+  native_format_type?: string;
+  content_type?: string;
+};
+
+/** First .gif URL in a PinResource/pidget `images` map (orig before sized JPGs). */
+export function findGifUrlFromImages(images: unknown): string | null {
+  if (!images || typeof images !== 'object') return null;
+  const map = images as Record<string, { url?: unknown } | undefined>;
+  const preferKeys = ['orig', 'originals', '1200x', '736x', '564x', '474x'];
+  for (const key of preferKeys) {
+    const url = map[key]?.url;
+    if (typeof url === 'string' && isGifUrl(url)) return url;
+  }
+  for (const entry of Object.values(map)) {
+    if (entry?.url && typeof entry.url === 'string' && isGifUrl(entry.url)) return entry.url;
+  }
+  return null;
+}
+
+export function pinLooksLikeGif(data?: PinGifSource | null, imageUrl?: string | null): boolean {
+  if (imageUrl && isGifUrl(imageUrl)) return true;
+  if (data?.is_gif === true || data?.isGif === true) return true;
+  const embedType = String(data?.embed?.type || '').toLowerCase();
+  if (embedType === 'gif' || embedType.includes('gif')) return true;
+  if (typeof data?.embed?.src === 'string' && isGifUrl(data.embed.src)) return true;
+  const type = String(data?.type || data?.native_format_type || data?.content_type || '').toLowerCase();
+  // `data.type` is usually "pin" — only treat explicit gif format fields as a match.
+  if (type === 'gif' || type.endsWith('/gif') || type === 'animated_gif') return true;
+  return false;
+}
+
+/**
+ * Pick the looping GIF file for a pin. Never returns a 1200x/736x JPEG still
+ * when orig.gif or embed.src is present.
+ */
+export function resolvePinGifUrl(data?: PinGifSource | null, imageUrl?: string | null): string | null {
+  const fromImages = findGifUrlFromImages(data?.images);
+  if (fromImages) return fromImages;
+  if (imageUrl && isGifUrl(imageUrl)) return imageUrl;
+  const embedSrc = data?.embed?.src;
+  if (typeof embedSrc === 'string' && isGifUrl(embedSrc) && /pinimg\.com/i.test(embedSrc)) {
+    return embedSrc;
+  }
+  if (imageUrl && pinLooksLikeGif(data, imageUrl)) {
+    return gifCandidateUrls(imageUrl)[0] || null;
+  }
+  return null;
 }
 
 /**

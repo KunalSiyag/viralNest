@@ -1,7 +1,9 @@
 import type { APIRoute } from 'astro';
 import {
-  gifCandidateUrls,
+  findGifUrlFromImages,
   isGifUrl,
+  pinLooksLikeGif,
+  resolvePinGifUrl,
   toPlayablePinVideoUrl,
   toPublicPinImageUrl,
 } from '../../lib/pin-media';
@@ -398,28 +400,6 @@ function extractVideoUrlsFromHtml(
   return qualities;
 }
 
-function pinLooksLikeGif(data: any, imageUrl?: string | null): boolean {
-  if (imageUrl && isGifUrl(imageUrl)) return true;
-  if (data?.is_gif === true || data?.isGif === true) return true;
-  const type = String(data?.type || data?.native_format_type || data?.content_type || '').toLowerCase();
-  if (type === 'gif' || type.includes('gif')) return true;
-  if (typeof data?.embed?.src === 'string' && isGifUrl(data.embed.src)) return true;
-  return false;
-}
-
-function findGifUrlFromImages(images: any): string | null {
-  if (!images || typeof images !== 'object') return null;
-  const preferKeys = ['orig', 'originals', '1200x', '736x', '564x', '474x'];
-  for (const key of preferKeys) {
-    const url = images[key]?.url;
-    if (typeof url === 'string' && isGifUrl(url)) return url;
-  }
-  for (const entry of Object.values(images) as any[]) {
-    if (entry?.url && typeof entry.url === 'string' && isGifUrl(entry.url)) return entry.url;
-  }
-  return null;
-}
-
 function extractGifUrlsFromHtml(html: string): string[] {
   const matches = [
     ...html.matchAll(/(https?:\\?\/\\?[^"'\s<>]+\.gif(?:\?[^"'\s<>]*)?)/gi),
@@ -427,17 +407,40 @@ function extractGifUrlsFromHtml(html: string): string[] {
   return matches.filter((u) => u.includes('pinimg.com') && isGifUrl(u));
 }
 
-function resolveGifUrl(data: any, imageUrl?: string | null): string | null {
-  const fromImages = findGifUrlFromImages(data?.images);
-  if (fromImages) return fromImages;
-  if (imageUrl && isGifUrl(imageUrl)) return imageUrl;
-  if (imageUrl && pinLooksLikeGif(data, imageUrl)) {
-    return gifCandidateUrls(imageUrl)[0] || null;
+function applyGifToMediaItems(
+  mediaItems: MediaItem[],
+  gifUrl: string,
+  thumbnailUrl?: string | null,
+  title?: string,
+): MediaItem[] {
+  if (mediaItems.length === 0) {
+    return [
+      {
+        index: 0,
+        type: 'gif',
+        url: gifUrl,
+        thumbnail_url: thumbnailUrl || gifUrl,
+        title: title || 'Pinterest Pin',
+      },
+    ];
   }
-  if (typeof data?.embed?.src === 'string' && isGifUrl(data.embed.src) && data.embed.src.includes('pinimg.com')) {
-    return data.embed.src;
+  if (mediaItems.length === 1 && mediaItems[0].type !== 'video') {
+    return [
+      {
+        ...mediaItems[0],
+        type: 'gif',
+        url: gifUrl,
+        thumbnail_url: mediaItems[0].thumbnail_url || thumbnailUrl || gifUrl,
+      },
+    ];
   }
-  return null;
+  return mediaItems.map((item) =>
+    item.type === 'image' && !isGifUrl(item.url)
+      ? item
+      : item.type === 'gif'
+        ? { ...item, url: isGifUrl(item.url) ? item.url : gifUrl }
+        : item,
+  );
 }
 
 function pickBestImageFromImagesMap(images: any): string | null {
@@ -676,11 +679,12 @@ function buildResponseFromPinResource(data: any, pinId: string) {
   let thumbnailUrl =
     pickThumbFromImagesMap(data.images) || imageUrl;
 
-  const gifUrl = resolveGifUrl(data, imageUrl);
+  const gifUrl = resolvePinGifUrl(data, imageUrl);
   const isGif = pinLooksLikeGif(data, gifUrl || imageUrl) || !!gifUrl;
   if (gifUrl) imageUrl = gifUrl;
 
-  // If multi-slide, use first slide as primary preview
+  // If multi-slide, use first slide as primary preview — but never replace
+  // an animated GIF cover with a JPEG still of frame 1.
   if (mediaItems.length > 0) {
     const first = mediaItems[0];
     if (first.type === 'video') {
@@ -690,8 +694,17 @@ function buildResponseFromPinResource(data: any, pinId: string) {
       }
     }
     if (first.thumbnail_url) thumbnailUrl = first.thumbnail_url;
-    if (first.type === 'image' || first.type === 'gif') imageUrl = first.url;
-    else if (!imageUrl && first.thumbnail_url) imageUrl = first.thumbnail_url;
+    if (first.type === 'gif') {
+      imageUrl = first.url;
+    } else if (first.type === 'image' && !(isGif && imageUrl && isGifUrl(imageUrl))) {
+      imageUrl = first.url;
+    } else if (!imageUrl && first.thumbnail_url) {
+      imageUrl = first.thumbnail_url;
+    }
+  }
+
+  if (isGif && imageUrl && isGifUrl(imageUrl)) {
+    mediaItems = applyGifToMediaItems(mediaItems, imageUrl, thumbnailUrl, title);
   }
 
   // Single cover-only pin: still expose one media item for consistent UI
@@ -1197,19 +1210,27 @@ export const POST: APIRoute = async ({ request }) => {
           const built = buildResponseFromPinResource(resourceData, pinId);
           if (built) {
             // If Pidgets returned no video, check HTML for HLS .m3u8 or expMp4 video streams
-            if (!built.is_video && html) {
-              const scannedVideos = extractVideoUrlsFromHtml(html);
-              if (scannedVideos.length > 0) {
-                built.video_url = scannedVideos[0].url;
-                built.is_video = true;
-                built.qualities = scannedVideos;
-              }
-            }
             if (!built.is_gif && html) {
               const htmlGifs = extractGifUrlsFromHtml(html);
               if (htmlGifs[0]) {
                 built.image_url = htmlGifs[0];
                 built.is_gif = true;
+                built.media_items = applyGifToMediaItems(
+                  Array.isArray(built.media_items) ? built.media_items : [],
+                  htmlGifs[0],
+                  built.thumbnail_url,
+                  built.title,
+                );
+                built.media_count = built.media_items.length;
+              }
+            }
+            // Don't treat unrelated page MP4s as the pin when we already have a GIF.
+            if (!built.is_video && !built.is_gif && html) {
+              const scannedVideos = extractVideoUrlsFromHtml(html);
+              if (scannedVideos.length > 0) {
+                built.video_url = scannedVideos[0].url;
+                built.is_video = true;
+                built.qualities = scannedVideos;
               }
             }
             return jsonResponse(built);

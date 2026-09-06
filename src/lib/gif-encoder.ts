@@ -247,6 +247,47 @@ export function encodeGif(frames: GifFrame[], width: number, height: number): Bl
   return new Blob(parts as BlobPart[], { type: 'image/gif' });
 }
 
+function seekVideo(video: HTMLVideoElement, time: number, timeoutMs = 8000): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const duration = video.duration;
+    const target =
+      Number.isFinite(duration) && duration > 0
+        ? Math.min(Math.max(0, time), Math.max(0, duration - 0.04))
+        : Math.max(0, time);
+
+    if (Math.abs(video.currentTime - target) < 0.04 && video.readyState >= 2) {
+      resolve();
+      return;
+    }
+
+    let settled = false;
+    const timeout = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      video.removeEventListener('seeked', onSeeked);
+      // Capture whatever frame is decoded rather than aborting the whole GIF.
+      resolve();
+    }, timeoutMs);
+
+    const onSeeked = () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeout);
+      resolve();
+    };
+
+    video.addEventListener('seeked', onSeeked, { once: true });
+    try {
+      video.currentTime = target;
+    } catch {
+      settled = true;
+      clearTimeout(timeout);
+      video.removeEventListener('seeked', onSeeked);
+      reject(new Error('Could not seek video for GIF conversion.'));
+    }
+  });
+}
+
 /**
  * Converts a video URL (e.g. from Pinterest video pin) into an animated GIF Blob.
  * Automatically samples up to maxDuration seconds at given fps and scale.
@@ -271,19 +312,39 @@ export async function convertVideoToGif(
   video.preload = 'auto';
 
   await new Promise<void>((resolve, reject) => {
-    const timeout = setTimeout(() => reject(new Error('Video loading timed out.')), 15000);
-    video.onloadedmetadata = () => {
+    let settled = false;
+    const timeout = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      reject(new Error('Video loading timed out.'));
+    }, 20000);
+    const succeed = () => {
+      if (settled) return;
+      settled = true;
       clearTimeout(timeout);
       resolve();
     };
-    video.onerror = () => {
-      clearTimeout(timeout);
-      reject(new Error('Could not load video for GIF conversion.'));
-    };
+    video.addEventListener('loadedmetadata', succeed, { once: true });
+    video.addEventListener(
+      'error',
+      () => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeout);
+        reject(new Error('Could not load video for GIF conversion.'));
+      },
+      { once: true },
+    );
     video.src = videoUrl;
+    video.load();
+    if (video.readyState >= 1) succeed();
   });
 
-  const duration = Math.min(video.duration || maxDuration, maxDuration);
+  const rawDuration = video.duration;
+  const duration =
+    Number.isFinite(rawDuration) && rawDuration > 0
+      ? Math.min(rawDuration, maxDuration)
+      : maxDuration;
   const origW = video.videoWidth || 420;
   const origH = video.videoHeight || 420;
 
@@ -304,10 +365,7 @@ export async function convertVideoToGif(
 
   for (let i = 0; i < totalFrames; i++) {
     const time = i * interval;
-    await new Promise<void>((resolve) => {
-      video.currentTime = time;
-      video.onseeked = () => resolve();
-    });
+    await seekVideo(video, time);
 
     ctx.drawImage(video, 0, 0, width, height);
     const imgData = ctx.getImageData(0, 0, width, height);
