@@ -231,6 +231,18 @@ describe('pin media URL rewrites', () => {
       'https://v1.pinimg.com/videos/mc/720p/b9/12/4f/b9124faadbb0a7f52bd623ef670fd100.mp4',
     );
     assert.equal(
+      toPlayablePinVideoUrl(
+        'https://v1.pinimg.com/videos/iht/hls/07/09/ae/0709ae1327a967b140ef396263afa0d3.m3u8',
+      ),
+      'https://v1.pinimg.com/videos/iht/expMp4/07/09/ae/0709ae1327a967b140ef396263afa0d3_720w.mp4',
+    );
+    assert.equal(
+      toPlayablePinVideoUrl(
+        'https://v1.pinimg.com/videos/iht/720p/07/09/ae/0709ae1327a967b140ef396263afa0d3.mp4',
+      ),
+      'https://v1.pinimg.com/videos/iht/expMp4/07/09/ae/0709ae1327a967b140ef396263afa0d3_720w.mp4',
+    );
+    assert.equal(
       toDownloadablePinUrl(
         'https://v1-c.pinimg.com/videos/iht/expMp4/13/00/77/1300779bf3e1236e58e7bf9bd21a007c_720w.mp4',
       ),
@@ -280,6 +292,13 @@ describe('pin media URL rewrites', () => {
     assert.equal(
       iht[0],
       'https://v1.pinimg.com/videos/iht/expMp4/13/00/77/1300779bf3e1236e58e7bf9bd21a007c_720w.mp4',
+    );
+    const iht720 = pinMediaCandidates(
+      'https://v1.pinimg.com/videos/iht/720p/07/09/ae/0709ae1327a967b140ef396263afa0d3.mp4',
+    );
+    assert.equal(
+      iht720[0],
+      'https://v1.pinimg.com/videos/iht/expMp4/07/09/ae/0709ae1327a967b140ef396263afa0d3_720w.mp4',
     );
     assert.equal(
       iht.includes(

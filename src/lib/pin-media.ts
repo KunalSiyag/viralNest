@@ -151,15 +151,24 @@ export function toPublicPinImageUrl(url: string): string {
 }
 
 /**
- * Convert blocked HLS m3u8 playlist URLs to progressive /720p MP4.
- * expMp4 URLs are left as-is — Pinterest CDN rotates between expMp4 and
- * progressive being accessible; pinMediaCandidates tries both variants.
+ * Convert blocked HLS m3u8 playlist URLs to a progressive MP4.
+ * iht/720p (and siblings) often 403 unauthenticated; iht/expMp4 still serves.
+ * Other CDN prefixes (mc/, …) use /720p. expMp4 URLs are left as-is.
  */
 export function toPlayablePinVideoUrl(url: string): string {
   if (!url || !isPinimgUrl(url)) return url;
 
+  const isIht = /\/videos\/iht\//i.test(url);
+
   if (/\.m3u8(\?|$)/i.test(url) && /\/hls\//i.test(url)) {
+    if (isIht) {
+      return url.replace(/\/hls\//i, '/expMp4/').replace(/\.m3u8(\?|$)/i, '_720w.mp4$1');
+    }
     return url.replace(/\/hls\//i, '/720p/').replace(/\.m3u8(\?|$)/i, '.mp4$1');
+  }
+
+  if (isIht && /\/(?:720p|1080p|540p|360p)\//i.test(url) && /\.mp4(\?|$)/i.test(url)) {
+    return url.replace(/\/(?:720p|1080p|540p|360p)\//i, '/expMp4/').replace(/\.mp4(\?|$)/i, '_720w.mp4$1');
   }
 
   return url;
@@ -226,12 +235,20 @@ export function pinMediaCandidates(url: string): string[] {
   if (prefix && videoFile) {
     const hash = videoFile[1];
     const query = videoFile[2] || '';
-    // 720p first — most likely to be public and much smaller than 1080p,
-    // so the download starts streaming sooner. 1080p is next if it exists.
-    candidates.push(`${prefix}720p/${hash}.mp4${query}`);
-    candidates.push(`${prefix}1080p/${hash}.mp4${query}`);
-    candidates.push(`${prefix}540p/${hash}.mp4${query}`);
-    candidates.push(`${prefix}expMp4/${hash}_720w.mp4${query}`);
+    const iht = /\/videos\/iht\//i.test(prefix);
+    // iht progressive folders 403; expMp4 is the public file. Other prefixes
+    // still prefer 720p (smaller, usually public).
+    if (iht) {
+      candidates.push(`${prefix}expMp4/${hash}_720w.mp4${query}`);
+      candidates.push(`${prefix}720p/${hash}.mp4${query}`);
+      candidates.push(`${prefix}1080p/${hash}.mp4${query}`);
+      candidates.push(`${prefix}540p/${hash}.mp4${query}`);
+    } else {
+      candidates.push(`${prefix}720p/${hash}.mp4${query}`);
+      candidates.push(`${prefix}1080p/${hash}.mp4${query}`);
+      candidates.push(`${prefix}540p/${hash}.mp4${query}`);
+      candidates.push(`${prefix}expMp4/${hash}_720w.mp4${query}`);
+    }
   }
 
   // Primary hosts first so a v1 + v1-c pair of the same 403 path is not

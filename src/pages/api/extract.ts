@@ -471,6 +471,10 @@ function pickThumbFromImagesMap(images: any): string | null {
   );
 }
 
+function isPinVideoFileUrl(url: string): boolean {
+  return /\.(mp4|m3u8)(?:\?|$)/i.test(url);
+}
+
 function pickBestVideoUrl(videos: any): string | null {
   if (!videos) return null;
   const list = videos.video_list || videos.videoList || videos;
@@ -478,22 +482,24 @@ function pickBestVideoUrl(videos: any): string | null {
 
   const entries = Object.entries(list) as [string, any][];
   const score = (url: string) => {
+    // iht/expMp4 is the file that actually 200s; progressive iht/720p 403s.
+    if (/\/videos\/iht\/expMp4\//i.test(url)) return 5;
     if (/\/1080p\//i.test(url) || /1080w/i.test(url)) return 4;
     if (/\/720p\//i.test(url) || /720w/i.test(url)) return 3;
-    if (/expMp4/i.test(url)) return 0;
+    if (/expMp4/i.test(url)) return 2;
     return 1;
   };
   const mp4s = entries
-    .filter(([, v]) => v?.url && typeof v.url === 'string' && v.url.includes('.mp4'))
+    .filter(([, v]) => v?.url && typeof v.url === 'string' && isPinVideoFileUrl(v.url))
     .map(([key, v]) => ({
       key,
-      url: v.url as string,
+      url: toPlayablePinVideoUrl(v.url as string),
       height: Number(v.height || 0),
       width: Number(v.width || 0),
     }))
     .sort((a, b) => score(b.url) - score(a.url) || b.height - a.height || b.width - a.width);
 
-  return mp4s[0]?.url ? toPlayablePinVideoUrl(mp4s[0].url) : null;
+  return mp4s[0]?.url || null;
 }
 
 function videoQualitiesFromList(videos: any): { label: string; url: string; width?: number; height?: number }[] {
@@ -502,11 +508,11 @@ function videoQualitiesFromList(videos: any): { label: string; url: string; widt
   if (!list || typeof list !== 'object') return [];
   const out: { label: string; url: string; width?: number; height?: number }[] = [];
   for (const [key, item] of Object.entries(list) as [string, any][]) {
-    if (item?.url && String(item.url).includes('.mp4')) {
+    if (item?.url && isPinVideoFileUrl(String(item.url))) {
       const url = toPlayablePinVideoUrl(item.url);
       if (out.some((q) => q.url === url)) continue;
       out.push({
-        label: key.replace(/^V_/, '').replace(/EXP/i, 'HD '),
+        label: key.replace(/^V_/, '').replace(/EXP/i, 'HD ').replace(/HLSV3_MOBILE/i, '720p HD MP4'),
         url,
         width: item.width,
         height: item.height,
