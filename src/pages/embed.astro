@@ -1,5 +1,6 @@
 ---
 import DownloaderForm from '../components/DownloaderForm';
+import '../styles/ticket.css';
 ---
 
 <!doctype html>
@@ -11,17 +12,11 @@ import DownloaderForm from '../components/DownloaderForm';
     <meta name="description" content="Embed PintDownload free HD Pinterest video and photo downloader widget on your website." />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="canonical" href="https://pintdownload.app/embed" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
-  <body class="bg-transparent m-0 p-2 antialiased overflow-hidden font-sans">
-    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md">
-      <div class="flex items-center justify-between gap-2 mb-3">
-        <div class="flex items-center gap-2">
-          <span class="font-extrabold text-sm text-slate-900 dark:text-white">Pint<span class="text-rose-600 dark:text-rose-400">Download</span></span>
-          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-rose-700 dark:text-rose-300">Free HD Downloader</span>
-        </div>
-      </div>
-      <DownloaderForm client:load variant="hub" />
+  <body class="field-red bg-transparent m-0 p-2 antialiased overflow-hidden font-sans">
+    <div class="field p-3 sm:p-4 rounded-lg">
+      <p class="t-display text-2xl mb-3" translate="no">PintDownload</p>
+      <DownloaderForm client:load variant="hub" layout="hero" />
     </div>
   </body>
 </html>

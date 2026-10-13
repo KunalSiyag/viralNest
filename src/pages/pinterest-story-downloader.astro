@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import DownloaderForm from '../components/DownloaderForm';
+import TicketHero from '../components/TicketHero.astro';
 
 const webAppSchema = {
   "@context": "https://schema.org",
@@ -12,26 +12,16 @@ const webAppSchema = {
 };
 ---
 
-<BaseLayout 
+<BaseLayout field="tangerine" fullBleed 
   title="Pinterest Story & Idea Pin Downloader — Save Stories HD" 
   description="Download Pinterest Idea Pins, multi-page story pins, and video stories in full HD MP4 format. Works fast on mobile and desktop for free."
   jsonLd={webAppSchema}
 >
-  <div class="flex flex-col items-center justify-center py-6 sm:py-12 text-center w-full px-2 sm:px-6">
-    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight leading-tight max-w-3xl">
-      Pinterest <span class="text-rose-600 dark:text-rose-400">Idea Pin Downloader</span>
-    </h1>
-    
-    <div class="w-full max-w-3xl">
-      <DownloaderForm client:load />
-    </div>
+  <TicketHero title={"Pinterest Idea Pin Downloader"} variant="video" />
+  <div class="flex flex-col items-center py-10 sm:py-14 text-center w-full max-w-6xl mx-auto px-4 sm:px-6">
 
     <!-- SEO Intro & Subtitle Banner -->
-    <div class="w-full max-w-2xl mx-auto mt-6 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 text-rose-700 dark:text-rose-300 text-xs sm:text-sm font-bold mb-3 border border-red-200 dark:border-red-900/40 shadow-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1.2 0-2.4.6-3 1.7A5 5 0 0 0 7 9c0 3.8 2.5 6.9 5 9 2.5-2.1 5-5.2 5-9a5 5 0 0 0-2-4.3c-.6-1.1-1.8-1.7-3-1.7Z"/><path d="M12 21v1"/><path d="M9 18h6"/></svg>
-        Multi-Slide Story &amp; Idea Pin Downloader
-      </div>
+    <div class="w-full max-w-3xl mt-6">
       <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
         Download full video slides, audio, and content from Pinterest Idea Pins and Story Pins without watermarks.
       </p>

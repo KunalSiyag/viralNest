@@ -75,7 +75,7 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
       const barHeight = val * height * 1.5;
       const x = i * barWidth;
       const y = (height - barHeight) / 2;
-      ctx.fillStyle = '#E11D48';
+      ctx.fillStyle = '#C8281A';
       ctx.fillRect(x, y, barWidth - 1, barHeight);
     });
   };
@@ -195,13 +195,13 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
   if (typeof document === 'undefined') return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xl animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/80 animate-in fade-in duration-300">
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 max-w-xl w-full shadow-2xl flex flex-col gap-5 text-left">
         <audio ref={audioRef} src={audioUrl} onTimeUpdate={handleTimeUpdate} className="hidden" />
 
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
           <div className="flex items-center gap-2">
-            <Scissors className="w-5 h-5 text-[#E11D48]" />
+            <Scissors className="w-5 h-5 text-[#C8281A]" />
             <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
               Audio Hook Trimmer &amp; Sound Saver
             </h3>
@@ -220,7 +220,7 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
           <canvas ref={canvasRef} width={500} height={80} className="w-full h-20 rounded" />
           {!audioBuffer && (
             <div className="absolute inset-0 flex items-center justify-center bg-slate-950/90 text-slate-400 text-xs font-semibold gap-2">
-              <RefreshCw className="w-4 h-4 animate-spin text-[#E11D48]" />
+              <RefreshCw className="w-4 h-4 animate-spin text-[#C8281A]" />
               <span>Decoding audio waveform…</span>
             </div>
           )}
@@ -230,7 +230,7 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label htmlFor="audio-trim-start-time" className="block text-xs font-bold text-slate-500 mb-1">
-              Start Time: <span className="text-[#E11D48] font-mono">{startTime.toFixed(1)}s</span>
+              Start Time: <span className="text-[#C8281A] font-mono">{startTime.toFixed(1)}s</span>
             </label>
             <input
               id="audio-trim-start-time"
@@ -242,13 +242,13 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
               value={startTime}
               onChange={(e) => setStartTime(parseFloat(e.target.value))}
               aria-label="Audio trim start time in seconds"
-              className="w-full accent-[#E11D48]"
+              className="w-full accent-[#C8281A]"
             />
           </div>
 
           <div>
             <label htmlFor="audio-trim-end-time" className="block text-xs font-bold text-slate-500 mb-1">
-              End Time: <span className="text-[#E11D48] font-mono">{endTime.toFixed(1)}s</span>
+              End Time: <span className="text-[#C8281A] font-mono">{endTime.toFixed(1)}s</span>
             </label>
             <input
               id="audio-trim-end-time"
@@ -260,7 +260,7 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
               value={endTime}
               onChange={(e) => setEndTime(parseFloat(e.target.value))}
               aria-label="Audio trim end time in seconds"
-              className="w-full accent-[#E11D48]"
+              className="w-full accent-[#C8281A]"
             />
           </div>
         </div>
@@ -270,7 +270,7 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
           <button
             type="button"
             onClick={handlePlayPreview}
-            className="px-3.5 py-1.5 rounded-lg bg-[#E11D48] text-white font-bold flex items-center gap-1.5 shadow-sm"
+            className="px-3.5 py-1.5 rounded-lg bg-[#C8281A] text-white font-bold flex items-center gap-1.5 shadow-sm"
           >
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
             <span>{isPlaying ? 'Pause' : 'Listen Clip'}</span>
@@ -290,7 +290,7 @@ export default function AudioTrimmer({ audioUrl, title, onClose }: AudioTrimmerP
             type="button"
             disabled={!audioBuffer || processing}
             onClick={downloadTrimmedAudio}
-            className="px-6 py-2.5 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white text-xs font-extrabold flex items-center gap-2 shadow-lg shadow-red-500/25 transition-all disabled:opacity-50"
+            className="px-6 py-2.5 rounded-xl bg-[#C8281A] hover:bg-[#A51F13] text-white text-xs font-extrabold flex items-center gap-2 shadow-lg shadow-red-500/25 transition-all disabled:opacity-50"
           >
             <Download className="w-4 h-4" />
             <span>Download Trimmed Audio (WAV)</span>

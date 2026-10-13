@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import DownloaderForm from '../components/DownloaderForm';
+import TicketHero from '../components/TicketHero.astro';
 import RelatedTools from '../components/seo/RelatedTools.astro';
 import FaqSection from '../components/seo/FaqSection.astro';
 import HowToSteps from '../components/seo/HowToSteps.astro';
@@ -68,50 +68,13 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+<BaseLayout field="sky" title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
   <!-- Hero card with curved background image -->
-  <section
-    class="relative mx-0 sm:mx-6 lg:mx-8 xl:mx-10 mt-0 sm:mt-3 mb-4 sm:mb-6 rounded-none sm:rounded-[2.5rem] overflow-hidden min-h-0 sm:min-h-[calc(100vh-5rem)] flex flex-col justify-center items-center py-6 sm:py-14 border-0 sm:border border-red-100/80 dark:border-red-900/30 shadow-none sm:shadow-[0_20px_60px_-20px_rgba(225,29,72,0.35)]"
-    aria-labelledby="hero-heading"
-  >
-    <!-- Light theme hero background -->
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
-      style="background-image: url('/images/hero_background.webp');"
-      aria-hidden="true"
-    />
-    <!-- Dark theme hero background -->
-    <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat hidden dark:block"
-      style="background-image: url('/images/hero_background_dark.webp');"
-      aria-hidden="true"
-    />
-    <div
-      class="absolute inset-0 bg-gradient-to-b from-white/45 via-white/65 to-white/85 dark:from-ink-950/60 dark:via-ink-950/75 dark:to-ink-950/90"
-      aria-hidden="true"
-    />
+  <TicketHero title={"Pinterest Profile Downloader"} variant="profile" />
 
-    <div class="relative z-10 flex flex-col items-center justify-center text-center px-3 sm:px-8 lg:px-12 pt-8 sm:pt-14 lg:pt-16 pb-4 sm:pb-8 lg:pb-10 w-full my-auto">
-      <h1
-        id="hero-heading"
-        class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight max-w-4xl leading-tight mb-6 sm:mb-8"
-        style="text-wrap: balance;"
-      >
-        Pinterest <span class="text-rose-600 dark:text-rose-400">Profile Downloader</span>
-      </h1>
-
-      <div class="w-full max-w-4xl">
-        <DownloaderForm client:load variant="profile" />
-      </div>
-    </div>
-  </section>
-
-  <article class="flex flex-col items-center text-center w-full max-w-6xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
+  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-left">
     <!-- SEO Intro & Subtitle Banner -->
-    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-6 text-center">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/40 text-rose-700 dark:text-rose-300 text-xs font-bold mb-3 border border-red-200/80 dark:border-red-900/40 shadow-sm">
-        Profile URL → bulk pin ZIP
-      </div>
+    <div class="w-full max-w-3xl mb-6 counter-rule pt-4">
       <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-3 leading-relaxed">
         Paste a public <strong class="text-slate-900 dark:text-white">profile URL</strong> (<code class="text-xs">pinterest.com/username/</code>)
         to extract visible pins and download them as a <strong class="text-slate-900 dark:text-white">ZIP</strong>.
@@ -122,21 +85,21 @@ const jsonLd = [
       </p>
     </div>
     <div class="mt-2 w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm">
-      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+      <div class="pt-3 border-t-2 border-[var(--ink)]">
         <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Profile intent</h2>
         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Targets "download Pinterest profile" queries with username-only URLs.</p>
       </div>
-      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+      <div class="pt-3 border-t-2 border-[var(--ink)]">
         <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Bulk ZIP</h2>
         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">One archive of public pins shown on the profile page for offline use.</p>
       </div>
-      <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+      <div class="pt-3 border-t-2 border-[var(--ink)]">
         <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Public only</h2>
         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">No private profiles, no secret boards, no login-gated media.</p>
       </div>
     </div>
 
-    <div class="w-full max-w-4xl">
+    <div class="w-full">
       <HowToSteps
         title="How to download Pinterest profile pins as a ZIP"
         intro="Use a profile link only. If the URL has a board name after the username, switch to the Board Downloader."

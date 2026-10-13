@@ -1,0 +1,35 @@
+---
+import DownloaderForm, { type FormVariant, type FormLayout } from './DownloaderForm';
+
+interface Props {
+  /** H1 text (may contain inline HTML such as <br>) */
+  title: string;
+  /** One or two sentences under the H1 (inline HTML allowed) */
+  lede?: string;
+  variant?: FormVariant;
+  layout?: FormLayout;
+}
+
+const { title, lede, variant = 'hub', layout = 'default' } = Astro.props;
+---
+
+<section class="field relative" aria-labelledby="hero-heading">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-8 lg:pt-12 pb-10 sm:pb-14 lg:pb-20 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] gap-6 sm:gap-8 lg:gap-14 items-start"
+  >
+    <div class="min-w-0 lg:pt-4">
+      <h1
+        id="hero-heading"
+        class="t-display text-[2.875rem] leading-[0.9] sm:text-6xl sm:leading-[0.88] lg:text-[5.25rem] xl:text-[5.75rem]"
+        set:html={title}
+      />
+      {lede && (
+        <p class="mt-4 sm:mt-5 text-[1.0625rem] sm:text-lg leading-relaxed max-w-xl text-[var(--on-field-2)] [&_strong]:text-[var(--on-field)] [&_code]:font-semibold" set:html={lede} />
+      )}
+      <slot name="aside" />
+    </div>
+    <div class="min-w-0">
+      <DownloaderForm client:load variant={variant} layout={layout} />
+    </div>
+  </div>
+</section>

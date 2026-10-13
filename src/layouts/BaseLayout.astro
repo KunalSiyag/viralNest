@@ -4,6 +4,7 @@ import { absoluteUrl, normalizeCanonical } from '../lib/urls';
 import StickyPasteBar from '../components/StickyPasteBar';
 import FooterKeywordMatrix from '../components/FooterKeywordMatrix.astro';
 import LanguageSelector from '../components/LanguageSelector';
+import '../styles/ticket.css';
 
 interface Props {
   title: string;
@@ -17,6 +18,8 @@ interface Props {
   clean?: boolean;
   jsonLd?: Record<string, any> | Record<string, any>[];
   noindex?: boolean;
+  /** Ticket stock the page is printed on (hero field + header) */
+  field?: 'red' | 'tangerine' | 'canary' | 'lilac' | 'mint' | 'sky' | 'blush' | 'counter';
 }
 
 const {
@@ -29,6 +32,7 @@ const {
   clean = false,
   jsonLd,
   noindex = false,
+  field = 'red',
 } = Astro.props;
 
 // Always normalize: no trailing slash except homepage
@@ -88,6 +92,9 @@ const organizationSchema = {
   sameAs: ['https://github.com/kunalsiyag', 'https://x.com/pintdownload'],
 };
 
+const adClient = import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined;
+const fieldClass = field === 'counter' ? '' : `field-${field}`;
+const themeColor = { red: '#C8281A', tangerine: '#F08A3C', canary: '#F4C531', lilac: '#B79CE8', mint: '#6CC79A', sky: '#7DB7E8', blush: '#F29BB4', counter: '#E4E6E9' }[field];
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 /** Header navigation — concise labels for clean header spacing */
@@ -97,7 +104,7 @@ const nav = [
   { href: '/pinterest-image-downloader', label: 'Images' },
   { href: '/pinterest-gif-downloader', label: 'GIFs' },
   { href: '/pinterest-board-downloader', label: 'Boards' },
-  { href: '/pinterest-profile-picture-downloader', label: 'Avatar / DP' },
+  { href: '/pinterest-profile-picture-downloader', label: 'Avatar' },
   { href: '/pinterest-profile-downloader', label: 'Profiles' },
   { href: '/blog', label: 'Guides' },
 ];
@@ -170,7 +177,7 @@ const mobileNav = [
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <meta name="theme-color" content="#E11D48" />
+    <meta name="theme-color" content={themeColor} />
     <meta name="color-scheme" content="light dark" />
 
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
@@ -196,71 +203,39 @@ const mobileNav = [
       })();
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      />
-    </noscript>
+    {adClient && (
+      <script is:inline async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`} crossorigin="anonymous"></script>
+    )}
+    <link rel="preload" href="/fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/big-shoulders-display-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
   </head>
-  <body
-    class="bg-[#FFFBFB] dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col font-sans selection:bg-brand-600/20 selection:text-brand-800 dark:selection:text-brand-100 relative overflow-x-hidden"
-  >
+  <body class:list={['min-h-screen flex flex-col font-sans antialiased overflow-x-hidden', fieldClass]}>
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-full focus:bg-white focus:text-ink-900 focus:shadow-lift"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-3 focus:rounded-md focus:bg-ink-900 focus:text-white focus:font-bold"
     >
       Skip to content
     </a>
 
-    <!-- Side ambient glows to fill screen margins aesthetically -->
-    <div class="fixed top-1/4 -left-36 w-[30rem] h-[30rem] rounded-full bg-red-500/10 dark:bg-red-500/15 blur-3xl pointer-events-none z-0" aria-hidden="true"></div>
-    <div class="fixed top-1/2 -right-36 w-[30rem] h-[30rem] rounded-full bg-rose-500/10 dark:bg-rose-500/15 blur-3xl pointer-events-none z-0" aria-hidden="true"></div>
-
-    <!-- Minimal header (Transparent fixed overlay over hero section, frosted glass on scroll) -->
-    <header
-      id="site-header"
-      class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 border-b border-transparent bg-transparent"
-    >
+    <header id="site-header" class:list={['relative z-40 w-full', field === 'counter' ? 'bg-[var(--counter)] text-[var(--ink)] border-b-2 border-[var(--ink)]' : 'field']}>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[4.5rem] flex items-center justify-between gap-4">
-        <a href="/" class="flex items-center gap-2.5 group min-w-0 focus-visible:outline-none shrink-0">
-          <img
-            src="/images/logo.png"
-            alt="PintDownload"
-            width="36"
-            height="36"
-            class="h-9 w-9 object-contain object-center drop-shadow-sm shrink-0"
-            decoding="async"
-          />
-          <span class="font-bold text-[1.2rem] tracking-tight text-ink-900 dark:text-white truncate">
-            Pint<span class="text-brand-600">Download</span>
+        <a href="/" class="flex items-center gap-2 min-w-0 shrink-0 rounded-md" aria-label="PintDownload home">
+          <span class="grid place-items-center h-10 w-10 rounded-md bg-white shrink-0">
+            <img src="/images/logo.png" alt="PintDownload logo" width="28" height="28" class="h-7 w-7 object-contain" decoding="async" />
           </span>
+          <span class="t-display text-[1.6rem] leading-none tracking-[0.01em]" translate="no">PintDownload</span>
         </a>
 
-        <nav class="hidden lg:flex items-center justify-center flex-1 max-w-2xl mx-auto gap-1 xl:gap-2 text-xs sm:text-sm font-semibold" aria-label="Main Navigation">
+        <nav class="hidden lg:flex items-center justify-center flex-1 gap-1 text-[0.95rem] font-bold" aria-label="Main Navigation">
           {nav.map((item) => {
             const isActive = currentPath === item.href;
             return (
               <a
                 href={item.href}
+                aria-current={isActive ? 'page' : undefined}
                 class:list={[
-                  'px-3 py-1.5 rounded-full transition-all whitespace-nowrap',
-                  isActive
-                    ? 'bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 font-bold shadow-xs'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60',
+                  'px-3 py-2 rounded-md whitespace-nowrap transition-colors',
+                  isActive ? 'bg-ink-900 text-white' : 'hover:bg-black/10',
                 ]}
               >
                 {item.label}
@@ -269,51 +244,50 @@ const mobileNav = [
           })}
         </nav>
 
-        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-          <LanguageSelector client:idle />
-          <!-- Slide Theme Toggle Button -->
+        <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <div class="hidden sm:block"><LanguageSelector client:idle /></div>
           <button
             id="theme-toggle-btn"
             type="button"
-            onclick="const h=document.documentElement;if(h.classList.contains('dark')){h.classList.remove('dark');h.classList.add('light');localStorage.setItem('theme','light');}else{h.classList.remove('light');h.classList.add('dark');localStorage.setItem('theme','dark');}"
-            class="relative h-9 w-16 rounded-full bg-slate-200/90 dark:bg-slate-800/90 p-1 transition-colors duration-300 border border-slate-300/70 dark:border-slate-700/80 flex items-center justify-between shadow-inner focus-visible:outline-none shrink-0"
-            title="Toggle theme"
+            class="h-11 w-11 inline-flex items-center justify-center rounded-md hover:bg-black/10 touch-manipulation"
             aria-label="Toggle light and dark mode"
           >
-            <span class="text-xs select-none pl-1.5 z-0" aria-hidden="true">☀️</span>
-            <span class="text-xs select-none pr-1.5 z-0" aria-hidden="true">🌙</span>
-            <span
-              class="absolute left-1 top-1 h-7 w-7 rounded-full bg-white dark:bg-slate-900 shadow-md transform transition-transform duration-300 dark:translate-x-7 z-10 flex items-center justify-center border border-slate-200/80 dark:border-slate-700/80"
-              aria-hidden="true"
-            >
-              <span class="hidden dark:inline text-[11px]">🌙</span>
-              <span class="inline dark:hidden text-[11px]">☀️</span>
-            </span>
+            <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
           </button>
-
           <button
             id="mobile-nav-toggle"
             type="button"
-            class="lg:hidden h-10 w-10 inline-flex items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.08] text-ink-800 dark:text-slate-100 touch-manipulation"
+            class="lg:hidden h-11 w-11 inline-flex items-center justify-center rounded-md hover:bg-black/10 touch-manipulation"
             aria-expanded="false"
             aria-controls="mobile-nav-panel"
             aria-label="Open menu"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
         </div>
       </div>
 
-      <div id="mobile-nav-panel" class="hidden lg:hidden border-t border-black/[0.05] dark:border-white/[0.08] bg-white/95 dark:bg-ink-950/95 backdrop-blur-xl">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3 grid grid-cols-1 gap-1.5 text-[0.95rem] font-medium" aria-label="Tools">
-          {mobileNav.map((item) => (
-            <a
-              href={item.href}
-              class="px-4 py-3 rounded-xl bg-ink-50 dark:bg-white/[0.05] text-ink-800 dark:text-slate-100 hover:bg-brand-50 dark:hover:bg-brand-950/40 hover:text-brand-700 transition-colors touch-manipulation"
-            >
-              {item.label}
-            </a>
-          ))}
+      <div id="mobile-nav-panel" class="hidden lg:hidden absolute left-0 right-0 top-full z-50 bg-ink-900 text-white">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-2 text-base font-semibold" aria-label="Tools">
+          <div class="sm:hidden py-3 flex items-center justify-between gap-3 border-b-2 border-dashed border-white/20">
+            <span class="t-label">Language</span>
+            <LanguageSelector client:idle />
+          </div>
+          <ul class="divide-y-2 divide-dashed divide-white/20">
+            {mobileNav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={currentPath === item.href ? 'page' : undefined}
+                  class="flex items-center justify-between min-h-[3.25rem] px-1 hover:text-stock-canary touch-manipulation"
+                >
+                  {item.label}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
       </div>
       <script is:inline>
@@ -326,176 +300,93 @@ const mobileNav = [
               btn.setAttribute('aria-expanded', open ? 'true' : 'false');
               btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
             });
-          }
-
-          var header = document.getElementById('site-header');
-          if (header) {
-            function updateHeader() {
-              if (window.scrollY > 20) {
-                header.classList.remove('bg-transparent', 'border-transparent');
-                header.classList.add(
-                  'bg-white/85',
-                  'dark:bg-slate-950/85',
-                  'backdrop-blur-xl',
-                  'border-black/[0.05]',
-                  'dark:border-white/[0.08]',
-                  'shadow-sm'
-                );
-              } else {
-                header.classList.remove(
-                  'bg-white/85',
-                  'dark:bg-slate-950/85',
-                  'backdrop-blur-xl',
-                  'border-black/[0.05]',
-                  'dark:border-white/[0.08]',
-                  'shadow-sm'
-                );
-                header.classList.add('bg-transparent', 'border-transparent');
+            document.addEventListener('keydown', function (e) {
+              if (e.key === 'Escape' && !panel.classList.contains('hidden')) {
+                panel.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+                btn.setAttribute('aria-label', 'Open menu');
+                btn.focus();
               }
-            }
-            window.addEventListener('scroll', updateHeader, { passive: true });
-            updateHeader();
+            });
+          }
+          var theme = document.getElementById('theme-toggle-btn');
+          if (theme) {
+            theme.addEventListener('click', function () {
+              var h = document.documentElement;
+              var dark = !h.classList.contains('dark');
+              h.classList.toggle('dark', dark);
+              h.classList.toggle('light', !dark);
+              try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+            });
           }
         })();
       </script>
     </header>
 
-    <div class="relative w-full overflow-x-hidden flex-1">
-      {!clean && (
-        <>
-          {/* Left floating pin collage with water droplet bubbles on hover */}
-          <div class="hidden lg:block absolute left-1 lg:left-3 2xl:left-6 top-16 w-36 lg:w-44 2xl:w-52 pointer-events-none select-none z-20">
-            <div class="transform -rotate-6 pointer-events-auto group/pin relative mb-6">
-              <!-- Water droplet background bubbles -->
-              <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-br from-pink-400/50 to-red-500/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-4 group-hover/pin:-translate-x-2 group-hover/pin:scale-125 transition-all duration-500 ease-out z-0 border border-white/50 shadow-md shadow-red-500/20"></div>
-              <div class="absolute -bottom-3 -right-3 w-10 h-10 rounded-full bg-gradient-to-tr from-red-500/40 to-rose-400/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-y-4 group-hover/pin:translate-x-2 group-hover/pin:scale-110 transition-all duration-500 delay-75 ease-out z-0 border border-white/40 shadow-md"></div>
-              <div class="absolute top-1/2 -right-4 w-6 h-6 rounded-full bg-gradient-to-r from-rose-300/50 to-pink-500/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-x-4 group-hover/pin:-translate-y-3 group-hover/pin:scale-125 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
-              <div class="absolute -top-4 right-4 w-5 h-5 rounded-full bg-gradient-to-b from-red-400/40 to-pink-300/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-5 group-hover/pin:scale-110 transition-all duration-500 delay-150 ease-out z-0 border border-white/40"></div>
-
-              <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_1.webp" alt="Cozy home decor design" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
-                <div class="p-1.5 text-left">
-                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 block">Interior · Pin</span>
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Cozy home decor</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="transform rotate-3 translate-y-4 translate-x-4 pointer-events-auto group/pin relative">
-              <!-- Water droplet background bubbles -->
-              <div class="absolute -top-3 -right-3 w-9 h-9 rounded-full bg-gradient-to-br from-red-400/40 to-pink-500/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-3 group-hover/pin:translate-x-3 group-hover/pin:scale-125 transition-all duration-500 ease-out z-0 border border-white/50 shadow-md shadow-red-500/20"></div>
-              <div class="absolute -bottom-2 -left-3 w-7 h-7 rounded-full bg-gradient-to-tr from-rose-500/40 to-pink-400/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-y-3 group-hover/pin:-translate-x-3 transition-all duration-500 delay-75 ease-out z-0 border border-white/40"></div>
-              <div class="absolute top-1/3 -left-4 w-5 h-5 rounded-full bg-gradient-to-r from-pink-300/50 to-rose-400/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-x-4 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
-
-              <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_3.webp" alt="Matcha and fresh pastry" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
-                <div class="p-1.5 text-left">
-                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 block">Lifestyle · Pin</span>
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Matcha &amp; pastry</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right floating pin collage with water droplet bubbles on hover */}
-          <div class="hidden lg:block absolute right-1 lg:right-3 2xl:right-6 top-20 w-36 lg:w-44 2xl:w-52 pointer-events-none select-none z-20">
-            <div class="transform rotate-6 pointer-events-auto group/pin relative mb-6">
-              <!-- Water droplet background bubbles -->
-              <div class="absolute -top-3 -right-3 w-9 h-9 rounded-full bg-gradient-to-br from-pink-400/50 to-red-500/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-4 group-hover/pin:translate-x-2 group-hover/pin:scale-125 transition-all duration-500 ease-out z-0 border border-white/50 shadow-md shadow-red-500/20"></div>
-              <div class="absolute -bottom-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-tr from-red-500/40 to-rose-400/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-y-3 group-hover/pin:-translate-x-2 group-hover/pin:scale-110 transition-all duration-500 delay-75 ease-out z-0 border border-white/40 shadow-md"></div>
-              <div class="absolute top-1/2 -left-4 w-6 h-6 rounded-full bg-gradient-to-r from-rose-300/50 to-pink-500/30 backdrop-blur-sm opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-x-3 group-hover/pin:-translate-y-2 group-hover/pin:scale-125 transition-all duration-500 delay-100 ease-out z-0 border border-white/40"></div>
-
-              <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-red-950/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_2.webp" alt="Golden hour landscape" class="w-full h-44 lg:h-56 object-cover rounded-xl" width="192" height="224" loading="lazy" decoding="async" />
-                <div class="p-1.5 text-left">
-                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 block">Travel · Pin</span>
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Golden hour views</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="transform -rotate-3 translate-y-4 -translate-x-4 pointer-events-auto group/pin relative">
-              <!-- Water droplet background bubbles -->
-              <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-br from-red-400/40 to-pink-500/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:-translate-y-3 group-hover/pin:-translate-x-2 group-hover/pin:scale-125 transition-all duration-500 ease-out z-0 border border-white/50 shadow-md shadow-red-500/20"></div>
-              <div class="absolute -bottom-2 -right-3 w-7 h-7 rounded-full bg-gradient-to-tr from-rose-500/40 to-pink-400/30 backdrop-blur-md opacity-0 group-hover/pin:opacity-100 group-hover/pin:translate-y-3 group-hover/pin:translate-x-2 transition-all duration-500 delay-75 ease-out z-0 border border-white/40"></div>
-
-              <div class="relative z-10 p-1.5 sm:p-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xl shadow-slate-900/10 group-hover/pin:scale-[1.04] group-hover/pin:shadow-red-500/20 group-hover/pin:border-red-300 dark:group-hover/pin:border-red-600 transition-all duration-500 cursor-pointer">
-                <img src="/images/side_pin_4.webp" alt="Street style chic outfit" class="w-full h-36 lg:h-48 object-cover rounded-xl" width="192" height="192" loading="lazy" decoding="async" />
-                <div class="p-1.5 text-left">
-                  <span class="text-[9px] lg:text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 block">Fashion · Pin</span>
-                  <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">Street style chic</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-
-      <main
-        id="main-content"
-        class:list={[
-          'relative z-10 flex-1 w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 flex flex-col',
-          fullBleed ? 'max-w-none px-0 py-0' : 'max-w-6xl',
-        ]}
-      >
-        <slot />
-      </main>
-    </div>
+    <main
+      id="main-content"
+      class:list={[
+        'relative flex-1 w-full mx-auto flex flex-col',
+        fullBleed ? 'max-w-none' : 'max-w-6xl px-4 sm:px-6 py-8 sm:py-12',
+      ]}
+    >
+      <slot />
+    </main>
 
     <FooterKeywordMatrix />
 
-    <footer class="w-full border-t border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-950 py-14 sm:py-16 text-base text-slate-600 dark:text-slate-300">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+    <footer class="w-full bg-ink-950 text-slate-300 pt-12 pb-28 lg:pb-14 text-base">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
           <div class="sm:col-span-2 lg:col-span-1">
-            <a href="/" class="inline-flex items-center gap-2.5 mb-4">
-              <img src="/images/logo.png" alt="PintDownload" width="32" height="32" class="h-8 w-8 object-contain shrink-0" />
-              <span class="font-semibold text-lg text-ink-900 dark:text-white tracking-tight">
-                Pint<span class="text-brand-600">Download</span>
+            <a href="/" class="inline-flex items-center gap-2 mb-4 rounded-md" aria-label="PintDownload home">
+              <span class="grid place-items-center h-9 w-9 rounded-md bg-white shrink-0">
+                <img src="/images/logo.png" alt="PintDownload logo" width="24" height="24" class="h-6 w-6 object-contain" loading="lazy" />
               </span>
+              <span class="t-display text-2xl text-white" translate="no">PintDownload</span>
             </a>
-            <p class="text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-300 max-w-xs">
+            <p class="text-[0.95rem] leading-relaxed max-w-xs">
               {BRAND.tagline}. Free public pin, video, board, and profile downloads — no account, no watermark from us.
             </p>
           </div>
 
           <div>
-            <h4 class="font-semibold text-ink-900 dark:text-white mb-4 text-[1.05rem]">Tools</h4>
-            <ul class="space-y-2.5 text-[0.95rem] font-medium">
-              <li><a href="/pinterest-video-downloader" class="hover:text-brand-600 transition-colors">Pinterest Video Downloader</a></li>
-              <li><a href="/pinterest-pin-downloader" class="hover:text-brand-600 transition-colors">Pinterest Pin Downloader</a></li>
-              <li><a href="/pinterest-board-downloader" class="hover:text-brand-600 transition-colors">Pinterest Board Downloader</a></li>
-              <li><a href="/pinterest-image-downloader" class="hover:text-brand-600 transition-colors">Pinterest Photo Downloader</a></li>
-              <li><a href="/pinterest-profile-downloader" class="hover:text-brand-600 transition-colors">Pinterest Profile Downloader</a></li>
-              <li><a href="/pinterest-gif-downloader" class="hover:text-brand-600 transition-colors">Pinterest GIF Downloader</a></li>
+            <h2 class="t-label text-stock-canary mb-4">Tools</h2>
+            <ul class="space-y-1 text-[0.95rem] font-medium">
+              <li><a href="/pinterest-video-downloader" class="inline-block py-1 hover:text-white hover:underline">Pinterest Video Downloader</a></li>
+              <li><a href="/pinterest-pin-downloader" class="inline-block py-1 hover:text-white hover:underline">Pinterest Pin Downloader</a></li>
+              <li><a href="/pinterest-board-downloader" class="inline-block py-1 hover:text-white hover:underline">Pinterest Board Downloader</a></li>
+              <li><a href="/pinterest-image-downloader" class="inline-block py-1 hover:text-white hover:underline">Pinterest Photo Downloader</a></li>
+              <li><a href="/pinterest-profile-downloader" class="inline-block py-1 hover:text-white hover:underline">Pinterest Profile Downloader</a></li>
+              <li><a href="/pinterest-gif-downloader" class="inline-block py-1 hover:text-white hover:underline">Pinterest GIF Downloader</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 class="font-semibold text-ink-900 dark:text-white mb-4 text-[1.05rem]">Learn</h4>
-            <ul class="space-y-2.5 text-[0.95rem] font-medium">
-              <li><a href="/blog" class="hover:text-brand-600 transition-colors">Blog</a></li>
-              <li><a href="/rss.xml" class="hover:text-brand-600 transition-colors">RSS</a></li>
-              <li><a href="/how-to-download-pinterest-videos" class="hover:text-brand-600 transition-colors">How-to guide</a></li>
-              <li><a href="/blog/troubleshooting-pinterest-downloads" class="hover:text-brand-600 transition-colors">Troubleshooting</a></li>
-              <li><a href="/blog/pin-vs-board-vs-profile-urls-explained" class="hover:text-brand-600 transition-colors">URL types</a></li>
+            <h2 class="t-label text-stock-canary mb-4">Learn</h2>
+            <ul class="space-y-1 text-[0.95rem] font-medium">
+              <li><a href="/blog" class="inline-block py-1 hover:text-white hover:underline">Blog</a></li>
+              <li><a href="/rss.xml" class="inline-block py-1 hover:text-white hover:underline">RSS</a></li>
+              <li><a href="/how-to-download-pinterest-videos" class="inline-block py-1 hover:text-white hover:underline">How-to guide</a></li>
+              <li><a href="/blog/troubleshooting-pinterest-downloads" class="inline-block py-1 hover:text-white hover:underline">Troubleshooting</a></li>
+              <li><a href="/blog/pin-vs-board-vs-profile-urls-explained" class="inline-block py-1 hover:text-white hover:underline">URL types</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 class="font-semibold text-ink-900 dark:text-white mb-4 text-[1.05rem]">Company</h4>
-            <ul class="space-y-2.5 text-[0.95rem] font-medium">
-              <li><a href="/about" class="hover:text-brand-600 transition-colors">About</a></li>
-              <li><a href="/contact" class="hover:text-brand-600 transition-colors">Contact</a></li>
-              <li><a href="/privacy-policy" class="hover:text-brand-600 transition-colors">Privacy</a></li>
-              <li><a href="/terms-of-service" class="hover:text-brand-600 transition-colors">Terms</a></li>
+            <h2 class="t-label text-stock-canary mb-4">Company</h2>
+            <ul class="space-y-1 text-[0.95rem] font-medium">
+              <li><a href="/about" class="inline-block py-1 hover:text-white hover:underline">About</a></li>
+              <li><a href="/contact" class="inline-block py-1 hover:text-white hover:underline">Contact</a></li>
+              <li><a href="/privacy-policy" class="inline-block py-1 hover:text-white hover:underline">Privacy</a></li>
+              <li><a href="/terms-of-service" class="inline-block py-1 hover:text-white hover:underline">Terms</a></li>
               <li>
-                <a href={`mailto:${BRAND.email.support}`} class="hover:text-brand-600 transition-colors break-all">
+                <a href={`mailto:${BRAND.email.support}`} class="inline-block py-1 hover:text-white hover:underline break-all">
                   {BRAND.email.support}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${BRAND.email.feedback}`} class="hover:text-brand-600 transition-colors break-all">
+                <a href={`mailto:${BRAND.email.feedback}`} class="inline-block py-1 hover:text-white hover:underline break-all">
                   {BRAND.email.feedback}
                 </a>
               </li>
@@ -503,11 +394,9 @@ const mobileNav = [
           </div>
         </div>
 
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-black/[0.06] dark:border-white/[0.08] text-[0.9rem]">
-          <p class="text-slate-600 dark:text-slate-400">
-            © {new Date().getFullYear()} {BRAND.name} · {BRAND.domain}
-          </p>
-          <p class="text-slate-600 dark:text-slate-400 text-center md:text-right max-w-lg">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-6 border-t-2 border-dashed border-white/20 text-[0.9rem]">
+          <p>© {new Date().getFullYear()} {BRAND.name} · {BRAND.domain}</p>
+          <p class="md:text-right max-w-lg">
             Credit original creators when you reuse clips. Independent tool — not affiliated with Pinterest Inc.
           </p>
         </div>
@@ -518,20 +407,6 @@ const mobileNav = [
 </html>
 
 <style is:global>
-  .melt-card {
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-radius 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.6s ease, box-shadow 0.6s ease;
-    will-change: transform, border-radius, filter;
-  }
-  .melt-card:hover {
-    border-radius: 38% 62% 63% 37% / 45% 35% 65% 55%;
-    filter: contrast(1.18) saturate(1.3) drop-shadow(0 22px 35px rgba(225, 29, 72, 0.38));
-    transform: scale(1.08) translateY(-6px) rotate(2.5deg);
-  }
-
-  :root {
-    color-scheme: light dark;
-  }
-
   html {
     font-size: 100%;
     scroll-behavior: smooth;
@@ -539,30 +414,19 @@ const mobileNav = [
 
   @media (min-width: 768px) {
     html {
-      font-size: 106.25%; /* slightly larger on desktop */
+      font-size: 106.25%;
     }
   }
 
   body {
     touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(200, 40, 26, 0.18);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Vercel Design Guidelines: Visible focus states using :focus-visible */
-  *:focus-visible {
-    outline: 2px solid #E11D48;
-    outline-offset: 2px;
-    border-radius: 8px;
-  }
-
   .tabular-nums {
     font-variant-numeric: tabular-nums;
-  }
-
-  h1, h2, h3, h4 {
-    text-wrap: balance;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -574,24 +438,5 @@ const mobileNav = [
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-  }
-
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #d4d4d8;
-    border-radius: 999px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-  }
-  .dark ::-webkit-scrollbar-thumb {
-    background: #3f3f46;
-    border: 2px solid transparent;
-    background-clip: padding-box;
   }
 </style>

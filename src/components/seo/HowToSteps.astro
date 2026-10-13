@@ -25,71 +25,50 @@ const useVisual = visual || hasImages;
 ---
 
 <section
-  class:list={[
-    "mt-8 sm:mt-12 w-full text-left",
-    stripe
-      ? "w-full py-10 sm:py-16 bg-slate-100/80 dark:bg-slate-900/70 border-y border-slate-200/80 dark:border-slate-800/80 shadow-inner"
-      : ""
-  ]}
+  class:list={['w-full text-left', stripe ? 'py-12 sm:py-16' : 'mt-10 sm:mt-14']}
   aria-labelledby="howto-heading"
 >
-  <div class:list={[stripe ? "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" : ""]}>
-    <h2 id="howto-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
-      {title}
-    </h2>
-    {intro && (
-      <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-5 max-w-2xl leading-relaxed">{intro}</p>
-    )}
-    {exampleUrl && (
-      <p class="mb-5 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
-        <span class="font-bold text-slate-800 dark:text-slate-200">{exampleLabel || 'Example URL'}:</span>{' '}
-        <code class="text-[11px] sm:text-xs bg-white dark:bg-slate-800 px-2 py-1 rounded-lg break-all border border-slate-200 dark:border-slate-700">{exampleUrl}</code>
-      </p>
-    )}
+  <div class:list={[stripe ? 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8' : '']}>
+    <div class="counter-rule pt-4 mb-6 sm:mb-8 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] gap-x-10 gap-y-3 items-end">
+      <h2 id="howto-heading" class="t-display text-4xl sm:text-5xl leading-[0.95]">{title}</h2>
+      <div>
+        {intro && <p class="text-base text-[var(--ink-2)] leading-relaxed">{intro}</p>}
+        {exampleUrl && (
+          <p class="mt-2 text-sm text-[var(--ink-2)]">
+            <span class="font-bold text-[var(--ink)]">{exampleLabel || 'Example URL'}:</span>{' '}
+            <code class="text-[0.8125rem] font-semibold text-[var(--ink)] break-all" translate="no">{exampleUrl}</code>
+          </p>
+        )}
+      </div>
+    </div>
 
-    {useVisual ? (
-      <ol class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 list-none p-0 m-0">
-        {steps.map((step, i) => (
-          <li class="flex flex-col rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden h-full">
-            {step.image && (
-              <div class="aspect-[16/9] sm:aspect-[3/2] overflow-hidden bg-slate-100 dark:bg-slate-800">
-                <img
-                  src={step.image}
-                  alt={step.imageAlt || step.title}
-                  width={900}
-                  height={600}
-                  class="w-full h-full object-cover rounded-t-2xl sm:rounded-t-3xl"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            )}
-            <div class="p-4 sm:p-5 flex gap-3 flex-1">
-              <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E11D48] text-white text-sm font-extrabold flex items-center justify-center shadow-sm tabular-nums">
-                {i + 1}
-              </span>
-              <div class="min-w-0">
-                <h3 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base mb-1">{step.title}</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" set:html={step.body} />
-              </div>
+    <ol class:list={['list-none p-0 m-0 grid gap-4 sm:gap-5', useVisual ? 'sm:grid-cols-3' : steps.length > 3 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-3']}>
+      {steps.map((step, i) => (
+        <li class="flex flex-col bg-[var(--paper)] rounded-md overflow-hidden">
+          <div class="flex items-baseline justify-between gap-3 px-4 pt-3 pb-2">
+            <span class="t-label text-[var(--ink-2)]">Step</span>
+            <span class="t-display text-5xl leading-none text-brand-600 dark:text-brand-400" aria-hidden="true">{i + 1}</span>
+          </div>
+          {step.image && (
+            <div class="aspect-[3/2] overflow-hidden bg-[var(--paper-2)] mx-4 rounded">
+              <img
+                src={step.image}
+                alt={step.imageAlt || step.title}
+                width={900}
+                height={600}
+                class="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
-          </li>
-        ))}
-      </ol>
-    ) : (
-      <ol class="space-y-3">
-        {steps.map((step, i) => (
-          <li class="flex gap-3 sm:gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-            <span class="shrink-0 w-8 h-8 rounded-xl bg-[#E11D48] text-white text-sm font-extrabold flex items-center justify-center shadow-sm tabular-nums">
-              {i + 1}
-            </span>
-            <div class="min-w-0">
-              <h3 class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base mb-1">{step.title}</h3>
-              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed" set:html={step.body} />
-            </div>
-          </li>
-        ))}
-      </ol>
-    )}
+          )}
+          <div class="mx-4 mt-3 border-t-2 border-dashed border-[var(--rule)]" aria-hidden="true"></div>
+          <div class="p-4 flex-1">
+            <h3 class="font-bold text-lg leading-snug mb-1"><span class="sr-only">Step {i + 1}: </span>{step.title}</h3>
+            <p class="text-[0.9375rem] text-[var(--ink-2)] leading-relaxed [&_code]:font-semibold [&_code]:text-[var(--ink)] [&_code]:[overflow-wrap:anywhere] [&_strong]:text-[var(--ink)]" set:html={step.body} />
+          </div>
+        </li>
+      ))}
+    </ol>
   </div>
 </section>

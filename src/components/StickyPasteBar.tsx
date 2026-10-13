@@ -64,7 +64,7 @@ export default function StickyPasteBar() {
 
   return (
     <div className="fixed bottom-4 left-3 right-3 z-50 lg:hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
-      <div className="bg-slate-900/95 dark:bg-slate-950/95 backdrop-blur-xl border border-slate-700/80 text-white rounded-2xl p-2.5 shadow-2xl shadow-slate-950/50 flex items-center gap-2">
+      <div className="bg-slate-900/95 dark:bg-slate-950/95 border border-slate-700/80 text-white rounded-2xl p-2.5 shadow-2xl shadow-slate-950/50 flex items-center gap-2">
         <button
           type="button"
           onClick={() => setDismissed(true)}
@@ -87,7 +87,7 @@ export default function StickyPasteBar() {
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Paste Pinterest link…"
               aria-label="Paste Pinterest link"
-              className="w-full h-11 pl-3 pr-14 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-[#E11D48]"
+              className="w-full h-11 pl-3 pr-14 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-[#C8281A]"
               required
             />
             {!url && (
@@ -105,7 +105,7 @@ export default function StickyPasteBar() {
           <button
             type="submit"
             disabled={!url.trim()}
-            className="h-11 px-4 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] active:bg-[#9F1239] text-white font-extrabold text-xs flex items-center justify-center gap-1 shrink-0 disabled:opacity-50 transition-colors shadow-sm"
+            className="h-11 px-4 rounded-xl bg-[#C8281A] hover:bg-[#A51F13] active:bg-[#831A11] text-white font-extrabold text-xs flex items-center justify-center gap-1 shrink-0 disabled:opacity-50 transition-colors shadow-sm"
           >
             <Download className="w-4 h-4" />
             <span>Save</span>

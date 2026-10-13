@@ -159,6 +159,86 @@ const VARIANT_COPY: Record<
   },
 };
 
+
+/** Ticket stocks: one colour per URL type, shared with the page fields. */
+const STOCK_TOOLS: { href: string; label: string; color: string; variant: FormVariant }[] = [
+  { href: '/pinterest-video-downloader', label: 'Video MP4', color: '#F08A3C', variant: 'video' },
+  { href: '/pinterest-image-downloader', label: 'HD photo', color: '#F4C531', variant: 'image' },
+  { href: '/pinterest-gif-downloader', label: 'GIF', color: '#B79CE8', variant: 'gif' },
+  { href: '/pinterest-board-downloader', label: 'Board ZIP', color: '#6CC79A', variant: 'board' },
+  { href: '/pinterest-profile-downloader', label: 'Profile ZIP', color: '#7DB7E8', variant: 'profile' },
+  { href: '/pinterest-profile-picture-downloader', label: 'Avatar / DP', color: '#F29BB4', variant: 'profile-picture' },
+];
+
+const STOCK_COLOR: Record<string, string> = {
+  pin: '#F4C531',
+  board: '#6CC79A',
+  profile: '#7DB7E8',
+};
+
+const VARIANT_EXPECT: Record<FormVariant, string> = {
+  hub: 'Waiting for a link',
+  pin: 'Takes a pin link',
+  video: 'Takes a video pin',
+  image: 'Takes an image pin',
+  gif: 'Takes a GIF pin',
+  board: 'Takes a board link',
+  profile: 'Takes a profile link',
+  'profile-picture': 'Takes a profile link',
+};
+
+/** Read a pasted link the way a cloakroom attendant reads a ticket: type + number. */
+function readTicket(raw: string, variant: FormVariant): {
+  stamp: string;
+  tone: 'ok' | 'warn' | 'none';
+  serial: string;
+  color: string;
+  expect: string;
+  help?: string;
+} {
+  const expect = VARIANT_EXPECT[variant];
+  const text = raw.trim();
+  if (!text) return { stamp: '', tone: 'none', serial: '', color: '', expect };
+  const route = classifyPinterestInput(text);
+  if (!route) {
+    const looksLikeUrl = /^(https?:\/\/|www\.)|\.[a-z]{2,}\//i.test(text);
+    return {
+      stamp: looksLikeUrl ? 'Not Pinterest' : '',
+      tone: looksLikeUrl ? 'warn' : 'none',
+      serial: '',
+      color: '',
+      expect,
+      help: looksLikeUrl
+        ? 'This isn’t a Pinterest link. In the Pinterest app tap Share → Copy link, then paste it here.'
+        : undefined,
+    };
+  }
+  let serial = '';
+  const pinId = text.match(/\/pin\/(?:[^/?#]*--)?(\d{5,})/i);
+  const short = text.match(/pin\.it\/([A-Za-z0-9]+)/i);
+  if (pinId) serial = pinId[1];
+  else if (short) serial = `pin.it/${short[1]}`;
+  else {
+    try {
+      const u = new URL(text.match(/https?:\/\/\S+/)?.[0] || `https://${text}`);
+      serial = u.pathname.replace(/\/+$/, '') || '';
+    } catch {
+      serial = '';
+    }
+  }
+  const stamp =
+    route.type === 'board'
+      ? 'Board → ZIP'
+      : route.type === 'profile'
+        ? variant === 'profile-picture'
+          ? 'Profile → Avatar'
+          : 'Profile → ZIP'
+        : short
+          ? 'Pin · short link'
+          : 'Pin';
+  return { stamp, tone: 'ok', serial, color: STOCK_COLOR[route.type] || '#F4C531', expect };
+}
+
 export default function DownloaderForm({
   variant = 'hub',
   layout = 'default',
@@ -472,8 +552,15 @@ export default function DownloaderForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (mode === 'single' && !url.trim()) return;
-    if (mode === 'batch' && !batchUrls.trim()) return;
+    if ((mode === 'single' || isHero) && !url.trim()) {
+      setError('Paste a public Pinterest link first. In the app: Share → Copy link.');
+      document.getElementById('pinterest-url-input')?.focus();
+      return;
+    }
+    if (mode === 'batch' && !isHero && !batchUrls.trim()) {
+      setError('Paste at least one Pinterest link, one per line.');
+      return;
+    }
 
     if (mode === 'single') {
       await extractSingle(url);
@@ -556,7 +643,7 @@ export default function DownloaderForm({
     setTimeout(() => setCopiedColor(null), 2000);
   };
 
-  const samplePalette = ['#E11D48', '#2D3748', '#ED8936', '#319795', '#D69E2E'];
+  const samplePalette = ['#C8281A', '#2D3748', '#ED8936', '#319795', '#D69E2E'];
 
   const slugify = (value: string) =>
     value
@@ -809,275 +896,203 @@ export default function DownloaderForm({
     ((result.media_items && result.media_items.length > 1) || result.is_carousel)
   );
 
+  const reading = readTicket(url, activeVariant);
+  const showBatchTabs = !isHero && copy.showBatch;
+  const batchActive = mode === 'batch' && copy.showBatch && !isHero;
+
   return (
     <div className={`w-full mx-auto ${isHero ? 'max-w-2xl mt-0' : 'max-w-3xl mt-4'}`}>
-      {/* Intent Switcher: Quick 1-click access to GIF, Video, Image, and Board tools */}
-      <div className="mb-3 sm:mb-4 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mr-1">
-          {copy.worksLabel}:
-        </span>
-        <a
-          href="/pinterest-gif-downloader"
-          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-black transition-all touch-manipulation shadow-xs ${
-            activeVariant === 'gif'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:border-red-300'
-          }`}
-        >
-          <Sparkles className="w-3.5 h-3.5 text-[#E11D48]" aria-hidden="true" />
-          <span>GIF Downloader</span>
-        </a>
-        <a
-          href="/pinterest-video-downloader"
-          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            activeVariant === 'video'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
-          }`}
-        >
-          <Play className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
-          <span>Video (MP4)</span>
-        </a>
-        <a
-          href="/pinterest-image-downloader"
-          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            activeVariant === 'image'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
-          }`}
-        >
-          <ImageIcon className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
-          <span>HD Photo</span>
-        </a>
-        <a
-          href="/pinterest-board-downloader"
-          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            activeVariant === 'board'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
-          }`}
-        >
-          <Archive className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
-          <span>Board ZIP</span>
-        </a>
-        <a
-          href="/pinterest-profile-picture-downloader"
-          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            activeVariant === 'profile-picture'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
-          }`}
-        >
-          <User className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
-          <span>Avatar DP</span>
-        </a>
-      </div>
-
-      {/* Auto-Route Alert Banner */}
-      {routeNotice && (
-        <div className="mb-4 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-red-500/10 via-rose-500/10 to-amber-500/10 dark:from-red-950/50 dark:via-rose-950/50 dark:to-amber-950/50 border border-red-200 dark:border-red-900/60 flex items-center justify-between gap-3 text-xs font-bold text-rose-900 dark:text-rose-200 animate-in fade-in slide-in-from-top-2 duration-300">
-          <div className="flex items-center gap-2 min-w-0">
-            <span className="px-2.5 py-1 rounded-lg bg-[#E11D48] text-white text-[10px] font-black uppercase tracking-wider shrink-0 shadow-xs">
-              {routeNotice.badge}
-            </span>
-            <span className="truncate">{routeNotice.message}</span>
-          </div>
-          <button
-            type="button"
-            onClick={() => setRouteNotice(null)}
-            className="p-1 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white shrink-0 transition-colors"
-            aria-label="Dismiss notice"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-      )}
-
-      {/* Mode Switcher — not on hero */}
-      {!isHero && copy.showBatch && (
-        <div className="flex items-center justify-center gap-2 mb-4 bg-slate-200/60 dark:bg-slate-800/80 p-1 rounded-2xl w-fit mx-auto border border-slate-300/60 dark:border-slate-700">
-          <button
-            type="button"
-            onClick={() => { setMode('single'); setError(''); }}
-            className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all touch-manipulation ${
-              mode === 'single' ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            {copy.singleTab}
-          </button>
-          <button
-            type="button"
-            onClick={() => { setMode('batch'); setError(''); }}
-            className={`px-5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition-all touch-manipulation ${
-              mode === 'batch' ? 'bg-white dark:bg-slate-900 text-[#E11D48] shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5" />
-            <span>Batch (multi-link)</span>
-          </button>
-        </div>
-      )}
-
-      {/* Input Form */}
       <form
         onSubmit={handleSubmit}
-        className={`relative w-full ${isHero ? 'flex flex-col sm:block' : 'flex flex-col gap-3 items-center'}`}
+        className="ticket"
+        data-tearing={loading ? 'true' : 'false'}
+        aria-busy={loading}
       >
-        {mode === 'single' || !copy.showBatch || isHero ? (
-          isHero ? (
-            <div className="relative w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 rounded-2xl sm:rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] dark:border-white/[0.12] shadow-pill p-2 sm:p-1.5 sm:pl-5 transition-all focus-within:ring-2 focus-within:ring-[#E11D48]">
-              <label htmlFor="pinterest-url-input-hero" className="sr-only">
-                {copy.ariaLabel}
-              </label>
-              <div className="flex items-center gap-2 flex-1 min-w-0 px-2 sm:px-0">
-                <Clipboard className="w-5 h-5 text-slate-500 dark:text-slate-400 shrink-0 hidden sm:block" aria-hidden="true" />
-                <input
-                  id="pinterest-url-input-hero"
-                  type="url"
-                  name="url"
-                  value={url}
-                  onChange={(e) => handleUrlInput(e.target.value)}
-                  onPaste={(e) => {
-                    const text = e.clipboardData?.getData('text');
-                    if (text) handleUrlInput(text);
-                  }}
-                  placeholder={activePlaceholder}
-                  className="w-full h-12 sm:h-14 bg-transparent border-0 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none text-base sm:text-[1.05rem] min-w-0"
-                  required
-                  aria-label={copy.ariaLabel}
-                  autoComplete="url"
-                  inputMode="url"
-                  spellCheck={false}
-                />
+        <div className="ticket-head">
+          <span className="t-label">Admit one · public link</span>
+          <span className="ticket-serial" aria-live="polite" translate="no">
+            {reading.serial ? <>No.&nbsp;{reading.serial}</> : 'No. ——————'}
+          </span>
+        </div>
+
+        <div className="ticket-body">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-3 min-h-[2rem]">
+            {showBatchTabs ? (
+              <div className="inline-flex rounded-md border-2 border-[var(--ink)] overflow-hidden text-sm font-bold" role="group" aria-label="Link mode">
+                <button
+                  type="button"
+                  aria-pressed={mode === 'single'}
+                  onClick={() => { setMode('single'); setError(''); }}
+                  className={`px-3 min-h-[2.25rem] touch-manipulation ${mode === 'single' ? 'bg-[var(--ink)] text-[var(--paper)]' : 'hover:bg-black/5 dark:hover:bg-white/10'}`}
+                >
+                  One link
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={mode === 'batch'}
+                  onClick={() => { setMode('batch'); setError(''); }}
+                  className={`px-3 min-h-[2.25rem] touch-manipulation inline-flex items-center gap-1.5 ${mode === 'batch' ? 'bg-[var(--ink)] text-[var(--paper)]' : 'hover:bg-black/5 dark:hover:bg-white/10'}`}
+                >
+                  <Layers className="w-4 h-4" aria-hidden="true" />
+                  Up to 5
+                </button>
               </div>
-              <button
-                type="submit"
-                disabled={loading || !url.trim()}
-                className="h-12 sm:h-14 px-7 sm:px-8 rounded-xl sm:rounded-full bg-[#E11D48] hover:bg-[#BE123C] active:bg-[#9F1239] text-white font-semibold text-base flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0 touch-manipulation shadow-soft focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E11D48]"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
-                    <span>{t.processingText}</span>
-                  </>
-                ) : (
-                  <>
-                    <Download className="w-5 h-5" aria-hidden="true" />
-                    <span>{activeSubmitLabel}</span>
-                  </>
-                )}
-              </button>
-            </div>
-          ) : (
-            <div className="relative w-full">
-              <label htmlFor="pinterest-url-input-standard" className="sr-only">
-                {copy.ariaLabel}
+            ) : (
+              <label htmlFor="pinterest-url-input" className="text-sm font-bold">
+                {activeVariant === 'hub' ? 'Pinterest link' : copy.singleTab}
               </label>
+            )}
+            {!batchActive && (
+              reading.stamp ? (
+                <span
+                  key={reading.stamp}
+                  className={`stamp stamp-in ${reading.tone === 'warn' ? 'stamp-warn' : 'stamp-ok'}`}
+                  style={reading.tone === 'ok' ? ({ '--stamp-bg': reading.color } as React.CSSProperties) : undefined}
+                >
+                  {reading.stamp}
+                </span>
+              ) : (
+                <span className="text-sm text-[var(--ink-2)]">{reading.expect}</span>
+              )
+            )}
+          </div>
+
+          {!batchActive ? (
+            <div className="ticket-input">
+              {showBatchTabs && (
+                <label htmlFor="pinterest-url-input" className="sr-only">{copy.ariaLabel}</label>
+              )}
               <input
-                id="pinterest-url-input-standard"
+                id="pinterest-url-input"
                 type="url"
                 name="url"
                 value={url}
                 onChange={(e) => handleUrlInput(e.target.value)}
                 onPaste={(e) => {
                   const text = e.clipboardData?.getData('text');
-                  if (text) handleUrlInput(text);
+                  if (text) {
+                    e.preventDefault();
+                    handleUrlInput(text.trim());
+                  }
                 }}
                 placeholder={activePlaceholder}
-                className="w-full h-14 pl-5 pr-24 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
                 required
                 aria-label={copy.ariaLabel}
+                aria-describedby="ticket-hint"
                 autoComplete="url"
                 inputMode="url"
                 spellCheck={false}
               />
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                {url ? (
-                  <button
-                    type="button"
-                    onClick={() => setUrl('')}
-                    className="text-xs font-semibold text-slate-600 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 px-2.5 py-1.5 rounded-lg min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
-                    aria-label="Clear input field"
-                  >
-                    Clear
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={handlePaste}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-rose-700 dark:text-rose-300 bg-red-50 dark:bg-red-950/70 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
-                    aria-label="Paste URL from clipboard"
-                  >
-                    <Clipboard className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>Paste</span>
-                  </button>
-                )}
-              </div>
+              {url ? (
+                <button
+                  type="button"
+                  onClick={() => handleUrlInput('')}
+                  className="shrink-0 min-h-[44px] min-w-[44px] px-2 rounded text-sm font-bold text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-black/5 dark:hover:bg-white/10 touch-manipulation"
+                  aria-label="Clear link"
+                >
+                  <X className="w-5 h-5 mx-auto" aria-hidden="true" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handlePaste}
+                  className="shrink-0 min-h-[44px] px-3 rounded inline-flex items-center gap-1.5 text-sm font-bold bg-[var(--ink)] text-[var(--paper)] hover:bg-brand-600 hover:text-white touch-manipulation"
+                  aria-label="Paste link from clipboard"
+                >
+                  <Clipboard className="w-4 h-4" aria-hidden="true" />
+                  Paste
+                </button>
+              )}
             </div>
-          )
-        ) : (
-          <div className="relative w-full">
-            <label htmlFor="batch-urls-input" className="sr-only">
-              Batch Pinterest URLs (up to 5 URLs, one per line)
-            </label>
-            <textarea
-              id="batch-urls-input"
-              name="batchUrls"
-              rows={4}
-              value={batchUrls}
-              onChange={(e) => setBatchUrls(e.target.value)}
-              placeholder="Paste up to 5 Pinterest URLs (one per line):&#10;https://pinterest.com/pin/1234567/&#10;https://pin.it/abc1234"
-              className="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-sm shadow-sm"
-              required
-              spellCheck={false}
-              aria-label="Batch Pinterest URLs"
-            />
-            <button
-              type="button"
-              onClick={handlePaste}
-              className="absolute right-3 top-3 inline-flex items-center gap-1 text-xs font-bold text-rose-700 dark:text-rose-300 bg-red-50 dark:bg-red-950/70 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
-              aria-label="Paste clipboard text into batch input"
-            >
-              <Clipboard className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>Paste Clipboard</span>
-            </button>
-          </div>
-        )}
+          ) : (
+            <div className="ticket-input flex-col">
+              <label htmlFor="batch-urls-input" className="sr-only">
+                Batch Pinterest URLs (up to 5 URLs, one per line)
+              </label>
+              <textarea
+                id="batch-urls-input"
+                name="batchUrls"
+                rows={4}
+                value={batchUrls}
+                onChange={(e) => setBatchUrls(e.target.value)}
+                placeholder={'One link per line, up to 5…\nhttps://pinterest.com/pin/1234567/\nhttps://pin.it/abc1234'}
+                required
+                spellCheck={false}
+                aria-describedby="ticket-hint"
+              />
+              <button
+                type="button"
+                onClick={handlePaste}
+                className="self-end mb-1 mr-1 min-h-[44px] px-3 rounded inline-flex items-center gap-1.5 text-sm font-bold bg-[var(--ink)] text-[var(--paper)] hover:bg-brand-600 hover:text-white touch-manipulation"
+              >
+                <Clipboard className="w-4 h-4" aria-hidden="true" />
+                Paste
+              </button>
+            </div>
+          )}
 
-        {!isHero && (
+          {routeNotice && !batchActive && (
+            <p className="mt-3 flex items-start gap-2 text-sm font-semibold" role="status">
+              <RefreshCw className="w-4 h-4 mt-0.5 shrink-0 text-brand-600" aria-hidden="true" />
+              <span className="min-w-0">
+                {routeNotice.message.replace(/—\s*automatically switched to/, '· switched to')}.{' '}
+                <a href={routeNotice.path} className="underline font-bold">Open that tool</a>
+              </span>
+            </p>
+          )}
+          {reading.tone === 'warn' && reading.help && !batchActive && (
+            <p className="mt-3 text-sm font-semibold text-brand-700 dark:text-brand-300" role="status">
+              {reading.help}
+            </p>
+          )}
+        </div>
+
+        <div className="perf" aria-hidden="true" />
+
+        <div className="stub">
           <button
             type="submit"
-            disabled={
-              loading ||
-              (mode === 'batch' && copy.showBatch ? !batchUrls.trim() : !url.trim())
-            }
-            className="w-full h-14 px-8 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-red-500/25 active:scale-95 touch-manipulation focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E11D48]"
+            className="stub-btn"
+            disabled={loading}
           >
             {loading ? (
               <>
-                <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
-                <span>{mode === 'batch' && copy.showBatch ? 'Processing batch links…' : 'Extracting…'}</span>
+                <Loader2 className="w-6 h-6 animate-spin" aria-hidden="true" />
+                <span>{batchActive ? 'Processing links…' : t.processingText}</span>
               </>
             ) : (
               <>
-                <Download className="w-5 h-5" aria-hidden="true" />
-                <span>{mode === 'batch' && copy.showBatch ? 'Batch Extract All' : copy.submitLabel}</span>
+                <Download className="w-6 h-6" aria-hidden="true" />
+                <span>{batchActive ? 'Extract all' : activeSubmitLabel}</span>
               </>
             )}
           </button>
-        )}
-        {!isHero && (mode === 'single' || !copy.showBatch) && (
-          <p className="text-center text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
-            {copy.hint}
-          </p>
-        )}
+        </div>
       </form>
+
+      <p id="ticket-hint" className="mt-3 text-sm leading-relaxed" style={{ color: isHero ? 'var(--on-field-2)' : undefined }}>
+        {copy.hint}
+      </p>
+
+      <nav aria-label="Pick the tool for your link" className="mt-4 flex flex-wrap gap-2">
+        {STOCK_TOOLS.map((tool) => (
+          <a
+            key={tool.href}
+            href={tool.href}
+            className="stock-chip"
+            style={{ '--chip': tool.color } as React.CSSProperties}
+            aria-current={tool.variant === activeVariant ? 'page' : undefined}
+          >
+            {tool.label}
+          </a>
+        ))}
+      </nav>
 
       {/* Error display */}
       {error && (
-        <div className="mt-6 p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 flex items-start gap-3 text-red-700 dark:text-red-300">
-          <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-red-500" />
-          <p className="text-sm font-medium">{error}</p>
+        <div role="alert" className="mt-3 p-3 rounded-md bg-[var(--paper)] text-[var(--ink)] border-2 border-brand-600 flex items-start gap-3">
+          <span className="stamp stamp-warn shrink-0 text-sm">Void</span>
+          <p className="text-sm font-semibold min-w-0">{error}</p>
         </div>
       )}
 
@@ -1086,7 +1101,7 @@ export default function DownloaderForm({
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div className="min-w-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#C8281A] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
                 <Layers className="w-3.5 h-3.5" />
                 Carousel · {result.media_items.length} slides
               </span>
@@ -1108,7 +1123,7 @@ export default function DownloaderForm({
                     `carousel_${result.title || result.pin_id || 'pinterest'}`,
                   )
                 }
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#C8281A] hover:bg-[#A51F13] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
               >
                 {zipping ? (
                   <>
@@ -1137,7 +1152,7 @@ export default function DownloaderForm({
               aria-label="ZIP packing progress"
             >
               <div
-                className="h-full bg-[#E11D48] transition-[width] duration-300 ease-out"
+                className="h-full bg-[#C8281A] transition-[width] duration-300 ease-out"
                 style={{ width: `${Math.round((zipProgress.done / zipProgress.total) * 100)}%` }}
               />
             </div>
@@ -1195,7 +1210,7 @@ export default function DownloaderForm({
                       download={filename}
                       onClick={(e) => onProxyDownloadClick(e, item.url, filename)}
                       aria-busy={savingFile === filename}
-                      className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
+                      className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#C8281A] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>
@@ -1224,15 +1239,15 @@ export default function DownloaderForm({
       ) : result?.is_avatar_only ? (
         /* ── Avatar-only result (profile picture downloader) ─────────── */
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-center flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-white dark:to-slate-900 border-2 border-red-200 dark:border-red-900/50 shadow-xl flex flex-col items-center text-center gap-5 w-full">
+          <div className="p-6 sm:p-8 rounded-3xl bg-stock-blush/30 dark:bg-slate-800 border-2 border-slate-900 dark:border-slate-300 flex flex-col items-center text-center gap-5 w-full">
             {result.profile_avatar_url ? (
               <div className="relative group">
                 <img
                   src={result.profile_avatar_url}
                   alt={`${result.profile_title || 'User'} avatar`}
-                  className="w-40 h-40 sm:w-52 sm:h-52 rounded-full object-cover border-4 border-[#E11D48] shadow-2xl transition-transform group-hover:scale-105"
+                  className="w-40 h-40 sm:w-52 sm:h-52 rounded-full object-cover border-4 border-[#C8281A] shadow-2xl transition-transform group-hover:scale-105"
                 />
-                <span className="absolute bottom-2 right-2 px-3 py-1.5 rounded-full bg-[#E11D48] text-white text-xs font-black shadow-md">
+                <span className="absolute bottom-2 right-2 px-3 py-1.5 rounded-full bg-[#C8281A] text-white text-xs font-black shadow-md">
                   HD Avatar
                 </span>
               </div>
@@ -1267,7 +1282,7 @@ export default function DownloaderForm({
                       `pinterest_avatar_${result.username || 'user'}.jpg`,
                     )
                   }
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#C8281A] hover:bg-[#A51F13] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
                 >
                   <Download className="w-5 h-5" />
                   <span>Download HD Profile Picture</span>
@@ -1296,15 +1311,15 @@ export default function DownloaderForm({
       ) : isCollection ? (
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           {result!.is_profile && (
-            <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-white dark:to-slate-900 border-2 border-red-200 dark:border-red-900/50 shadow-xl flex flex-col items-center text-center gap-5">
+            <div className="p-6 sm:p-8 rounded-3xl bg-stock-blush/30 dark:bg-slate-800 border-2 border-slate-900 dark:border-slate-300 flex flex-col items-center text-center gap-5">
               {result!.profile_avatar_url ? (
                 <div className="relative group">
                   <img
                     src={result!.profile_avatar_url}
                     alt={`${result!.profile_title || 'User'} avatar`}
-                    className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-[#E11D48] shadow-2xl transition-transform group-hover:scale-105"
+                    className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-[#C8281A] shadow-2xl transition-transform group-hover:scale-105"
                   />
-                  <span className="absolute bottom-1 right-1 px-2.5 py-1 rounded-full bg-[#E11D48] text-white text-xs font-black shadow-md">
+                  <span className="absolute bottom-1 right-1 px-2.5 py-1 rounded-full bg-[#C8281A] text-white text-xs font-black shadow-md">
                     HD Avatar
                   </span>
                 </div>
@@ -1315,7 +1330,7 @@ export default function DownloaderForm({
               )}
 
               <div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/80 text-[#E11D48] text-xs font-extrabold mb-2 border border-red-200 dark:border-red-900/50">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/80 text-[#C8281A] text-xs font-extrabold mb-2 border border-red-200 dark:border-red-900/50">
                   Profile Avatar Extracted
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight">
@@ -1341,7 +1356,7 @@ export default function DownloaderForm({
                         `pinterest_avatar_${result!.username || 'user'}.jpg`,
                       )
                     }
-                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#C8281A] hover:bg-[#A51F13] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
                   >
                     <Download className="w-5 h-5" />
                     <span>Download HD Profile Picture (DP)</span>
@@ -1353,7 +1368,7 @@ export default function DownloaderForm({
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
             <div className="min-w-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#C8281A] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
                 {result!.is_profile ? (
                   <>
                     <User className="w-3.5 h-3.5" />
@@ -1391,7 +1406,7 @@ export default function DownloaderForm({
                         : `board_${result!.board_title || 'pinterest'}`,
                     )
                   }
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation flex-1 sm:flex-initial"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#C8281A] hover:bg-[#A51F13] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation flex-1 sm:flex-initial"
                 >
                   {zipping ? (
                     <>
@@ -1430,7 +1445,7 @@ export default function DownloaderForm({
               aria-label="ZIP packing progress"
             >
               <div
-                className="h-full bg-[#E11D48] transition-[width] duration-300 ease-out"
+                className="h-full bg-[#C8281A] transition-[width] duration-300 ease-out"
                 style={{ width: `${Math.round((zipProgress.done / zipProgress.total) * 100)}%` }}
               />
             </div>
@@ -1441,7 +1456,7 @@ export default function DownloaderForm({
             <div className="flex flex-col gap-3 p-4.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
-                  <Archive className="w-4 h-4 text-[#E11D48]" />
+                  <Archive className="w-4 h-4 text-[#C8281A]" />
                   Profile Boards ({result!.boards.length})
                 </span>
                 <span className="text-[11px] text-slate-500 dark:text-slate-400">
@@ -1460,7 +1475,7 @@ export default function DownloaderForm({
                     className="p-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-800 text-left flex items-center justify-between gap-2 group transition-all shadow-xs touch-manipulation"
                   >
                     <div className="min-w-0">
-                      <p className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-[#E11D48] truncate">
+                      <p className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-[#C8281A] truncate">
                         📌 {b.name}
                       </p>
                       {typeof b.pin_count === 'number' && (
@@ -1469,7 +1484,7 @@ export default function DownloaderForm({
                         </p>
                       )}
                     </div>
-                    <span className="text-[10px] font-extrabold text-[#E11D48] bg-red-50 dark:bg-red-950/60 px-2 py-1 rounded-md shrink-0 group-hover:scale-105 transition-transform">
+                    <span className="text-[10px] font-extrabold text-[#C8281A] bg-red-50 dark:bg-red-950/60 px-2 py-1 rounded-md shrink-0 group-hover:scale-105 transition-transform">
                       Extract →
                     </span>
                   </button>
@@ -1532,7 +1547,7 @@ export default function DownloaderForm({
                       href={proxyDownloadHref(mediaUrl, `pin_${pin.pin_id}.${ext}`)}
                       download={`pin_${pin.pin_id}.${ext}`}
                       onClick={(e) => onProxyDownloadClick(e, mediaUrl, `pin_${pin.pin_id}.${ext}`)}
-                      className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
+                      className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#C8281A] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>
@@ -1549,8 +1564,8 @@ export default function DownloaderForm({
 
               {/* Card at end if more pins exist */}
               {result!.pins && result!.pins.length > displayLimit && (
-                <div className="w-52 sm:w-60 shrink-0 snap-start p-4 rounded-2xl bg-gradient-to-br from-rose-50 to-red-100 dark:from-slate-800 dark:to-slate-900 border-2 border-dashed border-red-200 dark:border-red-900/60 flex flex-col items-center justify-center text-center gap-3">
-                  <span className="text-xs font-extrabold text-[#E11D48] dark:text-red-400 uppercase tracking-wider">
+                <div className="w-52 sm:w-60 shrink-0 snap-start p-4 rounded-2xl bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-400 dark:border-slate-600 flex flex-col items-center justify-center text-center gap-3">
+                  <span className="text-xs font-extrabold text-[#C8281A] dark:text-red-400 uppercase tracking-wider">
                     +{result!.pins.length - displayLimit} More Pins
                   </span>
                   <p className="text-xs text-slate-600 dark:text-slate-400 leading-snug">
@@ -1566,7 +1581,7 @@ export default function DownloaderForm({
                   <button
                     type="button"
                     onClick={() => setDisplayLimit(result!.pins!.length)}
-                    className="text-xs font-bold text-[#E11D48] hover:underline"
+                    className="text-xs font-bold text-[#C8281A] hover:underline"
                   >
                     Show All ({result!.pins.length})
                   </button>
@@ -1629,7 +1644,7 @@ export default function DownloaderForm({
                       className="absolute inset-0 bg-black/40 flex items-center justify-center text-white group-hover:bg-black/50 transition-colors"
                       title="Play Preview"
                     >
-                      <div className="w-12 h-12 rounded-full bg-[#E11D48] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 rounded-full bg-[#C8281A] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <Play className="w-6 h-6 fill-white text-white ml-1" />
                       </div>
                     </button>
@@ -1637,7 +1652,7 @@ export default function DownloaderForm({
 
                   {/* GIF Badge & Looping indicator */}
                   {(resolvedGifUrl(result) || (result.is_gif && !result.is_video)) && (
-                    <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-xs text-white text-[11px] font-black border border-white/20 shadow-md pointer-events-none">
+                    <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/75 text-white text-[11px] font-black border border-white/20 shadow-md pointer-events-none">
                       <Sparkles className="w-3.5 h-3.5 text-rose-400" />
                       <span>Looping GIF</span>
                     </div>
@@ -1684,7 +1699,7 @@ export default function DownloaderForm({
                     id="quality-select"
                     value={selectedQuality}
                     onChange={(e) => setSelectedQuality(e.target.value)}
-                    className="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-semibold border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#E11D48] w-full sm:w-auto"
+                    className="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-semibold border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#C8281A] w-full sm:w-auto"
                   >
                     {result.qualities.map((q, idx) => (
                       <option key={idx} value={q.url}>
@@ -1713,7 +1728,7 @@ export default function DownloaderForm({
                         `${slugify(result.title || 'pinterest_gif')}.gif`,
                       )
                     }
-                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation"
+                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#C8281A] hover:bg-[#A51F13] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation"
                     title="Download original looping animated GIF"
                   >
                     {savingFile?.endsWith('.gif') ? (
@@ -1749,7 +1764,7 @@ export default function DownloaderForm({
                     className={`inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl font-extrabold transition-all text-sm shadow-md active:scale-95 touch-manipulation ${
                       resolvedGifUrl(result)
                         ? 'bg-slate-800 hover:bg-slate-700 text-white shadow-slate-900/20'
-                        : 'bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-red-500/20'
+                        : 'bg-[#C8281A] hover:bg-[#A51F13] text-white shadow-red-500/20'
                     }`}
                     title="Download HD MP4 video with audio"
                   >
@@ -1802,7 +1817,7 @@ export default function DownloaderForm({
                     type="button"
                     disabled={zipping}
                     onClick={() => downloadSinglePinCompletePack(result)}
-                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-extrabold transition-all text-sm shadow-md shadow-amber-500/20 active:scale-95 touch-manipulation disabled:opacity-60"
+                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-slate-900 hover:bg-brand-600 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-stock-canary text-white font-extrabold transition-colors text-sm active:scale-95 touch-manipulation disabled:opacity-60"
                     title={
                       resolvedGifUrl(result)
                         ? 'Download GIF, MP4, and cover image in one ZIP'
@@ -1834,7 +1849,7 @@ export default function DownloaderForm({
                     className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold transition-all text-sm border border-slate-700 shadow-md active:scale-95 touch-manipulation"
                     title="Trim sound hook and save custom audio clip"
                   >
-                    <Scissors className="w-4 h-4 text-[#E11D48]" />
+                    <Scissors className="w-4 h-4 text-[#C8281A]" />
                     <span>Trim Sound Hook (MP3)</span>
                   </button>
                 )}
@@ -1856,7 +1871,7 @@ export default function DownloaderForm({
                     }
                     className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation"
                   >
-                    <ImageIcon className="w-4 h-4 text-[#E11D48]" />
+                    <ImageIcon className="w-4 h-4 text-[#C8281A]" />
                     <span>{resolvedGifUrl(result) || result.is_video ? 'Download Cover JPG' : 'Download HD Image'}</span>
                   </a>
                 )}
@@ -1869,7 +1884,7 @@ export default function DownloaderForm({
                       triggerHaptic();
                       setShowCropper(true);
                     }}
-                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-[#E11D48] dark:text-rose-300 font-extrabold transition-all text-sm border border-rose-200 dark:border-rose-800/80 active:scale-95 touch-manipulation"
+                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-[#C8281A] dark:text-rose-300 font-extrabold transition-all text-sm border border-rose-200 dark:border-rose-800/80 active:scale-95 touch-manipulation"
                     title="Crop photo to 9:16 Story/Reel, 1:1 Instagram Post, or 16:9 Landscape"
                   >
                     <Crop className="w-4 h-4" />
@@ -1896,7 +1911,7 @@ export default function DownloaderForm({
                     aria-label="Download progress"
                   >
                     <div
-                      className={`h-full bg-[#E11D48] origin-left ${
+                      className={`h-full bg-[#C8281A] origin-left ${
                         downloadProgress.total > 0 ? '' : 'w-1/3 animate-pulse'
                       }`}
                       style={
@@ -1918,7 +1933,7 @@ export default function DownloaderForm({
                     onClick={() => void toggleQrPanel()}
                     aria-expanded={qrOpen}
                     aria-controls="phone-qr-panel"
-                    className="inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#E11D48]/60 hover:text-[#E11D48] dark:hover:text-rose-300 transition-colors text-xs font-bold touch-manipulation"
+                    className="inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#C8281A]/60 hover:text-[#C8281A] dark:hover:text-rose-300 transition-colors text-xs font-bold touch-manipulation"
                   >
                     <QrCode className="w-4 h-4" aria-hidden="true" />
                     <span>{qrOpen ? 'Hide phone QR' : 'Send to phone'}</span>
@@ -1953,7 +1968,7 @@ export default function DownloaderForm({
             <div className="pt-5 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                  <Palette className="w-3.5 h-3.5 text-[#E11D48]" />
+                  <Palette className="w-3.5 h-3.5 text-[#C8281A]" />
                   <span>Extracted Pin Color Palette</span>
                 </div>
                 <span className="text-[10px] font-medium text-slate-600 dark:text-slate-400">Click chip to copy hex</span>
@@ -1979,7 +1994,7 @@ export default function DownloaderForm({
             <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                  <Tag className="w-3.5 h-3.5 text-[#E11D48]" />
+                  <Tag className="w-3.5 h-3.5 text-[#C8281A]" />
                   <span>Pin Keywords & Hashtags</span>
                 </div>
                 <button
@@ -2005,7 +2020,7 @@ export default function DownloaderForm({
           <div className="pt-5 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
-                <div className="w-6 h-6 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-500 text-white flex items-center justify-center shadow-xs">
+                <div className="w-6 h-6 rounded-lg bg-stock-lilac text-slate-900 flex items-center justify-center shadow-xs">
                   <Sparkles className="w-3.5 h-3.5" />
                 </div>
                 <span>AI Social Reposter Studio</span>
@@ -2092,7 +2107,7 @@ export default function DownloaderForm({
         <div className="mt-8 flex flex-col gap-4 text-left animate-in fade-in duration-300">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
             <h3 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-              <Layers className="w-5 h-5 text-[#E11D48]" />
+              <Layers className="w-5 h-5 text-[#C8281A]" />
               <span>Extracted Batch Media ({batchResults.length} items)</span>
             </h3>
 
@@ -2114,7 +2129,7 @@ export default function DownloaderForm({
                   }, idx * 800);
                 });
               }}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-xs shadow-md shadow-red-500/20 transition-all active:scale-95 shrink-0"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-[#C8281A] hover:bg-[#A51F13] text-white font-bold text-xs shadow-md shadow-red-500/20 transition-all active:scale-95 shrink-0"
             >
               <Download className="w-4 h-4" />
               <span>Download All ({batchResults.length} Items)</span>
@@ -2146,7 +2161,7 @@ export default function DownloaderForm({
                       `${slugify(res.title || 'pin')}.${resolvedGifUrl(res) ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg')}`,
                     )
                   }
-                  className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-[#E11D48] hover:text-white text-slate-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                  className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-[#C8281A] hover:text-white text-slate-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>
@@ -2163,7 +2178,7 @@ export default function DownloaderForm({
       {history.length > 0 && !result && batchResults.length === 0 && (
         <div className="mt-10 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-left shadow-xs">
           <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-3">
-            <History className="w-3.5 h-3.5 text-[#E11D48]" />
+            <History className="w-3.5 h-3.5 text-[#C8281A]" />
             <span>Recent Downloads</span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -2177,7 +2192,7 @@ export default function DownloaderForm({
                 {item.thumbnail && (
                   <img src={item.thumbnail} alt={item.title} className="w-9 h-9 rounded-lg object-cover shrink-0 border border-slate-200 dark:border-slate-700" />
                 )}
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-[#E11D48] truncate">{item.title}</span>
+                <span className="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-[#C8281A] truncate">{item.title}</span>
               </button>
             ))}
           </div>
