@@ -5,6 +5,7 @@ import AudioTrimmer from './AudioTrimmer';
 import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
 import { gifCandidateUrls, isGifUrl, isMediaContentType, mediaFileExtension, toDownloadablePinUrl } from '../lib/pin-media';
 import { classifyPinterestInput, getSuitableToolForMedia } from '../lib/pinterest-route';
+import { STOCKS, type StockKey } from '../lib/stocks';
 
 interface BoardPinItem {
   pin_id: string;
@@ -160,21 +161,15 @@ const VARIANT_COPY: Record<
 };
 
 
-/** Ticket stocks: one colour per URL type, shared with the page fields. */
-const STOCK_TOOLS: { href: string; label: string; color: string; variant: FormVariant }[] = [
-  { href: '/pinterest-video-downloader', label: 'Video MP4', color: '#F08A3C', variant: 'video' },
-  { href: '/pinterest-image-downloader', label: 'HD photo', color: '#F4C531', variant: 'image' },
-  { href: '/pinterest-gif-downloader', label: 'GIF', color: '#B79CE8', variant: 'gif' },
-  { href: '/pinterest-board-downloader', label: 'Board ZIP', color: '#6CC79A', variant: 'board' },
-  { href: '/pinterest-profile-downloader', label: 'Profile ZIP', color: '#7DB7E8', variant: 'profile' },
-  { href: '/pinterest-profile-picture-downloader', label: 'Avatar / DP', color: '#F29BB4', variant: 'profile-picture' },
+const STOCK_TOOLS: { href: string; label: string; stock: StockKey; variant: FormVariant }[] = [
+  { href: '/pinterest-pin-downloader', label: 'Pin', stock: 'pin', variant: 'pin' },
+  { href: '/pinterest-video-downloader', label: 'Video MP4', stock: 'video', variant: 'video' },
+  { href: '/pinterest-image-downloader', label: 'HD photo', stock: 'image', variant: 'image' },
+  { href: '/pinterest-gif-downloader', label: 'GIF', stock: 'gif', variant: 'gif' },
+  { href: '/pinterest-board-downloader', label: 'Board ZIP', stock: 'board', variant: 'board' },
+  { href: '/pinterest-profile-downloader', label: 'Profile ZIP', stock: 'profile', variant: 'profile' },
+  { href: '/pinterest-profile-picture-downloader', label: 'Avatar / DP', stock: 'avatar', variant: 'profile-picture' },
 ];
-
-const STOCK_COLOR: Record<string, string> = {
-  pin: '#F4C531',
-  board: '#6CC79A',
-  profile: '#7DB7E8',
-};
 
 const VARIANT_EXPECT: Record<FormVariant, string> = {
   hub: 'Waiting for a link',
@@ -193,6 +188,7 @@ function readTicket(raw: string, variant: FormVariant): {
   tone: 'ok' | 'warn' | 'none';
   serial: string;
   color: string;
+  onColor?: string;
   expect: string;
   help?: string;
 } {
@@ -236,7 +232,8 @@ function readTicket(raw: string, variant: FormVariant): {
         : short
           ? 'Pin · short link'
           : 'Pin';
-  return { stamp, tone: 'ok', serial, color: STOCK_COLOR[route.type] || '#F4C531', expect };
+  const key: StockKey = route.type === 'board' ? 'board' : route.type === 'profile' ? (variant === 'profile-picture' ? 'avatar' : 'profile') : 'pin';
+  return { stamp, tone: 'ok', serial, color: STOCKS[key].color, onColor: STOCKS[key].onColor, expect };
 }
 
 export default function DownloaderForm({
@@ -908,6 +905,7 @@ export default function DownloaderForm({
         data-tearing={loading ? 'true' : 'false'}
         aria-busy={loading}
       >
+        <div className="ticket-paper">
         <div className="ticket-head">
           <span className="t-label">Admit one · public link</span>
           <span className="ticket-serial" aria-live="polite" translate="no">
@@ -947,7 +945,7 @@ export default function DownloaderForm({
                 <span
                   key={reading.stamp}
                   className={`stamp stamp-in ${reading.tone === 'warn' ? 'stamp-warn' : 'stamp-ok'}`}
-                  style={reading.tone === 'ok' ? ({ '--stamp-bg': reading.color } as React.CSSProperties) : undefined}
+                  style={reading.tone === 'ok' ? ({ '--stamp-bg': reading.color, '--stamp-ink': reading.onColor } as React.CSSProperties) : undefined}
                 >
                   {reading.stamp}
                 </span>
@@ -1045,6 +1043,10 @@ export default function DownloaderForm({
               {reading.help}
             </p>
           )}
+          <p id="ticket-hint" className="mt-3 text-sm leading-relaxed text-[var(--ink-2)]">
+            {copy.hint}
+          </p>
+        </div>
         </div>
 
         <div className="perf" aria-hidden="true" />
@@ -1070,17 +1072,14 @@ export default function DownloaderForm({
         </div>
       </form>
 
-      <p id="ticket-hint" className="mt-3 text-sm leading-relaxed" style={{ color: isHero ? 'var(--on-field-2)' : undefined }}>
-        {copy.hint}
-      </p>
-
       <nav aria-label="Pick the tool for your link" className="mt-4 flex flex-wrap gap-2">
         {STOCK_TOOLS.map((tool) => (
           <a
             key={tool.href}
             href={tool.href}
             className="stock-chip"
-            style={{ '--chip': tool.color } as React.CSSProperties}
+            data-stock={tool.stock}
+            style={{ '--chip': STOCKS[tool.stock].color, '--chip-ink': STOCKS[tool.stock].onColor } as React.CSSProperties}
             aria-current={tool.variant === activeVariant ? 'page' : undefined}
           >
             {tool.label}

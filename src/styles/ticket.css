@@ -110,14 +110,19 @@ h1, h2, h3 {
 }
 
 /* ---------- The ticket ---------- */
+/* Two pieces of paper: the ticket body and the tear-off stub below it. */
 .ticket {
   --notch: 14px;
   position: relative;
-  background: var(--paper);
   color: var(--ink);
-  border-radius: 6px;
   text-align: left;
   isolation: isolate;
+}
+.ticket-paper {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+  border-radius: 6px 6px 0 0;
 }
 .ticket-head {
   display: flex;
@@ -184,75 +189,59 @@ h1, h2, h3 {
   color: #8d929b;
 }
 
-/* Perforation with punched notches showing the field behind */
+/* Punched notches at the perforation, showing the field behind */
 .perf {
   position: relative;
+  z-index: 3;
   height: 0;
-  border-top: 2px dashed var(--rule);
-  margin: 0 calc(var(--notch) + 4px);
 }
 .perf::before,
 .perf::after {
   content: '';
   position: absolute;
-  top: calc(var(--notch) * -1 - 1px);
+  top: calc(var(--notch) * -1);
   width: calc(var(--notch) * 2);
   height: calc(var(--notch) * 2);
   border-radius: 50%;
   background: var(--notch-fill, var(--field));
 }
-.perf::before { left: calc(var(--notch) * -2 - 4px); }
-.perf::after { right: calc(var(--notch) * -2 - 4px); }
+.perf::before { left: calc(var(--notch) * -1); }
+.perf::after { right: calc(var(--notch) * -1); }
 
-/* The tear-off stub: the primary action */
+/* The tear-off stub: its own piece of ink stock, and the primary action */
 .stub {
-  display: block;
-  padding: 0.875rem 0.875rem 0.875rem;
+  position: relative;
+  z-index: 2;
   transform-origin: 0% 0%;
-  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 560ms cubic-bezier(0.16, 1, 0.3, 1), opacity 560ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .stub-btn {
   width: 100%;
-  min-height: 3.5rem;
+  min-height: 4.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  border-radius: 4px;
+  border-radius: 0 0 6px 6px;
+  border-top: 3px dashed var(--paper);
   background: #17191e;
   color: #ffffff;
   font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   touch-action: manipulation;
   transition: background-color 160ms ease, color 160ms ease;
 }
-.stub-btn:hover:not(:disabled) {
-  background: var(--red);
-}
-.stub-btn:active:not(:disabled) {
-  background: var(--red-deep);
-}
-.stub-btn:disabled {
-  cursor: not-allowed;
-  background: #4e535c;
-  color: #ecedef;
-}
-.dark .stub-btn {
-  background: #f5f6f7;
-  color: #17191e;
-}
-.dark .stub-btn:hover:not(:disabled) {
-  background: #f4c531;
-}
-.dark .stub-btn:disabled {
-  background: #393d45;
-  color: #c2c5cb;
-}
+.stub-btn:hover:not(:disabled) { background: #000000; color: #f4c531; }
+.stub-btn:active:not(:disabled) { background: var(--red-deep); color: #ffffff; }
+.stub-btn:disabled { cursor: progress; }
+.dark .stub-btn { background: #f5f6f7; color: #17191e; }
+.dark .stub-btn:hover:not(:disabled) { background: #f4c531; color: #17191e; }
+/* Submitting tears the stub away along the perforation, hinged at the left */
 .ticket[data-tearing='true'] .stub {
-  transform: translateY(7px) rotate(-1.4deg);
+  transform: translate(6px, 18px) rotate(-3.5deg);
 }
 
 /* Rubber stamp applied when a link is recognised */
@@ -271,7 +260,7 @@ h1, h2, h3 {
   line-height: 1.1;
   white-space: nowrap;
 }
-.stamp-ok { color: #17191e; background: var(--stamp-bg, #f4c531); border-color: #17191e; }
+.stamp-ok { color: var(--stamp-ink, #17191e); background: var(--stamp-bg, #f4c531); border-color: #17191e; }
 .stamp-warn { color: var(--red); background: transparent; }
 .dark .stamp-warn { color: #ec8c7d; }
 .stamp-in {
@@ -283,35 +272,31 @@ h1, h2, h3 {
 }
 .stamp-in { transform: rotate(-2deg); }
 
-/* Stock rack: tool links printed as small tickets */
+/* Stock rack: tool links printed as small tickets in their own stock */
 .stock-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   min-height: 2.75rem;
-  padding: 0 0.875rem 0 0;
+  padding: 0 0.875rem;
   border-radius: 4px;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--chip, #c8281a);
+  color: var(--chip-ink, #17191e);
   font-weight: 700;
   font-size: 0.875rem;
   touch-action: manipulation;
-  overflow: hidden;
+  border: 2px solid var(--paper);
+  outline: 2px dashed rgba(23, 25, 30, 0.35);
+  outline-offset: -5px;
   transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-.stock-chip::before {
-  content: '';
-  align-self: stretch;
-  width: 0.625rem;
-  background: var(--chip, #c8281a);
-  border-right: 2px dashed var(--paper);
-}
 .stock-chip:hover { transform: translateY(-2px); }
+.stock-chip:focus-visible { outline: 3px solid #17191e; outline-offset: 2px; }
 .stock-chip[aria-current='page'] {
   background: #17191e;
   color: #ffffff;
+  outline-color: rgba(255, 255, 255, 0.4);
 }
-.dark .stock-chip[aria-current='page'] { background: #f5f6f7; color: #17191e; }
+.dark .stock-chip[aria-current='page'] { background: #f5f6f7; color: #17191e; outline-color: rgba(23, 25, 30, 0.35); }
 
 /* Section rules on the counter */
 .counter-rule {
@@ -341,7 +326,7 @@ h1, h2, h3 {
 
 @media (prefers-reduced-motion: reduce) {
   .stamp-in { animation: none; }
-  .ticket[data-tearing='true'] .stub { transform: none; opacity: 0.7; }
+  .ticket[data-tearing='true'] .stub { transform: none; opacity: 0.6; }
 }
 
 .ad-slot { height: var(--ad-h, 280px); }
@@ -371,3 +356,16 @@ h1, h2, h3 {
   line-height: 1.05;
 }
 .tool-body .grid > div > p.text-xs { font-size: 0.9375rem; color: var(--ink-2); }
+
+/* A chip printed in the page's own stock would vanish into the field: print it on paper instead */
+.field-red .stock-chip[data-stock='pin']:not([aria-current='page']),
+.field-tangerine .stock-chip[data-stock='video']:not([aria-current='page']),
+.field-canary .stock-chip[data-stock='image']:not([aria-current='page']),
+.field-lilac .stock-chip[data-stock='gif']:not([aria-current='page']),
+.field-mint .stock-chip[data-stock='board']:not([aria-current='page']),
+.field-sky .stock-chip[data-stock='profile']:not([aria-current='page']),
+.field-blush .stock-chip[data-stock='avatar']:not([aria-current='page']) {
+  background: var(--paper);
+  color: var(--ink);
+  outline-color: var(--chip);
+}

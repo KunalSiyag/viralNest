@@ -28,7 +28,7 @@ const { title, lede, variant = 'hub', layout = 'default' } = Astro.props;
       )}
       <slot name="aside" />
     </div>
-    <div class="min-w-0">
+    <div class="min-w-0 relative z-10">
       <DownloaderForm client:load variant={variant} layout={layout} />
     </div>
   </div>
