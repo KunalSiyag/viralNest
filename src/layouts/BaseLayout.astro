@@ -96,6 +96,9 @@ const adClient = import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined;
 const fieldClass = field === 'counter' ? '' : `field-${field}`;
 const themeColor = { red: '#C8281A', tangerine: '#F08A3C', canary: '#F4C531', lilac: '#B79CE8', mint: '#6CC79A', sky: '#7DB7E8', blush: '#F29BB4', counter: '#E4E6E9' }[field];
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+/** 'page' on the item's own URL, 'true' anywhere inside its section (blog articles under Guides). */
+const navCurrent = (href: string): 'page' | 'true' | undefined =>
+  currentPath === href ? 'page' : href !== '/' && currentPath.startsWith(`${href}/`) ? 'true' : undefined;
 
 /** Header navigation — concise labels for clean header spacing */
 const nav = [
@@ -218,7 +221,7 @@ const mobileNav = [
     </a>
 
     <header id="site-header" class:list={['relative z-40 w-full', field === 'counter' ? 'bg-[var(--counter)] text-[var(--ink)] border-b-2 border-[var(--ink)]' : 'field']}>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[4.5rem] flex items-center justify-between gap-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[4.5rem] flex items-center justify-between gap-4 lg:gap-6 xl:gap-4">
         <a href="/" class="flex items-center gap-2 min-w-0 shrink-0 rounded-md" aria-label="PintDownload home">
           <span class="grid place-items-center h-10 w-10 rounded-md bg-white shrink-0">
             <img src="/images/logo.png" alt="PintDownload logo" width="28" height="28" class="h-7 w-7 object-contain" decoding="async" />
@@ -226,15 +229,16 @@ const mobileNav = [
           <span class="t-display text-[1.6rem] leading-none tracking-[0.01em]" translate="no">PintDownload</span>
         </a>
 
-        <nav class="hidden lg:flex items-center justify-center flex-1 gap-1 text-[0.95rem] font-bold" aria-label="Main Navigation">
+        <nav class="hidden lg:flex items-center [justify-content:safe_center] flex-1 min-w-0 gap-0 xl:gap-1 text-[0.9rem] xl:text-[0.95rem] font-bold" aria-label="Main Navigation">
           {nav.map((item) => {
-            const isActive = currentPath === item.href;
+            const current = navCurrent(item.href);
+            const isActive = Boolean(current);
             return (
               <a
                 href={item.href}
-                aria-current={isActive ? 'page' : undefined}
+                aria-current={current}
                 class:list={[
-                  'px-3 py-2 rounded-md whitespace-nowrap transition-colors',
+                  'px-1.5 xl:px-3 py-2 rounded-md whitespace-nowrap transition-colors',
                   isActive ? 'bg-ink-900 text-white' : 'hover:bg-black/10',
                 ]}
               >
@@ -279,7 +283,7 @@ const mobileNav = [
               <li>
                 <a
                   href={item.href}
-                  aria-current={currentPath === item.href ? 'page' : undefined}
+                  aria-current={navCurrent(item.href)}
                   class="flex items-center justify-between min-h-[3.25rem] px-1 hover:text-stock-canary touch-manipulation"
                 >
                   {item.label}

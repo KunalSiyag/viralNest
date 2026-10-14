@@ -1,0 +1,1180 @@
+/*
+ * Results: what you collect at the counter.
+ * Every extraction prints a claim receipt on paper. Its band is printed in the
+ * stock of what was collected (src/lib/stocks.ts) and carries the same serial
+ * as the ticket, so ticket and receipt visibly match. Flat paper, no shadows.
+ */
+
+.rc {
+  --rc-stock: #c8281a;
+  --rc-on: #ffffff;
+  --notch: 12px;
+  position: relative;
+  container: rc / inline-size;
+  margin-top: 1.25rem;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 6px;
+  text-align: left;
+  isolation: isolate;
+  scroll-margin-top: 1rem;
+}
+
+/* One authored moment: the receipt feeds out of the printer, top edge first. */
+@media (prefers-reduced-motion: no-preference) {
+  .rc[data-print] {
+    animation: rc-print 520ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+}
+@keyframes rc-print {
+  from {
+    clip-path: inset(0 -16px 55% -16px);
+    transform: translateY(-10px);
+  }
+  to {
+    clip-path: inset(0 -16px 0 -16px);
+    transform: none;
+  }
+}
+
+/* ---------- Band: stock label + serial, inset so it never melts into a same-stock field ---------- */
+.rc-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 2.5rem;
+  margin: 0.625rem 0.625rem 0;
+  padding: 0.4rem 0.75rem 0.35rem;
+  border-radius: 4px;
+  background: var(--rc-stock);
+  color: var(--rc-on);
+}
+.rc-band .t-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.rc-band .t-label svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+.rc-serial {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Body: preview well + title + spec fields ---------- */
+.rc-body {
+  display: grid;
+  grid-template-areas: 'head' 'media' 'info';
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.875rem;
+  padding: 0.875rem 1rem 0;
+}
+.rc-body--plain {
+  grid-template-areas: 'head' 'info';
+}
+@container rc (min-width: 28rem) {
+  .rc-body:not(.rc-body--plain) {
+    grid-template-columns: 11.5rem minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 'media head' 'media info';
+    column-gap: 1rem;
+  }
+}
+.rc-head {
+  grid-area: head;
+  min-width: 0;
+}
+.rc-info {
+  grid-area: info;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+.rc-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.rc-sub {
+  margin-top: 0.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rc-media {
+  grid-area: media;
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+.rc-media--square {
+  aspect-ratio: 1 / 1;
+  max-width: 18rem;
+}
+@container rc (min-width: 28rem) {
+  .rc-media {
+    aspect-ratio: 3 / 4;
+  }
+  .rc-media--square {
+    aspect-ratio: 1 / 1;
+  }
+}
+.rc-media > img,
+.rc-media > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.rc-media > video {
+  background: #17191e;
+}
+.rc-media[data-frozen='true'] > img {
+  filter: grayscale(0.3);
+  opacity: 0.8;
+}
+.rc-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(23, 25, 30, 0.28);
+  color: #ffffff;
+  touch-action: manipulation;
+  transition: background-color 160ms ease;
+}
+.rc-play:hover {
+  background: rgba(23, 25, 30, 0.45);
+}
+.rc-play-tile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0 1rem 0 0.875rem;
+  border-radius: 4px;
+  background: #17191e;
+  color: #ffffff;
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  font-size: 1.0625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 160ms ease;
+}
+.rc-play:hover .rc-play-tile {
+  color: #f4c531;
+}
+.rc-play-tile svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+.rc-media-toggle {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  border-radius: 4px;
+  background: #17191e;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  touch-action: manipulation;
+  transition: color 160ms ease;
+}
+.rc-media-toggle:hover {
+  color: #f4c531;
+}
+.rc-media-toggle svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Spec fields, printed like the fields on a boarding pass. Real values only. */
+.rc-specs {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 2px solid var(--ink);
+  margin: 0;
+}
+.rc-specs > div {
+  min-width: 0;
+  padding: 0.5rem 0.875rem 0.125rem 0;
+  margin-right: 0.875rem;
+  border-right: 2px dashed var(--rule);
+}
+.rc-specs > div:last-child {
+  border-right: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+.rc-specs dt {
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--ink-2);
+}
+.rc-specs dd {
+  margin: 0.125rem 0 0;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+/* Quality: radio chips, the checked one printed in ink */
+.rc-q {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.rc-q legend {
+  padding: 0;
+  margin-bottom: 0.375rem;
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.rc-q-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.rc-q label {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.75rem 0;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.rc-q label:hover {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.rc-q input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.rc-q label[data-checked='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.rc-q label:has(input:focus-visible) {
+  outline: 3px solid #17191e;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px #ffffff;
+}
+.dark .rc-q label:has(input:focus-visible) {
+  outline-color: #f4c531;
+  box-shadow: 0 0 0 5px #0e0f12;
+}
+.rc-q-dim {
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+
+/* ---------- Primary action: the collect button, same voice as the ticket stub ---------- */
+.rc-collect {
+  padding: 1rem 1rem 0.875rem;
+}
+.rc-cta {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background: #17191e;
+  color: #ffffff;
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  font-size: 1.625rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.rc-cta svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+}
+.rc-cta:hover {
+  color: #f4c531;
+}
+.rc-cta:active {
+  background: var(--red-deep);
+  color: #ffffff;
+}
+.rc-cta[aria-disabled='true'],
+.rc-cta[aria-busy='true'] {
+  cursor: progress;
+}
+.rc-cta[aria-disabled='true']:hover {
+  background: #17191e;
+  color: #ffffff;
+}
+.dark .rc-cta,
+.dark .rc-cta[aria-disabled='true']:hover {
+  background: #f5f6f7;
+  color: #17191e;
+}
+.dark .rc-cta:hover {
+  background: #f4c531;
+  color: #17191e;
+}
+/* Progress prints along the bottom edge of the button in the item's stock */
+.rc-cta-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background: var(--rc-stock);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--p, 0));
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rc-cta-fill[data-indeterminate='true'] {
+  transform: scaleX(0.3);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rc-cta-fill[data-indeterminate='true'] {
+    animation: rc-sweep 1100ms cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+  }
+}
+@keyframes rc-sweep {
+  from { transform: translateX(-30%) scaleX(0.3); }
+  to { transform: translateX(100%) scaleX(0.3); }
+}
+.rc-note {
+  margin-top: 0.5rem;
+  min-height: 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.rc-note b {
+  color: var(--ink);
+}
+.rc-file {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- Perforation with punched notches, inside the receipt ---------- */
+.rc-perf {
+  position: relative;
+  height: 0;
+  padding: 0 1rem;
+}
+.rc-perf > span {
+  display: block;
+  border-top: 2px dashed var(--rule);
+}
+.rc-perf::before,
+.rc-perf::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--notch) * -1 + 1px);
+  width: calc(var(--notch) * 2);
+  height: calc(var(--notch) * 2);
+  border-radius: 50%;
+  background: var(--notch-fill, var(--field));
+}
+.rc-perf::before { left: calc(var(--notch) * -1); }
+.rc-perf::after { right: calc(var(--notch) * -1); }
+
+.rc-section {
+  padding: 0.875rem 1rem 0.25rem;
+}
+.rc-h3 {
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--ink-2);
+}
+
+/* ---------- Line items: the other files this pin carries ---------- */
+.rc-items {
+  list-style: none;
+  margin: 0.375rem 0 0;
+  padding: 0;
+}
+.rc-item {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0;
+  border-top: 2px dashed var(--rule);
+}
+.rc-item:first-child {
+  border-top: 0;
+}
+.rc-item > .rc-notice {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+.rc-fmt {
+  display: block;
+  padding: 0.25rem 0 0.15rem;
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  font-size: 0.9375rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.1;
+}
+.rc-item-name {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+}
+.rc-item-note {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Buttons ---------- */
+.rc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0 0.875rem;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.rc-btn svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+.rc-btn:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--paper);
+}
+.rc-btn:disabled,
+.rc-btn[aria-disabled='true'] {
+  cursor: progress;
+  opacity: 0.65;
+}
+.rc-btn[aria-disabled='true']:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+.rc-btn[aria-expanded='true'],
+.rc-btn[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.rc-btn--quiet {
+  border-color: transparent;
+  padding: 0 0.625rem;
+}
+.rc-btn--quiet:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  color: var(--ink);
+}
+.rc-tools {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.875rem 1rem 1rem;
+}
+.rc-tools .rc-btn {
+  padding: 0 0.5rem;
+}
+.rc-tools .rc-push {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+@container rc (min-width: 28rem) {
+  .rc-tools {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .rc-tools .rc-btn {
+    padding: 0 0.875rem;
+  }
+  .rc-tools .rc-push {
+    margin-left: auto;
+  }
+}
+
+/* Phone QR well */
+.rc-qr {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 1rem 1rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  background: var(--paper-2);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.rc-qr[hidden] {
+  display: none;
+}
+.rc-qr img,
+.rc-qr-wait {
+  width: 8.5rem;
+  height: 8.5rem;
+  flex: none;
+  border-radius: 3px;
+  background: #ffffff;
+  padding: 0.25rem;
+}
+
+/* ---------- Notices inside a receipt: done, partial, failed ---------- */
+.rc-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.rc-notice .stamp {
+  flex: none;
+  font-size: 0.875rem;
+  transform: rotate(-2deg);
+}
+.rc-notice p {
+  min-width: 0;
+}
+
+/* ---------- Grids: carousel slides and collection pins ---------- */
+.rc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+.rc-grid--dense {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+@container rc (min-width: 28rem) {
+  .rc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .rc-grid--dense { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.625rem; }
+}
+@container rc (min-width: 44rem) {
+  .rc-grid--dense { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+.rc-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+}
+.rc-thumb {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+.rc-grid--dense .rc-thumb {
+  aspect-ratio: 1 / 1;
+}
+.rc-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.rc-no {
+  position: absolute;
+  left: 0.3rem;
+  top: 0.3rem;
+  padding: 0.15rem 0.35rem 0.05rem;
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.rc-kind {
+  position: absolute;
+  right: 0.3rem;
+  bottom: 0.3rem;
+  padding: 0.15rem 0.35rem 0.05rem;
+  border: 2px solid #17191e;
+  border-radius: 3px;
+  background: var(--kind, #f4c531);
+  color: #17191e;
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  transform: rotate(-2deg);
+}
+.rc-tile-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rc-tile .rc-btn {
+  width: 100%;
+  padding: 0 0.375rem;
+  font-size: 0.875rem;
+}
+.rc-grid--dense .rc-btn svg {
+  display: none;
+}
+@container rc (min-width: 28rem) {
+  .rc-grid--dense .rc-btn svg { display: block; }
+}
+.rc-more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 0 0;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.rc-more > span {
+  flex-basis: 100%;
+}
+
+/* Boards on a profile: a ledger of rows, each opens that board */
+.rc-rows {
+  list-style: none;
+  margin: 0.375rem 0 0;
+  padding: 0;
+}
+.rc-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.5rem 0.25rem;
+  border-top: 2px dashed var(--rule);
+  text-align: left;
+  touch-action: manipulation;
+  transition: background-color 160ms ease;
+}
+.rc-rows li:first-child .rc-row {
+  border-top: 0;
+}
+.rc-row:hover {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+.rc-row-main {
+  flex: 1;
+  min-width: 0;
+}
+.rc-row-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rc-row-meta {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.rc-row-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: none;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.rc-row-go svg {
+  width: 1rem;
+  height: 1rem;
+}
+.rc-row:hover .rc-row-go {
+  text-decoration: underline;
+}
+
+/* ---------- Extras: colours, tags, captions (folded away) ---------- */
+.rc-extras {
+  margin: 0 1rem;
+  border-top: 2px dashed var(--rule);
+}
+.rc-extras > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3rem;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  list-style: none;
+  touch-action: manipulation;
+}
+.rc-extras > summary::-webkit-details-marker {
+  display: none;
+}
+.rc-extras > summary svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rc-extras[open] > summary svg {
+  transform: rotate(180deg);
+}
+.rc-extras-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0.25rem 0 1.25rem;
+}
+.rc-extras-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.rc-extras-hint {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+.rc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.rc-swatch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem 0 0.5rem;
+  border: 2px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper);
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  touch-action: manipulation;
+  transition: border-color 160ms ease;
+}
+.rc-swatch:hover {
+  border-color: var(--ink);
+}
+.rc-swatch i {
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 3px;
+  border: 1px solid rgba(23, 25, 30, 0.2);
+}
+.rc-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 0.625rem;
+  border-radius: 4px;
+  background: var(--paper-2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.rc-seg {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  overflow: hidden;
+}
+@container rc (min-width: 28rem) {
+  .rc-seg {
+    display: inline-grid;
+    grid-template-columns: repeat(3, auto);
+  }
+}
+.rc-seg button {
+  min-height: 2.75rem;
+  padding: 0.25rem 0.75rem;
+  line-height: 1.2;
+  font-size: 0.875rem;
+  font-weight: 700;
+  touch-action: manipulation;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.rc-seg button:hover {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.rc-seg button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.rc-caption {
+  margin: 0.625rem 0;
+  padding: 0.75rem 0.875rem;
+  border-radius: 4px;
+  background: var(--paper-2);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Void: the claim could not be fulfilled ---------- */
+.rc--void .rc-void-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1rem 0;
+}
+.rc--void .rc-void-head .stamp {
+  flex: none;
+  font-size: 1.0625rem;
+  transform: rotate(-3deg);
+}
+.rc--void .rc-title {
+  -webkit-line-clamp: unset;
+}
+.rc-void-msg {
+  padding: 0.625rem 1rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.rc--void .rc-tools {
+  display: flex;
+  flex-wrap: wrap;
+}
+.rc-void-hint {
+  padding: 0.375rem 1rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.rc--compact {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-top: 0.75rem;
+}
+.rc--compact .stamp {
+  flex: none;
+  font-size: 0.875rem;
+  transform: rotate(-2deg);
+}
+.rc--compact p {
+  min-width: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ---------- Loading: an unprinted receipt with the ticket's serial ---------- */
+.rc--loading .rc-band {
+  background: var(--paper-2);
+  color: var(--ink-2);
+}
+.rc-skel {
+  display: block;
+  border-radius: 4px;
+  background: var(--paper-2);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rc--loading .rc-skel {
+    animation: rc-pulse 900ms ease-in-out infinite alternate;
+  }
+}
+@keyframes rc-pulse {
+  from { opacity: 1; }
+  to { opacity: 0.5; }
+}
+
+/* ---------- Batch: a stack of small receipts ---------- */
+.rc-batch-row {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-top: 2px dashed var(--rule);
+}
+.rc-batch-row:first-child {
+  border-top: 0;
+}
+.rc-batch-row img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--paper-2);
+}
+.rc-batch-row .rc-btn {
+  grid-column: 1 / -1;
+}
+@container rc (min-width: 28rem) {
+  .rc-batch-row {
+    grid-template-columns: 4rem minmax(0, 1fr) auto;
+  }
+  .rc-batch-row .rc-btn {
+    grid-column: auto;
+  }
+}
+.rc-pill {
+  display: inline-block;
+  margin-top: 0.25rem;
+  padding: 0.1rem 0.4rem 0;
+  border: 2px solid #17191e;
+  border-radius: 3px;
+  background: var(--kind, #f4c531);
+  color: #17191e;
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* ---------- Recent links (before a new claim) ---------- */
+.rc-recent {
+  margin-top: 1.25rem;
+  padding: 0.875rem 1rem 1rem;
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  text-align: left;
+}
+.rc-recent ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+.rc-recent button {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+  border: 2px solid var(--rule);
+  border-radius: 4px;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 700;
+  touch-action: manipulation;
+  transition: border-color 160ms ease;
+}
+.rc-recent button:hover {
+  border-color: var(--ink);
+}
+.rc-recent img {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  object-fit: cover;
+  border-radius: 3px;
+  background: var(--paper-2);
+}
+.rc-recent span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ZIP progress line with its Cancel action */
+.rc-note--row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.375rem;
+}
+.rc-note--row > p {
+  min-width: 0;
+}
+.rc-note--row .rc-btn {
+  flex: none;
+  margin-right: -0.625rem;
+}
+
+/* ---------- Wide receipts on the desktop counter (see .rc--wide in ticket.css) ----------
+   Outside the hero seam these wrappers are transparent. On the counter, a
+   single pin prints as two halves split by a dashed perforation: what you
+   collect on the left, what else the pin carries on the right. Grid receipts
+   put the collect button beside the title instead of stretching it across. */
+.rc-split,
+.rc-main,
+.rc-side,
+.rc-top {
+  display: contents;
+}
+@container rc (min-width: 44rem) {
+  .rc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@container rc (min-width: 62rem) {
+  .rc-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .rc-grid--dense { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.75rem; }
+}
+@media (min-width: 1024px) {
+  .seam-hero .rc--wide .rc-split {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: start;
+  }
+  .seam-hero .rc--wide .rc-main {
+    display: block;
+    min-width: 0;
+  }
+  .seam-hero .rc--wide .rc-side {
+    display: block;
+    min-width: 0;
+    align-self: stretch;
+    margin: 0.875rem 0 0;
+    border-left: 2px dashed var(--rule);
+  }
+  /* The vertical rule is the perforation now: drop the one that opened the
+     extras, and the notches on the one between them. */
+  .seam-hero .rc--wide .rc-side > .rc-perf:first-child {
+    display: none;
+  }
+  .seam-hero .rc--wide .rc-side .rc-perf::before,
+  .seam-hero .rc--wide .rc-side .rc-perf::after {
+    display: none;
+  }
+  .seam-hero .rc--wide .rc-side > .rc-section:first-child,
+  .seam-hero .rc--wide .rc-side > .rc-perf:first-child + * {
+    padding-top: 0;
+  }
+  .seam-hero .rc--wide .rc-side .rc-section,
+  .seam-hero .rc--wide .rc-side .rc-tools,
+  .seam-hero .rc--wide .rc-side .rc-perf,
+  .seam-hero .rc--wide .rc-side .rc-void-hint {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .seam-hero .rc--wide .rc-side .rc-qr,
+  .seam-hero .rc--wide .rc-side .rc-extras {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
+  .seam-hero .rc--wide .rc-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem);
+    align-items: end;
+  }
+  .seam-hero .rc--wide .rc-top > .rc-body {
+    padding-bottom: 1rem;
+  }
+}
+@media (min-width: 1280px) {
+  .seam-hero .rc--wide .rc-main .rc-body:not(.rc-body--plain) {
+    grid-template-columns: 15rem minmax(0, 1fr);
+  }
+}

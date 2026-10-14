@@ -62,17 +62,21 @@ const useVisual = visual || hasImages;
             <span class="t-display text-5xl leading-[0.8] text-brand-600 dark:text-brand-400 shrink-0" aria-hidden="true">{i + 1}</span>
           </div>
           <p class="mt-2 text-[0.9375rem] text-[var(--ink-2)] leading-relaxed [&_code]:font-semibold [&_code]:text-[var(--ink)] [&_code]:[overflow-wrap:anywhere] [&_strong]:text-[var(--ink)]" set:html={step.body} />
+          {/* mt-auto: wells share one bottom edge whatever the body length. The ground is the
+              step art's own ticket-red field (src/assets/steps), so lazy loads do not flash grey. */}
           {step.image && (
-            <div class="mt-4 aspect-[3/2] overflow-hidden bg-[var(--paper-2)] rounded">
-              <img
-                src={step.image}
-                alt={step.imageAlt || step.title}
-                width={900}
-                height={600}
-                class="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
+            <div class="mt-auto pt-4">
+              <div class="aspect-[3/2] overflow-hidden bg-brand-600 rounded">
+                <img
+                  src={step.image}
+                  alt={step.imageAlt || step.title}
+                  width={900}
+                  height={600}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </div>
           )}
         </li>

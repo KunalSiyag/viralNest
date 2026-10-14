@@ -1,8 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { BRAND } from '../lib/brand';
+import { STOCKS, INK_STOCK } from '../lib/stocks';
 
 export const prerender = true;
+
+// A voided claim ticket: the link was read, nothing is held at the counter.
+const tools = [
+  { href: '/pinterest-video-downloader', label: 'Video → MP4', blurb: 'Save public video pins', badge: 'MP4', stock: STOCKS.video },
+  { href: '/pinterest-pin-downloader', label: 'Pin / carousel', blurb: 'Images, GIFs, multi-slide', badge: 'Pin', stock: STOCKS.pin },
+  { href: '/pinterest-board-downloader', label: 'Board ZIP', blurb: 'Bulk public board packs', badge: 'ZIP', stock: STOCKS.board },
+  { href: '/how-to-download-pinterest-videos', label: 'How-to guide', blurb: 'Phone & desktop steps', badge: 'Guide', stock: INK_STOCK },
+];
 ---
 
 <BaseLayout
@@ -10,70 +19,75 @@ export const prerender = true;
   description={`This page does not exist on ${BRAND.domain}. Head home or try a Pinterest downloader tool.`}
   clean
   noindex
+  fullBleed
 >
-  <section class="relative flex flex-col items-center justify-center text-center py-16 sm:py-24 min-h-[60vh]">
+  <section class="field" aria-labelledby="nf-heading">
     <div
-      class="absolute inset-0 -z-10 pointer-events-none opacity-80"
-      aria-hidden="true"
-      style="
-        background:
-          radial-gradient(80% 60% at 50% 0%, rgba(251,146,60,0.28) 0%, rgba(251,113,133,0.12) 40%, transparent 70%);
-      "
-    ></div>
-
-    <p class="font-display text-7xl sm:text-8xl text-brand-600/90 tracking-tight mb-2" aria-hidden="true">404</p>
-    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-ink-400 mb-4">Page not found</p>
-    <h1
-      class="font-display text-3xl sm:text-5xl text-ink-900 dark:text-white tracking-tight mb-4 max-w-xl"
-      style="text-wrap: balance;"
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-12 pb-12 sm:pb-16 grid gap-8 lg:gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] items-start"
     >
-      This pin isn’t on the board.
-    </h1>
-    <p class="text-lg sm:text-xl text-ink-500 dark:text-slate-400 max-w-lg mb-10 leading-relaxed">
-      The link may be old, mistyped, or removed. Try the downloader, browse guides, or jump to a tool below.
-    </p>
-
-    <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
-      <a
-        href="/"
-        class="inline-flex h-12 items-center px-7 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-base font-semibold shadow-soft transition-colors touch-manipulation"
-      >
-        Go home
-      </a>
-      <a
-        href="/blog"
-        class="inline-flex h-12 items-center px-7 rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] dark:border-white/15 text-ink-800 dark:text-white text-base font-semibold hover:border-brand-300 transition-colors touch-manipulation"
-      >
-        Read the blog
-      </a>
-      <a
-        href="/contact"
-        class="inline-flex h-12 items-center px-7 rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] dark:border-white/15 text-ink-800 dark:text-white text-base font-semibold hover:border-brand-300 transition-colors touch-manipulation"
-      >
-        Contact
-      </a>
-    </div>
-
-    <div class="w-full max-w-2xl grid sm:grid-cols-2 gap-3 text-left">
-      {[
-        { href: '/pinterest-video-downloader', label: 'Video → MP4', blurb: 'Save public video pins' },
-        { href: '/pinterest-pin-downloader', label: 'Pin / carousel', blurb: 'Images, GIFs, multi-slide' },
-        { href: '/pinterest-board-downloader', label: 'Board ZIP', blurb: 'Bulk public board packs' },
-        { href: '/how-to-download-pinterest-videos', label: 'How-to guide', blurb: 'Phone & desktop steps' },
-      ].map((item) => (
-        <a
-          href={item.href}
-          class="p-5 rounded-2xl bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.08] shadow-soft hover:border-brand-300 hover:shadow-lift transition-all"
+      <div class="min-w-0">
+        <h1
+          id="nf-heading"
+          class="t-display text-[2.875rem] leading-[0.9] sm:text-6xl sm:leading-[0.88] lg:text-6xl max-w-[12ch]"
+          style="text-wrap: balance;"
         >
-          <span class="block font-semibold text-ink-900 dark:text-white mb-1">{item.label}</span>
-          <span class="text-sm text-ink-500 dark:text-slate-400">{item.blurb}</span>
-        </a>
-      ))}
-    </div>
+          This pin isn’t on the board.
+        </h1>
+        <p class="mt-4 sm:mt-5 text-[1.0625rem] sm:text-lg leading-relaxed max-w-xl text-[var(--on-field-2)]" style="text-wrap: pretty;">
+          The link may be old, mistyped, or removed. Try the downloader, browse guides, or jump to a tool below.
+        </p>
+      </div>
 
-    <p class="mt-12 text-sm text-ink-400">
+      <div class="ticket void-ticket min-w-0 w-full max-w-md lg:max-w-none">
+        <div class="ticket-paper">
+          <div class="ticket-head">
+            <span class="t-label">Admit one · public link</span>
+            <span class="ticket-serial" translate="no">No. 404</span>
+          </div>
+          <div class="ticket-body">
+            <p class="void-no" aria-hidden="true">404</p>
+            <p class="stamp stamp-warn stamp-in void-stamp">Page not found</p>
+            <div class="mt-6 grid grid-cols-2 gap-2 w-full">
+              <a href="/blog" class="void-btn">Read the blog</a>
+              <a href="/contact" class="void-btn">Contact</a>
+            </div>
+          </div>
+        </div>
+        <div class="perf" aria-hidden="true"></div>
+        <div class="stub">
+          <a href="/" class="stub-btn">Go home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16" aria-label="Pinterest downloader tools">
+    <ul class="counter-rule pt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 list-none p-0 m-0">
+      {tools.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="group flex h-full bg-[var(--paper)] rounded-md overflow-hidden min-w-0 touch-manipulation transition-transform duration-200 hover:-translate-y-0.5"
+          >
+            <span
+              class="shrink-0 w-[4.25rem] flex items-center justify-center border-r-2 border-dashed border-[var(--paper)]"
+              style={`background:${item.stock.color};color:${item.stock.onColor}`}
+              aria-hidden="true"
+            >
+              <span class="t-display text-xl -rotate-90 whitespace-nowrap">{item.badge}</span>
+            </span>
+            <span class="p-4 min-w-0">
+              <span class="block font-bold text-[1.0625rem] leading-snug group-hover:underline">{item.label}</span>
+              <span class="block mt-1 text-sm text-[var(--ink-2)] leading-relaxed">{item.blurb}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-10 text-sm text-[var(--ink-2)]">
       Think this is a bug?
-      <a href={`mailto:${BRAND.email.support}`} class="font-semibold text-brand-600 hover:underline">{BRAND.email.support}</a>
+      <a href={`mailto:${BRAND.email.support}`} class="font-semibold text-[var(--ink)] underline decoration-2 decoration-[var(--red)] hover:text-[var(--red)] dark:hover:text-[#EC8C7D]">{BRAND.email.support}</a>
     </p>
   </section>
 </BaseLayout>

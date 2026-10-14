@@ -8,15 +8,27 @@ export default function StickyPasteBar() {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 350 && !dismissed) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
+    // The bar stands in for the ticket only while the ticket and its receipts
+    // are off screen; it never covers the real paste box or a result.
+    const downloaderOnScreen = () => {
+      const root = document.querySelector('[data-downloader]');
+      if (!root) return false;
+      const vh = window.innerHeight;
+      return Array.from(root.children).some((el) => {
+        const r = el.getBoundingClientRect();
+        return r.height > 0 && r.top < vh && r.bottom > 0;
+      });
     };
+    const handleScroll = () => {
+      setVisible(window.scrollY > 350 && !dismissed && !downloaderOnScreen());
+    };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, [dismissed]);
 
   const triggerHaptic = () => {
@@ -63,12 +75,15 @@ export default function StickyPasteBar() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-3 right-3 z-50 lg:hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
-      <div className="bg-slate-900/95 dark:bg-slate-950/95 border border-slate-700/80 text-white rounded-2xl p-2.5 shadow-2xl shadow-slate-950/50 flex items-center gap-2">
+    <div
+      className="fixed left-3 right-3 z-50 lg:hidden"
+      style={{ bottom: 'max(1rem, calc(env(safe-area-inset-bottom) + 0.5rem))' }}
+    >
+      <div className="bg-[#17191E] border border-[#393D45] text-white rounded-md p-2.5 flex items-center gap-2">
         <button
           type="button"
           onClick={() => setDismissed(true)}
-          className="p-1.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
+          className="w-11 h-11 -m-1 flex items-center justify-center rounded-md text-[#C2C5CB] hover:text-white hover:bg-[#24272D] transition-colors shrink-0 touch-manipulation"
           aria-label="Close sticky paste bar"
         >
           <X className="w-4 h-4" />
@@ -85,18 +100,19 @@ export default function StickyPasteBar() {
               type="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="Paste Pinterest link…"
+              placeholder="Link…"
               aria-label="Paste Pinterest link"
-              className="w-full h-11 pl-3 pr-14 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-[#C8281A]"
+              className={`w-full h-11 pl-3 ${url ? 'pr-3' : 'pr-[6.25rem]'} rounded-md bg-[#1D2026] border border-[#393D45] text-base text-white caret-[#F4C531] placeholder:text-[#A3A8B0] focus:outline-none focus-visible:border-[#F4C531] focus-visible:ring-2 focus-visible:ring-[#F4C531]/40`}
               required
             />
             {!url && (
               <button
                 type="button"
                 onClick={handlePaste}
-                className="absolute right-1 top-1/2 -translate-y-1/2 px-2 py-1 rounded-lg bg-red-950/80 text-rose-300 hover:bg-red-900/80 text-[10px] font-bold flex items-center gap-1 border border-red-800/60"
+                // 36px to sit inside the 44px input; ::after extends the hit area to 44px.
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-9 px-3 rounded bg-white after:absolute after:inset-x-0 after:-inset-y-1 after:content-[''] text-[#17191E] hover:bg-[#F4C531] text-sm font-bold flex items-center gap-1.5 transition-colors touch-manipulation"
               >
-                <Clipboard className="w-3 h-3" />
+                <Clipboard className="w-3.5 h-3.5" aria-hidden="true" />
                 Paste
               </button>
             )}
@@ -105,7 +121,7 @@ export default function StickyPasteBar() {
           <button
             type="submit"
             disabled={!url.trim()}
-            className="h-11 px-4 rounded-xl bg-[#C8281A] hover:bg-[#A51F13] active:bg-[#831A11] text-white font-extrabold text-xs flex items-center justify-center gap-1 shrink-0 disabled:opacity-50 transition-colors shadow-sm"
+            className="h-11 px-4 rounded-md bg-[#C8281A] hover:bg-[#A51F13] active:bg-[#831A11] text-white font-extrabold text-sm flex items-center justify-center gap-1 shrink-0 disabled:bg-[#24272D] disabled:text-[#A3A8B0] transition-colors touch-manipulation"
           >
             <Download className="w-4 h-4" />
             <span>Save</span>
@@ -115,7 +131,7 @@ export default function StickyPasteBar() {
         <button
           type="button"
           onClick={scrollToTop}
-          className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white transition-colors shrink-0"
+          className="w-11 h-11 flex items-center justify-center rounded-md bg-[#1D2026] hover:bg-[#24272D] text-[#C2C5CB] hover:text-white transition-colors shrink-0 touch-manipulation"
           title="Scroll to top"
           aria-label="Scroll to top"
         >

@@ -1,0 +1,49 @@
+---
+/**
+ * One article printed as a ticket: cover, paper body with a category / read-time
+ * strip, then a perforated stub carrying the date. The whole ticket is one link.
+ */
+import type { BlogPost } from '../../data/blog';
+import { BLOG_AUTHOR } from '../../data/blog';
+import { formatPostDate } from './blog-utils';
+
+interface Props {
+  post: BlogPost;
+  /** Element for the title. Index uses h2; elsewhere a plain span keeps the page outline unchanged. */
+  as?: 'h2' | 'h3' | 'span';
+  featured?: boolean;
+  excerpt?: boolean;
+  eager?: boolean;
+}
+
+const { post, as: Title = 'span', featured = false, excerpt = true, eager = false } = Astro.props;
+const href = `/blog/${post.slug}`;
+---
+
+<a href={href} class:list={['art-ticket', featured && 'art-ticket--featured']}>
+  <div class="art-cover">
+    <img
+      src={post.coverImage}
+      alt={post.coverAlt}
+      width={featured ? 1200 : 640}
+      height={featured ? 675 : 360}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      fetchpriority={eager ? 'high' : undefined}
+      onerror="this.onerror=null;this.src='/images/blog/cover-guide.webp';"
+    />
+  </div>
+  <div class="art-paper">
+    <div class="art-head">
+      <span class="t-label">{post.category}</span>
+      <span class="art-serial">{post.readTimeMin} min read</span>
+    </div>
+    <Title class="art-title">{post.title}</Title>
+    {excerpt && <p class="art-excerpt">{post.excerpt}</p>}
+  </div>
+  <div class="art-perf" aria-hidden="true"></div>
+  <div class="art-stub">
+    <time datetime={post.datePublished}>{formatPostDate(post.datePublished)}</time>
+    <span>{BLOG_AUTHOR.name}</span>
+  </div>
+</a>

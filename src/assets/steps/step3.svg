@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="883" height="574" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="step3-title">
+  <!--
+    Step 3 art: the stub is torn off and the file is collected (preview + saved).
+    Source for public/images/step3.webp. Render: node scripts/render_step_art.mjs
+    The stub drops and hinges from its top-left corner like the live tear motion; torn
+    perforation half-holes show the field through both edges. The file card carries the same
+    pin print as step 1 (the pin you copied is the file you keep) and a SAVED stamp.
+  -->
+  <title id="step3-title">Preview and download the Pinterest media file</title>
+  <defs>
+    <style>
+      .g8 { font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 800; }
+      .g9 { font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 900; }
+      .sans { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; }
+    </style>
+    <clipPath id="s3-thumb"><rect x="608" y="88" width="220" height="300" rx="4"/></clipPath>
+  </defs>
+
+  <!-- Field: house stock -->
+  <rect width="900" height="600" fill="#C8281A"/>
+
+  <!-- Ticket body left behind, bleeding off the top edge -->
+  <g transform="translate(0 36)">
+  <rect x="56" y="-66" width="420" height="272" rx="10" fill="#FFFFFF"/>
+  <text x="84" y="56" class="g8" font-size="28" letter-spacing="2.2" fill="#17191E">ADMIT ONE</text>
+  <text x="448" y="56" text-anchor="end" class="g8" font-size="30" letter-spacing="1.2" fill="#17191E">No. 1120271…</text>
+  <rect x="84" y="72" width="364" height="5" fill="#17191E"/>
+  <text x="84" y="140" class="sans" font-size="26" font-weight="700" fill="#17191E">Pinterest link</text>
+  <g transform="translate(394 130) rotate(-3)">
+    <rect x="-52" y="-25" width="104" height="50" rx="4" fill="#C8281A" stroke="#17191E" stroke-width="5"/>
+    <text x="0" y="15" text-anchor="middle" class="g9" font-size="40" letter-spacing="2" fill="#FFFFFF">PIN</text>
+  </g>
+  <!-- torn perforation: half-holes along the edge + punched notches -->
+  <g fill="#C8281A">
+    <circle cx="80" cy="206" r="6"/><circle cx="100" cy="206" r="6"/><circle cx="120" cy="206" r="6"/>
+    <circle cx="140" cy="206" r="6"/><circle cx="160" cy="206" r="6"/><circle cx="180" cy="206" r="6"/>
+    <circle cx="200" cy="206" r="6"/><circle cx="220" cy="206" r="6"/><circle cx="240" cy="206" r="6"/>
+    <circle cx="260" cy="206" r="6"/><circle cx="280" cy="206" r="6"/><circle cx="300" cy="206" r="6"/>
+    <circle cx="320" cy="206" r="6"/><circle cx="340" cy="206" r="6"/><circle cx="360" cy="206" r="6"/>
+    <circle cx="380" cy="206" r="6"/><circle cx="400" cy="206" r="6"/><circle cx="420" cy="206" r="6"/>
+    <circle cx="440" cy="206" r="6"/><circle cx="460" cy="206" r="6"/>
+    <circle cx="56" cy="206" r="16"/><circle cx="476" cy="206" r="16"/>
+  </g>
+  </g>
+
+  <!-- The torn stub: dropped and hinged from its top-left corner -->
+  <g transform="translate(64 298) rotate(-5)">
+    <rect x="0" y="0" width="420" height="104" rx="10" fill="#17191E"/>
+    <rect x="0" y="0" width="420" height="20" fill="#17191E"/>
+    <g fill="#C8281A">
+      <circle cx="24" cy="0" r="6"/><circle cx="44" cy="0" r="6"/><circle cx="64" cy="0" r="6"/>
+      <circle cx="84" cy="0" r="6"/><circle cx="104" cy="0" r="6"/><circle cx="124" cy="0" r="6"/>
+      <circle cx="144" cy="0" r="6"/><circle cx="164" cy="0" r="6"/><circle cx="184" cy="0" r="6"/>
+      <circle cx="204" cy="0" r="6"/><circle cx="224" cy="0" r="6"/><circle cx="244" cy="0" r="6"/>
+      <circle cx="264" cy="0" r="6"/><circle cx="284" cy="0" r="6"/><circle cx="304" cy="0" r="6"/>
+      <circle cx="324" cy="0" r="6"/><circle cx="344" cy="0" r="6"/><circle cx="364" cy="0" r="6"/>
+      <circle cx="384" cy="0" r="6"/><circle cx="404" cy="0" r="6"/>
+      <circle cx="0" cy="0" r="16"/><circle cx="420" cy="0" r="16"/>
+    </g>
+    <g transform="translate(62 31) scale(1.8)" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" x2="12" y1="15" y2="3"/>
+    </g>
+    <text x="122" y="72" class="g9" font-size="54" letter-spacing="2" fill="#FFFFFF">DOWNLOAD</text>
+  </g>
+
+  <!-- Dashed lead from the stub to the file -->
+  <path d="M508 326 H552" fill="none" stroke="#17191E" stroke-width="7" stroke-dasharray="18 12"/>
+  <path d="M578 326 L550 307 V345 Z" fill="#17191E"/>
+
+  <!-- The collected file -->
+  <rect x="590" y="70" width="256" height="420" rx="8" fill="#FFFFFF"/>
+  <g clip-path="url(#s3-thumb)">
+    <rect x="608" y="88" width="220" height="300" fill="#E4E6E9"/>
+    <path d="M656 362 V194 A62 62 0 0 1 780 194 V362 Z" fill="#FFFFFF"/>
+    <g fill="none" stroke="#17191E" stroke-width="5" stroke-linecap="round">
+      <path d="M717 284 Q711 240 684 206"/>
+      <path d="M720 284 Q730 246 760 222"/>
+    </g>
+    <g fill="#17191E">
+      <ellipse cx="679" cy="201" rx="17" ry="8" transform="rotate(-130 679 201)"/>
+      <ellipse cx="698" cy="236" rx="16" ry="7" transform="rotate(-160 698 236)"/>
+      <ellipse cx="763" cy="217" rx="17" ry="8" transform="rotate(-40 763 217)"/>
+      <ellipse cx="742" cy="246" rx="16" ry="7" transform="rotate(-20 742 246)"/>
+      <path d="M697 362 C685 334 689 306 706 296 L708 284 H728 L730 296 C747 306 751 334 739 362 Z"/>
+    </g>
+    <rect x="608" y="362" width="220" height="10" fill="#17191E"/>
+    <!-- video badge -->
+    <rect x="622" y="102" width="50" height="50" rx="4" fill="#17191E"/>
+    <path d="M640 114 L660 127 L640 140 Z" fill="#FFFFFF"/>
+  </g>
+  <text x="608" y="464" class="g9" font-size="60" letter-spacing="1" fill="#17191E">MP4</text>
+  <g transform="translate(778 372) rotate(-5)">
+    <rect x="-70" y="-28" width="140" height="56" rx="4" fill="#C8281A" stroke="#17191E" stroke-width="5"/>
+    <text x="0" y="16" text-anchor="middle" class="g9" font-size="42" letter-spacing="2" fill="#FFFFFF">SAVED</text>
+  </g>
+</svg>

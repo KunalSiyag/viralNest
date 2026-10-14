@@ -42,7 +42,7 @@ export default function LanguageSelector() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200/90 dark:border-slate-800 hover:border-red-300 dark:hover:border-red-800 shadow-sm transition-all cursor-pointer"
+        className="inline-flex items-center gap-1.5 h-11 px-3 rounded-md bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-sm font-bold hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-colors cursor-pointer touch-manipulation"
         aria-label="Select Language"
         aria-expanded={isOpen}
       >
@@ -71,31 +71,37 @@ export default function LanguageSelector() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 shadow-2xl py-2 z-50 max-h-80 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800/50">
-          <div className="px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
+        <div className="absolute right-0 mt-2 w-52 rounded-md bg-white dark:bg-[#1D2026] border-2 border-[#17191E] dark:border-[#393D45] z-50 max-h-80 overflow-y-auto overscroll-contain">
+          <div className="px-3 pt-3 pb-2 mx-1 t-label text-[#4E535C] dark:text-[#C2C5CB] border-b-2 border-[#17191E] dark:border-[#F5F6F7]">
             Language / Idioma
           </div>
-          <div className="py-1">
-            {LANGUAGES.map((lang) => (
-              <button
-                key={lang.code}
-                type="button"
-                onClick={() => handleSelectLanguage(lang.code, lang.dir)}
-                className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between transition-colors ${
-                  currentLang === lang.code
-                    ? 'bg-red-50 dark:bg-red-950/50 text-[#C8281A] font-bold'
-                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80'
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  <span className="text-sm">{lang.flag}</span>
-                  <span>{lang.name}</span>
-                </span>
-                {currentLang === lang.code && (
-                  <span className="text-[#C8281A] font-bold text-xs">✓</span>
-                )}
-              </button>
-            ))}
+          <div className="p-1 divide-y-2 divide-dashed divide-[#C2C5CB] dark:divide-[#393D45]">
+            {LANGUAGES.map((lang) => {
+              const current = currentLang === lang.code;
+              return (
+                <button
+                  key={lang.code}
+                  type="button"
+                  onClick={() => handleSelectLanguage(lang.code, lang.dir)}
+                  aria-current={current ? 'true' : undefined}
+                  className={`w-full min-h-[2.75rem] text-left px-2.5 text-sm flex items-center justify-between gap-2 rounded-[3px] transition-colors touch-manipulation ${
+                    current
+                      ? 'bg-[#17191E] text-white dark:bg-[#F5F6F7] dark:text-[#17191E] font-bold'
+                      : 'text-[#17191E] dark:text-[#F5F6F7] hover:bg-[#F5F6F7] dark:hover:bg-[#24272D]'
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="text-base" aria-hidden="true">{lang.flag}</span>
+                    <span>{lang.name}</span>
+                  </span>
+                  {current && (
+                    <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M5 12.5l4.5 4.5L19 7.5" />
+                    </svg>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}
