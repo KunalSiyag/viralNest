@@ -1,0 +1,89 @@
+name: Deploy to Cloudflare
+
+# Deploys pintdownload.app after the SEO build passes on a push to main
+# (not after the daily scheduled run), or on demand from the Actions tab.
+#
+# Needs two repository secrets (Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN   a Cloudflare API token from the "Edit Cloudflare Workers" template
+#   CLOUDFLARE_ACCOUNT_ID  the Cloudflare account id that owns the pintdownload Worker
+
+on:
+  workflow_run:
+    workflows: ['Reusable Master SEO Automation CI/CD']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy pintdownload.app
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Cloudflare credentials
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          missing=""
+          [ -n "$CLOUDFLARE_API_TOKEN" ] || missing="$missing CLOUDFLARE_API_TOKEN"
+          [ -n "$CLOUDFLARE_ACCOUNT_ID" ] || missing="$missing CLOUDFLARE_ACCOUNT_ID"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secrets:$missing (Settings → Secrets and variables → Actions)."
+            exit 1
+          fi
+
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+        with:
+          # The commit the SEO build checked, not whatever main is now.
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      # Runs the SEO health check as postbuild (0 errors enforced).
+      - name: Build Web Application
+        run: npm run build
+
+      # Same as `npm run deploy`: keep the Worker bundle out of the static assets.
+      - name: Exclude Worker files from assets
+        run: node -e "require('fs').writeFileSync('dist/.assetsignore','_worker.js\n_routes.json\n')"
+
+      - name: Deploy Worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler deploy
+
+      - name: Check the live site serves this build
+        run: |
+          css=$(grep -o -m1 '/_astro/[^"]*\.css' dist/index.html)
+          echo "Expecting $css on https://pintdownload.app/"
+          for attempt in 1 2 3 4 5 6; do
+            if curl -fsS -A "Mozilla/5.0 (deploy check)" "https://pintdownload.app/?deploy=${GITHUB_RUN_ID}" | grep -q "$css"; then
+              echo "Live site is on this build."
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::https://pintdownload.app/ does not reference $css after deploy."
+          exit 1
