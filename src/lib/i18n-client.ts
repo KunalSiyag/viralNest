@@ -15,7 +15,7 @@ export function applyDOMTranslations(langCode: LanguageCode) {
     if (langCode === 'en') {
       // Revert to English default HTML
     } else {
-      heroHeading.innerHTML = `${t.heroTitlePrefix} <span class="text-[#E11D48]">${t.heroTitleHighlight}</span>`;
+      heroHeading.innerHTML = `${t.heroTitlePrefix} <span class="text-[#C8281A]">${t.heroTitleHighlight}</span>`;
     }
   }
 

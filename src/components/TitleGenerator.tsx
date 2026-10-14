@@ -69,13 +69,13 @@ export default function TitleGenerator() {
         onSubmit={handleGenerate}
         className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden"
       >
-        <div className="flex items-center justify-between gap-3 mb-6">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-2xl bg-red-100 dark:bg-red-950/60 text-rose-700 dark:text-rose-300">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-6">
+          <div className="flex items-start gap-3 min-w-0">
+            <div className="shrink-0 p-2.5 rounded-2xl bg-red-100 dark:bg-red-950/60 text-rose-700 dark:text-rose-300">
               <Cpu className="w-6 h-6" />
             </div>
             <div>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+              <h2 className="t-display text-3xl leading-none text-slate-900 dark:text-white">
                 AI-Powered Pinterest SEO Generator
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -87,7 +87,7 @@ export default function TitleGenerator() {
           <button
             type="button"
             onClick={() => setShowKeyInput(!showKeyInput)}
-            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-rose-500 text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-all"
+            className="self-start shrink-0 inline-flex items-center gap-1.5 text-xs font-bold px-3 min-h-[44px] rounded-xl border border-slate-200 dark:border-slate-800 hover:border-rose-500 text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-all"
             title="Custom Gemini API Key"
           >
             <Key className="w-3.5 h-3.5" />
@@ -108,7 +108,7 @@ export default function TitleGenerator() {
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="Paste your free Google AI Studio key here (or leave blank to use default AI)"
-              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#E11D48] text-sm"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#C8281A] text-sm"
               spellCheck={false}
               autoComplete="off"
               aria-label="Google Gemini API Key"
@@ -131,7 +131,7 @@ export default function TitleGenerator() {
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
               placeholder="e.g. Cyberpunk Jacket, High Protein Smoothies, Vintage Desk Setup"
-              className="w-full px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#E11D48] text-base"
+              className="w-full px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#C8281A] text-base"
               required
               spellCheck={false}
               aria-label="Topic or Keyword"
@@ -147,7 +147,7 @@ export default function TitleGenerator() {
               name="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E11D48] text-base"
+              className="w-full px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#C8281A] text-base"
               aria-label="Niche Category"
             >
               {categories.map((c) => (
@@ -162,7 +162,7 @@ export default function TitleGenerator() {
         <button
           type="submit"
           disabled={isGenerating}
-          className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#E11D48] to-rose-600 hover:from-rose-600 hover:to-red-700 text-white font-extrabold text-base sm:text-lg shadow-lg hover:shadow-red-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-70 touch-manipulation focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E11D48]"
+          className="w-full py-4 px-6 rounded-2xl bg-slate-900 hover:bg-brand-600 text-white font-extrabold text-base sm:text-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70 touch-manipulation focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#C8281A]"
         >
           {isGenerating ? (
             <>
@@ -281,7 +281,7 @@ export default function TitleGenerator() {
               </div>
               <button
                 onClick={() => copyToClipboard(result.hashtags.join(' '), 'all-tags')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#E11D48] text-white text-xs font-bold hover:bg-rose-600 transition-all shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#C8281A] text-white text-xs font-bold hover:bg-rose-600 transition-all shadow-xs"
               >
                 {copiedIndex === 'all-tags' ? (
                   <Check className="w-3.5 h-3.5" />

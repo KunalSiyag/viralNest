@@ -108,11 +108,11 @@ export const posts: BlogPost[] = [
         <p class="font-extrabold text-slate-900 dark:text-white mb-2">Download a Pinterest profile picture now</p>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public profile URL and save the HD PFP / DP — free, no login.</p>
         <p class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-picture-downloader">Open Profile Picture Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-picture-downloader">Open Profile Picture Downloader</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/">All downloaders</a>
+          <a class="text-[#C8281A] hover:underline" href="/">All downloaders</a>
         </p>
       </div>
 
@@ -219,11 +219,11 @@ export const posts: BlogPost[] = [
         <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try PintDownload Free</p>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste any public pin, video, board, or profile link to extract HD MP4s and ZIP packs.</p>
         <p class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="text-[#E11D48] hover:underline" href="/">Open Main Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/">Open Main Downloader</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP Tool</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP Tool</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Video Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Video Downloader</a>
         </p>
       </div>
     `,
@@ -383,11 +383,11 @@ export const posts: BlogPost[] = [
         <p class="font-extrabold text-slate-900 dark:text-white mb-2">Build your offline pin library</p>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Save public Pinterest media for personal research while you plan original content.</p>
         <p class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="text-[#E11D48] hover:underline" href="/">Open PintDownload</a>
+          <a class="text-[#C8281A] hover:underline" href="/">Open PintDownload</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/blog/pinterest-affiliate-marketing-beginners">Affiliate guide</a>
+          <a class="text-[#C8281A] hover:underline" href="/blog/pinterest-affiliate-marketing-beginners">Affiliate guide</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/blog/sell-digital-products-with-pinterest">Digital products</a>
+          <a class="text-[#C8281A] hover:underline" href="/blog/sell-digital-products-with-pinterest">Digital products</a>
         </p>
       </div>
 
@@ -493,11 +493,11 @@ export const posts: BlogPost[] = [
         <p class="font-extrabold text-slate-900 dark:text-white mb-2">Save public pins while you research</p>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public pin or board link and keep offline references for your swipe file.</p>
         <p class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Pin Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-pin-downloader">Pin Downloader</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/blog/how-to-make-money-on-pinterest">Full money guide</a>
+          <a class="text-[#C8281A] hover:underline" href="/blog/how-to-make-money-on-pinterest">Full money guide</a>
         </p>
       </div>
 
@@ -603,11 +603,11 @@ export const posts: BlogPost[] = [
         <p class="font-extrabold text-slate-900 dark:text-white mb-2">Research public pins while you build products</p>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Download public media for personal reference — then publish original listings and pins.</p>
         <p class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-image-downloader">Image Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-image-downloader">Image Downloader</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/blog/how-to-make-money-on-pinterest">Money overview</a>
+          <a class="text-[#C8281A] hover:underline" href="/blog/how-to-make-money-on-pinterest">Money overview</a>
         </p>
       </div>
 
@@ -669,13 +669,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Open Video Downloader</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Open Video Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
 
@@ -818,13 +818,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Retry on Pin Downloader</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-pin-downloader">Retry on Pin Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -898,13 +898,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Try Video Downloader</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Try Video Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1000,13 +1000,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Start with Pin Downloader</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-pin-downloader">Start with Pin Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1104,13 +1104,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Open Board Downloader</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Open Board Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1193,13 +1193,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Open Profile Downloader</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Open Profile Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1283,13 +1283,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Open Pin Downloader</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-pin-downloader">Open Pin Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1381,13 +1381,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Open on Mobile</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Open on Mobile</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1475,13 +1475,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/">Open PintDownload Hub</a>
+        <a class="text-[#C8281A] hover:underline" href="/">Open PintDownload Hub</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1564,13 +1564,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Download Video in Best Quality</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Download Video in Best Quality</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1653,13 +1653,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Detect Format via Pin Tool</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-pin-downloader">Detect Format via Pin Tool</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1741,13 +1741,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/">Download Without an Account</a>
+        <a class="text-[#C8281A] hover:underline" href="/">Download Without an Account</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1838,13 +1838,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Pack a Board as ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Pack a Board as ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -1930,13 +1930,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Build a Board Pack</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Build a Board Pack</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2011,13 +2011,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Pre-load Travel Videos</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Pre-load Travel Videos</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2101,13 +2101,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Save Study Pins</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-pin-downloader">Save Study Pins</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2185,13 +2185,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Download DIY Clips</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Download DIY Clips</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2266,13 +2266,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Download Vertical Videos</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Download Vertical Videos</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2351,13 +2351,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/">Try a Single Pin First</a>
+        <a class="text-[#C8281A] hover:underline" href="/">Try a Single Pin First</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2437,13 +2437,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Download Public Pins Only</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-pin-downloader">Download Public Pins Only</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2524,13 +2524,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Start Downloading</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Start Downloading</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2618,13 +2618,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Paste a Pin Link</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-pin-downloader">Paste a Pin Link</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2706,13 +2706,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Download Then Move Files</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Download Then Move Files</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2806,13 +2806,13 @@ export const posts: BlogPost[] = [
       <p class="font-extrabold text-slate-900 dark:text-white mb-2">Try it on PintDownload</p>
       <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste a public Pinterest link and download free — no account required.</p>
       <p class="flex flex-wrap gap-2 text-sm font-bold">
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">Try the Video Downloader</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">Try the Video Downloader</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Board ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
+        <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Profile ZIP</a>
         <span class="text-slate-300">·</span>
-        <a class="text-[#E11D48] hover:underline" href="/blog">More guides</a>
+        <a class="text-[#C8281A] hover:underline" href="/blog">More guides</a>
       </p>
     </div>
       
@@ -2875,9 +2875,9 @@ export const posts: BlogPost[] = [
         <p class="font-extrabold text-slate-900 dark:text-white mb-2">Ready to Backup a Profile?</p>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste any public Pinterest profile URL and download all boards and pins in seconds.</p>
         <p class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-profile-downloader">Try Profile Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-profile-downloader">Try Profile Downloader</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Try Board Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Try Board Downloader</a>
         </p>
       </div>
     `,
@@ -2971,9 +2971,9 @@ export const posts: BlogPost[] = [
         <p class="font-extrabold text-slate-900 dark:text-white mb-2">Get 1080p & 4K Pinterest Videos</p>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste any video pin link to download original quality MP4 videos instantly.</p>
         <p class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-4k-downloader">4K Video Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-4k-downloader">4K Video Downloader</a>
           <span class="text-slate-300">·</span>
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-video-downloader">HD Video Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-video-downloader">HD Video Downloader</a>
         </p>
       </div>
     `,
@@ -3016,7 +3016,7 @@ export const posts: BlogPost[] = [
         <p class="font-extrabold text-slate-900 dark:text-white mb-2">Save Idea Pins Offline</p>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Paste any Idea Pin or Story Pin URL to extract every slide into your offline library.</p>
         <p class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-story-downloader">Story & Idea Pin Downloader</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-story-downloader">Story & Idea Pin Downloader</a>
         </p>
       </div>
     `,
@@ -3070,9 +3070,9 @@ export const posts: BlogPost[] = [
         <p class="font-extrabold text-slate-900 dark:text-white mb-2">Pro Tip: Offline Research & Pin Inspection</p>
         <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Analyzing competitor pins offline helps you study image composition, color palette contrast, and keyword overlay strategies without distracting feed algorithm updates.</p>
         <p class="flex flex-wrap gap-2 text-sm font-bold">
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-board-downloader">Download Board References</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-board-downloader">Download Board References</a>
           <span class="text-slate-400">•</span>
-          <a class="text-[#E11D48] hover:underline" href="/pinterest-pin-downloader">Extract Pin Images</a>
+          <a class="text-[#C8281A] hover:underline" href="/pinterest-pin-downloader">Extract Pin Images</a>
         </p>
       </div>
 

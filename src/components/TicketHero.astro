@@ -1,0 +1,42 @@
+---
+import DownloaderForm, { type FormVariant, type FormLayout } from './DownloaderForm';
+
+interface Props {
+  /** H1 text (may contain inline HTML such as <br>) */
+  title: string;
+  /** One or two sentences under the H1 (inline HTML allowed) */
+  lede?: string;
+  variant?: FormVariant;
+  layout?: FormLayout;
+}
+
+const { title, lede, variant = 'hub', layout = 'default' } = Astro.props;
+const hasAside = Astro.slots.has('aside');
+---
+
+<!--
+  Phones and tablets: one column (H1, lede, aside, ticket, rack) on the field.
+  Desktop (lg+): see "Hero seam" in src/styles/ticket.css. The ticket runs from
+  the H1's cap line down across the seam so its stub lies on the counter; the
+  rack sits on the field beside it, level with the perforation.
+-->
+<section class="field seam-hero relative" aria-labelledby="hero-heading">
+  <div class="seam-grid max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-8 lg:pt-12 pb-10 sm:pb-14 grid">
+    <div class="seam-copy min-w-0">
+      <h1
+        id="hero-heading"
+        class="seam-h1 t-display text-[2.875rem] leading-[0.9] sm:text-6xl sm:leading-[0.88]"
+        set:html={title}
+      />
+      {lede && (
+        <p class="seam-lede mt-4 sm:mt-5 text-[1.0625rem] sm:text-lg leading-relaxed max-w-xl text-[var(--on-field-2)] [&_strong]:text-[var(--on-field)] [&_code]:font-semibold" set:html={lede} />
+      )}
+    </div>
+    <div class="seam-lip min-w-0" data-has-aside={hasAside ? '' : undefined}>
+      <slot name="aside" />
+    </div>
+    <div class="seam-form min-w-0 relative z-10 mt-6 sm:mt-8">
+      <DownloaderForm client:load variant={variant} layout={layout} />
+    </div>
+  </div>
+</section>

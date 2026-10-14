@@ -1,0 +1,558 @@
+/* Claim-ticket world: perforated ticket-roll stock on a counter. */
+
+@font-face {
+  font-family: 'Big Shoulders Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/big-shoulders-display-latin-800-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Big Shoulders Display';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/big-shoulders-display-latin-900-normal.woff2') format('woff2');
+}
+
+:root {
+  color-scheme: light;
+  --counter: #e4e6e9;
+  --paper: #ffffff;
+  --paper-2: #f5f6f7;
+  --ink: #17191e;
+  --ink-2: #4e535c;
+  --rule: #c2c5cb;
+  --red: #c8281a;
+  --red-deep: #a51f13;
+  /* field = the stock the current page is printed on */
+  --field: var(--red);
+  --on-field: #ffffff;
+  --on-field-2: rgba(255, 255, 255, 0.92);
+}
+.dark {
+  color-scheme: dark;
+  --counter: #0e0f12;
+  --paper: #1d2026;
+  --paper-2: #24272d;
+  --ink: #f5f6f7;
+  --ink-2: #c2c5cb;
+  --rule: #393d45;
+}
+
+.field-red { --field: #c8281a; --on-field: #ffffff; --on-field-2: rgba(255, 255, 255, 0.92); }
+.field-tangerine { --field: #f08a3c; --on-field: #17191e; --on-field-2: #2b1608; }
+.field-canary { --field: #f4c531; --on-field: #17191e; --on-field-2: #2e2405; }
+.field-lilac { --field: #b79ce8; --on-field: #17191e; --on-field-2: #1f1433; }
+.field-mint { --field: #6cc79a; --on-field: #17191e; --on-field-2: #0c2618; }
+.field-sky { --field: #7db7e8; --on-field: #17191e; --on-field-2: #0b1f33; }
+.field-blush { --field: #f29bb4; --on-field: #17191e; --on-field-2: #33101b; }
+
+html {
+  background: var(--counter);
+}
+body {
+  background: var(--counter);
+  color: var(--ink);
+  caret-color: var(--red);
+}
+::selection {
+  background: #17191e;
+  color: #f4c531;
+}
+.dark ::selection {
+  background: #f4c531;
+  color: #17191e;
+}
+*:focus-visible {
+  outline: 3px solid #17191e;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px #ffffff;
+}
+.dark *:focus-visible {
+  outline-color: #f4c531;
+  box-shadow: 0 0 0 5px #0e0f12;
+}
+html {
+  scrollbar-color: #8d929b transparent;
+}
+a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.08em;
+}
+h1, h2, h3 {
+  text-wrap: balance;
+  scroll-margin-top: 5.5rem;
+}
+
+/* Display voice */
+.font-display,
+.t-display {
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  text-transform: uppercase;
+}
+.t-label {
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+/* ---------- Field (hero ground) ---------- */
+.field {
+  background: var(--field);
+  color: var(--on-field);
+}
+
+/* ---------- Hero seam (TicketHero, lg+) ----------
+   The ticket is laid across two surfaces: it starts on the H1's cap line and
+   runs down past the end of the field, so the lower part of the stub lies on
+   the counter. The copy column is kept short (smaller display size, the
+   page's aside moved down onto the counter) and holds the rack on the field,
+   its bottom edge level with the perforation. The field ends at row 3: the
+   lip paints the counter from there down, and whatever the form prints after
+   the rack (loading, receipts, history, errors) lands on the counter under
+   the ticket, so the seam never moves once the page has rendered.
+     --seam-lap: how far the ticket runs past the field (lower 2/3 of the stub).
+     ledge (stub - lap): the gap under the rack. It puts the rack's bottom on
+     the perforation line and keeps both punched notches on the field. */
+.seam-grid {
+  --seam-stub: 4.25rem;
+  --seam-lap: 2.75rem;
+  row-gap: 0;
+}
+.seam-lede { text-wrap: pretty; }
+@media (min-width: 1024px) {
+  /* Clips the counter the lip paints downward (below) at the hero's end. */
+  .seam-hero { overflow: clip; }
+  .seam-grid {
+    --seam-ticket: 28rem;
+    --seam-h1: 3.75rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--seam-ticket));
+    grid-template-rows: auto 1fr repeat(8, auto);
+    column-gap: 2.5rem;
+    padding-bottom: 0;
+    isolation: isolate;
+  }
+  .seam-hero .seam-h1 {
+    font-size: var(--seam-h1);
+    line-height: 0.9;
+  }
+  .seam-hero .seam-lede { margin-top: 1rem; }
+  .seam-hero .seam-copy { grid-column: 1; grid-row: 1; }
+
+  /* Unwrap the form island so the ticket and the rack land in this grid */
+  .seam-hero .seam-form,
+  .seam-hero .seam-form > astro-island > div { display: contents; }
+
+  .seam-hero .seam-form > astro-island > div > form.ticket {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: calc(var(--seam-lap) * -1);
+    z-index: 1;
+  }
+  /* On desktop the face prints at full size (a roomier header, a taller
+     paste box) so the ticket is about as tall as the copy column beside it.
+     When the copy column is still the taller one, the paper grows to meet
+     the seam: the face stays under the header and the spare stock collects
+     above the perforation, never as a hole under the header rule. */
+  .seam-hero form.ticket > .ticket-paper {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .seam-hero .ticket-head {
+    margin: 0 1.25rem;
+    padding: 1.125rem 0.25rem 0.75rem;
+  }
+  .seam-hero .ticket-body {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem 1.5rem 1.75rem;
+  }
+  .seam-hero .ticket-body::before,
+  .seam-hero .ticket-body::after {
+    content: '';
+    flex: 1 1 0;
+  }
+  .seam-hero .ticket-body::before { max-height: 1rem; }
+  .seam-hero .ticket-body::after { flex-grow: 3; }
+  .seam-hero .ticket-body > :first-child { margin-bottom: 1rem; }
+  .seam-hero .ticket-input { padding: 0.375rem 0.375rem 0.375rem 1rem; }
+  .seam-hero .ticket-input input { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+  .seam-hero #ticket-hint { margin-top: 1rem; text-wrap: pretty; }
+
+  .seam-hero .seam-form > astro-island > div > nav:has(> .stock-chip) {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+    margin: 1.5rem 0 calc(var(--seam-stub) - var(--seam-lap));
+  }
+  .seam-hero .seam-form > astro-island > div > :not(form):not(nav) {
+    grid-column: 2;
+    margin-top: calc(var(--seam-lap) + 1.5rem);
+    color: var(--ink);
+    --on-field: var(--ink);
+    --on-field-2: var(--ink-2);
+    --notch-fill: var(--counter);
+  }
+  /* Receipts that carry a lot (a pin with its extras, a grid of slides or
+     pins) print across the whole counter, under the aside, instead of
+     running a long strip down the ticket column beside an empty one. */
+  .seam-hero .seam-form > astro-island > div > .rc--wide {
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+  }
+
+  /* The counter starts here: full-bleed (clipped by the hero), under the
+     ticket, down to the end of the hero. The page's aside prints here in
+     carbon ink. */
+  .seam-hero .seam-lip {
+    grid-column: 1;
+    grid-row: 3 / -1;
+    position: relative;
+    min-height: var(--seam-lap);
+    color: var(--ink);
+    --on-field: var(--ink);
+    --on-field-2: var(--ink-2);
+  }
+  .seam-hero .seam-lip[data-has-aside] { padding-bottom: 0.5rem; }
+  .seam-hero .seam-lip::before {
+    content: '';
+    position: absolute;
+    /* Runs on past the lip so full-width receipts below it sit on the
+       counter too; the hero's overflow clip ends it at the hero's edge. */
+    inset: 0 -100vw -400vh;
+    z-index: -1;
+    background: var(--counter);
+  }
+}
+@media (min-width: 1280px) {
+  .seam-grid {
+    --seam-ticket: 32rem;
+    column-gap: 3.5rem;
+  }
+}
+/* Narrow desktop: the copy column is under 30rem, so the lede drops to body size */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  .seam-hero .seam-lede { font-size: 1.0625rem; }
+}
+@media (min-width: 1440px) {
+  .seam-grid {
+    --seam-ticket: 34rem;
+    --seam-h1: 4.25rem;
+  }
+}
+
+/* ---------- The ticket ---------- */
+/* Two pieces of paper: the ticket body and the tear-off stub below it. */
+.ticket {
+  --notch: 14px;
+  position: relative;
+  color: var(--ink);
+  text-align: left;
+  isolation: isolate;
+}
+.ticket-paper {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+  border-radius: 6px 6px 0 0;
+}
+.ticket-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 0.5rem;
+  border-bottom: 2px solid var(--ink);
+  margin: 0 0.75rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+.ticket-head .t-label { white-space: nowrap; flex-shrink: 0; }
+.ticket-serial {
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ticket-body {
+  padding: 0.875rem 1rem 1.25rem;
+}
+.ticket-input {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--paper);
+  padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+  transition: border-color 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ticket-input:focus-within {
+  border-color: var(--red);
+  outline: 3px solid color-mix(in srgb, var(--red) 25%, transparent);
+  outline-offset: 0;
+}
+.ticket-input input,
+.ticket-input textarea {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  font-size: 1.0625rem;
+  color: var(--ink);
+  padding: 0.5rem 0;
+}
+.ticket-input input:focus,
+.ticket-input textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+.ticket-input input::placeholder,
+.ticket-input textarea::placeholder {
+  color: #6a707a;
+}
+.dark .ticket-input input::placeholder,
+.dark .ticket-input textarea::placeholder {
+  color: #8d929b;
+}
+
+/* Punched notches at the perforation, showing the field behind */
+.perf {
+  position: relative;
+  z-index: 3;
+  height: 0;
+}
+.perf::before,
+.perf::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--notch) * -1);
+  width: calc(var(--notch) * 2);
+  height: calc(var(--notch) * 2);
+  border-radius: 50%;
+  background: var(--notch-fill, var(--field));
+}
+.perf::before { left: calc(var(--notch) * -1); }
+.perf::after { right: calc(var(--notch) * -1); }
+
+/* The tear-off stub: its own piece of ink stock, and the primary action */
+.stub {
+  position: relative;
+  z-index: 2;
+  transform-origin: 0% 0%;
+  transition: transform 560ms cubic-bezier(0.16, 1, 0.3, 1), opacity 560ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stub-btn {
+  width: 100%;
+  min-height: var(--seam-stub, 4.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 0 0 6px 6px;
+  border-top: 3px dashed var(--paper);
+  background: #17191e;
+  color: #ffffff;
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  font-size: 1.625rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.stub-btn:hover:not(:disabled) { background: #000000; color: #f4c531; }
+.stub-btn:active:not(:disabled) { background: var(--red-deep); color: #ffffff; }
+.stub-btn:disabled { cursor: progress; }
+.dark .stub-btn { background: #f5f6f7; color: #17191e; }
+.dark .stub-btn:hover:not(:disabled) { background: #f4c531; color: #17191e; }
+/* Submitting tears the stub away along the perforation, hinged at the left */
+.ticket[data-tearing='true'] .stub {
+  transform: translate(6px, 18px) rotate(-3.5deg);
+}
+
+/* Rubber stamp applied when a link is recognised */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.2rem 0.55rem 0.15rem;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.stamp-ok { color: var(--stamp-ink, #17191e); background: var(--stamp-bg, #f4c531); border-color: #17191e; }
+.stamp-warn { color: var(--red); background: transparent; }
+.dark .stamp-warn { color: #ec8c7d; }
+.stamp-in {
+  animation: stamp-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes stamp-in {
+  from { transform: scale(1.35) rotate(-6deg); opacity: 0; }
+  to { transform: scale(1) rotate(-2deg); opacity: 1; }
+}
+.stamp-in { transform: rotate(-2deg); }
+
+/* Stock rack: tool links printed as small tickets in their own stock */
+.stock-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 0.875rem;
+  border-radius: 4px;
+  background: var(--chip, #c8281a);
+  color: var(--chip-ink, #17191e);
+  font-weight: 700;
+  font-size: 0.875rem;
+  touch-action: manipulation;
+  border: 2px solid var(--paper);
+  outline: 2px dashed rgba(23, 25, 30, 0.35);
+  outline-offset: -5px;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stock-chip:hover { transform: translateY(-2px); }
+.stock-chip:focus-visible { outline: 3px solid #17191e; outline-offset: 2px; }
+.stock-chip[aria-current='page'] {
+  background: #17191e;
+  color: #ffffff;
+  outline-color: rgba(255, 255, 255, 0.4);
+}
+.dark .stock-chip[aria-current='page'] { background: #f5f6f7; color: #17191e; outline-color: rgba(23, 25, 30, 0.35); }
+
+/* ---------- Void ticket (404 / 500) ----------
+   The error pages print a voided claim ticket on the field: the status code
+   as the ticket's numeral, a warning stamp, secondary links on the face and
+   the way out on the stub. */
+.void-ticket .ticket-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 1.25rem;
+}
+.void-no {
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  font-size: 5.75rem;
+  line-height: 0.85;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.void-stamp {
+  margin-top: 0.875rem;
+  font-size: 1.0625rem;
+  padding: 0.3rem 0.7rem 0.2rem;
+}
+.void-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: transparent;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.void-btn:hover { background: var(--ink); color: var(--paper); }
+.void-ticket .stub-btn { text-decoration: none; }
+
+/* Section rules on the counter */
+.counter-rule {
+  border-top: 2px solid var(--ink);
+}
+
+/* Reserved ad slot: holds its height so nothing shifts */
+.ad-slot {
+  display: block;
+  width: 100%;
+  margin-inline: auto;
+  border: 2px dashed var(--rule);
+  border-radius: 6px;
+  background: var(--paper-2);
+  position: relative;
+  overflow: hidden;
+}
+.ad-slot > .ad-label {
+  position: absolute;
+  top: 0.375rem;
+  left: 0.625rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp-in { animation: none; }
+  .ticket[data-tearing='true'] .stub { transform: none; opacity: 0.6; }
+}
+
+.ad-slot { height: var(--ad-h, 280px); }
+@media (min-width: 640px) {
+  .ad-slot { height: var(--ad-h-lg, 250px); }
+}
+
+/* Tool page body: one left edge; nested section padding collapses into it */
+.tool-body .mx-auto { margin-left: 0; margin-right: 0; }
+.tool-body .text-center { text-align: left; }
+.tool-body .max-w-6xl { max-width: none; padding-left: 0; padding-right: 0; }
+.tool-body h2:not(.t-display):not(.text-sm):not(.text-base) {
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  line-height: 0.98;
+}
+.tool-body code { overflow-wrap: anywhere; }
+.tool-body h2.text-sm,
+.tool-body h2.text-base {
+  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.375rem;
+  line-height: 1.05;
+}
+.tool-body .grid > div > p.text-xs { font-size: 0.9375rem; color: var(--ink-2); }
+
+/* A chip printed in the page's own stock would vanish into the field: print it on paper instead */
+.field-red .stock-chip[data-stock='pin']:not([aria-current='page']),
+.field-tangerine .stock-chip[data-stock='video']:not([aria-current='page']),
+.field-canary .stock-chip[data-stock='image']:not([aria-current='page']),
+.field-lilac .stock-chip[data-stock='gif']:not([aria-current='page']),
+.field-mint .stock-chip[data-stock='board']:not([aria-current='page']),
+.field-sky .stock-chip[data-stock='profile']:not([aria-current='page']),
+.field-blush .stock-chip[data-stock='avatar']:not([aria-current='page']) {
+  background: var(--paper);
+  color: var(--ink);
+  outline-color: var(--chip);
+}

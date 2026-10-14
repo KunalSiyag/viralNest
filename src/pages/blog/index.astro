@@ -9,6 +9,10 @@ import {
 } from '../../data/blog';
 import { BRAND } from '../../lib/brand';
 import { absoluteUrl } from '../../lib/urls';
+import { STOCKS } from '../../lib/stocks';
+import ArticleTicket from '../../components/blog/ArticleTicket.astro';
+import { categoryAnchor } from '../../components/blog/blog-utils';
+import '../../styles/blog.css';
 
 // UI can list all posts; schema + SEO priority only references indexable guides
 const articles = getAllPosts();
@@ -18,6 +22,17 @@ const featured = indexableArticles[0] ?? articles[0];
 const rest = articles.filter((a) => a.slug !== featured?.slug);
 const BLOG_AUTHOR_NAME = 'PintDownload Team';
 const blogUrl = absoluteUrl('/blog');
+
+// Category chips jump to the first ticket of that category (one id per category)
+const countByCategory = new Map<string, number>();
+for (const a of articles) countByCategory.set(a.category, (countByCategory.get(a.category) ?? 0) + 1);
+const anchorOwner = new Map<string, string>();
+const anchored = new Set<string>();
+for (const a of [featured, ...rest].filter(Boolean) as typeof articles) {
+  if (anchored.has(a.category)) continue;
+  anchored.add(a.category);
+  anchorOwner.set(a.slug, categoryAnchor(a.category));
+}
 
 const blogHubSchema = {
   '@context': 'https://schema.org',
@@ -52,123 +67,68 @@ const blogHubSchema = {
   fullBleed
   jsonLd={blogHubSchema}
 >
-  <div class="w-full">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 text-center mb-12">
-      <p class="text-brand-600 font-semibold text-sm tracking-wide uppercase mb-3">Journal</p>
-      <h1 class="font-sans text-4xl sm:text-5xl font-bold text-ink-900 dark:text-white tracking-tight mb-4" style="text-wrap: balance;">
-        Pinterest download guides
-      </h1>
-      <p class="text-xl text-ink-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-        Medium-style articles on pins, videos, boards, and offline workflows — with clear paths back to the tools.
-      </p>
-      <p class="mt-6 text-base text-ink-400">
-        <a href="/rss.xml" class="font-semibold text-brand-600 hover:underline">RSS</a>
-        <span class="mx-2">·</span>
-        <a href="/" class="hover:text-brand-600">Downloader</a>
-        <span class="mx-2">·</span>
-        <a href="/about" class="hover:text-brand-600">About</a>
-      </p>
-    </div>
-
-    <!-- Category chips -->
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 flex flex-wrap justify-center gap-2 mb-12">
-      {categories.map((cat) => (
-        <a
-          href={`#cat-${cat.replace(/\s+/g, '-').toLowerCase()}`}
-          class="px-4 py-2 rounded-full text-sm font-medium bg-white dark:bg-ink-900 border border-black/[0.06] dark:border-white/[0.08] text-ink-700 dark:text-slate-200 hover:border-brand-300 hover:text-brand-700 transition-colors"
-        >
-          {cat}
-        </a>
-      ))}
-    </div>
-
-    <!-- Featured (Medium magazine) -->
-    {featured && (
-      <a
-        href={`/blog/${featured.slug}`}
-        class="group block max-w-5xl mx-auto px-4 sm:px-6 mb-14"
-      >
-        <div class="rounded-[1.75rem] overflow-hidden border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 shadow-soft hover:shadow-lift transition-shadow">
-          <div class="grid md:grid-cols-2">
-            <div class="aspect-[16/10] md:aspect-auto md:min-h-[320px] overflow-hidden bg-ink-100">
-              <img
-                src={featured.coverImage}
-                alt={featured.coverAlt}
-                width={1200}
-                height={675}
-                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                loading="eager"
-                fetchpriority="high"
-                onerror="this.onerror=null;this.src='/images/blog/cover-guide.webp';"
-              />
-            </div>
-            <div class="p-7 sm:p-10 flex flex-col justify-center text-left">
-              <span class="text-sm font-semibold text-brand-600 mb-3">{featured.category}</span>
-              <h2 class="font-sans text-2xl sm:text-3xl font-bold text-ink-900 dark:text-white leading-tight mb-4 group-hover:text-brand-600 transition-colors" style="text-wrap: balance;">
-                {featured.title}
-              </h2>
-              <p class="text-lg text-ink-500 dark:text-slate-400 leading-relaxed mb-5 line-clamp-3">
-                {featured.excerpt}
-              </p>
-              <p class="text-sm text-ink-400 tabular-nums">
-                {featured.datePublished} · {featured.readTimeMin} min read
-              </p>
-            </div>
-          </div>
-        </div>
-      </a>
-    )}
-
-    <!-- Story grid (Horizontal across full screen width first, then vertical flow) -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      {rest.map((art) => (
-        <a
-          href={`/blog/${art.slug}`}
-          class="group flex flex-col justify-between rounded-3xl border border-black/[0.06] dark:border-white/[0.08] bg-white dark:bg-ink-900 p-5 shadow-soft hover:shadow-lift transition-all text-left"
-        >
-          <div>
-            <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-ink-100 dark:bg-ink-800 border border-black/[0.04] mb-4">
-              <img
-                src={art.coverImage}
-                alt={art.coverAlt}
-                width={600}
-                height={375}
-                class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='/images/blog/cover-guide.webp';"
-              />
-            </div>
-            <div class="flex items-center gap-2 mb-2 text-xs font-semibold text-brand-600">
-              <span id={`cat-${art.category.replace(/\s+/g, '-').toLowerCase()}`}>
-                {art.category}
-              </span>
-              <span class="text-ink-300">·</span>
-              <span class="text-ink-400 tabular-nums">{art.readTimeMin} min read</span>
-            </div>
-            <h2 class="font-sans text-xl font-bold text-ink-900 dark:text-white leading-snug mb-2 group-hover:text-brand-600 transition-colors" style="text-wrap: balance;">
-              {art.title}
-            </h2>
-            <p class="text-sm text-ink-500 dark:text-slate-400 leading-relaxed line-clamp-3 mb-4">
-              {art.excerpt}
+  <div class="blog w-full">
+    <!-- Masthead on the house stock -->
+    <header class="field blog-masthead">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="blog-masthead-grid">
+          <h1 class="blog-title">Pinterest download guides</h1>
+          <div class="blog-masthead-aside">
+            <p class="blog-lede">
+              Medium-style articles on pins, videos, boards, and offline workflows — with clear paths back to the tools.
+            </p>
+            <p class="blog-masthead-links">
+              <a href="/rss.xml">RSS</a>
+              <a href="/">Downloader</a>
+              <a href="/about">About</a>
             </p>
           </div>
-          <div class="pt-4 border-t border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between text-xs text-ink-400">
-            <span>{BLOG_AUTHOR_NAME}</span>
-            <time datetime={art.datePublished}>{art.datePublished}</time>
-          </div>
-        </a>
-      ))}
+        </div>
+
+        <nav class="blog-cats" aria-label="Categories">
+          <ul>
+            {categories.map((cat) => (
+              <li>
+                <a href={`#${categoryAnchor(cat)}`} class="blog-cat">
+                  <span>{cat}</span>
+                  <span class="blog-cat-count">{countByCategory.get(cat) ?? 0}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Featured ticket, lying across the field and the counter -->
+    {featured && (
+      <div class="blog-featured max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id={anchorOwner.get(featured.slug)}>
+        <ArticleTicket post={featured} as="h2" featured eager />
+      </div>
+    )}
+
+    <!-- The rack -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ul class="art-rack art-rack--3">
+        {rest.map((art) => (
+          <li id={anchorOwner.get(art.slug)}>
+            <ArticleTicket post={art} as="h2" />
+          </li>
+        ))}
+      </ul>
     </div>
 
-    <!-- Back channel footer -->
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 pb-20 text-center">
-      <div class="p-8 rounded-3xl bg-ink-50 dark:bg-white/[0.04] border border-black/[0.05]">
-        <p class="font-display text-2xl text-ink-900 dark:text-white mb-2">Ready to download?</p>
-        <p class="text-base text-ink-500 mb-5">Jump back to the tools from any article.</p>
-        <div class="flex flex-wrap justify-center gap-2">
-          <a href="/" class="inline-flex h-11 px-5 items-center rounded-full bg-brand-600 text-white font-semibold text-sm hover:bg-brand-700">Home downloader</a>
-          <a href="/pinterest-video-downloader" class="inline-flex h-11 px-5 items-center rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] font-semibold text-sm">Video</a>
-          <a href="/pinterest-board-downloader" class="inline-flex h-11 px-5 items-center rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] font-semibold text-sm">Board ZIP</a>
+    <!-- Back channel -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
+      <div class="blog-backchannel">
+        <div>
+          <p class="t-display blog-backchannel-title">Ready to download?</p>
+          <p class="blog-backchannel-text">Jump back to the tools from any article.</p>
+        </div>
+        <div class="blog-backchannel-actions">
+          <a href="/" class="blog-backchannel-primary">Home downloader</a>
+          <a href="/pinterest-video-downloader" class="stock-chip" data-stock="video" style={`--chip:${STOCKS.video.color};--chip-ink:${STOCKS.video.onColor}`}>Video</a>
+          <a href="/pinterest-board-downloader" class="stock-chip" data-stock="board" style={`--chip:${STOCKS.board.color};--chip-ink:${STOCKS.board.onColor}`}>Board ZIP</a>
         </div>
       </div>
     </div>

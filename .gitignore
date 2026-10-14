@@ -45,3 +45,10 @@ _nextjs_backup/
 
 # Data archives
 *.zip
+
+# Impeccable working files (keep surface briefs and design system)
+.impeccable/review/
+.impeccable/questions/
+.impeccable/build/
+.impeccable/mocks/
+.impeccable/config.local.json

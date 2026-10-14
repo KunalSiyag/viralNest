@@ -1,0 +1,60 @@
+---
+/**
+ * The article's way back to the product: a small claim ticket for the tool the
+ * post is about (stamp in that tool's stock, carbon stub as the one action),
+ * plus a rack of stock chips for the other core tools.
+ */
+import { BRAND } from '../../lib/brand';
+import { stockFor, stockKeyFor, type BlogTool } from './blog-utils';
+
+interface Props {
+  tool: BlogTool;
+  /** Secondary tool links printed as stock chips under the ticket */
+  links: { href: string; label: string }[];
+}
+
+const { tool, links } = Astro.props;
+const stock = stockFor(tool.href);
+const rack = links.filter((l) => l.href !== tool.href);
+---
+
+<aside class="post-cta" aria-labelledby="post-cta-heading">
+  <div class="ticket tool-ticket">
+    <div class="ticket-paper">
+      <div class="ticket-head">
+        <h2 id="post-cta-heading" class="t-label">Try it on {BRAND.name}</h2>
+        <span
+          class="stamp stamp-ok tool-stamp"
+          style={`--stamp-bg:${stock.color};--stamp-ink:${stock.onColor}`}
+        >{tool.badge}</span>
+      </div>
+      <div class="ticket-body">
+        <p class="tool-ticket-blurb">{tool.blurb}</p>
+      </div>
+    </div>
+    <div class="perf" aria-hidden="true"></div>
+    <div class="stub">
+      <a href={tool.href} class="stub-btn">
+        <span>{tool.title}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  {rack.length > 0 && (
+    <>
+      <p class="post-cta-hint">Paste a public Pinterest link — pin, video, board ZIP, or profile ZIP.</p>
+      <ul class="post-cta-rack">
+        {rack.map((l) => {
+          const s = stockFor(l.href);
+          return (
+            <li>
+              <a href={l.href} class="stock-chip" data-stock={stockKeyFor(l.href)} style={`--chip:${s.color};--chip-ink:${s.onColor}`}>
+                {l.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  )}
+</aside>

@@ -77,7 +77,7 @@ interface MediaItem {
 
 // Helper to generate 5 harmonious colors from a dominant hex color
 function generatePalette(baseHex?: string | null): string[] {
-  let hex = (baseHex || '#E11D48').replace('#', '');
+  let hex = (baseHex || '#C8281A').replace('#', '');
   if (hex.length === 3) hex = hex.split('').map((c) => c + c).join('');
   if (!/^[0-9a-f]{6}$/i.test(hex)) hex = 'E11D48';
 
@@ -400,11 +400,47 @@ function extractVideoUrlsFromHtml(
   return qualities;
 }
 
-function extractGifUrlsFromHtml(html: string): string[] {
+/**
+ * A real pin GIF lives on i.pinimg.com under /originals/ or a sized folder,
+ * named by its 32-hex hash. Anything else that ends in .gif on a pinimg host
+ * (Akamai beacons such as pinimg-com-eip-akadns-net.pinimg.com/_/_/r21.gif,
+ * s.pinimg.com site assets) is not pin media.
+ */
+const PIN_GIF_URL =
+  /^https:\/\/i\.pinimg\.com\/(?:originals|\d+x)\/[0-9a-f]{2}\/[0-9a-f]{2}\/[0-9a-f]{2}\/([0-9a-f]{32})\.gif$/i;
+
+/** The 32-hex media hash in an i.pinimg.com image URL, or null. */
+function pinimgImageHash(url: string | null | undefined): string | null {
+  if (!url) return null;
+  const m = url.match(/\/[0-9a-f]{2}\/[0-9a-f]{2}\/[0-9a-f]{2}\/([0-9a-f]{32})\.[a-z0-9]+(?:[?#]|$)/i);
+  return m ? m[1].toLowerCase() : null;
+}
+
+/**
+ * Pin GIFs referenced in the page HTML. When the pin's own image URLs are
+ * known, only a GIF with the same hash counts: the page also carries related
+ * pins, and their GIFs are not this pin.
+ */
+function extractGifUrlsFromHtml(html: string, ownImageUrls: Array<string | null | undefined> = []): string[] {
   const matches = [
     ...html.matchAll(/(https?:\\?\/\\?[^"'\s<>]+\.gif(?:\?[^"'\s<>]*)?)/gi),
-  ].map((m) => m[1].replace(/\\/g, ''));
-  return matches.filter((u) => u.includes('pinimg.com') && isGifUrl(u));
+  ].map((m) => m[1].replace(/\\/g, '').split(/[?#]/)[0]);
+  const ownHashes = new Set(
+    ownImageUrls.map(pinimgImageHash).filter((h): h is string => Boolean(h)),
+  );
+  const out: string[] = [];
+  for (const url of matches) {
+    const m = url.match(PIN_GIF_URL);
+    if (!m || !isGifUrl(url)) continue;
+    if (ownHashes.size && !ownHashes.has(m[1].toLowerCase())) continue;
+    if (!out.includes(url)) out.push(url);
+  }
+  return out;
+}
+
+/** Pinterest site chrome (share cards, logos), never a pin's media. */
+function isPinterestSiteAsset(url: string | null | undefined): boolean {
+  return Boolean(url && /^https?:\/\/s\.pinimg\.com\//i.test(url));
 }
 
 function applyGifToMediaItems(
@@ -1079,7 +1115,8 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Resolve pin.it shortlink or follow redirects
-    if (targetUrl.includes('pin.it')) {
+    const isShortLink = targetUrl.includes('pin.it');
+    if (isShortLink) {
       try {
         const shortRes = await fetch(targetUrl, {
           method: 'GET',
@@ -1114,6 +1151,26 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const classified = classifyPinterestUrl(targetUrl);
+
+    // A short link to a removed or private pin ends on the Pinterest homepage
+    // (often with ?show_error=true). Its og:image is Pinterest's own share
+    // card, so never fall through to the generic page scrape.
+    const landedOnError = (() => {
+      try {
+        return new URL(targetUrl).searchParams.has('show_error');
+      } catch {
+        return false;
+      }
+    })();
+    if (landedOnError || (isShortLink && classified.kind === 'other')) {
+      return jsonResponse(
+        {
+          error:
+            'This pin was removed or made private, so there is nothing to download. Check the link opens on Pinterest.',
+        },
+        404,
+      );
+    }
 
     // ── Avatar-only intent (profile-picture downloader) ──────────────
     if (intent === 'avatar' && (classified.kind === 'profile' || classified.kind === 'board')) {
@@ -1216,8 +1273,12 @@ export const POST: APIRoute = async ({ request }) => {
           const built = buildResponseFromPinResource(resourceData, pinId);
           if (built) {
             // If Pidgets returned no video, check HTML for HLS .m3u8 or expMp4 video streams
-            if (!built.is_gif && html) {
-              const htmlGifs = extractGifUrlsFromHtml(html);
+            // A video pin is never a GIF: skip the HTML GIF scan entirely.
+            if (!built.is_gif && !built.is_video && html) {
+              const htmlGifs = extractGifUrlsFromHtml(html, [
+                built.image_url,
+                built.thumbnail_url,
+              ]);
               if (htmlGifs[0]) {
                 built.image_url = htmlGifs[0];
                 built.is_gif = true;
@@ -1539,9 +1600,14 @@ export const POST: APIRoute = async ({ request }) => {
         }
       }
 
-      const htmlGifs = extractGifUrlsFromHtml(html);
-      if (htmlGifs[0]) {
-        imageUrl = htmlGifs[0];
+      if (isPinterestSiteAsset(thumbnailUrl)) thumbnailUrl = null;
+      if (isPinterestSiteAsset(imageUrl)) imageUrl = null;
+
+      if (!videoUrl) {
+        const htmlGifs = extractGifUrlsFromHtml(html, [imageUrl, thumbnailUrl]);
+        if (htmlGifs[0]) {
+          imageUrl = htmlGifs[0];
+        }
       }
     }
 

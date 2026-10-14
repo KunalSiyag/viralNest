@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-14T14:45:00Z",
+  "title": "Design System: PintDownload",
+  "extensions": {
+    "colorMeta": {
+      "ticket-red": {"role": "primary", "displayName": "Ticket Red", "canonical": "#C8281A", "tonalRamp": ["#3A0C08", "#64150F", "#831A11", "#A51F13", "#C8281A", "#E2604D", "#F4B8AE", "#FDF0EE"]},
+      "ticket-red-deep": {"role": "primary", "displayName": "Deep Ticket Red", "canonical": "#A51F13", "tonalRamp": ["#3A0C08", "#64150F", "#831A11", "#A51F13", "#C8281A", "#E2604D", "#F4B8AE", "#FDF0EE"]},
+      "ticket-red-soft": {"role": "primary", "displayName": "Soft Ticket Red", "canonical": "#EC8C7D", "tonalRamp": ["#3A0C08", "#64150F", "#831A11", "#A51F13", "#C8281A", "#E2604D", "#F4B8AE", "#FDF0EE"]},
+      "stock-tangerine": {"role": "secondary", "displayName": "Tangerine Stock (Video)", "canonical": "oklch(73.0% 0.153 54.5)", "tonalRamp": ["oklch(15% 0.068 54.5)", "oklch(25% 0.094 54.5)", "oklch(37% 0.124 54.5)", "oklch(49% 0.153 54.5)", "oklch(61% 0.153 54.5)", "oklch(73% 0.150 54.5)", "oklch(85% 0.119 54.5)", "oklch(95% 0.094 54.5)"]},
+      "stock-canary": {"role": "secondary", "displayName": "Canary Stock (Image)", "canonical": "oklch(84.2% 0.160 89.7)", "tonalRamp": ["oklch(15% 0.070 89.7)", "oklch(25% 0.097 89.7)", "oklch(37% 0.129 89.7)", "oklch(49% 0.160 89.7)", "oklch(61% 0.160 89.7)", "oklch(73% 0.155 89.7)", "oklch(85% 0.123 89.7)", "oklch(95% 0.097 89.7)"]},
+      "stock-lilac": {"role": "secondary", "displayName": "Lilac Stock (GIF)", "canonical": "oklch(74.5% 0.111 300.1)", "tonalRamp": ["oklch(15% 0.058 300.1)", "oklch(25% 0.076 300.1)", "oklch(37% 0.098 300.1)", "oklch(49% 0.111 300.1)", "oklch(61% 0.111 300.1)", "oklch(73% 0.111 300.1)", "oklch(85% 0.095 300.1)", "oklch(95% 0.076 300.1)"]},
+      "stock-mint": {"role": "secondary", "displayName": "Mint Stock (Board)", "canonical": "oklch(76.1% 0.110 160.7)", "tonalRamp": ["oklch(15% 0.058 160.7)", "oklch(25% 0.076 160.7)", "oklch(37% 0.098 160.7)", "oklch(49% 0.110 160.7)", "oklch(61% 0.110 160.7)", "oklch(73% 0.110 160.7)", "oklch(85% 0.094 160.7)", "oklch(95% 0.076 160.7)"]},
+      "stock-sky": {"role": "secondary", "displayName": "Sky Stock (Profile)", "canonical": "oklch(75.8% 0.093 245.0)", "tonalRamp": ["oklch(15% 0.053 245.0)", "oklch(25% 0.069 245.0)", "oklch(37% 0.087 245.0)", "oklch(49% 0.093 245.0)", "oklch(61% 0.093 245.0)", "oklch(73% 0.093 245.0)", "oklch(85% 0.084 245.0)", "oklch(95% 0.069 245.0)"]},
+      "stock-blush": {"role": "secondary", "displayName": "Blush Stock (Avatar)", "canonical": "oklch(78.4% 0.108 1.2)", "tonalRamp": ["oklch(15% 0.057 1.2)", "oklch(25% 0.075 1.2)", "oklch(37% 0.096 1.2)", "oklch(49% 0.108 1.2)", "oklch(61% 0.108 1.2)", "oklch(73% 0.108 1.2)", "oklch(85% 0.093 1.2)", "oklch(95% 0.075 1.2)"]},
+      "counter": {"role": "neutral", "displayName": "Counter Grey", "canonical": "#E4E6E9", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "paper": {"role": "neutral", "displayName": "Ticket Paper", "canonical": "#FFFFFF", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "paper-2": {"role": "neutral", "displayName": "Paper Tint", "canonical": "#F5F6F7", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "carbon-ink": {"role": "neutral", "displayName": "Carbon Ink", "canonical": "#17191E", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "carbon-ink-2": {"role": "neutral", "displayName": "Carbon Ink 2", "canonical": "#4E535C", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "rule": {"role": "neutral", "displayName": "Rule Grey", "canonical": "#C2C5CB", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "placeholder": {"role": "neutral", "displayName": "Placeholder Grey", "canonical": "#6A707A", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "night-counter": {"role": "neutral", "displayName": "Night Counter", "canonical": "#0E0F12", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "night-paper": {"role": "neutral", "displayName": "Night Paper", "canonical": "#1D2026", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "night-paper-2": {"role": "neutral", "displayName": "Night Paper 2", "canonical": "#24272D", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]},
+      "night-rule": {"role": "neutral", "displayName": "Night Rule", "canonical": "#393D45", "tonalRamp": ["#0E0F12", "#17191E", "#24272D", "#393D45", "#4E535C", "#8D929B", "#C2C5CB", "#F5F6F7"]}
+    },
+    "typographyMeta": {
+      "display": {"displayName": "Display", "purpose": "Page H1s on the field. Tool and error heroes 2.875rem on phones, 3.75rem from 640px; 3.75rem / 4.25rem (1440px+) in the desktop hero seam. The full ramp is the blog index title."},
+      "headline": {"displayName": "Headline", "purpose": "Section H2s on the counter, always under a 2px ink counter rule."},
+      "title": {"displayName": "Title", "purpose": "Card titles, FAQ summaries, step titles in bold system sans."},
+      "body": {"displayName": "Body", "purpose": "Ledes and paragraphs; FAQ answers capped at 68ch."},
+      "body-sm": {"displayName": "Body Small", "purpose": "Hints, table cells, footer links."},
+      "label": {"displayName": "Label", "purpose": "Ticket header strip, hero aside column labels, footer column labels, table heads."},
+      "serial": {"displayName": "Serial", "purpose": "Real pin-ID serial in the ticket header, repeated on the receipt band; article serial strip and article-ticket stubs."},
+      "stub": {"displayName": "Stub", "purpose": "The tear-off Download stub and the receipt's collect button."},
+      "article-title": {"displayName": "Article Title", "purpose": "One per blog article, on the field; sized against the masthead text column (container units)."},
+      "article-section": {"displayName": "Article Section Opener", "purpose": "Article H2s under a 2px ink rule, 3.25rem above; also the 'More in …' head after the article."}
+    },
+    "shadows": [
+      {"name": "none", "value": "none", "purpose": "Every Tailwind shadow token resolves to none. Depth is flat paper overlap only."},
+      {"name": "focus-halo", "value": "0 0 0 5px #FFFFFF", "purpose": "Paper halo behind the 3px carbon focus outline (night counter halo in dark mode). A focus aid, not elevation."}
+    ],
+    "motion": [
+      {"name": "ease-ticket", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "House easing for tear, stamp, chip lift and input focus."},
+      {"name": "tear", "value": "560ms ease-ticket; translate(6px, 18px) rotate(-3.5deg), origin top-left", "purpose": "Stub tears away along the perforation while submitting. Reduced motion: no transform, opacity 0.6."},
+      {"name": "stamp-in", "value": "380ms ease-ticket; from scale(1.35) rotate(-6deg) opacity 0 to scale(1) rotate(-2deg)", "purpose": "Rubber stamp lands when a link type is recognised. Reduced motion: shown at rest."},
+      {"name": "chip-lift", "value": "200ms ease-ticket; translateY(-2px)", "purpose": "Stock chips and related-tool tickets lift on hover."},
+      {"name": "state", "value": "160ms", "purpose": "Colour changes on the stub and input border."},
+      {"name": "receipt-print", "value": "520ms ease-ticket; clip-path inset(0 -16px 55% -16px) + translateY(-10px) to inset(0 -16px 0 -16px)", "purpose": "A ready or void receipt feeds out of the printer top edge first. Only under prefers-reduced-motion: no-preference."},
+      {"name": "progress-fill", "value": "240ms ease-ticket; scaleX(var(--p)) from the left", "purpose": "5px strip in the receipt's stock along the bottom of the collect button while a file saves."},
+      {"name": "progress-sweep", "value": "1100ms cubic-bezier(0.45, 0, 0.55, 1) infinite alternate; 30% strip from translateX(-30%) to 100%", "purpose": "Indeterminate save progress. Reduced motion: the 30% strip holds still."},
+      {"name": "skeleton-pulse", "value": "900ms ease-in-out infinite alternate; opacity 1 to 0.5", "purpose": "Paper-tint blocks of the loading receipt. Reduced motion: static."},
+      {"name": "fold", "value": "200ms ease-ticket; rotate(180deg)", "purpose": "Chevron of folded panels (receipt extras, article outline on phones)."}
+    ],
+    "breakpoints": [
+      {"name": "sm", "value": "640px", "note": "Article reading sheet insets with 6px bottom corners; blog racks go to 2 columns."},
+      {"name": "md", "value": "768px", "note": "Root font-size steps to 106.25%. Featured article ticket puts its cover beside the paper."},
+      {"name": "lg", "value": "1024px", "note": "Hero seam: copy column + ticket column (28rem, 32rem at 1280px, 34rem from 1440px); the ticket starts on the H1 cap line and runs 2.75rem past the field, the field ends 1.5rem below the perforation, the rack's bottom sits on the perforation; results print on the counter. Blog: outline rail (11rem) + sheet (43rem), cover beside the article title. Desktop nav appears."},
+      {"name": "xl", "value": "1280px", "note": "Seam ticket 32rem, column gap 3.5rem; wide receipt preview column 15rem."},
+      {"name": "2xl", "value": "1440px", "note": "Seam ticket 34rem, desktop hero H1 4.25rem."},
+      {"name": "reading-wide", "value": "1344px", "note": "84rem media query: article grid gains a sticky tool-ticket column (15rem to 18rem); the sheet column narrows to 42rem."},
+      {"name": "rc-28", "value": "28rem", "note": "Container query on a receipt: preview beside the title, tools in a row, grids 3 / dense 4."},
+      {"name": "rc-44", "value": "44rem", "note": "Container query on a receipt: grids 4 / dense 5."},
+      {"name": "rc-62", "value": "62rem", "note": "Container query on a receipt: grids 5 / dense 6."}
+    ]
+  },
+  "components": [
+    {
+      "name": "Claim Ticket",
+      "kind": "custom",
+      "refersTo": "ticket-paper",
+      "description": "The signature form: paper body with header strip and input, dashed perforation with punched notches, carbon tear-off stub as the primary action.",
+      "html": "<div class=\"ds-field\"><form class=\"ds-ticket\" onsubmit=\"return false\"><div class=\"ds-ticket-paper\"><div class=\"ds-ticket-head\"><span class=\"ds-label\">Admit one · public link</span><span class=\"ds-serial\">No. 1120271110943</span></div><div class=\"ds-ticket-body\"><div class=\"ds-row\"><b>Pinterest link</b><span class=\"ds-stamp\">Pin</span></div><div class=\"ds-input\"><input type=\"url\" placeholder=\"Paste Pinterest link here…\"><button type=\"button\" class=\"ds-ink-btn\">Paste</button></div></div></div><div class=\"ds-perf\"></div><button type=\"submit\" class=\"ds-stub\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/></svg>Download</button></form></div>",
+      "css": ".ds-field{background:#C8281A;padding:24px 28px;font-family:ui-sans-serif,system-ui,sans-serif;color:#17191E}.ds-ticket{--notch:14px;position:relative;max-width:560px;isolation:isolate}.ds-ticket-paper{position:relative;z-index:1;background:#FFFFFF;border-radius:6px 6px 0 0}.ds-ticket-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 12px;padding:12px 4px 8px;border-bottom:2px solid #17191E}.ds-label,.ds-serial,.ds-stamp,.ds-stub{font-family:'Big Shoulders Display','Arial Narrow',ui-sans-serif,sans-serif;text-transform:uppercase}.ds-label{font-weight:800;font-size:14px;letter-spacing:.08em}.ds-serial{font-weight:800;font-size:15px;letter-spacing:.04em;font-variant-numeric:tabular-nums;text-transform:none}.ds-ticket-body{padding:14px 16px 20px}.ds-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:15px}.ds-stamp{display:inline-flex;padding:3px 9px 2px;border:2px solid #17191E;border-radius:3px;background:#C8281A;color:#FFFFFF;font-weight:900;font-size:15px;letter-spacing:.06em;transform:rotate(-2deg)}.ds-input{display:flex;gap:8px;border:2px solid #17191E;border-radius:4px;padding:4px 4px 4px 12px;background:#FFFFFF;transition:border-color 160ms cubic-bezier(.16,1,.3,1)}.ds-input:focus-within{border-color:#C8281A;outline:3px solid rgba(200,40,26,.25)}.ds-input input{flex:1;min-width:0;border:0;background:transparent;font-size:17px;padding:8px 0;color:#17191E;outline:none}.ds-input input::placeholder{color:#6A707A}.ds-ink-btn{min-height:44px;padding:0 12px;border:0;border-radius:3px;background:#17191E;color:#FFFFFF;font-weight:700;font-size:15px;cursor:pointer}.ds-ink-btn:hover{background:#C8281A}.ds-perf{position:relative;z-index:3;height:0}.ds-perf::before,.ds-perf::after{content:'';position:absolute;top:-14px;width:28px;height:28px;border-radius:50%;background:#C8281A}.ds-perf::before{left:-14px}.ds-perf::after{right:-14px}.ds-stub{position:relative;z-index:2;width:100%;min-height:68px;display:flex;align-items:center;justify-content:center;gap:10px;border:0;border-top:3px dashed #FFFFFF;border-radius:0 0 6px 6px;background:#17191E;color:#FFFFFF;font-weight:900;font-size:26px;letter-spacing:.04em;cursor:pointer;transform-origin:0 0;transition:background-color 160ms ease,color 160ms ease,transform 560ms cubic-bezier(.16,1,.3,1)}.ds-stub:hover{background:#000000;color:#F4C531}.ds-stub:active{background:#A51F13;color:#FFFFFF;transform:translate(6px,18px) rotate(-3.5deg)}.ds-stub:focus-visible{outline:3px solid #17191E;outline-offset:2px;box-shadow:0 0 0 5px #FFFFFF}"
+    },
+    {
+      "name": "Stub Button",
+      "kind": "button",
+      "refersTo": "stub-button",
+      "description": "The one primary action: full-width carbon stub under a dashed perforation, gothic uppercase.",
+      "html": "<button class=\"ds-stub-solo\">Download</button>",
+      "css": ".ds-stub-solo{width:100%;max-width:420px;min-height:68px;border:0;border-top:3px dashed #FFFFFF;border-radius:0 0 6px 6px;background:#17191E;color:#FFFFFF;font-family:'Big Shoulders Display','Arial Narrow',ui-sans-serif,sans-serif;font-weight:900;font-size:26px;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background-color 160ms ease,color 160ms ease}.ds-stub-solo:hover{background:#000000;color:#F4C531}.ds-stub-solo:active{background:#A51F13;color:#FFFFFF}.ds-stub-solo:focus-visible{outline:3px solid #17191E;outline-offset:2px;box-shadow:0 0 0 5px #FFFFFF}"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Secondary actions (Paste, Copy code): carbon fill, paper text, 4px corners, goes ticket red on hover.",
+      "html": "<button class=\"ds-btn-ink\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"8\" y=\"2\" width=\"8\" height=\"4\" rx=\"1\"/><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"/></svg>Paste</button>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 20px;border:0;border-radius:4px;background:#17191E;color:#FFFFFF;font-family:ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background-color 160ms ease}.ds-btn-ink:hover{background:#C8281A;color:#FFFFFF}.ds-btn-ink:focus-visible{outline:3px solid #17191E;outline-offset:2px;box-shadow:0 0 0 5px #FFFFFF}"
+    },
+    {
+      "name": "Ticket Input",
+      "kind": "input",
+      "refersTo": "ticket-input",
+      "description": "2px carbon-stroked field on paper; focus turns the stroke ticket red with a 25% red ring.",
+      "html": "<label class=\"ds-input-wrap\"><input type=\"url\" placeholder=\"Paste Pinterest link here… e.g. https://pin.it/…\"></label>",
+      "css": ".ds-input-wrap{display:flex;max-width:480px;border:2px solid #17191E;border-radius:4px;background:#FFFFFF;padding:4px 4px 4px 12px;transition:border-color 160ms cubic-bezier(.16,1,.3,1)}.ds-input-wrap:focus-within{border-color:#C8281A;outline:3px solid rgba(200,40,26,.25)}.ds-input-wrap input{flex:1;min-width:0;border:0;background:transparent;font-family:ui-sans-serif,system-ui,sans-serif;font-size:17px;padding:8px 0;color:#17191E;outline:none}.ds-input-wrap input::placeholder{color:#6A707A}"
+    },
+    {
+      "name": "Stamp",
+      "kind": "chip",
+      "refersTo": "stamp-ok",
+      "description": "Rubber stamp confirming the detected link type in that type's stock; warn variant prints ticket-red ink on transparent.",
+      "html": "<span class=\"ds-stamp-ok\">Video</span> <span class=\"ds-stamp-warn\">Void</span>",
+      "css": ".ds-stamp-ok,.ds-stamp-warn{display:inline-flex;align-items:center;padding:3px 9px 2px;border:2px solid currentColor;border-radius:3px;font-family:'Big Shoulders Display','Arial Narrow',ui-sans-serif,sans-serif;font-weight:900;font-size:15px;letter-spacing:.06em;text-transform:uppercase;line-height:1.1;transform:rotate(-2deg);animation:ds-stamp 380ms cubic-bezier(.16,1,.3,1) both}.ds-stamp-ok{background:#F08A3C;color:#17191E;border-color:#17191E}.ds-stamp-warn{background:transparent;color:#C8281A}@keyframes ds-stamp{from{transform:scale(1.35) rotate(-6deg);opacity:0}to{transform:scale(1) rotate(-2deg);opacity:1}}@media (prefers-reduced-motion:reduce){.ds-stamp-ok,.ds-stamp-warn{animation:none}}"
+    },
+    {
+      "name": "Stock Chip Rack",
+      "kind": "chip",
+      "refersTo": "stock-chip",
+      "description": "Tool links printed as small tickets in their own stock with an inset dashed perforation; current page prints in carbon.",
+      "html": "<nav class=\"ds-rack\"><a href=\"#\" class=\"ds-chip ds-current\">Pin</a><a href=\"#\" class=\"ds-chip\" style=\"--chip:#F08A3C\">Video MP4</a><a href=\"#\" class=\"ds-chip\" style=\"--chip:#F4C531\">HD photo</a><a href=\"#\" class=\"ds-chip\" style=\"--chip:#B79CE8\">GIF</a><a href=\"#\" class=\"ds-chip\" style=\"--chip:#6CC79A\">Board ZIP</a><a href=\"#\" class=\"ds-chip\" style=\"--chip:#7DB7E8\">Profile ZIP</a><a href=\"#\" class=\"ds-chip\" style=\"--chip:#F29BB4\">Avatar / DP</a></nav>",
+      "css": ".ds-rack{display:flex;flex-wrap:wrap;gap:8px;padding:16px;background:#C8281A}.ds-chip{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:4px;background:var(--chip,#C8281A);color:#17191E;font-family:ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:14px;text-decoration:none;border:2px solid #FFFFFF;outline:2px dashed rgba(23,25,30,.35);outline-offset:-5px;transition:transform 200ms cubic-bezier(.16,1,.3,1)}.ds-chip:hover{transform:translateY(-2px)}.ds-chip:focus-visible{outline:3px solid #17191E;outline-offset:2px}.ds-chip.ds-current{background:#17191E;color:#FFFFFF;outline-color:rgba(255,255,255,.4)}"
+    },
+    {
+      "name": "Related Tool Ticket",
+      "kind": "card",
+      "refersTo": "paper-card",
+      "description": "Paper slip on the counter with a stock-coloured stub on the left, split by a dashed paper perforation.",
+      "html": "<div class=\"ds-counter\"><a href=\"#\" class=\"ds-rt\"><span class=\"ds-rt-stub\" style=\"background:#6CC79A\"><span>Board</span></span><span class=\"ds-rt-body\"><b>Pinterest Board Downloader</b><span>Every public pin on a board, saved as one ZIP.</span></span></a></div>",
+      "css": ".ds-counter{background:#E4E6E9;padding:24px}.ds-rt{display:flex;max-width:380px;background:#FFFFFF;border-radius:4px;overflow:hidden;color:#17191E;text-decoration:none;font-family:ui-sans-serif,system-ui,sans-serif;transition:transform 200ms cubic-bezier(.16,1,.3,1)}.ds-rt:hover{transform:translateY(-2px)}.ds-rt:hover b{text-decoration:underline}.ds-rt:focus-visible{outline:3px solid #17191E;outline-offset:2px}.ds-rt-stub{flex-shrink:0;width:68px;display:flex;align-items:center;justify-content:center;border-right:2px dashed #FFFFFF;color:#17191E}.ds-rt-stub span{font-family:'Big Shoulders Display','Arial Narrow',ui-sans-serif,sans-serif;font-weight:900;font-size:21px;text-transform:uppercase;transform:rotate(-90deg);white-space:nowrap}.ds-rt-body{padding:16px;min-width:0}.ds-rt-body b{display:block;font-size:17px;line-height:1.3}.ds-rt-body span{display:block;margin-top:4px;font-size:15px;color:#4E535C;line-height:1.5}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header printed on the page's field: white logo tile, gothic wordmark, bold links with black-wash hover and carbon current state.",
+      "html": "<header class=\"ds-header\"><a href=\"#\" class=\"ds-brand\"><span class=\"ds-logo\"></span><span>PintDownload</span></a><nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-link\">Videos</a><a href=\"#\" class=\"ds-nav-link ds-nav-current\">Pins</a><a href=\"#\" class=\"ds-nav-link\">Boards</a><a href=\"#\" class=\"ds-nav-link\">Guides</a></nav></header>",
+      "css": ".ds-header{display:flex;align-items:center;gap:24px;height:72px;padding:0 24px;background:#C8281A;color:#FFFFFF}.ds-brand{display:flex;align-items:center;gap:8px;color:#FFFFFF;text-decoration:none;font-family:'Big Shoulders Display','Arial Narrow',ui-sans-serif,sans-serif;font-weight:900;font-size:26px;text-transform:uppercase;line-height:1}.ds-logo{width:40px;height:40px;border-radius:4px;background:#FFFFFF}.ds-nav{display:flex;gap:4px}.ds-nav-link{padding:8px 12px;border-radius:4px;color:inherit;text-decoration:none;font-family:ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:15px;transition:background-color 150ms ease}.ds-nav-link:hover{background:rgba(0,0,0,.1)}.ds-nav-link:focus-visible{outline:3px solid #17191E;outline-offset:2px;box-shadow:0 0 0 5px #FFFFFF}.ds-nav-current{background:#17191E;color:#FFFFFF}"
+    },
+    {
+      "name": "Claim Receipt",
+      "kind": "custom",
+      "refersTo": "receipt-paper",
+      "description": "What a claim prints: inset band in the collected item's stock with the ticket's serial, title, boarding-pass spec fields, carbon collect button with a stock-coloured progress strip, perforation with punched notches, and line items for the other files.",
+      "html": "<div class=\"ds-counter\"><section class=\"ds-rc\"><div class=\"ds-rc-band\"><span class=\"ds-rc-label\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"/><path d=\"M7 3v18M3 7.5h4M3 12h18M3 16.5h4M17 3v18M17 7.5h4M17 16.5h4\"/></svg>Ready · Video pin</span><span class=\"ds-rc-serial\">No. 1120271958327461</span></div><div class=\"ds-rc-body\"><h3 class=\"ds-rc-title\">15-minute pasta for weeknights</h3><dl class=\"ds-rc-specs\"><div><dt>Format</dt><dd>MP4</dd></div><div><dt>Resolution</dt><dd>720×1280</dd></div></dl></div><div class=\"ds-rc-collect\"><a href=\"#\" class=\"ds-rc-cta\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/></svg>Download MP4<span class=\"ds-rc-fill\"></span></a><p class=\"ds-rc-note\">Saves as <b>15_minute_pasta.mp4</b></p></div><div class=\"ds-rc-perf\"><span></span></div><ul class=\"ds-rc-items\"><li><span class=\"ds-rc-fmt\">MP3</span><span><b>Audio</b><br><small>The sound from this video</small></span><a href=\"#\" class=\"ds-rc-btn\">Download</a></li></ul></section></div>",
+      "css": ".ds-counter{background:#E4E6E9;padding:24px;font-family:ui-sans-serif,system-ui,sans-serif;color:#17191E}.ds-rc{--notch:12px;position:relative;max-width:440px;background:#FFFFFF;border-radius:6px;padding-bottom:12px;animation:ds-rc-print 520ms cubic-bezier(.16,1,.3,1) backwards}@keyframes ds-rc-print{from{clip-path:inset(0 -16px 55% -16px);transform:translateY(-10px)}to{clip-path:inset(0 -16px 0 -16px);transform:none}}@media (prefers-reduced-motion:reduce){.ds-rc{animation:none}}.ds-rc-band{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:40px;margin:10px 10px 0;padding:6px 12px 5px;border-radius:4px;background:#F08A3C;color:#17191E}.ds-rc-label,.ds-rc-serial,.ds-rc-specs dt,.ds-rc-cta,.ds-rc-fmt{font-family:'Big Shoulders Display','Arial Narrow',ui-sans-serif,sans-serif;text-transform:uppercase}.ds-rc-label{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:14px;letter-spacing:.08em}.ds-rc-serial{font-weight:800;font-size:15px;letter-spacing:.04em;font-variant-numeric:tabular-nums;text-transform:none}.ds-rc-body{padding:14px 16px 0}.ds-rc-title{margin:0 0 14px;font-size:17px;font-weight:700;line-height:1.3}.ds-rc-specs{display:flex;margin:0;border-top:2px solid #17191E}.ds-rc-specs>div{padding:8px 14px 2px 0;margin-right:14px;border-right:2px dashed #C2C5CB}.ds-rc-specs>div:last-child{border-right:0}.ds-rc-specs dt{font-weight:800;font-size:14px;letter-spacing:.08em;color:#4E535C}.ds-rc-specs dd{margin:2px 0 0;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}.ds-rc-collect{padding:16px 16px 14px}.ds-rc-cta{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border-radius:4px;background:#17191E;color:#FFFFFF;font-weight:900;font-size:26px;letter-spacing:.04em;text-decoration:none;transition:background-color 160ms ease,color 160ms ease}.ds-rc-cta:hover{color:#F4C531}.ds-rc-cta:active{background:#A51F13;color:#FFFFFF}.ds-rc-cta:focus-visible{outline:3px solid #17191E;outline-offset:2px;box-shadow:0 0 0 5px #FFFFFF}.ds-rc-fill{position:absolute;left:0;right:0;bottom:0;height:5px;background:#F08A3C;transform-origin:0 50%;transform:scaleX(.6);transition:transform 240ms cubic-bezier(.16,1,.3,1)}.ds-rc-note{margin:8px 0 0;font-size:14px;color:#4E535C}.ds-rc-note b{color:#17191E}.ds-rc-perf{position:relative;height:0;padding:0 16px}.ds-rc-perf>span{display:block;border-top:2px dashed #C2C5CB}.ds-rc-perf::before,.ds-rc-perf::after{content:'';position:absolute;top:-11px;width:24px;height:24px;border-radius:50%;background:#E4E6E9}.ds-rc-perf::before{left:-12px}.ds-rc-perf::after{right:-12px}.ds-rc-items{list-style:none;margin:6px 16px 0;padding:0}.ds-rc-items li{display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 0;font-size:15px}.ds-rc-items small{font-size:14px;color:#4E535C}.ds-rc-fmt{display:block;padding:4px 0 2px;border:2px solid #17191E;border-radius:3px;font-weight:900;font-size:15px;letter-spacing:.06em;text-align:center}.ds-rc-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:2px solid #17191E;border-radius:4px;background:#FFFFFF;color:#17191E;font-weight:700;font-size:14px;text-decoration:none;transition:background-color 160ms ease,color 160ms ease}.ds-rc-btn:hover{background:#17191E;color:#FFFFFF}.ds-rc-btn:focus-visible{outline:3px solid #17191E;outline-offset:2px;box-shadow:0 0 0 5px #FFFFFF}"
+    },
+    {
+      "name": "Article Ticket",
+      "kind": "card",
+      "refersTo": "article-ticket",
+      "description": "One blog article printed as a linked ticket on the counter: inset cover, header strip with category and read time, title, excerpt, perforation with counter notches, stub with date and author.",
+      "html": "<div class=\"ds-counter-b\"><a href=\"#\" class=\"ds-art\"><span class=\"ds-art-cover\"></span><span class=\"ds-art-paper\"><span class=\"ds-art-head\"><span>Boards &amp; Profiles</span><span class=\"ds-art-serial\">8 min read</span></span><b class=\"ds-art-title\">Download an entire Pinterest board as ZIP</b><span class=\"ds-art-excerpt\">Batch-save every public pin on a board for offline reference.</span></span><span class=\"ds-art-perf\"></span><span class=\"ds-art-stub\"><span>Jul 27, 2026</span><span>PintDownload Team</span></span></a></div>",
+      "css": ".ds-counter-b{background:#E4E6E9;padding:24px;font-family:ui-sans-serif,system-ui,sans-serif}.ds-art{--notch:10px;position:relative;display:flex;flex-direction:column;max-width:360px;border-radius:6px;background:#FFFFFF;color:#17191E;text-decoration:none;transition:transform 200ms cubic-bezier(.16,1,.3,1)}.ds-art:hover{transform:translateY(-2px)}.ds-art:hover .ds-art-title{text-decoration:underline;text-decoration-thickness:.08em;text-underline-offset:.15em}.ds-art:focus-visible{outline:3px solid #17191E;outline-offset:2px;box-shadow:0 0 0 5px #FFFFFF}@media (prefers-reduced-motion:reduce){.ds-art{transition:none}.ds-art:hover{transform:none}}.ds-art-cover{display:block;margin:8px 8px 0;aspect-ratio:16/10;border-radius:3px;background:#F5F6F7}.ds-art-paper{display:flex;flex-direction:column;padding:0 16px 20px}.ds-art-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:12px;padding:12px 0 8px;border-bottom:2px solid #17191E;font-family:'Big Shoulders Display','Arial Narrow',ui-sans-serif,sans-serif;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase}.ds-art-serial{color:#4E535C;letter-spacing:.04em}.ds-art-title{font-size:17px;font-weight:700;line-height:1.3}.ds-art-excerpt{margin-top:8px;font-size:15px;line-height:1.5;color:#4E535C}.ds-art-perf{position:relative;display:block;height:0;margin:0 16px;border-top:2px dashed #C2C5CB}.ds-art-perf::before,.ds-art-perf::after{content:'';position:absolute;top:-11px;width:20px;height:20px;border-radius:50%;background:#E4E6E9}.ds-art-perf::before{left:-26px}.ds-art-perf::after{right:-26px}.ds-art-stub{display:flex;justify-content:space-between;gap:12px;padding:10px 16px 12px;font-family:'Big Shoulders Display','Arial Narrow',ui-sans-serif,sans-serif;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:#4E535C}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Claim Ticket",
+    "overview": "A Pinterest link is a claim ticket and the file is what you collect at the counter. Every page is printed on a roll of ticket stock: a flat, saturated field of colour owns the top of the page, a white ticket of paper sits on it, and the primary action is the tear-off stub below a dashed perforation. Below the hero the page drops onto the counter, a cool grey ground where sections are white paper slips separated by heavy ink rules.\n\nThe world is printed, not rendered. Depth comes only from paper lying on paper; there are no drop shadows and no gradients. Corners are small and die-cut, holes are punched, perforations are dashed. Type is a condensed printing gothic (Big Shoulders Display, 800/900, uppercase) for headlines, serials, stamps and the stub, set against a plain system sans for everything a person actually reads. Each Pinterest URL type has its own stock colour, and that colour means only that URL type wherever it appears.\n\nHonesty is part of the material: the only numerals on a ticket are real ones (the pin ID read from the pasted link, the format, the size). No invented counters.",
+    "keyCharacteristics": [
+      "Full-bleed stock field behind the hero and header; counter grey below.",
+      "White ticket paper, 6px die-cut corners, punched 14px notches at the perforation.",
+      "Tear-off stub in carbon ink as the single primary action on the page.",
+      "On desktop the ticket lies across the seam: it starts on the field and its stub ends on the counter, where every result prints.",
+      "Condensed gothic uppercase for display, labels, serials, stamps; system sans for reading.",
+      "One stock colour per URL type, read from `src/lib/stocks.ts`.",
+      "Flat paper overlap only: no shadows, no gradients."
+    ],
+    "rules": [
+      {"name": "The One Stock, One Link Rule", "body": "A stock colour identifies exactly one Pinterest URL type, everywhere: page field, stamp, rack chip, related-tool stub. Never use a stock colour decoratively or for a different meaning.", "section": "colors"},
+      {"name": "The Field Swap Rule", "body": "A page sets its field with one class (`field-red`, `field-tangerine`, ...) which redefines `--field`, `--on-field`, `--on-field-2`. Components read those variables; never hard-code hero colours. A chip in the page's own stock prints on paper with a stock-coloured perforation so it does not vanish into the field.", "section": "colors"},
+      {"name": "The Carbon Ink Rule", "body": "On every stock except ticket red, text is carbon ink, not white.", "section": "colors"},
+      {"name": "The Printer's Gothic Rule", "body": "Big Shoulders is used uppercase (the serial's \"No.\" aside) and only for display and headlines, labels, serials and numerals, stamps, and the stub and collect buttons. Never for paragraphs, inputs, or anything longer than a line or two.", "section": "typography"},
+      {"name": "The Plain Reading Rule", "body": "In an article the gothic only frames the text: title, section openers, labels, table heads, list numerals. Every sentence a reader reads is system sans at 1.0625rem / 1.65, no wider than 68ch, on paper.", "section": "typography"},
+      {"name": "The Real Numerals Rule", "body": "Gothic numerals print real values only (pin ID, step number, format, size), always with tabular figures.", "section": "typography"},
+      {"name": "The Fixed Seam Rule", "body": "On desktop the ticket sets the seam at first paint and nothing moves it. Whatever the form prints after a claim (loading slip, receipts, voids, history) prints on the counter below the seam, never on the field.", "section": "layout"},
+      {"name": "The Paper Overlap Rule", "body": "Depth is a sheet on a sheet. No drop shadows, no gradients, no blur. If something needs to stand out, change its stock or put it on paper.", "section": "elevation"},
+      {"name": "The Stub On Top Rule", "body": "The tear-off stub is always the topmost layer of the ticket (z-index above paper; notches above both).", "section": "elevation"}
+    ],
+    "dos": [
+      "Do print every hero on a stock field via `field-*` and read `--field` / `--on-field` in components.",
+      "Do take stock colours from `src/lib/stocks.ts`; one stock means one URL type.",
+      "Do keep depth flat: paper on field, paper on counter, stub over paper.",
+      "Do use carbon ink text on every stock except ticket red.",
+      "Do keep radii at 2 to 6px; 4px is the default for controls and slips.",
+      "Do keep the stub as the single primary action on a ticket, with 44px minimum targets elsewhere.",
+      "Do honour reduced motion: the tear becomes a fade, the stamp appears at rest.",
+      "Do print everything the form returns on desktop onto the counter below the seam: narrow results in the ticket column, wide receipts (`.rc--wide`) across both columns under the aside.",
+      "Do give every receipt the ticket's serial and a band in the stock of what was collected, and keep its one primary action in the stub's voice.",
+      "Do lay a receipt out with container queries so it reads the same in the ticket column, across the counter, or on a phone.",
+      "Do re-render the step art from `src/assets/steps/*.svg` with `node scripts/render_step_art.mjs`, keeping the WebP names and pixel sizes.",
+      "Do keep article prose in the system sans at 1.0625rem / 1.65, no wider than 68ch, on a paper sheet; the gothic frames it."
+    ],
+    "donts": [
+      "Don't add drop shadows, gradients, glows or blur; the shadow tokens are `none` on purpose.",
+      "Don't use a stock colour for decoration or for a URL type it does not belong to.",
+      "Don't set paragraphs, inputs or long text in Big Shoulders.",
+      "Don't print invented counters or vanity numbers; gothic numerals carry real values only.",
+      "Don't use pill shapes or large rounded cards (rounded-full, 16px+ corners) for new surfaces.",
+      "Don't let a result, notice or loading slip move the desktop seam or print on the field above it.",
+      "Don't print a spec field whose value is not known; leave it out.",
+      "Don't edit the step WebP files by hand; change the SVG source and re-render."
+    ]
+  }
+}

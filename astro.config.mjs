@@ -4,6 +4,9 @@ import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import cloudflare from '@astrojs/cloudflare';
 
+// `astro dev` (npm run dev) is the only command that renders in Node.
+const isDevServer = process.argv.slice(2).includes('dev');
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://pintdownload.app',
@@ -22,12 +25,16 @@ export default defineConfig({
   }),
   integrations: [tailwind(), react()],
   // React 19 SSR defaults to server.browser which uses MessageChannel (missing on Workers).
-  // Always use the edge build so Cloudflare Worker startup succeeds.
+  // Use the edge build for the Worker bundle so Cloudflare Worker startup succeeds.
+  // `astro dev` renders in Node, where the edge build fails ("require is not
+  // defined"), so the alias applies to builds only.
   vite: {
     resolve: {
-      alias: {
-        'react-dom/server': 'react-dom/server.edge',
-      },
+      alias: isDevServer
+        ? {}
+        : {
+            'react-dom/server': 'react-dom/server.edge',
+          },
     },
   },
   redirects: {

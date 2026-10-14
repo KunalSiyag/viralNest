@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="881" height="575" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="step2-title">
+  <!--
+    Step 2 art: paste the link into the ticket. The link is read: PIN stamp + real serial.
+    Source for public/images/step2.webp. Render: node scripts/render_step_art.mjs
+    A miniature of the live claim ticket (DownloaderForm): header strip, focused ticket-red
+    input stroke with its 25% ring, stamp, perforation with punched notches, carbon-ink stub.
+    The serial is the example pin ID printed next to this section, not an invented number.
+  -->
+  <title id="step2-title">Paste the Pinterest URL into PintDownload</title>
+  <defs>
+    <style>
+      .g8 { font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 800; }
+      .g9 { font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 900; }
+      .sans { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Field: house stock -->
+  <rect width="900" height="600" fill="#C8281A"/>
+
+  <!-- Ticket paper -->
+  <rect x="90" y="96" width="720" height="330" rx="10" fill="#FFFFFF"/>
+
+  <!-- Header strip -->
+  <text x="124" y="150" class="g8" font-size="28" letter-spacing="2.2" fill="#17191E">ADMIT ONE · PUBLIC LINK</text>
+  <text x="776" y="150" text-anchor="end" class="g8" font-size="30" letter-spacing="1.2" fill="#17191E">No. 112027111109431342</text>
+  <rect x="124" y="166" width="652" height="5" fill="#17191E"/>
+
+  <!-- Label row + stamp -->
+  <text x="124" y="228" class="sans" font-size="30" font-weight="700" fill="#17191E">Pinterest link</text>
+  <g transform="translate(712 214) rotate(-3)">
+    <rect x="-56" y="-27" width="112" height="54" rx="4" fill="#C8281A" stroke="#17191E" stroke-width="5"/>
+    <text x="0" y="16" text-anchor="middle" class="g9" font-size="42" letter-spacing="2" fill="#FFFFFF">PIN</text>
+  </g>
+
+  <!-- Input, focused: ticket-red stroke + flat 25% ring -->
+  <rect x="117.5" y="251.5" width="665" height="101" rx="10" fill="none" stroke="#F2C9C5" stroke-width="7"/>
+  <rect x="124" y="258" width="652" height="88" rx="6" fill="#FFFFFF" stroke="#C8281A" stroke-width="5"/>
+  <!-- the caret rides on the text run so it stays flush whatever the sans measures -->
+  <text x="148" y="312" class="sans" font-size="26" fill="#17191E">pinterest.com/pin/112027111109431342/<tspan dx="3" fill="#C8281A" font-size="34" font-weight="700">|</tspan></text>
+  <g transform="translate(722 283) scale(1.6)" fill="none" stroke="#4E535C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+  </g>
+
+  <!-- Stub: the single primary action, top layer -->
+  <rect x="90" y="392" width="720" height="108" rx="10" fill="#17191E"/>
+  <rect x="90" y="392" width="720" height="20" fill="#17191E"/>
+  <path d="M110 395.5 H790" stroke="#FFFFFF" stroke-width="5" stroke-dasharray="10 8"/>
+  <circle cx="90" cy="392" r="18" fill="#C8281A"/>
+  <circle cx="810" cy="392" r="18" fill="#C8281A"/>
+  <g transform="translate(288 423) scale(1.9)" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" x2="12" y1="15" y2="3"/>
+  </g>
+  <text x="355" y="467" class="g9" font-size="58" letter-spacing="2.3" fill="#FFFFFF">DOWNLOAD</text>
+</svg>

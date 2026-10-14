@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="859" height="573" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="step1-title">
+  <!--
+    Step 1 art: copy the pin link in the Pinterest app (Share → Copy link).
+    Source for public/images/step1.webp. Render: node scripts/render_step_art.mjs
+    Claim-ticket world (DESIGN.md): ticket-red field, paper, carbon ink, canary as the
+    pressed/highlight ink, Big Shoulders Display for labels. Flat: no gradients, shadows or blur.
+    Icons are Lucide (ISC) paths, the same set the live UI uses.
+  -->
+  <title id="step1-title">Copy a Pinterest pin link from the share menu</title>
+  <defs>
+    <style>
+      .g8 { font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 800; }
+      .g9 { font-family: 'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight: 900; }
+      .sans { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; }
+    </style>
+    <clipPath id="s1-screen"><rect x="86" y="52" width="340" height="640" rx="22"/></clipPath>
+  </defs>
+
+  <!-- Field: house stock -->
+  <rect width="900" height="600" fill="#C8281A"/>
+
+  <!-- Phone, bleeding off the bottom edge -->
+  <rect x="70" y="36" width="372" height="680" rx="36" fill="#17191E"/>
+  <g clip-path="url(#s1-screen)">
+    <rect x="86" y="52" width="340" height="640" fill="#E4E6E9"/>
+
+    <!-- The pin: a flat two-tone print (arched mirror, vase, branch) -->
+    <path d="M200 228 V134 A56 56 0 0 1 312 134 V228 Z" fill="#FFFFFF"/>
+    <g fill="none" stroke="#17191E" stroke-width="5" stroke-linecap="round">
+      <path d="M255 168 Q250 132 226 104"/>
+      <path d="M258 168 Q266 136 292 114"/>
+    </g>
+    <g fill="#17191E">
+      <ellipse cx="222" cy="100" rx="15" ry="7" transform="rotate(-130 222 100)"/>
+      <ellipse cx="238" cy="128" rx="14" ry="6" transform="rotate(-160 238 128)"/>
+      <ellipse cx="294" cy="110" rx="15" ry="7" transform="rotate(-40 294 110)"/>
+      <ellipse cx="276" cy="134" rx="14" ry="6" transform="rotate(-20 276 134)"/>
+      <path d="M238 228 C228 204 231 182 246 174 L247 164 H265 L266 174 C281 182 284 204 274 228 Z"/>
+    </g>
+    <rect x="86" y="228" width="340" height="8" fill="#17191E"/>
+
+    <!-- Share sheet -->
+    <rect x="86" y="252" width="340" height="460" rx="16" fill="#FFFFFF"/>
+    <rect x="226" y="264" width="60" height="8" rx="2" fill="#C2C5CB"/>
+    <text x="110" y="318" class="g8" font-size="30" letter-spacing="2.4" fill="#17191E">SHARE</text>
+    <rect x="110" y="332" width="292" height="5" fill="#17191E"/>
+
+    <g fill="#E4E6E9">
+      <rect x="110" y="356" width="84" height="72" rx="6"/>
+      <rect x="214" y="356" width="84" height="72" rx="6"/>
+      <rect x="318" y="356" width="84" height="72" rx="6"/>
+    </g>
+    <g fill="none" stroke="#4E535C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+      <!-- mail -->
+      <g transform="translate(131 371) scale(1.75)">
+        <rect width="20" height="16" x="2" y="4" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </g>
+      <!-- message-square -->
+      <g transform="translate(235 371) scale(1.75)">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </g>
+      <!-- ellipsis -->
+      <g transform="translate(339 371) scale(1.75)">
+        <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
+      </g>
+    </g>
+
+    <!-- Copy link: the pressed row, carbon ink with canary ink -->
+    <rect x="110" y="448" width="292" height="86" rx="6" fill="#17191E"/>
+    <text x="132" y="508" class="g9" font-size="48" letter-spacing="1.5" fill="#F4C531">COPY LINK</text>
+    <g transform="translate(342 467) scale(2)" fill="none" stroke="#F4C531" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+    </g>
+  </g>
+
+  <!-- Dashed lead from the pressed row to the clipboard ticket -->
+  <path d="M462 491 H668 V360" fill="none" stroke="#17191E" stroke-width="7" stroke-dasharray="18 12"/>
+  <path d="M668 334 L649 362 H687 Z" fill="#17191E"/>
+
+  <!-- The copied link, printed as a small claim ticket -->
+  <rect x="500" y="170" width="352" height="150" rx="8" fill="#FFFFFF"/>
+  <rect x="500" y="170" width="86" height="150" rx="8" fill="#17191E"/>
+  <rect x="562" y="170" width="24" height="150" fill="#17191E"/>
+  <path d="M586 188 V302" stroke="#FFFFFF" stroke-width="5" stroke-dasharray="9 7"/>
+  <circle cx="586" cy="170" r="14" fill="#C8281A"/>
+  <circle cx="586" cy="320" r="14" fill="#C8281A"/>
+  <g transform="translate(519 221) scale(2)" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+  </g>
+  <text x="610" y="212" class="g8" font-size="24" letter-spacing="1.9" fill="#4E535C">CLIPBOARD</text>
+  <text x="609" y="264" class="g9" font-size="47" letter-spacing="0.6" fill="#17191E">LINK COPIED</text>
+  <text x="610" y="300" class="sans" font-size="24" fill="#4E535C">pin.it/…</text>
+</svg>

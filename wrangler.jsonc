@@ -34,6 +34,12 @@
     { "pattern": "www.pintdownload.app", "zone_name": "pintdownload.app" },
     { "pattern": "www.pintdownload.app/*", "zone_name": "pintdownload.app" }
   ],
+  // `wrangler dev` (npm run preview) hands the Worker the route host over http:,
+  // so hostRedirectUrl would 301 every /api/* call to an https URL on an
+  // http-only local port. Present requests as https, as production sees them.
+  "dev": {
+    "upstream_protocol": "https"
+  },
   "observability": {
     "enabled": true
   }

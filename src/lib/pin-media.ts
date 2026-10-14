@@ -162,13 +162,24 @@ export function toPlayablePinVideoUrl(url: string): string {
 
   if (/\.m3u8(\?|$)/i.test(url) && /\/hls\//i.test(url)) {
     if (isIht) {
-      return url.replace(/\/hls\//i, '/expMp4/').replace(/\.m3u8(\?|$)/i, '_720w.mp4$1');
+      // hls/<hash>_v2.m3u8 -> expMp4/<hash>_720w.mp4: the HLS playlist keeps
+      // the _vN revision suffix, the progressive expMp4 file does not.
+      return url
+        .replace(/\/hls\//i, '/expMp4/')
+        .replace(/(?:_v\d+)?\.m3u8(\?|$)/i, '_720w.mp4$1');
     }
     return url.replace(/\/hls\//i, '/720p/').replace(/\.m3u8(\?|$)/i, '.mp4$1');
   }
 
   if (isIht && /\/(?:720p|1080p|540p|360p)\//i.test(url) && /\.mp4(\?|$)/i.test(url)) {
-    return url.replace(/\/(?:720p|1080p|540p|360p)\//i, '/expMp4/').replace(/\.mp4(\?|$)/i, '_720w.mp4$1');
+    return url
+      .replace(/\/(?:720p|1080p|540p|360p)\//i, '/expMp4/')
+      .replace(/(?:_v\d+)?\.mp4(\?|$)/i, '_720w.mp4$1');
+  }
+
+  // A previously rewritten expMp4/<hash>_v2_720w.mp4 403s; drop the suffix.
+  if (isIht && /\/expMp4\//i.test(url)) {
+    return url.replace(/_v\d+(_\d+w\.mp4(?:\?|$))/i, '$1');
   }
 
   return url;
@@ -234,11 +245,14 @@ export function pinMediaCandidates(url: string): string[] {
   );
   if (prefix && videoFile) {
     const hash = videoFile[1];
+    // HLS names carry a _vN revision (…_v2.m3u8); the expMp4 file drops it.
+    const baseHash = hash.replace(/_v\d+$/i, '');
     const query = videoFile[2] || '';
     const iht = /\/videos\/iht\//i.test(prefix);
     // iht progressive folders 403; expMp4 is the public file. Other prefixes
     // still prefer 720p (smaller, usually public).
     if (iht) {
+      candidates.push(`${prefix}expMp4/${baseHash}_720w.mp4${query}`);
       candidates.push(`${prefix}expMp4/${hash}_720w.mp4${query}`);
       candidates.push(`${prefix}720p/${hash}.mp4${query}`);
       candidates.push(`${prefix}1080p/${hash}.mp4${query}`);

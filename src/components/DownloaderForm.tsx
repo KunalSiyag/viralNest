@@ -1,10 +1,13 @@
-import { useState, useEffect, useRef, type MouseEvent } from 'react';
-import { Loader2, Download, AlertCircle, Image as ImageIcon, Copy, Check, Tag, Clipboard, Play, Layers, History, Palette, Music, Sparkles, Archive, User, ChevronLeft, ChevronRight, Crop, Scissors, QrCode, ExternalLink, RefreshCw, X, Film } from 'lucide-react';
+import { useState, useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
+import { Loader2, Download, Image as ImageIcon, Copy, Check, Clipboard, Play, Pause, Layers, Archive, User, ChevronRight, ChevronDown, Crop, Scissors, QrCode, ExternalLink, RefreshCw, X, Film, ArrowUp, Link2 } from 'lucide-react';
 import ImageCropperModal from './ImageCropperModal';
+import { Receipt, Specs, Perf, LineItem, Fill } from './results/parts';
+import '../styles/results.css';
 import AudioTrimmer from './AudioTrimmer';
 import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
 import { gifCandidateUrls, isGifUrl, isMediaContentType, mediaFileExtension, toDownloadablePinUrl } from '../lib/pin-media';
 import { classifyPinterestInput, getSuitableToolForMedia } from '../lib/pinterest-route';
+import { STOCKS, type StockKey } from '../lib/stocks';
 
 interface BoardPinItem {
   pin_id: string;
@@ -72,6 +75,10 @@ interface HistoryItem {
 export type FormVariant = 'hub' | 'pin' | 'video' | 'image' | 'gif' | 'board' | 'profile' | 'profile-picture';
 
 export type FormLayout = 'default' | 'hero';
+
+/** ZIP item deadlines: time to first byte (the proxy probes several CDN paths), then max gap between chunks. */
+const ZIP_ITEM_HEADERS_MS = 45_000;
+const ZIP_ITEM_IDLE_MS = 30_000;
 
 const VARIANT_COPY: Record<
   FormVariant,
@@ -159,6 +166,122 @@ const VARIANT_COPY: Record<
   },
 };
 
+
+const STOCK_TOOLS: { href: string; label: string; stock: StockKey; variant: FormVariant }[] = [
+  { href: '/pinterest-pin-downloader', label: 'Pin', stock: 'pin', variant: 'pin' },
+  { href: '/pinterest-video-downloader', label: 'Video MP4', stock: 'video', variant: 'video' },
+  { href: '/pinterest-image-downloader', label: 'HD photo', stock: 'image', variant: 'image' },
+  { href: '/pinterest-gif-downloader', label: 'GIF', stock: 'gif', variant: 'gif' },
+  { href: '/pinterest-board-downloader', label: 'Board ZIP', stock: 'board', variant: 'board' },
+  { href: '/pinterest-profile-downloader', label: 'Profile ZIP', stock: 'profile', variant: 'profile' },
+  { href: '/pinterest-profile-picture-downloader', label: 'Avatar / DP', stock: 'avatar', variant: 'profile-picture' },
+];
+
+const VARIANT_EXPECT: Record<FormVariant, string> = {
+  hub: 'Waiting for a link',
+  pin: 'Takes a pin link',
+  video: 'Takes a video pin',
+  image: 'Takes an image pin',
+  gif: 'Takes a GIF pin',
+  board: 'Takes a board link',
+  profile: 'Takes a profile link',
+  'profile-picture': 'Takes a profile link',
+};
+
+type ResultKind = 'image' | 'video' | 'gif' | 'carousel' | 'board' | 'profile' | 'avatar';
+
+const KIND_LABEL: Record<ResultKind, string> = {
+  image: 'Image pin',
+  video: 'Video pin',
+  gif: 'GIF pin',
+  carousel: 'Carousel',
+  board: 'Board',
+  profile: 'Profile',
+  avatar: 'Profile picture',
+};
+
+type ErrorKind = 'validation' | 'link' | 'private' | 'removed' | 'download' | 'other';
+
+/** Sort an error message into the recovery it needs (wording comes from the API or this form). */
+function errorKind(msg: string): ErrorKind {
+  if (!msg) return 'other';
+  if (/^Paste (a public|at least)|^Please enter valid Pinterest URLs/.test(msg)) return 'validation';
+  if (/invalid link|valid Pinterest link/i.test(msg)) return 'link';
+  if (/removed/i.test(msg)) return 'removed';
+  if (/could not download|download failed|no response body|could not pack|failed to create zip|qr code|copy the link/i.test(msg)) return 'download';
+  if (/private|public|empty/i.test(msg)) return 'private';
+  return 'other';
+}
+
+const VOID_COPY: Record<ErrorKind, { title: string; hint?: string }> = {
+  validation: { title: 'Paste a link first' },
+  link: {
+    title: 'That isn\u2019t a Pinterest link',
+    hint: 'In the Pinterest app tap Share \u2192 Copy link, then paste it into the ticket.',
+  },
+  private: {
+    title: 'Nothing public to collect',
+    hint: 'Only public pins, boards and profiles can be saved. Secret boards and private accounts stay private.',
+  },
+  removed: { title: 'This pin was taken down' },
+  download: { title: 'The file didn\u2019t download', hint: 'Pinterest sometimes stops serving a file. Try the link again.' },
+  other: { title: 'Couldn\u2019t collect this link', hint: 'Check the link opens on Pinterest, then try again.' },
+};
+
+/** Read a pasted link the way a cloakroom attendant reads a ticket: type + number. */
+function readTicket(raw: string, variant: FormVariant): {
+  stamp: string;
+  tone: 'ok' | 'warn' | 'none';
+  serial: string;
+  color: string;
+  onColor?: string;
+  expect: string;
+  help?: string;
+} {
+  const expect = VARIANT_EXPECT[variant];
+  const text = raw.trim();
+  if (!text) return { stamp: '', tone: 'none', serial: '', color: '', expect };
+  const route = classifyPinterestInput(text);
+  if (!route) {
+    const looksLikeUrl = /^(https?:\/\/|www\.)|\.[a-z]{2,}\//i.test(text);
+    return {
+      stamp: looksLikeUrl ? 'Not Pinterest' : '',
+      tone: looksLikeUrl ? 'warn' : 'none',
+      serial: '',
+      color: '',
+      expect,
+      help: looksLikeUrl
+        ? 'This isn’t a Pinterest link. In the Pinterest app tap Share → Copy link, then paste it here.'
+        : undefined,
+    };
+  }
+  let serial = '';
+  const pinId = text.match(/\/pin\/(?:[^/?#]*--)?(\d{5,})/i);
+  const short = text.match(/pin\.it\/([A-Za-z0-9]+)/i);
+  if (pinId) serial = pinId[1];
+  else if (short) serial = `pin.it/${short[1]}`;
+  else {
+    try {
+      const u = new URL(text.match(/https?:\/\/\S+/)?.[0] || `https://${text}`);
+      serial = u.pathname.replace(/\/+$/, '') || '';
+    } catch {
+      serial = '';
+    }
+  }
+  const stamp =
+    route.type === 'board'
+      ? 'Board → ZIP'
+      : route.type === 'profile'
+        ? variant === 'profile-picture'
+          ? 'Profile → Avatar'
+          : 'Profile → ZIP'
+        : short
+          ? 'Pin · short link'
+          : 'Pin';
+  const key: StockKey = route.type === 'board' ? 'board' : route.type === 'profile' ? (variant === 'profile-picture' ? 'avatar' : 'profile') : 'pin';
+  return { stamp, tone: 'ok', serial, color: STOCKS[key].color, onColor: STOCKS[key].onColor, expect };
+}
+
 export default function DownloaderForm({
   variant = 'hub',
   layout = 'default',
@@ -216,6 +339,9 @@ export default function DownloaderForm({
   const [showPlayer, setShowPlayer] = useState(false);
   const [zipping, setZipping] = useState(false);
   const [zipProgress, setZipProgress] = useState({ done: 0, total: 0 });
+  /** Aborts the ZIP being packed (Cancel button, or leaving the page). */
+  const zipAbortRef = useRef<AbortController | null>(null);
+  useEffect(() => () => zipAbortRef.current?.abort(), []);
   const [showCropper, setShowCropper] = useState(false);
   const [showTrimmer, setShowTrimmer] = useState(false);
   const [selectedPins, setSelectedPins] = useState<Record<string, boolean>>({});
@@ -230,6 +356,13 @@ export default function DownloaderForm({
   const [qrDataUrl, setQrDataUrl] = useState('');
   const [qrLoading, setQrLoading] = useState(false);
   const [qrFor, setQrFor] = useState('');
+  // Receipt-only display state: what was handed to the browser, and copy feedback.
+  const [zipDone, setZipDone] = useState<{ name: string; packed: number; total: number } | null>(null);
+  const [lastSaved, setLastSaved] = useState<string | null>(null);
+  const [copiedLink, setCopiedLink] = useState(false);
+  const [attemptFile, setAttemptFile] = useState<string | null>(null);
+  const resultHeadingRef = useRef<HTMLHeadingElement>(null);
+  const voidHeadingRef = useRef<HTMLHeadingElement>(null);
 
   const triggerHaptic = () => {
     if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
@@ -241,10 +374,8 @@ export default function DownloaderForm({
     }
   };
 
-  // Pagination limit for board/profile pins & scroll refs
+  // Pagination limit for board/profile pins
   const [displayLimit, setDisplayLimit] = useState<number>(12);
-  const collectionScrollRef = useRef<HTMLDivElement>(null);
-  const carouselScrollRef = useRef<HTMLDivElement>(null);
 
   const primaryMediaUrl = selectedQuality || result?.video_url || result?.image_url || '';
 
@@ -472,8 +603,15 @@ export default function DownloaderForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (mode === 'single' && !url.trim()) return;
-    if (mode === 'batch' && !batchUrls.trim()) return;
+    if ((mode === 'single' || isHero) && !url.trim()) {
+      setError('Paste a public Pinterest link first. In the app: Share → Copy link.');
+      document.getElementById('pinterest-url-input')?.focus();
+      return;
+    }
+    if (mode === 'batch' && !isHero && !batchUrls.trim()) {
+      setError('Paste at least one Pinterest link, one per line.');
+      return;
+    }
 
     if (mode === 'single') {
       await extractSingle(url);
@@ -556,7 +694,7 @@ export default function DownloaderForm({
     setTimeout(() => setCopiedColor(null), 2000);
   };
 
-  const samplePalette = ['#E11D48', '#2D3748', '#ED8936', '#319795', '#D69E2E'];
+  const samplePalette = ['#C8281A', '#2D3748', '#ED8936', '#319795', '#D69E2E'];
 
   const slugify = (value: string) =>
     value
@@ -605,6 +743,8 @@ export default function DownloaderForm({
 
   const saveProxyDownload = async (mediaUrl: string, filename: string) => {
     setError('');
+    setLastSaved(null);
+    setAttemptFile(filename);
     setSavingFile(filename);
     setDownloadProgress({ loaded: 0, total: 0, phase: 'connecting' });
     try {
@@ -640,6 +780,7 @@ export default function DownloaderForm({
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(objectUrl);
+      setLastSaved(filename);
     } catch (err: any) {
       setError(err?.message || 'Download failed.');
     } finally {
@@ -678,9 +819,12 @@ export default function DownloaderForm({
     archiveName: string,
   ) => {
     if (!entries.length || zipping) return;
+    const run = new AbortController();
+    zipAbortRef.current = run;
     setZipping(true);
     setZipProgress({ done: 0, total: entries.length });
     setError('');
+    setZipDone(null);
 
     try {
       const JSZip = (await import('jszip')).default;
@@ -691,30 +835,62 @@ export default function DownloaderForm({
       let packed = 0;
       let failed = 0;
 
+      // Each file gets a deadline: one stalled body must not freeze the archive.
+      // Headers can take a while (the proxy probes several CDN paths); after
+      // that, the body must keep moving.
+      const fetchItem = async (url: string): Promise<Blob> => {
+        const item = new AbortController();
+        const stop = () => item.abort();
+        run.signal.addEventListener('abort', stop);
+        let timer = setTimeout(stop, ZIP_ITEM_HEADERS_MS);
+        const touch = () => {
+          clearTimeout(timer);
+          timer = setTimeout(stop, ZIP_ITEM_IDLE_MS);
+        };
+        try {
+          const res = await fetch(url, { signal: item.signal });
+          const type = res.headers.get('content-type') || '';
+          if (!res.ok || !isMediaContentType(type) || !res.body) throw new Error(`HTTP ${res.status}`);
+          touch();
+          const reader = res.body.getReader();
+          const chunks: Uint8Array[] = [];
+          for (;;) {
+            const { done: finished, value } = await reader.read();
+            if (finished) break;
+            if (value) chunks.push(value);
+            touch();
+          }
+          return new Blob(chunks as BlobPart[], { type });
+        } finally {
+          clearTimeout(timer);
+          run.signal.removeEventListener('abort', stop);
+        }
+      };
+
       const concurrency = 4;
-      for (let i = 0; i < entries.length; i += concurrency) {
+      for (let i = 0; i < entries.length && !run.signal.aborted; i += concurrency) {
         const batch = entries.slice(i, i + concurrency);
         await Promise.all(
           batch.map(async (entry) => {
             try {
-              const res = await fetch(
+              const blob = await fetchItem(
                 `/api/download?url=${encodeURIComponent(toDownloadablePinUrl(entry.url))}&filename=${encodeURIComponent(entry.filename)}`,
               );
-              const type = res.headers.get('content-type') || '';
-              if (!res.ok || !isMediaContentType(type)) throw new Error(`HTTP ${res.status}`);
-              const blob = await res.blob();
               folder.file(entry.filename, blob);
               packed++;
             } catch (e) {
-              console.warn('ZIP item failed:', entry.filename, e);
+              if (!run.signal.aborted) console.warn('ZIP item failed:', entry.filename, e);
               failed++;
             } finally {
               done++;
-              setZipProgress({ done, total: entries.length });
+              if (!run.signal.aborted) setZipProgress({ done, total: entries.length });
             }
           }),
         );
       }
+
+      // Cancelled: nothing to save and nothing went wrong.
+      if (run.signal.aborted) return;
 
       if (packed === 0) {
         throw new Error('Could not pack any media into the ZIP. Files may be unavailable.');
@@ -729,17 +905,21 @@ export default function DownloaderForm({
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(objectUrl);
+      setZipDone({ name: `${slugify(archiveName)}.zip`, packed, total: entries.length });
 
       if (failed > 0) {
         setError(`ZIP ready with ${entries.length - failed} of ${entries.length} files (${failed} failed).`);
       }
     } catch (err: any) {
-      setError(err?.message || 'Failed to create ZIP archive.');
+      if (!run.signal.aborted) setError(err?.message || 'Failed to create ZIP archive.');
     } finally {
+      if (zipAbortRef.current === run) zipAbortRef.current = null;
       setZipping(false);
       setZipProgress({ done: 0, total: 0 });
     }
   };
+
+  const cancelZip = () => zipAbortRef.current?.abort();
 
   const downloadCollectionAsZip = async (pins: BoardPinItem[], archiveName: string) => {
     const entries = pins
@@ -809,1296 +989,1323 @@ export default function DownloaderForm({
     ((result.media_items && result.media_items.length > 1) || result.is_carousel)
   );
 
-  return (
-    <div className={`w-full mx-auto ${isHero ? 'max-w-2xl mt-0' : 'max-w-3xl mt-4'}`}>
-      {/* Intent Switcher: Quick 1-click access to GIF, Video, Image, and Board tools */}
-      <div className="mb-3 sm:mb-4 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mr-1">
-          {copy.worksLabel}:
-        </span>
-        <a
-          href="/pinterest-gif-downloader"
-          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-black transition-all touch-manipulation shadow-xs ${
-            activeVariant === 'gif'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400 hover:border-red-300'
-          }`}
-        >
-          <Sparkles className="w-3.5 h-3.5 text-[#E11D48]" aria-hidden="true" />
-          <span>GIF Downloader</span>
-        </a>
-        <a
-          href="/pinterest-video-downloader"
-          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            activeVariant === 'video'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
-          }`}
-        >
-          <Play className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
-          <span>Video (MP4)</span>
-        </a>
-        <a
-          href="/pinterest-image-downloader"
-          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            activeVariant === 'image'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
-          }`}
-        >
-          <ImageIcon className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
-          <span>HD Photo</span>
-        </a>
-        <a
-          href="/pinterest-board-downloader"
-          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            activeVariant === 'board'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
-          }`}
-        >
-          <Archive className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
-          <span>Board ZIP</span>
-        </a>
-        <a
-          href="/pinterest-profile-picture-downloader"
-          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border text-xs font-bold transition-all touch-manipulation ${
-            activeVariant === 'profile-picture'
-              ? 'bg-red-50 dark:bg-red-950/70 border-red-300 dark:border-red-800 text-rose-700 dark:text-rose-300 ring-2 ring-rose-500/20'
-              : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-rose-400'
-          }`}
-        >
-          <User className="w-3 h-3 text-[#E11D48]" aria-hidden="true" />
-          <span>Avatar DP</span>
-        </a>
-      </div>
+  const reading = readTicket(url, activeVariant);
+  const showBatchTabs = !isHero && copy.showBatch;
+  const batchActive = mode === 'batch' && copy.showBatch && !isHero;
 
-      {/* Auto-Route Alert Banner */}
-      {routeNotice && (
-        <div className="mb-4 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-red-500/10 via-rose-500/10 to-amber-500/10 dark:from-red-950/50 dark:via-rose-950/50 dark:to-amber-950/50 border border-red-200 dark:border-red-900/60 flex items-center justify-between gap-3 text-xs font-bold text-rose-900 dark:text-rose-200 animate-in fade-in slide-in-from-top-2 duration-300">
-          <div className="flex items-center gap-2 min-w-0">
-            <span className="px-2.5 py-1 rounded-lg bg-[#E11D48] text-white text-[10px] font-black uppercase tracking-wider shrink-0 shadow-xs">
-              {routeNotice.badge}
+  /* ── Receipt (post-extraction) helpers: presentation only ─────────────── */
+  const gifUrl = resolvedGifUrl(result);
+  const resultKind: ResultKind | null = !result
+    ? null
+    : isCarousel && result.media_items
+      ? 'carousel'
+      : result.is_avatar_only
+        ? 'avatar'
+        : isCollection
+          ? result.is_profile
+            ? 'profile'
+            : 'board'
+          : gifUrl || (result.is_gif && !result.is_video)
+            ? 'gif'
+            : result.is_video
+              ? 'video'
+              : 'image';
+  const receiptSerial = result?.pin_id || reading.serial || (result?.username ? `@${result.username}` : '');
+  const nf = (n: number) => new Intl.NumberFormat().format(n);
+  const pctOf = (done: number, total: number) => (total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0);
+
+  /** The one file this receipt is for, in the order the old panel offered them. */
+  const primaryFile: { url: string; filename: string; format: string } | null = !result
+    ? null
+    : gifUrl
+      ? { url: gifUrl, filename: `${slugify(result.title || 'pinterest_gif')}.gif`, format: 'GIF' }
+      : result.is_video && (selectedQuality || result.video_url)
+        ? {
+            url: selectedQuality || result.video_url!,
+            filename: `${slugify(result.title || 'pinterest_video')}.mp4`,
+            format: 'MP4',
+          }
+        : result.image_url
+          ? {
+              url: result.image_url,
+              filename: `${slugify(result.title || 'pinterest_cover')}.${mediaFileExtension(result.image_url, 'jpg')}`,
+              format: mediaFileExtension(result.image_url, 'jpg').toUpperCase(),
+            }
+          : null;
+  const currentQuality = result?.qualities?.find((q) => q.url === (selectedQuality || result?.video_url));
+
+  const isPartialZipMsg = /^ZIP ready with/.test(error);
+  const errKind = errorKind(error);
+
+  const savingNow = (filename: string) => savingFile === filename && !!downloadProgress;
+  const savingPct = downloadProgress?.total ? pctOf(downloadProgress.loaded, downloadProgress.total) : null;
+
+  const focusReceipt = (el: HTMLElement | null) => {
+    if (!el) return;
+    el.focus({ preventScroll: true });
+    const box = el.closest('.rc') as HTMLElement | null;
+    if (!box) return;
+    const top = box.getBoundingClientRect().top;
+    if (top < 0 || top > window.innerHeight * 0.45) {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      box.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+    }
+  };
+
+  // A fresh result clears the previous receipt's notes and takes focus.
+  useEffect(() => {
+    setZipDone(null);
+    setLastSaved(null);
+    setAttemptFile(null);
+    setCopiedLink(false);
+    if (!result) return;
+    const id = requestAnimationFrame(() => focusReceipt(resultHeadingRef.current));
+    return () => cancelAnimationFrame(id);
+  }, [result]);
+
+  useEffect(() => {
+    if (!batchResults.length) return;
+    const id = requestAnimationFrame(() => focusReceipt(resultHeadingRef.current));
+    return () => cancelAnimationFrame(id);
+  }, [batchResults]);
+
+  // A failed claim takes focus too, except empty-field validation (the input keeps focus).
+  useEffect(() => {
+    if (!error || loading || result || batchResults.length || errorKind(error) === 'validation') return;
+    const id = requestAnimationFrame(() => focusReceipt(voidHeadingRef.current));
+    return () => cancelAnimationFrame(id);
+  }, [error, loading]);
+
+  const focusTicket = () => {
+    const el = (document.getElementById('pinterest-url-input') || document.getElementById('batch-urls-input')) as
+      | HTMLInputElement
+      | HTMLTextAreaElement
+      | null;
+    if (!el) return;
+    el.focus({ preventScroll: true });
+    el.select();
+    el.closest('form')?.scrollIntoView({
+      block: 'start',
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
+  };
+
+  const startAnother = () => {
+    setResult(null);
+    setBatchResults([]);
+    setError('');
+    setBatchUrls('');
+    handleUrlInput('');
+    requestAnimationFrame(focusTicket);
+  };
+
+  const copyFileLink = async (mediaUrl: string) => {
+    try {
+      await navigator.clipboard.writeText(toDownloadablePinUrl(mediaUrl));
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2000);
+    } catch {
+      setError('Could not copy the link. Long-press the download button to copy it instead.');
+    }
+  };
+
+  const captionFor = (res: ExtractionResult, platform: 'reels' | 'tiktok' | 'shorts') => {
+    const tagsStr = (res.tags || []).map((t) => `#${t}`).join(' ');
+    if (platform === 'reels') return `✨ ${res.title}\n\nTag someone who needs to see this! 👇\n\n📌 Saved via PintDownload\n\n${tagsStr} #reels #viral #aesthetic`;
+    if (platform === 'tiktok') return `POV: ${res.title} 🌿🔥\n\nFollow for more daily aesthetic pins & inspo!\n\n${tagsStr} #fyp #viral #pinterest #foryou`;
+    return `🔥 ${res.title} | Pinterest Aesthetic\n\nLike & Subscribe for more daily visual content!\n\n${tagsStr} #shorts #pintdownload #pinterest`;
+  };
+
+  // Screen-reader narration: coarse steps only, so progress never floods the queue.
+  const liveMsg = loading
+    ? batchActive
+      ? 'Reading your links…'
+      : 'Reading your link…'
+    : zipping && zipProgress.total
+      ? `Packing ZIP, ${Math.floor(pctOf(zipProgress.done, zipProgress.total) / 25) * 25}% done`
+      : savingFile && downloadProgress
+        ? savingPct === null
+          ? `Downloading ${savingFile}…`
+          : `Downloading ${savingFile}, ${Math.floor(savingPct / 25) * 25}% done`
+        : zipDone
+          ? `ZIP packed with ${zipDone.packed} of ${zipDone.total} files. Download started.`
+          : lastSaved
+            ? `Download started: ${lastSaved}`
+            : copiedLink || copiedTags || copiedCaption || copiedColor
+              ? 'Copied to clipboard.'
+              : '';
+
+  /** Collect button: label stays put; a spinner and a stock-coloured strip show progress. */
+  const fileCta = (file: { url: string; filename: string; format: string }, label: string) => (
+    <>
+      <a
+        href={proxyDownloadHref(file.url, file.filename)}
+        download={file.filename}
+        onClick={(e) => onProxyDownloadClick(e, file.url, file.filename)}
+        aria-busy={savingFile === file.filename}
+        className="rc-cta"
+        data-primary=""
+      >
+        {savingFile === file.filename ? (
+          <Loader2 className="animate-spin motion-reduce:animate-none" aria-hidden="true" />
+        ) : (
+          <Download aria-hidden="true" />
+        )}
+        <span>{label}</span>
+        {savingNow(file.filename) && <Fill value={savingPct === null ? null : savingPct / 100} />}
+      </a>
+      {savingNow(file.filename) ? (
+        <p
+          className="rc-note"
+          role="progressbar"
+          aria-label="Download progress"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={savingPct ?? undefined}
+          aria-valuetext={downloadStatusLabel()}
+        >
+          {downloadStatusLabel()}
+        </p>
+      ) : (
+        <p className="rc-note">
+          <span className="rc-file">
+            Saves as <b translate="no">{file.filename}</b>
+          </span>
+        </p>
+      )}
+    </>
+  );
+
+  /** ZIP collect button for carousels, boards and profiles. */
+  const zipCta = (count: number, archiveName: string, onCollect: () => void, stock: StockKey) => (
+    <>
+      <button
+        type="button"
+        className="rc-cta"
+        data-primary=""
+        aria-disabled={zipping || undefined}
+        aria-busy={zipping}
+        onClick={() => {
+          if (zipping) return;
+          setAttemptFile('zip');
+          onCollect();
+        }}
+      >
+        {zipping ? (
+          <Loader2 className="animate-spin motion-reduce:animate-none" aria-hidden="true" />
+        ) : (
+          <Archive aria-hidden="true" />
+        )}
+        <span>Download ZIP ({nf(count)})</span>
+        {zipping && zipProgress.total > 0 && <Fill value={zipProgress.done / zipProgress.total} />}
+      </button>
+      {zipping && zipProgress.total > 0 ? (
+        <div className="rc-note rc-note--row">
+          <p
+            role="progressbar"
+            aria-label="ZIP packing progress"
+            aria-valuemin={0}
+            aria-valuemax={zipProgress.total}
+            aria-valuenow={zipProgress.done}
+            aria-valuetext={`${zipProgress.done} of ${zipProgress.total} files packed`}
+          >
+            Packing <b>{nf(zipProgress.done)}</b> of {nf(zipProgress.total)} files…
+          </p>
+          <button type="button" className="rc-btn rc-btn--quiet" onClick={cancelZip}>
+            <X aria-hidden="true" />
+            Cancel<span className="sr-only"> ZIP</span>
+          </button>
+        </div>
+      ) : zipDone ? (
+        zipNotice(stock)
+      ) : (
+        <p className="rc-note">
+          <span className="rc-file">
+            Saves as <b translate="no">{slugify(archiveName)}.zip</b>
+          </span>
+        </p>
+      )}
+    </>
+  );
+
+  /** What happened to the last ZIP: packed in full, or partly. */
+  const zipNotice = (stock: StockKey) =>
+    zipDone ? (
+      <div className="rc-notice" data-zip-done="">
+        {zipDone.packed < zipDone.total ? (
+          <>
+            <span className="stamp stamp-warn" aria-hidden="true">Partial</span>
+            <p>
+              <b translate="no">{zipDone.name}</b> has {nf(zipDone.packed)} of {nf(zipDone.total)} files.{' '}
+              {nf(zipDone.total - zipDone.packed)} could not be fetched from Pinterest; save those one at a time.
+            </p>
+          </>
+        ) : (
+          <>
+            <span
+              className="stamp stamp-ok"
+              aria-hidden="true"
+              style={{ '--stamp-bg': STOCKS[stock].color, '--stamp-ink': STOCKS[stock].onColor } as React.CSSProperties}
+            >
+              Packed
             </span>
-            <span className="truncate">{routeNotice.message}</span>
-          </div>
-          <button
-            type="button"
-            onClick={() => setRouteNotice(null)}
-            className="p-1 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white shrink-0 transition-colors"
-            aria-label="Dismiss notice"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-      )}
+            <p>
+              <b translate="no">{zipDone.name}</b>: all {nf(zipDone.total)} files. Download started.
+            </p>
+          </>
+        )}
+      </div>
+    ) : null;
 
-      {/* Mode Switcher — not on hero */}
-      {!isHero && copy.showBatch && (
-        <div className="flex items-center justify-center gap-2 mb-4 bg-slate-200/60 dark:bg-slate-800/80 p-1 rounded-2xl w-fit mx-auto border border-slate-300/60 dark:border-slate-700">
-          <button
-            type="button"
-            onClick={() => { setMode('single'); setError(''); }}
-            className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all touch-manipulation ${
-              mode === 'single' ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            {copy.singleTab}
-          </button>
-          <button
-            type="button"
-            onClick={() => { setMode('batch'); setError(''); }}
-            className={`px-5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition-all touch-manipulation ${
-              mode === 'batch' ? 'bg-white dark:bg-slate-900 text-[#E11D48] shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5" />
-            <span>Batch (multi-link)</span>
-          </button>
-        </div>
-      )}
+  /** Download-time problems print on the receipt, next to the button that caused them. */
+  const errorFor = (file: string | null) => (error && !isPartialZipMsg && attemptFile === file ? true : false);
+  const receiptError =
+    error && !isPartialZipMsg ? (
+      <div className="rc-notice" role="alert">
+        <span className="stamp stamp-warn" aria-hidden="true">Void</span>
+        <p>{error}</p>
+      </div>
+    ) : null;
 
-      {/* Input Form */}
+  const savedNotice =
+    lastSaved && !savingFile && lastSaved === primaryFile?.filename ? (
+      <div className="rc-notice">
+        <span className="stamp stamp-ok" aria-hidden="true">Done</span>
+        <p>
+          Download started: <b translate="no">{lastSaved}</b>
+        </p>
+      </div>
+    ) : null;
+
+  const anotherBtn = (
+    <button type="button" className="rc-btn rc-btn--quiet rc-push" onClick={startAnother}>
+      <ArrowUp aria-hidden="true" />
+      Download another
+    </button>
+  );
+
+  const resultHeading = (text: string, sub?: ReactNode) => (
+    <div className="rc-head">
+      <h2 id="result-heading" ref={resultHeadingRef} tabIndex={-1} className="rc-title">
+        {text}
+      </h2>
+      {sub ? <p className="rc-sub">{sub}</p> : null}
+    </div>
+  );
+
+  /** One pin/slide in a grid: thumbnail, number, kind stamp, and its own save button. */
+  const tile = (opts: {
+    key: string;
+    no: string;
+    thumb: string;
+    title: string;
+    mediaUrl: string;
+    filename: string;
+    ext: string;
+    isVideo: boolean;
+    srName: string;
+  }) => {
+    const fmt = opts.isVideo ? 'MP4' : opts.ext === 'gif' ? 'GIF' : opts.ext.toUpperCase();
+    return (
+      <li key={opts.key} className="rc-tile">
+        <div className="rc-thumb">
+          <img src={opts.thumb} alt={opts.title} loading="lazy" decoding="async" width={240} height={320} />
+          <span className="rc-no" aria-hidden="true">{opts.no}</span>
+          {(opts.isVideo || opts.ext === 'gif') && (
+            <span
+              className="rc-kind"
+              aria-hidden="true"
+              style={{ '--kind': STOCKS[opts.isVideo ? 'video' : 'gif'].color } as React.CSSProperties}
+            >
+              {opts.isVideo ? 'Video' : 'GIF'}
+            </span>
+          )}
+        </div>
+        <p className="rc-tile-title" title={opts.title}>{opts.title}</p>
+        <a
+          href={proxyDownloadHref(opts.mediaUrl, opts.filename)}
+          download={opts.filename}
+          onClick={(e) => onProxyDownloadClick(e, opts.mediaUrl, opts.filename)}
+          aria-busy={savingFile === opts.filename}
+          className="rc-btn"
+        >
+          {savingFile === opts.filename ? (
+            <Loader2 className="animate-spin motion-reduce:animate-none" aria-hidden="true" />
+          ) : (
+            <Download aria-hidden="true" />
+          )}
+          <span>
+            Save {fmt}
+            <span className="sr-only">, {opts.srName}</span>
+          </span>
+        </a>
+      </li>
+    );
+  };
+
+  return (
+    <div className={`w-full mx-auto ${isHero ? 'max-w-2xl mt-0' : 'max-w-3xl mt-4'}`} data-downloader="">
       <form
         onSubmit={handleSubmit}
-        className={`relative w-full ${isHero ? 'flex flex-col sm:block' : 'flex flex-col gap-3 items-center'}`}
+        className="ticket"
+        data-tearing={loading ? 'true' : 'false'}
+        aria-busy={loading}
       >
-        {mode === 'single' || !copy.showBatch || isHero ? (
-          isHero ? (
-            <div className="relative w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 rounded-2xl sm:rounded-full bg-white dark:bg-ink-900 border border-black/[0.08] dark:border-white/[0.12] shadow-pill p-2 sm:p-1.5 sm:pl-5 transition-all focus-within:ring-2 focus-within:ring-[#E11D48]">
-              <label htmlFor="pinterest-url-input-hero" className="sr-only">
-                {copy.ariaLabel}
-              </label>
-              <div className="flex items-center gap-2 flex-1 min-w-0 px-2 sm:px-0">
-                <Clipboard className="w-5 h-5 text-slate-500 dark:text-slate-400 shrink-0 hidden sm:block" aria-hidden="true" />
-                <input
-                  id="pinterest-url-input-hero"
-                  type="url"
-                  name="url"
-                  value={url}
-                  onChange={(e) => handleUrlInput(e.target.value)}
-                  onPaste={(e) => {
-                    const text = e.clipboardData?.getData('text');
-                    if (text) handleUrlInput(text);
-                  }}
-                  placeholder={activePlaceholder}
-                  className="w-full h-12 sm:h-14 bg-transparent border-0 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none text-base sm:text-[1.05rem] min-w-0"
-                  required
-                  aria-label={copy.ariaLabel}
-                  autoComplete="url"
-                  inputMode="url"
-                  spellCheck={false}
-                />
+        <div className="ticket-paper">
+        <div className="ticket-head">
+          <span className="t-label">Admit one · public link</span>
+          <span className="ticket-serial" aria-live="polite" translate="no">
+            {reading.serial ? <>No.&nbsp;{reading.serial}</> : 'No. ——————'}
+          </span>
+        </div>
+
+        <div className="ticket-body">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-3 min-h-[2rem]">
+            {showBatchTabs ? (
+              <div className="inline-flex rounded-md border-2 border-[var(--ink)] overflow-hidden text-sm font-bold" role="group" aria-label="Link mode">
+                <button
+                  type="button"
+                  aria-pressed={mode === 'single'}
+                  onClick={() => { setMode('single'); setError(''); }}
+                  className={`px-3 min-h-[2.75rem] touch-manipulation ${mode === 'single' ? 'bg-[var(--ink)] text-[var(--paper)]' : 'hover:bg-black/5 dark:hover:bg-white/10'}`}
+                >
+                  One link
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={mode === 'batch'}
+                  onClick={() => { setMode('batch'); setError(''); }}
+                  className={`px-3 min-h-[2.75rem] touch-manipulation inline-flex items-center gap-1.5 ${mode === 'batch' ? 'bg-[var(--ink)] text-[var(--paper)]' : 'hover:bg-black/5 dark:hover:bg-white/10'}`}
+                >
+                  <Layers className="w-4 h-4" aria-hidden="true" />
+                  Up to 5
+                </button>
               </div>
-              <button
-                type="submit"
-                disabled={loading || !url.trim()}
-                className="h-12 sm:h-14 px-7 sm:px-8 rounded-xl sm:rounded-full bg-[#E11D48] hover:bg-[#BE123C] active:bg-[#9F1239] text-white font-semibold text-base flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0 touch-manipulation shadow-soft focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E11D48]"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
-                    <span>{t.processingText}</span>
-                  </>
-                ) : (
-                  <>
-                    <Download className="w-5 h-5" aria-hidden="true" />
-                    <span>{activeSubmitLabel}</span>
-                  </>
-                )}
-              </button>
-            </div>
-          ) : (
-            <div className="relative w-full">
-              <label htmlFor="pinterest-url-input-standard" className="sr-only">
-                {copy.ariaLabel}
+            ) : (
+              <label htmlFor="pinterest-url-input" className="text-sm font-bold">
+                {activeVariant === 'hub' ? 'Pinterest link' : copy.singleTab}
               </label>
+            )}
+            {!batchActive && (
+              reading.stamp ? (
+                <span
+                  key={reading.stamp}
+                  className={`stamp stamp-in ${reading.tone === 'warn' ? 'stamp-warn' : 'stamp-ok'}`}
+                  style={reading.tone === 'ok' ? ({ '--stamp-bg': reading.color, '--stamp-ink': reading.onColor } as React.CSSProperties) : undefined}
+                >
+                  {reading.stamp}
+                </span>
+              ) : (
+                <span className="text-sm text-[var(--ink-2)]">{reading.expect}</span>
+              )
+            )}
+          </div>
+
+          {!batchActive ? (
+            <div className="ticket-input">
+              {showBatchTabs && (
+                <label htmlFor="pinterest-url-input" className="sr-only">{copy.ariaLabel}</label>
+              )}
               <input
-                id="pinterest-url-input-standard"
+                id="pinterest-url-input"
                 type="url"
                 name="url"
                 value={url}
                 onChange={(e) => handleUrlInput(e.target.value)}
                 onPaste={(e) => {
                   const text = e.clipboardData?.getData('text');
-                  if (text) handleUrlInput(text);
+                  if (text) {
+                    e.preventDefault();
+                    handleUrlInput(text.trim());
+                  }
                 }}
                 placeholder={activePlaceholder}
-                className="w-full h-14 pl-5 pr-24 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-lg shadow-sm"
                 required
                 aria-label={copy.ariaLabel}
+                aria-describedby="ticket-hint"
                 autoComplete="url"
                 inputMode="url"
                 spellCheck={false}
               />
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                {url ? (
-                  <button
-                    type="button"
-                    onClick={() => setUrl('')}
-                    className="text-xs font-semibold text-slate-600 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 px-2.5 py-1.5 rounded-lg min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
-                    aria-label="Clear input field"
-                  >
-                    Clear
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={handlePaste}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-rose-700 dark:text-rose-300 bg-red-50 dark:bg-red-950/70 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
-                    aria-label="Paste URL from clipboard"
-                  >
-                    <Clipboard className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>Paste</span>
-                  </button>
-                )}
-              </div>
+              {url ? (
+                <button
+                  type="button"
+                  onClick={() => handleUrlInput('')}
+                  className="shrink-0 min-h-[44px] min-w-[44px] px-2 rounded text-sm font-bold text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-black/5 dark:hover:bg-white/10 touch-manipulation"
+                  aria-label="Clear link"
+                >
+                  <X className="w-5 h-5 mx-auto" aria-hidden="true" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handlePaste}
+                  className="shrink-0 min-h-[44px] px-3 rounded inline-flex items-center gap-1.5 text-sm font-bold bg-[var(--ink)] text-[var(--paper)] hover:bg-brand-600 hover:text-white touch-manipulation"
+                  aria-label="Paste link from clipboard"
+                >
+                  <Clipboard className="w-4 h-4" aria-hidden="true" />
+                  Paste
+                </button>
+              )}
             </div>
-          )
-        ) : (
-          <div className="relative w-full">
-            <label htmlFor="batch-urls-input" className="sr-only">
-              Batch Pinterest URLs (up to 5 URLs, one per line)
-            </label>
-            <textarea
-              id="batch-urls-input"
-              name="batchUrls"
-              rows={4}
-              value={batchUrls}
-              onChange={(e) => setBatchUrls(e.target.value)}
-              placeholder="Paste up to 5 Pinterest URLs (one per line):&#10;https://pinterest.com/pin/1234567/&#10;https://pin.it/abc1234"
-              className="w-full p-4 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#E11D48] focus:ring-4 focus:ring-red-500/10 transition-all text-base sm:text-sm shadow-sm"
-              required
-              spellCheck={false}
-              aria-label="Batch Pinterest URLs"
-            />
-            <button
-              type="button"
-              onClick={handlePaste}
-              className="absolute right-3 top-3 inline-flex items-center gap-1 text-xs font-bold text-rose-700 dark:text-rose-300 bg-red-50 dark:bg-red-950/70 hover:bg-red-100 dark:hover:bg-red-900/60 px-3 py-2 rounded-lg transition-colors min-h-[44px] touch-manipulation focus-visible:ring-2 focus-visible:ring-[#E11D48]"
-              aria-label="Paste clipboard text into batch input"
-            >
-              <Clipboard className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>Paste Clipboard</span>
-            </button>
-          </div>
-        )}
+          ) : (
+            <div className="ticket-input flex-col">
+              <label htmlFor="batch-urls-input" className="sr-only">
+                Batch Pinterest URLs (up to 5 URLs, one per line)
+              </label>
+              <textarea
+                id="batch-urls-input"
+                name="batchUrls"
+                rows={4}
+                value={batchUrls}
+                onChange={(e) => setBatchUrls(e.target.value)}
+                placeholder={'One link per line, up to 5…\nhttps://pinterest.com/pin/1234567/\nhttps://pin.it/abc1234'}
+                required
+                spellCheck={false}
+                aria-describedby="ticket-hint"
+              />
+              <button
+                type="button"
+                onClick={handlePaste}
+                className="self-end mb-1 mr-1 min-h-[44px] px-3 rounded inline-flex items-center gap-1.5 text-sm font-bold bg-[var(--ink)] text-[var(--paper)] hover:bg-brand-600 hover:text-white touch-manipulation"
+              >
+                <Clipboard className="w-4 h-4" aria-hidden="true" />
+                Paste
+              </button>
+            </div>
+          )}
 
-        {!isHero && (
+          {routeNotice && !batchActive && (
+            <p className="mt-3 flex items-start gap-2 text-sm font-semibold" role="status">
+              <RefreshCw className="w-4 h-4 mt-0.5 shrink-0 text-brand-600" aria-hidden="true" />
+              <span className="min-w-0">
+                {routeNotice.message.replace(/—\s*automatically switched to/, '· switched to')}.{' '}
+                <a href={routeNotice.path} className="underline font-bold">Open that tool</a>
+              </span>
+            </p>
+          )}
+          {reading.tone === 'warn' && reading.help && !batchActive && (
+            <p className="mt-3 text-sm font-semibold text-brand-700 dark:text-brand-300" role="status">
+              {reading.help}
+            </p>
+          )}
+          <p id="ticket-hint" className="mt-3 text-sm leading-relaxed text-[var(--ink-2)]">
+            {copy.hint}
+          </p>
+        </div>
+        </div>
+
+        <div className="perf" aria-hidden="true" />
+
+        <div className="stub">
           <button
             type="submit"
-            disabled={
-              loading ||
-              (mode === 'batch' && copy.showBatch ? !batchUrls.trim() : !url.trim())
-            }
-            className="w-full h-14 px-8 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 shadow-lg shadow-red-500/25 active:scale-95 touch-manipulation focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E11D48]"
+            className="stub-btn"
+            disabled={loading}
           >
             {loading ? (
               <>
-                <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
-                <span>{mode === 'batch' && copy.showBatch ? 'Processing batch links…' : 'Extracting…'}</span>
+                <Loader2 className="w-6 h-6 animate-spin" aria-hidden="true" />
+                <span>{batchActive ? 'Processing links…' : t.processingText}</span>
               </>
             ) : (
               <>
-                <Download className="w-5 h-5" aria-hidden="true" />
-                <span>{mode === 'batch' && copy.showBatch ? 'Batch Extract All' : copy.submitLabel}</span>
+                <Download className="w-6 h-6" aria-hidden="true" />
+                <span>{batchActive ? 'Extract all' : activeSubmitLabel}</span>
               </>
             )}
           </button>
-        )}
-        {!isHero && (mode === 'single' || !copy.showBatch) && (
-          <p className="text-center text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
-            {copy.hint}
-          </p>
-        )}
+        </div>
       </form>
 
-      {/* Error display */}
-      {error && (
-        <div className="mt-6 p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 flex items-start gap-3 text-red-700 dark:text-red-300">
-          <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-red-500" />
-          <p className="text-sm font-medium">{error}</p>
-        </div>
+      <nav aria-label="Pick the tool for your link" className="mt-4 flex flex-wrap gap-2">
+        {STOCK_TOOLS.map((tool) => (
+          <a
+            key={tool.href}
+            href={tool.href}
+            className="stock-chip"
+            data-stock={tool.stock}
+            style={{ '--chip': STOCKS[tool.stock].color, '--chip-ink': STOCKS[tool.stock].onColor } as React.CSSProperties}
+            aria-current={tool.variant === activeVariant ? 'page' : undefined}
+          >
+            {tool.label}
+          </a>
+        ))}
+      </nav>
+
+      <p className="sr-only" aria-live="polite">{liveMsg}</p>
+
+      {/* Loading: an unprinted receipt carrying the ticket's serial, same footprint as a single-pin receipt */}
+      {loading && (
+        <section className="rc rc--loading rc--wide" aria-hidden="true" data-loading="">
+          <div className="rc-band">
+            <span className="t-label">Fetching from Pinterest…</span>
+            {reading.serial && !batchActive ? (
+              <span className="rc-serial" translate="no">No.&nbsp;{reading.serial}</span>
+            ) : null}
+          </div>
+          <div className="rc-split">
+          <div className="rc-main">
+          <div className="rc-body">
+            <div className="rc-head">
+              <span className="rc-skel" style={{ height: '1.35rem', width: '82%' }} />
+              <span className="rc-skel" style={{ height: '1rem', width: '58%', marginTop: '0.5rem' }} />
+            </div>
+            <div className="rc-media rc-skel" />
+            <div className="rc-info">
+              <span className="rc-skel" style={{ height: '2.75rem', width: '64%' }} />
+            </div>
+          </div>
+          <div className="rc-collect">
+            <span className="rc-skel" style={{ height: '3.5rem' }} />
+            <span className="rc-skel" style={{ height: '0.875rem', width: '46%', marginTop: '0.75rem' }} />
+          </div>
+          </div>
+          </div>
+        </section>
       )}
 
-      {/* Carousel / multi-slide pin result */}
-      {isCarousel && result?.media_items ? (
-        <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
-            <div className="min-w-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
-                <Layers className="w-3.5 h-3.5" />
-                Carousel · {result.media_items.length} slides
-              </span>
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight break-words">
-                {result.title || 'Pinterest Carousel'}
-              </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                All carousel images &amp; videos extracted
-                {zipping ? ` · Packing ZIP ${zipProgress.done}/${zipProgress.total}…` : ''}
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-2 shrink-0 w-full sm:w-auto">
-              <button
-                type="button"
-                disabled={zipping}
-                onClick={() =>
-                  downloadCarouselAsZip(
-                    result.media_items || [],
-                    `carousel_${result.title || result.pin_id || 'pinterest'}`,
-                  )
-                }
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation"
+      {/* Void: the claim could not be fulfilled */}
+      {error && !loading && !result && batchResults.length === 0 && (
+        errKind === 'validation' ? (
+          <div role="alert" className="rc rc--compact">
+            <span className="stamp stamp-warn" aria-hidden="true">Void</span>
+            <p>{error}</p>
+          </div>
+        ) : (
+          <section className="rc rc--void" aria-labelledby="void-heading" data-print="" data-void={errKind}>
+            <div className="rc-void-head">
+              <span className="stamp stamp-warn" aria-hidden="true">Void</span>
+              <h2
+                id="void-heading"
+                ref={voidHeadingRef}
+                tabIndex={-1}
+                aria-describedby="void-msg"
+                className="rc-title"
               >
-                {zipping ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>
-                      Zipping… {zipProgress.done}/{zipProgress.total}
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <Archive className="w-4 h-4" />
-                    <span>Download ZIP ({result.media_items.length})</span>
-                  </>
-                )}
+                {VOID_COPY[errKind].title}
+              </h2>
+            </div>
+            <p id="void-msg" className="rc-void-msg">{error}</p>
+            {VOID_COPY[errKind].hint && <p className="rc-void-hint">{VOID_COPY[errKind].hint}</p>}
+            <div className="rc-tools">
+              <button type="button" className="rc-btn" onClick={focusTicket}>
+                <RefreshCw aria-hidden="true" />
+                Try another link
               </button>
-            </div>
-          </div>
-
-          {zipping && zipProgress.total > 0 && (
-            <div
-              className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden"
-              role="progressbar"
-              aria-valuenow={zipProgress.done}
-              aria-valuemin={0}
-              aria-valuemax={zipProgress.total}
-              aria-label="ZIP packing progress"
-            >
-              <div
-                className="h-full bg-[#E11D48] transition-[width] duration-300 ease-out"
-                style={{ width: `${Math.round((zipProgress.done / zipProgress.total) * 100)}%` }}
-              />
-            </div>
-          )}
-
-          {result.description && (
-            <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3">{result.description}</p>
-          )}
-
-          {/* Horizontal Scrollable Carousel */}
-          <div className="relative group/carousel">
-            <button
-              type="button"
-              onClick={() => carouselScrollRef.current?.scrollBy({ left: -360, behavior: 'smooth' })}
-              className="absolute -left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-white shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100"
-              aria-label="Scroll slides left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <div
-              ref={carouselScrollRef}
-              className="flex flex-row overflow-x-auto gap-4 pb-4 pt-1 snap-x scroll-smooth scrollbar-thin scrollbar-thumb-rose-400 dark:scrollbar-thumb-rose-600"
-            >
-              {result.media_items.map((item, idx) => {
-                const ext =
-                  item.type === 'video'
-                    ? 'mp4'
-                    : item.type === 'gif' || isGifUrl(item.url)
-                      ? 'gif'
-                      : mediaFileExtension(item.url, 'jpg');
-                const filename = `slide_${idx + 1}.${ext}`;
-                return (
-                  <div
-                    key={idx}
-                    className="w-48 sm:w-56 shrink-0 snap-start p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col justify-between gap-3 group/card min-w-0"
-                  >
-                    <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
-                      <img
-                        src={item.thumbnail_url || (item.type === 'image' ? item.url : result.thumbnail_url) || ''}
-                        alt={item.title || `Slide ${idx + 1}`}
-                        className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                      <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold">
-                        {idx + 1}/{result.media_items!.length}
-                        {item.type === 'video' ? ' · VIDEO' : ''}
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate" title={item.title || `Slide ${idx + 1}`}>
-                      {item.title || `Slide ${idx + 1}`}
-                    </span>
-                    <a
-                      href={proxyDownloadHref(item.url, filename)}
-                      download={filename}
-                      onClick={(e) => onProxyDownloadClick(e, item.url, filename)}
-                      aria-busy={savingFile === filename}
-                      className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>
-                        {item.type === 'video'
-                          ? 'Download MP4'
-                          : ext === 'gif'
-                            ? 'Download GIF'
-                            : 'Download HD'}
-                      </span>
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => carouselScrollRef.current?.scrollBy({ left: 360, behavior: 'smooth' })}
-              className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-white shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100"
-              aria-label="Scroll slides right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      ) : result?.is_avatar_only ? (
-        /* ── Avatar-only result (profile picture downloader) ─────────── */
-        <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-center flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-white dark:to-slate-900 border-2 border-red-200 dark:border-red-900/50 shadow-xl flex flex-col items-center text-center gap-5 w-full">
-            {result.profile_avatar_url ? (
-              <div className="relative group">
-                <img
-                  src={result.profile_avatar_url}
-                  alt={`${result.profile_title || 'User'} avatar`}
-                  className="w-40 h-40 sm:w-52 sm:h-52 rounded-full object-cover border-4 border-[#E11D48] shadow-2xl transition-transform group-hover:scale-105"
-                />
-                <span className="absolute bottom-2 right-2 px-3 py-1.5 rounded-full bg-[#E11D48] text-white text-xs font-black shadow-md">
-                  HD Avatar
-                </span>
-              </div>
-            ) : (
-              <div className="w-36 h-36 rounded-full bg-red-100 dark:bg-red-950 flex items-center justify-center text-5xl">
-                👤
-              </div>
-            )}
-
-            <div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/80 text-rose-700 dark:text-rose-300 text-xs font-extrabold mb-2 border border-red-200 dark:border-red-900/50">
-                <User className="w-3.5 h-3.5" />
-                Profile Picture Extracted
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight">
-                {result.profile_title || `@${result.username}`}
-              </h2>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                Full-resolution uncropped profile avatar photo ({result.username ? `@${result.username}` : 'Pinterest User'})
-              </p>
-            </div>
-
-            {result.profile_avatar_url && (
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md">
-                <a
-                  href={proxyDownloadHref(result.profile_avatar_url, `pinterest_avatar_${result.username || 'user'}.jpg`)}
-                  download={`pinterest_avatar_${result.username || 'user'}.jpg`}
-                  onClick={(e) =>
-                    onProxyDownloadClick(
-                      e,
-                      result.profile_avatar_url!,
-                      `pinterest_avatar_${result.username || 'user'}.jpg`,
-                    )
-                  }
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
-                >
-                  <Download className="w-5 h-5" />
-                  <span>Download HD Profile Picture</span>
+              {(errKind === 'link' || errKind === 'private') && (
+                <a href="/how-to-download-pinterest-videos" className="rc-btn rc-btn--quiet">
+                  Read the step-by-step guide
+                  <ChevronRight aria-hidden="true" />
                 </a>
-                <a
-                  href={result.profile_avatar_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white font-bold text-sm transition-colors w-full sm:w-auto touch-manipulation"
-                >
-                  <ImageIcon className="w-4 h-4" />
-                  <span>Open Full Size</span>
-                </a>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          </section>
+        )
+      )}
 
-          <p className="text-xs text-slate-600 dark:text-slate-400">
-            Want all pins from this profile? Use the{' '}
-            <a href="/pinterest-profile-downloader" className="text-rose-600 dark:text-rose-400 hover:underline font-bold">
-              Profile Downloader (ZIP)
-            </a>{' '}
-            instead.
-          </p>
-        </div>
-      ) : isCollection ? (
-        <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl text-left flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          {result!.is_profile && (
-            <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-red-500/10 via-rose-500/5 to-white dark:to-slate-900 border-2 border-red-200 dark:border-red-900/50 shadow-xl flex flex-col items-center text-center gap-5">
-              {result!.profile_avatar_url ? (
-                <div className="relative group">
-                  <img
-                    src={result!.profile_avatar_url}
-                    alt={`${result!.profile_title || 'User'} avatar`}
-                    className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-[#E11D48] shadow-2xl transition-transform group-hover:scale-105"
+      {/* ── Carousel / multi-slide pin ─────────────────────────────── */}
+      {resultKind === 'carousel' && result?.media_items ? (
+        (() => {
+          const items = result.media_items;
+          const archiveName = `carousel_${result.title || result.pin_id || 'pinterest'}`;
+          const vids = items.filter((m) => m.type === 'video').length;
+          const gifs = items.filter((m) => m.type !== 'video' && (m.type === 'gif' || isGifUrl(m.url))).length;
+          const pad = String(items.length).length < 2 ? 2 : String(items.length).length;
+          return (
+            <Receipt
+              stock="image"
+              label="Ready · Carousel"
+              icon={<Layers aria-hidden="true" />}
+              serial={receiptSerial}
+              labelledBy="result-heading"
+              key={`carousel-${result.pin_id || result.title}`}
+              className="rc--wide"
+            >
+              <div className="rc-top">
+              <div className="rc-body rc-body--plain">
+                {resultHeading(result.title || 'Pinterest Carousel', result.description || undefined)}
+                <div className="rc-info">
+                  <Specs
+                    items={[
+                      { label: 'Slides', value: nf(items.length) },
+                      { label: 'Images', value: items.length - vids - gifs ? nf(items.length - vids - gifs) : null },
+                      { label: 'Videos', value: vids ? nf(vids) : null },
+                      { label: 'GIFs', value: gifs ? nf(gifs) : null },
+                    ]}
                   />
-                  <span className="absolute bottom-1 right-1 px-2.5 py-1 rounded-full bg-[#E11D48] text-white text-xs font-black shadow-md">
-                    HD Avatar
-                  </span>
                 </div>
-              ) : (
-                <div className="w-28 h-28 rounded-full bg-red-100 dark:bg-red-950 flex items-center justify-center text-4xl">
-                  👤
-                </div>
-              )}
-
-              <div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/80 text-[#E11D48] text-xs font-extrabold mb-2 border border-red-200 dark:border-red-900/50">
-                  Profile Avatar Extracted
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight">
-                  {result!.profile_title || `@${result!.username}`}
-                </h2>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                  Full-size uncropped profile avatar photo ({result!.username ? `@${result!.username}` : 'Pinterest User'})
-                </p>
               </div>
-
-              {result!.profile_avatar_url && (
-                <div className="flex flex-wrap items-center justify-center gap-3 w-full max-w-md">
-                  <a
-                    href={proxyDownloadHref(
-                      result!.profile_avatar_url,
-                      `pinterest_avatar_${result!.username || 'user'}.jpg`,
-                    )}
-                    download={`pinterest_avatar_${result!.username || 'user'}.jpg`}
-                    onClick={(e) =>
-                      onProxyDownloadClick(
-                        e,
-                        result!.profile_avatar_url!,
-                        `pinterest_avatar_${result!.username || 'user'}.jpg`,
-                      )
-                    }
-                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-base shadow-lg shadow-red-500/25 active:scale-95 transition-all w-full sm:w-auto touch-manipulation"
-                  >
-                    <Download className="w-5 h-5" />
-                    <span>Download HD Profile Picture (DP)</span>
-                  </a>
+              <div className="rc-collect">
+                {zipCta(items.length, archiveName, () => downloadCarouselAsZip(items, archiveName), 'image')}
+                {receiptError}
+                {savedNotice}
+              </div>
+              </div>
+              <Perf />
+              <div className="rc-section">
+                <h3 className="rc-h3">Every slide</h3>
+                <ul className="rc-grid">
+                  {items.map((item, idx) => {
+                    const ext =
+                      item.type === 'video'
+                        ? 'mp4'
+                        : item.type === 'gif' || isGifUrl(item.url)
+                          ? 'gif'
+                          : mediaFileExtension(item.url, 'jpg');
+                    return tile({
+                      key: String(idx),
+                      no: `${String(idx + 1).padStart(pad, '0')}/${String(items.length).padStart(pad, '0')}`,
+                      thumb: item.thumbnail_url || (item.type === 'image' ? item.url : result.thumbnail_url) || '',
+                      title: item.title || `Slide ${idx + 1}`,
+                      mediaUrl: item.url,
+                      filename: `slide_${idx + 1}.${ext}`,
+                      ext,
+                      isVideo: item.type === 'video',
+                      srName: `slide ${idx + 1}`,
+                    });
+                  })}
+                </ul>
+              </div>
+              <div className="rc-tools">{anotherBtn}</div>
+            </Receipt>
+          );
+        })()
+      ) : resultKind === 'avatar' && result ? (
+        /* ── Profile picture only ─────────────────────────────────── */
+        (() => {
+          const avatarName = `pinterest_avatar_${result.username || 'user'}.jpg`;
+          const name = result.profile_title || (result.username ? `@${result.username}` : 'Pinterest user');
+          return (
+            <Receipt
+              stock="avatar"
+              label="Ready · Profile picture"
+              icon={<User aria-hidden="true" />}
+              serial={reading.serial || (result.username ? `@${result.username}` : '')}
+              labelledBy="result-heading"
+              key={`avatar-${result.username}`}
+              className="rc--wide"
+            >
+              <div className="rc-split">
+              <div className="rc-main">
+              <div className="rc-body">
+                <div className="rc-media rc-media--square">
+                  {result.profile_avatar_url ? (
+                    <img src={result.profile_avatar_url} alt={`${name} profile picture`} width={400} height={400} decoding="async" />
+                  ) : (
+                    <div className="grid h-full place-items-center text-[var(--ink-2)]">
+                      <User className="h-12 w-12" aria-hidden="true" />
+                    </div>
+                  )}
+                </div>
+                {resultHeading(name, result.username && result.profile_title ? <span translate="no">@{result.username}</span> : undefined)}
+                <div className="rc-info">
+                  <Specs
+                    items={[
+                      { label: 'Format', value: 'JPG' },
+                      { label: 'Crop', value: 'Uncropped' },
+                    ]}
+                  />
+                </div>
+              </div>
+              {result.profile_avatar_url && (
+                <div className="rc-collect">
+                  {fileCta({ url: result.profile_avatar_url, filename: avatarName, format: 'JPG' }, 'Download JPG')}
+                  {receiptError}
+                  {savedNotice}
                 </div>
               )}
-            </div>
-          )}
-
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
-            <div className="min-w-0">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 text-[#E11D48] text-xs font-bold border border-red-200 dark:border-red-900/40 mb-2">
-                {result!.is_profile ? (
-                  <>
-                    <User className="w-3.5 h-3.5" />
-                    Pinterest Profile
-                  </>
-                ) : (
-                  <>📌 Pinterest Board</>
+              </div>
+              <div className="rc-side">
+              <Perf />
+              <div className="rc-tools">
+                {result.profile_avatar_url && (
+                  <a href={result.profile_avatar_url} target="_blank" rel="noopener noreferrer" className="rc-btn">
+                    <ExternalLink aria-hidden="true" />
+                    Open full size
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
                 )}
-              </span>
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight break-words">
-                {result!.is_profile
-                  ? result!.profile_title || result!.board_title || 'Pinterest Profile'
-                  : result!.board_title || 'Pinterest Board'}
-              </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Found <strong>{result!.pins?.length || 0}</strong> downloadable pins
-                {result!.username ? ` from @${result!.username}` : ''}
-                {result!.pins && result!.pins.length > displayLimit
-                  ? ` · Showing ${Math.min(displayLimit, result!.pins.length)} preview items`
-                  : ''}
-                {zipping ? ` · Packing ZIP ${zipProgress.done}/${zipProgress.total}…` : ''}
+                {result.profile_avatar_url && (
+                  <button type="button" className="rc-btn" onClick={() => void copyFileLink(result.profile_avatar_url!)}>
+                    {copiedLink ? <Check aria-hidden="true" /> : <Link2 aria-hidden="true" />}
+                    {copiedLink ? 'Link copied' : 'Copy file link'}
+                  </button>
+                )}
+                {anotherBtn}
+              </div>
+              <p className="rc-void-hint pb-4">
+                Want every pin from this profile? Use the{' '}
+                <a href="/pinterest-profile-downloader" className="font-bold text-[var(--ink)] underline">
+                  Profile Downloader (ZIP)
+                </a>{' '}
+                instead.
               </p>
-            </div>
-
-            {result!.pins && result!.pins.length > 0 && (
-              <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 shrink-0 w-full sm:w-auto">
-                <button
-                  type="button"
-                  disabled={zipping}
-                  onClick={() =>
-                    downloadCollectionAsZip(
-                      result!.pins || [],
-                      result!.is_profile
-                        ? `profile_${result!.username || 'pinterest'}`
-                        : `board_${result!.board_title || 'pinterest'}`,
-                    )
-                  }
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold text-sm shadow-lg shadow-red-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed touch-manipulation flex-1 sm:flex-initial"
-                >
-                  {zipping ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>
-                        Zipping… {zipProgress.done}/{zipProgress.total}
-                      </span>
-                    </>
+              </div>
+              </div>
+            </Receipt>
+          );
+        })()
+      ) : (resultKind === 'board' || resultKind === 'profile') && result?.pins ? (
+        /* ── Board / profile collection ───────────────────────────── */
+        (() => {
+          const pins = result.pins;
+          const isProfile = resultKind === 'profile';
+          const title = isProfile
+            ? result.profile_title || result.board_title || 'Pinterest Profile'
+            : result.board_title || 'Pinterest Board';
+          const archiveName = isProfile
+            ? `profile_${result.username || 'pinterest'}`
+            : `board_${result.board_title || 'pinterest'}`;
+          const vids = pins.filter((p) => p.is_video && p.video_url).length;
+          const gifs = pins.filter((p) => !(p.is_video && p.video_url) && mediaFileExtension(p.image_url, 'jpg') === 'gif').length;
+          const avatarName = `pinterest_avatar_${result.username || 'user'}.jpg`;
+          const shown = Math.min(displayLimit, pins.length);
+          return (
+            <Receipt
+              stock={isProfile ? 'profile' : 'board'}
+              label={isProfile ? 'Ready · Profile' : 'Ready · Board'}
+              icon={isProfile ? <User aria-hidden="true" /> : <Archive aria-hidden="true" />}
+              serial={reading.serial || (result.username ? `@${result.username}` : '')}
+              labelledBy="result-heading"
+              key={`${resultKind}-${result.board_url || result.username}`}
+              className="rc--wide"
+            >
+              <div className="rc-top">
+              <div className={`rc-body ${isProfile && result.profile_avatar_url ? '' : 'rc-body--plain'}`}>
+                {isProfile && result.profile_avatar_url && (
+                  <div className="rc-media rc-media--square">
+                    <img src={result.profile_avatar_url} alt={`${title} profile picture`} width={400} height={400} decoding="async" />
+                  </div>
+                )}
+                {resultHeading(title, result.username ? <span translate="no">{isProfile ? '' : 'by '}@{result.username}</span> : undefined)}
+                <div className="rc-info">
+                  <Specs
+                    items={[
+                      { label: 'Pins', value: nf(pins.length) },
+                      { label: 'Images', value: pins.length - vids - gifs ? nf(pins.length - vids - gifs) : null },
+                      { label: 'Videos', value: vids ? nf(vids) : null },
+                      { label: 'GIFs', value: gifs ? nf(gifs) : null },
+                      { label: 'Boards', value: isProfile && result.boards?.length ? nf(result.boards.length) : null },
+                    ]}
+                  />
+                </div>
+              </div>
+              <div className="rc-collect">
+                {zipCta(pins.length, archiveName, () => downloadCollectionAsZip(pins, archiveName), isProfile ? 'profile' : 'board')}
+                {receiptError}
+                {savedNotice}
+              </div>
+              </div>
+              <Perf />
+              {isProfile && result.profile_avatar_url && (
+                <div className="rc-section">
+                  <h3 className="rc-h3">Also on this profile</h3>
+                  <ul className="rc-items">
+                    <LineItem format="JPG" name="Profile picture" note="Full size, uncropped">
+                      <a
+                        href={proxyDownloadHref(result.profile_avatar_url, avatarName)}
+                        download={avatarName}
+                        onClick={(e) => onProxyDownloadClick(e, result.profile_avatar_url!, avatarName)}
+                        aria-busy={savingFile === avatarName}
+                        className="rc-btn"
+                      >
+                        {savingFile === avatarName ? (
+                          <Loader2 className="animate-spin motion-reduce:animate-none" aria-hidden="true" />
+                        ) : (
+                          <Download aria-hidden="true" />
+                        )}
+                        Download<span className="sr-only"> profile picture (JPG)</span>
+                      </a>
+                    </LineItem>
+                  </ul>
+                </div>
+              )}
+              {isProfile && result.boards && result.boards.length > 0 && (
+                <div className="rc-section">
+                  <h3 className="rc-h3">Boards ({nf(result.boards.length)})</h3>
+                  <p className="rc-item-note mt-1">Open a board to collect just its pins.</p>
+                  <ul className="rc-rows">
+                    {result.boards.map((b, idx) => (
+                      <li key={idx}>
+                        <button
+                          type="button"
+                          className="rc-row"
+                          onClick={() => {
+                            setUrl(b.url);
+                            extractSingle(b.url);
+                          }}
+                        >
+                          <span className="rc-row-main">
+                            <span className="rc-row-name">{b.name}</span>
+                            {typeof b.pin_count === 'number' && (
+                              <span className="rc-row-meta">{nf(b.pin_count)} pins</span>
+                            )}
+                          </span>
+                          <span className="rc-row-go">
+                            Open board
+                            <ChevronRight aria-hidden="true" />
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <div className="rc-section">
+                <h3 className="rc-h3">Pins</h3>
+                <ul className="rc-grid rc-grid--dense">
+                  {pins.slice(0, displayLimit).map((pin, idx) => {
+                    const mediaUrl = pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
+                    const ext = pin.is_video && pin.video_url ? 'mp4' : mediaFileExtension(pin.image_url, 'jpg');
+                    return tile({
+                      key: pin.pin_id || String(idx),
+                      no: String(idx + 1),
+                      thumb: pin.thumbnail_url || pin.image_url,
+                      title: pin.title || `Pin ${idx + 1}`,
+                      mediaUrl,
+                      filename: `pin_${pin.pin_id}.${ext}`,
+                      ext,
+                      isVideo: !!(pin.is_video && pin.video_url),
+                      srName: `pin ${idx + 1}`,
+                    });
+                  })}
+                </ul>
+                {pins.length > displayLimit && (
+                  <div className="rc-more">
+                    <span>
+                      Showing {nf(shown)} of {nf(pins.length)}. The ZIP has all of them.
+                    </span>
+                    <button type="button" className="rc-btn" onClick={() => setDisplayLimit((prev) => prev + 24)}>
+                      Load {nf(Math.min(24, pins.length - displayLimit))} more
+                    </button>
+                    <button type="button" className="rc-btn rc-btn--quiet" onClick={() => setDisplayLimit(pins.length)}>
+                      Show all {nf(pins.length)}
+                    </button>
+                  </div>
+                )}
+              </div>
+              <div className="rc-tools">{anotherBtn}</div>
+            </Receipt>
+          );
+        })()
+      ) : result && resultKind ? (
+        /* ── Single pin: image, video or GIF ──────────────────────── */
+        (() => {
+          const stock: StockKey = resultKind === 'gif' ? 'gif' : resultKind === 'video' ? 'video' : 'image';
+          const videoUrl = result.is_video ? selectedQuality || result.video_url : null;
+          const mp4Name = `${slugify(result.title || 'pinterest_video')}.mp4`;
+          const mp3Name = `${slugify(result.title || 'pinterest_audio')}.mp3`;
+          const coverName = result.image_url
+            ? `${slugify(result.title || 'pinterest_cover')}.${mediaFileExtension(result.image_url, 'jpg')}`
+            : '';
+          const coverFmt = result.image_url ? mediaFileExtension(result.image_url, 'jpg').toUpperCase() : '';
+          const showCoverLine = !!result.image_url && !!primaryFile && primaryFile.url !== result.image_url && result.image_url !== gifUrl;
+          const showMp4Line = !!videoUrl && primaryFile?.format !== 'MP4';
+          const showPack = !!(result.is_video || gifUrl || result.is_gif);
+          const packParts = [gifUrl ? 'GIF' : '', videoUrl ? 'MP4, MP3' : '', 'cover image'].filter(Boolean).join(', ');
+          const ctaLabel = primaryFile ? `Download ${primaryFile.format}` : '';
+          const dims = currentQuality?.width && currentQuality?.height ? `${currentQuality.width}×${currentQuality.height}` : null;
+          const rowFiles = [mp4Name, mp3Name, coverName, 'pack'];
+          const errorInRow = !!error && !isPartialZipMsg && !!attemptFile && rowFiles.includes(attemptFile);
+          const rowAlert = (file: string) =>
+            errorFor(file) ? (
+              <div className="rc-notice" role="alert">
+                <span className="stamp stamp-warn" aria-hidden="true">Void</span>
+                <p>{error}</p>
+              </div>
+            ) : null;
+          const rowNote = (file: string, idle: string) =>
+            savingNow(file) ? downloadStatusLabel() : lastSaved === file && !savingFile ? 'Download started' : idle;
+          const lineBtn = (saving: boolean) =>
+            saving ? (
+              <Loader2 className="animate-spin motion-reduce:animate-none" aria-hidden="true" />
+            ) : (
+              <Download aria-hidden="true" />
+            );
+          return (
+            <Receipt
+              stock={stock}
+              label={`Ready · ${KIND_LABEL[resultKind]}`}
+              icon={resultKind === 'video' ? <Film aria-hidden="true" /> : <ImageIcon aria-hidden="true" />}
+              serial={receiptSerial}
+              labelledBy="result-heading"
+              key={`pin-${result.pin_id || result.title}`}
+              className="rc--wide"
+            >
+              <div className="rc-split">
+              <div className="rc-main">
+              <div className="rc-body">
+                <div className="rc-media" data-frozen={gifUrl && !gifPlaying ? 'true' : undefined}>
+                  {showPlayer && (selectedQuality || result.video_url) ? (
+                    <video
+                      src={proxyDownloadHref(selectedQuality || result.video_url!, 'preview.mp4', true)}
+                      controls
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="auto"
+                      aria-label={`Preview: ${result.title}`}
+                    />
                   ) : (
                     <>
-                      <Archive className="w-4 h-4" />
-                      <span>Download ZIP ({result!.pins.length})</span>
+                      <img
+                        src={gifUrl ? proxyDownloadHref(gifUrl, 'preview.gif', true) : result.thumbnail_url || result.image_url}
+                        alt={result.title}
+                        decoding="async"
+                        width={360}
+                        height={480}
+                        onError={(e) => {
+                          const el = e.currentTarget;
+                          if (el.dataset.fallback) return;
+                          el.dataset.fallback = '1';
+                          if (result.thumbnail_url && el.src !== result.thumbnail_url) {
+                            el.src = result.thumbnail_url;
+                          }
+                        }}
+                      />
+                      {result.is_video && (
+                        <button type="button" className="rc-play" onClick={() => setShowPlayer(true)}>
+                          <span className="rc-play-tile">
+                            <Play aria-hidden="true" />
+                            Play preview
+                          </span>
+                        </button>
+                      )}
+                      {gifUrl && (
+                        <button
+                          type="button"
+                          className="rc-media-toggle"
+                          aria-pressed={!gifPlaying}
+                          onClick={() => setGifPlaying(!gifPlaying)}
+                        >
+                          {gifPlaying ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+                          {gifPlaying ? 'Freeze' : 'Play loop'}
+                        </button>
+                      )}
                     </>
                   )}
-                </button>
-                {result!.pins.length > displayLimit && (
-                  <button
-                    type="button"
-                    onClick={() => setDisplayLimit(result!.pins!.length)}
-                    className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold text-xs border border-slate-200 dark:border-slate-700 transition-all"
-                  >
-                    <span>Show All ({result!.pins.length})</span>
-                  </button>
-                )}
-              </div>
-            )}
-          </div>
-
-          {zipping && zipProgress.total > 0 && (
-            <div
-              className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden"
-              role="progressbar"
-              aria-valuenow={zipProgress.done}
-              aria-valuemin={0}
-              aria-valuemax={zipProgress.total}
-              aria-label="ZIP packing progress"
-            >
-              <div
-                className="h-full bg-[#E11D48] transition-[width] duration-300 ease-out"
-                style={{ width: `${Math.round((zipProgress.done / zipProgress.total) * 100)}%` }}
-              />
-            </div>
-          )}
-
-          {/* Profile Boards Listing */}
-          {result!.is_profile && result!.boards && result!.boards.length > 0 && (
-            <div className="flex flex-col gap-3 p-4.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
-                  <Archive className="w-4 h-4 text-[#E11D48]" />
-                  Profile Boards ({result!.boards.length})
-                </span>
-                <span className="text-[11px] text-slate-500 dark:text-slate-400">
-                  Select a board to extract its full dedicated pin pack
-                </span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
-                {result!.boards.map((b, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => {
-                      setUrl(b.url);
-                      extractSingle(b.url);
-                    }}
-                    className="p-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-800 text-left flex items-center justify-between gap-2 group transition-all shadow-xs touch-manipulation"
-                  >
-                    <div className="min-w-0">
-                      <p className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-[#E11D48] truncate">
-                        📌 {b.name}
-                      </p>
-                      {typeof b.pin_count === 'number' && (
-                        <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold mt-0.5">
-                          {b.pin_count} pins
-                        </p>
-                      )}
-                    </div>
-                    <span className="text-[10px] font-extrabold text-[#E11D48] bg-red-50 dark:bg-red-950/60 px-2 py-1 rounded-md shrink-0 group-hover:scale-105 transition-transform">
-                      Extract →
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Horizontal Scrollable Carousel for Board/Profile Pins */}
-          <div className="relative group/scroll">
-            {/* Left Scroll Arrow */}
-            <button
-              type="button"
-              onClick={() => collectionScrollRef.current?.scrollBy({ left: -360, behavior: 'smooth' })}
-              className="absolute -left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-white shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/scroll:opacity-100 focus:opacity-100"
-              aria-label="Scroll pins left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <div
-              ref={collectionScrollRef}
-              className="flex flex-row overflow-x-auto gap-4 pb-4 pt-1 snap-x scroll-smooth scrollbar-thin scrollbar-thumb-rose-400 dark:scrollbar-thumb-rose-600"
-            >
-              {result!.pins?.slice(0, displayLimit).map((pin, idx) => {
-                const mediaUrl = pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
-                const ext =
-                  pin.is_video && pin.video_url
-                    ? 'mp4'
-                    : mediaFileExtension(pin.image_url, 'jpg');
-                return (
-                  <div
-                    key={pin.pin_id || idx}
-                    className="w-48 sm:w-56 shrink-0 snap-start p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex flex-col justify-between gap-3 group/card min-w-0"
-                  >
-                    <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600">
-                      <img
-                        src={pin.thumbnail_url || pin.image_url}
-                        alt={pin.title}
-                        className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                      {pin.is_video ? (
-                        <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/80 text-white text-[10px] font-extrabold tracking-wider">
-                          MP4 VIDEO
-                        </span>
-                      ) : ext === 'gif' ? (
-                        <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/80 text-white text-[10px] font-extrabold tracking-wider">
-                          GIF
-                        </span>
-                      ) : null}
-                      <span className="absolute bottom-2 left-2 px-1.5 py-0.5 rounded-md bg-black/60 text-white text-[10px] font-mono">
-                        #{idx + 1}
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 truncate" title={pin.title}>
-                      {pin.title || `Pin #${idx + 1}`}
-                    </span>
-                    <a
-                      href={proxyDownloadHref(mediaUrl, `pin_${pin.pin_id}.${ext}`)}
-                      download={`pin_${pin.pin_id}.${ext}`}
-                      onClick={(e) => onProxyDownloadClick(e, mediaUrl, `pin_${pin.pin_id}.${ext}`)}
-                      className="w-full py-2.5 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:text-[#E11D48] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors touch-manipulation shadow-sm"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>
-                        {pin.is_video && pin.video_url
-                          ? 'Download MP4'
-                          : ext === 'gif'
-                            ? 'Download GIF'
-                            : 'Download HD'}
-                      </span>
-                    </a>
-                  </div>
-                );
-              })}
-
-              {/* Card at end if more pins exist */}
-              {result!.pins && result!.pins.length > displayLimit && (
-                <div className="w-52 sm:w-60 shrink-0 snap-start p-4 rounded-2xl bg-gradient-to-br from-rose-50 to-red-100 dark:from-slate-800 dark:to-slate-900 border-2 border-dashed border-red-200 dark:border-red-900/60 flex flex-col items-center justify-center text-center gap-3">
-                  <span className="text-xs font-extrabold text-[#E11D48] dark:text-red-400 uppercase tracking-wider">
-                    +{result!.pins.length - displayLimit} More Pins
-                  </span>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-snug">
-                    Get all {result!.pins.length} items in one ZIP archive.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setDisplayLimit((prev) => prev + 24)}
-                    className="w-full py-2 rounded-xl bg-white dark:bg-slate-800 border border-red-200 dark:border-red-800 text-slate-900 dark:text-white font-bold text-xs shadow-sm hover:bg-red-50"
-                  >
-                    Load More (+24)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setDisplayLimit(result!.pins!.length)}
-                    className="text-xs font-bold text-[#E11D48] hover:underline"
-                  >
-                    Show All ({result!.pins.length})
-                  </button>
                 </div>
-              )}
-            </div>
-
-            {/* Right Scroll Arrow */}
-            <button
-              type="button"
-              onClick={() => collectionScrollRef.current?.scrollBy({ left: 360, behavior: 'smooth' })}
-              className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 dark:bg-slate-800/95 text-slate-800 dark:text-white shadow-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:scale-110 active:scale-95 transition-all opacity-0 group-hover/scroll:opacity-100 focus:opacity-100"
-              aria-label="Scroll pins right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      ) : result && (
-        <div className="mt-8 p-4 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
-          <div className="flex flex-col md:flex-row gap-6 items-start">
-            {/* Preview Section */}
-            <div className="w-full md:w-72 aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700 relative shadow-inner group">
-              {showPlayer && (selectedQuality || result.video_url) ? (
-                <video
-                  src={proxyDownloadHref(selectedQuality || result.video_url!, 'preview.mp4', true)}
-                  controls
-                  autoPlay
-                  loop
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full object-contain bg-black"
-                />
-              ) : (
-                <div className="relative w-full h-full flex items-center justify-center bg-slate-100 dark:bg-slate-800">
-                  <img
-                    src={
-                      resolvedGifUrl(result)
-                        ? proxyDownloadHref(resolvedGifUrl(result)!, 'preview.gif', true)
-                        : result.thumbnail_url || result.image_url
-                    }
-                    alt={result.title}
-                    style={gifPlaying ? undefined : { filter: 'grayscale(25%) opacity(0.8)' }}
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      const el = e.currentTarget;
-                      if (el.dataset.fallback) return;
-                      el.dataset.fallback = '1';
-                      if (result.thumbnail_url && el.src !== result.thumbnail_url) {
-                        el.src = result.thumbnail_url;
-                      }
-                    }}
+                {resultHeading(result.title || 'Pinterest Pin', result.description || undefined)}
+                <div className="rc-info">
+                  <Specs
+                    items={[
+                      { label: 'Format', value: primaryFile?.format || null },
+                      { label: 'Resolution', value: primaryFile?.format === 'MP4' ? dims : null },
+                      { label: 'Plays', value: primaryFile?.format === 'GIF' ? 'Looping' : null },
+                    ]}
                   />
-
-                  {/* Play video overlay if video available */}
-                  {result.is_video && !showPlayer && (
-                    <button
-                      type="button"
-                      onClick={() => setShowPlayer(true)}
-                      className="absolute inset-0 bg-black/40 flex items-center justify-center text-white group-hover:bg-black/50 transition-colors"
-                      title="Play Preview"
-                    >
-                      <div className="w-12 h-12 rounded-full bg-[#E11D48] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Play className="w-6 h-6 fill-white text-white ml-1" />
+                  {result.qualities && result.qualities.length > 1 && primaryFile?.format === 'MP4' && (
+                    <fieldset className="rc-q">
+                      <legend>Quality</legend>
+                      <div className="rc-q-row">
+                        {result.qualities.map((q, idx) => {
+                          const checked = (selectedQuality || result.video_url) === q.url;
+                          return (
+                            <label key={idx} data-checked={checked ? 'true' : undefined}>
+                              <input
+                                type="radio"
+                                name="video-quality"
+                                value={q.url}
+                                checked={checked}
+                                onChange={() => setSelectedQuality(q.url)}
+                              />
+                              <span>{q.label}</span>
+                              {q.width && q.height ? (
+                                <span className="rc-q-dim">
+                                  {q.width}&times;{q.height}
+                                </span>
+                              ) : null}
+                            </label>
+                          );
+                        })}
                       </div>
-                    </button>
-                  )}
-
-                  {/* GIF Badge & Looping indicator */}
-                  {(resolvedGifUrl(result) || (result.is_gif && !result.is_video)) && (
-                    <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-xs text-white text-[11px] font-black border border-white/20 shadow-md pointer-events-none">
-                      <Sparkles className="w-3.5 h-3.5 text-rose-400" />
-                      <span>Looping GIF</span>
-                    </div>
-                  )}
-
-                  {/* GIF Play/Pause animation toggle */}
-                  {resolvedGifUrl(result) && (
-                    <button
-                      type="button"
-                      onClick={() => setGifPlaying(!gifPlaying)}
-                      className="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-black/75 hover:bg-black/90 text-white text-[10px] font-bold border border-white/20 transition-all shadow-md flex items-center gap-1"
-                    >
-                      {gifPlaying ? 'Freeze' : 'Play Loop'}
-                    </button>
+                    </fieldset>
                   )}
                 </div>
-              )}
-            </div>
+              </div>
 
-            <div className="flex flex-col flex-1 gap-3 w-full">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold w-fit border border-emerald-200 dark:border-emerald-800">
-                <Check className="w-3.5 h-3.5" />{' '}
-                {resolvedGifUrl(result) || (result.is_gif && !result.is_video)
-                  ? 'Animated GIF ready — Full loop preserved'
-                  : result.is_video
-                    ? 'Video ready — HD MP4'
-                    : 'Media ready HD'}
-              </span>
-
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug">
-                {result.title}
-              </h2>
-              {result.description && (
-                <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
-                  {result.description}
-                </p>
-              )}
-
-              {/* Quality Selector for videos */}
-              {result.qualities && result.qualities.length > 1 && (
-                <div className="mt-1">
-                  <label htmlFor="quality-select" className="text-xs text-slate-500 block mb-1.5 font-bold uppercase tracking-wider">Select Stream Quality:</label>
-                  <select
-                    id="quality-select"
-                    value={selectedQuality}
-                    onChange={(e) => setSelectedQuality(e.target.value)}
-                    className="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-semibold border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-[#E11D48] w-full sm:w-auto"
-                  >
-                    {result.qualities.map((q, idx) => (
-                      <option key={idx} value={q.url}>
-                        {q.label} {q.height ? `(${q.height}p)` : ''}
-                      </option>
-                    ))}
-                  </select>
+              {primaryFile && (
+                <div className="rc-collect">
+                  {fileCta(primaryFile, ctaLabel)}
+                  {!errorInRow && receiptError}
+                  {savedNotice}
                 </div>
               )}
+              </div>
+              <div className="rc-side">
 
-              {/* Action Buttons */}
-              <div className="mt-4 flex flex-wrap gap-3">
-                {/* 1. Direct Native GIF Download */}
-                {resolvedGifUrl(result) && (
-                  <a
-                    href={proxyDownloadHref(
-                      resolvedGifUrl(result)!,
-                      `${slugify(result.title || 'pinterest_gif')}.gif`,
-                    )}
-                    download={`${slugify(result.title || 'pinterest_gif')}.gif`}
-                    aria-busy={savingFile?.endsWith('.gif')}
-                    onClick={(e) =>
-                      onProxyDownloadClick(
-                        e,
-                        resolvedGifUrl(result)!,
-                        `${slugify(result.title || 'pinterest_gif')}.gif`,
-                      )
-                    }
-                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-extrabold transition-all text-sm shadow-md shadow-red-500/20 active:scale-95 touch-manipulation"
-                    title="Download original looping animated GIF"
-                  >
-                    {savingFile?.endsWith('.gif') ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>{downloadStatusLabel() || 'Downloading GIF…'}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Download className="w-4 h-4" />
-                        <span>Download Looping GIF (.gif)</span>
-                      </>
-                    )}
-                  </a>
-                )}
+              {(showMp4Line || videoUrl || showCoverLine || showPack) && (
+                <>
+                  <Perf />
+                  <div className="rc-section">
+                    <h3 className="rc-h3">Also in this pin</h3>
+                    <ul className="rc-items">
+                      {showMp4Line && videoUrl && (
+                        <LineItem format="MP4" name="Video" note={rowNote(mp4Name, dims || 'With sound')} after={rowAlert(mp4Name)}>
+                          <a
+                            href={proxyDownloadHref(videoUrl, mp4Name)}
+                            download={mp4Name}
+                            onClick={(e) => onProxyDownloadClick(e, videoUrl, mp4Name)}
+                            aria-busy={savingFile === mp4Name}
+                            className="rc-btn"
+                            data-line="mp4"
+                          >
+                            {lineBtn(savingFile === mp4Name)}
+                            Download<span className="sr-only"> video (MP4)</span>
+                          </a>
+                        </LineItem>
+                      )}
+                      {videoUrl && (
+                        <LineItem
+                          format="MP3"
+                          name="Audio"
+                          note={rowNote(mp3Name, 'The sound from this video')}
+                          after={rowAlert(mp3Name)}
+                        >
+                          <button
+                            type="button"
+                            aria-disabled={!!savingFile || undefined}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              if (savingFile) return;
+                              void saveProxyDownload(videoUrl, mp3Name);
+                            }}
+                            aria-busy={savingFile === mp3Name}
+                            className="rc-btn"
+                            data-line="mp3"
+                          >
+                            {lineBtn(savingFile === mp3Name)}
+                            Download<span className="sr-only"> audio (MP3)</span>
+                          </button>
+                        </LineItem>
+                      )}
+                      {showCoverLine && result.image_url && (
+                        <LineItem
+                          format={coverFmt}
+                          name="Cover image"
+                          note={rowNote(coverName, 'The still shown on Pinterest')}
+                          after={rowAlert(coverName)}
+                        >
+                          <a
+                            href={proxyDownloadHref(result.image_url, coverName)}
+                            download={coverName}
+                            onClick={(e) => onProxyDownloadClick(e, result.image_url!, coverName)}
+                            aria-busy={savingFile === coverName}
+                            className="rc-btn"
+                            data-line="cover"
+                          >
+                            {lineBtn(savingFile === coverName)}
+                            Download<span className="sr-only"> cover image ({coverFmt})</span>
+                          </a>
+                        </LineItem>
+                      )}
+                      {showPack && (
+                        <LineItem
+                          format="ZIP"
+                          name="Everything"
+                          note={
+                            zipping && zipProgress.total
+                              ? `Packing ${zipProgress.done} of ${zipProgress.total} files…`
+                              : packParts.charAt(0).toUpperCase() + packParts.slice(1)
+                          }
+                          after={rowAlert('pack')}
+                        >
+                          {zipping ? (
+                            <button type="button" onClick={cancelZip} className="rc-btn" data-line="pack">
+                              <X aria-hidden="true" />
+                              Cancel<span className="sr-only"> ZIP</span>
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setAttemptFile('pack');
+                                void downloadSinglePinCompletePack(result);
+                              }}
+                              className="rc-btn"
+                              data-line="pack"
+                            >
+                              {lineBtn(false)}
+                              Download<span className="sr-only"> everything (ZIP)</span>
+                            </button>
+                          )}
+                        </LineItem>
+                      )}
+                    </ul>
+                    {zipNotice(stock)}
+                  </div>
+                </>
+              )}
 
-                {/* 2. Download MP4 Video */}
-                {result.is_video && (selectedQuality || result.video_url) && (
-                  <a
-                    href={proxyDownloadHref(
-                      selectedQuality || result.video_url!,
-                      `${slugify(result.title || 'pinterest_video')}.mp4`,
-                    )}
-                    download={`${slugify(result.title || 'pinterest_video')}.mp4`}
-                    aria-busy={savingFile?.endsWith('.mp4')}
-                    onClick={(e) =>
-                      onProxyDownloadClick(
-                        e,
-                        selectedQuality || result.video_url!,
-                        `${slugify(result.title || 'pinterest_video')}.mp4`,
-                      )
-                    }
-                    className={`inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl font-extrabold transition-all text-sm shadow-md active:scale-95 touch-manipulation ${
-                      resolvedGifUrl(result)
-                        ? 'bg-slate-800 hover:bg-slate-700 text-white shadow-slate-900/20'
-                        : 'bg-[#E11D48] hover:bg-[#BE123C] text-white shadow-red-500/20'
-                    }`}
-                    title="Download HD MP4 video with audio"
-                  >
-                    {savingFile?.endsWith('.mp4') ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>{downloadStatusLabel() || 'Downloading MP4…'}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Download className="w-4 h-4" />
-                        <span>Download MP4 (Video)</span>
-                      </>
-                    )}
-                  </a>
-                )}
-
-                {/* 3. Download MP3 Audio */}
-                {result.is_video && (selectedQuality || result.video_url) && (
-                  <button
-                    type="button"
-                    disabled={!!savingFile}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      void saveProxyDownload(
-                        selectedQuality || result.video_url!,
-                        `${slugify(result.title || 'pinterest_audio')}.mp3`,
-                      );
-                    }}
-                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all text-sm shadow-md shadow-purple-500/20 active:scale-95 touch-manipulation disabled:opacity-70"
-                    title="Extract and download original MP3 audio stream"
-                  >
-                    {savingFile?.endsWith('.mp3') ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>{downloadProgress?.total ? `${Math.round((downloadProgress.loaded / downloadProgress.total) * 100)}%` : 'Downloading MP3…'}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Music className="w-4 h-4" />
-                        <span>Download MP3 Audio</span>
-                      </>
-                    )}
+              <Perf />
+              <div className="rc-tools">
+                {primaryFile && (
+                  <button type="button" className="rc-btn" onClick={() => void copyFileLink(primaryFile.url)}>
+                    {copiedLink ? <Check aria-hidden="true" /> : <Link2 aria-hidden="true" />}
+                    {copiedLink ? 'Link copied' : 'Copy file link'}
                   </button>
                 )}
-
-                {/* 6. Complete ZIP Pack */}
-                {(result.is_video || resolvedGifUrl(result) || result.is_gif) && (
+                {primaryMediaUrl && (
                   <button
                     type="button"
-                    disabled={zipping}
-                    onClick={() => downloadSinglePinCompletePack(result)}
-                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-extrabold transition-all text-sm shadow-md shadow-amber-500/20 active:scale-95 touch-manipulation disabled:opacity-60"
-                    title={
-                      resolvedGifUrl(result)
-                        ? 'Download GIF, MP4, and cover image in one ZIP'
-                        : 'Download MP4 video and cover image in one ZIP'
-                    }
+                    className="rc-btn"
+                    onClick={() => void toggleQrPanel()}
+                    aria-expanded={qrOpen}
+                    aria-controls="phone-qr-panel"
                   >
-                    {zipping ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Zipping Pack…</span>
-                      </>
-                    ) : (
-                      <>
-                        <Archive className="w-4 h-4" />
-                        <span>Download Pack ({resolvedGifUrl(result) ? 'GIF + ' : ''}MP4 + Cover)</span>
-                      </>
-                    )}
+                    <QrCode aria-hidden="true" />
+                    {qrOpen ? 'Hide phone QR' : 'Send to phone'}
                   </button>
                 )}
-
-                {/* 7. Trim Audio Hook */}
-                {result.is_video && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      triggerHaptic();
-                      setShowTrimmer(true);
-                    }}
-                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold transition-all text-sm border border-slate-700 shadow-md active:scale-95 touch-manipulation"
-                    title="Trim sound hook and save custom audio clip"
-                  >
-                    <Scissors className="w-4 h-4 text-[#E11D48]" />
-                    <span>Trim Sound Hook (MP3)</span>
-                  </button>
-                )}
-
-                {/* 8. Download HD Cover Image */}
-                {result.image_url && (
-                  <a
-                    href={proxyDownloadHref(
-                      result.image_url,
-                      `${slugify(result.title || 'pinterest_cover')}.${mediaFileExtension(result.image_url, 'jpg')}`,
-                    )}
-                    download={`${slugify(result.title || 'pinterest_cover')}.${mediaFileExtension(result.image_url, 'jpg')}`}
-                    onClick={(e) =>
-                      onProxyDownloadClick(
-                        e,
-                        result.image_url!,
-                        `${slugify(result.title || 'pinterest_cover')}.${mediaFileExtension(result.image_url, 'jpg')}`,
-                      )
-                    }
-                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold transition-all text-sm border border-slate-200 dark:border-slate-700 active:scale-95 touch-manipulation"
-                  >
-                    <ImageIcon className="w-4 h-4 text-[#E11D48]" />
-                    <span>{resolvedGifUrl(result) || result.is_video ? 'Download Cover JPG' : 'Download HD Image'}</span>
-                  </a>
-                )}
-
-                {/* 9. Crop / Resize Tool */}
                 {result.image_url && (
                   <button
                     type="button"
+                    className="rc-btn"
                     onClick={() => {
                       triggerHaptic();
                       setShowCropper(true);
                     }}
-                    className="inline-flex items-center justify-center gap-2 h-12 px-5 rounded-xl bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-[#E11D48] dark:text-rose-300 font-extrabold transition-all text-sm border border-rose-200 dark:border-rose-800/80 active:scale-95 touch-manipulation"
-                    title="Crop photo to 9:16 Story/Reel, 1:1 Instagram Post, or 16:9 Landscape"
                   >
-                    <Crop className="w-4 h-4" />
-                    <span>Crop / Resize (Social Presets)</span>
+                    <Crop aria-hidden="true" />
+                    Crop / resize
                   </button>
                 )}
-              </div>
-
-              {savingFile && downloadProgress && (
-                <div className="mt-3" aria-live="polite">
-                  <p className="text-xs font-bold text-slate-600 dark:text-slate-300 tabular-nums">
-                    {downloadStatusLabel()}
-                  </p>
-                  <div
-                    className="mt-1.5 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden"
-                    role="progressbar"
-                    aria-valuemin={0}
-                    aria-valuemax={downloadProgress.total || 100}
-                    aria-valuenow={
-                      downloadProgress.total
-                        ? Math.round((downloadProgress.loaded / downloadProgress.total) * 100)
-                        : undefined
-                    }
-                    aria-label="Download progress"
+                {result.is_video && (
+                  <button
+                    type="button"
+                    className="rc-btn"
+                    onClick={() => {
+                      triggerHaptic();
+                      setShowTrimmer(true);
+                    }}
                   >
-                    <div
-                      className={`h-full bg-[#E11D48] origin-left ${
-                        downloadProgress.total > 0 ? '' : 'w-1/3 animate-pulse'
-                      }`}
-                      style={
-                        downloadProgress.total > 0
-                          ? {
-                              transform: `scaleX(${Math.min(1, downloadProgress.loaded / downloadProgress.total)})`,
-                            }
-                          : undefined
-                      }
-                    />
-                  </div>
-                </div>
-              )}
-
+                    <Scissors aria-hidden="true" />
+                    Trim sound
+                  </button>
+                )}
+                {anotherBtn}
+              </div>
               {primaryMediaUrl && (
-                <div className="mt-1">
-                  <button
-                    type="button"
-                    onClick={() => void toggleQrPanel()}
-                    aria-expanded={qrOpen}
-                    aria-controls="phone-qr-panel"
-                    className="inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-[#E11D48]/60 hover:text-[#E11D48] dark:hover:text-rose-300 transition-colors text-xs font-bold touch-manipulation"
-                  >
-                    <QrCode className="w-4 h-4" aria-hidden="true" />
-                    <span>{qrOpen ? 'Hide phone QR' : 'Send to phone'}</span>
-                  </button>
-                  <div
-                    id="phone-qr-panel"
-                    hidden={!qrOpen}
-                    className="mt-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex items-center gap-4"
-                  >
-                    {qrLoading ? (
-                      <div className="h-[136px] w-[136px] shrink-0 animate-pulse rounded-xl bg-slate-200 dark:bg-slate-700" aria-hidden="true" />
-                    ) : qrDataUrl ? (
-                      <img
-                        src={qrDataUrl}
-                        width="128"
-                        height="128"
-                        alt={`QR code linking to the extracted ${result.is_video ? 'video' : 'image'} file — scan to open it on your phone`}
-                        className="h-[136px] w-[136px] shrink-0 rounded-xl border border-slate-200 dark:border-slate-600 bg-white p-1"
-                      />
-                    ) : null}
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed min-w-0">
-                      Scan with your phone camera to open this file instantly — then long-press to save it to your gallery. No app or login needed.
-                    </p>
+                <div id="phone-qr-panel" hidden={!qrOpen} className="rc-qr">
+                  {qrLoading ? (
+                    <div className="rc-qr-wait rc-skel" aria-hidden="true" />
+                  ) : qrDataUrl ? (
+                    <img
+                      src={qrDataUrl}
+                      width="128"
+                      height="128"
+                      alt={`QR code linking to the extracted ${result.is_video ? 'video' : 'image'} file — scan to open it on your phone`}
+                    />
+                  ) : null}
+                  <p className="min-w-0">
+                    Scan with your phone camera to open this file instantly — then long-press to save it to your gallery. No app or login needed.
+                  </p>
+                </div>
+              )}
+
+              {((result.colors && result.colors.length > 0) || (result.tags && result.tags.length > 0) || result.title) && (
+                <details className="rc-extras" data-extras="">
+                  <summary>
+                    <span>Colours, tags and repost captions</span>
+                    <ChevronDown aria-hidden="true" />
+                  </summary>
+                  <div className="rc-extras-body">
+                    {result.colors && result.colors.length > 0 && (
+                      <div>
+                        <div className="rc-extras-head">
+                          <h3 className="rc-h3">Palette</h3>
+                          <span className="rc-extras-hint">Shades of the pin's main colour. Tap to copy.</span>
+                        </div>
+                        <div className="rc-chips">
+                          {result.colors.map((hex, idx) => (
+                            <button key={idx} type="button" className="rc-swatch" onClick={() => copyColorHex(hex)}>
+                              <i style={{ backgroundColor: hex }} aria-hidden="true" />
+                              <span translate="no">{copiedColor === hex ? 'Copied' : hex}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {result.tags && result.tags.length > 0 && (
+                      <div>
+                        <div className="rc-extras-head">
+                          <h3 className="rc-h3">Tags</h3>
+                          <button type="button" className="rc-btn" onClick={copyTagsToClipboard}>
+                            {copiedTags ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
+                            {copiedTags ? 'Copied' : 'Copy tags'}
+                          </button>
+                        </div>
+                        <div className="rc-chips">
+                          {result.tags.map((tag, idx) => (
+                            <span key={idx} className="rc-tag">#{tag}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    <div>
+                      <div className="rc-extras-head">
+                        <h3 className="rc-h3">Repost caption</h3>
+                      </div>
+                      <div className="rc-seg" role="group" aria-label="Caption for">
+                        {(
+                          [
+                            ['reels', 'Instagram Reels'],
+                            ['tiktok', 'TikTok'],
+                            ['shorts', 'YT Shorts'],
+                          ] as const
+                        ).map(([key, label]) => (
+                          <button
+                            key={key}
+                            type="button"
+                            aria-pressed={activePlatform === key}
+                            onClick={() => setActivePlatform(key)}
+                          >
+                            {label}
+                          </button>
+                        ))}
+                      </div>
+                      <p className="rc-caption">{captionFor(result, activePlatform)}</p>
+                      <button
+                        type="button"
+                        className="rc-btn"
+                        onClick={() => {
+                          navigator.clipboard.writeText(captionFor(result, activePlatform));
+                          setCopiedCaption(true);
+                          setTimeout(() => setCopiedCaption(false), 2000);
+                        }}
+                      >
+                        {copiedCaption ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
+                        {copiedCaption ? 'Copied caption' : 'Copy caption & tags'}
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </details>
               )}
-            </div>
-          </div>
-
-          {/* Dynamic Color Palette Chips Generator */}
-          {result.colors && result.colors.length > 0 && (
-            <div className="pt-5 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                  <Palette className="w-3.5 h-3.5 text-[#E11D48]" />
-                  <span>Extracted Pin Color Palette</span>
-                </div>
-                <span className="text-[10px] font-medium text-slate-600 dark:text-slate-400">Click chip to copy hex</span>
               </div>
-              <div className="flex flex-wrap items-center gap-2.5 mt-1">
-                {result.colors.map((hex, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => copyColorHex(hex)}
-                    className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:scale-105 transition-transform group shadow-2xs"
-                  >
-                    <span className="w-4 h-4 rounded-full border border-black/10 shadow-xs" style={{ backgroundColor: hex }} />
-                    <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-200">{copiedColor === hex ? 'Copied!' : hex}</span>
-                  </button>
-                ))}
               </div>
-            </div>
-          )}
+              <div className="h-4" aria-hidden="true" />
+            </Receipt>
+          );
+        })()
+      ) : null}
 
-          {/* Tags section */}
-          {result.tags && result.tags.length > 0 && (
-            <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                  <Tag className="w-3.5 h-3.5 text-[#E11D48]" />
-                  <span>Pin Keywords & Hashtags</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={copyTagsToClipboard}
-                  className="inline-flex items-center gap-1.5 text-xs text-rose-700 dark:text-rose-300 hover:text-rose-800 dark:hover:text-rose-200 font-bold transition-colors bg-red-50 dark:bg-red-950/60 px-2.5 py-1 rounded-lg"
-                >
-                  {copiedTags ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copiedTags ? 'Copied All!' : 'Copy Tags'}</span>
-                </button>
-              </div>
-              <div className="flex flex-wrap gap-1.5 mt-1">
-                {result.tags.map((tag, idx) => (
-                  <span key={idx} className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold border border-slate-200 dark:border-slate-700">
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* AI Content Reposting Studio Widget */}
-          <div className="pt-5 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
-                <div className="w-6 h-6 rounded-lg bg-gradient-to-r from-purple-500 to-indigo-500 text-white flex items-center justify-center shadow-xs">
-                  <Sparkles className="w-3.5 h-3.5" />
-                </div>
-                <span>AI Social Reposter Studio</span>
-              </div>
-              <span className="text-[11px] font-bold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/50 px-2.5 py-0.5 rounded-full">
-                1-Click Preset Captions
-              </span>
-            </div>
-
-            {/* Platform Selector Tabs */}
-            <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl w-fit">
-              <button
-                type="button"
-                onClick={() => setActivePlatform('reels')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  activePlatform === 'reels' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
-                }`}
-              >
-                📸 Instagram Reels
-              </button>
-              <button
-                type="button"
-                onClick={() => setActivePlatform('tiktok')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  activePlatform === 'tiktok' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
-                }`}
-              >
-                🎵 TikTok
-              </button>
-              <button
-                type="button"
-                onClick={() => setActivePlatform('shorts')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  activePlatform === 'shorts' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
-                }`}
-              >
-                🎬 YT Shorts
-              </button>
-            </div>
-
-            {/* Generated Caption Preview Box */}
-            <div className="relative p-4 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-wrap">
-              {activePlatform === 'reels' && (
-                <>
-                  {`✨ ${result.title}\n\nTag someone who needs to see this! 👇\n\n📌 Saved via PintDownload\n\n${(result.tags || []).map(t => `#${t}`).join(' ')} #reels #viral #aesthetic`}
-                </>
-              )}
-              {activePlatform === 'tiktok' && (
-                <>
-                  {`POV: ${result.title} 🌿🔥\n\nFollow for more daily aesthetic pins & inspo!\n\n${(result.tags || []).map(t => `#${t}`).join(' ')} #fyp #viral #pinterest #foryou`}
-                </>
-              )}
-              {activePlatform === 'shorts' && (
-                <>
-                  {`🔥 ${result.title} | Pinterest Aesthetic\n\nLike & Subscribe for more daily visual content!\n\n${(result.tags || []).map(t => `#${t}`).join(' ')} #shorts #pintdownload #pinterest`}
-                </>
-              )}
-
-              <button
-                type="button"
-                onClick={() => {
-                  let text = '';
-                  const tagsStr = (result.tags || []).map(t => `#${t}`).join(' ');
-                  if (activePlatform === 'reels') text = `✨ ${result.title}\n\nTag someone who needs to see this! 👇\n\n📌 Saved via PintDownload\n\n${tagsStr} #reels #viral #aesthetic`;
-                  if (activePlatform === 'tiktok') text = `POV: ${result.title} 🌿🔥\n\nFollow for more daily aesthetic pins & inspo!\n\n${tagsStr} #fyp #viral #pinterest #foryou`;
-                  if (activePlatform === 'shorts') text = `🔥 ${result.title} | Pinterest Aesthetic\n\nLike & Subscribe for more daily visual content!\n\n${tagsStr} #shorts #pintdownload #pinterest`;
-                  
-                  navigator.clipboard.writeText(text);
-                  setCopiedCaption(true);
-                  setTimeout(() => setCopiedCaption(false), 2000);
-                }}
-                className="absolute right-3 bottom-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-sans text-xs font-bold shadow-sm transition-transform active:scale-95"
-              >
-                {copiedCaption ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedCaption ? 'Copied Caption!' : 'Copy Caption & Tags'}</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Batch Results Grid */}
+      {/* ── Batch: several links at once ─────────────────────────────── */}
       {batchResults.length > 0 && (
-        <div className="mt-8 flex flex-col gap-4 text-left animate-in fade-in duration-300">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
-            <h3 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-              <Layers className="w-5 h-5 text-[#E11D48]" />
-              <span>Extracted Batch Media ({batchResults.length} items)</span>
-            </h3>
-
-            {/* Master Sequential Download All Button */}
+        <Receipt
+          stock="pin"
+          label={`Ready · ${batchResults.length} pins`}
+          icon={<Layers aria-hidden="true" />}
+          labelledBy="result-heading"
+        >
+          <div className="rc-body rc-body--plain">
+            {resultHeading(`${batchResults.length} files collected`)}
+          </div>
+          <div className="rc-collect">
             <button
               type="button"
+              className="rc-cta"
+              data-primary=""
               onClick={() => {
                 batchResults.forEach((res, idx) => {
                   setTimeout(() => {
@@ -2114,75 +2321,73 @@ export default function DownloaderForm({
                   }, idx * 800);
                 });
               }}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-[#E11D48] hover:bg-[#BE123C] text-white font-bold text-xs shadow-md shadow-red-500/20 transition-all active:scale-95 shrink-0"
             >
-              <Download className="w-4 h-4" />
-              <span>Download All ({batchResults.length} Items)</span>
+              <Download aria-hidden="true" />
+              <span>Download all ({batchResults.length})</span>
             </button>
+            <p className="rc-note">
+              {savingFile && downloadProgress ? downloadStatusLabel() : 'Files download one after another.'}
+            </p>
+            {receiptError}
           </div>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            {batchResults.map((res, idx) => (
-              <div key={idx} className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between gap-3">
-                <div className="flex gap-3">
-                  <img src={res.thumbnail_url || res.image_url || ''} alt={res.title} className="w-20 h-20 rounded-xl object-cover border border-slate-200 dark:border-slate-800 shrink-0" />
-                  <div className="flex flex-col justify-center">
-                    <h4 className="font-bold text-slate-900 dark:text-white text-xs line-clamp-2">{res.title}</h4>
-                    <span className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 uppercase font-bold">
-                      {resolvedGifUrl(res) ? 'GIF Pin' : res.is_video ? 'Video Pin' : 'Image Pin'}
-                    </span>
-                  </div>
-                </div>
-                <a
-                  href={proxyDownloadHref(
-                    resolvedGifUrl(res) || res.video_url || res.image_url!,
-                    `${slugify(res.title || 'pin')}.${resolvedGifUrl(res) ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg')}`,
-                  )}
-                  download={`${slugify(res.title || 'pin')}.${resolvedGifUrl(res) ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg')}`}
-                  onClick={(e) =>
-                    onProxyDownloadClick(
-                      e,
-                      resolvedGifUrl(res) || res.video_url || res.image_url!,
-                      `${slugify(res.title || 'pin')}.${resolvedGifUrl(res) ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg')}`,
-                    )
-                  }
-                  className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-[#E11D48] hover:text-white text-slate-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>
-                    Download {resolvedGifUrl(res) ? 'GIF' : res.is_video ? 'MP4' : 'Image'}
-                  </span>
-                </a>
-              </div>
-            ))}
+          <Perf />
+          <div className="rc-section pb-3">
+            <ul className="list-none m-0 p-0">
+              {batchResults.map((res, idx) => {
+                const gif = resolvedGifUrl(res);
+                const fmt = gif ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg');
+                const name = `${slugify(res.title || 'pin')}.${fmt}`;
+                const mediaUrl = gif || res.video_url || res.image_url!;
+                const stock: StockKey = gif ? 'gif' : res.is_video ? 'video' : 'image';
+                return (
+                  <li key={idx} className="rc-batch-row">
+                    <img src={res.thumbnail_url || res.image_url || ''} alt={res.title} width={64} height={64} loading="lazy" />
+                    <div className="min-w-0">
+                      <p className="rc-item-name line-clamp-2 break-words">{res.title}</p>
+                      <span className="rc-pill" style={{ '--kind': STOCKS[stock].color } as React.CSSProperties}>
+                        {gif ? 'GIF pin' : res.is_video ? 'Video pin' : 'Image pin'}
+                      </span>
+                    </div>
+                    <a
+                      href={proxyDownloadHref(mediaUrl, name)}
+                      download={name}
+                      onClick={(e) => onProxyDownloadClick(e, mediaUrl, name)}
+                      aria-busy={savingFile === name}
+                      className="rc-btn"
+                    >
+                      {savingFile === name ? (
+                        <Loader2 className="animate-spin motion-reduce:animate-none" aria-hidden="true" />
+                      ) : (
+                        <Download aria-hidden="true" />
+                      )}
+                      Download {fmt.toUpperCase()}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-        </div>
+          <div className="rc-tools">{anotherBtn}</div>
+        </Receipt>
       )}
 
-      {/* Recent History Bar */}
-      {history.length > 0 && !result && batchResults.length === 0 && (
-        <div className="mt-10 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-left shadow-xs">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-3">
-            <History className="w-3.5 h-3.5 text-[#E11D48]" />
-            <span>Recent Downloads</span>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {/* Recent links: previous claims on this device */}
+      {history.length > 0 && !result && batchResults.length === 0 && !loading && !error && (
+        <div className="rc-recent">
+          <h2 className="rc-h3">Recent links</h2>
+          <ul>
             {history.map((item, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => { setUrl(item.url); setMode('single'); }}
-                className="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-red-50 dark:hover:bg-red-950/40 border border-slate-200 dark:border-slate-700 hover:border-red-200 dark:hover:border-red-900 transition-all text-left flex items-center gap-2.5 group"
-              >
-                {item.thumbnail && (
-                  <img src={item.thumbnail} alt={item.title} className="w-9 h-9 rounded-lg object-cover shrink-0 border border-slate-200 dark:border-slate-700" />
-                )}
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-[#E11D48] truncate">{item.title}</span>
-              </button>
+              <li key={idx}>
+                <button type="button" onClick={() => { setUrl(item.url); setMode('single'); }}>
+                  {item.thumbnail ? <img src={item.thumbnail} alt="" width={36} height={36} loading="lazy" /> : null}
+                  <span>{item.title}</span>
+                </button>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
+
       {/* Image Cropper Modal */}
       {showCropper && result?.image_url && (
         <ImageCropperModal

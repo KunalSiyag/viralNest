@@ -30,6 +30,8 @@ const FETCH_ATTEMPTS: Record<string, string>[] = [
 
 const CANDIDATE_TIMEOUT_MS = 6000;
 const PROBE_BATCH = 2;
+/** Longest gap allowed between two chunks of a proxied body. */
+const BODY_IDLE_TIMEOUT_MS = 20000;
 
 function fallbackType(url: string): string {
   if (/\.mp4(\?|$)/i.test(url)) return 'video/mp4';
@@ -83,6 +85,12 @@ async function fetchMedia(
   return null;
 }
 
+/**
+ * Probe candidates in pairs, but always take the earliest candidate in the
+ * list that works, not whichever answers first. pinMediaCandidates orders
+ * the requested size before its downscales (1200x > 736x > 564x), so racing
+ * them would hand out the 736x file about half the time.
+ */
 async function fetchFirstWorking(
   urls: string[],
   range?: string | null,
@@ -93,25 +101,64 @@ async function fetchFirstWorking(
     const timers = controllers.map((c) =>
       setTimeout(() => c.abort(), CANDIDATE_TIMEOUT_MS),
     );
+    const attempts = batch.map((url, idx) =>
+      fetchMedia(url, controllers[idx].signal, range).catch(() => null),
+    );
     try {
-      const winner = await Promise.any(
-        batch.map(async (url, idx) => {
-          const res = await fetchMedia(url, controllers[idx].signal, range);
-          if (!res) throw new Error('no media');
-          return { res, url, idx };
-        }),
-      );
-      controllers.forEach((c, idx) => {
-        if (idx !== winner.idx) c.abort();
-      });
-      return { res: winner.res, url: winner.url };
-    } catch {
-      // entire batch failed — try the next pair
+      for (let idx = 0; idx < batch.length; idx++) {
+        const res = await attempts[idx];
+        if (!res) continue;
+        controllers.forEach((c, other) => {
+          if (other !== idx) c.abort();
+        });
+        attempts.forEach((pending, other) => {
+          if (other === idx) return;
+          pending.then((r) => r?.body?.cancel().catch(() => {})).catch(() => {});
+        });
+        return { res, url: batch[idx] };
+      }
     } finally {
       timers.forEach(clearTimeout);
     }
   }
   return null;
+}
+
+/**
+ * Cut the proxied body off when the CDN stops sending bytes. The probe
+ * timeout ends once headers arrive, so without this a body that stalls
+ * mid-stream holds the client's request open indefinitely.
+ */
+function withIdleTimeout(
+  body: ReadableStream<Uint8Array>,
+  idleMs: number,
+  expectedLength?: number,
+): ReadableStream<Uint8Array> {
+  const reader = body.getReader();
+  const source: UnderlyingDefaultSource<Uint8Array> & { expectedLength?: number } = {
+    async pull(controller) {
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      const idle = new Promise<never>((_, reject) => {
+        timer = setTimeout(() => reject(new Error('Upstream body stalled')), idleMs);
+      });
+      try {
+        const { done, value } = await Promise.race([reader.read(), idle]);
+        if (done) controller.close();
+        else controller.enqueue(value);
+      } catch (err) {
+        reader.cancel(err).catch(() => {});
+        controller.error(err);
+      } finally {
+        clearTimeout(timer);
+      }
+    },
+    cancel(reason) {
+      return reader.cancel(reason);
+    },
+  };
+  // workerd keeps Content-Length on a JS stream only when told its length.
+  if (expectedLength && Number.isFinite(expectedLength)) source.expectedLength = expectedLength;
+  return new ReadableStream(source);
 }
 
 export const GET: APIRoute = async ({ request }) => {
@@ -157,7 +204,13 @@ export const GET: APIRoute = async ({ request }) => {
       headers.set('X-Content-Type-Options', 'nosniff');
     }
 
-    return new Response(fetchRes.body, {
+    const body = withIdleTimeout(
+      fetchRes.body!,
+      BODY_IDLE_TIMEOUT_MS,
+      contentLength ? Number(contentLength) : undefined,
+    );
+
+    return new Response(body, {
       status: fetchRes.status === 206 ? 206 : 200,
       headers,
     });
