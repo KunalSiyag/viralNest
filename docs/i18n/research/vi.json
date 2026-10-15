@@ -1,0 +1,3690 @@
+{
+  "locale": "vi",
+  "hreflang": "vi",
+  "hreflangReasoning": "Use the language-only code 'vi', not 'vi-VN'. Vietnamese has one real market (Vietnam). Diaspora searchers in the US, Australia and France use the same words, so region variants would be duplicates. No page content differs by region: no prices, currency or legal text. Google accepts language-only codes. SavePin and KlickPin label their Vietnamese pages 'vi'. pinterestdownloader.io uses 'vi-VN' in hreflang but an invalid lang='vi-02', and its canonical points to the English page, which wastes its own vi page. Every vi page lists itself as 'vi', its English twin as 'en', and x-default (English). Skipped pages get no vi alternate.",
+  "htmlLang": "vi",
+  "ogLocale": "vi_VN",
+  "markets": [
+    {
+      "country": "VN",
+      "googleGl": "vn",
+      "googleHl": "vi",
+      "pinterestHost": "www.pinterest.com and pin.it short links. Pinterest has no vn.pinterest.com (it did not answer). www.pinterest.com.vn and www.pinterest.vn both 307-redirect to www.pinterest.com, so the URL classifier needs no new host.",
+      "notes": "Mobile-first market. People use 'tải' (download) far more than 'lưu' (save), and almost never 'download'. The top modifiers are destination ('về máy tính', 'về điện thoại', 'về máy'), 'không logo' (meaning watermark-free), quality ('hd', 'full hd', '4k', 'nét', 'không bị mờ', 'chất lượng cao'), 'miễn phí', 'bằng link', and device ('iphone', 'android', 'samsung', 'laptop', 'macbook', 'ipad'). Cốc Cốc, a local Chromium browser with a built-in video downloader, appears in queries and in ranking guides."
+    }
+  ],
+  "urlStructure": {
+    "pattern": "/vi for the homepage, /vi/<slug> for the others. No trailing slash, which matches normalizeCanonical and the seo-invariants test.",
+    "transliteration": "Remove all diacritics and use lowercase ASCII with hyphens. Map đ/Đ to d, never 'dd'. Example: 'tải video pinterest về điện thoại' becomes tai-video-pinterest-ve-dien-thoai. Vietnamese publishers that rank (dienmayxanh, gearvn, cellphones) use the same convention. Google matches these slugs to both accented and unaccented queries.",
+    "competitorGap": "No downloader competitor uses Vietnamese slugs. KlickPin uses /vi/pin-board-downloader, SavePin /pinterest-downloader/vi/download-pinterest-image, and pinterestdownloader.io /vi-02/pinterest-image-downloader-05. Slugs built from the exact query tokens are a cheap relevance edge.",
+    "keptEnglishSlug": []
+  },
+  "evidence": {
+    "autocomplete": {
+      "meta": {
+        "endpoint": "https://suggestqueries.google.com/complete/search?client=firefox&hl=vi&gl=vn&ie=utf-8&oe=utf-8&q=<seed>",
+        "fetched": "2026-10-14/15",
+        "spacing": "1.2 s between requests, sequential",
+        "batches": {
+          "batch1": "144 intent seeds (literal, colloquial 'tải'/'lưu'/'download', with and without pinterest, video/ảnh/hình/gif/bảng/hồ sơ/avatar/mp4/mp3/4k/chrome/device/question forms, unaccented variants)",
+          "batch2": "105 seeds, including alphabet expansion of 'tải video pinterest <letter>' and 'tải ảnh pinterest <letter>', device and destination seeds, competitor brands",
+          "batch3": "36 FAQ and problem seeds (bị mờ, không tải được, bản quyền, an toàn, lấy link, iPhone/Safari, bảng về điện thoại, ảnh ghép)"
+        },
+        "caveat": "Autocomplete shows which queries exist and how they rank against each other, not search volume. No keyword-volume tool was used. A seed ending in a space, such as 'tải video pinterest ', was sent with the trailing space. Unaccented 'tai video pinterest' returned nothing, while 'tai anh pinterest' returned accented completions."
+      },
+      "vn": {
+        "pinterest downloader": [
+          "pinterest downloader",
+          "pinterest downloader pc",
+          "pinterest downloader hd 4k",
+          "pinterest downloader io",
+          "pinterest downloader 4k",
+          "pinterest downloader extension",
+          "pinterest downloader image",
+          "pinterest downloader apk",
+          "pinterest downloader ảnh",
+          "pinterest downloader shortcut"
+        ],
+        "pinterest download": [
+          "pinterest downloader",
+          "pinterest download",
+          "pinterest download video",
+          "pinterest download 4k",
+          "pinterest download mp4",
+          "pinterest download video 4k",
+          "pinterest download app",
+          "pinterest download video 1080p",
+          "pinterest downloader pc",
+          "pinterest download link"
+        ],
+        "pinterest video downloader": [
+          "pinterest video downloader",
+          "pinterest video downloader free",
+          "pinterest video downloader - tải xuống video hd gif và hình ảnh chỉ với 1 cú nhấp chuột",
+          "pinterest video downloader- download hd videos gifs & images in 1 click",
+          "pinterest video downloader online",
+          "pinterest video downloader best",
+          "pinterest video downloader ios",
+          "pinterest video downloader pingrab"
+        ],
+        "tải pinterest": [
+          "tải pinterest",
+          "tải pinterest video",
+          "tải pinterest về máy tính",
+          "tải pinterest hd",
+          "tải pinterest về điện thoại",
+          "tải pinterest về máy",
+          "tải pinterest miễn phí",
+          "tải pinterest ko logo",
+          "tải pinterest video downloader",
+          "tải pinterest 4k"
+        ],
+        "tải từ pinterest": [
+          "tải từ pinterest",
+          "tải video từ pinterest",
+          "tải video từ pinterest về máy",
+          "tải video từ pinterest về máy tính",
+          "tải ảnh từ pinterest",
+          "tải video từ pinterest về điện thoại",
+          "tải gif từ pinterest",
+          "tải video từ pinterest về iphone",
+          "tải video từ pinterest online",
+          "tải ảnh từ pinterest về máy tính"
+        ],
+        "tải xuống pinterest": [
+          "tải xuống pinterest",
+          "trình tải xuống pinterest",
+          "tải xuống video pinterest",
+          "tải xuống video từ pinterest",
+          "trình tải xuống video pinterest",
+          "tải ảnh xuống từ pinterest",
+          "cách tải xuống video pinterest",
+          "tải xuống pinterest trên máy tính"
+        ],
+        "tải về pinterest": [
+          "tải về pinterest",
+          "tải pinterest về máy tính",
+          "tải pinterest về điện thoại",
+          "tải pinterest về máy",
+          "tải pinterest về laptop",
+          "tải pinterest về máy tính win 10",
+          "tải pinterest về mac",
+          "tải về video pinterest",
+          "tải video pinterest về điện thoại",
+          "tải video pinterest về máy"
+        ],
+        "lưu pinterest": [
+          "lưu pinterest",
+          "lưu pinterest video",
+          "pinterest lưu ảnh",
+          "pinterest lưu bút",
+          "lưu video pinterest hd",
+          "lưu video pinterest không có logo",
+          "lưu video pinterest về điện thoại",
+          "lưu video pinterest về máy",
+          "lưu video pinterest bằng link",
+          "lưu ảnh pinterest về điện thoại"
+        ],
+        "web tải pinterest": [
+          "web tải pinterest",
+          "web tải video pinterest",
+          "web tải ảnh pinterest",
+          "web tải video trên pinterest về máy tính"
+        ],
+        "web tải video pinterest": [
+          "web tải video pinterest",
+          "web tải video trên pinterest về máy tính"
+        ],
+        "trang web tải video pinterest": [
+          "trang web tải video pinterest",
+          "trang web tải video pinterest về điện thoại",
+          "trang web tải video pinterest về máy tính"
+        ],
+        "tải video pinterest": [
+          "tải video pinterest về máy tính",
+          "tải video pinterest về máy tính 4k",
+          "tải video pinterest cho iphone",
+          "tải video pinterest không có logo",
+          "tải video pinterest bằng link"
+        ],
+        "tải video pinterest ": [
+          "tải video pinterest về máy tính",
+          "tải video pinterest bằng link",
+          "tải video pinterest full hd",
+          "tải video pinterest không logo",
+          "tải video pinterest free",
+          "tải video pinterest về máy",
+          "tải video pinterest hd",
+          "tải video pinterest 4k",
+          "tải video pinterest về",
+          "tải video pinterest downloader"
+        ],
+        "tải video pinterest không": [
+          "tải video pinterest không logo",
+          "tải video pinterest không logo miễn phí",
+          "cách tải video pinterest không có logo",
+          "cách tải video trên pinterest không bị mờ",
+          "có cách nào tải video trên pinterest không",
+          "tải video pinterest không có logo",
+          "tải video pinterest không dính logo"
+        ],
+        "tải video pinterest về": [
+          "tải video pinterest về máy tính",
+          "tải video pinterest về máy",
+          "tải video pinterest về",
+          "tải video pinterest về điện thoại",
+          "tải video pinterest về điện thoại miễn phí",
+          "tải video pinterest về iphone",
+          "tải video pinterest về máy tính 4k",
+          "tải video pinterest về laptop",
+          "tải video trên pinterest về máy tính",
+          "tải video từ pinterest về"
+        ],
+        "tải video pinterest bằng": [
+          "tải video pinterest bằng link",
+          "tải video bằng liên kết pinterest",
+          "tải video pinterest bằng iphone",
+          "tải video pinterest bằng máy tính"
+        ],
+        "tải ảnh pinterest": [
+          "tải ảnh pinterest",
+          "tải ảnh pinterest 4k",
+          "tải ảnh pinterest chất lượng cao",
+          "tải ảnh pinterest hd",
+          "tải ảnh pinterest miễn phí",
+          "tải ảnh pinterest nét",
+          "tải ảnh pinterest không logo",
+          "tải ảnh pinterest về máy tính",
+          "tải ảnh pinterest full hd",
+          "tải ảnh pinterest về máy"
+        ],
+        "tải ảnh pinterest ": [
+          "tải ảnh pinterest 4k",
+          "tải ảnh pinterest chất lượng cao",
+          "tải ảnh pinterest hd",
+          "tải ảnh pinterest miễn phí",
+          "tải ảnh pinterest nét",
+          "tải ảnh pinterest không logo",
+          "tải ảnh pinterest về máy tính",
+          "tải ảnh pinterest full hd",
+          "tải ảnh pinterest về máy",
+          "tải ảnh pinterest về điện thoại"
+        ],
+        "tải hình pinterest": [
+          "tải hình pinterest",
+          "tải hình pinterest 4k",
+          "tải hình pinterest chất lượng cao",
+          "tải hình trên pinterest",
+          "cách tải hình pinterest",
+          "cách tải hình pinterest nét",
+          "tải hình nền pinterest",
+          "tải hình động trên pinterest",
+          "tải hình nền từ pinterest",
+          "cách tải hình trên pinterest về máy tính"
+        ],
+        "tải hình ảnh pinterest": [
+          "tải hình ảnh pinterest",
+          "tải hình ảnh trên pinterest",
+          "cách tải hình ảnh trên pinterest",
+          "cách tải hình ảnh từ pinterest về máy tính",
+          "cách tải hình ảnh lên pinterest",
+          "cách tải hình ảnh từ pinterest về điện thoại",
+          "cách tải hình ảnh động trên pinterest",
+          "tải hình ảnh pinterest về máy tính",
+          "tải hình ảnh pinterest chất lượng cao"
+        ],
+        "tải hình ảnh từ pinterest": [
+          "tải hình ảnh từ pinterest",
+          "cách tải hình ảnh từ pinterest về máy tính",
+          "cách tải hình ảnh từ pinterest",
+          "cách tải hình ảnh từ pinterest về điện thoại",
+          "tải hình ảnh từ pinterest về máy tính",
+          "tải hình ảnh từ pinterest về điện thoại"
+        ],
+        "cách tải pinterest": [
+          "cách tải pinterest",
+          "cách tải pinterest về máy tính",
+          "cách tải pinterest trên laptop",
+          "cách tải pinterest miễn phí",
+          "cách tải pinterest trên macbook",
+          "cách tải video pinterest về đt",
+          "cách tải pinterest trên iphone",
+          "cách tải pinterest trên iphone 6",
+          "cách tải pinterest trên iphone 7",
+          "cách tải video pinterest"
+        ],
+        "pinterest tải": [
+          "pinterest tải video",
+          "pinterest tải",
+          "pinterest tải ảnh",
+          "pinterest tải app",
+          "pinterest tải video không logo",
+          "pinterest tải miễn phí",
+          "tải pinterest về máy tính",
+          "tải pinterest hd",
+          "tải pinterest ko logo",
+          "tải pinterest về điện thoại"
+        ],
+        "tai video pinterest": [],
+        "tai anh pinterest": [
+          "tải ảnh pinterest",
+          "tải ảnh pinterest 4k",
+          "tải ảnh pinterest chất lượng cao",
+          "tải ảnh pinterest về máy",
+          "tải ảnh pinterest hd",
+          "tải ảnh pinterest nét",
+          "tải ảnh pinterest bằng link",
+          "tải ảnh pinterest về máy tính",
+          "tải ảnh pinterest về điện thoại",
+          "tải ảnh pinterest miễn phí"
+        ],
+        "tai hinh pinterest": [
+          "tải hình pinterest",
+          "tải hình pinterest 4k",
+          "tải hình pinterest chất lượng cao",
+          "tải hình trên pinterest",
+          "cách tải hình pinterest",
+          "cách tải hình pinterest nét",
+          "tải hình nền pinterest",
+          "tải hình động trên pinterest",
+          "tải hình nền từ pinterest",
+          "cách tải hình trên pinterest về máy tính"
+        ],
+        "download video pinterest": [
+          "download video pinterest",
+          "download video pinterest full hd",
+          "download video pinterest savepin",
+          "download video pinterest without watermark"
+        ],
+        "download ảnh pinterest": [
+          "download ảnh pinterest",
+          "download ảnh trên pinterest",
+          "cách download ảnh pinterest",
+          "download ảnh pinterest về máy tính",
+          "download ảnh pinterest trên máy tính",
+          "download ảnh pinterest full hd"
+        ],
+        "lưu ảnh pinterest": [
+          "lưu ảnh pinterest",
+          "lưu ảnh pinterest về điện thoại",
+          "lưu ảnh pinterest hd",
+          "lưu ảnh pinterest bằng link",
+          "lưu ảnh pinterest không logo",
+          "lưu ảnh pinterest về máy",
+          "lưu ảnh pinterest nét",
+          "cách lưu ảnh pinterest",
+          "cách lưu ảnh pinterest trên iphone",
+          "lưu ảnh trên pinterest về máy"
+        ],
+        "lưu ảnh pinterest ": [
+          "lưu ảnh pinterest về điện thoại",
+          "lưu ảnh pinterest hd",
+          "lưu ảnh pinterest bằng link",
+          "lưu ảnh pinterest không logo",
+          "lưu ảnh pinterest",
+          "lưu ảnh pinterest về máy",
+          "lưu ảnh pinterest nét",
+          "cách lưu ảnh pinterest",
+          "cách lưu ảnh pinterest trên iphone",
+          "lưu ảnh trên pinterest về máy"
+        ],
+        "lưu video pinterest": [
+          "lưu video pinterest",
+          "lưu video pinterest về điện thoại",
+          "lưu video pinterest hd",
+          "lưu video pinterest về máy",
+          "lưu video pinterest không logo",
+          "lưu video pinterest về máy tính",
+          "lưu video pinterest bằng link",
+          "lưu video pinterest miễn phí",
+          "lưu video pinterest 4k",
+          "lưu video trên pinterest"
+        ],
+        "lưu video từ pinterest": [
+          "lưu video từ pinterest",
+          "lưu video từ pinterest về điện thoại",
+          "lưu video từ pinterest về máy",
+          "cách lưu video từ pinterest về máy",
+          "cách lưu video từ pinterest về máy tính",
+          "lưu video từ link pinterest",
+          "cách lưu video từ app pinterest",
+          "lưu video từ pinterest về máy tính"
+        ],
+        "cách lưu video trên pinterest": [
+          "cách lưu video trên pinterest",
+          "cách lưu video trên pinterest về máy tính",
+          "cách lưu video trên pinterest về máy",
+          "cách lưu video trên pinterest về điện thoại",
+          "cách lưu video trên pinterest android",
+          "cách lưu video trên pinterest về iphone",
+          "cách lưu video trên pinterest về laptop",
+          "cách lưu video trên pinterest về điện thoại samsung",
+          "cách lưu video trên pinterest về bộ sưu tập",
+          "cách lưu video trên pinterest trên máy tính"
+        ],
+        "cách tải video trên pinterest": [
+          "cách tải video trên pinterest về điện thoại",
+          "cách tải video trên pinterest",
+          "cách tải video trên pinterest về máy tính",
+          "cách tải video trên pinterest về điện thoại samsung",
+          "cách tải video trên pinterest về laptop",
+          "cách tải video trên pinterest miễn phí",
+          "cách tải video trên pinterest về điện thoại android",
+          "cách tải video trên pinterest không dính logo",
+          "cách tải video trên pinterest về điện thoại iphone",
+          "cách tải video trên pinterest trên máy tính"
+        ],
+        "cách tải video pinterest": [
+          "cách tải video pinterest trên máy tính",
+          "cách tải video pinterest",
+          "cách tải video pinterest về máy",
+          "cách tải video pinterest về điện thoại",
+          "cách tải video pinterest không có logo",
+          "cách tải video pinterest trên iphone",
+          "cách tải video từ pinterest về điện thoại android",
+          "cách tải video trên pinterest về laptop",
+          "cách tải video trên pinterest miễn phí",
+          "cách tải video trên pinterest về điện thoại samsung"
+        ],
+        "cách tải ảnh trên pinterest": [
+          "cách tải ảnh trên pinterest không bị mờ",
+          "cách tải ảnh trên pinterest về máy tính",
+          "cách tải ảnh trên pinterest về laptop",
+          "cách tải ảnh trên pinterest",
+          "cách tải ảnh trên pinterest về iphone",
+          "cách tải ảnh trên pinterest chất lượng cao",
+          "cách tải ảnh trên pinterest về điện thoại",
+          "cách tải ảnh trên pinterest về máy",
+          "cách tải ảnh trên pinterest về ipad",
+          "cách tải ảnh trên pinterest nét"
+        ],
+        "cách lưu ảnh trên pinterest": [
+          "cách lưu ảnh trên pinterest về máy",
+          "cách lưu ảnh trên pinterest về máy tính",
+          "cách lưu ảnh trên pinterest về điện thoại",
+          "cách lưu ảnh trên pinterest",
+          "cách lưu ảnh trên pinterest không bị mờ",
+          "cách lưu ảnh trên pinterest về laptop",
+          "cách lưu ảnh trên pinterest về ipad",
+          "cách lưu ảnh trên pinterest về iphone",
+          "cách lưu ảnh trên pinterest về bộ sưu tập",
+          "cách lưu ảnh trên pinterest về album"
+        ],
+        "cách tải ảnh pinterest": [
+          "cách tải ảnh pinterest",
+          "cách tải ảnh pinterest chất lượng cao",
+          "cách tải ảnh pinterest hd",
+          "cách tải ảnh pinterest không bị vỡ",
+          "cách tải ảnh pinterest về điện thoại",
+          "cách tải ảnh pinterest về máy tính",
+          "cách tải ảnh pinterest nét",
+          "cách tải ảnh pinterest full hd",
+          "cách tải ảnh pinterest trên ipad",
+          "cách tải ảnh pinterest về máy"
+        ],
+        "tải pin pinterest": [
+          "tải pin pinterest trên máy tính",
+          "tải pin pinterest về máy tính"
+        ],
+        "tải ghim pinterest": [
+          "tải ghim pinterest",
+          "cách tải ghim trên pinterest",
+          "tải ghim pinterest về máy tính",
+          "tải ghim pinterest trên máy tính"
+        ],
+        "ghim pinterest": [
+          "ghim pinterest",
+          "tải ghim pinterest",
+          "xoá ghim pinterest",
+          "bỏ ghim pinterest",
+          "thống kê ghim pinterest",
+          "ghim cua pinterest",
+          "ghim pinterest trên máy tính"
+        ],
+        "pinterest pin downloader": [
+          "pinterest pin downloader",
+          "pinterest pin downloader hd",
+          "pinterest pin downloader extension",
+          "pinterest pin downloader 4k",
+          "pinterest pin downloader video",
+          "pinterest pin downloader online",
+          "pinterest pin downloader reddit",
+          "pinterest pin downloader free",
+          "pinterest board & pin downloader",
+          "pinterest save pin downloader"
+        ],
+        "tải ghim": [
+          "tải ghim màn hình",
+          "tải ghim pinterest",
+          "tải ghim",
+          "cách tải ghim trên pinterest",
+          "tải phần mềm gimp"
+        ],
+        "tải video pinterest không logo": [
+          "tải video pinterest không logo",
+          "tải video pinterest không logo miễn phí",
+          "cách tải video pinterest không logo"
+        ],
+        "tải video pinterest chất lượng cao": [
+          "tải video pinterest chất lượng cao"
+        ],
+        "tải video pinterest hd": [
+          "tải video pinterest hd",
+          "tải video pinterest full hd"
+        ],
+        "tải video pinterest mp4": [
+          "tải video pinterest mp4"
+        ],
+        "tải video pinterest online": [
+          "tải video pinterest online"
+        ],
+        "tải video pinterest bằng link": [
+          "tải video pinterest bằng link"
+        ],
+        "tải video pinterest không hình mờ": [
+          "tải video pinterest không hình mờ được"
+        ],
+        "tải video pinterest không watermark": [
+          "tải video pinterest không watermark được"
+        ],
+        "tải video pinterest miễn phí": [
+          "tải video pinterest miễn phí",
+          "tải video trên pinterest miễn phí",
+          "tải video pinterest không logo miễn phí",
+          "tải video pinterest về điện thoại miễn phí"
+        ],
+        "tải ảnh pinterest chất lượng cao": [
+          "tải ảnh pinterest chất lượng cao",
+          "tải ảnh pinterest chất lượng cao nhất",
+          "tải ảnh pinterest chất lượng cao miễn phí"
+        ],
+        "tải ảnh pinterest gốc": [
+          "tải ảnh gốc trên pinterest",
+          "tải ảnh pinterest gốc miễn phí",
+          "tải ảnh pinterest gốc trên máy tính"
+        ],
+        "tải ảnh pinterest không bị mờ": [
+          "cách tải ảnh trên pinterest không bị mờ"
+        ],
+        "tải ảnh pinterest hd": [
+          "tải ảnh pinterest hd",
+          "tải ảnh pinterest full hd",
+          "cách tải ảnh pinterest hd",
+          "tải ảnh pinterest hd miễn phí"
+        ],
+        "tải ảnh pinterest về máy": [
+          "tải ảnh pinterest về máy tính",
+          "tải ảnh pinterest về máy",
+          "cách tải ảnh pinterest về máy",
+          "cách tải ảnh động trên pinterest về máy tính"
+        ],
+        "tải ảnh pinterest không cần đăng nhập": [],
+        "tải hình nền pinterest": [
+          "tải hình nền pinterest",
+          "tải hình nền từ pinterest",
+          "tải hình nền động từ pinterest",
+          "tải hình nền pinterest miễn phí",
+          "tải hình nền pinterest cho máy tính",
+          "tải hình nền pinterest về máy tính",
+          "tải hình nền pinterest trên máy tính"
+        ],
+        "pinterest image downloader": [
+          "pinterest image downloader",
+          "pinterest image downloader hd",
+          "pinterest image downloader 4k",
+          "pinterest image downloader online",
+          "pinterest image downloader extension",
+          "pinterest image downloader chrome extension",
+          "pinterest image downloader free",
+          "pinterest image downloader high quality",
+          "pinterest image downloader link",
+          "pinterest image downloader video"
+        ],
+        "tải gif pinterest": [
+          "tải gif pinterest",
+          "tải gif pinterest về điện thoại",
+          "tải video gif pinterest",
+          "tải gif trên pinterest về máy tính",
+          "cách tải gif pinterest",
+          "tải gif miễn phí pinterestdownloader io"
+        ],
+        "tải ảnh gif pinterest": [
+          "tải ảnh gif pinterest",
+          "cách tải ảnh gif trên pinterest"
+        ],
+        "lưu gif pinterest": [
+          "lưu gif pinterest",
+          "cách lưu gif trên pinterest về máy tính",
+          "cách lưu gif trên pinterest về điện thoại",
+          "lưu gif pinterest trên máy tính"
+        ],
+        "gif pinterest": [
+          "gif pinterest",
+          "gif pinterest download",
+          "gif pinterest anime",
+          "gif pinterest downloader",
+          "gif aesthetic pinterest",
+          "gif pinterest girl",
+          "gif pinterest discord",
+          "gif pinterest wallpaper",
+          "gif pinterest meme",
+          "gif pinterest good morning"
+        ],
+        "cách tải gif trên pinterest": [
+          "cách tải gif trên pinterest về máy tính",
+          "cách tải gif trên pinterest",
+          "cách tải gif trên pinterest về điện thoại",
+          "cách tải gif động trên pinterest",
+          "cách tải gif trên pinterest trên máy tính"
+        ],
+        "pinterest gif downloader": [
+          "pinterest gif downloader",
+          "pinterest gif downloader 4k",
+          "pinterest gif downloader online",
+          "pinterest gif downloader free",
+          "pinterest gif downloader online free",
+          "pinterest gif downloader to video",
+          "pinterest gif downloader klickpin",
+          "pinterest gif downloader hd",
+          "pinterest gif downloader chrome",
+          "pinterest gif downloader mp4"
+        ],
+        "tải bảng pinterest": [
+          "tải bảng pinterest về máy tính",
+          "tải bảng pinterest cho máy tính"
+        ],
+        "tải toàn bộ ảnh pinterest": [
+          "tải toàn bộ ảnh pinterest về máy tính",
+          "tải toàn bộ ảnh pinterest về máy",
+          "tải toàn bộ ảnh pinterest trên máy tính"
+        ],
+        "tải tất cả ảnh pinterest": [
+          "tải tất cả ảnh pinterest về máy tính",
+          "tải tất cả ảnh pinterest trên máy tính"
+        ],
+        "tải hàng loạt ảnh pinterest": [
+          "tải ảnh hàng loạt trên pinterest",
+          "tải hàng loạt ảnh pinterest trên máy tính"
+        ],
+        "tải cả bảng pinterest": [
+          "tải cả bảng pinterest về máy tính",
+          "tải cả bảng pinterest trên máy tính"
+        ],
+        "bảng pinterest": [
+          "bảng pinterest",
+          "pinterest bảng màu",
+          "pinterest bảng chữ cái",
+          "vẽ bảng pinterest",
+          "xoá bảng pinterest",
+          "bảng tên pinterest",
+          "bảng hiệu pinterest",
+          "bảng dạm ngõ pinterest",
+          "trang trí bảng pinterest",
+          "mẫu vẽ bảng pinterest"
+        ],
+        "pinterest board downloader": [
+          "pinterest board downloader",
+          "pinterest board downloader online",
+          "pinterest board downloader extension",
+          "pinterest board downloader free",
+          "pinterest board downloader android",
+          "pinterest board downloader online free",
+          "pinterest board downloader github",
+          "pinterest board downloader firefox",
+          "pinterest board downloader apk",
+          "pinterest board downloader chrome extension"
+        ],
+        "tải board pinterest": [
+          "tải board pinterest về máy tính",
+          "tải board pinterest trên máy tính",
+          "tải board pinterest miễn phí"
+        ],
+        "tải album pinterest": [
+          "tải album pinterest video",
+          "tải album pinterest về máy tính"
+        ],
+        "tải hồ sơ pinterest": [
+          "tải hồ sơ pinterest về máy tính",
+          "tải hồ sơ pinterest trên máy tính"
+        ],
+        "tải tất cả ảnh từ pinterest": [
+          "tải tất cả ảnh từ pinterest về máy tính",
+          "tải tất cả ảnh từ pinterest về máy",
+          "tải tất cả ảnh từ pinterest về điện thoại"
+        ],
+        "pinterest profile downloader": [
+          "pinterest profile downloader",
+          "pinterest profile downloader free",
+          "pinterest profile downloader online",
+          "pinterest profile picture downloader",
+          "pinterest profile picture downloader hd",
+          "pinterest profile photo downloader",
+          "pinterest profile picture downloader online free",
+          "pinterest full profile downloader",
+          "pinterest profile banner downloader",
+          "pinterest profile picture downloader without watermark"
+        ],
+        "hồ sơ pinterest": [
+          "hồ sơ pinterest 2024",
+          "hồ sơ pinterest là gì"
+        ],
+        "tải ảnh đại diện pinterest": [
+          "tải ảnh đại diện pinterest về điện thoại"
+        ],
+        "ảnh đại diện pinterest": [
+          "ảnh đại diện pinterest",
+          "ảnh đại diện đẹp pinterest",
+          "ảnh đại diện facebook pinterest",
+          "ảnh đại diện cute pinterest",
+          "cách đổi ảnh đại diện trên pinterest"
+        ],
+        "avatar pinterest": [
+          "avatar pinterest",
+          "avatar pinterest ảnh cute",
+          "avatar pinterest anime",
+          "avatar pinterest aesthetic",
+          "girl avatar pinterest",
+          "pinterest avatar steam",
+          "avatar pinterest roblox",
+          "avatar pinterest mèo",
+          "avatar pinterest art",
+          "avatar pinterest nam"
+        ],
+        "tải avatar pinterest": [
+          "tải avatar pinterest",
+          "tải avatar pinterest về máy tính",
+          "tải avatar pinterest trên máy tính"
+        ],
+        "xem ảnh đại diện pinterest": [
+          "xem ảnh đại diện pinterest trên máy tính"
+        ],
+        "pinterest profile picture": [
+          "pinterest profile picture",
+          "pinterest profile picture girl",
+          "pinterest profile picture download",
+          "pinterest profile picture aesthetic",
+          "pinterest profile picture boy",
+          "pinterest profile picture size",
+          "pinterest profile picture ideas",
+          "pinterest profile picture girl aesthetic",
+          "pinterest profile picture viewer",
+          "pinterest profile picture for instagram"
+        ],
+        "tải ảnh băng chuyền pinterest": [
+          "tải ảnh băng chuyền pinterest trên máy tính"
+        ],
+        "băng chuyền pinterest": [],
+        "pinterest carousel": [
+          "pinterest carousel",
+          "pinterest carousel downloader",
+          "pinterest carousel post",
+          "pinterest carousel ideas",
+          "pinterest carousel ads",
+          "pinterest carousel ad specs",
+          "pinterest carousel pin",
+          "pinterest carousel examples",
+          "pinterest carousel ad examples",
+          "pinterest carousel specs"
+        ],
+        "tải nhiều ảnh pinterest": [
+          "tải nhiều ảnh trên pinterest",
+          "cách tải nhiều ảnh lên pinterest",
+          "cách tải nhiều ảnh cùng lúc trên pinterest",
+          "tải nhiều ảnh pinterest về máy tính"
+        ],
+        "ghim ý tưởng pinterest": [
+          "ghim ý tưởng pinterest trên máy tính"
+        ],
+        "tải ghim ý tưởng": [
+          "tải ghim ý tưởng trên tiktok"
+        ],
+        "tải story pinterest": [
+          "tải story pinterest về máy tính"
+        ],
+        "pinterest story": [
+          "pinterest story download",
+          "pinterest story ideas",
+          "pinterest story template",
+          "pinterest story",
+          "pinterest story background",
+          "pinterest story saver",
+          "pinterest story ideas for instagram",
+          "pinterest story background aesthetic",
+          "pinterest story download link copy",
+          "pinterest story ideas for girls"
+        ],
+        "pinterest idea pin": [
+          "pinterest idea pins",
+          "pinterest idea pin examples",
+          "pinterest idea pin builder",
+          "pinterest idea pin downloader",
+          "pinterest idea pin size",
+          "pinterest idea pin ads",
+          "pinterest idea pins 2025",
+          "pinterest idea pins gone",
+          "pinterest idea pins specs",
+          "pinterest create idea pin"
+        ],
+        "tải nhạc pinterest": [
+          "tải nhạc pinterest",
+          "tải nhạc pinterest về máy tính",
+          "tải nhạc pinterest miễn phí"
+        ],
+        "tải nhạc từ video pinterest": [
+          "tải nhạc từ video pinterest về điện thoại",
+          "tải nhạc từ video pinterest về máy tính",
+          "tải nhạc từ video pinterest sang mp3"
+        ],
+        "tải âm thanh pinterest": [
+          "tải âm thanh pinterest",
+          "tải âm thanh pinterest về máy tính",
+          "tải âm thanh pinterest video",
+          "tải âm thanh pinterest trên máy tính"
+        ],
+        "pinterest mp3": [
+          "pinterest mp3",
+          "pinterest mp3 download",
+          "pinterest mp3 converter",
+          "pinterest mp3 downloader online",
+          "pinterest mp3 audio download",
+          "pinterest mp3 video downloader",
+          "pinterest mp3 video download",
+          "pinterest mp3 video",
+          "pinterest mp3 player",
+          "pinterest mp3 downloader free"
+        ],
+        "tách nhạc từ video pinterest": [],
+        "lấy nhạc pinterest": [
+          "lấy nhạc pinterest làm nhạc chuông",
+          "lấy nhạc pinterest làm video"
+        ],
+        "nhạc pinterest": [
+          "pinterest nhạc",
+          "tải nhạc pinterest",
+          "đĩa nhạc pinterest",
+          "nốt nhạc pinterest",
+          "âm nhạc pinterest",
+          "nghe nhạc pinterest",
+          "nhạc pinterest mp3",
+          "nhạc pinterest hay",
+          "nhạc pinterest không lời",
+          "nhạc pinterest 2024"
+        ],
+        "tải video pinterest 4k": [
+          "tải video pinterest 4k",
+          "tải video từ pinterest 4k"
+        ],
+        "pinterest 4k": [
+          "pinterest 4k",
+          "pinterest 4k wallpaper for pc",
+          "pinterest 4k wallpaper",
+          "pinterest 4k downloader",
+          "pinterest 4k image downloader",
+          "pinterest 4k video download free",
+          "pinterest 4k video download online",
+          "pinterest 4k hd video download",
+          "pinterest 4k video",
+          "how to download 4k wallpaper from pinterest"
+        ],
+        "tải ảnh pinterest 4k": [
+          "tải ảnh pinterest 4k"
+        ],
+        "hình nền pinterest 4k": [
+          "hình nền pinterest 4k",
+          "hình nền laptop 4k pinterest",
+          "hình nền ipad 4k pinterest",
+          "hình nền pc 4k pinterest",
+          "hình nền máy tính 4k pinterest",
+          "hình nền điện thoại 4k pinterest",
+          "hình nền pinterest 4k cho máy tính",
+          "hình nền pinterest 4k cho pc"
+        ],
+        "tải video pinterest 1080p": [
+          "tải video pinterest 1080p",
+          "tải video pinterest 1080p 4k"
+        ],
+        "pinterest to mp4": [
+          "pinterest to mp4",
+          "pinterest to mp4 converter",
+          "pinterest to mp4 download",
+          "pinterest to mp4 downloader",
+          "pinterest to mp4 4k",
+          "pinterest to mp4 video",
+          "pinterest to mp4 convert",
+          "pinterest to mp4 video download",
+          "pinterest to mp4 video downloader",
+          "pinterest to mp4 download 4k"
+        ],
+        "pinterest sang mp4": [
+          "pinterest sang mp4",
+          "chuyển pinterest sang mp4",
+          "pinterest sang mp4 download"
+        ],
+        "chuyển pinterest sang mp4": [
+          "chuyển pinterest sang mp4"
+        ],
+        "chuyển video pinterest sang mp4": [
+          "chuyển video pinterest sang mp4"
+        ],
+        "pinterest mp4": [
+          "pinterest mp4",
+          "pinterest mp4 download",
+          "pinterest mp4 converter",
+          "pinterest mp4 video",
+          "pinterest mp4 video download",
+          "pinterest mp4 download 4k",
+          "pinterest mp4 convert",
+          "pinterest mp4 to gif",
+          "pinterest mp4 to mp3",
+          "pinterest mp4 converter download"
+        ],
+        "tải video pinterest trên chrome": [
+          "tải video pinterest trên chrome về máy tính"
+        ],
+        "tiện ích tải video pinterest": [
+          "tiện ích tải video pinterest trên máy tính",
+          "tiện ích tải video pinterest về máy tính"
+        ],
+        "extension tải video pinterest": [
+          "extension tải video pinterest về máy tính"
+        ],
+        "pinterest video downloader chrome": [
+          "pinterest video downloader chrome",
+          "pinterest video downloader chrome extension",
+          "pinterest video downloader chrome free",
+          "pinterest video downloader chrome extension free",
+          "pinterest video downloader chrome web store",
+          "pinterest video downloader chrome android",
+          "pinterest video downloader chrome apk",
+          "best pinterest video downloader chrome",
+          "pinterest video downloader 4k chrome",
+          "pinterest video and image downloader chrome extension"
+        ],
+        "tiện ích chrome tải video pinterest": [
+          "tiện ích chrome tải video pinterest về máy tính",
+          "tiện ích chrome tải video pinterest về điện thoại"
+        ],
+        "tiêu đề pinterest": [
+          "tiêu đề pinterest",
+          "vẽ tiêu đề pinterest",
+          "trang trí tiêu đề pinterest",
+          "font chữ tiêu đề pinterest",
+          "tiêu đề pinterest đẹp",
+          "tiêu đề pinterest là gì"
+        ],
+        "seo pinterest": [
+          "seo pinterest",
+          "seo pinterest 2026",
+          "seo pinterest meaning",
+          "seo pinterest 2025",
+          "pinterest seo in guk",
+          "pinterest seo ye ji",
+          "sara seo pinterest",
+          "seo for pinterest pins",
+          "roh yoon seo pinterest",
+          "seo su min pinterest"
+        ],
+        "tạo tiêu đề pinterest": [
+          "tạo tiêu đề pinterest trong excel",
+          "tạo tiêu đề pinterest trên máy tính",
+          "tạo tiêu đề pinterest trong word",
+          "tạo tiêu đề pinterest bằng link"
+        ],
+        "từ khóa pinterest": [
+          "từ khóa pinterest",
+          "từ khóa pinterest là gì"
+        ],
+        "pinterest seo": [
+          "pinterest seonghyeon",
+          "pinterest seonghyeon cortis",
+          "pinterest seo",
+          "pinterest seoul",
+          "pinterest seo 2026",
+          "pinterest seonghwa",
+          "pinterest seoul korea",
+          "seonghyeon pinterest wallpaper",
+          "pinterest seo in guk",
+          "pinterest seoul city"
+        ],
+        "cách tải video từ pinterest": [
+          "cách tải video từ pinterest",
+          "cách tải video từ pinterest về máy tính",
+          "cách tải video từ pinterest về iphone",
+          "cách tải video từ pinterest về laptop",
+          "cách tải video từ pinterest về điện thoại",
+          "cách tải video từ pinterest về điện thoại android",
+          "cách tải video từ app pinterest",
+          "cách tải video từ trên pinterest",
+          "cách tải video từ pinterest về máy"
+        ],
+        "cách tải video pinterest về điện thoại": [
+          "cách tải video pinterest về điện thoại",
+          "cách tải video trên pinterest về điện thoại iphone",
+          "cách tải video từ pinterest về điện thoại android",
+          "cách tải video trên pinterest về điện thoại samsung",
+          "cách tải video pinterest về điện thoại iphone",
+          "cách tải video pinterest về điện thoại android"
+        ],
+        "cách lưu video pinterest vào thư viện": [
+          "cách lưu video pinterest vào thư viện ảnh",
+          "cách lưu video pinterest vào thư viện quốc gia"
+        ],
+        "tải video pinterest vào thư viện": [
+          "tải video pinterest vào thư viện ảnh",
+          "tải video pinterest vào thư viện quốc gia"
+        ],
+        "tải video pinterest về thư viện ảnh": [
+          "tải video pinterest về thư viện ảnh iphone",
+          "tải video pinterest về thư viện ảnh trên máy tính",
+          "tải video pinterest về thư viện ảnh máy tính",
+          "tải video pinterest về thư viện ảnh điện thoại"
+        ],
+        "lưu video pinterest về album": [
+          "lưu video pinterest về album ảnh",
+          "lưu video pinterest về album điện thoại"
+        ],
+        "lưu video pinterest vào ảnh": [
+          "lưu video pinterest vào ảnh đại diện",
+          "lưu video pinterest vào ảnh có sẵn"
+        ],
+        "tải video pinterest về máy tính": [
+          "tải video pinterest về máy tính",
+          "tải video pinterest về máy tính 4k",
+          "tải video trên pinterest về máy tính",
+          "web tải video trên pinterest về máy tính"
+        ],
+        "tải video pinterest trên máy tính": [
+          "tải video pinterest trên máy tính",
+          "cách tải video pinterest trên máy tính",
+          "web tải video trên pinterest về máy tính"
+        ],
+        "tải video pinterest trên laptop": [
+          "cách tải video trên pinterest về laptop"
+        ],
+        "cách tải video pinterest trên máy tính": [
+          "cách tải video pinterest trên máy tính"
+        ],
+        "tải video pinterest trên iphone": [
+          "tải video pinterest trên iphone"
+        ],
+        "tải video pinterest về iphone": [
+          "tải video pinterest về iphone"
+        ],
+        "tải video pinterest android": [
+          "tải video pinterest cho android",
+          "tải video pinterest android không logo"
+        ],
+        "tải video pinterest về điện thoại": [
+          "tải video pinterest về điện thoại",
+          "tải video pinterest về điện thoại miễn phí",
+          "tải video pinterest về điện thoại iphone",
+          "tải video trên pinterest về điện thoại android",
+          "tải video ở pinterest về điện thoại",
+          "tải video trên pinterest về điện thoại ios",
+          "cách tải video từ pinterest về điện thoại android",
+          "tải video pinterest về điện thoại android"
+        ],
+        "cách tải video pinterest trên iphone": [
+          "cách tải video pinterest trên iphone"
+        ],
+        "sao không tải được video trên pinterest": [
+          "sao không tải được video trên pinterest về máy tính",
+          "sao không tải được video trên pinterest trên máy tính"
+        ],
+        "tại sao không tải được video pinterest": [
+          "tại sao không tải được video pinterest trên máy tính",
+          "tại sao không tải được video pinterest về máy tính"
+        ],
+        "pinterest không cho tải video": [
+          "pinterest không cho tải video được"
+        ],
+        "pinterest không lưu được video": [
+          "có lưu được video trên pinterest không",
+          "pinterest không lưu được video trên máy tính"
+        ],
+        "cach tai video pinterest": [
+          "cách tải video pinterest",
+          "cách tải video pinterest về máy tính",
+          "cách tải video pinterest về điện thoại",
+          "cách tải video pinterest không có logo",
+          "cách tải video pinterest về máy",
+          "cách tải video pinterest trên iphone",
+          "cách tải video từ pinterest về điện thoại android",
+          "cách tải video trên pinterest về laptop",
+          "cách tải video trên pinterest miễn phí",
+          "cach tai video pinterest tren may tinh"
+        ],
+        "luu video pinterest": [
+          "lưu video pinterest",
+          "lưu video pinterest hd",
+          "lưu video pinterest không có logo",
+          "lưu video pinterest về điện thoại",
+          "lưu video pinterest về máy",
+          "lưu video pinterest bằng link",
+          "lưu video pinterest về máy tính",
+          "lưu video pinterest miễn phí",
+          "lưu video pinterest 4k",
+          "lưu video trên pinterest"
+        ],
+        "cach tai video tren pinterest": [
+          "cách tải video trên pinterest",
+          "cách tải video trên pinterest về điện thoại iphone",
+          "cách tải video trên pinterest về pc",
+          "cách tải video trên pinterest về điện thoại android",
+          "cách tải video trên pinterest về máy điện thoại",
+          "cách tải video trên pinterest pc",
+          "cách tải video trên pinterest về ipad",
+          "cách tải video trên pinterest về macbook",
+          "cách tải video trên pinterest không bị mờ",
+          "cach tai video tren pinterest tren may tinh"
+        ],
+        "tải video pinterest a": [
+          "tải video app pinterest",
+          "tải video pinterest cho android",
+          "tải video trên app pinterest",
+          "app tải video từ pinterest",
+          "tải video pinterest apk",
+          "tải video pinterest android"
+        ],
+        "tải video pinterest b": [
+          "tải video pinterest bằng link",
+          "tải video bằng liên kết pinterest",
+          "cách tải video trên pinterest không bị mờ",
+          "tải video pinterest bằng iphone",
+          "tải video pinterest bằng máy tính"
+        ],
+        "tải video pinterest c": [
+          "tải video pinterest cho máy tính",
+          "tải video pinterest chất lượng cao",
+          "tải video pinterest cho android",
+          "tải video pinterest cho iphone",
+          "tải video pinterest com",
+          "tải video của pinterest",
+          "tải video pinterest không có logo",
+          "cách tải video của pinterest",
+          "cách tải video pinterest",
+          "cách tải video pinterest về máy tính"
+        ],
+        "tải video pinterest d": [
+          "tải video pinterest downloader",
+          "tải video pinterest download",
+          "tải video deo pinterest",
+          "tải video pinterest không dính logo",
+          "trình duyệt tải video pinterest",
+          "hướng dẫn tải video pinterest",
+          "ứng dụng tải video pinterest",
+          "cách tải video trên pinterest không dính logo",
+          "cách tải video trên ứng dụng pinterest",
+          "tải video pinterest desktop"
+        ],
+        "tải video pinterest đ": [
+          "tải video pinterest về điện thoại",
+          "tải video pinterest về điện thoại iphone",
+          "tải video pinterest về điện thoại miễn phí",
+          "tải video trên pinterest về điện thoại android",
+          "tải video ở pinterest về điện thoại",
+          "tải video trên pinterest về điện thoại ios",
+          "cách tải video từ pinterest về điện thoại android",
+          "cách tải video trên pinterest về đt",
+          "tải video pinterest đầy bộ nhớ",
+          "tải video pinterest điện thoại"
+        ],
+        "tải video pinterest f": [
+          "tải video pinterest full hd",
+          "tải video pinterest free",
+          "tải video pinterest free về máy tính"
+        ],
+        "tải video pinterest g": [
+          "tải video gif pinterest",
+          "tải video pinterest thành gif",
+          "tải video pinterest gia đình",
+          "tải video pinterest giá bao nhiêu",
+          "tải video pinterest giá rẻ",
+          "tải video pinterest gia re"
+        ],
+        "tải video pinterest h": [
+          "tải video pinterest hd",
+          "tải video pinterest full hd",
+          "hướng dẫn tải video pinterest",
+          "tải video https www pinterest com"
+        ],
+        "tải video pinterest k": [
+          "tải video pinterest không logo",
+          "tải video pinterest không logo miễn phí",
+          "cách tải video pinterest không có logo",
+          "tải video liên kết pinterest",
+          "cách tải video trên pinterest không bị mờ",
+          "có cách nào tải video trên pinterest không",
+          "tải video pinterest không có logo",
+          "tải video pinterest không dính logo"
+        ],
+        "tải video pinterest l": [
+          "tải video link pinterest",
+          "tải video lên pinterest",
+          "tải video pinterest bằng link",
+          "tải video pinterest không logo",
+          "tải video pinterest chất lượng cao",
+          "tải video pinterest về laptop",
+          "tải video pinterest không logo miễn phí",
+          "tải video từ link pinterest",
+          "cách tải video pinterest không logo",
+          "link tải video trên pinterest"
+        ],
+        "tải video pinterest m": [
+          "tải video pinterest miễn phí",
+          "tải video pinterest máy tính",
+          "tải video pinterest mp3",
+          "tải video pinterest về máy",
+          "tải video trên pinterest miễn phí",
+          "cách tải video pinterest về máy tính",
+          "cách tải video pinterest trên máy tính",
+          "cách tải video trên pinterest về máy điện thoại",
+          "cách tải video trên pinterest về macbook",
+          "tải video pinterest mp4"
+        ],
+        "tải video pinterest n": [
+          "tải video pinterest nét",
+          "tải video pinterest nhanh",
+          "tải video pinterest nhanh nhất"
+        ],
+        "tải video pinterest p": [
+          "tải video pinterest pc",
+          "tải video pinterest miễn phí",
+          "tải video trên pinterest miễn phí",
+          "tải video pinterest không logo miễn phí",
+          "cách tải video trên pinterest pc",
+          "phần mềm tải video pinterest",
+          "tải video pinterest về điện thoại miễn phí",
+          "phím tắt tải video pinterest",
+          "tải video pinterest phiên bản cũ",
+          "tải video pinterest phiên bản mới nhất"
+        ],
+        "tải video pinterest s": [
+          "snap tải video pinterest",
+          "tải video pinterest sang mp4",
+          "tải video pinterest sang"
+        ],
+        "tải video pinterest t": [
+          "tải video pinterest trên máy tính",
+          "tải video pinterest trên iphone",
+          "tải video pinterest thành gif",
+          "tải video từ pinterest",
+          "tải video trên pinterest về máy tính",
+          "tải video từ pinterest về máy",
+          "tải video trên pinterest về điện thoại",
+          "tải video trên pinterest về điện thoại android",
+          "tải video từ pinterest online",
+          "tải video trên pinterest ios"
+        ],
+        "tải video pinterest v": [
+          "tải video pinterest về máy tính",
+          "tải video pinterest về máy",
+          "tải video pinterest về",
+          "tải video pinterest về điện thoại",
+          "tải video pinterest v",
+          "tải video pinterest video",
+          "tải video pinterest về điện thoại miễn phí",
+          "tải video pinterest về iphone",
+          "tải video pinterest về máy tính 4k",
+          "tải video pinterest về laptop"
+        ],
+        "tải ảnh pinterest b": [
+          "tải ảnh pinterest bằng link",
+          "cách tải ảnh pinterest không bị vỡ",
+          "tải ảnh trên pinterest có bản quyền không",
+          "tải ảnh pinterest bằng máy tính",
+          "tải ảnh pinterest bằng iphone",
+          "tải ảnh pinterest bằng web"
+        ],
+        "tải ảnh pinterest c": [
+          "tải ảnh pinterest chất lượng cao",
+          "tải ảnh trên pinterest có bản quyền không",
+          "cách tải ảnh pinterest",
+          "cách tải ảnh pinterest hd",
+          "cách tải ảnh pinterest nét",
+          "cách tải ảnh pinterest về máy tính",
+          "cách tải ảnh pinterest không bị vỡ",
+          "cách tải ảnh pinterest về điện thoại",
+          "cách tải ảnh pinterest full hd",
+          "cách tải ảnh pinterest trên ipad"
+        ],
+        "tải ảnh pinterest d": [
+          "tải ảnh pinterest download",
+          "tải ảnh pinterest desktop",
+          "tải ảnh pinterest downloader"
+        ],
+        "tải ảnh pinterest f": [
+          "tải ảnh pinterest full hd",
+          "tải ảnh pinterest free"
+        ],
+        "tải ảnh pinterest h": [
+          "tải ảnh pinterest hd",
+          "tải ảnh pinterest hàng loạt",
+          "tải ảnh pinterest full hd",
+          "cách tải ảnh pinterest hd",
+          "tải hình ảnh pinterest",
+          "tải hình ảnh trên pinterest",
+          "tải ảnh pinterest hd miễn phí"
+        ],
+        "tải ảnh pinterest k": [
+          "tải ảnh pinterest không logo",
+          "cách tải ảnh pinterest không bị vỡ",
+          "tải ảnh ghép pinterest không có logo",
+          "tải ảnh trên pinterest có bản quyền không",
+          "tải ảnh pinterest không có logo",
+          "tải ảnh pinterest không bị mờ",
+          "tải ảnh pinterest không dính logo"
+        ],
+        "tải ảnh pinterest m": [
+          "tải ảnh pinterest miễn phí",
+          "tải ảnh pinterest về máy",
+          "tải ảnh pinterest về máy tính",
+          "cách tải ảnh pinterest về máy",
+          "tải ảnh pinterest mới nhất",
+          "tải ảnh pinterest máy tính",
+          "tải ảnh pinterest mới",
+          "tải ảnh pinterest mp4"
+        ],
+        "tải ảnh pinterest n": [
+          "tải ảnh pinterest nét",
+          "cách tải ảnh pinterest nét",
+          "cách tải ảnh từ pinterest nét",
+          "tải nhiều ảnh trên pinterest",
+          "tải ảnh pinterest nhất",
+          "tải ảnh pinterest nhanh",
+          "tải ảnh pinterest nét nhất",
+          "tải ảnh pinterest nằm ở đâu"
+        ],
+        "tải ảnh pinterest p": [
+          "tải ảnh pinterest miễn phí",
+          "tải ảnh png trên pinterest",
+          "phím tắt tải ảnh pinterest",
+          "tải ảnh pinterest pc",
+          "tải ảnh pinterest png",
+          "tải ảnh pinterest photo",
+          "tải ảnh pinterest pdf"
+        ],
+        "tải ảnh pinterest s": [
+          "tải ảnh pinterest savefrom",
+          "tải ảnh pinterest snap",
+          "tải ảnh pinterest sang",
+          "tải ảnh pinterest savefrom.net",
+          "tải ảnh pinterest short"
+        ],
+        "tải ảnh pinterest t": [
+          "tải ảnh pinterest trên ipad",
+          "tải ảnh từ pinterest",
+          "tải ảnh trên pinterest về điện thoại",
+          "tải ảnh trên pinterest về iphone",
+          "tải ảnh từ pinterest về máy tính",
+          "tải ảnh trên pinterest có bản quyền không",
+          "cách tải ảnh trên pinterest",
+          "cách tải ảnh trên pinterest không bị mờ",
+          "link tải ảnh trên pinterest",
+          "tải ảnh động trên pinterest"
+        ],
+        "tải ảnh pinterest v": [
+          "tải ảnh pinterest về máy tính",
+          "tải ảnh pinterest về máy",
+          "tải ảnh pinterest về điện thoại",
+          "tải ảnh video pinterest",
+          "tải ảnh trên pinterest về iphone",
+          "tải ảnh trên pinterest về ipad",
+          "cách tải ảnh pinterest về máy",
+          "cách tải ảnh trên pinterest về laptop",
+          "cách tải ảnh từ pinterest về",
+          "cách tải ảnh động trên pinterest về máy tính"
+        ],
+        "cách tải video pinterest về ": [
+          "cách tải video pinterest về máy tính",
+          "cách tải video pinterest về máy",
+          "cách tải video pinterest về điện thoại",
+          "cách tải video pinterest về iphone",
+          "cách tải video từ pinterest về điện thoại android",
+          "cách tải video trên pinterest về laptop",
+          "cách tải video trên pinterest về điện thoại samsung",
+          "cách tải video trên pinterest về ipad",
+          "cách tải video trên pinterest về macbook",
+          "cách tải video ở pinterest về máy"
+        ],
+        "cách tải video pinterest về điện thoại ": [
+          "cách tải video pinterest về điện thoại",
+          "cách tải video trên pinterest về điện thoại iphone",
+          "cách tải video từ pinterest về điện thoại android",
+          "cách tải video trên pinterest về điện thoại samsung",
+          "cách tải video pinterest về điện thoại iphone",
+          "cách tải video pinterest về điện thoại android",
+          "cách tải video pinterest về điện thoại samsung"
+        ],
+        "tải video pinterest về máy ": [
+          "tải video pinterest về máy tính",
+          "tải video pinterest về máy tính 4k",
+          "tải video pinterest về máy",
+          "tải video trên pinterest về máy tính",
+          "cách tải video pinterest về máy",
+          "web tải video trên pinterest về máy tính",
+          "cách tải video trên pinterest về máy điện thoại"
+        ],
+        "tải video pinterest samsung": [
+          "tải video pinterest samsung miễn phí",
+          "tải video pinterest samsung về máy tính"
+        ],
+        "tải video pinterest ipad": [
+          "cách tải video trên pinterest về ipad",
+          "tải video pinterest ipad không logo"
+        ],
+        "tải video pinterest macbook": [
+          "cách tải video trên pinterest về macbook",
+          "tải video pinterest macbook air",
+          "tải video pinterest macbook pro"
+        ],
+        "tải video pinterest pc": [
+          "tải video pinterest pc",
+          "cách tải video trên pinterest pc"
+        ],
+        "tải video pinterest laptop": [
+          "tải video pinterest về laptop",
+          "tải video pinterest laptop miễn phí"
+        ],
+        "tải video pinterest về bộ sưu tập": [],
+        "lưu video pinterest về bộ sưu tập": [
+          "cách lưu video trên pinterest về bộ sưu tập",
+          "lưu video pinterest về bộ sưu tập iphone",
+          "lưu video pinterest về bộ sưu tập trên máy tính",
+          "lưu video pinterest về bộ sưu tập trên iphone"
+        ],
+        "lưu video pinterest vào thư viện": [],
+        "tải video pinterest không cần app": [
+          "tải video pinterest không cần app store"
+        ],
+        "tải video pinterest không cần ứng dụng": [],
+        "tải video pinterest không cần đăng nhập": [],
+        "tải video pinterest có âm thanh": [
+          "tải video pinterest có âm thanh không",
+          "tải video pinterest có âm thanh được không"
+        ],
+        "tải video pinterest có tiếng": [],
+        "tải video pinterest bị mất tiếng": [
+          "tải video pinterest bị mất tiếng phải làm sao"
+        ],
+        "tải video pinterest không có tiếng": [
+          "tải video pinterest không có tiếng việt"
+        ],
+        "tải gif pinterest ": [
+          "tải gif pinterest về điện thoại",
+          "tải gif pinterest",
+          "tải video gif pinterest",
+          "tải gif trên pinterest về máy tính",
+          "cách tải gif pinterest",
+          "tải gif pinterest về máy tính",
+          "tải gif pinterest trên máy tính"
+        ],
+        "tải ảnh động pinterest": [
+          "tải ảnh động pinterest",
+          "cách tải ảnh động trên pinterest",
+          "cách tải ảnh động trên pinterest về máy tính",
+          "cách tải ảnh động trên pinterest về điện thoại",
+          "tải ảnh động pinterest về máy tính",
+          "tải ảnh động pinterest trên máy tính"
+        ],
+        "ảnh động pinterest": [
+          "ảnh động pinterest",
+          "tải ảnh động pinterest",
+          "ảnh động vật pinterest",
+          "ảnh động lực pinterest",
+          "ảnh nền động pinterest",
+          "ảnh động vật cute pinterest",
+          "pinterest ảnh động anime",
+          "ảnh động pinterest là gì",
+          "ảnh động pinterest đẹp"
+        ],
+        "lưu ảnh động pinterest": [
+          "lưu ảnh động trên pinterest",
+          "cách lưu ảnh động trên pinterest",
+          "lưu ảnh động pinterest trên máy tính"
+        ],
+        "xem avatar pinterest": [
+          "xem avatar pinterest trên máy tính",
+          "xem avatar pinterest ở đâu"
+        ],
+        "tải avatar ": [
+          "tải avatar tiktok",
+          "tải avatar world city life miễn phí",
+          "tải avatar instagram",
+          "tải avatar cho android",
+          "tải avatar dk cho android",
+          "tải avatar threads",
+          "tải avatar facebook",
+          "tải avatar cho iphone",
+          "tải avatar 2",
+          "tải avatar youtube"
+        ],
+        "tải ảnh đại diện": [
+          "tải ảnh đại diện tiktok",
+          "tải ảnh đại diện",
+          "tải ảnh đại diện đám tang",
+          "tải ảnh đại diện zalo",
+          "tải ảnh đại diện facebook",
+          "tải ảnh đại diện ig",
+          "tải ảnh đại diện tiktok không logo",
+          "tải ảnh đại diện facebook bị mờ",
+          "tải ảnh đại diện lên facebook không bị mờ",
+          "tải ảnh đại diện buồn"
+        ],
+        "phóng to ảnh đại diện pinterest": [
+          "phóng to ảnh đại diện pinterest trên máy tính"
+        ],
+        "tải toàn bộ bảng pinterest": [],
+        "tải tất cả ghim trong bảng pinterest": [
+          "tải tất cả ghim trong bảng pinterest trên máy tính",
+          "tải tất cả ghim trong bảng pinterest là gì"
+        ],
+        "tải bảng pinterest zip": [
+          "tải bảng pinterest zip về máy tính",
+          "tải bảng pinterest zip miễn phí",
+          "tải bảng pinterest zip trên máy tính"
+        ],
+        "pinterest zip": [
+          "pinterest zip up hoodie",
+          "pinterest zip",
+          "pinterest zip file download",
+          "pinterest zipper",
+          "pinterest zip fpe",
+          "pinterest zipper hoodie",
+          "pinterest zip code",
+          "zippo pinterest",
+          "pinterest zipper pouch",
+          "pinterest zip up"
+        ],
+        "app tải video pinterest": [
+          "app tải video pinterest",
+          "cách tải video trên app pinterest",
+          "app tải video pinterest không có logo",
+          "app tải video pinterest về máy tính",
+          "app tải video pinterest về điện thoại",
+          "app tải video pinterest cho iphone"
+        ],
+        "ứng dụng tải video pinterest": [
+          "ứng dụng tải video pinterest",
+          "ứng dụng tải video trên pinterest",
+          "ứng dụng tải video từ pinterest",
+          "cách tải video trên ứng dụng pinterest",
+          "ứng dụng tải video pinterest về máy tính",
+          "ứng dụng tải video pinterest không có logo",
+          "ứng dụng tải video pinterest về điện thoại",
+          "ứng dụng tải video pinterest trên máy tính"
+        ],
+        "phần mềm tải video pinterest": [
+          "phần mềm tải video pinterest",
+          "phần mềm tải video pinterest về máy tính",
+          "phần mềm tải video pinterest về điện thoại"
+        ],
+        "savepin": [
+          "savepin",
+          "savepin media",
+          "savepin pinterest image downloader",
+          "savepin video",
+          "savepin net",
+          "save pinterest video",
+          "savepin download",
+          "savepin app pinterest",
+          "savepin video downloader",
+          "savepin image downloader"
+        ],
+        "klickpin": [
+          "klickpin",
+          "klickpin pinterest",
+          "klickpin on google",
+          "klickpin safe",
+          "klickpin com pinterest video",
+          "klickpin website",
+          "klickpin reddit",
+          "klickpin app download apk",
+          "klickpin cf",
+          "klickpin download"
+        ],
+        "pinterest downloader io": [
+          "pinterest downloader io",
+          "pinterest downloader ios",
+          "pinterest downloader ios shortcut",
+          "pinterest downloader io free",
+          "pinterest video downloader io",
+          "pinterest video downloader ios",
+          "pinterest video downloader ios shortcut",
+          "pinterest video downloader ios app",
+          "pinterest downloader apk ios",
+          "pinterest video downloader apk ios"
+        ],
+        "chuyển video pinterest thành mp3": [
+          "chuyển video pinterest thành mp3 online"
+        ],
+        "tải mp3 pinterest": [
+          "tải mp3 pinterest",
+          "tải video pinterest mp3",
+          "tải mp3 pinterest về máy tính",
+          "tải mp3 pinterest trên máy tính"
+        ],
+        "tải nhạc pinterest mp3": [
+          "tải nhạc pinterest mp3 miễn phí"
+        ],
+        "cốc cốc tải video pinterest": [
+          "cốc cốc tải video pinterest về máy tính",
+          "cốc cốc tải video pinterest không có logo"
+        ],
+        "tải video pinterest bằng cốc cốc": [],
+        "tải video pinterest trên ipad": [
+          "cách tải video trên pinterest về ipad"
+        ],
+        "tải video pinterest trên macbook": [
+          "cách tải video trên pinterest về macbook",
+          "tải video pinterest trên macbook air",
+          "tải video pinterest trên macbook pro"
+        ],
+        "tải video pinterest về máy tính không cần phần mềm": [],
+        "tiện ích tải ảnh pinterest": [
+          "tiện ích tải ảnh pinterest trên máy tính",
+          "tiện ích tải ảnh pinterest về máy tính"
+        ],
+        "pinterest có tải video được không": [],
+        "có tải video trên pinterest được không": [],
+        "tải ảnh pinterest không bị vỡ": [
+          "cách tải ảnh pinterest không bị vỡ",
+          "tải ảnh pinterest không bị vỡ ảnh",
+          "tải ảnh pinterest không bị vỡ nét"
+        ],
+        "tải ảnh pinterest nét": [
+          "tải ảnh pinterest nét",
+          "cách tải ảnh pinterest nét",
+          "cách tải ảnh từ pinterest nét",
+          "tải ảnh pinterest nét nhất",
+          "tải ảnh pinterest nét hơn",
+          "tải ảnh pinterest nét ảnh",
+          "tải ảnh pinterest nét đẹp"
+        ],
+        "tải ảnh pinterest chất lượng gốc": [
+          "tải ảnh pinterest chất lượng gốc miễn phí"
+        ],
+        "tải hình nền pinterest 4k": [
+          "tải hình nền pinterest 4k pc",
+          "tải hình nền pinterest 4k cho pc"
+        ],
+        "tải ghim video": [],
+        "ghim video pinterest": [
+          "ghim video pinterest trên máy tính"
+        ],
+        "tải video từ link pinterest": [
+          "tải video từ link pinterest",
+          "tải video từ link pinterest về máy tính"
+        ],
+        "link pinterest": [
+          "link pinterest",
+          "link pinterest download",
+          "link pinterest video download",
+          "link pinterest video",
+          "link pinterest downloader",
+          "link pinterest video downloader",
+          "link pinterest to instagram",
+          "link pinterest to mp4",
+          "link pinterest save",
+          "link pinterest to etsy"
+        ],
+        "pin.it": [
+          "pin.it",
+          "pin it link",
+          "pin it co",
+          "pin it down",
+          "pin it game",
+          "pin it on iphone",
+          "pin it down meaning",
+          "pin it meaning",
+          "pin it downloader",
+          "pin it card"
+        ],
+        "tạo tiêu đề cho ghim pinterest": [
+          "tạo tiêu đề cho ghim pinterest trên máy tính"
+        ],
+        "mô tả pinterest": [
+          "mô tả pinterest là gì",
+          "mô tả pinterest.com",
+          "mô tả pinterest ảnh"
+        ],
+        "hashtag pinterest": [
+          "hashtag pinterest",
+          "hashtag pinterest generator",
+          "pinterest popular hashtag",
+          "trending hashtag pinterest",
+          "hashtag cầm tay pinterest",
+          "pinterest hashtag generator recurpost",
+          "pinterest hashtag generator free",
+          "pinterest hashtag limit",
+          "pinterest hashtag research",
+          "hashtag para pinterest"
+        ],
+        "viết tiêu đề pinterest": [
+          "pinterest font chữ viết tiêu đề",
+          "viết tiêu đề pinterest đẹp"
+        ],
+        "tải video pinterest không logo ": [
+          "tải video pinterest không logo miễn phí",
+          "tải video pinterest không logo",
+          "cách tải video pinterest không logo",
+          "tải video pinterest không logo fpt",
+          "tải video pinterest không logo trên iphone",
+          "tải video pinterest không logo trên máy tính",
+          "tải video pinterest không logo ios"
+        ],
+        "tải video pinterest full hd": [
+          "tải video pinterest full hd",
+          "tải video pinterest full hd không logo"
+        ],
+        "lưu ảnh pinterest không logo": [
+          "lưu ảnh pinterest không logo"
+        ],
+        "tải video pinterest về điện thoại android": [
+          "tải video trên pinterest về điện thoại android",
+          "cách tải video từ pinterest về điện thoại android",
+          "tải video pinterest về điện thoại android miễn phí"
+        ],
+        "tải video pinterest về điện thoại iphone": [
+          "tải video pinterest về điện thoại iphone",
+          "tải video pinterest về điện thoại iphone miễn phí"
+        ],
+        "lưu video pinterest về iphone": [
+          "cách lưu video trên pinterest về iphone"
+        ],
+        "lưu video pinterest về máy tính": [
+          "lưu video pinterest về máy tính",
+          "lưu video trên pinterest về máy tính"
+        ],
+        "cách lưu video pinterest về máy tính": [
+          "cách lưu video pinterest về máy tính"
+        ],
+        "cách lưu ảnh pinterest về máy tính": [
+          "cách lưu ảnh pinterest về máy tính"
+        ],
+        "tải video pinterest 2k": [],
+        "tải video pinterest 720p": [],
+        "trình tải video pinterest": [
+          "trình tải video pinterest",
+          "trình tải xuống video pinterest"
+        ],
+        "trình tải xuống video pinterest": [
+          "trình tải xuống video pinterest",
+          "trình tải xuống video pinterest trực tuyến"
+        ],
+        "công cụ tải video pinterest": [
+          "công cụ tải video pinterest",
+          "công cụ tải video pinterest về điện thoại",
+          "công cụ tải video pinterest về máy tính"
+        ],
+        "download pinterest": [
+          "download pinterest",
+          "download pinterest video",
+          "download pinterest image",
+          "download pinterest clip",
+          "download pinterest video hd",
+          "download pinterest app",
+          "download pinterest free",
+          "download pinterest video online",
+          "download pinterest pc",
+          "download pinterest gif"
+        ],
+        "download pinterest video": [
+          "download pinterest video",
+          "download pinterest video hd",
+          "download pinterest video online",
+          "download pinterest video 4k",
+          "download pinterest video from link",
+          "download pinterest videos free",
+          "download pinterest video downloader",
+          "download pinterest video downloader online",
+          "download pinterest video reddit",
+          "download pinterest video without watermark"
+        ],
+        "tải pinterest về máy tính": [
+          "tải pinterest về máy tính",
+          "tải pinterest về máy tính win 10",
+          "tải video pinterest về máy tính",
+          "tải ảnh pinterest về máy tính",
+          "cách tải pinterest về máy tính",
+          "tải video trên pinterest về máy tính",
+          "tải gif trên pinterest về máy tính",
+          "web tải video trên pinterest về máy tính",
+          "cách tải ảnh động trên pinterest về máy tính"
+        ],
+        "pinterest có video 4k không": [],
+        "video pinterest bị mờ": [
+          "video pinterest bị mờ phải làm sao",
+          "video pinterest bị mờ thì phải làm sao"
+        ],
+        "ảnh pinterest bị mờ": [
+          "ảnh pinterest bị mờ",
+          "ảnh pinterest bị mờ phải làm sao"
+        ],
+        "tại sao ảnh pinterest bị mờ": [],
+        "tải video pinterest bị lỗi": [],
+        "không tải được video pinterest": [
+          "không tải được video trên pinterest",
+          "không tải được video pinterest về máy tính"
+        ],
+        "không tải được ảnh trên pinterest": [
+          "không tải được ảnh trên pinterest",
+          "lỗi không tải được ảnh trên pinterest",
+          "không tải được ảnh trên pinterest về máy tính",
+          "không tải được ảnh trên pinterest trên máy tính"
+        ],
+        "tại sao không lưu được ảnh trên pinterest": [
+          "tại sao không lưu được ảnh trên pinterest",
+          "tại sao không lưu được ảnh trên pinterest trên máy tính",
+          "tại sao không lưu được ảnh trên pinterest về máy tính"
+        ],
+        "pinterest không cho tải ảnh": [
+          "pinterest không cho tải ảnh",
+          "pinterest không cho tải ảnh về"
+        ],
+        "tải video pinterest trên iphone không cần app": [
+          "tải video pinterest trên iphone không cần app store"
+        ],
+        "tải video pinterest bằng documents": [],
+        "phím tắt tải video pinterest": [
+          "phím tắt tải video pinterest",
+          "phím tắt tải video pinterest về máy tính"
+        ],
+        "tải video pinterest bằng safari": [
+          "tải video pinterest bằng safari trên iphone",
+          "tải video pinterest bằng safari trên macbook"
+        ],
+        "tải hàng loạt video pinterest": [],
+        "cách lấy link pinterest": [
+          "cách lấy link pinterest",
+          "cách lấy link tài khoản pinterest",
+          "cách lấy link ảnh trên pinterest",
+          "cách lấy link pinterest trên máy tính"
+        ],
+        "cách copy link pinterest": [
+          "cách copy link pinterest trên máy tính"
+        ],
+        "cách lấy link video pinterest": [
+          "cách lấy link video pinterest trên máy tính",
+          "cách lấy link video pinterest của mình"
+        ],
+        "cách sao chép liên kết pinterest": [
+          "cách sao chép liên kết pinterest trên máy tính"
+        ],
+        "pin.it là gì": [
+          "pin it là gì",
+          "pin sạc ít 100 là gì",
+          "hover over a message to pin it là gì"
+        ],
+        "tải video pinterest có bản quyền không": [],
+        "tải video pinterest có vi phạm bản quyền không": [],
+        "tải ảnh pinterest có vi phạm bản quyền không": [],
+        "dùng ảnh pinterest có bị bản quyền không": [],
+        "tải video pinterest an toàn": [
+          "tải video pinterest an toàn nhất",
+          "tải video pinterest an toàn không"
+        ],
+        "tải video pinterest lậu": [],
+        "web tải video pinterest uy tín": [],
+        "tải video pinterest về máy tính win 10": [
+          "tải video pinterest về máy tính win 10 pro"
+        ],
+        "tải video pinterest về chromebook": [],
+        "tải gif pinterest về iphone": [
+          "tải gif pinterest về iphone lưu ở đâu"
+        ],
+        "gif pinterest bị đứng hình": [],
+        "tải avatar pinterest full hd": [
+          "tải avatar pinterest full hd miễn phí",
+          "tải avatar pinterest full hd cho máy tính"
+        ],
+        "tải bảng pinterest về điện thoại": [
+          "tải bảng pinterest về điện thoại android",
+          "tải bảng pinterest về điện thoại iphone",
+          "tải bảng pinterest về điện thoại android miễn phí",
+          "tải bảng pinterest về điện thoại iphone miễn phí"
+        ],
+        "tải video từ bảng pinterest": [
+          "tải video từ bảng pinterest về máy tính",
+          "tải video từ bảng pinterest về điện thoại"
+        ],
+        "tải video ý tưởng pinterest": [
+          "tải video ý tưởng pinterest về điện thoại"
+        ],
+        "tải video nhiều trang pinterest": [
+          "tải video nhiều trang pinterest về máy tính"
+        ],
+        "tải ảnh ghép pinterest": [
+          "tải ảnh ghép pinterest",
+          "tải ảnh ghép pinterest không có logo",
+          "cách tải ảnh ghép trên pinterest",
+          "tải ảnh ghép pinterest về máy tính",
+          "tải ảnh ghép pinterest miễn phí",
+          "tải ảnh ghép pinterest trên máy tính",
+          "tải ảnh ghép pinterest về điện thoại"
+        ]
+      }
+    },
+    "competitors": [
+      {
+        "site": "SavePin",
+        "url": "https://www.savepin.app/pinterest-downloader/vi/",
+        "lang": "vi (hreflang vi; x-default English)",
+        "title": "Trình tải xuống video Pinterest tốt nhất Mp4 trực tuyến - SavePin",
+        "h1": "Trình Tải Video Pinterest",
+        "description": "SavePin là công cụ tải xuống video Pinterest trực tuyến cho phép bạn chuyển đổi video Pinterest sang mp4 ở chất lượng cao nhất 2K, 4K.",
+        "otherViPages": [
+          "/pinterest-downloader/vi/download-pinterest-image: title 'Tải ảnh từ Pinterest - Công cụ miễn phí để lưu ảnh từ Pinterest', H1 'Trình tải ảnh Pinterest tốt nhất'"
+        ],
+        "faqTopics": [
+          "SavePin có miễn phí không?",
+          "Tôi có cần tạo tài khoản…?",
+          "SavePin có an toàn để sử dụng không?",
+          "Tải trên thiết bị di động?",
+          "Định dạng nào có sẵn?",
+          "Có tiện ích mở rộng trình duyệt?",
+          "Có theo dõi lượt tải/thu thập thông tin cá nhân?",
+          "Video đã bị xóa hoặc riêng tư?",
+          "Giới hạn độ dài video?",
+          "Tải bảng hoặc bộ sưu tập?",
+          "Xem trước video?"
+        ],
+        "takeaways": "Uses the formal machine-translated 'Trình tải (xuống)' and Title Case. Claims '2K, 4K', which we must not copy. Uses English slugs. Its FAQ shows what people worry about: safety, privacy, private videos and boards."
+      },
+      {
+        "site": "KlickPin",
+        "url": "https://klickpin.com/vi/",
+        "lang": "vi",
+        "title": "Pinterest Video Downloader - Tải xuống video HD, GIF và hình ảnh chỉ với 1 cú nhấp chuột!",
+        "h1": "Trình tải xuống video Pinterest- KlickPin",
+        "otherViPages": [
+          "/vi/pinterest-image-downloader: 'Trình tải xuống hình ảnh Pinterest - Pinterest Downloader Klickpinnăm'",
+          "/vi/pinterest-gif-downloader: 'Trình tải xuống GIF Pinterest …'",
+          "/vi/pin-board-downloader: 'Tải xuống bảng Pinterest …', H1 'Công cụ tải xuống bảng Pinterest'",
+          "/vi/pin-profile-downloader: 'Tải xuống hồ sơ Pinterest …'",
+          "/vi/pin-carousel-downloader: 'Trình tải ảnh băng chuyền Pinterest …'",
+          "/vi/pin-story-downloader: 'Tải xuống Story Pinterest …'",
+          "/vi/chrome-extension: 'Tiện ích mở rộng của Chrome'"
+        ],
+        "faqTopics": [
+          "Tôi có thể tải video từ Pinterest không?",
+          "Làm thế nào để tải hình ảnh?",
+          "Tôi có thể tải ảnh GIF?",
+          "Các tập tin sau khi tải xuống được lưu ở đâu?",
+          "Is KlickPin An toàn để sử dụng?",
+          "Sử dụng có trách nhiệm và quyền của tác giả"
+        ],
+        "takeaways": "The text is machine-translated: a template bug appends 'năm' to the brand in every title ('KlickPinnăm'), and English is left in headings ('Is KlickPin An toàn…'). Slugs are English. Its vocabulary matches ours: 'bảng', 'hồ sơ', 'băng chuyền', 'tiện ích mở rộng'. Brand searches exist ('klickpin safe', 'klickpin com pinterest video')."
+      },
+      {
+        "site": "pinterestdownloader.io",
+        "url": "https://pinterestdownloader.io/vi-02",
+        "lang": "html lang='vi-02' (invalid); hreflang vi-VN; canonical → https://pinterestdownloader.io/ (English)",
+        "title": "Tải Video Pinterest, Ảnh, GIF miễn phí | Download video pinterest",
+        "h1": "Tải Video Pinterest Nhanh & Miễn Phí",
+        "description": "Pinterestdownloader.io là trình tải video Pinteres hoàn toàn miễn phí. Bạn có thể download video, tải ảnh, GIF một cách nhanh chóng, không cần đăng nhập hay download.",
+        "otherViPages": [
+          "/vi-02/pinterest-image-downloader-05: title 'Tải ảnh trên Pinterest | pinterestdownloader.io', H1 'Tải Ảnh trên Pinterest Nhanh & Miễn Phí'"
+        ],
+        "faqTopics": [
+          "Tôi có cần đăng ký tài khoản để tải video không?",
+          "Video Pinterest được lưu ở đâu sau khi được tải xuống?",
+          "Tải video Pinterest có hoàn toàn miễn phí không?",
+          "Làm cách nào để lấy link tải video Pinterest trên điện thoại?",
+          "Pinterest Downloader có an toàn cho thiết bị của tôi không?",
+          "Có giới hạn về số lượng video?",
+          "Có theo dõi video đã tải xuống?"
+        ],
+        "takeaways": "The only competitor with natural Vietnamese. It uses the real query words: 'Tải Video Pinterest', 'Không Logo', 'lấy link'. It claims 4K, and the footer links to gambling sites (vip66, vin88, fun88). Its own canonical sends the vi page's signals to English. Its sibling .com is the site most often recommended in Vietnamese guides. Autocomplete shows 'tải gif miễn phí pinterestdownloader io'."
+      },
+      {
+        "site": "pinterestdownloader.com",
+        "url": "https://www.pinterestdownloader.com/vi",
+        "status": "403 Cloudflare challenge to curl",
+        "takeaways": "The tool that dienmayxanh, gearvn and viettablet name in their step-by-step guides, so it has brand recall in Vietnam."
+      },
+      {
+        "site": "pindown.io",
+        "url": "https://pindown.io/vi",
+        "status": "404, no Vietnamese version"
+      },
+      {
+        "site": "dienmayxanh.com (editorial, retailer)",
+        "url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cach-tai-video-pinterest-ve-dien-thoai-khong-co-1571237",
+        "title": "Cách tải video Pinterest về điện thoại siêu nét, đơn giản",
+        "h1": "Cách tải video Pinterest về điện thoại không có logo siêu nét, cực dễ dàng",
+        "faqTopics": [
+          "Sử dụng video tải từ Pinterest có vi phạm bản quyền không?"
+        ],
+        "takeaways": "Informational how-to SERPs belong to big Vietnamese retailers' blogs. Its iPhone method uses the third-party 'Documents' app: 'biểu tượng dấu ba chấm' → 'Sao chép liên kết' → Documents browser → 'Lưu vào Ảnh'. It uses 'không có logo' and 'siêu nét' as hooks."
+      },
+      {
+        "site": "gearvn.com (editorial)",
+        "url": "https://gearvn.com/blogs/thu-thuat-giai-dap/cach-tai-video-pinterest-don-gian-tren-may-tinh-dien-thoai",
+        "title": "Cách tải video Pinterest đơn giản trên máy tính, điện thoại | GEARVN",
+        "h1": "Cách tải video Pinterest đơn giản trên máy tính, điện thoại",
+        "takeaways": "Uses 'biểu tượng chia sẻ' → 'Sao chép liên kết', the same as Pinterest's help center. Its iPhone flow also goes through the Documents app."
+      },
+      {
+        "site": "viettablet.com (editorial)",
+        "url": "https://www.viettablet.com/cach-tai-video-tren-pinterest-ve-dien-thoai",
+        "title": "Hướng dẫn cách tải video trên Pinterest về điện thoại và máy tính đơn giản 2026",
+        "faqTopics": [
+          "Những trang web tải video Pinterest nào uy tín?",
+          "Tải video Pinterest có vi phạm bản quyền không?"
+        ],
+        "takeaways": "Its desktop method is the Cốc Cốc browser's download button. The year in the title is updated while the H1 still says 2024, which is stale-content SEO."
+      },
+      {
+        "site": "cellphones.com.vn/sforum (editorial)",
+        "url": "https://cellphones.com.vn/sforum/cach-luu-anh-tren-pinterest",
+        "title": "Cách lưu ảnh trên Pinterest về điện thoại, máy tính đơn giản",
+        "faqTopics": [
+          "Lưu ảnh trên Pinterest về có bị mờ không?",
+          "Có thể tải hàng loạt ảnh trên Pinterest về máy không?",
+          "Không đăng nhập có lưu được ảnh không?"
+        ],
+        "takeaways": "UI path: 'biểu tượng ba chấm > Tải ảnh xuống (Download image)'. It has an H2 'Cách tải ảnh GIF trên Pinterest không bị lỗi', which confirms that GIFs saving as stills is a known pain."
+      },
+      {
+        "site": "phongvu.vn (editorial)",
+        "url": "https://phongvu.vn/cong-nghe/huong-dan-tai-video-pinterest-4k-mien-phi/",
+        "status": "403 to curl; title taken from search results",
+        "title": "Hướng dẫn tải video Pinterest 4K miễn phí, đơn giản nhất 2024",
+        "takeaways": "A major retailer targets '4K' directly. This confirms demand for the 4K intent, but we cover it with honest numbers."
+      },
+      {
+        "site": "extensionauditor.com",
+        "url": "https://extensionauditor.com/scan/t-i-video-pinterest-ioobffghinkpbpdhdnlgkcmkkomihpch",
+        "takeaways": "A Chrome extension named 'Tải Video Pinterest' was rated high risk for clipboard read/write permissions. This is honest support for the bookmarklet-over-extension angle on the Chrome page."
+      }
+    ],
+    "pinterestAppTerms": {
+      "source": "help.pinterest.com/vi: download-an-image (fetched raw 2026-10-14), send-pins-boards-and-profiles, edit-your-profile, node/1251 (carousel), secret-board nodes 171/131/1651",
+      "Pin": "Ghim (always capitalised in Pinterest's Vietnamese UI). Also 'Ghim Video' (heading 'Cách tải Ghim Video toàn màn hình xuống'), 'Ghim hình ảnh', 'Ghim băng chuyền' (the same page also misspells it 'băng truyền')",
+      "board": "bảng; secret board 'bảng bí mật'; toggle 'Giữ bí mật bảng này'",
+      "profile": "hồ sơ; 'Chỉnh sửa hồ sơ'; profile picture 'Ảnh hồ sơ' (Pinterest Create uses 'ảnh đại diện'); 'Tên người dùng'",
+      "homeFeed": "bảng tin nhà",
+      "saveToBoard": "Lưu ('Lưu Ghim vào bảng'; your saves = 'Lượt lưu của bạn'). Pinterest explains: 'Việc lưu Ghim sẽ thêm Ghim vào một trong các bảng của bạn… Việc tải Ghim sẽ lưu hình ảnh vào thiết bị của bạn.'",
+      "share": "biểu tượng chia sẻ (article 'Chia sẻ Ghim, bảng và hồ sơ'); 'Gửi' = send",
+      "copyLink": "Sao chép liên kết (link icon in the share sheet)",
+      "downloadImage": "Tải ảnh xuống (step label) and 'Tải xuống hình ảnh' (menu and troubleshooting text). Both appear in the same help article. The share sheet's download icon is 'Tải xuống'.",
+      "moreMenu": "the ellipsis icon. Vietnamese guides call it 'biểu tượng (dấu) ba chấm'",
+      "notAllDownloadable": "'Xin lưu ý rằng không phải tất cả các Ghim đều có thể tải xuống' (Pinterest itself says not every Pin can be downloaded)",
+      "whereSaved": "iOS: 'thư mục Ảnh'; Android: 'thư mục Thư viện'; general: 'thư mục Tải xuống mặc định của thiết bị hoặc ứng dụng Ảnh'",
+      "ideaPin": "Pinterest's Vietnamese help has no current term. Third parties say 'Ghim ý tưởng' or 'story/idea pin'. The format was retired.",
+      "collage": "Ảnh ghép",
+      "browserExtension": "Tiện ích mở rộng ('Tiện ích mở rộng Lưu vào Pinterest')",
+      "deviceTerms": {
+        "iPhonePhotos": "Ảnh (Photos app). Guides say 'Lưu vào Ảnh', 'thư viện ảnh'",
+        "iOSFiles": "Tệp (Files app). The Downloads folder is 'Tải về', and the share sheet action is 'Lưu video'. These are standard iOS Vietnamese labels; check them on a device before publishing screenshots.",
+        "samsungGallery": "Bộ sưu tập (FPT Shop guides: 'Mở ứng dụng Bộ sưu tập'). Autocomplete: 'cách lưu video trên pinterest về bộ sưu tập'",
+        "androidGeneric": "Thư viện / Google Photos / thư mục Download",
+        "chromeBookmarksBar": "Thanh dấu trang (Ctrl+Shift+B to show it)",
+        "windowsDownloads": "Tải xuống (Downloads)",
+        "documentsApp": "Vietnamese iPhone guides still send users to Readdle's 'Documents' app. Safari's own download manager makes it unnecessary."
+      }
+    }
+  },
+  "pages": [
+    {
+      "enSlug": "index",
+      "skip": false,
+      "priority": "P1",
+      "slug": "",
+      "path": "/vi",
+      "primaryKeyword": "pinterest downloader",
+      "secondaryKeywords": [
+        "tải video pinterest",
+        "tải ảnh pinterest",
+        "web tải pinterest",
+        "trình tải xuống pinterest",
+        "tải từ pinterest",
+        "tải pinterest không logo"
+      ],
+      "title": "Pinterest Downloader: tải video, ảnh, GIF | PintDownload",
+      "titleLength": 56,
+      "description": "Pinterest downloader miễn phí: tải video MP4, ảnh, GIF, cả bảng và hồ sơ công khai về điện thoại, máy tính. Không đăng nhập, không cài app, không chèn logo.",
+      "descriptionLength": 156,
+      "h1": "Tải video, ảnh, GIF từ Pinterest",
+      "h1Uppercase": "TẢI VIDEO, ẢNH, GIF TỪ PINTEREST",
+      "h1LinesAt375": 2,
+      "h1LinesAt320": 2,
+      "lede": "Dán link Ghim, bảng hoặc hồ sơ công khai, xem trước rồi lưu file về máy: MP4, JPG, GIF hoặc ZIP.",
+      "faqTopics": [
+        "Tải được những gì từ Pinterest? (Ghim ảnh, video, GIF, bảng, hồ sơ, avatar)",
+        "Có cần tài khoản Pinterest hay đăng nhập không? (cellphones FAQ: 'Không đăng nhập có lưu được ảnh không?')",
+        "File tải về có dính logo không? Trả lời thật: PintDownload không chèn logo; logo có sẵn trong video gốc của người đăng thì vẫn còn ('tải video pinterest không logo', 'không dính logo')",
+        "Có cần cài app không? ('app tải video pinterest', 'ứng dụng tải video pinterest', 'phần mềm tải video pinterest')",
+        "Tải về rồi file nằm ở đâu? ('tải ảnh pinterest nằm ở đâu', 'tải gif pinterest về iphone lưu ở đâu')",
+        "Có an toàn không? ('tải video pinterest an toàn không', 'klickpin safe'): không quảng cáo cờ bạc, không cài tiện ích, không đọc clipboard",
+        "Tải ảnh, video Pinterest có vi phạm bản quyền không? ('tải ảnh trên pinterest có bản quyền không'): dùng cá nhân, ghi nguồn, xin phép khi đăng lại",
+        "Không tải được Ghim riêng tư / bảng bí mật",
+        "PintDownload không trực thuộc Pinterest Inc."
+      ],
+      "evidence": [
+        {
+          "seed": "pinterest downloader",
+          "suggestions": [
+            "pinterest downloader",
+            "pinterest downloader pc",
+            "pinterest downloader hd 4k",
+            "pinterest downloader io",
+            "pinterest downloader 4k",
+            "pinterest downloader extension",
+            "pinterest downloader image",
+            "pinterest downloader apk",
+            "pinterest downloader ảnh",
+            "pinterest downloader shortcut"
+          ]
+        },
+        {
+          "seed": "tải từ pinterest",
+          "suggestions": [
+            "tải từ pinterest",
+            "tải video từ pinterest",
+            "tải video từ pinterest về máy",
+            "tải video từ pinterest về máy tính",
+            "tải ảnh từ pinterest",
+            "tải video từ pinterest về điện thoại",
+            "tải gif từ pinterest",
+            "tải video từ pinterest về iphone",
+            "tải video từ pinterest online",
+            "tải ảnh từ pinterest về máy tính"
+          ]
+        },
+        {
+          "seed": "web tải pinterest",
+          "suggestions": [
+            "web tải pinterest",
+            "web tải video pinterest",
+            "web tải ảnh pinterest",
+            "web tải video trên pinterest về máy tính"
+          ]
+        },
+        {
+          "seed": "tải xuống pinterest",
+          "matched": "trình tải xuống pinterest"
+        },
+        {
+          "seed": "tải pinterest",
+          "matched": "tải pinterest ko logo"
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-pin-downloader",
+      "skip": false,
+      "priority": "P2",
+      "slug": "tai-ghim-pinterest",
+      "path": "/vi/tai-ghim-pinterest",
+      "primaryKeyword": "tải ghim pinterest",
+      "secondaryKeywords": [
+        "cách tải ghim trên pinterest",
+        "tải ghim pinterest về máy tính",
+        "tải pin pinterest",
+        "tải video bằng liên kết pinterest",
+        "pinterest pin downloader"
+      ],
+      "title": "Tải Ghim Pinterest bằng link: ảnh, video, GIF miễn phí",
+      "titleLength": 54,
+      "description": "Tải Ghim Pinterest bằng link, kể cả link pin.it: ảnh nét, video MP4, GIF hoặc từng ảnh trong Ghim nhiều ảnh. Miễn phí, không cần đăng nhập, không cài app.",
+      "descriptionLength": 154,
+      "h1": "Tải Ghim Pinterest bằng link",
+      "h1Uppercase": "TẢI GHIM PINTEREST BẰNG LINK",
+      "h1LinesAt375": 2,
+      "h1LinesAt320": 3,
+      "lede": "Một link Ghim, đúng file bên trong: ảnh, video, GIF hoặc từng ảnh của Ghim nhiều ảnh.",
+      "faqTopics": [
+        "Link Ghim trông như thế nào? (pinterest.com/pin/…, pin.it/…)",
+        "Cách lấy link Ghim: app (biểu tượng chia sẻ → Sao chép liên kết) và máy tính (thanh địa chỉ) ('cách lấy link pinterest', 'cách copy link pinterest trên máy tính')",
+        "Ghim nhiều ảnh (Ghim băng chuyền) có tải hết từng ảnh không? (gộp nội dung trang carousel bị bỏ)",
+        "Vì sao link bảng hoặc hồ sơ không chạy ở trang này?",
+        "Tải Ghim khác gì nút Lưu trên Pinterest? (Pinterest: lưu Ghim = thêm vào bảng; tải = lưu file về thiết bị)",
+        "Có miễn phí, có giới hạn lượt tải không?"
+      ],
+      "evidence": [
+        {
+          "seed": "tải ghim pinterest",
+          "suggestions": [
+            "tải ghim pinterest",
+            "cách tải ghim trên pinterest",
+            "tải ghim pinterest về máy tính",
+            "tải ghim pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải pin pinterest",
+          "suggestions": [
+            "tải pin pinterest trên máy tính",
+            "tải pin pinterest về máy tính"
+          ]
+        },
+        {
+          "seed": "ghim pinterest",
+          "matched": "tải ghim pinterest"
+        },
+        {
+          "seed": "tải video pinterest bằng",
+          "matched": "tải video bằng liên kết pinterest"
+        },
+        {
+          "seed": "pinterest pin downloader",
+          "suggestions": [
+            "pinterest pin downloader",
+            "pinterest pin downloader hd",
+            "pinterest pin downloader extension",
+            "pinterest pin downloader 4k",
+            "pinterest pin downloader video",
+            "pinterest pin downloader online",
+            "pinterest pin downloader reddit",
+            "pinterest pin downloader free",
+            "pinterest board & pin downloader",
+            "pinterest save pin downloader"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-video-downloader",
+      "skip": false,
+      "priority": "P1",
+      "slug": "tai-video-pinterest",
+      "path": "/vi/tai-video-pinterest",
+      "primaryKeyword": "tải video pinterest",
+      "secondaryKeywords": [
+        "tải video pinterest không logo",
+        "tải video pinterest bằng link",
+        "tải video pinterest full hd",
+        "lưu video pinterest",
+        "trình tải video pinterest",
+        "tải video pinterest online"
+      ],
+      "title": "Tải video Pinterest không logo, MP4 HD miễn phí",
+      "titleLength": 47,
+      "description": "Dán link Ghim video để tải video Pinterest về máy dạng MP4, bản HD nét nhất Pinterest có (thường 720p, có khi 1080p). Không chèn logo, không cần đăng nhập.",
+      "descriptionLength": 155,
+      "h1": "Tải video Pinterest",
+      "h1Uppercase": "TẢI VIDEO PINTEREST",
+      "h1LinesAt375": 1,
+      "h1LinesAt320": 2,
+      "lede": "Lưu Ghim video công khai thành file MP4 HD, miễn phí, không đăng nhập. PintDownload không chèn logo.",
+      "faqTopics": [
+        "Video tải về có dính logo không? (PintDownload không chèn logo; logo TikTok/CapCut có sẵn trong video gốc thì vẫn còn) ('không logo', 'không dính logo')",
+        "Chất lượng tối đa là bao nhiêu: 720p, 1080p hay 4K? (thật: thường 720p, 1080p khi Pinterest có; không có 4K) → link trang 4K",
+        "Video tải về có âm thanh không? Bị mất tiếng phải làm sao? ('tải video pinterest có âm thanh không', 'bị mất tiếng phải làm sao')",
+        "Video Pinterest bị mờ phải làm sao? ('video pinterest bị mờ phải làm sao')",
+        "Dùng trên iPhone, Android được không? → link hướng dẫn điện thoại",
+        "Vì sao Ghim của tôi không có video? (Ghim ảnh tĩnh, GIF)",
+        "Ghim video nhiều trang (Ghim ý tưởng cũ) có tải được không? ('tải video ý tưởng pinterest', 'tải video nhiều trang pinterest')",
+        "Có an toàn không? ('tải video pinterest an toàn không')"
+      ],
+      "evidence": [
+        {
+          "seed": "tải video pinterest ",
+          "suggestions": [
+            "tải video pinterest về máy tính",
+            "tải video pinterest bằng link",
+            "tải video pinterest full hd",
+            "tải video pinterest không logo",
+            "tải video pinterest free",
+            "tải video pinterest về máy",
+            "tải video pinterest hd",
+            "tải video pinterest 4k",
+            "tải video pinterest về",
+            "tải video pinterest downloader"
+          ]
+        },
+        {
+          "seed": "tải video pinterest không",
+          "suggestions": [
+            "tải video pinterest không logo",
+            "tải video pinterest không logo miễn phí",
+            "cách tải video pinterest không có logo",
+            "cách tải video trên pinterest không bị mờ",
+            "có cách nào tải video trên pinterest không",
+            "tải video pinterest không có logo",
+            "tải video pinterest không dính logo"
+          ]
+        },
+        {
+          "seed": "lưu video pinterest",
+          "suggestions": [
+            "lưu video pinterest",
+            "lưu video pinterest về điện thoại",
+            "lưu video pinterest hd",
+            "lưu video pinterest về máy",
+            "lưu video pinterest không logo",
+            "lưu video pinterest về máy tính",
+            "lưu video pinterest bằng link",
+            "lưu video pinterest miễn phí",
+            "lưu video pinterest 4k",
+            "lưu video trên pinterest"
+          ]
+        },
+        {
+          "seed": "trình tải video pinterest",
+          "suggestions": [
+            "trình tải video pinterest",
+            "trình tải xuống video pinterest"
+          ]
+        },
+        {
+          "seed": "tải video pinterest k",
+          "suggestions": [
+            "tải video pinterest không logo",
+            "tải video pinterest không logo miễn phí",
+            "cách tải video pinterest không có logo",
+            "tải video liên kết pinterest",
+            "cách tải video trên pinterest không bị mờ",
+            "có cách nào tải video trên pinterest không",
+            "tải video pinterest không có logo",
+            "tải video pinterest không dính logo"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-image-downloader",
+      "skip": false,
+      "priority": "P1",
+      "slug": "tai-anh-pinterest",
+      "path": "/vi/tai-anh-pinterest",
+      "primaryKeyword": "tải ảnh pinterest",
+      "secondaryKeywords": [
+        "tải ảnh pinterest chất lượng cao",
+        "tải ảnh pinterest không bị mờ",
+        "tải ảnh pinterest nét",
+        "tải hình pinterest",
+        "lưu ảnh pinterest",
+        "tải hình nền pinterest"
+      ],
+      "title": "Tải ảnh Pinterest chất lượng cao, không bị mờ, miễn phí",
+      "titleLength": 55,
+      "description": "Tải ảnh Pinterest cỡ lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ. Dán link Ghim là xong, hợp lưu hình nền, ảnh tham khảo. Không cần đăng nhập.",
+      "descriptionLength": 156,
+      "h1": "Tải ảnh Pinterest chất lượng cao",
+      "h1Uppercase": "TẢI ẢNH PINTEREST CHẤT LƯỢNG CAO",
+      "h1LinesAt375": 2,
+      "h1LinesAt320": 3,
+      "lede": "Lấy bản ảnh lớn nhất Pinterest công khai (thường rộng khoảng 1200px), không phải ảnh thu nhỏ trong bảng tin.",
+      "faqTopics": [
+        "Vì sao ảnh lưu từ Pinterest bị mờ, bị vỡ? ('ảnh pinterest bị mờ phải làm sao', 'không bị vỡ')",
+        "Ảnh tải về có phải ảnh gốc không? (thật: bản lớn nhất Pinterest công khai, thường rộng 1200px; file gốc bị chặn) ('tải ảnh pinterest gốc')",
+        "Không đăng nhập có tải được ảnh không?",
+        "Vì sao Pinterest không cho tải ảnh / không thấy nút Tải ảnh xuống? ('pinterest không cho tải ảnh', 'tại sao không lưu được ảnh trên pinterest')",
+        "Tải ảnh trên Pinterest có vi phạm bản quyền không? ('tải ảnh trên pinterest có bản quyền không')",
+        "Ảnh tải về nằm ở đâu trên điện thoại, máy tính? ('tải ảnh pinterest nằm ở đâu')",
+        "Tải hình nền Pinterest 4K được không? → link trang 4K ('tải hình nền pinterest 4k')",
+        "Ghim video có tải ở trang này được không? → trang video"
+      ],
+      "evidence": [
+        {
+          "seed": "tải ảnh pinterest",
+          "suggestions": [
+            "tải ảnh pinterest",
+            "tải ảnh pinterest 4k",
+            "tải ảnh pinterest chất lượng cao",
+            "tải ảnh pinterest hd",
+            "tải ảnh pinterest miễn phí",
+            "tải ảnh pinterest nét",
+            "tải ảnh pinterest không logo",
+            "tải ảnh pinterest về máy tính",
+            "tải ảnh pinterest full hd",
+            "tải ảnh pinterest về máy"
+          ]
+        },
+        {
+          "seed": "tải ảnh pinterest k",
+          "suggestions": [
+            "tải ảnh pinterest không logo",
+            "cách tải ảnh pinterest không bị vỡ",
+            "tải ảnh ghép pinterest không có logo",
+            "tải ảnh trên pinterest có bản quyền không",
+            "tải ảnh pinterest không có logo",
+            "tải ảnh pinterest không bị mờ",
+            "tải ảnh pinterest không dính logo"
+          ]
+        },
+        {
+          "seed": "tải ảnh pinterest n",
+          "suggestions": [
+            "tải ảnh pinterest nét",
+            "cách tải ảnh pinterest nét",
+            "cách tải ảnh từ pinterest nét",
+            "tải nhiều ảnh trên pinterest",
+            "tải ảnh pinterest nhất",
+            "tải ảnh pinterest nhanh",
+            "tải ảnh pinterest nét nhất",
+            "tải ảnh pinterest nằm ở đâu"
+          ]
+        },
+        {
+          "seed": "tải hình pinterest",
+          "suggestions": [
+            "tải hình pinterest",
+            "tải hình pinterest 4k",
+            "tải hình pinterest chất lượng cao",
+            "tải hình trên pinterest",
+            "cách tải hình pinterest",
+            "cách tải hình pinterest nét",
+            "tải hình nền pinterest",
+            "tải hình động trên pinterest",
+            "tải hình nền từ pinterest",
+            "cách tải hình trên pinterest về máy tính"
+          ]
+        },
+        {
+          "seed": "lưu ảnh pinterest",
+          "suggestions": [
+            "lưu ảnh pinterest",
+            "lưu ảnh pinterest về điện thoại",
+            "lưu ảnh pinterest hd",
+            "lưu ảnh pinterest bằng link",
+            "lưu ảnh pinterest không logo",
+            "lưu ảnh pinterest về máy",
+            "lưu ảnh pinterest nét",
+            "cách lưu ảnh pinterest",
+            "cách lưu ảnh pinterest trên iphone",
+            "lưu ảnh trên pinterest về máy"
+          ]
+        },
+        {
+          "seed": "tải hình nền pinterest",
+          "suggestions": [
+            "tải hình nền pinterest",
+            "tải hình nền từ pinterest",
+            "tải hình nền động từ pinterest",
+            "tải hình nền pinterest miễn phí",
+            "tải hình nền pinterest cho máy tính",
+            "tải hình nền pinterest về máy tính",
+            "tải hình nền pinterest trên máy tính"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-gif-downloader",
+      "skip": false,
+      "priority": "P2",
+      "slug": "tai-gif-pinterest",
+      "path": "/vi/tai-gif-pinterest",
+      "primaryKeyword": "tải gif pinterest",
+      "secondaryKeywords": [
+        "tải ảnh động pinterest",
+        "lưu gif pinterest",
+        "cách tải gif trên pinterest",
+        "tải gif pinterest về điện thoại",
+        "tải ảnh gif pinterest"
+      ],
+      "title": "Tải GIF Pinterest: lưu ảnh động, giữ nguyên chuyển động",
+      "titleLength": 55,
+      "description": "Tải GIF Pinterest đúng định dạng .gif, ảnh động vẫn chuyển động, không thành ảnh tĩnh. Dán link Ghim GIF, dùng được trên điện thoại, máy tính. Miễn phí.",
+      "descriptionLength": 152,
+      "h1": "Tải GIF Pinterest",
+      "h1Uppercase": "TẢI GIF PINTEREST",
+      "h1LinesAt375": 1,
+      "h1LinesAt320": 2,
+      "lede": "Lưu ảnh động Pinterest thành file .gif còn chuyển động, không phải một khung hình đứng yên.",
+      "faqTopics": [
+        "Cách tải GIF trên Pinterest về điện thoại, máy tính",
+        "Vì sao GIF tải về chỉ là ảnh tĩnh? (cellphones: 'Cách tải ảnh GIF trên Pinterest không bị lỗi')",
+        "Tải GIF về iPhone lưu ở đâu, có chạy trong app Ảnh không? ('tải gif pinterest về iphone lưu ở đâu')",
+        "GIF khác gì video MP4? Muốn đổi video thành GIF? ('tải video pinterest thành gif' — chỉ trả lời thật, công cụ không chuyển video sang GIF)",
+        "Có cần tài khoản Pinterest không?"
+      ],
+      "evidence": [
+        {
+          "seed": "tải gif pinterest ",
+          "suggestions": [
+            "tải gif pinterest về điện thoại",
+            "tải gif pinterest",
+            "tải video gif pinterest",
+            "tải gif trên pinterest về máy tính",
+            "cách tải gif pinterest",
+            "tải gif pinterest về máy tính",
+            "tải gif pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải ảnh động pinterest",
+          "suggestions": [
+            "tải ảnh động pinterest",
+            "cách tải ảnh động trên pinterest",
+            "cách tải ảnh động trên pinterest về máy tính",
+            "cách tải ảnh động trên pinterest về điện thoại",
+            "tải ảnh động pinterest về máy tính",
+            "tải ảnh động pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "lưu gif pinterest",
+          "suggestions": [
+            "lưu gif pinterest",
+            "cách lưu gif trên pinterest về máy tính",
+            "cách lưu gif trên pinterest về điện thoại",
+            "lưu gif pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "cách tải gif trên pinterest",
+          "suggestions": [
+            "cách tải gif trên pinterest về máy tính",
+            "cách tải gif trên pinterest",
+            "cách tải gif trên pinterest về điện thoại",
+            "cách tải gif động trên pinterest",
+            "cách tải gif trên pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải hình pinterest",
+          "matched": "tải hình động trên pinterest"
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-board-downloader",
+      "skip": false,
+      "priority": "P2",
+      "slug": "tai-bang-pinterest",
+      "path": "/vi/tai-bang-pinterest",
+      "primaryKeyword": "tải bảng pinterest",
+      "secondaryKeywords": [
+        "tải toàn bộ ảnh pinterest",
+        "tải tất cả ảnh pinterest",
+        "tải ảnh pinterest hàng loạt",
+        "tải board pinterest",
+        "tải bảng pinterest zip",
+        "tải tất cả ghim trong bảng pinterest"
+      ],
+      "title": "Tải bảng Pinterest: toàn bộ ảnh, video về một file ZIP",
+      "titleLength": 54,
+      "description": "Tải bảng Pinterest công khai: toàn bộ ảnh, video gom vào một file ZIP, hoặc tải từng Ghim. Miễn phí, không cần đăng nhập, dùng được cả trên điện thoại.",
+      "descriptionLength": 151,
+      "h1": "Tải bảng Pinterest",
+      "h1Uppercase": "TẢI BẢNG PINTEREST",
+      "h1LinesAt375": 1,
+      "h1LinesAt320": 2,
+      "lede": "Một link bảng công khai, một file ZIP chứa các Ghim đang hiển thị trong bảng.",
+      "faqTopics": [
+        "Cách tải tất cả ảnh trong một bảng Pinterest ('tải toàn bộ ảnh pinterest', 'tải tất cả ghim trong bảng pinterest')",
+        "Link bảng trông như thế nào? (pinterest.com/tên-người-dùng/tên-bảng/)",
+        "Có tải được bảng bí mật không? (không)",
+        "Tải được bao nhiêu Ghim? (thật: các Ghim công khai trả về khi tải trang bảng, có giới hạn; bảng rất lớn có thể thiếu)",
+        "Có tải video trong bảng không? ('tải video từ bảng pinterest')",
+        "Tải bảng về điện thoại Android, iPhone được không? ('tải bảng pinterest về điện thoại android/iphone')",
+        "Bảng hay hồ sơ: chọn công cụ nào?",
+        "Ghim nhiều ảnh trong ZIP có đủ từng ảnh không? (thường chỉ ảnh bìa; mở Ghim đó ở trang Tải Ghim)"
+      ],
+      "evidence": [
+        {
+          "seed": "tải bảng pinterest",
+          "suggestions": [
+            "tải bảng pinterest về máy tính",
+            "tải bảng pinterest cho máy tính"
+          ]
+        },
+        {
+          "seed": "tải bảng pinterest zip",
+          "suggestions": [
+            "tải bảng pinterest zip về máy tính",
+            "tải bảng pinterest zip miễn phí",
+            "tải bảng pinterest zip trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải toàn bộ ảnh pinterest",
+          "suggestions": [
+            "tải toàn bộ ảnh pinterest về máy tính",
+            "tải toàn bộ ảnh pinterest về máy",
+            "tải toàn bộ ảnh pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải tất cả ảnh pinterest",
+          "suggestions": [
+            "tải tất cả ảnh pinterest về máy tính",
+            "tải tất cả ảnh pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải board pinterest",
+          "suggestions": [
+            "tải board pinterest về máy tính",
+            "tải board pinterest trên máy tính",
+            "tải board pinterest miễn phí"
+          ]
+        },
+        {
+          "seed": "tải tất cả ghim trong bảng pinterest",
+          "suggestions": [
+            "tải tất cả ghim trong bảng pinterest trên máy tính",
+            "tải tất cả ghim trong bảng pinterest là gì"
+          ]
+        },
+        {
+          "seed": "tải bảng pinterest về điện thoại",
+          "suggestions": [
+            "tải bảng pinterest về điện thoại android",
+            "tải bảng pinterest về điện thoại iphone",
+            "tải bảng pinterest về điện thoại android miễn phí",
+            "tải bảng pinterest về điện thoại iphone miễn phí"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-profile-downloader",
+      "skip": false,
+      "priority": "P3",
+      "slug": "tai-ho-so-pinterest",
+      "path": "/vi/tai-ho-so-pinterest",
+      "primaryKeyword": "tải hồ sơ pinterest",
+      "secondaryKeywords": [
+        "tải tất cả ảnh từ pinterest",
+        "pinterest profile downloader",
+        "tải ảnh pinterest hàng loạt",
+        "cách lấy link tài khoản pinterest"
+      ],
+      "title": "Tải hồ sơ Pinterest: lưu Ghim công khai về file ZIP",
+      "titleLength": 51,
+      "description": "Tải hồ sơ Pinterest công khai: ảnh, video đang hiển thị trên hồ sơ gom vào một file ZIP. Miễn phí, không cần đăng nhập. Hồ sơ riêng tư không hỗ trợ.",
+      "descriptionLength": 148,
+      "h1": "Tải hồ sơ Pinterest",
+      "h1Uppercase": "TẢI HỒ SƠ PINTEREST",
+      "h1LinesAt375": 1,
+      "h1LinesAt320": 2,
+      "lede": "Gom các Ghim công khai trên trang hồ sơ của một người vào một file ZIP để xem offline.",
+      "faqTopics": [
+        "Link hồ sơ trông như thế nào, lấy ở đâu? ('cách lấy link tài khoản pinterest')",
+        "Hồ sơ khác bảng thế nào?",
+        "Có tải được mọi Ghim một người từng đăng không? (thật: không; chỉ Ghim công khai hiển thị, có giới hạn)",
+        "Hồ sơ riêng tư có tải được không? (không)",
+        "Tải hàng loạt như vậy có được phép không? (dùng cá nhân, tôn trọng người sáng tạo)",
+        "Chỉ cần ảnh đại diện? → trang Tải avatar"
+      ],
+      "evidence": [
+        {
+          "seed": "tải hồ sơ pinterest",
+          "suggestions": [
+            "tải hồ sơ pinterest về máy tính",
+            "tải hồ sơ pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải tất cả ảnh từ pinterest",
+          "suggestions": [
+            "tải tất cả ảnh từ pinterest về máy tính",
+            "tải tất cả ảnh từ pinterest về máy",
+            "tải tất cả ảnh từ pinterest về điện thoại"
+          ]
+        },
+        {
+          "seed": "pinterest profile downloader",
+          "suggestions": [
+            "pinterest profile downloader",
+            "pinterest profile downloader free",
+            "pinterest profile downloader online",
+            "pinterest profile picture downloader",
+            "pinterest profile picture downloader hd",
+            "pinterest profile photo downloader",
+            "pinterest profile picture downloader online free",
+            "pinterest full profile downloader",
+            "pinterest profile banner downloader",
+            "pinterest profile picture downloader without watermark"
+          ]
+        },
+        {
+          "seed": "cách lấy link pinterest",
+          "matched": "cách lấy link tài khoản pinterest"
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-profile-picture-downloader",
+      "skip": false,
+      "priority": "P2",
+      "slug": "tai-avatar-pinterest",
+      "path": "/vi/tai-avatar-pinterest",
+      "primaryKeyword": "tải avatar pinterest",
+      "secondaryKeywords": [
+        "tải ảnh đại diện pinterest",
+        "xem avatar pinterest",
+        "phóng to ảnh đại diện pinterest",
+        "xem ảnh đại diện pinterest trên máy tính",
+        "tải avatar pinterest full hd"
+      ],
+      "title": "Tải avatar Pinterest: xem, lưu ảnh đại diện cỡ lớn nhất",
+      "titleLength": 55,
+      "description": "Tải avatar Pinterest từ link hồ sơ công khai: xem ảnh đại diện phóng to, lưu bản lớn nhất Pinterest có thay vì ảnh nhỏ trong app. Miễn phí, không đăng nhập.",
+      "descriptionLength": 156,
+      "h1": "Tải avatar Pinterest",
+      "h1Uppercase": "TẢI AVATAR PINTEREST",
+      "h1LinesAt375": 2,
+      "h1LinesAt320": 2,
+      "lede": "Xem ảnh đại diện phóng to và lưu bản lớn nhất Pinterest công khai, thường khoảng 600×600.",
+      "faqTopics": [
+        "Cách xem avatar Pinterest phóng to ('phóng to ảnh đại diện pinterest trên máy tính', 'xem avatar pinterest ở đâu')",
+        "Ảnh tải về độ phân giải bao nhiêu, có Full HD không? (thật: thường khoảng 600×600, không phóng to giả) ('tải avatar pinterest full hd')",
+        "Khác gì công cụ Tải hồ sơ (ZIP)?",
+        "Tài khoản riêng tư có tải được ảnh đại diện không?",
+        "File tải về định dạng gì? (JPG hoặc PNG)",
+        "Dùng avatar của người khác có được không? (xin phép, không mạo danh)"
+      ],
+      "evidence": [
+        {
+          "seed": "tải avatar pinterest",
+          "suggestions": [
+            "tải avatar pinterest",
+            "tải avatar pinterest về máy tính",
+            "tải avatar pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải ảnh đại diện pinterest",
+          "suggestions": [
+            "tải ảnh đại diện pinterest về điện thoại"
+          ]
+        },
+        {
+          "seed": "xem avatar pinterest",
+          "suggestions": [
+            "xem avatar pinterest trên máy tính",
+            "xem avatar pinterest ở đâu"
+          ]
+        },
+        {
+          "seed": "phóng to ảnh đại diện pinterest",
+          "suggestions": [
+            "phóng to ảnh đại diện pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "xem ảnh đại diện pinterest",
+          "suggestions": [
+            "xem ảnh đại diện pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải avatar pinterest full hd",
+          "suggestions": [
+            "tải avatar pinterest full hd miễn phí",
+            "tải avatar pinterest full hd cho máy tính"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-carousel-downloader",
+      "skip": true,
+      "skipReason": "Gần như không có nhu cầu tìm kiếm bằng tiếng Việt: 'băng chuyền pinterest' không có gợi ý nào, 'tải ảnh băng chuyền pinterest' chỉ có 1 đuôi dài ('… trên máy tính'), 'pinterest carousel' gợi ý toàn ý định quảng cáo (ads, specs). Trợ giúp Pinterest tiếng Việt cho biết Ghim băng chuyền chỉ tạo được trong Trình quản lý quảng cáo bằng tài khoản doanh nghiệp, nên người dùng thường không biết tên gọi này. Gộp vào FAQ trang Tải Ghim ('Ghim nhiều ảnh').",
+      "slug": null,
+      "path": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": [],
+      "evidence": [
+        {
+          "seed": "băng chuyền pinterest",
+          "suggestions": []
+        },
+        {
+          "seed": "tải ảnh băng chuyền pinterest",
+          "suggestions": [
+            "tải ảnh băng chuyền pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "pinterest carousel",
+          "suggestions": [
+            "pinterest carousel",
+            "pinterest carousel downloader",
+            "pinterest carousel post",
+            "pinterest carousel ideas",
+            "pinterest carousel ads",
+            "pinterest carousel ad specs",
+            "pinterest carousel pin",
+            "pinterest carousel examples",
+            "pinterest carousel ad examples",
+            "pinterest carousel specs"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-story-downloader",
+      "skip": true,
+      "skipReason": "Nhu cầu quá mỏng: 'tải story pinterest' chỉ có '… về máy tính', 'ghim ý tưởng pinterest' chỉ có '… trên máy tính', 'tải ghim ý tưởng' trả về '… trên tiktok' (ý định khác). 'pinterest story' gợi ý toàn ý tưởng/mẫu story Instagram, không phải tải về. Pinterest đã bỏ định dạng Idea Pin ('pinterest idea pins gone'). Trang EN cũng mỏng, không có FAQ. Đưa câu hỏi 'Ghim video nhiều trang' vào FAQ trang video.",
+      "slug": null,
+      "path": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": [],
+      "evidence": [
+        {
+          "seed": "tải story pinterest",
+          "suggestions": [
+            "tải story pinterest về máy tính"
+          ]
+        },
+        {
+          "seed": "ghim ý tưởng pinterest",
+          "suggestions": [
+            "ghim ý tưởng pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải ghim ý tưởng",
+          "suggestions": [
+            "tải ghim ý tưởng trên tiktok"
+          ]
+        },
+        {
+          "seed": "pinterest story",
+          "suggestions": [
+            "pinterest story download",
+            "pinterest story ideas",
+            "pinterest story template",
+            "pinterest story",
+            "pinterest story background",
+            "pinterest story saver",
+            "pinterest story ideas for instagram",
+            "pinterest story background aesthetic",
+            "pinterest story download link copy",
+            "pinterest story ideas for girls"
+          ]
+        },
+        {
+          "seed": "pinterest idea pin",
+          "suggestions": [
+            "pinterest idea pins",
+            "pinterest idea pin examples",
+            "pinterest idea pin builder",
+            "pinterest idea pin downloader",
+            "pinterest idea pin size",
+            "pinterest idea pin ads",
+            "pinterest idea pins 2025",
+            "pinterest idea pins gone",
+            "pinterest idea pins specs",
+            "pinterest create idea pin"
+          ]
+        },
+        {
+          "seed": "tải video ý tưởng pinterest",
+          "suggestions": [
+            "tải video ý tưởng pinterest về điện thoại"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-audio-downloader",
+      "skip": false,
+      "priority": "P2",
+      "slug": "tai-nhac-pinterest",
+      "path": "/vi/tai-nhac-pinterest",
+      "primaryKeyword": "tải nhạc pinterest",
+      "secondaryKeywords": [
+        "tải nhạc từ video pinterest",
+        "tải mp3 pinterest",
+        "tải âm thanh pinterest",
+        "chuyển video pinterest thành mp3",
+        "lấy nhạc pinterest làm nhạc chuông"
+      ],
+      "title": "Tải nhạc Pinterest: tách âm thanh từ video ra MP3",
+      "titleLength": 49,
+      "description": "Tải nhạc Pinterest dạng MP3 từ Ghim video có tiếng, hoặc giữ cả video MP4. Có thể cắt lấy một đoạn ngắn. Miễn phí, chỉ dùng âm thanh bạn có quyền sử dụng.",
+      "descriptionLength": 154,
+      "h1": "Tải nhạc từ video Pinterest",
+      "h1Uppercase": "TẢI NHẠC TỪ VIDEO PINTEREST",
+      "h1LinesAt375": 2,
+      "h1LinesAt320": 2,
+      "lede": "Tách phần tiếng của Ghim video công khai thành MP3 khi video có âm thanh.",
+      "faqTopics": [
+        "Cách tách nhạc từ video Pinterest ra MP3 ('tải nhạc từ video pinterest sang mp3')",
+        "Vì sao Ghim của tôi không có MP3? (video câm, GIF, ảnh tĩnh)",
+        "Cắt một đoạn ngắn, ví dụ làm nhạc chuông, được không? ('lấy nhạc pinterest làm nhạc chuông'; trình cắt trong trình duyệt xuất file WAV)",
+        "Tải nhạc Pinterest có hợp pháp không? (chỉ dùng âm thanh bạn có quyền; nhạc có bản quyền)",
+        "Video tải về bị mất tiếng phải làm sao? ('tải video pinterest bị mất tiếng phải làm sao')",
+        "Có cần tài khoản Pinterest không?"
+      ],
+      "evidence": [
+        {
+          "seed": "tải nhạc pinterest",
+          "suggestions": [
+            "tải nhạc pinterest",
+            "tải nhạc pinterest về máy tính",
+            "tải nhạc pinterest miễn phí"
+          ]
+        },
+        {
+          "seed": "tải nhạc từ video pinterest",
+          "suggestions": [
+            "tải nhạc từ video pinterest về điện thoại",
+            "tải nhạc từ video pinterest về máy tính",
+            "tải nhạc từ video pinterest sang mp3"
+          ]
+        },
+        {
+          "seed": "tải mp3 pinterest",
+          "suggestions": [
+            "tải mp3 pinterest",
+            "tải video pinterest mp3",
+            "tải mp3 pinterest về máy tính",
+            "tải mp3 pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải âm thanh pinterest",
+          "suggestions": [
+            "tải âm thanh pinterest",
+            "tải âm thanh pinterest về máy tính",
+            "tải âm thanh pinterest video",
+            "tải âm thanh pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "chuyển video pinterest thành mp3",
+          "suggestions": [
+            "chuyển video pinterest thành mp3 online"
+          ]
+        },
+        {
+          "seed": "lấy nhạc pinterest",
+          "suggestions": [
+            "lấy nhạc pinterest làm nhạc chuông",
+            "lấy nhạc pinterest làm video"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-4k-downloader",
+      "skip": false,
+      "priority": "P3",
+      "slug": "tai-video-pinterest-4k",
+      "path": "/vi/tai-video-pinterest-4k",
+      "primaryKeyword": "tải video pinterest 4k",
+      "secondaryKeywords": [
+        "tải ảnh pinterest 4k",
+        "tải video pinterest full hd",
+        "tải video pinterest 1080p",
+        "tải hình nền pinterest 4k",
+        "lưu video pinterest 4k"
+      ],
+      "title": "Tải video Pinterest 4K được không? Chất lượng thật",
+      "titleLength": 50,
+      "description": "Tải video Pinterest 4K? Pinterest hiếm khi có 4K: thường 720p, có khi 1080p; ảnh rộng khoảng 1200px. Ở đây bạn lấy bản nét nhất có thật, không ghi 4K giả.",
+      "descriptionLength": 154,
+      "h1": "Video Pinterest 4K: chất lượng thật",
+      "h1Uppercase": "VIDEO PINTEREST 4K: CHẤT LƯỢNG THẬT",
+      "h1LinesAt375": 3,
+      "h1LinesAt320": 3,
+      "lede": "Pinterest thật sự lưu video và ảnh ở độ phân giải nào, và cách lấy bản nét nhất có sẵn.",
+      "faqTopics": [
+        "Pinterest có video 4K không? (thật: hầu như không; thường 720p, đôi khi 1080p)",
+        "Vì sao nhiều web ghi '4K'? (nhãn ≠ số điểm ảnh; phóng to không thêm chi tiết)",
+        "Làm sao lấy bản nét nhất, 1080p khi có? → trang video",
+        "Hình nền Pinterest 4K có tải đúng 4K không? ('hình nền pinterest 4k', 'tải hình nền pinterest 4k pc'; ảnh công khai tối đa ~1200px rộng)",
+        "Video, ảnh bị mờ phải làm sao? ('video pinterest bị mờ phải làm sao')"
+      ],
+      "evidence": [
+        {
+          "seed": "tải video pinterest 4k",
+          "suggestions": [
+            "tải video pinterest 4k",
+            "tải video từ pinterest 4k"
+          ]
+        },
+        {
+          "seed": "tải ảnh pinterest",
+          "matched": "tải ảnh pinterest 4k"
+        },
+        {
+          "seed": "tải hình pinterest",
+          "matched": "tải hình pinterest 4k"
+        },
+        {
+          "seed": "tải video pinterest 1080p",
+          "suggestions": [
+            "tải video pinterest 1080p",
+            "tải video pinterest 1080p 4k"
+          ]
+        },
+        {
+          "seed": "tải hình nền pinterest 4k",
+          "suggestions": [
+            "tải hình nền pinterest 4k pc",
+            "tải hình nền pinterest 4k cho pc"
+          ]
+        },
+        {
+          "seed": "lưu video pinterest",
+          "matched": "lưu video pinterest 4k"
+        },
+        {
+          "seed": "tải pinterest",
+          "matched": "tải pinterest 4k"
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-to-mp4",
+      "skip": false,
+      "priority": "P3",
+      "slug": "chuyen-video-pinterest-sang-mp4",
+      "path": "/vi/chuyen-video-pinterest-sang-mp4",
+      "primaryKeyword": "chuyển video pinterest sang mp4",
+      "secondaryKeywords": [
+        "pinterest sang mp4",
+        "chuyển pinterest sang mp4",
+        "tải video pinterest mp4",
+        "tải video pinterest sang mp4",
+        "pinterest to mp4"
+      ],
+      "title": "Chuyển video Pinterest sang MP4 online, miễn phí",
+      "titleLength": 48,
+      "description": "Chuyển video Pinterest sang MP4 bằng link Ghim: file phát được trên mọi điện thoại, máy tính, giữ tiếng nếu video gốc có. Không cần đăng ký, không chèn logo.",
+      "descriptionLength": 157,
+      "h1": "Chuyển video Pinterest sang MP4",
+      "h1Uppercase": "CHUYỂN VIDEO PINTEREST SANG MP4",
+      "h1LinesAt375": 3,
+      "h1LinesAt320": 3,
+      "lede": "Pinterest phát video dạng luồng; PintDownload lấy bản MP4 để bạn giữ và xem offline.",
+      "faqTopics": [
+        "Chuyển Pinterest sang MP4 có mất phí không?",
+        "Trang này khác gì trang Tải video Pinterest? (trả lời thẳng: cùng kết quả MP4; trang này giải thích định dạng)",
+        "Chuyển GIF sang MP4 được không?",
+        "Chuyển MP4 sang MP3? ('pinterest mp4 to mp3') → trang Tải nhạc",
+        "Dùng trên iPhone, Android được không?"
+      ],
+      "evidence": [
+        {
+          "seed": "chuyển video pinterest sang mp4",
+          "suggestions": [
+            "chuyển video pinterest sang mp4"
+          ]
+        },
+        {
+          "seed": "pinterest sang mp4",
+          "suggestions": [
+            "pinterest sang mp4",
+            "chuyển pinterest sang mp4",
+            "pinterest sang mp4 download"
+          ]
+        },
+        {
+          "seed": "chuyển pinterest sang mp4",
+          "suggestions": [
+            "chuyển pinterest sang mp4"
+          ]
+        },
+        {
+          "seed": "tải video pinterest mp4",
+          "suggestions": [
+            "tải video pinterest mp4"
+          ]
+        },
+        {
+          "seed": "tải video pinterest s",
+          "matched": "tải video pinterest sang mp4"
+        },
+        {
+          "seed": "pinterest to mp4",
+          "suggestions": [
+            "pinterest to mp4",
+            "pinterest to mp4 converter",
+            "pinterest to mp4 download",
+            "pinterest to mp4 downloader",
+            "pinterest to mp4 4k",
+            "pinterest to mp4 video",
+            "pinterest to mp4 convert",
+            "pinterest to mp4 video download",
+            "pinterest to mp4 video downloader",
+            "pinterest to mp4 download 4k"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-video-downloader-chrome",
+      "skip": false,
+      "priority": "P3",
+      "slug": "tai-video-pinterest-tren-chrome",
+      "path": "/vi/tai-video-pinterest-tren-chrome",
+      "primaryKeyword": "tải video pinterest trên chrome",
+      "secondaryKeywords": [
+        "tiện ích tải video pinterest",
+        "extension tải video pinterest",
+        "tiện ích chrome tải video pinterest",
+        "pinterest video downloader chrome",
+        "tiện ích tải ảnh pinterest"
+      ],
+      "title": "Tải video Pinterest trên Chrome, không cần cài tiện ích",
+      "titleLength": 55,
+      "description": "Tải video Pinterest trên Chrome bằng bookmarklet: kéo nút lên thanh dấu trang, mở Ghim trên pinterest.com, bấm một lần. Không cài tiện ích, không đăng nhập.",
+      "descriptionLength": 156,
+      "h1": "Tải video Pinterest trên Chrome",
+      "h1Uppercase": "TẢI VIDEO PINTEREST TRÊN CHROME",
+      "h1LinesAt375": 2,
+      "h1LinesAt320": 3,
+      "lede": "Một bookmarklet trên thanh dấu trang: không cài tiện ích, không cấp quyền đọc clipboard.",
+      "faqTopics": [
+        "PintDownload có phải tiện ích (extension) Chrome không? (không; là bookmarklet)",
+        "Vì sao bookmarklet an toàn hơn tiện ích? (một tiện ích tải video Pinterest bị chấm rủi ro cao vì xin quyền đọc/ghi clipboard — extensionauditor)",
+        "Dùng trên Cốc Cốc, Edge được không? ('cốc cốc tải video pinterest về máy tính'; Cốc Cốc chạy nhân Chromium)",
+        "Dùng trên điện thoại được không? ('tiện ích chrome tải video pinterest về điện thoại' — thật: trên điện thoại nên dán link vào ô)",
+        "Dùng trên Mac và Windows được không?",
+        "Không thấy thanh dấu trang? (Ctrl+Shift+B / ⌘+Shift+B)"
+      ],
+      "evidence": [
+        {
+          "seed": "tải video pinterest trên chrome",
+          "suggestions": [
+            "tải video pinterest trên chrome về máy tính"
+          ]
+        },
+        {
+          "seed": "tiện ích tải video pinterest",
+          "suggestions": [
+            "tiện ích tải video pinterest trên máy tính",
+            "tiện ích tải video pinterest về máy tính"
+          ]
+        },
+        {
+          "seed": "extension tải video pinterest",
+          "suggestions": [
+            "extension tải video pinterest về máy tính"
+          ]
+        },
+        {
+          "seed": "tiện ích chrome tải video pinterest",
+          "suggestions": [
+            "tiện ích chrome tải video pinterest về máy tính",
+            "tiện ích chrome tải video pinterest về điện thoại"
+          ]
+        },
+        {
+          "seed": "pinterest video downloader chrome",
+          "suggestions": [
+            "pinterest video downloader chrome",
+            "pinterest video downloader chrome extension",
+            "pinterest video downloader chrome free",
+            "pinterest video downloader chrome extension free",
+            "pinterest video downloader chrome web store",
+            "pinterest video downloader chrome android",
+            "pinterest video downloader chrome apk",
+            "best pinterest video downloader chrome",
+            "pinterest video downloader 4k chrome",
+            "pinterest video and image downloader chrome extension"
+          ]
+        },
+        {
+          "seed": "tiện ích tải ảnh pinterest",
+          "suggestions": [
+            "tiện ích tải ảnh pinterest trên máy tính",
+            "tiện ích tải ảnh pinterest về máy tính"
+          ]
+        },
+        {
+          "seed": "cốc cốc tải video pinterest",
+          "suggestions": [
+            "cốc cốc tải video pinterest về máy tính",
+            "cốc cốc tải video pinterest không có logo"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "pinterest-seo-title-generator",
+      "skip": true,
+      "skipReason": "Nhu cầu sai ý định: 'tiêu đề pinterest' gợi ý 'vẽ/trang trí/font chữ tiêu đề pinterest' (tiêu đề viết tay trang trí vở), 'seo pinterest' và 'pinterest seo' gợi ý tên người Hàn (seo in guk, seonghyeon). 'tạo tiêu đề cho ghim pinterest' chỉ có 1 đuôi dài. Thêm nữa, /api/generate-seo chỉ sinh tiếng Anh (prompt Gemini không có tham số ngôn ngữ, mẫu dự phòng bằng tiếng Anh). Xem lại khi API hỗ trợ tiếng Việt.",
+      "slug": null,
+      "path": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": [],
+      "evidence": [
+        {
+          "seed": "tiêu đề pinterest",
+          "suggestions": [
+            "tiêu đề pinterest",
+            "vẽ tiêu đề pinterest",
+            "trang trí tiêu đề pinterest",
+            "font chữ tiêu đề pinterest",
+            "tiêu đề pinterest đẹp",
+            "tiêu đề pinterest là gì"
+          ]
+        },
+        {
+          "seed": "seo pinterest",
+          "suggestions": [
+            "seo pinterest",
+            "seo pinterest 2026",
+            "seo pinterest meaning",
+            "seo pinterest 2025",
+            "pinterest seo in guk",
+            "pinterest seo ye ji",
+            "sara seo pinterest",
+            "seo for pinterest pins",
+            "roh yoon seo pinterest",
+            "seo su min pinterest"
+          ]
+        },
+        {
+          "seed": "pinterest seo",
+          "suggestions": [
+            "pinterest seonghyeon",
+            "pinterest seonghyeon cortis",
+            "pinterest seo",
+            "pinterest seoul",
+            "pinterest seo 2026",
+            "pinterest seonghwa",
+            "pinterest seoul korea",
+            "seonghyeon pinterest wallpaper",
+            "pinterest seo in guk",
+            "pinterest seoul city"
+          ]
+        },
+        {
+          "seed": "tạo tiêu đề cho ghim pinterest",
+          "suggestions": [
+            "tạo tiêu đề cho ghim pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "từ khóa pinterest",
+          "suggestions": [
+            "từ khóa pinterest",
+            "từ khóa pinterest là gì"
+          ]
+        },
+        {
+          "seed": "viết tiêu đề pinterest",
+          "suggestions": [
+            "pinterest font chữ viết tiêu đề",
+            "viết tiêu đề pinterest đẹp"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "how-to-download-pinterest-videos",
+      "skip": false,
+      "priority": "P1",
+      "slug": "cach-tai-video-pinterest",
+      "path": "/vi/cach-tai-video-pinterest",
+      "primaryKeyword": "cách tải video trên pinterest",
+      "secondaryKeywords": [
+        "cách tải video pinterest",
+        "cách lưu video trên pinterest",
+        "có cách nào tải video trên pinterest không",
+        "cách tải video trên pinterest không bị mờ",
+        "cách tải video trên pinterest không dính logo",
+        "hướng dẫn tải video pinterest"
+      ],
+      "title": "Cách tải video trên Pinterest: 3 bước, không cần cài app",
+      "titleLength": 56,
+      "description": "Cách tải video trên Pinterest về điện thoại, máy tính: sao chép liên kết Ghim, dán vào PintDownload, lưu MP4. Có cách xử lý video mờ, mất tiếng.",
+      "descriptionLength": 144,
+      "h1": "Cách tải video trên Pinterest",
+      "h1Uppercase": "CÁCH TẢI VIDEO TRÊN PINTEREST",
+      "h1LinesAt375": 2,
+      "h1LinesAt320": 2,
+      "lede": "Ba bước cho điện thoại và máy tính, cùng cách xử lý khi video bị mờ, mất tiếng hoặc không tải được.",
+      "faqTopics": [
+        "Có cách nào tải video trên Pinterest không? (Pinterest chỉ có nút Tải ảnh xuống cho một số Ghim; video thường không có)",
+        "Cách lấy link video Pinterest trên app và trên máy tính ('cách lấy link video pinterest trên máy tính')",
+        "Vì sao không tải được video Pinterest? ('sao không tải được video trên pinterest về máy tính', 'pinterest không cho tải video được')",
+        "Video tải về bị mờ phải làm sao? ('cách tải video trên pinterest không bị mờ')",
+        "Bấm Lưu trên Pinterest có lưu video về máy không? (không: Lưu = thêm vào bảng)",
+        "Tải video Pinterest có vi phạm bản quyền không? (viettablet, dienmayxanh đều có câu này)"
+      ],
+      "evidence": [
+        {
+          "seed": "cách tải video trên pinterest",
+          "suggestions": [
+            "cách tải video trên pinterest về điện thoại",
+            "cách tải video trên pinterest",
+            "cách tải video trên pinterest về máy tính",
+            "cách tải video trên pinterest về điện thoại samsung",
+            "cách tải video trên pinterest về laptop",
+            "cách tải video trên pinterest miễn phí",
+            "cách tải video trên pinterest về điện thoại android",
+            "cách tải video trên pinterest không dính logo",
+            "cách tải video trên pinterest về điện thoại iphone",
+            "cách tải video trên pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "cách tải video pinterest",
+          "suggestions": [
+            "cách tải video pinterest trên máy tính",
+            "cách tải video pinterest",
+            "cách tải video pinterest về máy",
+            "cách tải video pinterest về điện thoại",
+            "cách tải video pinterest không có logo",
+            "cách tải video pinterest trên iphone",
+            "cách tải video từ pinterest về điện thoại android",
+            "cách tải video trên pinterest về laptop",
+            "cách tải video trên pinterest miễn phí",
+            "cách tải video trên pinterest về điện thoại samsung"
+          ]
+        },
+        {
+          "seed": "cách lưu video trên pinterest",
+          "suggestions": [
+            "cách lưu video trên pinterest",
+            "cách lưu video trên pinterest về máy tính",
+            "cách lưu video trên pinterest về máy",
+            "cách lưu video trên pinterest về điện thoại",
+            "cách lưu video trên pinterest android",
+            "cách lưu video trên pinterest về iphone",
+            "cách lưu video trên pinterest về laptop",
+            "cách lưu video trên pinterest về điện thoại samsung",
+            "cách lưu video trên pinterest về bộ sưu tập",
+            "cách lưu video trên pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải video pinterest không",
+          "matched": "có cách nào tải video trên pinterest không"
+        },
+        {
+          "seed": "tải video pinterest h",
+          "matched": "hướng dẫn tải video pinterest"
+        },
+        {
+          "seed": "cach tai video tren pinterest",
+          "suggestions": [
+            "cách tải video trên pinterest",
+            "cách tải video trên pinterest về điện thoại iphone",
+            "cách tải video trên pinterest về pc",
+            "cách tải video trên pinterest về điện thoại android",
+            "cách tải video trên pinterest về máy điện thoại",
+            "cách tải video trên pinterest pc",
+            "cách tải video trên pinterest về ipad",
+            "cách tải video trên pinterest về macbook",
+            "cách tải video trên pinterest không bị mờ",
+            "cach tai video tren pinterest tren may tinh"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "how-to-download-pinterest-video-in-gallery",
+      "skip": false,
+      "priority": "P2",
+      "slug": "luu-video-pinterest-vao-thu-vien-anh",
+      "path": "/vi/luu-video-pinterest-vao-thu-vien-anh",
+      "primaryKeyword": "lưu video pinterest vào thư viện ảnh",
+      "secondaryKeywords": [
+        "tải video pinterest về thư viện ảnh",
+        "lưu video pinterest về album ảnh",
+        "lưu video pinterest về bộ sưu tập",
+        "cách lưu video trên pinterest về bộ sưu tập",
+        "tải video pinterest về thư viện ảnh iphone"
+      ],
+      "title": "Lưu video Pinterest vào thư viện ảnh, album điện thoại",
+      "titleLength": 54,
+      "description": "Lưu video Pinterest vào thư viện ảnh: app Ảnh trên iPhone, Bộ sưu tập trên Samsung hay Google Photos. Tải MP4 bằng trình duyệt rồi lưu vào máy, không cần app.",
+      "descriptionLength": 158,
+      "h1": "Lưu video Pinterest vào thư viện ảnh",
+      "h1Uppercase": "LƯU VIDEO PINTEREST VÀO THƯ VIỆN ẢNH",
+      "h1LinesAt375": 3,
+      "h1LinesAt320": 3,
+      "lede": "Tải MP4 bằng trình duyệt rồi đưa vào app Ảnh, Bộ sưu tập hoặc Google Photos.",
+      "faqTopics": [
+        "Tải xong sao không thấy video trong thư viện? (iPhone: Tệp → Tải về → Chia sẻ → Lưu video; Android: thư mục Download)",
+        "Lưu vào Bộ sưu tập trên Samsung thế nào? ('cách lưu video trên pinterest về điện thoại samsung')",
+        "Có cần app Documents hay app tải video không? (các bài hướng dẫn VN hay dùng Documents; iOS hiện tại không cần)",
+        "Có mất phí hay phải đăng nhập không?",
+        "Lưu GIF vào thư viện có còn chuyển động không? → trang GIF"
+      ],
+      "evidence": [
+        {
+          "seed": "cách lưu video pinterest vào thư viện",
+          "suggestions": [
+            "cách lưu video pinterest vào thư viện ảnh",
+            "cách lưu video pinterest vào thư viện quốc gia"
+          ]
+        },
+        {
+          "seed": "tải video pinterest vào thư viện",
+          "suggestions": [
+            "tải video pinterest vào thư viện ảnh",
+            "tải video pinterest vào thư viện quốc gia"
+          ]
+        },
+        {
+          "seed": "tải video pinterest về thư viện ảnh",
+          "suggestions": [
+            "tải video pinterest về thư viện ảnh iphone",
+            "tải video pinterest về thư viện ảnh trên máy tính",
+            "tải video pinterest về thư viện ảnh máy tính",
+            "tải video pinterest về thư viện ảnh điện thoại"
+          ]
+        },
+        {
+          "seed": "lưu video pinterest về album",
+          "suggestions": [
+            "lưu video pinterest về album ảnh",
+            "lưu video pinterest về album điện thoại"
+          ]
+        },
+        {
+          "seed": "lưu video pinterest về bộ sưu tập",
+          "suggestions": [
+            "cách lưu video trên pinterest về bộ sưu tập",
+            "lưu video pinterest về bộ sưu tập iphone",
+            "lưu video pinterest về bộ sưu tập trên máy tính",
+            "lưu video pinterest về bộ sưu tập trên iphone"
+          ]
+        },
+        {
+          "seed": "cách lưu video trên pinterest",
+          "matched": "cách lưu video trên pinterest về bộ sưu tập"
+        }
+      ]
+    },
+    {
+      "enSlug": "how-to-download-pinterest-video-on-laptop",
+      "skip": false,
+      "priority": "P1",
+      "slug": "tai-video-pinterest-ve-may-tinh",
+      "path": "/vi/tai-video-pinterest-ve-may-tinh",
+      "primaryKeyword": "tải video pinterest về máy tính",
+      "secondaryKeywords": [
+        "cách tải video pinterest trên máy tính",
+        "tải video pinterest về laptop",
+        "tải video pinterest trên macbook",
+        "tải video pinterest pc",
+        "web tải video trên pinterest về máy tính",
+        "cốc cốc tải video pinterest"
+      ],
+      "title": "Tải video Pinterest về máy tính, laptop, MacBook",
+      "titleLength": 48,
+      "description": "Tải video Pinterest về máy tính Windows, laptop hay MacBook chỉ bằng trình duyệt, không cần phần mềm, tiện ích hay đăng nhập. File MP4 vào thư mục Tải xuống.",
+      "descriptionLength": 157,
+      "h1": "Tải video Pinterest về máy tính",
+      "h1Uppercase": "TẢI VIDEO PINTEREST VỀ MÁY TÍNH",
+      "h1LinesAt375": 2,
+      "h1LinesAt320": 3,
+      "lede": "Chỉ cần trình duyệt: sao chép link Ghim, dán vào ô, file MP4 vào thư mục Tải xuống.",
+      "faqTopics": [
+        "Cách lấy link video Pinterest trên máy tính ('cách lấy link video pinterest trên máy tính')",
+        "Vì sao không tải được video Pinterest về máy tính? ('tại sao không tải được video pinterest trên máy tính')",
+        "Có tải bản 1080p trên máy tính được không? (khi Pinterest có)",
+        "Có cần Cốc Cốc, phần mềm hay tiện ích không? ('cốc cốc tải video pinterest', 'phần mềm tải video pinterest về máy tính')",
+        "MacBook, Chromebook, Windows 10 có khác gì không? ('tải video pinterest về máy tính win 10', 'macbook air/pro')",
+        "File tải về nằm ở đâu? (thư mục Tải xuống / Downloads)"
+      ],
+      "evidence": [
+        {
+          "seed": "tải video pinterest",
+          "matched": "tải video pinterest về máy tính"
+        },
+        {
+          "seed": "tải video pinterest về máy tính",
+          "suggestions": [
+            "tải video pinterest về máy tính",
+            "tải video pinterest về máy tính 4k",
+            "tải video trên pinterest về máy tính",
+            "web tải video trên pinterest về máy tính"
+          ]
+        },
+        {
+          "seed": "cách tải video pinterest trên máy tính",
+          "suggestions": [
+            "cách tải video pinterest trên máy tính"
+          ]
+        },
+        {
+          "seed": "tải video pinterest laptop",
+          "suggestions": [
+            "tải video pinterest về laptop",
+            "tải video pinterest laptop miễn phí"
+          ]
+        },
+        {
+          "seed": "tải video pinterest macbook",
+          "suggestions": [
+            "cách tải video trên pinterest về macbook",
+            "tải video pinterest macbook air",
+            "tải video pinterest macbook pro"
+          ]
+        },
+        {
+          "seed": "tải video pinterest pc",
+          "suggestions": [
+            "tải video pinterest pc",
+            "cách tải video trên pinterest pc"
+          ]
+        },
+        {
+          "seed": "cốc cốc tải video pinterest",
+          "suggestions": [
+            "cốc cốc tải video pinterest về máy tính",
+            "cốc cốc tải video pinterest không có logo"
+          ]
+        }
+      ]
+    },
+    {
+      "enSlug": "download-pinterest-videos-iphone-android",
+      "skip": false,
+      "priority": "P1",
+      "slug": "tai-video-pinterest-ve-dien-thoai",
+      "path": "/vi/tai-video-pinterest-ve-dien-thoai",
+      "primaryKeyword": "tải video pinterest về điện thoại",
+      "secondaryKeywords": [
+        "tải video pinterest về iphone",
+        "tải video pinterest về điện thoại android",
+        "cách tải video trên pinterest về điện thoại samsung",
+        "tải video pinterest trên iphone không cần app",
+        "tải video pinterest bằng safari trên iphone",
+        "cách tải video trên pinterest về ipad"
+      ],
+      "title": "Tải video Pinterest về điện thoại iPhone, Android",
+      "titleLength": 49,
+      "description": "Tải video Pinterest về điện thoại iPhone, Samsung, Android bằng Safari hoặc Chrome, không cần app: sao chép liên kết Ghim, dán vào PintDownload, lưu vào Ảnh.",
+      "descriptionLength": 157,
+      "h1": "Tải video Pinterest về điện thoại",
+      "h1Uppercase": "TẢI VIDEO PINTEREST VỀ ĐIỆN THOẠI",
+      "h1LinesAt375": 2,
+      "h1LinesAt320": 3,
+      "lede": "Dùng Safari hoặc Chrome có sẵn trên máy, không cần cài app tải video.",
+      "faqTopics": [
+        "Lưu video vào Ảnh trên iPhone thế nào? (Safari → Tệp → Tải về → Lưu video; không cần app Documents) ('tải video pinterest về thư viện ảnh iphone')",
+        "Android, Samsung: video nằm ở đâu? (Bộ sưu tập / Google Photos / thư mục Download)",
+        "Có cần app tải video Pinterest không? ('app tải video pinterest cho iphone', 'tải video pinterest trên iphone không cần app store')",
+        "Trên iPad có giống iPhone không? ('cách tải video trên pinterest về ipad')",
+        "Video tải về có âm thanh không? ('tải video pinterest có âm thanh không')",
+        "Có dùng Phím tắt (Shortcuts) được không? ('phím tắt tải video pinterest' — thật: PintDownload không cung cấp phím tắt; dán link vào trang là đủ)"
+      ],
+      "evidence": [
+        {
+          "seed": "tải video pinterest về điện thoại",
+          "suggestions": [
+            "tải video pinterest về điện thoại",
+            "tải video pinterest về điện thoại miễn phí",
+            "tải video pinterest về điện thoại iphone",
+            "tải video trên pinterest về điện thoại android",
+            "tải video ở pinterest về điện thoại",
+            "tải video trên pinterest về điện thoại ios",
+            "cách tải video từ pinterest về điện thoại android",
+            "tải video pinterest về điện thoại android"
+          ]
+        },
+        {
+          "seed": "cách tải video pinterest về điện thoại ",
+          "suggestions": [
+            "cách tải video pinterest về điện thoại",
+            "cách tải video trên pinterest về điện thoại iphone",
+            "cách tải video từ pinterest về điện thoại android",
+            "cách tải video trên pinterest về điện thoại samsung",
+            "cách tải video pinterest về điện thoại iphone",
+            "cách tải video pinterest về điện thoại android",
+            "cách tải video pinterest về điện thoại samsung"
+          ]
+        },
+        {
+          "seed": "tải video pinterest về iphone",
+          "suggestions": [
+            "tải video pinterest về iphone"
+          ]
+        },
+        {
+          "seed": "tải video pinterest android",
+          "suggestions": [
+            "tải video pinterest cho android",
+            "tải video pinterest android không logo"
+          ]
+        },
+        {
+          "seed": "tải video pinterest trên iphone không cần app",
+          "suggestions": [
+            "tải video pinterest trên iphone không cần app store"
+          ]
+        },
+        {
+          "seed": "tải video pinterest bằng safari",
+          "suggestions": [
+            "tải video pinterest bằng safari trên iphone",
+            "tải video pinterest bằng safari trên macbook"
+          ]
+        },
+        {
+          "seed": "tải video pinterest ipad",
+          "suggestions": [
+            "cách tải video trên pinterest về ipad",
+            "tải video pinterest ipad không logo"
+          ]
+        }
+      ]
+    }
+  ],
+  "keywordOwnership": {
+    "/vi": "pinterest downloader, web tải pinterest, tải từ pinterest (all formats). Avoid bare 'tải pinterest về máy tính/mac/win 10': that phrase means installing the Pinterest app.",
+    "/vi/tai-video-pinterest": "tải video pinterest + không logo / full hd / bằng link / online / lưu video pinterest",
+    "/vi/cach-tai-video-pinterest": "cách tải video (trên) pinterest, plus question forms ('có cách nào…', 'không tải được', 'bị mờ')",
+    "/vi/tai-video-pinterest-ve-may-tinh": "về máy tính / laptop / macbook / pc / Cốc Cốc",
+    "/vi/tai-video-pinterest-ve-dien-thoai": "về điện thoại / iphone / android / samsung / ipad",
+    "/vi/luu-video-pinterest-vao-thu-vien-anh": "thư viện ảnh / album / bộ sưu tập (destination inside the phone)",
+    "/vi/chuyen-video-pinterest-sang-mp4": "chuyển … sang mp4 / pinterest to mp4 (format wording only)",
+    "/vi/tai-video-pinterest-4k": "4k / 1080p / full hd as a question, answered honestly",
+    "/vi/tai-anh-pinterest": "tải ảnh / tải hình / lưu ảnh + chất lượng cao / nét / không bị mờ / không bị vỡ / hình nền",
+    "/vi/tai-gif-pinterest": "gif / ảnh động",
+    "/vi/tai-bang-pinterest": "bảng / board / toàn bộ / tất cả / hàng loạt / zip",
+    "/vi/tai-ho-so-pinterest": "hồ sơ / profile (bulk)",
+    "/vi/tai-avatar-pinterest": "avatar / ảnh đại diện / xem / phóng to",
+    "/vi/tai-nhac-pinterest": "nhạc / âm thanh / mp3",
+    "/vi/tai-ghim-pinterest": "ghim / pin + bằng link",
+    "/vi/tai-video-pinterest-tren-chrome": "chrome / tiện ích / extension"
+  },
+  "glossary": {
+    "voice": "Address the reader as 'bạn', as Pinterest's Vietnamese help does. Never use 'quý khách' (too formal) or 'mình/cậu' (too chatty). Use sentence case in titles and headings ('Tải video Pinterest về máy tính'), not Title Case Per Syllable: competitors' Title Case looks machine-made, and Pinterest and the editorial sites use sentence case.",
+    "ui": {
+      "download (button)": "Tải xuống (matches Pinterest's own 'Tải xuống')",
+      "download (verb in headings/keywords)": "tải; with a destination 'tải về máy', 'tải về điện thoại'",
+      "save to device": "lưu về máy. Never label our button just 'Lưu', because Pinterest's 'Lưu' means save to a board",
+      "paste": "Dán",
+      "paste box placeholder": "Dán link Ghim, bảng hoặc hồ sơ Pinterest…",
+      "link / URL": "link in our own copy (people search 'bằng link'); 'liên kết' only when quoting Pinterest UI ('Sao chép liên kết'); avoid 'URL'",
+      "copy link": "Sao chép liên kết (exact Pinterest label)",
+      "processing": "Đang lấy file… (the current i18n string 'Đang trích xuất media HD…' is stiff and overclaims HD)",
+      "preview": "Xem trước",
+      "retry": "Thử lại",
+      "file": "file; 'tệp' only for the iOS Files app ('Tệp')",
+      "ZIP": "file ZIP",
+      "HD / sharp": "HD, nét; 'chất lượng cao'. Blurry = 'mờ', pixelated = 'vỡ'",
+      "watermark": "logo, as in 'không chèn logo'. People search 'không logo' and 'không dính logo'; 'hình mờ' and 'watermark' are rare",
+      "free": "miễn phí",
+      "no login": "không cần đăng nhập",
+      "no install": "không cần cài app",
+      "public / private": "công khai / riêng tư; secret board = bảng bí mật",
+      "FAQ heading": "Câu hỏi thường gặp (the current i18n 'Hỏi đáp' is fine but less standard)",
+      "how it works": "Cách dùng / Hướng dẫn",
+      "step": "Bước 1, Bước 2, Bước 3",
+      "related tools": "Công cụ khác",
+      "wrong link type": "Đây là link bảng. Hãy dùng công cụ Tải bảng Pinterest.",
+      "not found / private": "Không tìm thấy Ghim công khai. Ghim có thể riêng tư hoặc đã bị xóa."
+    },
+    "product": {
+      "Pin": "Ghim (capitalised, as Pinterest does); Video Pin = Ghim video; image Pin = Ghim ảnh; multi-image Pin = Ghim nhiều ảnh; carousel = Ghim băng chuyền",
+      "board": "bảng (people also type 'board')",
+      "profile": "hồ sơ",
+      "profile picture": "ảnh đại diện (avatar). People search 'avatar' and 'ảnh đại diện'; Pinterest's own label is 'Ảnh hồ sơ'",
+      "GIF": "GIF / ảnh động",
+      "audio": "nhạc / âm thanh; MP3",
+      "bookmarklet": "bookmarklet (nút trên thanh dấu trang). Not 'tiện ích'; that word is for extensions",
+      "browser extension": "tiện ích mở rộng / tiện ích / extension",
+      "credit creators": "ghi nguồn tác giả (common Vietnamese web phrase 'nhớ ghi nguồn')",
+      "copyright": "bản quyền",
+      "not affiliated": "PintDownload là công cụ độc lập, không trực thuộc và không được Pinterest Inc. bảo trợ. Avoid 'không liên kết với Pinterest', because 'liên kết' also means 'link'",
+      "largest available size": "kích thước lớn nhất Pinterest cung cấp / bản nét nhất có sẵn. Never write 'ảnh gốc' or 'chất lượng gốc': originals return 403 and the largest public size is about 1200px wide"
+    },
+    "claimTicket": {
+      "concept": "Every Vietnamese reader knows the claim ticket from motorbike parking ('vé gửi xe'): you hand over the bike, get a numbered ticket, and give it back to collect the bike. A link is the ticket and the file is what you collect.",
+      "tagline": "Gửi link, nhận file. (mirrors 'gửi xe, lấy xe'; alternative 'Đưa link, lấy file.')",
+      "ticket": "vé",
+      "claim ticket": "vé nhận / phiếu nhận",
+      "Admit one · public link (header label)": "VÉ VÀO CỬA · LINK CÔNG KHAI",
+      "No. (serial)": "SỐ (e.g. 'SỐ 1120271…'). Parking tickets print 'Số'",
+      "stub": "cuống vé; the perforation can read 'XÉ TẠI ĐÂY'",
+      "stub button": "TẢI XUỐNG (keep the action verb; the stub is not labelled 'cuống')",
+      "collect": "NHẬN FILE",
+      "ready stamp": "ĐÃ SẴN SÀNG · GHIM VIDEO",
+      "void stamp (wrong or unsupported link)": "KHÔNG HỢP LỆ. Avoid 'HẾT HẠN' (expired) unless the link really expired",
+      "receipt": "BIÊN NHẬN",
+      "counter": "QUẦY (e.g. 'QUẦY NHẬN FILE')",
+      "recent links": "LINK GẦN ĐÂY"
+    }
+  },
+  "formats": {
+    "numbers": "Thousands '.', decimal ','. Write 1.200, 2,4 MB, 50%. Use Intl.NumberFormat('vi-VN'). Keep video tiers as 720p and 1080p, dimensions as 600×600 or 1200px, and file names as written.",
+    "dates": "dd/mm/yyyy (15/10/2026), or long form 'ngày 15 tháng 10 năm 2026'. Month names stay lowercase ('tháng 10'). Use Intl.DateTimeFormat('vi-VN'). Blog byline: '15/10/2026 · 5 phút đọc'.",
+    "time": "24-hour, 23:45",
+    "currency": "VND as '0 ₫', symbol after the number, no decimals. Not needed: say 'miễn phí'.",
+    "readingTime": "'5 phút đọc'",
+    "quotes": "Curly double quotes “…” for UI labels in prose, or bold the Pinterest label instead (Sao chép liên kết)",
+    "ordinals": "Bước 1, Bước 2; 'thứ nhất' in prose"
+  },
+  "typography": {
+    "glyphCoverage": "Blocker. src/styles/ticket.css self-hosts only the Big Shoulders Display latin subset (U+0000-00FF etc.). Vietnamese letters (Ả Ấ Ộ Ư Ơ Đ ă đ …) are not in it. fontkitten confirms that Ả Ế Ộ Đ Ơ Ư ă đ are missing from the latin 900 file, so the browser falls back glyph by glyph to Arial Narrow or system sans, and a headline like 'TẢI VIDEO' mixes two typefaces inside one word. Fix: copy big-shoulders-display-vietnamese-800/900-normal.woff2 from node_modules/@fontsource/big-shoulders-display (900 is 4.6 KB) to public/fonts, add @font-face rules with unicode-range U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB, and preload them only on /vi pages. fontkitten check of all 146 Vietnamese letters (12 vowels × 6 tones, both cases, plus đ/Đ) at weights 800 and 900: 102 are missing from the self-hosted latin file, and none are missing once the vietnamese subset is added. latin-ext is not needed.",
+    "verticalMetrics": "Measured in Big Shoulders 900 (UPM 2000): cap height 0.80em, ascent 0.984em. The tallest stacked capital (Ắ) reaches 1.158em above the baseline, and dot-below (Ậ) reaches -0.139em.",
+    "lineHeight": "Change needed. At the display line-height 0.88-0.9, a stacked mark on line 2 rises about 0.28em into line 1's capitals. At 46px that is a 12px overlap. 12 of the 16 vi H1s wrap to 2-3 lines at 375px, and all 16 wrap at 320px. Set line-height to at least 1.2 for :lang(vi) display, headline and tool-body H2s; 1.3 fully clears dot-below over a stacked cap. Check the hero-seam alignment again after the change.",
+    "topClip": ".seam-hero uses overflow: clip, and phone hero top padding is 12px. Stacked marks on the first H1 line stand about 0.36em (16px at 46px) above the cap line, so keep at least 0.4em clear above the H1, or marks on words such as 'TẢI', 'LƯU' and 'CÁCH' get cut.",
+    "uppercase": "text-transform: uppercase is safe for Vietnamese: no special casing, đ becomes Đ. Set html lang='vi' so :lang(vi) rules apply.",
+    "labels": "Label and serial styles (gothic 800 at 0.875rem with 0.08em tracking) squeeze stacked marks to about 2px. Consider 0.9375rem for vi labels, and keep them short ('VÉ VÀO CỬA · LINK CÔNG KHAI').",
+    "lengthExpansion": "Vietnamese ran about 10-25% longer than English. The first-draft meta descriptions were 159-169 chars and had to be cut to 144-158. Every H1 fits at 375px: longest word 'PINTEREST' is 173px of 343px, and H1s take 1-3 lines (3 lines on 3 pages at 375px and on 8 pages at 320px). Words are short syllables, so condensed width is not a problem; height is.",
+    "lineBreaks": "Browsers may break between the syllables of a two-syllable word ('thư | viện', 'điện | thoại'). Optionally join key pairs in H1s with a non-breaking space ('thư viện ảnh', 'điện thoại'), and keep '4K' with the word before it.",
+    "unicodeNormalization": "Store every string as NFC (precomposed). seo_health_check.py counts len() on parsed text, and NFD text (common when copying from macOS) counts 2-3 code points per accented letter, which can push a 156-char description past 160. NFD also relies on the font's combining-mark positioning. Add a test: str === str.normalize('NFC').",
+    "toneMarkStyle": "Pick one tone-mark placement and use it everywhere. Recommended: the modern style ('hòa', 'thủy', 'khỏe', 'xóa'), with 'kỹ' not 'kĩ'. Autocomplete mixes both ('xoá ghim pinterest'), so mixing will not hurt search but looks careless."
+  },
+  "notes": [
+    "Publish 16 of 19 pages; skip carousel, story and the SEO title generator (reasons in pages[].skipReason). Priority P1 (biggest evidence): /vi, tai-video-pinterest, tai-anh-pinterest, cach-tai-video-pinterest, tai-video-pinterest-ve-may-tinh, tai-video-pinterest-ve-dien-thoai. P2: ghim, gif, bảng, avatar, nhạc, thư viện ảnh. P3: hồ sơ, 4K, MP4, Chrome.",
+    "'không logo' is the strongest modifier in this market ('tải video pinterest không logo', '… miễn phí', '… trên iphone', '… trên máy tính', 'không dính logo'). Claim only what is true: PintDownload does not add a logo, and the file is the MP4 Pinterest serves. Logos already burned into the creator's video (TikTok, CapCut) stay. Check that the extracted pinimg MP4 has no Pinterest end-card before putting 'không logo' in titles.",
+    "Honest quality copy: extract/media.ts says /originals/ returns 403 and 1200x is the largest public image, video is usually 720p with 1080p when listed, and avatars are about 600×600. So never write 'ảnh gốc', 'chất lượng gốc', 'Full HD' (as a promise), '2K' or '4K', even though 'tải ảnh pinterest gốc', 'tải avatar pinterest full hd' and '4k' are real queries. The vi 4K page answers the 4K question honestly. Do not translate the English 4K page: it claims '4K ultra quality' and 'original uncompressed' and should be fixed too.",
+    "The current vi strings in src/lib/i18n.ts overclaim and read as machine translation. heroSubtitle promises 'Full HD 1080p'; the tool labels use Title Case ('Tải Bảng', 'Tải Hồ Sơ'); 'Đang trích xuất media HD…'. Replace them with glossary terms when the vi pages ship.",
+    "Pinterest's 'Lưu' means save to a board, not to the device. How-to copy must say so, because people search 'lưu video pinterest' meaning save to the phone. Pinterest's own help draws the same line.",
+    "iPhone how-to: every ranking Vietnamese guide still routes iPhone users through the third-party Documents app. A simpler, correct flow is Safari → Tải xuống → Tệp → Tải về → Chia sẻ → Lưu video, with no app needed. That is a differentiator, but check the iOS 17/18 Vietnamese labels on a device before shipping screenshots.",
+    "Cốc Cốc, a Vietnamese Chromium browser with a built-in media download button, shows up in queries ('cốc cốc tải video pinterest về máy tính', '… không có logo') and in viettablet's guide. The laptop and Chrome pages should mention that the bookmarklet and paste box also work in Cốc Cốc. Never imply a partnership.",
+    "Trust is a ranking and conversion lever: users ask 'tải video pinterest an toàn không', 'klickpin safe' and 'web tải … uy tín'. One competitor's vi page links to gambling sites, and online gambling ads are illegal in Vietnam. When an ad network is added, block gambling and betting categories for /vi.",
+    "Avoid app-install intent: 'tải pinterest về máy tính (win 10 / mac)', 'cách tải pinterest trên iphone 6/7' and 'tải pinterest apk' mean installing the Pinterest app. Don't target bare 'tải pinterest' on any page. Also avoid 'avatar pinterest', 'ảnh đại diện pinterest' and 'gif pinterest' on their own: those queries want inspiration images, not a downloader.",
+    "Opportunity, not planned: 'tải ảnh ghép pinterest' has 7 completions ('… không có logo', '… về máy tính', '… về điện thoại'). If the extractor returns the rendered image of a Pinterest collage (Ảnh ghép) Pin, add an FAQ on the image page. Test it first.",
+    "Cannibalisation watch: '/vi', '/vi/tai-video-pinterest', '/vi/chuyen-video-pinterest-sang-mp4' and '/vi/cach-tai-video-pinterest' all touch 'tải video pinterest'. Keep the ownership map in keywordOwnership, link each page to the owner with the exact anchor text, and if Search Console shows the homepage winning 'tải video pinterest', point internal anchors at the video page.",
+    "Unaccented searches: 'tai video pinterest' returned no completions, while 'tai anh pinterest' and 'cach tai video pinterest' returned the accented versions, so Google folds unaccented input into accented queries. ASCII slugs plus accented titles cover both.",
+    "Carousel and Idea Pin content folds into existing FAQs: 'Ghim nhiều ảnh' on the pin page, and 'Ghim video nhiều trang (Ghim ý tưởng cũ)' on the video page.",
+    "Phone-only Shortcuts: 'phím tắt tải video pinterest' exists, but PintDownload has no iOS Shortcut. Answer honestly in the phone guide FAQ, or skip the question."
+  ]
+}
