@@ -4,6 +4,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /mcp
 Disallow: /embed
 Disallow: /embed/
 

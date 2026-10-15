@@ -1,60 +1,62 @@
-# Astro Starter Kit: Basics
+# PintDownload
+
+[PintDownload](https://pintdownload.app) is a free web tool that turns a public Pinterest link into a file you can save: a pin's HD image, video (MP4), GIF or carousel slides, a whole board or profile as a ZIP, or a profile picture. No account, no install. Public content only, and it is not affiliated with Pinterest Inc.
+
+It also runs a public [MCP server](#mcp-server) so AI assistants can do the same from a chat.
+
+## Stack
+
+- [Astro 5](https://astro.build) (static pages plus server routes) with React islands and Tailwind CSS 3
+- Deployed as one Cloudflare Worker (`wrangler.jsonc`, entry `src/worker.ts`)
+- Node 22
+
+Read these before changing the site:
+
+- `PRODUCT.md`: who the site is for and what it must never claim
+- `DESIGN.md`: the claim-ticket design system
+- `AGENTS.md`: UI, accessibility and tooling rules (binding)
+
+## Commands
+
+| Command | What it does |
+| :-- | :-- |
+| `npm install` | Install dependencies |
+| `npm run dev` | Start the dev server at `http://localhost:4321` |
+| `npm run build` | Build to `./dist/`, then run the SEO health check (`scripts/seo_health_check.py`) |
+| `npm run preview` | Build, then serve the built Worker locally with `wrangler dev` |
+| `npm test` | Run the test suites in `tests/` |
+| `npm run test:seo-build` | Check the built HTML and sitemap for SEO invariants (after a build) |
+
+## Deploy
+
+Pushes to `main` run the SEO build in GitHub Actions (`.github/workflows/seo-automation.yml`). When it passes, `.github/workflows/deploy.yml` builds again and runs `wrangler deploy`. You can also start a deploy by hand from the Actions tab. The workflow needs the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`; never commit them.
+
+`npm run deploy` does the same build and deploy from your own machine after `npm run cf:login`.
+
+## MCP server
+
+PintDownload is also a free, read-only remote [MCP](https://modelcontextprotocol.io) server. There is no sign-in and no API key.
+
+- **Endpoint:** `https://pintdownload.app/mcp` (Streamable HTTP, `POST`)
+- **Protocol:** `2026-07-28`, plus 2025-era clients (`2025-11-25`, `2025-06-18`, `2025-03-26`) through the `initialize` handshake. Stateless, no sessions.
+- **Setup steps** for Claude, Claude Code, Cursor, VS Code and ChatGPT: [pintdownload.app/pinterest-mcp-server](https://pintdownload.app/pinterest-mcp-server)
+
+Claude Code:
 
 ```sh
-npm create astro@latest -- --template basics
+claude mcp add --transport http pintdownload https://pintdownload.app/mcp
 ```
 
-<!-- ASTRO:REMOVE:START -->
+Tools (all read-only):
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+| Tool | What it does |
+| :-- | :-- |
+| `identify_pinterest_link` | Says whether a link is a pin, a pin.it short link, a board or a profile, and which tool to call next. No network call. |
+| `get_pinterest_pin_media` | Download links for one pin: HD image, MP4 video and its qualities, GIF, or every carousel / Idea Pin slide. |
+| `list_pinterest_board_pins` | Pins on a public board with download links, 20 per call by default (up to 50), paged with a cursor. First 250 pins. |
+| `list_pinterest_profile_pins` | Pins a public profile shows plus its public boards, paged the same way. First 200 pins. |
+| `get_pinterest_profile_picture` | A public account's profile picture at 1200 px, with a download link. |
 
-<!-- ASTRO:REMOVE:END -->
+Every result includes the source pin URL and a line asking to credit the creator. Text written by Pinterest users is returned in a separate `untrusted_text` field. The design and its reasoning are in `docs/mcp-design.md`.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-<!-- ASTRO:REMOVE:START -->
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-<!-- ASTRO:REMOVE:END -->
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The server runs inside the same Worker (`src/pages/mcp.ts`, `src/lib/mcp/`) and calls the extraction code in `src/lib/extract/` directly. `server.json` at the repo root describes the server for the [official MCP Registry](https://modelcontextprotocol.io/registry/remote-servers); publishing it there is a manual step.

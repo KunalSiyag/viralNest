@@ -52,3 +52,6 @@ _nextjs_backup/
 .impeccable/build/
 .impeccable/mocks/
 .impeccable/config.local.json
+
+# Python bytecode from scripts/
+__pycache__/

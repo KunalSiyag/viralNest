@@ -198,6 +198,7 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: '/pinterest-audio-downloader', changefreq: 'weekly', priority: 0.82 },
   { path: '/pinterest-seo-title-generator', changefreq: 'weekly', priority: 0.75 },
   { path: '/how-to-download-pinterest-videos', changefreq: 'monthly', priority: 0.8 },
+  { path: '/pinterest-mcp-server', changefreq: 'monthly', priority: 0.7 },
   { path: '/blog', changefreq: 'weekly', priority: 0.85 },
   { path: '/about', changefreq: 'monthly', priority: 0.4 },
   { path: '/contact', changefreq: 'monthly', priority: 0.4 },

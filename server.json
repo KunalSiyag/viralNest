@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "app.pintdownload/pintdownload",
+  "title": "PintDownload",
+  "description": "Download links for public Pinterest pins, videos, GIFs, boards, profiles and profile pictures.",
+  "version": "1.0.0",
+  "websiteUrl": "https://pintdownload.app/pinterest-mcp-server",
+  "icons": [
+    {
+      "src": "https://pintdownload.app/images/logo-icon.png",
+      "mimeType": "image/png"
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://pintdownload.app/mcp"
+    }
+  ]
+}

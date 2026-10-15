@@ -31,3 +31,12 @@ export function hostRedirectUrl(requestUrl: string): string | null {
 
   return changed ? url.toString() : null;
 }
+
+/**
+ * Status for a canonical-host redirect. `/mcp` (and `/mcp/`) gets 308 so MCP
+ * clients keep the POST method and body across www/http/slash redirects; a
+ * 301 lets clients turn POST into GET. Everything else keeps 301.
+ */
+export function redirectStatusFor(pathname: string): 301 | 308 {
+  return pathname.replace(/\/+$/, '') === '/mcp' ? 308 : 301;
+}

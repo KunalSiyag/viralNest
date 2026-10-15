@@ -17,8 +17,21 @@
     // stays asset-first. An array disables the default "non-navigation misses go
     // to the Worker" fallback, so SSR routes MUST be listed. Without `/api/*`,
     // POST /api/extract hits 404-page asset serving and Cloudflare returns 405.
-    "run_worker_first": ["/api/*", "/_image", "/_server-islands/*", "/*/", "/*/*/"]
+    // Same for `/mcp` (remote MCP server, POST only; `/mcp/` already matches "/*/").
+    "run_worker_first": ["/api/*", "/mcp", "/_image", "/_server-islands/*", "/*/", "/*/*/"]
   },
+  // MCP endpoint rate limits (Workers Rate Limiting binding; per Cloudflare
+  // location, approximate). src/lib/mcp/rate-limit.ts treats a missing binding
+  // as "allowed", so this block can be removed if a plan rejects it.
+  "ratelimits": [
+    // Every POST /mcp, per client IP.
+    { "name": "MCP_REQUEST_LIMITER", "namespace_id": "4201", "simple": { "limit": 120, "period": 60 } },
+    // Tool calls that reach Pinterest, per client IP.
+    { "name": "MCP_TOOL_LIMITER", "namespace_id": "4202", "simple": { "limit": 30, "period": 60 } },
+    // All Pinterest-bound MCP tool calls in this location (protects the upstream for the website).
+    // 20× the per-client tool limit: draining it takes 20 IPv4 addresses or IPv6 /48s.
+    { "name": "MCP_UPSTREAM_LIMITER", "namespace_id": "4203", "simple": { "limit": 600, "period": 60 } }
+  ],
   // Astro sessions binding (app does not use sessions; required by adapter defaults).
   "kv_namespaces": [
     {

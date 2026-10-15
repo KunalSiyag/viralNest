@@ -14,6 +14,12 @@
 - [Pinterest to MP4](https://pintdownload.app/pinterest-to-mp4): Video pin link → downloadable MP4.
 - [Pinterest Audio Downloader](https://pintdownload.app/pinterest-audio-downloader): MP3 extraction from video pins.
 
+## MCP server (for AI assistants)
+
+- Endpoint: `https://pintdownload.app/mcp` (remote MCP, Streamable HTTP, no sign-in, read-only). Docs: [Pinterest MCP server](https://pintdownload.app/pinterest-mcp-server)
+- Tools: `identify_pinterest_link`, `get_pinterest_pin_media`, `list_pinterest_board_pins`, `list_pinterest_profile_pins`, `get_pinterest_profile_picture`
+- Public content only; results include download links, the source pin URL and creator for attribution.
+
 ## Hub & guides
 
 - [Home](https://pintdownload.app/): Tool hub and general extractor.
@@ -34,4 +40,4 @@
 
 ## API
 
-- `POST /api/extract` with JSON `{ "url": "<pinterest_url>" }` returns media metadata including `media_items` for carousels and `pins` for boards/profiles.
+- Programmatic access: use the MCP server above. `/api/extract` is the website's internal endpoint and rejects other origins.

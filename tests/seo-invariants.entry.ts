@@ -7,7 +7,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { absoluteUrl, normalizeCanonical } from '../src/lib/urls';
-import { hostRedirectUrl } from '../src/lib/host-redirect';
+import { hostRedirectUrl, redirectStatusFor } from '../src/lib/host-redirect';
+import { SERVER_INFO } from '../src/lib/mcp/info';
+import { TOOLS } from '../src/lib/mcp/tools';
 import { softwareAppSchema, SITEMAP_ROUTES, faqSchema, howToSchema } from '../src/lib/seo';
 import {
   findGifUrlFromImages,
@@ -402,5 +404,98 @@ describe('pin media URL rewrites', () => {
       jpg,
     );
     assert.equal(resolved, origGif);
+  });
+});
+
+/** JSONC → JSON: drops line and block comments outside strings, then trailing commas. */
+function parseJsonc(text: string): any {
+  let out = '';
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === '"') {
+      let j = i + 1;
+      while (j < text.length && text[j] !== '"') j += text[j] === '\\' ? 2 : 1;
+      out += text.slice(i, j + 1);
+      i = j;
+    } else if (c === '/' && text[i + 1] === '/') {
+      while (i < text.length && text[i] !== '\n') i++;
+      out += '\n';
+    } else if (c === '/' && text[i + 1] === '*') {
+      i = text.indexOf('*/', i + 2) + 1;
+    } else {
+      out += c;
+    }
+  }
+  return JSON.parse(out.replace(/,(\s*[}\]])/g, '$1'));
+}
+
+const MCP_ENDPOINT = 'https://pintdownload.app/mcp';
+const MCP_TOOL_NAMES = [
+  'identify_pinterest_link',
+  'get_pinterest_pin_media',
+  'list_pinterest_board_pins',
+  'list_pinterest_profile_pins',
+  'get_pinterest_profile_picture',
+];
+
+describe('MCP routing guard', () => {
+  const wrangler = parseJsonc(fs.readFileSync(path.join(process.cwd(), 'wrangler.jsonc'), 'utf8'));
+
+  it('run_worker_first sends /mcp to the Worker (else POST /mcp 405s on asset serving)', () => {
+    assert.ok(wrangler.assets.run_worker_first.includes('/mcp'));
+    assert.ok(wrangler.assets.run_worker_first.includes('/api/*'));
+  });
+
+  it('ratelimits declares the three MCP limiters', () => {
+    const names = (wrangler.ratelimits || []).map((r: any) => r.name).sort();
+    assert.deepEqual(names, ['MCP_REQUEST_LIMITER', 'MCP_TOOL_LIMITER', 'MCP_UPSTREAM_LIMITER']);
+    for (const r of wrangler.ratelimits) {
+      assert.match(r.namespace_id, /^\d+$/);
+      assert.ok([10, 60].includes(r.simple.period));
+    }
+  });
+
+  it('redirectStatusFor: /mcp keeps POST with 308, everything else 301', () => {
+    assert.equal(redirectStatusFor('/mcp'), 308);
+    assert.equal(redirectStatusFor('/mcp/'), 308);
+    assert.equal(redirectStatusFor('/about/'), 301);
+    assert.equal(redirectStatusFor('/'), 301);
+    assert.equal(redirectStatusFor('/mcp-guide'), 301);
+    assert.equal(hostRedirectUrl('https://www.pintdownload.app/mcp'), 'https://pintdownload.app/mcp');
+    assert.equal(hostRedirectUrl('https://pintdownload.app/mcp'), null);
+  });
+
+  it('tool registry matches the frozen names and order', () => {
+    assert.deepEqual(TOOLS.map((t) => t.name), MCP_TOOL_NAMES);
+  });
+});
+
+describe('MCP docs drift guard', () => {
+  const read = (p: string) => fs.readFileSync(path.join(process.cwd(), p), 'utf8');
+
+  for (const file of ['public/llms.txt', 'public/llms-full.txt', 'src/pages/pinterest-mcp-server.astro']) {
+    it(`${file} names the endpoint and all 5 tools`, () => {
+      const text = read(file);
+      assert.ok(text.includes(MCP_ENDPOINT), `${file} missing ${MCP_ENDPOINT}`);
+      for (const name of MCP_TOOL_NAMES) assert.ok(text.includes(name), `${file} missing ${name}`);
+    });
+  }
+
+  it('sitemap lists the docs page and never /mcp', () => {
+    const paths = SITEMAP_ROUTES.map((r) => r.path);
+    assert.ok(paths.includes('/pinterest-mcp-server'));
+    assert.ok(!paths.includes('/mcp'));
+  });
+
+  it('robots.txt disallows /mcp', () => {
+    assert.match(read('public/robots.txt'), /^Disallow: \/mcp$/m);
+  });
+
+  it('server.json matches the endpoint and server version', () => {
+    const server = JSON.parse(read('server.json'));
+    assert.equal(server.remotes[0].url, MCP_ENDPOINT);
+    assert.equal(server.remotes[0].type, 'streamable-http');
+    assert.equal(server.version, SERVER_INFO.version);
+    assert.ok(server.description.length <= 100, `description is ${server.description.length} chars`);
   });
 });

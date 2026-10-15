@@ -1,0 +1,902 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ToolTicket from '../components/blog/ToolTicket.astro';
+import { BLOG_TOOLS } from '../components/blog/blog-utils';
+import { STOCKS, INK_STOCK } from '../lib/stocks';
+import { webPageSchema, softwareAppSchema, faqSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
+import '../styles/blog.css';
+
+/*
+ * Docs for the public MCP server at /mcp (see docs/mcp-design.md, section 13).
+ * Read surface: the blog article frame (masthead on the house stock, outline
+ * rail, paper reading sheet) with the server URL printed on a claim ticket.
+ * Tool names, the endpoint, limits and protocol versions are frozen by the
+ * design doc; tests/seo-invariants checks this file for drift.
+ */
+
+const path = '/pinterest-mcp-server';
+const pageUrl = absoluteUrl(path);
+const endpoint = 'https://pintdownload.app/mcp';
+const title = 'Free Pinterest MCP Server for Claude, Cursor & VS Code';
+const description =
+  'Free remote MCP server for Claude, Cursor, VS Code and ChatGPT: get HD download links for public Pinterest pins, videos, GIFs, boards and profiles.';
+
+const NBSP = '\u00a0';
+/** Lets long snake_case tool names break after an underscore in narrow table cells. */
+const wb = (name: string) => name.replace(/_/g, '_<wbr>');
+
+/* ---------- Tools (order = tools/list order) ---------- */
+type Stock = { color: string; onColor: string };
+const tools: { name: string; badge: string; stock: Stock; ink?: boolean; text: string; web: { href: string; label: string } }[] = [
+  {
+    name: 'identify_pinterest_link',
+    badge: 'Check',
+    stock: INK_STOCK,
+    ink: true,
+    text: 'Tells your assistant what kind of link you pasted (a pin, a pin.it short link, a board or a profile) and which tool to use next. Accepts a link, text that contains one, or an @username. It does not contact Pinterest.',
+    web: { href: '/blog/pin-vs-board-vs-profile-urls-explained', label: 'Pin, board and profile links explained' },
+  },
+  {
+    name: 'get_pinterest_pin_media',
+    badge: 'Pin',
+    stock: STOCKS.pin,
+    text: 'Download links for one pin: the HD image, the MP4 video and its available qualities, the GIF, or every slide of a carousel or Idea Pin. Works with pinterest.com/pin/… links and pin.it short links.',
+    web: { href: '/pinterest-pin-downloader', label: 'Pinterest pin downloader' },
+  },
+  {
+    name: 'list_pinterest_board_pins',
+    badge: 'Board',
+    stock: STOCKS.board,
+    text: 'The pins on a public board, in board order, each with a download link. 20 pins per call by default and up to 50, paged with a cursor. The first 250 pins of a board are reachable.',
+    web: { href: '/pinterest-board-downloader', label: 'Pinterest board downloader' },
+  },
+  {
+    name: 'list_pinterest_profile_pins',
+    badge: 'Profile',
+    stock: STOCKS.profile,
+    text: 'The pins a public profile shows, each with a download link, plus the profile’s public boards. Accepts a profile link or a username. Paged like boards; the first 200 pins are reachable.',
+    web: { href: '/pinterest-profile-downloader', label: 'Pinterest profile downloader' },
+  },
+  {
+    name: 'get_pinterest_profile_picture',
+    badge: 'PFP',
+    stock: STOCKS.avatar,
+    text: `The profile picture of a public account at the largest public size (1200${NBSP}px wide), with a download link. Accepts a profile link, a board link (it uses the board’s owner) or a username.`,
+    web: { href: '/pinterest-profile-picture-downloader', label: 'Pinterest profile picture downloader' },
+  },
+];
+
+/* ---------- Install snippets (docs/mcp-design.md 13.2) ---------- */
+const json = (v: unknown) => JSON.stringify(v, null, 2);
+type Block =
+  | { kind: 'p'; html: string }
+  | { kind: 'steps'; items: string[] }
+  | { kind: 'code'; label: string; code: string };
+
+const clients: { id: string; name: string; blocks: Block[] }[] = [
+  {
+    id: 'claude',
+    name: 'Claude (claude.ai, Claude Desktop and mobile)',
+    blocks: [
+      {
+        kind: 'steps',
+        items: [
+          'In Claude, open <strong>Customize → Connectors</strong>, select <strong>+ Add</strong>, then <strong>Add custom connector</strong>.',
+          'Name it <code translate="no">PintDownload</code>, paste the server URL below and select <strong>Continue</strong>.',
+          'Under <strong>Authentication</strong>, choose <strong>No sign in</strong>, then select <strong>Add</strong>.',
+        ],
+      },
+      { kind: 'code', label: 'Server URL', code: endpoint },
+      {
+        kind: 'p',
+        html: 'The Free plan allows one custom connector. On Team and Enterprise plans an Owner adds it under <strong>Organization settings → Connectors</strong> (<strong>Add</strong>, then <strong>Custom → Web</strong>), and each member then selects <strong>Connect</strong> under Customize → Connectors.',
+      },
+    ],
+  },
+  {
+    id: 'claude-code',
+    name: 'Claude Code',
+    blocks: [
+      { kind: 'p', html: 'Run this in your terminal. It adds the server for you in the current project:' },
+      { kind: 'code', label: 'Terminal', code: `claude mcp add --transport http pintdownload ${endpoint}` },
+      { kind: 'p', html: 'To use it in every project, add <code class="mcp-nw" translate="no">--scope user</code>:' },
+      { kind: 'code', label: 'Terminal, all projects', code: `claude mcp add --transport http --scope user pintdownload ${endpoint}` },
+      { kind: 'p', html: 'To share it with everyone on a project, put it in <code translate="no">.mcp.json</code> at the project root:' },
+      { kind: 'code', label: '.mcp.json', code: json({ mcpServers: { pintdownload: { type: 'http', url: endpoint } } }) },
+    ],
+  },
+  {
+    id: 'cursor',
+    name: 'Cursor',
+    blocks: [
+      {
+        kind: 'p',
+        html: 'Add the server to <code translate="no">~/.cursor/mcp.json</code> to use it in every project, or to <code translate="no">.cursor/mcp.json</code> in one project:',
+      },
+      { kind: 'code', label: 'mcp.json', code: json({ mcpServers: { pintdownload: { url: endpoint } } }) },
+      { kind: 'p', html: 'If the file already has an <code translate="no">mcpServers</code> block, add only the <code translate="no">"pintdownload"</code> entry to it.' },
+    ],
+  },
+  {
+    id: 'vs-code',
+    name: 'VS Code (GitHub Copilot)',
+    blocks: [
+      {
+        kind: 'p',
+        html: 'For Copilot in agent mode, add the server to <code translate="no">.vscode/mcp.json</code> in your workspace. To use it in every workspace, run <strong>MCP: Open User Configuration</strong> from the Command Palette and add it there instead.',
+      },
+      { kind: 'code', label: '.vscode/mcp.json', code: json({ servers: { pintdownload: { type: 'http', url: endpoint } } }) },
+      { kind: 'p', html: 'VS Code reads <code translate="no">servers</code>, not <code translate="no">mcpServers</code>.' },
+    ],
+  },
+  {
+    id: 'chatgpt',
+    name: 'ChatGPT',
+    blocks: [
+      {
+        kind: 'steps',
+        items: [
+          'In ChatGPT on the web, open <strong>Plugins</strong>, select <strong>+</strong>, then <strong>Add custom MCP server</strong>.',
+          'Name it <code translate="no">PintDownload</code> and paste the server URL as the <strong>Server URL</strong>.',
+          'Choose <strong>No authentication</strong>, confirm the warning, select <strong>Create as a plugin</strong>, then install it.',
+        ],
+      },
+      { kind: 'code', label: 'Server URL', code: endpoint },
+      {
+        kind: 'p',
+        html: 'Custom MCP servers depend on your ChatGPT plan and your workspace settings, so the option may not appear for you. On some accounts it is under <strong>Settings → Apps</strong> with Developer mode turned on.',
+      },
+    ],
+  },
+  {
+    id: 'other-clients',
+    name: 'Other apps',
+    blocks: [
+      {
+        kind: 'p',
+        html: `Any app that connects to remote MCP servers over <strong>Streamable HTTP</strong> without sign-in can use PintDownload. Give it the server URL, <code translate="no">${endpoint}</code>. Apps that only support the older HTTP+SSE transport can’t connect.`,
+      },
+    ],
+  },
+];
+
+let snippetCount = 0;
+const nextSnippetId = () => `snippet-${++snippetCount}`;
+
+/* ---------- Example requests (placeholder links only) ---------- */
+const examples = [
+  'Get the download links for this pin: https://pin.it/…',
+  'List the first 20 pins on https://www.pinterest.com/username/board-name/ with a download link for each.',
+  'Get the profile picture of @username on Pinterest in the largest size.',
+];
+
+/* ---------- FAQ (also faqSchema) ---------- */
+const faqs = [
+  {
+    q: 'Is the PintDownload MCP server free?',
+    a: 'Yes. There is no account, no API key and no sign-in. A fair-use rate limit keeps it working for everyone.',
+  },
+  {
+    q: 'Do I need a Pinterest account?',
+    a: 'No. It reads public Pinterest pages the same way the website does, so you never sign in to Pinterest or share your password.',
+  },
+  {
+    q: 'Can it download private or secret boards?',
+    a: 'No. Private and secret boards and deleted pins cannot be fetched. Only content that anyone can see without signing in works.',
+  },
+  {
+    q: `Why are images 1200${NBSP}px wide and not 4K?`,
+    a: `1200${NBSP}px wide is the largest size Pinterest serves publicly. Original uploads are not public, and PintDownload does not upscale images or label them 4K.`,
+  },
+  {
+    q: 'Which apps work with it?',
+    a: 'Claude (claude.ai, Claude Desktop and mobile), Claude Code, Cursor, VS Code with GitHub Copilot, and ChatGPT where your plan allows custom MCP servers. Any other app that supports remote Streamable HTTP MCP servers without sign-in works too.',
+  },
+  {
+    q: 'Does PintDownload see my chats?',
+    a: 'No. It only receives what your assistant sends when it calls a tool: the Pinterest link and options such as how many pins to list.',
+  },
+];
+
+/* ---------- Outline ---------- */
+const outline = [
+  { id: 'tools', label: 'What your assistant can do' },
+  { id: 'connect', label: 'Connect your app' },
+  { id: 'examples', label: 'Try asking' },
+  { id: 'limits', label: 'Limits' },
+  { id: 'attribution', label: 'Credit the creator' },
+  { id: 'privacy', label: 'Privacy' },
+  { id: 'technical', label: 'For developers' },
+  { id: 'faq', label: 'Questions' },
+];
+
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'PintDownload MCP server',
+    description,
+    url: pageUrl,
+    applicationCategory: 'DeveloperApplication',
+  }),
+  faqSchema(faqs),
+];
+
+const homeTool = BLOG_TOOLS.find((t) => t.href === '/pinterest-pin-downloader')!;
+const toolLinks = [
+  { href: '/pinterest-video-downloader', label: 'Video MP4' },
+  { href: '/pinterest-board-downloader', label: 'Board ZIP' },
+  { href: '/pinterest-profile-picture-downloader', label: 'Profile picture' },
+];
+
+const copyIcon =
+  '<svg class="mcp-i-copy" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>' +
+  '<svg class="mcp-i-check" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+---
+
+<BaseLayout field="red" title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} clean fullBleed>
+  <article class="blog mcp w-full">
+    <!-- Masthead on the house stock; the server URL is the claim ticket -->
+    <header class="field post-masthead mcp-masthead">
+      <div class="post-masthead-grid max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="post-masthead-text min-w-0">
+          <nav class="post-crumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href={path} aria-current="page">MCP server</a>
+          </nav>
+
+          <h1 class="post-title">Pinterest MCP server</h1>
+
+          <p class="post-lede">
+            Connect Claude, ChatGPT, Cursor or VS&nbsp;Code to <span translate="no">PintDownload</span>. Paste a public Pinterest link into the chat and your assistant gets download links for the pin, video, GIF, board, profile or profile picture.
+          </p>
+
+          <div class="post-serial-strip">
+            <p class="post-serial">
+              <span>Remote MCP</span>
+              <span aria-hidden="true">·</span>
+              <span>Streamable HTTP</span>
+              <span aria-hidden="true">·</span>
+              <span>5 read-only tools</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="ticket mcp-ticket">
+          <div class="ticket-paper">
+            <div class="ticket-head">
+              <span class="t-label">Admit one · AI assistant</span>
+              <span class="ticket-serial" translate="no">MCP 2026-07-28</span>
+            </div>
+            <div class="ticket-body">
+              <p class="mcp-ticket-label">Server URL</p>
+              <div class="ticket-input mcp-endpoint">
+                <code translate="no">https://pintdownload.app<wbr />/mcp</code>
+              </div>
+              <p class="mcp-ticket-hint" role="status" aria-live="polite" data-copy-status-for="copy-endpoint">
+                Paste it into your app’s connector or MCP settings.
+              </p>
+              <ul class="mcp-stamps">
+                <li class="stamp mcp-stamp">Free</li>
+                <li class="stamp mcp-stamp">No sign-in</li>
+                <li class="stamp mcp-stamp">Public pins only</li>
+              </ul>
+            </div>
+          </div>
+          <div class="perf" aria-hidden="true"></div>
+          <div class="stub">
+            <button
+              type="button"
+              id="copy-endpoint"
+              class="stub-btn mcp-copy"
+              data-copy-text={endpoint}
+              data-copied-text="Copied. Now paste it into your app’s connector or MCP settings."
+            >
+              <Fragment set:html={copyIcon} />
+              <span>Copy server URL</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-grid max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="post-toc post-toc--rail" aria-label="On this page">
+        <p class="t-label post-toc-label">On this page</p>
+        <ol>
+          {outline.map((h) => (
+            <li><a href={`#${h.id}`}>{h.label}</a></li>
+          ))}
+        </ol>
+      </nav>
+
+      <div class="post-sheet">
+        <details class="post-toc post-toc--inline">
+          <summary>
+            <span class="t-label">On this page</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <ol>
+            {outline.map((h) => (
+              <li><a href={`#${h.id}`}>{h.label}</a></li>
+            ))}
+          </ol>
+        </details>
+
+        <div class="blog-prose">
+          <p>
+            MCP (Model Context Protocol) is the open standard AI assistants use to call outside tools. Add <span translate="no">PintDownload</span> once and your assistant can turn a Pinterest link into download links without you leaving the chat. It is free, needs no account and works only with public content, the same as the <a href="/">website</a>.
+          </p>
+
+          <h2 id="tools">What your assistant can do</h2>
+          <p>
+            Five read-only tools: one that tells link types apart, and four that fetch a pin, a board, a profile or a profile picture. Those four give your assistant links on <span translate="no">pintdownload.app</span> that save the file with a clean name, plus the link back to the source on Pinterest so it can credit the creator.
+          </p>
+          <ul class="mcp-tools">
+            {tools.map((t) => (
+              <li class="mcp-tool">
+                <span
+                  class="mcp-tool-stub"
+                  data-ink={t.ink ? '' : undefined}
+                  style={`--stub:${t.stock.color};--stub-ink:${t.stock.onColor}`}
+                  aria-hidden="true"
+                ><span>{t.badge}</span></span>
+                <div class="mcp-tool-body">
+                  <h3 class="mcp-tool-name"><code translate="no">{t.name}</code></h3>
+                  <p>{t.text}</p>
+                  <p class="mcp-tool-web">On the website: <a href={t.web.href}>{t.web.label}</a></p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <h2 id="connect">Connect your app</h2>
+          <p>Pick your app. Each one needs only the server URL; there is nothing to install and no key to create.</p>
+          <ul class="mcp-jump" aria-label="Apps">
+            {clients.map((c) => (
+              <li><a href={`#${c.id}`}>{c.name.replace(/ \(.*\)$/, '')}</a></li>
+            ))}
+          </ul>
+
+          {clients.map((c) => (
+            <Fragment>
+              <h3 id={c.id}>{c.name}</h3>
+              {c.blocks.map((b) => {
+                if (b.kind === 'p') return <p set:html={b.html} />;
+                if (b.kind === 'steps') return <ol>{b.items.map((item) => <li set:html={item} />)}</ol>;
+                const id = nextSnippetId();
+                return (
+                  <div class="mcp-code">
+                    <div class="mcp-code-head">
+                      <span class="t-label mcp-code-label" translate="no">{b.label}</span>
+                      <span class="mcp-copy-status" role="status" aria-live="polite" data-copy-status-for={`${id}-copy`}></span>
+                      <button type="button" id={`${id}-copy`} class="mcp-copy mcp-copy-btn" data-copy-target={id}>
+                        <Fragment set:html={copyIcon} />
+                        <span>Copy</span><span class="sr-only"> {c.name.replace(/ \(.*\)$/, '')} {b.label}</span>
+                      </button>
+                    </div>
+                    <pre id={id} tabindex="0" translate="no"><code>{b.code}</code></pre>
+                  </div>
+                );
+              })}
+            </Fragment>
+          ))}
+
+          <h2 id="examples">Try asking</h2>
+          <p>Once it is connected, ask in plain words and paste a real public link where these placeholders are:</p>
+          <ul class="mcp-asks">
+            {examples.map((e) => (
+              <li><q>{e}</q></li>
+            ))}
+          </ul>
+          <p>
+            If you are not sure what kind of link you have, your assistant can check it first. Results come back as download links; open one to save the file, or ask your assistant to list them.
+          </p>
+
+          <h2 id="limits">Limits</h2>
+          <ul>
+            <li>Public pins, boards and profiles only. Private or secret boards and deleted pins can’t be fetched.</li>
+            <li>Images top out at Pinterest’s largest public size, 1200&nbsp;px wide. There is no 4K. Video qualities depend on what Pinterest published for that pin.</li>
+            <li>Boards return their first 250 pins and profiles their first 200, 20 per call by default and up to 50.</li>
+            <li>
+              A fair-use rate limit allows about 30 tool calls a minute from one IP address (for IPv6, one /48 network), and at most 5 in a single request. Claude and ChatGPT connect from their own shared servers, so their users share that limit. There is also an overall cap on lookups per region, so heavy use by others can briefly slow everyone down. If your assistant reports a rate limit, wait a minute and ask again.
+            </li>
+            <li>
+              To save a whole board or profile as one ZIP file, use the <a href="/pinterest-board-downloader">board downloader</a> or the <a href="/pinterest-profile-downloader">profile downloader</a> on the website.
+            </li>
+          </ul>
+
+          <h2 id="attribution">Credit the creator</h2>
+          <p>
+            Every download result links back to the source on Pinterest (the pin, board or profile) and, when Pinterest shows it, gives the creator’s username. When you reuse media, credit the creator and link the source pin, and respect their rights as described in our <a href="/terms-of-service">terms of service</a>.
+          </p>
+          <p>
+            Titles, descriptions and board names are written by Pinterest users, so the server returns them in a separate field marked as untrusted. Your assistant should quote that text, never follow instructions found in it.
+          </p>
+          <p>
+            <span translate="no">PintDownload</span> is an independent tool. It is not affiliated with, sponsored by or endorsed by Pinterest Inc.
+          </p>
+
+          <h2 id="privacy">Privacy</h2>
+          <p>
+            The MCP server does not store links you send or the media it finds. Your IP address is used briefly to apply rate limits. Like the rest of the site, it may keep short-lived technical logs for diagnostics and abuse prevention, as described in the <a href="/privacy-policy">privacy policy</a>.
+          </p>
+
+          <h2 id="technical">For developers</h2>
+          <ul>
+            <li>Endpoint: <code translate="no">POST {endpoint}</code>, Streamable HTTP transport.</li>
+            <li>
+              Protocol <code class="mcp-nw" translate="no">2026-07-28</code>, plus 2025-era clients (<code class="mcp-nw" translate="no">2025-11-25</code>, <code class="mcp-nw" translate="no">2025-06-18</code>, <code class="mcp-nw" translate="no">2025-03-26</code>) through the <code translate="no">initialize</code> handshake.
+            </li>
+            <li>Stateless: no sessions, no sign-in, no cookies. <code translate="no">GET</code> and <code translate="no">DELETE</code> return 405.</li>
+            <li>
+              Tools only, no prompts or resources. Every tool is read-only, declares an input and an output schema, and returns <code translate="no">structuredContent</code> with the same JSON as text.
+            </li>
+            <li>
+              Problems your assistant can act on (a wrong link type, a private board, a bad cursor, a rate limit) come back as tool errors with a <code translate="no">code</code> and a <code translate="no">message</code>, for example <code translate="no">wrong_link_type</code> or <code translate="no">rate_limited</code>.
+            </li>
+            <li>
+              Download links use the website’s own endpoint, <code translate="no">/api/download?url=…&amp;filename=…</code>, and only point at Pinterest’s image and video CDN.
+            </li>
+            <li>
+              Requests without an <code translate="no">Origin</code> header (desktop apps, CLIs, hosted connectors) are accepted. Browser pages can call it only from <span translate="no">pintdownload.app</span> and <code translate="no">localhost</code>.
+            </li>
+          </ul>
+
+          <div class="not-prose overflow-x-auto" tabindex="0" role="region" aria-label="Tool reference">
+            <table>
+              <thead>
+                <tr><th scope="col">Tool</th><th scope="col">Input</th><th scope="col">Returns</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code translate="no" set:html={wb('identify_pinterest_link')} /></td>
+                  <td><code translate="no">url</code>: a link, text containing one, or @username</td>
+                  <td>Link type, normalized URL and the tool to call next</td>
+                </tr>
+                <tr>
+                  <td><code translate="no" set:html={wb('get_pinterest_pin_media')} /></td>
+                  <td><code translate="no">url</code>: pin or pin.it link</td>
+                  <td>Media items with download links, video qualities, source URL, creator</td>
+                </tr>
+                <tr>
+                  <td><code translate="no" set:html={wb('list_pinterest_board_pins')} /></td>
+                  <td><code translate="no">url</code>, <code translate="no">limit</code> (1–50, default 20), <code translate="no">cursor</code></td>
+                  <td>Pins with download links, <code translate="no">has_more</code>, <code translate="no">next_cursor</code></td>
+                </tr>
+                <tr>
+                  <td><code translate="no" set:html={wb('list_pinterest_profile_pins')} /></td>
+                  <td><code translate="no">url</code> or username, <code translate="no">limit</code>, <code translate="no">cursor</code></td>
+                  <td>Profile, pins with download links, public boards on the first page</td>
+                </tr>
+                <tr>
+                  <td><code translate="no" set:html={wb('get_pinterest_profile_picture')} /></td>
+                  <td><code translate="no">url</code>: profile or board link, or username</td>
+                  <td>Avatar URL, download link and file name</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The protocol itself is documented in the <a href="https://modelcontextprotocol.io/specification/2026-07-28">MCP specification</a>. Found a bug? Email <a href="mailto:support@pintdownload.app">support@pintdownload.app</a>.
+          </p>
+
+          <h2 id="faq">Questions</h2>
+          {faqs.map((f) => (
+            <Fragment>
+              <h3>{f.q}</h3>
+              <p>{f.a}</p>
+            </Fragment>
+          ))}
+        </div>
+      </div>
+
+      <ToolTicket tool={homeTool} links={toolLinks} />
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  // Copy buttons: the visible label stays; the icon turns to a check and a
+  // polite status line next to the button says what happened.
+  async function writeClipboard(text: string): Promise<boolean> {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {
+      /* fall through to the selection fallback */
+    }
+    const area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.select();
+    let ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch {
+      ok = false;
+    }
+    area.remove();
+    return ok;
+  }
+
+  const timers = new WeakMap<HTMLElement, number>();
+
+  document.querySelectorAll<HTMLButtonElement>('button.mcp-copy').forEach((btn) => {
+    const status = document.querySelector<HTMLElement>(`[data-copy-status-for="${btn.id}"]`);
+    const restText = status?.textContent?.trim() ?? '';
+    btn.addEventListener('click', async () => {
+      const targetId = btn.dataset.copyTarget;
+      const text = btn.dataset.copyText ?? (targetId ? document.getElementById(targetId)?.textContent ?? '' : '');
+      if (!text) return;
+      const ok = await writeClipboard(text.trim());
+      btn.toggleAttribute('data-copied', ok);
+      if (status) {
+        status.textContent = ok
+          ? btn.dataset.copiedText ?? 'Copied'
+          : 'Copy failed. Select the text and copy it.';
+        status.toggleAttribute('data-error', !ok);
+      }
+      const prev = timers.get(btn);
+      if (prev) window.clearTimeout(prev);
+      timers.set(
+        btn,
+        window.setTimeout(() => {
+          btn.removeAttribute('data-copied');
+          if (status) {
+            status.textContent = restText;
+            status.removeAttribute('data-error');
+          }
+        }, 4000),
+      );
+    });
+  });
+
+  // Outline: mark the section in view; following a link closes the folded outline.
+  const links = document.querySelectorAll<HTMLAnchorElement>('.post-toc--rail a[href^="#"]');
+  if (links.length && 'IntersectionObserver' in window) {
+    const map = new Map<string, HTMLAnchorElement>();
+    links.forEach((a) => map.set(a.getAttribute('href')!.slice(1), a));
+    let current: HTMLAnchorElement | null = null;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const a = map.get(e.target.id);
+          if (!a || a === current) return;
+          current?.removeAttribute('aria-current');
+          a.setAttribute('aria-current', 'location');
+          current = a;
+        });
+      },
+      { rootMargin: '0px 0px -70% 0px' },
+    );
+    map.forEach((_, id) => {
+      const h = document.getElementById(id);
+      if (h) io.observe(h);
+    });
+  }
+  const inline = document.querySelector<HTMLDetailsElement>('.post-toc--inline');
+  inline?.addEventListener('click', (e) => {
+    if ((e.target as Element).closest?.('a')) inline.open = false;
+  });
+</script>
+
+<style is:global>
+  /* ---------- Claim ticket: the server URL ---------- */
+  .mcp .mcp-ticket {
+    --notch-fill: var(--field);
+    width: 100%;
+    max-width: 32rem;
+    margin-bottom: -2.75rem;
+    z-index: 1;
+  }
+  .mcp .mcp-ticket .ticket-body {
+    padding: 1rem 1rem 1.25rem;
+  }
+  .mcp-ticket-label {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .mcp-endpoint {
+    margin-top: 0.5rem;
+    padding: 0.75rem 0.875rem;
+    min-height: 3rem;
+    align-items: center;
+  }
+  .mcp-endpoint code {
+    font-family: ui-monospace, monospace;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+    user-select: all;
+  }
+  /* Phones under 360px: the URL breaks before /mcp instead of mid-word */
+  @media (max-width: 22.49rem) {
+    .mcp-endpoint code {
+      font-size: 0.9375rem;
+    }
+  }
+  .mcp-ticket-hint {
+    margin-top: 0.625rem;
+    min-height: 2.8em;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+  .mcp-ticket-hint[data-error] {
+    color: var(--red);
+  }
+  .dark .mcp-ticket-hint[data-error] {
+    color: #ec8c7d;
+  }
+  .mcp-stamps {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem 0.75rem;
+  }
+  .mcp-stamp {
+    color: var(--ink);
+    background: transparent;
+    transform: rotate(-2deg);
+  }
+  .mcp-stamps > li:nth-child(2) {
+    transform: rotate(1.5deg);
+  }
+  .mcp .mcp-ticket .stub-btn {
+    padding: 0.5rem 1rem;
+    line-height: 1;
+  }
+  .mcp-ticket .stub-btn svg {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (min-width: 64rem) {
+    .mcp .mcp-ticket {
+      max-width: none;
+      margin: 3.25rem 0 0;
+    }
+    .mcp .mcp-ticket .ticket-head {
+      margin: 0 1.25rem;
+      padding: 1.125rem 0.25rem 0.75rem;
+    }
+    .mcp .mcp-ticket .ticket-body {
+      padding: 1.5rem 1.5rem 1.5rem;
+    }
+  }
+
+  /* ---------- Copy buttons ---------- */
+  .mcp-i-check {
+    display: none;
+  }
+  .mcp-copy[data-copied] .mcp-i-copy {
+    display: none;
+  }
+  .mcp-copy[data-copied] .mcp-i-check {
+    display: block;
+  }
+
+  /* ---------- Code: ink panel with a label strip and a copy button ---------- */
+  .blog .blog-prose .mcp-code {
+    border-radius: 4px;
+    background: #17191e;
+    color: #f5f6f7;
+    overflow: hidden;
+  }
+  .dark .blog .blog-prose .mcp-code {
+    background: #0e0f12;
+    border: 1px solid #393d45;
+  }
+  .mcp-code-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3.25rem;
+    padding: 0.25rem 0.25rem 0.25rem 1.125rem;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.25);
+  }
+  .mcp-code-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    color: #c2c5cb;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .mcp-copy-status {
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #f4c531;
+  }
+  .mcp-copy-status[data-error] {
+    color: #ec8c7d;
+  }
+  .mcp-copy-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0 0.875rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    background: transparent;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.875rem;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+  }
+  .mcp-copy-btn:hover {
+    border-color: #f4c531;
+    color: #f4c531;
+  }
+  .mcp-copy-btn:active {
+    background: #a51f13;
+    border-color: #a51f13;
+    color: #ffffff;
+  }
+  .mcp-copy-btn[data-copied] {
+    border-color: #f4c531;
+    color: #f4c531;
+  }
+  .mcp-copy-btn:focus-visible {
+    outline: 3px solid #f4c531;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+  .blog .blog-prose .mcp-code pre {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .blog .blog-prose .mcp-code pre:focus-visible {
+    outline: 3px solid #f4c531;
+    outline-offset: -3px;
+    box-shadow: none;
+  }
+
+  /* ---------- Tools: ledger of stubs in each URL type's stock ---------- */
+  .blog .blog-prose ul.mcp-tools {
+    list-style: none;
+    padding: 0;
+    border-top: 2px solid var(--ink);
+  }
+  .blog .blog-prose ul.mcp-tools > li {
+    margin: 0;
+  }
+  .mcp-tool {
+    display: grid;
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.25rem 0;
+  }
+  .mcp-tool + .mcp-tool {
+    border-top: 2px dashed var(--rule);
+  }
+  .mcp-tool-stub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 6.5rem;
+    border: 2px solid #17191e;
+    border-radius: 3px;
+    background: var(--stub);
+    color: var(--stub-ink);
+  }
+  .mcp-tool-stub > span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--gothic);
+    font-weight: 900;
+    font-size: 1.0625rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .dark .mcp-tool-stub {
+    border-color: transparent;
+  }
+  .dark .mcp-tool-stub[data-ink] {
+    background: #f5f6f7;
+    color: #17191e;
+  }
+  .blog .blog-prose h3.mcp-tool-name {
+    margin: 0;
+  }
+  .blog .blog-prose .mcp-tool-name code {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 0.9375rem;
+    font-weight: 700;
+  }
+  .mcp-tool-body > p {
+    margin-top: 0.375rem;
+  }
+  .blog .blog-prose .mcp-tool-web {
+    margin-top: 0.5rem;
+    font-size: 0.9375rem;
+    color: var(--ink-2);
+  }
+
+  /* ---------- App jump list ---------- */
+  .blog .blog-prose ul.mcp-jump {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .blog .blog-prose ul.mcp-jump > li {
+    margin: 0;
+  }
+  .blog .blog-prose .mcp-jump a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0 0.875rem;
+    border: 2px solid var(--ink);
+    border-radius: 4px;
+    color: var(--ink);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+  .blog .blog-prose .mcp-jump a:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* ---------- Example requests ---------- */
+  .blog .blog-prose ul.mcp-asks {
+    list-style: none;
+    padding: 0;
+    border-block: 2px dashed var(--rule);
+  }
+  .blog .blog-prose ul.mcp-asks > li {
+    margin: 0;
+    padding: 0.875rem 0;
+    font-weight: 600;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  .blog .blog-prose ul.mcp-asks > li + li {
+    border-top: 2px dashed var(--rule);
+  }
+
+  /* Short codes (versions, flags) never split across lines */
+  .blog .blog-prose code.mcp-nw {
+    white-space: nowrap;
+  }
+  /* Tables: long tool names break only after an underscore (<wbr>) */
+  .blog .blog-prose td:first-child code {
+    overflow-wrap: normal;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mcp-copy-btn,
+    .blog .blog-prose .mcp-jump a {
+      transition: none;
+    }
+  }
+</style>
