@@ -1,0 +1,119 @@
+{
+  "pageId": "how-to-download-pinterest-videos",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Videos speichern: So geht’s auf Handy und PC",
+    "description": "Wie kann man Pinterest-Videos herunterladen? Anleitung für iPhone, Android und PC: Link kopieren, einfügen und als MP4 speichern – kostenlos, ohne App."
+  },
+  "keywords": {
+    "primary": "pinterest videos speichern",
+    "secondary": [
+      "wie kann man pinterest videos herunterladen",
+      "wie kann ich pinterest videos speichern",
+      "kann man pinterest videos herunterladen",
+      "warum kann man bei pinterest keine videos herunterladen",
+      "videos von pinterest speichern"
+    ]
+  },
+  "nav": {
+    "label": "Videos speichern: Anleitung",
+    "short": "Anleitung",
+    "card": {
+      "title": "Pinterest-Videos speichern",
+      "blurb": "Die komplette Anleitung für iPhone, Android und PC, vom Link bis zum MP4.",
+      "badge": "Schritte"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Videos speichern: So geht’s",
+    "lede": "Kann man Pinterest-Videos herunterladen? Ja, mit dem Link. Die Anleitung für **iPhone**, **Android** und **PC**, ohne App."
+  },
+  "intro": [
+    "Pinterest selbst bietet bei vielen Videos keinen Download an, und **Merken** legt den Pin nur auf eine Pinnwand. Eine echte Datei bekommst du über den Link des Pins: kopieren, bei PintDownload einfügen, als MP4 speichern. So geht’s auf jedem Gerät.",
+    "Für jedes Gerät gibt es eine eigene Anleitung: [[download-pinterest-videos-iphone-android|iPhone & Android]], [[how-to-download-pinterest-video-on-laptop|PC und Laptop]] sowie [[how-to-download-pinterest-video-in-gallery|Video in der Galerie speichern]]."
+  ],
+  "sections": [
+    {
+      "h2": "Am Handy: aus der Pinterest-App",
+      "paragraphs": [
+        "In der App kopierst du den Link über das Teilen-Symbol. Alles Weitere passiert im Browser deines Handys:"
+      ],
+      "list": [
+        "Video-Pin öffnen und auf **Teilen** tippen.",
+        "**Link kopieren** wählen; kopiert wird ein Kurzlink wie `https://pin.it/…`.",
+        "pintdownload.app in Safari oder Chrome öffnen, den Link einfügen, **Video herunterladen** und dann **MP4 herunterladen** tippen.",
+        "Das MP4 liegt jetzt in Downloads. Wie es in die Galerie kommt, steht in der [[how-to-download-pinterest-video-in-gallery|Galerie-Anleitung]]."
+      ]
+    },
+    {
+      "h2": "Am PC oder Mac: aus dem Browser",
+      "paragraphs": [
+        "Auf pinterest.de öffnest du den Pin und kopierst die Adresse aus der Adressleiste. Bei PintDownload einfügen, Enter drücken, im Ergebnis **MP4 herunterladen** klicken, und die Datei landet im Downloads-Ordner. Wer das oft macht, spart sich das Kopieren mit dem [[pinterest-video-downloader-chrome|Lesezeichen für Chrome]]."
+      ]
+    },
+    {
+      "h2": "Welche Qualität das gespeicherte Video hat",
+      "paragraphs": [
+        "PintDownload speichert, was Pinterest veröffentlicht: meist 720p, 1080p, wenn der Pin es hat. Hochgerechnet wird nichts. Ein Wasserzeichen fügen wir nicht hinzu; was der Creator selbst ins Bild gesetzt hat, bleibt sichtbar."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest-Video in 3 Schritten speichern",
+    "intro": "Gilt für Handy und PC. Nur öffentliche Video-Pins.",
+    "exampleLabel": "Kurzlink aus der App",
+    "items": [
+      {
+        "title": "Link kopieren",
+        "body": "In der App: **Teilen** › **Link kopieren**. Im Browser: die Adresse mit `/pin/` kopieren."
+      },
+      {
+        "title": "Einfügen",
+        "body": "pintdownload.app öffnen, den Link oben einfügen und **Video herunterladen** antippen."
+      },
+      {
+        "title": "Speichern",
+        "body": "Im Ergebnis **MP4 herunterladen** antippen; die Datei landet in Downloads. Auf dem Handy verschiebst du sie von dort in die Galerie oder die Fotos-App."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zum Speichern von Pinterest-Videos",
+    "items": [
+      {
+        "q": "Kann man Pinterest-Videos überhaupt herunterladen?",
+        "a": "Ja, öffentliche Video-Pins schon. Du brauchst nur den Link des Pins und einen Browser; eine App oder ein Konto ist nicht nötig."
+      },
+      {
+        "q": "Warum gibt es bei Pinterest keinen Download-Button für Videos?",
+        "a": "Pinterest blendet die Option nur bei manchen Videos ein. Das liegt nicht an deinem Handy. Mit dem Link funktioniert der Download auch ohne diesen Button."
+      },
+      {
+        "q": "Wo landet das Video nach dem Download?",
+        "a": "Am PC im Downloads-Ordner, auf Android im Ordner **Download**, auf dem iPhone in der App **Dateien** unter **Downloads**. Von dort holst du es in die Galerie oder die Fotos-App."
+      },
+      {
+        "q": "Wie schicke ich ein Pinterest-Video per WhatsApp weiter?",
+        "a": "Reicht dir eine Vorschau, schick einfach den Pin-Link. Soll das Video selbst im Chat ankommen, speichere zuerst das MP4 und teile es dann aus der Galerie oder der Fotos-App."
+      },
+      {
+        "q": "Ist das Speichern von Pinterest-Videos erlaubt?",
+        "a": "Zum privaten Anschauen speichern ist etwas anderes, als ein fremdes Video neu hochzuladen. Wenn du es weiterverwendest, nenne den Creator und frag im Zweifel um Erlaubnis. Rechtsberatung ist das nicht."
+      }
+    ]
+  },
+  "related": {
+    "title": "Tools und Anleitungen für Videos"
+  },
+  "schema": {
+    "appName": "Pinterest-Videos speichern – PintDownload",
+    "howToName": "Pinterest-Videos auf Handy und PC speichern",
+    "howToDescription": "Den Link eines öffentlichen Video-Pins kopieren, bei PintDownload einfügen und als MP4 speichern, auf iPhone, Android oder PC."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). This guide owns speichern and the question forms (wie kann man, kann man); the tool page owns herunterladen.",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

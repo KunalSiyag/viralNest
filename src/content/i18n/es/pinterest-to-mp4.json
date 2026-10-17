@@ -1,0 +1,129 @@
+{
+  "pageId": "pinterest-to-mp4",
+  "locale": "es",
+  "meta": {
+    "title": "Pinterest a MP4: convierte videos de Pinterest online gratis",
+    "description": "Convierte un enlace de Pinterest a MP4: pega la URL del pin y descarga un video que se reproduce en cualquier celular o PC. Sin registro y sin marca de agua."
+  },
+  "keywords": {
+    "primary": "Pinterest a MP4",
+    "secondary": [
+      "convertidor Pinterest a MP4",
+      "enlace de Pinterest a MP4",
+      "convertir video de Pinterest a MP4",
+      "Pinterest MP4 descargar",
+      "convertidor de Pinterest sin marca de agua"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest a MP4",
+    "short": "MP4",
+    "card": {
+      "title": "Pinterest a MP4",
+      "blurb": "Del enlace a un archivo MP4 que se reproduce en cualquier celular, PC o editor.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest a MP4",
+    "lede": "Convierte el **enlace** de un pin de video en un **archivo MP4** que se reproduce en cualquier celular, PC o editor, con sonido si el video lo tiene."
+  },
+  "intro": [
+    "Cuando ves un video en Pinterest, tu navegador lo recibe en pedacitos (una transmisión HLS), no como un archivo que puedas guardar. Pinterest también aloja una versión **MP4** de esos videos, y PintDownload la encuentra a partir del enlace para que la descargues.",
+    "Por eso esta “conversión” no recomprime nada: el MP4 es el que Pinterest publica, con su calidad. Es el mismo archivo que da el [[pinterest-video-downloader|descargador de videos]]; esta página explica el lado del formato."
+  ],
+  "features": [
+    {
+      "h": "Un MP4 que se abre en todo",
+      "p": "Fotos del iPhone, Galería de Android, VLC, Windows, Mac, CapCut o Premiere: el MP4 es el formato que todos aceptan."
+    },
+    {
+      "h": "Sin recomprimir",
+      "p": "El video no pasa por un convertidor que le baje la calidad. Recibes el archivo tal como Pinterest lo publica."
+    },
+    {
+      "h": "Sin marca de agua añadida",
+      "p": "No le ponemos logo ni texto. Lo que el creador puso dentro del video sigue ahí."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Por qué no puedes guardar el video directo de Pinterest",
+      "paragraphs": [
+        "En la web, el reproductor de Pinterest arma el video con fragmentos que lee de una lista `.m3u8`. Por eso el clic derecho no te deja guardarlo como archivo, o guarda algo que no se reproduce. Con el enlace del pin, PintDownload llega al MP4 completo que Pinterest también publica."
+      ]
+    },
+    {
+      "h2": "La calidad del MP4",
+      "paragraphs": [
+        "Es la que tenga el pin: normalmente 720p y, cuando Pinterest la publica, 1080p. Si un convertidor te ofrece un video de Pinterest en 4K, lo está agrandando, no recuperando detalle. Nosotros no lo hacemos."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo convertir un video de Pinterest a MP4",
+    "intro": "Solo pines de video públicos. No necesitas programas ni registro.",
+    "exampleLabel": "Enlace de un pin de video",
+    "items": [
+      {
+        "title": "Copia el enlace del video",
+        "body": "Abre un pin que se reproduzca y copia su enlace: **Compartir** › **Copiar enlace**, o la URL con `/pin/`."
+      },
+      {
+        "title": "Pégalo en el convertidor",
+        "body": "Pega el enlace arriba y toca **Descargar video**. PintDownload busca el MP4 público del pin."
+      },
+      {
+        "title": "Descarga el MP4",
+        "body": "Guarda el archivo y ábrelo donde quieras: Fotos, VLC o tu editor de video."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre Pinterest a MP4",
+    "items": [
+      {
+        "q": "¿Cómo convierto un video de Pinterest a MP4?",
+        "a": "Copia el link del pin de video, pégalo en el recuadro de arriba y descarga. No hay que instalar ningún programa: el MP4 ya existe en Pinterest y PintDownload te lo entrega."
+      },
+      {
+        "q": "¿Es gratis convertir Pinterest a MP4?",
+        "a": "Sí, y sin registro. Solo funciona con videos públicos."
+      },
+      {
+        "q": "¿Pinterest a MP4 o descargador de videos: qué página uso?",
+        "a": "Cualquiera de las dos: con el mismo enlace obtienes el mismo MP4. Esta página explica el formato; el [[pinterest-video-downloader|descargador de videos]] se centra en la calidad, la marca de agua y los pasos."
+      },
+      {
+        "q": "¿Puedo convertir un GIF de Pinterest a MP4?",
+        "a": "No: PintDownload no convierte un GIF en video. Un pin GIF se descarga como GIF con el [[pinterest-gif-downloader|descargador de GIF]]; esta página es para pines que ya son video."
+      },
+      {
+        "q": "¿Funciona en iPhone y Android?",
+        "a": "Sí. Pega en Safari o Chrome el enlace `pin.it` que copia la app y guarda el MP4. En el iPhone queda en **Archivos**, y desde ahí lo pasas a Fotos con **Guardar video**."
+      },
+      {
+        "q": "¿Y si solo quiero el audio?",
+        "a": "Usa [[pinterest-audio-downloader|Pinterest a MP3]]: con el mismo enlace, tu navegador crea un MP3 con el sonido del video."
+      },
+      {
+        "q": "¿El MP4 tiene sonido?",
+        "a": "Sí, cuando el video tiene sonido en Pinterest. Es el mismo video que se reproduce en la app, con su audio."
+      }
+    ]
+  },
+  "related": {
+    "title": "Otras conversiones y herramientas"
+  },
+  "schema": {
+    "appName": "Pinterest a MP4 — PintDownload",
+    "howToName": "Cómo convertir un enlace de Pinterest a MP4",
+    "howToDescription": "Pega el enlace de un pin de video público y descarga el MP4 que Pinterest publica."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: \"que se abre en todo\"; glosario: convertidor, no conversor; \"no convierte formatos\" contradecía el MP3 creado en el navegador"
+  }
+}

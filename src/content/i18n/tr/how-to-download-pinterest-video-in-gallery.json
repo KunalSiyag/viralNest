@@ -1,0 +1,129 @@
+{
+  "pageId": "how-to-download-pinterest-video-in-gallery",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest Video Galeriye Kaydetme — iPhone ve Android Rehberi",
+    "description": "Pinterest videosunu galeriye kaydetme: linki kopyalayın, MP4'ü indirin, Fotoğraflar'a ya da Galeri'ye kaydedin. Video galeriye gelmiyorsa çözümü burada."
+  },
+  "keywords": {
+    "primary": "pinterest video galeriye kaydetme",
+    "secondary": [
+      "pinterest galeriye kaydetme",
+      "pinterestten video indir galeriye",
+      "pinterest galeriye video kaydetme iphone",
+      "pinterest video nasıl galeriye kaydedilir",
+      "pinterest galeriye fotoğraf kaydetme"
+    ]
+  },
+  "nav": {
+    "label": "Galeriye Kaydetme",
+    "short": "Galeri",
+    "card": {
+      "title": "Galeriye Kaydetme",
+      "blurb": "Pinterest videosu Fotoğraflar’da ya da Galeri’de görünsün; görünmüyorsa çözümü.",
+      "badge": "Galeri"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Video Galeriye Kaydetme",
+    "lede": "Pin linkinden Android’de **Galeri**’ye, iPhone’da **Fotoğraflar**’a; uygulama kurmadan. İndirdiğiniz video ya da fotoğraf galeriye gelmiyorsa nedeni ve çözümü de burada."
+  },
+  "intro": [
+    "Videoyu indirmek işin yarısı: iPhone’da MP4 önce **Dosyalar** uygulamasına, Android’de **İndirilenler** klasörüne iner. Bu rehber dosyayı galeriye nasıl taşıyacağınızı ve “Pinterest’ten indirdiğim fotoğraflar galeriye gelmiyor” sorununu anlatır.",
+    "Telefonunuza göre indirme adımları için [[download-pinterest-videos-iphone-android|iPhone ve Android’de Pinterest video indirme]] rehberine de bakın."
+  ],
+  "sections": [
+    {
+      "h2": "İndirdiğim video neden galeriye gelmiyor?",
+      "paragraphs": [
+        "Tarayıcı indirdiği her şeyi fotoğraf olarak değil, dosya olarak saklar. iPhone’da Safari dosyayı **Dosyalar** › **İndirilenler**’e koyar; Fotoğraflar uygulaması onu siz kaydedene kadar göstermez. Android’de Chrome dosyayı **İndirilenler**’e koyar; Galeri ya da Google Fotoğraflar onu genellikle bir indirilenler albümünde, bazen birkaç saniye gecikmeyle gösterir."
+      ]
+    },
+    {
+      "h2": "iPhone: Dosyalar’dan Fotoğraflar’a",
+      "paragraphs": [
+        "İndirme bitince **Dosyalar** uygulamasını açıp **İndirilenler**’e girin. Videoya dokunun, ardından paylaş simgesine dokunup **Videoyu Kaydet**’i seçin. Video artık Fotoğraflar’da, Son Öğeler albümünde."
+      ],
+      "list": [
+        "**Videoyu Kaydet** görünmüyorsa paylaşım menüsünü yukarı kaydırın; uygulama simgelerinin altındaki listede çıkar.",
+        "Dosya açılmıyorsa Safari’deki indirme okuna dokunup indirmenin bittiğini kontrol edin.",
+        "Fotoğraf indirdiyseniz yol aynı: paylaş simgesi › **Görüntüyü Kaydet**."
+      ]
+    },
+    {
+      "h2": "Android: İndirilenler’den Galeri’ye",
+      "paragraphs": [
+        "**Dosyalarım** (Samsung) ya da **Files** uygulamasını açıp **İndirilenler**’e girin; MP4 orada. Galeri ve Google Fotoğraflar onu **Download** ya da **İndirilenler** albümünde gösterir. Görünmüyorsa dosyaya basılı tutup **DCIM** ya da **Movies** klasörüne taşıyın, sonra galeriyi kapatıp yeniden açın."
+      ]
+    },
+    {
+      "h2": "Pinterest galeri izni nasıl verilir?",
+      "paragraphs": [
+        "Bu izin yalnızca Pinterest uygulamasının kendi **Görüntüyü indir** seçeneği için gerekir. Android’de: Ayarlar › Uygulamalar › Pinterest › İzinler › Fotoğraflar ve videolar. iPhone’da Ayarlar’da Pinterest’i bulup Fotoğraflar iznini açın.",
+        "PintDownload ile tarayıcıdan indirirken herhangi bir izin vermeniz gerekmez; dosya tarayıcının indirme klasörüne iner."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest videosu galeriye nasıl kaydedilir",
+    "intro": "iPhone’da Safari ya da Android’de Chrome ile üç adım.",
+    "exampleLabel": "Video Pini linki",
+    "items": [
+      {
+        "title": "Videonun linkini kopyalayın",
+        "body": "Pinterest uygulamasında videoyu açın, paylaş simgesine ve ardından **Bağlantıyı kopyala**’ya dokunun."
+      },
+      {
+        "title": "PintDownload’a yapıştırın",
+        "body": "pintdownload.app adresini Safari’de ya da Chrome’da açın, linki kutuya yapıştırıp **Videoyu indir**’e dokunun."
+      },
+      {
+        "title": "Galeriye taşıyın",
+        "body": "iPhone’da: **Dosyalar** › **İndirilenler** › paylaş › **Videoyu Kaydet**. Android’de video Galeri’nin indirilenler albümünde görünür."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Galeriye kaydetme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Pinterest’ten indirdiğim fotoğraflar galeriye gelmiyor, neden?",
+        "a": "Çünkü tarayıcı onları dosya olarak kaydeder. iPhone’da Fotoğraflar’a kaydedene kadar **Dosyalar** › **İndirilenler**’de beklerler; Android’de **İndirilenler** klasöründedirler ve Galeri onları indirilenler albümünde gösterir. Videolar için de durum aynı."
+      },
+      {
+        "q": "iPhone’da videoyu Dosyalar’dan Fotoğraflar’a nasıl taşırım?",
+        "a": "**Dosyalar** › **İndirilenler**’i açın, videoya dokunun, paylaş simgesine dokunup **Videoyu Kaydet**’i seçin. Video, Fotoğraflar’daki Son Öğeler albümüne gelir."
+      },
+      {
+        "q": "Android’de indirilen videolar nereye kaydediliyor?",
+        "a": "**İndirilenler** klasörüne; Samsung’da **Dosyalarım** › **İndirilenler** altında bulursunuz. Galeri ya da Google Fotoğraflar onları **Download** albümünde gösterir; göstermiyorsa dosyayı **DCIM** klasörüne taşıyın."
+      },
+      {
+        "q": "Uygulama kurmadan galeriye kaydedebilir miyim?",
+        "a": "Evet. Her şey tarayıcıda ve telefonunuzla gelen uygulamalarla olur: iPhone’da Dosyalar ve Fotoğraflar, Android’de Dosyalarım ya da Files ve Galeri."
+      },
+      {
+        "q": "Galeriye kaydetmek ücretli mi, giriş gerekiyor mu?",
+        "a": "Ücretsizdir; ne PintDownload’da ne de Pinterest’te giriş gerektirir. Yalnızca herkese açık videolarla çalışır."
+      },
+      {
+        "q": "Pinterest’te hazırladığım kolajı galeriye kaydedebilir miyim?",
+        "a": "Kolaj herkese açık bir Pin olarak yayınlandıysa linkini burada yapıştırıp görselini indirebilirsiniz. Yalnızca uygulamada duran bir taslaksa PintDownload ona ulaşamaz; içindeki Pinleri ise tek tek indirebilirsiniz."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer rehberler ve araçlar"
+  },
+  "schema": {
+    "appName": "Pinterest videosunu galeriye kaydetme — PintDownload",
+    "howToName": "Pinterest videosu telefonun galerisine nasıl kaydedilir",
+    "howToDescription": "Bir video Pininin MP4 dosyasını indirip Android’de Galeri’ye ya da iPhone’da Fotoğraflar’a kaydetme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Doğrulanacak: iOS Türkçe paylaşım sayfasında Videoyu Kaydet ve Görüntüyü Kaydet; Fotoğraflar’da Son Öğeler albüm adı (iOS 18); Android izin yolu üreticiye göre değişebilir; Pinterest kolajlarının Pin olarak yayınlanabildiği.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edit: “Fotoğraflarda” (ambiguous with the Fotoğraflar app) → “Fotoğraf indirdiyseniz”."
+  }
+}

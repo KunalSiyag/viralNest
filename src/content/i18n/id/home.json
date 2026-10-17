@@ -1,0 +1,181 @@
+{
+  "pageId": "home",
+  "locale": "id",
+  "meta": {
+    "title": "Pinterest Downloader — Download Video, Foto & GIF Gratis",
+    "description": "Pinterest downloader gratis: video jadi MP4, foto HD, GIF, serta board dan profil dalam ZIP. Tanpa login, tanpa watermark tambahan, di HP atau laptop."
+  },
+  "keywords": {
+    "primary": "pinterest downloader",
+    "secondary": [
+      "download pinterest",
+      "pinterest download video",
+      "pinterest download foto",
+      "unduh pinterest",
+      "download pinterest tanpa watermark",
+      "pinterest downloader online"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest Downloader",
+    "short": "Beranda",
+    "card": {
+      "title": "Pinterest Downloader",
+      "blurb": "Tempel link Pin, papan, atau profil, lalu simpan file-nya.",
+      "badge": "Semua"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Downloader",
+    "lede": "**Tempel link, ambil file-nya.** Video jadi **MP4**, foto dalam ukuran terbesar yang dipublikasikan Pinterest, GIF, atau **satu board utuh dalam ZIP**. Gratis, tanpa login, di HP maupun laptop."
+  },
+  "aside": [
+    {
+      "dt": "Pin",
+      "dd": "MP4, JPG, GIF, atau semua slide Pin carousel"
+    },
+    {
+      "dt": "Papan",
+      "dd": "Semua Pin publiknya dalam satu ZIP"
+    },
+    {
+      "dt": "Profil",
+      "dd": "Pin-nya dalam ZIP, atau foto profilnya saja"
+    }
+  ],
+  "intro": [
+    "PintDownload adalah situs untuk **download dari Pinterest**, bukan aplikasi Pinterest dan bukan APK. Kamu cukup menempelkan link Pin, papan, atau profil, lalu menyimpan file-nya ke HP atau laptop. Semuanya jalan di browser, jadi tidak ada aplikasi yang perlu dipasang.",
+    "Link dari aplikasi (`pin.it/…`) dan dari web (`pinterest.com/pin/…` atau `id.pinterest.com/pin/…`) sama-sama bisa dipakai. Khusus konten publik: Pin dari papan privat atau akun privat tidak bisa diambil."
+  ],
+  "sections": [
+    {
+      "h2": "Apa saja yang bisa didownload dari Pinterest",
+      "paragraphs": [
+        "Tempel link di kotak atas, dan PintDownload mengenali sendiri jenisnya. Tiap jenis juga punya halaman khusus:"
+      ],
+      "list": [
+        "**Video** jadi MP4, biasanya 720p, dan 1080p jika Pin-nya punya: [[pinterest-video-downloader|download video Pinterest]].",
+        "**Foto dan gambar** dalam ukuran terbesar yang dipublikasikan Pinterest, bukan thumbnail kecil di beranda: [[pinterest-image-downloader|download foto Pinterest]].",
+        "**GIF** yang tetap bergerak ([[pinterest-gif-downloader|download GIF Pinterest]]) dan **Pin carousel** dengan semua slide-nya ([[pinterest-pin-downloader|download Pin Pinterest]]).",
+        "**Audio** MP3 yang dibuat di browser kamu dari suara sebuah video: [[pinterest-audio-downloader|download MP3 Pinterest]].",
+        "**Board (papan)** publik, semua Pin-nya dalam satu ZIP: [[pinterest-board-downloader|download board Pinterest]].",
+        "**Foto profil (PP)** dari akun publik: [[pinterest-profile-picture-downloader|download foto profil Pinterest]]. Link profil yang ditempel di kotak atas juga bisa diunduh sebagai ZIP berisi Pin-nya."
+      ]
+    },
+    {
+      "h2": "Yang tidak bisa dilakukan",
+      "paragraphs": [
+        "Pin privat, papan privat, konten yang baru bisa dilihat setelah login, dan Pin yang sudah dihapus tidak bisa diunduh. Kualitasnya juga tidak kami naikkan: kalau Pinterest hanya punya video 720p, MP4 yang kamu dapat juga 720p, bukan hasil perbesaran yang pura-pura tajam.",
+        "Kami tidak menambahkan watermark. Nama atau logo yang dipasang kreator di dalam videonya tetap ada, karena itu bagian dari gambarnya. PintDownload adalah alat independen dan tidak berafiliasi dengan Pinterest Inc."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara download dari Pinterest dalam 3 langkah",
+    "intro": "Bisa di browser iPhone, Android, laptop, atau PC. Khusus konten publik, tanpa akun dan tanpa install apa pun.",
+    "exampleLabel": "Contoh link Pin",
+    "items": [
+      {
+        "title": "Salin tautannya",
+        "body": "Buka Pin, papan, atau profil di aplikasi atau di web. Ketuk ikon **Bagikan**, lalu **Salin tautan**. Di browser, salin saja alamat yang berisi `/pin/`. Link pendek `pin.it` juga bisa."
+      },
+      {
+        "title": "Tempel di PintDownload",
+        "body": "Tempel tautan publik itu di kotak atas, lalu ketuk **Unduh**. Berlaku untuk video, foto, GIF, papan, dan profil."
+      },
+      {
+        "title": "Cek, lalu simpan",
+        "body": "Pilih kualitasnya kalau ada lebih dari satu, lalu simpan file ke folder Unduhan, galeri, atau app Foto. Papan dan profil diunduh sebagai ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab seputar Pinterest downloader",
+    "items": [
+      {
+        "q": "Bagaimana cara download dari Pinterest tanpa login?",
+        "a": "Salin tautan Pin dari aplikasi atau web, lalu tempel di PintDownload. Kamu tidak perlu login ke Pinterest dan tidak perlu daftar di sini. Syaratnya cuma satu: kontennya publik."
+      },
+      {
+        "q": "Apakah PintDownload gratis?",
+        "a": "Ya, gratis dan tanpa daftar, tanpa paket berbayar. Untuk beberapa Pin sekaligus, pilih **Hingga 5** di atas kotak dan tempel satu tautan per baris. Untuk koleksi yang lebih besar, pakai [[pinterest-board-downloader|download board Pinterest]]."
+      },
+      {
+        "q": "Apa saja yang bisa didownload?",
+        "a": "Pin foto, Pin video, GIF, semua slide Pin carousel, board (papan) publik dalam ZIP, Pin dari profil publik dalam ZIP, dan foto profil. Story Pin (Pin Ide) yang berisi beberapa halaman diambil per halaman, seperti slide carousel."
+      },
+      {
+        "q": "Apakah hasilnya tanpa watermark?",
+        "a": "Kami tidak menambahkan watermark apa pun; file yang kamu dapat adalah file yang dipublikasikan Pinterest. Kalau kreatornya menaruh nama atau logo di dalam video, tanda itu tetap ada."
+      },
+      {
+        "q": "Kenapa opsi “Unduh gambar” tidak muncul di aplikasi Pinterest?",
+        "a": "Menurut pusat bantuan Pinterest, tidak semua Pin bisa diunduh dari aplikasinya, jadi opsi itu memang kadang tidak ada. Selama Pin-nya publik, tautannya tetap bisa ditempel di PintDownload."
+      },
+      {
+        "q": "Bisa download video atau papan Pinterest yang privat?",
+        "a": "Tidak. PintDownload hanya membaca konten publik. Papan privat (dulu disebut papan rahasia), akun privat, dan Pin yang hanya terlihat setelah login tidak bisa diambil. Hati-hati dengan situs yang menjanjikan bisa."
+      },
+      {
+        "q": "Apakah boleh download gambar dari Pinterest?",
+        "a": "Untuk disimpan dan dilihat sendiri, misalnya sebagai referensi atau wallpaper, itu pemakaian yang wajar. Hak ciptanya tetap milik kreatornya: kalau mau diunggah ulang atau dipakai untuk jualan, minta izin dan cantumkan namanya. Ini bukan nasihat hukum."
+      },
+      {
+        "q": "Bisa di HP Android, iPhone, dan laptop? Harus install aplikasi?",
+        "a": "Bisa di semuanya, cukup lewat browser seperti Chrome, Safari, Edge, atau Samsung Internet. Tidak perlu aplikasi atau APK. Langkah per perangkat ada di panduan [[download-pinterest-videos-iphone-android|download di HP]] dan [[how-to-download-pinterest-video-on-laptop|download di laptop]]."
+      },
+      {
+        "q": "Berapa kuota internet yang terpakai?",
+        "a": "Sebesar file yang kamu unduh, tidak lebih. Selama mengunduh, PintDownload menampilkan berapa MB yang sudah masuk dari total ukuran file. Kalau Pin video punya beberapa kualitas, 720p lebih hemat kuota daripada 1080p, dan ZIP satu papan tentu jauh lebih besar daripada satu Pin."
+      }
+    ]
+  },
+  "related": {
+    "title": "Satu alat untuk tiap jenis link"
+  },
+  "schema": {
+    "appName": "Pinterest Downloader — PintDownload",
+    "howToName": "Cara download video, foto, GIF, papan, dan profil Pinterest",
+    "howToDescription": "Salin tautan publik Pinterest, tempel di PintDownload, cek hasilnya, lalu simpan file atau ZIP-nya."
+  },
+  "guides": {
+    "title": "Panduan langkah demi langkah",
+    "intro": "Langkah per perangkat dan per tempat penyimpanan, dengan nama menu yang benar-benar kamu lihat di layar.",
+    "items": [
+      {
+        "page": "how-to-download-pinterest-videos",
+        "tag": "Panduan",
+        "title": "Cara download video Pinterest",
+        "blurb": "Cara lengkap dari tautan sampai MP4, di HP atau laptop, tanpa aplikasi tambahan."
+      },
+      {
+        "page": "how-to-download-pinterest-video-in-gallery",
+        "tag": "Galeri",
+        "title": "Cara menyimpan video Pinterest ke galeri",
+        "blurb": "Supaya videonya muncul di Galeri atau app Foto, dan apa yang dicek kalau tidak muncul."
+      },
+      {
+        "page": "download-pinterest-videos-iphone-android",
+        "tag": "HP",
+        "title": "Cara download video Pinterest di HP",
+        "blurb": "Safari di iPhone dan Chrome di Android, tanpa install aplikasi dari Play Store."
+      },
+      {
+        "page": "how-to-download-pinterest-video-on-laptop",
+        "tag": "Laptop",
+        "title": "Cara download video Pinterest di laptop",
+        "blurb": "Windows, MacBook, atau Chromebook: salin alamat Pin, simpan MP4 ke folder Unduhan."
+      }
+    ]
+  },
+  "credit": {
+    "h2": "Hargai kreatornya",
+    "body": "Kalau kamu memakai video atau gambar orang lain di konten yang kamu unggah (Reels, TikTok, YouTube, iklan), **cantumkan nama kreatornya**. Menyimpan untuk ditonton sendiri tidak masalah; mengunggah ulang tanpa kredit atau izin, jangan."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16. Lede diganti dari plan: “foto ukuran asli” melanggar aturan kejujuran (gambar = salinan publik terbesar Pinterest).",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

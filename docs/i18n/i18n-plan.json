@@ -865,7 +865,7 @@
    "path": "/es/pinterest-a-mp3",
    "url": "https://pintdownload.app/es/pinterest-a-mp3",
    "title": "Pinterest a MP3: extrae el audio de un video de Pinterest",
-   "description": "Convierte un video de Pinterest a MP3: pega el enlace de un pin de video público y guarda la música o la voz. Gratis; usa solo audio que puedas conservar.",
+   "description": "Convierte un video de Pinterest a MP3: pega el enlace de un pin de video público y guarda la música o la voz. Gratis; usa el audio solo con permiso.",
    "h1": "Pinterest a MP3",
    "primaryKeyword": "Pinterest a MP3",
    "secondaryKeywords": [
@@ -880,7 +880,14 @@
    "priorityInferred": false,
    "release": "A",
    "lede": null,
-   "changes": [],
+   "changes": [
+    {
+     "field": "description",
+     "old": "Convierte un video de Pinterest a MP3: pega el enlace de un pin de video público y guarda la música o la voz. Gratis; usa solo audio que puedas conservar.",
+     "new": "Convierte un video de Pinterest a MP3: pega el enlace de un pin de video público y guarda la música o la voz. Gratis; usa el audio solo con permiso.",
+     "reason": "native review (review-es-5): \"usa solo audio que puedas conservar\" was a calque of \"only keep audio you may\"; Spanish speaks of permission"
+    }
+   ],
    "titleLength": 57,
    "descriptionLength": 154,
    "h1Length": 15
@@ -1650,7 +1657,7 @@
    "path": "/fr/telecharger-photo-pinterest",
    "url": "https://pintdownload.app/fr/telecharger-photo-pinterest",
    "title": "Télécharger une photo Pinterest en HD — grand format",
-   "description": "Enregistrez une photo ou une image Pinterest en grand format, pas en miniature. Collez le lien de l’épingle : gratuit et sans compte Pinterest.",
+   "description": "Enregistrez une photo ou une image Pinterest en grand format, pas en miniature. Collez le lien de l’épingle : gratuit et sans compte Pinterest.",
    "h1": "Télécharger une photo Pinterest",
    "primaryKeyword": "télécharger photo pinterest",
    "secondaryKeywords": [
@@ -1677,6 +1684,14 @@
      "old": "Enregistrez une photo ou une image Pinterest dans sa résolution d’origine, pas en miniature. Collez le lien de l’épingle : gratuit et sans compte Pinterest.",
      "new": "Enregistrez une photo ou une image Pinterest en grand format, pas en miniature. Collez le lien de l’épingle : gratuit et sans compte Pinterest.",
      "reason": "honesty: \"résolution d’origine\" is false (1200px public copy)"
+    },
+    {
+     "locale": "fr",
+     "pageId": "pinterest-image-downloader",
+     "field": "description",
+     "old": "Enregistrez une photo ou une image Pinterest en grand format, pas en miniature. Collez le lien de l’épingle : gratuit et sans compte Pinterest.",
+     "new": "Enregistrez une photo ou une image Pinterest en grand format, pas en miniature. Collez le lien de l’épingle : gratuit et sans compte Pinterest.",
+     "reason": "release (fr-slug-requests.md #1): French typography, U+00A0 before the colon"
     }
    ],
    "titleLength": 52,
@@ -1748,9 +1763,9 @@
    "slug": "telecharger-photo-de-profil-pinterest",
    "path": "/fr/telecharger-photo-de-profil-pinterest",
    "url": "https://pintdownload.app/fr/telecharger-photo-de-profil-pinterest",
-   "title": "Photo de profil Pinterest en HD — voir et télécharger en grand",
+   "title": "Photo de profil Pinterest en grand — voir et télécharger",
    "description": "Affichez et téléchargez en grand la photo de profil d’un compte Pinterest public, pas la petite vignette ronde. Collez le lien du profil : c’est gratuit.",
-   "h1": "Photo de profil Pinterest en HD",
+   "h1": "Photo de profil Pinterest en grand",
    "primaryKeyword": "télécharger photo de profil pinterest",
    "secondaryKeywords": [
     "voir photo de profil pinterest",
@@ -1764,7 +1779,20 @@
    "priorityInferred": false,
    "release": "A",
    "lede": null,
-   "changes": [],
+   "changes": [
+    {
+     "field": "title",
+     "old": "Photo de profil Pinterest en HD — voir et télécharger en grand",
+     "new": "Photo de profil Pinterest en grand — voir et télécharger",
+     "reason": "honesty (fr-pfp-hd-claim): most avatars Pinterest serves are 280–1000 px (median ≈540 px), not HD"
+    },
+    {
+     "field": "h1",
+     "old": "Photo de profil Pinterest en HD",
+     "new": "Photo de profil Pinterest en grand",
+     "reason": "honesty (fr-pfp-hd-claim): H1 must not promise HD"
+    }
+   ],
    "titleLength": 62,
    "descriptionLength": 153,
    "h1Length": 31
@@ -3705,7 +3733,7 @@
    "slug": "pinterest-4k-video-indir",
    "path": "/tr/pinterest-4k-video-indir",
    "url": "https://pintdownload.app/tr/pinterest-4k-video-indir",
-   "title": "Pinterest'te 4K Video Var mı? Gerçek Kaliteyi MP4 İndir",
+   "title": "Pinterest'te 4K Video Var mı? Gerçek Kalitede MP4 İndir",
    "description": "Pinterest videoları çoğunlukla 720p, bazen 1080p yayınlanır; 4K nadirdir. Pinin sunduğu en yüksek kaliteyi MP4 olarak indirin, sahte 4K üretmeyiz.",
    "h1": "Pinterest'te 4K Var mı?",
    "primaryKeyword": "pinterest 4k video indir",
@@ -3738,6 +3766,12 @@
      "old": "Pinterest 4K ve HD Video İndir",
      "new": "Pinterest'te 4K Var mı?",
      "reason": "honesty: H1 must not promise 4K"
+    },
+    {
+     "field": "title",
+     "old": "Pinterest'te 4K Video Var mı? Gerçek Kaliteyi MP4 İndir",
+     "new": "Pinterest'te 4K Video Var mı? Gerçek Kalitede MP4 İndir",
+     "reason": "native review (tr-1): \"Gerçek Kaliteyi … İndir\" reads as \"lower the real quality\"; locative \"Kalitede\" = \"in the real quality\""
     }
    ],
    "titleLength": 55,
@@ -3980,7 +4014,7 @@
    "path": "/vi/tai-anh-pinterest",
    "url": "https://pintdownload.app/vi/tai-anh-pinterest",
    "title": "Tải ảnh Pinterest chất lượng cao, không bị mờ, miễn phí",
-   "description": "Tải ảnh Pinterest cỡ lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ. Dán link Ghim là xong, hợp lưu hình nền, ảnh tham khảo. Không cần đăng nhập.",
+   "description": "Tải ảnh Pinterest cỡ lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ. Dán link Ghim là xong, hợp làm hình nền, ảnh tham khảo. Không cần đăng nhập.",
    "h1": "Tải ảnh Pinterest chất lượng cao",
    "primaryKeyword": "tải ảnh pinterest",
    "secondaryKeywords": [
@@ -3995,7 +4029,14 @@
    "priorityInferred": false,
    "release": "A",
    "lede": "Lấy bản ảnh lớn nhất Pinterest công khai (thường rộng khoảng 1200px), không phải ảnh thu nhỏ trong bảng tin.",
-   "changes": [],
+   "changes": [
+    {
+     "field": "description",
+     "old": "Tải ảnh Pinterest cỡ lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ. Dán link Ghim là xong, hợp lưu hình nền, ảnh tham khảo. Không cần đăng nhập.",
+     "new": "Tải ảnh Pinterest cỡ lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ. Dán link Ghim là xong, hợp làm hình nền, ảnh tham khảo. Không cần đăng nhập.",
+     "reason": "native review (vi-2): \"hợp lưu\" reads as the noun \"confluence\""
+    }
+   ],
    "titleLength": 55,
    "descriptionLength": 156,
    "h1Length": 32
@@ -4149,7 +4190,7 @@
    "path": "/vi/tai-video-pinterest-4k",
    "url": "https://pintdownload.app/vi/tai-video-pinterest-4k",
    "title": "Tải video Pinterest 4K được không? Chất lượng thật",
-   "description": "Tải video Pinterest 4K? Pinterest hiếm khi có 4K: thường 720p, có khi 1080p; ảnh rộng khoảng 1200px. Ở đây bạn lấy bản nét nhất có thật, không ghi 4K giả.",
+   "description": "Tải video Pinterest 4K? Pinterest hiếm khi có 4K: thường 720p, có khi 1080p; ảnh rộng khoảng 1.200 px. Ở đây bạn lấy bản nét nhất có thật, không ghi 4K giả.",
    "h1": "Tải video Pinterest 4K được không?",
    "primaryKeyword": "tải video pinterest 4k",
    "secondaryKeywords": [
@@ -4169,6 +4210,12 @@
      "old": "Video Pinterest 4K: chất lượng thật",
      "new": "Tải video Pinterest 4K được không?",
      "reason": "honesty: H1 must ask, not promise 4K"
+    },
+    {
+     "field": "description",
+     "old": "Tải video Pinterest 4K? Pinterest hiếm khi có 4K: thường 720p, có khi 1080p; ảnh rộng khoảng 1200px. Ở đây bạn lấy bản nét nhất có thật, không ghi 4K giả.",
+     "new": "Tải video Pinterest 4K? Pinterest hiếm khi có 4K: thường 720p, có khi 1080p; ảnh rộng khoảng 1.200 px. Ở đây bạn lấy bản nét nhất có thật, không ghi 4K giả.",
+     "reason": "native review (vi-1): \"1.200 px\" as in the page body and island hint"
     }
    ],
    "titleLength": 50,
@@ -4504,8 +4551,8 @@
    "slug": "skachat-dosku-pinterest",
    "path": "/ru/skachat-dosku-pinterest",
    "url": "https://pintdownload.app/ru/skachat-dosku-pinterest",
-   "title": "Скачать доску Пинтерест целиком — все пины в ZIP-архиве",
-   "description": "Скачайте публичную доску Pinterest полностью: вставьте ссылку на доску, и мы соберём доступные фото и видео в один ZIP-архив. Бесплатно, без регистрации.",
+   "title": "Скачать доску Пинтерест — публичные пины одним ZIP-архивом",
+   "description": "Скачайте публичную доску Pinterest: вставьте ссылку на доску, и мы соберём доступные фото и видео в один ZIP-архив. Бесплатно, без регистрации.",
    "h1": "Скачать доску Pinterest",
    "primaryKeyword": "скачать доску пинтерест",
    "secondaryKeywords": [
@@ -4519,7 +4566,20 @@
    "priorityInferred": false,
    "release": "B",
    "lede": null,
-   "changes": [],
+   "changes": [
+    {
+     "field": "title",
+     "old": "Скачать доску Пинтерест целиком — все пины в ZIP-архиве",
+     "new": "Скачать доску Пинтерест — публичные пины одним ZIP-архивом",
+     "reason": "honesty (R4): boards are capped at 250 pins; \"целиком — все пины\" promised every pin"
+    },
+    {
+     "field": "description",
+     "old": "Скачайте публичную доску Pinterest полностью: вставьте ссылку на доску, и мы соберём доступные фото и видео в один ZIP-архив. Бесплатно, без регистрации.",
+     "new": "Скачайте публичную доску Pinterest: вставьте ссылку на доску, и мы соберём доступные фото и видео в один ZIP-архив. Бесплатно, без регистрации.",
+     "reason": "honesty (R4): \"полностью\" promised the whole board past the 250-pin cap"
+    }
+   ],
    "titleLength": 55,
    "descriptionLength": 153,
    "h1Length": 23
@@ -4782,7 +4842,7 @@
    "url": "https://pintdownload.app/th/pinterest-hd-downloader",
    "title": "โหลดรูป Pinterest ให้ชัด ได้ความละเอียดสูงสุดที่มีจริง",
    "description": "รูปจาก Pinterest ไม่ชัด? วางลิงก์พินแล้วรับไฟล์ใหญ่ที่สุดที่ Pinterest เก็บไว้ ทั้งรูปและวิดีโอ ไม่ใช่รูปย่อ ไม่บีบอัดซ้ำ และไม่อ้าง 4K ถ้าต้นฉบับไม่ใช่",
-   "h1": "โหลดรูป Pinterest ให้ชัด",
+   "h1": "โหลดรูป Pinterest ให้ชัด ได้แค่ไหน?",
    "primaryKeyword": "โหลดรูป pinterest ให้ชัด",
    "secondaryKeywords": [
     "pinterest รูปไม่ชัด",
@@ -4795,10 +4855,19 @@
    "priorityInferred": false,
    "release": "B",
    "lede": "รูปเบลอเพราะได้แค่รูปย่อหรือแคปหน้าจอ วางลิงก์พินแล้วรับไฟล์ต้นฉบับขนาดใหญ่ที่สุดที่มี เราไม่ขยายภาพปลอมเป็น 4K",
-   "changes": [],
+   "changes": [
+    {
+     "locale": "th",
+     "pageId": "pinterest-4k-downloader",
+     "field": "h1",
+     "old": "โหลดรูป Pinterest ให้ชัด",
+     "new": "โหลดรูป Pinterest ให้ชัด ได้แค่ไหน?",
+     "reason": "release (th-slug-requests.md #1): the 4K explainer H1 must ask, not promise (user decision 2); keeps the primary keyword"
+    }
+   ],
    "titleLength": 54,
    "descriptionLength": 152,
-   "h1Length": 24
+   "h1Length": 35
   },
   {
    "locale": "th",
@@ -4984,7 +5053,7 @@
    "slug": "pinterest-profile-picture-downloader",
    "path": "/th/pinterest-profile-picture-downloader",
    "url": "https://pintdownload.app/th/pinterest-profile-picture-downloader",
-   "title": "โหลดรูปโปรไฟล์ Pinterest ขนาดเต็ม ดูรูปโปรไฟล์แบบเต็มรูป",
+   "title": "โหลดรูปโปรไฟล์ Pinterest ขนาดใหญ่สุด ดูรูปโปรไฟล์แบบเต็มรูป",
    "description": "ดูและโหลดรูปโปรไฟล์ของบัญชี Pinterest สาธารณะแบบเต็มรูป ขนาดใหญ่ที่สุดที่ Pinterest มี วางลิงก์โปรไฟล์แล้วเซฟได้เลย ฟรี ไม่ต้องล็อกอิน",
    "h1": "โหลดรูปโปรไฟล์ Pinterest",
    "primaryKeyword": "โหลดรูปโปรไฟล์ pinterest",
@@ -4998,8 +5067,17 @@
    "priorityInferred": false,
    "release": "B",
    "lede": "วางลิงก์โปรไฟล์สาธารณะ แล้วดูหรือเซฟรูปโปรไฟล์ในขนาดใหญ่ที่สุดที่มี (ปกติราว 600×600 พิกเซล)",
-   "changes": [],
-   "titleLength": 56,
+   "changes": [
+    {
+     "locale": "th",
+     "pageId": "pinterest-profile-picture-downloader",
+     "field": "title",
+     "old": "โหลดรูปโปรไฟล์ Pinterest ขนาดเต็ม ดูรูปโปรไฟล์แบบเต็มรูป",
+     "new": "โหลดรูปโปรไฟล์ Pinterest ขนาดใหญ่สุด ดูรูปโปรไฟล์แบบเต็มรูป",
+     "reason": "release (th-slug-requests.md #2): honesty, \"ขนาดเต็ม\" (full size) -> \"ขนาดใหญ่สุด\" (largest size), as on the th home, image and pin rows"
+    }
+   ],
+   "titleLength": 59,
    "descriptionLength": 134,
    "h1Length": 24
   },
@@ -5265,7 +5343,7 @@
    "url": "https://pintdownload.app/ar/pinterest-4k-downloader",
    "title": "تحميل من بنترست بدقة عالية: هل يوجد 4K فعلًا؟",
    "description": "نحمّل لك أعلى دقة ينشرها بنترست فعلًا: فيديو 720p أو 1080p وصور حتى 1200 بكسل عرضًا. لا نرفع الدقة صناعيًا ولا نعد بـ4K غير موجود. جرّب برابطك.",
-   "h1": "تحميل من بنترست بدقة عالية",
+   "h1": "تحميل من بنترست بدقة عالية: هل يوجد 4K؟",
    "primaryKeyword": "تحميل من بنترست بدقة عالية",
    "secondaryKeywords": [
     "تحميل فيديوهات بنترست بدقة عالية",
@@ -5278,10 +5356,19 @@
    "priorityInferred": false,
    "release": "C",
    "lede": "أعلى دقة ينشرها بنترست لكل منشور، مع شرح صريح لما يعنيه «4K» هنا.",
-   "changes": [],
+   "changes": [
+    {
+     "locale": "ar",
+     "pageId": "pinterest-4k-downloader",
+     "field": "h1",
+     "old": "تحميل من بنترست بدقة عالية",
+     "new": "تحميل من بنترست بدقة عالية: هل يوجد 4K؟",
+     "reason": "release (ar-slug-requests.md #1, fallback): the 4K explainer H1 must ask (user decision 2); keeps the primary keyword"
+    }
+   ],
    "titleLength": 45,
    "descriptionLength": 143,
-   "h1Length": 26
+   "h1Length": 39
   },
   {
    "locale": "ar",
@@ -6189,6 +6276,102 @@
    "old": "วางลิงก์พิน Pinterest หรือลิงก์สั้น pin.it แล้วโหลดพินนั้นได้ทันที ทั้งรูปขนาดเต็ม วิดีโอ MP4 GIF และพินหลายรูปครบทุกภาพ ฟรี ไม่ต้องล็อกอิน",
    "new": "วางลิงก์พิน Pinterest หรือลิงก์สั้น pin.it แล้วโหลดพินนั้นได้ทันที ทั้งรูปขนาดใหญ่สุด วิดีโอ MP4 GIF และพินหลายรูปครบทุกภาพ ฟรี ไม่ต้องล็อกอิน",
    "reason": "honesty: \"full size\" -> \"largest size\""
+  },
+  {
+   "locale": "th",
+   "pageId": "pinterest-4k-downloader",
+   "field": "h1",
+   "old": "โหลดรูป Pinterest ให้ชัด",
+   "new": "โหลดรูป Pinterest ให้ชัด ได้แค่ไหน?",
+   "reason": "release (th-slug-requests.md #1): the 4K explainer H1 must ask, not promise (user decision 2); keeps the primary keyword"
+  },
+  {
+   "locale": "th",
+   "pageId": "pinterest-profile-picture-downloader",
+   "field": "title",
+   "old": "โหลดรูปโปรไฟล์ Pinterest ขนาดเต็ม ดูรูปโปรไฟล์แบบเต็มรูป",
+   "new": "โหลดรูปโปรไฟล์ Pinterest ขนาดใหญ่สุด ดูรูปโปรไฟล์แบบเต็มรูป",
+   "reason": "release (th-slug-requests.md #2): honesty, \"ขนาดเต็ม\" (full size) -> \"ขนาดใหญ่สุด\" (largest size), as on the th home, image and pin rows"
+  },
+  {
+   "locale": "ar",
+   "pageId": "pinterest-4k-downloader",
+   "field": "h1",
+   "old": "تحميل من بنترست بدقة عالية",
+   "new": "تحميل من بنترست بدقة عالية: هل يوجد 4K؟",
+   "reason": "release (ar-slug-requests.md #1, fallback): the 4K explainer H1 must ask (user decision 2); keeps the primary keyword"
+  },
+  {
+   "locale": "fr",
+   "pageId": "pinterest-image-downloader",
+   "field": "description",
+   "old": "Enregistrez une photo ou une image Pinterest en grand format, pas en miniature. Collez le lien de l’épingle : gratuit et sans compte Pinterest.",
+   "new": "Enregistrez une photo ou une image Pinterest en grand format, pas en miniature. Collez le lien de l’épingle : gratuit et sans compte Pinterest.",
+   "reason": "release (fr-slug-requests.md #1): French typography, U+00A0 before the colon"
+  },
+  {
+   "locale": "es",
+   "pageId": "pinterest-audio-downloader",
+   "field": "description",
+   "old": "Convierte un video de Pinterest a MP3: pega el enlace de un pin de video público y guarda la música o la voz. Gratis; usa solo audio que puedas conservar.",
+   "new": "Convierte un video de Pinterest a MP3: pega el enlace de un pin de video público y guarda la música o la voz. Gratis; usa el audio solo con permiso.",
+   "reason": "native review (review-es-5): \"usa solo audio que puedas conservar\" was a calque of \"only keep audio you may\"; Spanish speaks of permission"
+  },
+  {
+   "locale": "vi",
+   "pageId": "pinterest-4k-downloader",
+   "field": "description",
+   "old": "Tải video Pinterest 4K? Pinterest hiếm khi có 4K: thường 720p, có khi 1080p; ảnh rộng khoảng 1200px. Ở đây bạn lấy bản nét nhất có thật, không ghi 4K giả.",
+   "new": "Tải video Pinterest 4K? Pinterest hiếm khi có 4K: thường 720p, có khi 1080p; ảnh rộng khoảng 1.200 px. Ở đây bạn lấy bản nét nhất có thật, không ghi 4K giả.",
+   "reason": "native review (vi-1): \"1.200 px\" as in the page body and island hint"
+  },
+  {
+   "locale": "vi",
+   "pageId": "pinterest-image-downloader",
+   "field": "description",
+   "old": "Tải ảnh Pinterest cỡ lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ. Dán link Ghim là xong, hợp lưu hình nền, ảnh tham khảo. Không cần đăng nhập.",
+   "new": "Tải ảnh Pinterest cỡ lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ. Dán link Ghim là xong, hợp làm hình nền, ảnh tham khảo. Không cần đăng nhập.",
+   "reason": "native review (vi-2): \"hợp lưu\" reads as the noun \"confluence\""
+  },
+  {
+   "locale": "tr",
+   "pageId": "pinterest-4k-downloader",
+   "field": "title",
+   "old": "Pinterest'te 4K Video Var mı? Gerçek Kaliteyi MP4 İndir",
+   "new": "Pinterest'te 4K Video Var mı? Gerçek Kalitede MP4 İndir",
+   "reason": "native review (tr-1): \"Gerçek Kaliteyi … İndir\" reads as \"lower the real quality\"; locative \"Kalitede\" = \"in the real quality\""
+  },
+  {
+   "locale": "ru",
+   "pageId": "pinterest-board-downloader",
+   "field": "title",
+   "old": "Скачать доску Пинтерест целиком — все пины в ZIP-архиве",
+   "new": "Скачать доску Пинтерест — публичные пины одним ZIP-архивом",
+   "reason": "honesty (R4): boards are capped at 250 pins; \"целиком — все пины\" promised every pin"
+  },
+  {
+   "locale": "ru",
+   "pageId": "pinterest-board-downloader",
+   "field": "description",
+   "old": "Скачайте публичную доску Pinterest полностью: вставьте ссылку на доску, и мы соберём доступные фото и видео в один ZIP-архив. Бесплатно, без регистрации.",
+   "new": "Скачайте публичную доску Pinterest: вставьте ссылку на доску, и мы соберём доступные фото и видео в один ZIP-архив. Бесплатно, без регистрации.",
+   "reason": "honesty (R4): \"полностью\" promised the whole board past the 250-pin cap"
+  },
+  {
+   "locale": "fr",
+   "pageId": "pinterest-profile-picture-downloader",
+   "field": "title",
+   "old": "Photo de profil Pinterest en HD — voir et télécharger en grand",
+   "new": "Photo de profil Pinterest en grand — voir et télécharger",
+   "reason": "honesty (fr-pfp-hd-claim): most avatars Pinterest serves are 280–1000 px (median ≈540 px), not HD"
+  },
+  {
+   "locale": "fr",
+   "pageId": "pinterest-profile-picture-downloader",
+   "field": "h1",
+   "old": "Photo de profil Pinterest en HD",
+   "new": "Photo de profil Pinterest en grand",
+   "reason": "honesty (fr-pfp-hd-claim): H1 must not promise HD"
   }
  ],
  "validation": {
@@ -6220,7 +6403,7 @@
   "jsonLd": "src/i18n/jsonld.ts: WebPage, SoftwareApplication (price 0, never aggregateRating), HowTo, FAQPage (only when visible), BreadcrumbList rooted at the locale home with LOCALE_META.homeLabel, Article with real datePublished/dateModified on guides; inLanguage = htmlLang on every entity; Organization @id shared with English; no WebSite/SearchAction on localized pages.",
   "sitemap": "One sitemap.xml with xmlns:xhtml; every live localized URL once with the full alternate set; lastmod from content dateModified (never build date). indexnow.mjs reads the same entries. robots.txt unchanged.",
   "templates": "HomePage.astro, ToolPage.astro, GuidePage.astro under src/components/i18n/. Shared components (TicketHero, HowToSteps, FaqSection, CompareTable, RelatedTools, BookmarkletGuide, FooterKeywordMatrix, AdSlot) gain optional ui/locale props whose defaults keep English HTML byte-identical apart from the head alternates and language menu. English .astro pages are not rewritten.",
-  "islands": "Typed catalogs src/i18n/island/<loc>.ts imported only by server templates; each page passes pickIsland(locale, variant) as a prop (≈4–7 KB raw). English defaults stay inline, so the English bundle does not grow and no locale string enters dist/_astro/*.js (post-build check). Plurals via Intl.PluralRules maps (ru one/few/many/other, ar zero…other). Route notices and StickyPasteBar resolve targets through a routes prop of the current locale. /api/extract gains an additive error code field only after mcp-server merges (parity fixtures updated in the same commit); until then localized pages show a localized generic error with the English server text as detail.",
+  "islands": "Typed catalogs src/i18n/island/<loc>.ts imported only by server templates; each page passes pickIsland(locale, variant) as a prop (≈12–23 KB of JSON, 4–5 KB brotli; budget in §8). English defaults stay inline, so the English bundle does not grow and no locale string enters dist/_astro/*.js (post-build check). Plurals via Intl.PluralRules maps (ru one/few/many/other, ar zero…other). Route notices and StickyPasteBar resolve targets through a routes prop of the current locale. /api/extract gains an additive error code field only after mcp-server merges (parity fixtures updated in the same commit); until then localized pages show a localized generic error with the English server text as detail.",
   "languageSelector": "Server-rendered LanguageMenu.astro (<details>, real <a hreflang lang> links, endonyms, no flags). Links go to the current page’s live alternate, else that locale’s home (no hreflang attribute then). No redirect or banner by IP, Accept-Language or cookie. src/lib/i18n.ts, i18n-client.ts, LanguageSelector.tsx and DownloaderForm’s preferred_lang code are deleted (their strings overclaim 1080p and contain errors flagged by de/it/ar/id/nl research). English blog/legal pages: the menu links to locale homes.",
   "rtl": "Before any i18n work, one mechanical sweep converts physical Tailwind/CSS direction properties to logical ones, verified by zero pixel diff on 6 pages at 390/1440 light/dark. Then dir=\"rtl\" on /ar, mirrored stub tear and stamp angle, rtl:-scale-x-100 on directional icons, swapped arrow-key handlers in carousels, <bdi>/dir=\"ltr\" for URLs, code, pin.it, MP4, serial numbers; letter-spacing 0 for ar and th; Western digits (Intl.NumberFormat(\"ar\",{numberingSystem:\"latn\"})). The URL input stays LTR; caret behaviour after paste is a QA item. Step illustrations with English text are replaced or captioned per locale.",
   "fonts": {
@@ -6474,7 +6657,7 @@
      "Native review ×12 by a different agent than the writer (fluency, register, search vocabulary, Pinterest UI labels against help.pinterest.com/<lang>, honesty, no English leftovers, no calques); human proofreaders where Q3 provides them.",
      "Visual QA per script group (Latin; tr+vi; ru; th; ar RTL) with Playwright at 390×844 and 1440×900, light and dark: home, video, board, longest-H1 page, 404, DownloaderForm states with /api/extract mocked from tests/fixtures. Assert no horizontal scroll, H1 not clipped, script font loaded, stub label on one line, language menu keyboard-reachable, RTL mirroring correct.",
      "SEO crawl against wrangler dev: architecture.md §13.5 table + full link crawl (no 4xx, no redirect chains, every localized page within 2 clicks of its locale home).",
-     "Perf: Lighthouse mobile on /, /es, /ru, /th, /ar and one deep page each; font bytes within budget; CLS 0; island props < 8 KB raw."
+     "Perf: Lighthouse mobile on /, /es, /ru, /th, /ar and one deep page each; font bytes within budget; CLS 0; island props within the restated budget: each `messages` prop < 24 KB UTF-8 and < 5.5 KB brotli (tests/islands.entry.ts; the first \"< 8 KB raw\" could not hold the island strings — English alone is ≈12 KB)."
     ]
    },
    {

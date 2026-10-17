@@ -1,0 +1,117 @@
+---
+/**
+ * Server-rendered language menu (plan §6 languageSelector). Real links, no JS
+ * needed to switch: each one goes to the current page's live alternate in that
+ * language, else to that locale's home (then without hreflang). Endonyms, no
+ * flags (flags are countries, not languages). No redirect or banner by IP,
+ * Accept-Language or cookie anywhere on the site.
+ */
+import { LOCALE_META, type AnyLocale } from '../i18n/locales';
+import { alternatesFor, liveLocales, localeHome, type PageId } from '../i18n/routes';
+import { EN_UI, fillUi, type UiStrings } from '../i18n/ui/en';
+
+interface Props {
+  /** Locale of the page being rendered. */
+  locale: AnyLocale;
+  /** Page id when the page is in the route map (blog/legal pages have none). */
+  pageId?: PageId | null;
+  ui?: UiStrings;
+  /** Unique per instance (the header renders one for desktop, one in the mobile panel). */
+  id: string;
+  /** Emit the close-on-outside-click/Escape script (once per page). */
+  withScript?: boolean;
+}
+
+const { locale, pageId = null, ui = EN_UI, id, withScript = false } = Astro.props;
+
+const alts = pageId ? alternatesFor(pageId) : [];
+const items = (['en', ...liveLocales()] as AnyLocale[]).map((code) => {
+  const meta = LOCALE_META[code];
+  const alt = alts.find((a) => a.locale === code);
+  const href = alt ? new URL(alt.href).pathname : localeHome(code);
+  return {
+    code,
+    meta,
+    href,
+    // hreflang only on true alternates of this page (architecture §7).
+    hreflang: alt ? meta.hreflang : undefined,
+    fallback: !alt && code !== locale,
+    current: code === locale,
+  };
+});
+const current = LOCALE_META[locale];
+const heading = locale === 'en' ? ui.languageMenu.label : `${ui.languageMenu.label} · Language`;
+---
+
+<details class="group relative" data-lang-menu id={id}>
+  <summary
+    class="list-none [&::-webkit-details-marker]:hidden inline-flex items-center gap-1.5 h-11 px-3 rounded-md bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 text-sm font-bold hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-colors cursor-pointer touch-manipulation"
+    aria-label={fillUi(ui.languageMenu.buttonAria, { current: current.endonym })}
+  >
+    <svg class="w-3.5 h-3.5 text-[#C8281A]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+    <span translate="no">{current.hreflang.toUpperCase()}</span>
+    <svg class="w-3 h-3 text-slate-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+  </summary>
+  <div class="absolute end-0 mt-2 w-60 rounded-md bg-white dark:bg-[#1D2026] border-2 border-[#17191E] dark:border-[#393D45] z-50 max-h-[min(24rem,70vh)] overflow-y-auto overscroll-contain text-start">
+    <p class="px-3 pt-3 pb-2 mx-1 t-label text-[#4E535C] dark:text-[#C2C5CB] border-b-2 border-[#17191E] dark:border-[#F5F6F7]">{heading}</p>
+    <ul class="p-1 m-0 list-none divide-y-2 divide-dashed divide-[#C2C5CB] dark:divide-[#393D45]">
+      {items.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            hreflang={item.hreflang}
+            lang={item.meta.htmlLang}
+            aria-current={item.current ? 'true' : undefined}
+            class:list={[
+              'w-full min-h-[2.75rem] text-start px-2.5 py-1.5 text-sm flex items-center justify-between gap-2 rounded-[3px] transition-colors touch-manipulation',
+              item.current
+                ? 'bg-[#17191E] text-white dark:bg-[#F5F6F7] dark:text-[#17191E] font-bold'
+                : 'text-[#17191E] dark:text-[#F5F6F7] hover:bg-[#F5F6F7] dark:hover:bg-[#24272D]',
+            ]}
+          >
+            <span class="min-w-0">
+              <span class="block" dir={item.meta.dir}>{item.meta.endonym}</span>
+              {item.fallback && (
+                <span class="block text-xs font-normal text-[#4E535C] dark:text-[#C2C5CB]" lang={LOCALE_META[locale].htmlLang} dir={current.dir}>
+                  {ui.languageMenu.homeFallbackHint}
+                </span>
+              )}
+            </span>
+            {item.current && (
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</details>
+
+{withScript && (
+  <script is:inline>
+    (function () {
+      // Query on every event: this script runs inside the first (desktop)
+      // menu, before the mobile menu further down the page is parsed.
+      function menus() {
+        return document.querySelectorAll('[data-lang-menu]');
+      }
+      document.addEventListener('click', function (e) {
+        menus().forEach(function (m) {
+          if (m.open && !m.contains(e.target)) m.open = false;
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        menus().forEach(function (m) {
+          if (!m.open) return;
+          m.open = false;
+          var s = m.querySelector('summary');
+          if (s) s.focus();
+          // Handled: the mobile nav's own Escape (BaseLayout) leaves its panel open.
+          e.preventDefault();
+        });
+      });
+    })();
+  </script>
+)}
+

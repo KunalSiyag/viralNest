@@ -1,0 +1,151 @@
+{
+  "pageId": "pinterest-pin-downloader",
+  "locale": "es",
+  "meta": {
+    "title": "Descargar pin de Pinterest por enlace: foto, video o GIF",
+    "description": "Pega el enlace de un pin público (pinterest.com/pin o pin.it) y descarga su imagen, video MP4, GIF o todas las fotos del carrusel. Gratis y sin cuenta."
+  },
+  "keywords": {
+    "primary": "descargar pin de Pinterest",
+    "secondary": [
+      "descargar Pinterest por link",
+      "descargar pin de Pinterest con enlace",
+      "página para descargar pin de Pinterest",
+      "bajar pin de Pinterest",
+      "descargar pin.it",
+      "Pinterest pin downloader"
+    ]
+  },
+  "nav": {
+    "label": "Descargar pines",
+    "short": "Pines",
+    "card": {
+      "title": "Descargar un pin",
+      "blurb": "Un enlace de pin: su foto, video, GIF o todas las fotos del carrusel.",
+      "badge": "Pin"
+    }
+  },
+  "hero": {
+    "h1": "Descargar pin de Pinterest",
+    "lede": "Pega el enlace de **un pin** y PintDownload averigua qué hay dentro: foto, video, GIF o carrusel. Te da el archivo que corresponde, gratis y sin cuenta."
+  },
+  "intro": [
+    "¿Tienes el link de un pin y no sabes si es foto, video o GIF? No hace falta saberlo. Esta página lee el enlace, reconoce el tipo de pin y te ofrece el archivo correcto: **JPG** para fotos, **MP4** para videos, **GIF** animado y **todas las fotos** si es un carrusel.",
+    "Acepta la dirección del navegador (`pinterest.com/pin/…`) y el enlace corto `pin.it` que copia la app, también si te lo pasaron por WhatsApp. Solo pines públicos."
+  ],
+  "features": [
+    {
+      "h": "Un enlace, cualquier pin",
+      "p": "Foto, video, GIF o carrusel: el resultado se adapta al pin. Si es un video, verás también las calidades que tenga."
+    },
+    {
+      "h": "Carruseles completos",
+      "p": "De un pin con varias fotos recibes todas, no solo la portada. Guárdalas una por una o juntas en un ZIP."
+    },
+    {
+      "h": "Hasta 5 pines a la vez",
+      "p": "Elige **Hasta 5** encima del recuadro y pega un enlace por línea. Los archivos se descargan uno tras otro."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Qué recibes según el tipo de pin",
+      "paragraphs": [
+        "No tienes que elegir herramienta antes de pegar. Según lo que encuentre, PintDownload te muestra esto:"
+      ],
+      "list": [
+        "**Pin de foto**: la imagen en el tamaño más grande que Pinterest publica, hasta 1200 px de ancho. Más detalles en [[pinterest-image-downloader|descargar imágenes de Pinterest]].",
+        "**Pin de video**: el MP4, normalmente en 720p y en 1080p cuando el pin lo tiene, y, si tiene sonido, un MP3 creado en tu navegador. Ver [[pinterest-video-downloader|descargar videos de Pinterest]].",
+        "**GIF**: el archivo .gif que se mueve, no una foto fija del primer cuadro. Ver [[pinterest-gif-downloader|descargar GIF de Pinterest]].",
+        "**Carrusel**: cada una de sus fotos, sueltas o en un ZIP. Ver [[pinterest-carousel-downloader|descargar carrusel de Pinterest]]."
+      ]
+    },
+    {
+      "h2": "El botón Guardar de Pinterest no descarga nada",
+      "paragraphs": [
+        "Es una confusión muy común. El botón rojo **Guardar** de Pinterest guarda el pin en uno de tus tableros, dentro de Pinterest: el archivo no llega a tu celular ni a tu PC. Para tenerlo en el dispositivo, copia el enlace del pin con **Compartir** › **Copiar enlace** y bájalo aquí."
+      ]
+    },
+    {
+      "h2": "Si el pin no se descarga",
+      "paragraphs": [
+        "Hay tres causas habituales: el pin está en un tablero secreto o en una cuenta privada, lo eliminaron, o lo que copiaste no es la dirección de un pin (por ejemplo, la de una búsqueda o la de tu feed de inicio).",
+        "Una prueba rápida: abre el enlace en una ventana de incógnito. Si el pin no se ve sin iniciar sesión, no es público y PintDownload tampoco puede leerlo."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar un pin de Pinterest",
+    "intro": "Cuatro pasos, en el celular o en la PC. Sirven para cualquier pin público.",
+    "exampleLabel": "Ejemplo de enlace de pin",
+    "items": [
+      {
+        "title": "Abre el pin",
+        "body": "Abre en la app o en pinterest.com el pin que quieres: la vista del pin, no la cuadrícula de un tablero."
+      },
+      {
+        "title": "Copia su enlace",
+        "body": "Toca **Compartir** › **Copiar enlace**, o copia la dirección del navegador si contiene `/pin/`."
+      },
+      {
+        "title": "Pégalo arriba",
+        "body": "Pega el enlace en el recuadro y toca **Descargar pin**. PintDownload reconoce si es foto, video, GIF o carrusel."
+      },
+      {
+        "title": "Guarda el archivo",
+        "body": "Descarga la foto, el MP4 o el GIF. Si es un carrusel, guarda cada foto o todas juntas en un ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre pines",
+    "items": [
+      {
+        "q": "¿Qué es el enlace de un pin y dónde lo copio?",
+        "a": "Es la dirección de un pin concreto: `pinterest.com/pin/` seguido de un número, o un enlace corto `pin.it/…`. En la app se copia con **Compartir** › **Copiar enlace**; en la computadora, desde la barra de direcciones."
+      },
+      {
+        "q": "¿Sirve el enlace corto pin.it?",
+        "a": "Sí. Es el enlace que copia la app de Pinterest, y PintDownload lo abre para encontrar el pin. Si un `pin.it` lleva a una web fuera de Pinterest, no hay nada que descargar."
+      },
+      {
+        "q": "¿Puedo descargar todas las fotos de un pin con carrusel?",
+        "a": "Sí. Cuando el pin tiene varias fotos, el resultado las muestra todas y puedes guardarlas por separado o en un ZIP."
+      },
+      {
+        "q": "¿Funciona con pines de video y GIF?",
+        "a": "Sí. Un pin de video se descarga en MP4 y un GIF como archivo .gif animado. Lo que no funciona son los pines privados o eliminados."
+      },
+      {
+        "q": "¿Por qué no funciona aquí el enlace de un tablero o perfil?",
+        "a": "Porque esta página espera un solo pin. Pégalo igual: el recuadro te avisa y te lleva al [[pinterest-board-downloader|descargador de tableros]] o al [[pinterest-profile-downloader|de perfiles]], que guardan muchos pines en un ZIP."
+      },
+      {
+        "q": "¿Es gratis y sin registro?",
+        "a": "Sí. No pide cuenta de Pinterest ni registro en PintDownload, y no hay nada que instalar."
+      },
+      {
+        "q": "¿Necesito la app de Pinterest?",
+        "a": "No. Si alguien te mandó el link de un pin, ábrelo en el navegador, copia la dirección y pégala aquí. Funciona igual sin tener la app instalada."
+      },
+      {
+        "q": "¿Puedo descargar varios pines a la vez?",
+        "a": "Sí, hasta 5: elige **Hasta 5** y pega un enlace por línea. Para colecciones más grandes, usa el descargador de tableros."
+      }
+    ]
+  },
+  "related": {
+    "title": "Otras herramientas para tus enlaces"
+  },
+  "schema": {
+    "appName": "Descargador de pines de Pinterest — PintDownload",
+    "howToName": "Cómo descargar un pin de Pinterest",
+    "howToDescription": "Pasos para guardar la foto, el video, el GIF o todas las fotos del carrusel de un pin público de Pinterest."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16. Verificar en el celular: Compartir › Copiar enlace en la app; botón rojo Guardar",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: sin cambios de texto"
+  }
+}

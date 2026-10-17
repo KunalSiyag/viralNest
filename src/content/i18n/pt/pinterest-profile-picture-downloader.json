@@ -1,0 +1,134 @@
+{
+  "pageId": "pinterest-profile-picture-downloader",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar Foto de Perfil do Pinterest em HD, Grátis",
+    "description": "Veja e baixe a foto de perfil de um perfil público do Pinterest no maior tamanho disponível. Cole o link do perfil e salve a imagem no celular ou no PC."
+  },
+  "keywords": {
+    "primary": "baixar foto de perfil do pinterest",
+    "secondary": [
+      "como baixar foto de perfil do pinterest",
+      "salvar foto de perfil pinterest",
+      "ver foto de perfil do pinterest",
+      "foto de perfil do pinterest em hd",
+      "como baixar foto de perfil do pinterest no pc"
+    ]
+  },
+  "nav": {
+    "label": "Baixar foto de perfil",
+    "short": "Foto de perfil",
+    "card": {
+      "title": "Foto de perfil",
+      "blurb": "Veja e salve a foto de perfil de uma conta pública em tamanho maior.",
+      "badge": "Avatar"
+    }
+  },
+  "hero": {
+    "h1": "Baixar foto de perfil do Pinterest",
+    "lede": "Veja **em tamanho maior** e baixe a foto de perfil de uma conta pública do Pinterest, em vez da bolinha pequena da tela. Grátis e sem login."
+  },
+  "intro": [
+    "Cole o link do perfil (`pinterest.com/usuario/`) e o PintDownload mostra a foto de perfil no maior tamanho que o Pinterest publica. Funciona com perfis de pessoas e de marcas, desde que sejam públicos.",
+    "Aqui é para **baixar a foto de um perfil específico**. Se você procura ideias de foto de perfil (aesthetic, anime, casal…), isso é busca no próprio Pinterest; depois de achar o pin, você baixa a imagem no [[pinterest-image-downloader|baixador de imagem]]."
+  ],
+  "features": [
+    {
+      "h": "Maior que a bolinha",
+      "p": "Pegamos a maior versão pública da foto, e não a miniatura redonda do app."
+    },
+    {
+      "h": "Só o link do perfil",
+      "p": "Funciona com `pinterest.com/usuario/`, com `br.pinterest.com` e com links copiados do app. Sem login."
+    },
+    {
+      "h": "Sem marca nossa",
+      "p": "A foto vem limpa, sem marca d’água do PintDownload. Use com respeito e dê crédito se for publicar."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Qual tamanho vem",
+      "paragraphs": [
+        "O maior tamanho que o Pinterest publica para aquela foto. Se a pessoa enviou uma foto pequena, ela continua pequena: não aumentamos a imagem nem inventamos pixels. O arquivo costuma ser JPG."
+      ]
+    },
+    {
+      "h2": "Foto de perfil ou perfil inteiro",
+      "paragraphs": [
+        "Esta página salva **só a foto** do perfil. Para baixar os pins públicos da conta em um ZIP, use o [[pinterest-profile-downloader|baixador de perfil]]."
+      ],
+      "list": [
+        "**Foto de perfil**: esta página, uma imagem.",
+        "**Pins do perfil**: baixador de perfil, um ZIP.",
+        "**Uma pasta da conta**: [[pinterest-board-downloader|baixador de pastas]], um ZIP."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como baixar foto de perfil do Pinterest",
+    "intro": "Três passos, grátis e sem cadastro.",
+    "exampleLabel": "Link de perfil do Pinterest",
+    "items": [
+      {
+        "title": "Copie o link do perfil",
+        "body": "Abra o perfil público. Toque em **Compartilhar** › **Copiar link**, ou copie `pinterest.com/usuario/` na barra do navegador."
+      },
+      {
+        "title": "Cole no PintDownload",
+        "body": "Cole o link do perfil na caixa acima e toque em **Ver foto de perfil**."
+      },
+      {
+        "title": "Salve a foto",
+        "body": "Confira a prévia e baixe o JPG no celular ou no PC. Se for publicar, dê crédito."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre foto de perfil",
+    "items": [
+      {
+        "q": "Como ver a foto de perfil do Pinterest em tamanho grande?",
+        "a": "Cole o link do perfil aqui. A prévia já mostra a maior versão pública da foto; toque para abrir em outra aba ou para baixar."
+      },
+      {
+        "q": "Qual resolução vem?",
+        "a": "A maior que o Pinterest publica para aquela foto. Depende do que a pessoa enviou: foto pequena continua pequena. Nunca aumentamos a imagem."
+      },
+      {
+        "q": "É o mesmo que baixar o perfil inteiro?",
+        "a": "Não. Aqui vem só a foto de perfil. Os pins da conta, em ZIP, ficam no [[pinterest-profile-downloader|baixador de perfil]]."
+      },
+      {
+        "q": "Funciona sem conta e sem app?",
+        "a": "Sim. Você só precisa do link de um perfil público. Nada de login, extensão ou app, no celular ou no computador."
+      },
+      {
+        "q": "Qual o formato do arquivo?",
+        "a": "Geralmente JPG, às vezes PNG, conforme o arquivo que o Pinterest guarda. Sem marca d’água do PintDownload."
+      },
+      {
+        "q": "Funciona com perfil privado?",
+        "a": "Não. Só fotos de perfis públicos. Contas privadas ou que pedem login não funcionam."
+      },
+      {
+        "q": "Procuro ideias de foto de perfil. É aqui?",
+        "a": "Não exatamente. Esta página baixa a foto de um perfil que você já conhece. Para ideias, pesquise no Pinterest (“foto de perfil aesthetic”, por exemplo) e baixe a imagem escolhida no [[pinterest-image-downloader|baixador de imagem]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outras ferramentas para o Pinterest"
+  },
+  "schema": {
+    "appName": "Baixador de foto de perfil do Pinterest — PintDownload",
+    "howToName": "Como baixar foto de perfil do Pinterest",
+    "howToDescription": "Cole o link de um perfil público do Pinterest e salve a foto de perfil no maior tamanho que o Pinterest publica."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. Pinterest’s own screen says “foto do perfil”; copy uses the searched form “foto de perfil”. No pixel size promised (extractor asks for 1200x; small uploads stay small).",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device. Edits: card badge “PFP” › “Avatar” (glossary: no PFP/DP outside asides)."
+  }
+}

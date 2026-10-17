@@ -1,0 +1,117 @@
+{
+  "pageId": "how-to-download-pinterest-video-in-gallery",
+  "locale": "es",
+  "meta": {
+    "title": "Cómo guardar videos de Pinterest en la galería del celular",
+    "description": "Guarda videos de Pinterest directo en la galería de Android o en Fotos del iPhone. Paso a paso, gratis y sin apps, y qué hacer si el video no aparece."
+  },
+  "keywords": {
+    "primary": "cómo guardar videos de Pinterest en la galería",
+    "secondary": [
+      "descargar video de Pinterest en galería",
+      "cómo guardar un video de Pinterest en mi galería",
+      "cómo guardar videos de Pinterest en la galería del iPhone",
+      "guardar video de Pinterest en galería online",
+      "dónde se guardan los videos de Pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Guardar en la galería",
+    "short": "Galería",
+    "card": {
+      "title": "Guardar en la galería",
+      "blurb": "Que el video de Pinterest aparezca en Fotos o en la Galería del celular.",
+      "badge": "Galería"
+    }
+  },
+  "hero": {
+    "h1": "Guardar videos de Pinterest en la galería",
+    "lede": "Del enlace del pin a la **Galería** de Android o a **Fotos** del iPhone, sin instalar apps."
+  },
+  "intro": [
+    "Descargar el video es solo la mitad: en el iPhone el MP4 queda primero en **Archivos**, y en Android en la carpeta **Descargas**. Esta guía explica cómo llevarlo a la galería y qué hacer si no aparece.",
+    "Para los pasos de descarga en cada celular, mira también [[download-pinterest-videos-iphone-android|descargar videos de Pinterest en el celular]]."
+  ],
+  "sections": [
+    {
+      "h2": "Por qué el video no aparece en la galería",
+      "paragraphs": [
+        "El navegador guarda las descargas como archivos, no como fotos. En el iPhone, Safari los deja en **Archivos** › **Descargas**, y la app Fotos no los muestra hasta que los guardas ahí. En Android, Chrome los deja en **Descargas**; la Galería o Google Fotos suelen mostrarlos en un álbum de descargas, a veces unos segundos después."
+      ]
+    },
+    {
+      "h2": "iPhone: de Archivos a Fotos",
+      "paragraphs": [
+        "Cuando termine la descarga, abre la app **Archivos** y entra en **Descargas**. Toca el video, luego el botón **Compartir** y elige **Guardar video**. Desde ese momento está en Fotos (el carrete), en Recientes."
+      ],
+      "list": [
+        "Si no ves **Guardar video**, desliza el menú hacia arriba: aparece debajo de las apps.",
+        "Si el archivo no se abre, revisa que la descarga haya terminado en Safari (el icono de la flecha azul)."
+      ]
+    },
+    {
+      "h2": "Android: de Descargas a la Galería",
+      "paragraphs": [
+        "Abre la app **Archivos** (o **Mis archivos** en Samsung) y entra en **Descargas**: ahí está el MP4. La Galería y Google Fotos lo muestran en el álbum **Download** o **Descargas**. Si no aparece, mantén el archivo presionado y muévelo a la carpeta **DCIM** o **Movies**."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo guardar un video de Pinterest en la galería",
+    "intro": "Tres pasos en Safari del iPhone o en Chrome de Android.",
+    "exampleLabel": "Enlace de un pin de video",
+    "items": [
+      {
+        "title": "Copia el enlace del video",
+        "body": "En la app de Pinterest, abre el video, toca **Compartir** y luego **Copiar enlace**."
+      },
+      {
+        "title": "Pégalo en PintDownload",
+        "body": "Abre pintdownload.app en Safari o Chrome, pega el enlace en el recuadro de arriba y toca **Descargar video**."
+      },
+      {
+        "title": "Llévalo a la galería",
+        "body": "En el iPhone: **Archivos** › **Descargas** › **Compartir** › **Guardar video**. En Android aparece en la Galería, en el álbum de descargas."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre la galería",
+    "items": [
+      {
+        "q": "¿Por qué el video descargado no aparece en mi galería?",
+        "a": "Porque el navegador lo guarda como archivo. En el iPhone está en **Archivos** › **Descargas** hasta que lo guardas en Fotos; en Android está en **Descargas** y la Galería lo muestra en el álbum de descargas."
+      },
+      {
+        "q": "¿Cómo paso el video de Archivos a Fotos en el iPhone?",
+        "a": "Abre **Archivos** › **Descargas**, toca el video, toca **Compartir** y elige **Guardar video**. Queda en Fotos, en Recientes."
+      },
+      {
+        "q": "¿Dónde se guardan los videos descargados en Android?",
+        "a": "En la carpeta **Descargas**. La Galería o Google Fotos los muestran en el álbum **Download** o **Descargas**; si no, muévelos a **DCIM** con la app Archivos."
+      },
+      {
+        "q": "¿Puedo guardarlo en la galería sin instalar una app?",
+        "a": "Sí. Todo se hace en el navegador y con las apps que ya trae tu celular: Archivos y Fotos en el iPhone, Archivos y Galería en Android."
+      },
+      {
+        "q": "¿Es gratis? ¿Hace falta cuenta?",
+        "a": "Es gratis y no pide cuenta, ni en PintDownload ni en Pinterest: solo el link del video. Funciona con videos públicos."
+      }
+    ]
+  },
+  "related": {
+    "title": "Más guías y herramientas"
+  },
+  "schema": {
+    "appName": "Guardar videos de Pinterest en la galería — PintDownload",
+    "howToName": "Cómo guardar un video de Pinterest en la galería del celular",
+    "howToDescription": "Descarga el MP4 de un pin de video y guárdalo en la Galería de Android o en Fotos del iPhone."
+  },
+  "datePublished": "2026-10-15",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "infra-routing (es pilot); revisado por writer-es (agent), 2026-10-16. Verificar: Guardar video en iOS es-MX (es-ES: Guardar vídeo)",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: sin cambios de texto"
+  }
+}

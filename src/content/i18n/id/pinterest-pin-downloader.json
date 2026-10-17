@@ -1,0 +1,155 @@
+{
+  "pageId": "pinterest-pin-downloader",
+  "locale": "id",
+  "meta": {
+    "title": "Download Pin Pinterest — Foto, Video & GIF dari Link",
+    "description": "Download satu Pin Pinterest lewat link pinterest.com/pin atau pin.it: foto HD, video MP4, GIF, dan semua slide Pin carousel. Gratis, tanpa login."
+  },
+  "keywords": {
+    "primary": "download pin pinterest",
+    "secondary": [
+      "pinterest pin downloader",
+      "download link pinterest",
+      "download pin pinterest hd",
+      "download foto pinterest lewat link",
+      "pin.it download"
+    ]
+  },
+  "nav": {
+    "label": "Download Pin Pinterest",
+    "short": "Pin",
+    "card": {
+      "title": "Download Pin",
+      "blurb": "Satu link Pin: foto, video, GIF, atau semua slide Pin carousel.",
+      "badge": "Pin"
+    }
+  },
+  "hero": {
+    "h1": "Download Pin Pinterest",
+    "lede": "Satu link Pin, semua isinya: **foto, video, GIF**, atau tiap slide **Pin carousel**. PintDownload mengenali jenisnya sendiri, gratis dan tanpa login."
+  },
+  "intro": [
+    "Punya link Pin tapi tidak tahu isinya foto, video, atau GIF? Tidak perlu tahu. Halaman ini membaca tautannya, mengenali jenis Pin-nya, dan memberikan file yang sesuai: **JPG** untuk foto, **MP4** untuk video, **GIF** yang bergerak, dan **semua slide** kalau Pin-nya carousel.",
+    "Menerima alamat browser (`pinterest.com/pin/…` atau `id.pinterest.com/pin/…`) dan link pendek `pin.it` dari aplikasi, termasuk yang dikirim lewat WhatsApp. Hanya Pin publik."
+  ],
+  "features": [
+    {
+      "h": "Satu link, Pin apa pun",
+      "p": "Foto, video, GIF, atau carousel: hasilnya menyesuaikan isi Pin. Untuk video, semua kualitas yang tersedia ikut ditampilkan."
+    },
+    {
+      "h": "Pin carousel lengkap",
+      "p": "Pin dengan beberapa foto? Semua slide-nya kamu dapat, bukan cuma sampulnya. Simpan satu per satu atau sekaligus dalam ZIP."
+    },
+    {
+      "h": "Hingga 5 Pin sekaligus",
+      "p": "Pilih **Hingga 5** di atas kotak, lalu tempel satu tautan per baris. File-nya diunduh bergantian."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Apa itu link Pin?",
+      "paragraphs": [
+        "Link Pin adalah alamat satu Pin tertentu, bukan alamat papan atau profil. Bentuknya ada tiga, dan semuanya bisa dipakai di sini:"
+      ],
+      "list": [
+        "`pinterest.com/pin/` diikuti angka, biasanya dari browser di laptop.",
+        "`id.pinterest.com/pin/…`, alamat Pinterest versi Indonesia. Isinya sama.",
+        "`pin.it/…`, link pendek yang tersalin dari **Bagikan** › **Salin tautan** di aplikasi."
+      ]
+    },
+    {
+      "h2": "Yang kamu dapat untuk tiap jenis Pin",
+      "paragraphs": [
+        "Kamu tidak perlu memilih alat sebelum menempel. Tergantung isinya, PintDownload menampilkan:"
+      ],
+      "list": [
+        "**Pin foto**: gambar dalam ukuran terbesar yang dipublikasikan Pinterest, lebar hingga 1200 px. Selengkapnya di [[pinterest-image-downloader|download foto Pinterest]].",
+        "**Pin video**: MP4, biasanya 720p dan 1080p jika ada, plus MP3 yang dibuat di browser kalau videonya bersuara. Lihat [[pinterest-video-downloader|download video Pinterest]].",
+        "**GIF**: file .gif yang bergerak, bukan foto diam dari frame pertama. Lihat [[pinterest-gif-downloader|download GIF Pinterest]].",
+        "**Pin carousel** dan **Story Pin (Pin Ide)**: tiap slide atau halaman, satu per satu atau dalam ZIP."
+      ]
+    },
+    {
+      "h2": "Kalau Pin-nya tidak bisa diunduh",
+      "paragraphs": [
+        "Ada tiga penyebab umum: Pin-nya ada di papan privat atau akun privat, Pin-nya sudah dihapus, atau yang tersalin bukan alamat Pin (misalnya alamat hasil pencarian atau sajian beranda).",
+        "Cara cek cepat: buka tautannya di jendela samaran (incognito). Kalau Pinterest meminta login untuk melihatnya, Pin itu tidak publik, dan PintDownload juga tidak bisa membacanya."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara download Pin Pinterest",
+    "intro": "Empat langkah, di HP atau laptop. Berlaku untuk semua Pin publik.",
+    "exampleLabel": "Contoh link Pin",
+    "items": [
+      {
+        "title": "Buka Pin-nya",
+        "body": "Buka Pin yang kamu mau di aplikasi atau di pinterest.com: tampilan satu Pin, bukan grid papan."
+      },
+      {
+        "title": "Salin tautannya",
+        "body": "Ketuk **Bagikan** › **Salin tautan**, atau salin alamat browser yang berisi `/pin/`."
+      },
+      {
+        "title": "Tempel di kotak atas",
+        "body": "Tempel tautannya, lalu ketuk **Unduh Pin**. PintDownload mengenali apakah isinya foto, video, GIF, atau carousel."
+      },
+      {
+        "title": "Simpan file-nya",
+        "body": "Unduh foto, MP4, atau GIF-nya. Untuk Pin carousel, simpan tiap slide atau semuanya sekaligus dalam ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab download Pin Pinterest",
+    "items": [
+      {
+        "q": "Apa itu link Pin, dan di mana menyalinnya?",
+        "a": "Link Pin adalah alamat satu Pin: `pinterest.com/pin/` plus angka, atau link pendek `pin.it/…`. Di aplikasi, salin lewat **Bagikan** › **Salin tautan**; di laptop, dari bilah alamat browser."
+      },
+      {
+        "q": "Bagaimana cara copy link Pinterest di aplikasi?",
+        "a": "Buka Pin-nya, ketuk ikon **Bagikan**, lalu pilih **Salin tautan**. Tautannya masuk ke papan klip dan siap ditempel di kotak atas."
+      },
+      {
+        "q": "Bisa download semua foto di Pin carousel sekaligus?",
+        "a": "Bisa. Kalau Pin-nya berisi beberapa foto, semua slide ditampilkan, dan kamu bisa menyimpannya terpisah atau sekaligus dalam satu ZIP."
+      },
+      {
+        "q": "Apakah bisa untuk Pin video dan GIF?",
+        "a": "Bisa. Pin video diunduh sebagai MP4, GIF sebagai file .gif yang bergerak. Yang tidak bisa hanya Pin privat dan Pin yang sudah dihapus."
+      },
+      {
+        "q": "Apakah link pin.it bisa dipakai?",
+        "a": "Bisa. Itu link yang disalin aplikasi Pinterest, dan PintDownload membukanya untuk menemukan Pin-nya. Kalau link `pin.it` ternyata mengarah ke situs di luar Pinterest, tidak ada yang bisa diunduh."
+      },
+      {
+        "q": "Kenapa link papan atau profil tidak bisa di halaman ini?",
+        "a": "Halaman ini khusus untuk satu Pin, tapi tempel saja: formulirnya memberi tahu dan beralih sendiri ke download papan atau profil, yang menyimpan banyak Pin dalam ZIP. Untuk papan, ada juga [[pinterest-board-downloader|download board Pinterest]]."
+      },
+      {
+        "q": "Apakah gratis dan tanpa login?",
+        "a": "Ya. Tidak perlu akun Pinterest, tidak perlu daftar di PintDownload, dan tidak ada yang perlu dipasang."
+      },
+      {
+        "q": "Bisa download beberapa Pin sekaligus?",
+        "a": "Bisa, hingga 5: pilih **Hingga 5**, lalu tempel satu tautan per baris. Untuk koleksi yang lebih besar, simpan papannya sekaligus sebagai ZIP."
+      }
+    ]
+  },
+  "related": {
+    "title": "Alat lain sesuai jenis link"
+  },
+  "schema": {
+    "appName": "Download Pin Pinterest — PintDownload",
+    "howToName": "Cara download Pin Pinterest dari link",
+    "howToDescription": "Tempel tautan Pin publik dan simpan foto, video, GIF, atau semua slide Pin carousel-nya."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

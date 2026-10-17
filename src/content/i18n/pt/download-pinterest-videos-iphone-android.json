@@ -1,0 +1,129 @@
+{
+  "pageId": "download-pinterest-videos-iphone-android",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar Vídeo do Pinterest no iPhone e Android, sem App",
+    "description": "Baixe vídeos do Pinterest no iPhone (Safari) ou no Android (Chrome) sem instalar app: copie o link do pin, cole aqui e salve o MP4 em Fotos ou na Galeria."
+  },
+  "keywords": {
+    "primary": "baixar vídeo do pinterest no iphone e android",
+    "secondary": [
+      "como baixar vídeo do pinterest no celular ios",
+      "como baixar vídeo do pinterest no celular android",
+      "como salvar vídeo do pinterest no iphone",
+      "baixar vídeo pinterest ios",
+      "app para baixar vídeo do pinterest"
+    ]
+  },
+  "nav": {
+    "label": "iPhone e Android",
+    "short": "Celular",
+    "card": {
+      "title": "Vídeo no iPhone e Android",
+      "blurb": "Passo a passo no Safari do iPhone e no Chrome do Android.",
+      "badge": "Celular"
+    }
+  },
+  "hero": {
+    "h1": "Vídeo do Pinterest no iPhone e Android",
+    "lede": "O passo a passo **toque por toque** no **Safari do iPhone** e no **Chrome do Android**, sem baixar app da App Store ou da Play Store."
+  },
+  "intro": [
+    "Este guia é para quem está com o celular na mão. Cada sistema tem o seu caminho: o iPhone baixa para o app Arquivos e depois você salva no Fotos; o Android baixa direto para a pasta Download. Se o vídeo já baixou e só não aparece, veja [[how-to-download-pinterest-video-in-gallery|salvar vídeo do Pinterest na galeria]].",
+    "Funciona também no iPad e em tablets Android, do mesmo jeito."
+  ],
+  "sections": [
+    {
+      "h2": "iPhone e iPad (Safari)",
+      "paragraphs": [
+        "Use o Safari, que já vem no iPhone:"
+      ],
+      "list": [
+        "No app do Pinterest, abra o vídeo e toque em **Compartilhar** › **Copiar link**.",
+        "Abra o Safari, entre em pintdownload.app, toque na caixa e escolha **Colar**. Depois toque em **Baixar vídeo**.",
+        "Toque em **Baixar MP4**. Se o Safari perguntar, confirme em **Baixar**.",
+        "Toque no ícone de downloads (a seta num círculo, ao lado do endereço), abra o vídeo e use **Compartilhar** › **Salvar Vídeo**. Ele vai para o app Fotos."
+      ]
+    },
+    {
+      "h2": "Android (Chrome)",
+      "paragraphs": [
+        "No Android, o Chrome faz quase tudo sozinho:"
+      ],
+      "list": [
+        "No app do Pinterest, toque em **Compartilhar** › **Copiar link** no vídeo.",
+        "Abra o Chrome, entre em pintdownload.app, toque e segure na caixa, escolha **Colar** e toque em **Baixar vídeo**.",
+        "Toque em **Baixar MP4**. Quando terminar, o Chrome mostra um aviso com o botão **Abrir**.",
+        "O vídeo fica na pasta **Download** e aparece na Galeria ou no Google Fotos. No Samsung Internet, o caminho é o mesmo."
+      ]
+    },
+    {
+      "h2": "Precisa de app da App Store ou da Play Store?",
+      "paragraphs": [
+        "Não. Muitos apps de “baixar vídeo do Pinterest” vêm cheios de anúncios e pedem acesso a fotos, contatos ou notificações. Pelo navegador você não instala nada e não dá permissão nenhuma."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como baixar vídeo do Pinterest no celular",
+    "intro": "Três passos no Safari do iPhone ou no Chrome do Android.",
+    "exampleLabel": "Link do app do Pinterest",
+    "items": [
+      {
+        "title": "Copie o link no app do Pinterest",
+        "body": "Abra o vídeo no app oficial e toque em **Compartilhar** › **Copiar link**."
+      },
+      {
+        "title": "Cole no Safari ou no Chrome",
+        "body": "Entre em pintdownload.app, cole o link na caixa acima e toque em **Baixar vídeo**."
+      },
+      {
+        "title": "Salve em Fotos ou na Galeria",
+        "body": "Toque em **Baixar MP4**. No iPhone, passe de **Arquivos** para o Fotos com **Salvar Vídeo**; no Android, ele aparece na Galeria."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre iPhone e Android",
+    "items": [
+      {
+        "q": "Como salvar o vídeo no app Fotos do iPhone?",
+        "a": "O Safari baixa para **Arquivos** › **Downloads**. Abra o vídeo ali, toque em **Compartilhar** e escolha **Salvar Vídeo**: ele aparece no Fotos, em **Recentes**."
+      },
+      {
+        "q": "No Android, onde fica o vídeo?",
+        "a": "Na pasta **Download**. A Galeria do Samsung e o Google Fotos mostram essa pasta; se não aparecer, procure no app **Arquivos** ou **Meus Arquivos**."
+      },
+      {
+        "q": "Vale a pena instalar um app para baixar vídeo do Pinterest?",
+        "a": "Não precisa. O navegador resolve, sem anúncio em tela cheia e sem pedir acesso às suas fotos. Se instalar algum app, desconfie de permissões que não têm a ver com baixar vídeo."
+      },
+      {
+        "q": "Por que o app do Pinterest não mostra “Baixar” em alguns vídeos?",
+        "a": "Porque o criador pode desativar o download daquele pin. Pelo link o vídeo público abre aqui, mas respeite a escolha dele: guarde só para assistir."
+      },
+      {
+        "q": "Funciona no iPad e no tablet?",
+        "a": "Funciona. No iPad, os passos são os do iPhone, no Safari; nos tablets Android, os do Chrome."
+      },
+      {
+        "q": "Dá para baixar pelo navegador do celular, sem o app do Pinterest?",
+        "a": "Dá. Abra o pin no navegador, copie o endereço com `/pin/` e cole aqui. O app só facilita copiar o link."
+      }
+    ]
+  },
+  "related": {
+    "title": "Mais guias e ferramentas"
+  },
+  "schema": {
+    "appName": "Vídeo do Pinterest no iPhone e Android — PintDownload",
+    "howToName": "Como baixar vídeo do Pinterest no iPhone e no Android",
+    "howToDescription": "Copie o link no app do Pinterest, cole no PintDownload pelo Safari ou pelo Chrome e salve o MP4 em Fotos ou na Galeria."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. Device flow only; destination details live in the gallery guide (research cannibalisation note). To verify: Safari pt-BR download prompt button “Baixar”, Chrome Android “Abrir” snackbar, iOS “Salvar Vídeo”.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device."
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "pageId": "pinterest-audio-downloader",
+  "locale": "es",
+  "meta": {
+    "title": "Pinterest a MP3: extrae el audio de un video de Pinterest",
+    "description": "Convierte un video de Pinterest a MP3: pega el enlace de un pin de video público y guarda la música o la voz. Gratis; usa el audio solo con permiso."
+  },
+  "keywords": {
+    "primary": "Pinterest a MP3",
+    "secondary": [
+      "convertir video de Pinterest a MP3",
+      "descargador de Pinterest MP3",
+      "descargar canción de Pinterest",
+      "descargar sonido de Pinterest",
+      "convertidor Pinterest MP3",
+      "Pinterest MP3 downloader"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest a MP3",
+    "short": "MP3",
+    "card": {
+      "title": "Pinterest a MP3",
+      "blurb": "El sonido de un pin de video en MP3, creado en tu navegador.",
+      "badge": "MP3"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest a MP3",
+    "lede": "Saca la **música o la voz** de un pin de video y guárdala como **MP3**. Tu navegador crea el archivo con el sonido del video; el MP3 no se sube a ningún lado."
+  },
+  "intro": [
+    "Pinterest no publica el audio por separado: el sonido viene dentro del video. Por eso PintDownload trae el MP4 público del pin y tu navegador lo convierte en un **MP3 de 192 kbps**. Es un MP3 de verdad, no un video con la extensión cambiada.",
+    "Pega el link (`/pin/` o `pin.it`) de un video con sonido. Los GIF y las fotos no tienen audio."
+  ],
+  "features": [
+    {
+      "h": "Un MP3 de verdad",
+      "p": "Codificado a 192 kbps a partir del sonido del video, listo para cualquier reproductor."
+    },
+    {
+      "h": "Recorta el fragmento",
+      "p": "¿Solo quieres el coro o unos segundos? Marca el inicio y el fin, escúchalo y guarda ese trozo en MP3 o WAV."
+    },
+    {
+      "h": "Sin cuenta ni app",
+      "p": "Funciona en el navegador del celular o de la PC. No pide registro ni iniciar sesión en Pinterest."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Cómo se crea el MP3",
+      "paragraphs": [
+        "Tu navegador descarga el video a través de PintDownload, lee su pista de sonido y la codifica en MP3 a 192 kbps con LAME, el codificador MP3 de código abierto (licencia LGPL). Todo pasa en tu celular o tu computadora: el MP3 se arma en la memoria del navegador y nunca se sube.",
+        "Si prefieres no convertir nada, el MP4 del video también conserva el sonido."
+      ]
+    },
+    {
+      "h2": "Guarda solo audio que tengas derecho a usar",
+      "paragraphs": [
+        "Muchos videos de Pinterest llevan música con derechos de autor. Guardar el audio para escucharlo tú o como referencia es una cosa; subirlo a tus videos, venderlo o publicarlo como tuyo es otra. Si reutilizas el sonido, da crédito a quien creó el video y respeta la licencia de la música."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo pasar un video de Pinterest a MP3",
+    "intro": "Solo pines de video con sonido. Comprueba antes que el video se oye en Pinterest.",
+    "exampleLabel": "Enlace de un pin de video",
+    "items": [
+      {
+        "title": "Busca un video con sonido",
+        "body": "Ábrelo en Pinterest y activa el sonido. Si no se oye nada, no habrá MP3."
+      },
+      {
+        "title": "Copia y pega el enlace",
+        "body": "**Compartir** › **Copiar enlace** en la app; pégalo arriba y toca **Descargar video**."
+      },
+      {
+        "title": "Guarda el MP3",
+        "body": "En el resultado, busca **Audio, 192 kbps** en **También en este pin** y toca **Descargar**. Tu navegador crea el MP3 en unos segundos y lo guarda en **Descargas**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre Pinterest a MP3",
+    "items": [
+      {
+        "q": "¿Cómo saco el audio de un video de Pinterest?",
+        "a": "Pega el enlace del pin de video arriba y, en el resultado, descarga el MP3. Tu navegador lo crea a partir del sonido del video, sin subir nada."
+      },
+      {
+        "q": "¿Es legal descargar música de Pinterest?",
+        "a": "Depende de lo que hagas con ella. Para escucharla tú o como referencia es lo habitual; para publicarla o usarla en anuncios necesitas permiso o una licencia. Que el pin sea público no te da derechos sobre la música."
+      },
+      {
+        "q": "¿Por qué mi pin no tiene MP3?",
+        "a": "Porque no tiene sonido: es un video mudo, un GIF o una foto. También puede pasar que tu navegador sea muy antiguo y no pueda leer el audio; prueba con Chrome, Edge, Safari o Firefox actualizados."
+      },
+      {
+        "q": "¿Puedo saber el nombre de la canción?",
+        "a": "No, PintDownload no reconoce canciones; solo guarda el sonido del video. Para saber cuál es, usa Shazam mientras suena el video o la búsqueda por sonido de Google."
+      },
+      {
+        "q": "¿Puedo guardar solo una parte del audio?",
+        "a": "Sí. Toca **Recortar sonido**, marca el inicio y el fin, escucha el fragmento y guárdalo en MP3 o en WAV."
+      },
+      {
+        "q": "¿Funciona sin cuenta de Pinterest?",
+        "a": "Sí, con cualquier pin de video público. Los videos de tableros secretos o de cuentas privadas no se pueden descargar."
+      }
+    ]
+  },
+  "related": {
+    "title": "Más formatos de Pinterest"
+  },
+  "schema": {
+    "appName": "Pinterest a MP3 — PintDownload",
+    "howToName": "Cómo convertir un video de Pinterest a MP3",
+    "howToDescription": "Pega un pin de video público con sonido y guarda su audio como un MP3 creado en tu navegador."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: paso 3 con las etiquetas reales del comprobante (Audio, 192 kbps › Descargar); H2 menos calcado; Shazam"
+  }
+}

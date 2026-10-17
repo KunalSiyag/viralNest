@@ -1,0 +1,131 @@
+{
+  "pageId": "pinterest-gif-downloader",
+  "locale": "es",
+  "meta": {
+    "title": "Descargar GIF de Pinterest con animación, gratis y sin app",
+    "description": "Guarda GIF de Pinterest sin perder el movimiento: pega el enlace del pin y descarga el archivo GIF animado, no una foto fija. Gratis, en celular o PC."
+  },
+  "keywords": {
+    "primary": "descargar GIF de Pinterest",
+    "secondary": [
+      "guardar GIF de Pinterest en galería",
+      "descargar GIF animado de Pinterest",
+      "cómo descargar GIF de Pinterest en el celular",
+      "descargar GIF de Pinterest con URL",
+      "descargar imagen de Pinterest con movimiento",
+      "Pinterest GIF downloader"
+    ]
+  },
+  "nav": {
+    "label": "Descargar GIF",
+    "short": "GIF",
+    "card": {
+      "title": "Descargar GIF",
+      "blurb": "GIF animados con todo su movimiento, no la foto congelada del primer cuadro.",
+      "badge": "GIF"
+    }
+  },
+  "hero": {
+    "h1": "Descargar GIF de Pinterest",
+    "lede": "Guarda las **imágenes con movimiento** de Pinterest como **GIF animado**, con su bucle completo y no como una foto congelada."
+  },
+  "intro": [
+    "Muchos pines que se mueven son GIF, y al guardarlos con otras herramientas terminas con una foto fija del primer cuadro. PintDownload busca el archivo **.gif** público del pin, el que se repite en bucle, y te lo entrega tal cual.",
+    "Sirve con el link del pin, sea `/pin/` o `pin.it`. Solo pines públicos; no hace falta cuenta de Pinterest."
+  ],
+  "features": [
+    {
+      "h": "El GIF, no una foto",
+      "p": "Buscamos el archivo animado del pin. Nunca te damos un JPG del primer cuadro como si fuera el GIF."
+    },
+    {
+      "h": "¿GIF o video? Te avisamos",
+      "p": "Si el pin en realidad es un video, el recuadro te lleva al descargador de videos para que obtengas el MP4."
+    },
+    {
+      "h": "En el celular o la PC",
+      "p": "Funciona en el navegador del iPhone, de Android, de Mac o de Windows, sin instalar ninguna app."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Por qué tu GIF se guardó como foto fija",
+      "paragraphs": [
+        "Suele pasar por una de dos cosas. O la herramienta que usaste guardó la imagen de portada en lugar del archivo animado, o el GIF está bien y es la galería la que solo muestra el primer cuadro en la vista previa. Ábrelo antes de darlo por perdido:"
+      ],
+      "list": [
+        "En el **iPhone**, guárdalo en Fotos y tócalo: se mueve al abrirlo, aunque la miniatura parezca quieta.",
+        "En **Android** depende de la app. Google Fotos y la mayoría de las galerías reproducen GIF; si la tuya no, ábrelo con Google Fotos o con el navegador.",
+        "En la **PC**, si el visor de fotos no lo anima, arrástralo a una pestaña del navegador."
+      ]
+    },
+    {
+      "h2": "GIF o video: cómo distinguirlos",
+      "paragraphs": [
+        "Un GIF de Pinterest se repite solo, no tiene sonido y no muestra barra de tiempo. Si el pin suena o tiene una barra para adelantar, es un **pin de video**: descárgalo en MP4 con [[pinterest-video-downloader|descargar videos de Pinterest]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo guardar un GIF de Pinterest",
+    "intro": "Tres pasos, sin cuenta y sin app. Solo GIF públicos.",
+    "exampleLabel": "Enlace de un pin GIF",
+    "items": [
+      {
+        "title": "Abre el pin GIF",
+        "body": "Comprueba que se repite solo y sin sonido. Si tiene audio o barra de tiempo, es un video."
+      },
+      {
+        "title": "Copia el enlace",
+        "body": "En la app: **Compartir** › **Copiar enlace**. En la computadora: la dirección del navegador con `/pin/`."
+      },
+      {
+        "title": "Pega y guarda el GIF",
+        "body": "Pega el enlace arriba, toca **Descargar GIF** y guarda el archivo .gif. Ábrelo para verlo moverse."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre GIF",
+    "items": [
+      {
+        "q": "¿Cómo descargo un GIF de Pinterest?",
+        "a": "Copia el enlace del pin, pégalo en el recuadro de arriba y toca **Descargar GIF**. Se guarda el archivo .gif con su animación, listo para compartir."
+      },
+      {
+        "q": "¿Por qué mi GIF se descargó como foto fija?",
+        "a": "O se guardó la portada en vez del archivo animado, o tu galería solo muestra el primer cuadro en la vista previa. Abre el archivo: si se mueve, está bien. Si no, vuelve a descargarlo desde esta página."
+      },
+      {
+        "q": "¿El GIF se mueve en la galería del celular?",
+        "a": "Sí, cuando lo abres. En el iPhone, Fotos lo reproduce al tocarlo. En Android depende de la app de galería; Google Fotos los reproduce."
+      },
+      {
+        "q": "¿Puedo pasar un GIF a MP4, o un video a GIF?",
+        "a": "No: PintDownload no convierte entre GIF y video. Cada pin se descarga en el formato en que Pinterest lo publica: GIF si es un GIF y MP4 si es un video ([[pinterest-to-mp4|Pinterest a MP4]]). Para convertirlo, usa un editor después."
+      },
+      {
+        "q": "¿Cómo guardo un GIF de Pinterest en la PC?",
+        "a": "Copia la dirección del pin en el navegador, pégala aquí y descarga. El archivo queda en la carpeta **Descargas**."
+      },
+      {
+        "q": "¿Necesito cuenta de Pinterest?",
+        "a": "No. Funciona con cualquier GIF público. Los de tableros secretos o cuentas privadas no se pueden descargar."
+      }
+    ]
+  },
+  "related": {
+    "title": "Si no es un GIF, prueba estas"
+  },
+  "schema": {
+    "appName": "Descargador de GIF de Pinterest — PintDownload",
+    "howToName": "Cómo descargar un GIF animado de Pinterest",
+    "howToDescription": "Copia el enlace de un pin GIF público, pégalo en PintDownload y guarda el archivo animado."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16. Verificar: GIF en Fotos del iPhone y en galerías de Android (Samsung, Xiaomi)",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: \"no convierte formatos\" contradecía el MP3 creado en el navegador; ahora \"no convierte entre GIF y video\""
+  }
+}

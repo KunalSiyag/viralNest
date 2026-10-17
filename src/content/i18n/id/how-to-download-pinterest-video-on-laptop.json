@@ -1,0 +1,135 @@
+{
+  "pageId": "how-to-download-pinterest-video-on-laptop",
+  "locale": "id",
+  "meta": {
+    "title": "Cara Download Video Pinterest di Laptop & PC (MP4 Gratis)",
+    "description": "Cara download video Pinterest di laptop Windows, MacBook, atau PC lewat browser: salin link, tempel, simpan MP4 hingga 1080p jika tersedia. Tanpa software."
+  },
+  "keywords": {
+    "primary": "cara download video pinterest di laptop",
+    "secondary": [
+      "download video pinterest di laptop",
+      "cara download video pinterest di pc",
+      "download video pinterest di pc",
+      "cara menyimpan video pinterest di laptop",
+      "cara download foto pinterest di laptop"
+    ]
+  },
+  "nav": {
+    "label": "Download di Laptop",
+    "short": "Laptop",
+    "card": {
+      "title": "Video Pinterest di Laptop",
+      "blurb": "Windows, MacBook, atau Chromebook, dengan shortcut keyboard dan bookmarklet.",
+      "badge": "Laptop"
+    }
+  },
+  "hero": {
+    "h1": "Cara Download Video Pinterest di Laptop",
+    "lede": "Lewat browser saja, di **Windows, MacBook, atau Chromebook**, tanpa install software."
+  },
+  "intro": [
+    "Di laptop atau PC caranya malah lebih cepat: salin alamat Pin, tempel dengan **Ctrl + V**, lalu simpan MP4 ke folder **Unduhan**. Tidak ada program yang perlu dipasang dan tidak ada ekstensi yang perlu ditambahkan.",
+    "Mau ditonton di HP? Setelah videonya terbaca, tombol **Kirim ke HP** menampilkan kode QR untuk membukanya di ponsel."
+  ],
+  "sections": [
+    {
+      "h2": "Menyalin tautan Pin di laptop",
+      "paragraphs": [
+        "Buka Pin di pinterest.com dan salin alamat di bilah alamat browser: harus ada `/pin/` dan deretan angka. Bisa juga lewat tombol **Bagikan** di Pin, lalu **Salin tautan**.",
+        "Pakai keyboard lebih cepat lagi: **Ctrl + L** lalu **Ctrl + C** di Windows dan Chromebook, atau **Cmd + L** dan **Cmd + C** di Mac."
+      ]
+    },
+    {
+      "h2": "File-nya tersimpan di mana?",
+      "paragraphs": [
+        "Di folder **Unduhan** (Downloads) milik akun pengguna kamu, kecuali browser diatur ke folder lain. Di Chrome dan Edge, **Ctrl + J** membuka daftar unduhan; di Safari untuk Mac, **Cmd + Option + L**."
+      ]
+    },
+    {
+      "h2": "Kenapa video Pinterest tidak bisa didownload di laptop",
+      "paragraphs": [
+        "Di laptop, kesalahan paling umum adalah menyalin alamat yang salah:"
+      ],
+      "list": [
+        "**Yang tersalin alamat papan atau beranda.** Klik videonya sampai Pin-nya terbuka, lalu salin alamat itu.",
+        "**Pin-nya bukan video, atau privat.** Tempel di [[pinterest-pin-downloader|download Pin Pinterest]] untuk tahu jenis Pin-nya.",
+        "**Browsernya versi lama.** Perbarui Chrome, Edge, Firefox, atau Safari, lalu coba lagi."
+      ]
+    },
+    {
+      "h2": "Download foto Pinterest di laptop",
+      "paragraphs": [
+        "Caranya sama untuk foto: salin alamat Pin foto, tempel di [[pinterest-image-downloader|download foto Pinterest]], lalu simpan JPG-nya. Kamu mendapat ukuran terbesar yang dipublikasikan Pinterest, bukan hasil screenshot layar."
+      ]
+    },
+    {
+      "h2": "Shortcut satu klik",
+      "paragraphs": [
+        "Sering mengunduh dari Pinterest? Tambahkan bookmarklet PintDownload ke bilah bookmark: klik sekali di Pin mana pun, dan PintDownload terbuka dengan tautannya sudah terisi. Tombolnya ada di bawah, dan penjelasannya di [[pinterest-video-downloader-chrome|download video Pinterest di Chrome]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara download video Pinterest di laptop",
+    "intro": "Tiga langkah di Windows, Mac, atau Chromebook.",
+    "exampleLabel": "Link Pin video",
+    "items": [
+      {
+        "title": "Salin alamat Pin-nya",
+        "body": "Buka videonya di pinterest.com dan salin URL di bilah alamat (yang berisi `/pin/`)."
+      },
+      {
+        "title": "Tempel di PintDownload",
+        "body": "Buka pintdownload.app di tab lain, tempel dengan **Ctrl + V** (atau **Cmd + V**), lalu tekan **Enter**."
+      },
+      {
+        "title": "Simpan MP4-nya",
+        "body": "Klik **Unduh MP4** di struk hasilnya. File-nya masuk ke folder **Unduhan**, siap diputar di pemutar video apa pun."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab download di laptop",
+    "items": [
+      {
+        "q": "Bagaimana cara download video Pinterest di laptop Windows atau MacBook?",
+        "a": "Salin alamat Pin di browser, tempel di PintDownload, lalu unduh MP4-nya. Bisa di Chrome, Edge, Firefox, dan Safari, tanpa install apa pun."
+      },
+      {
+        "q": "Kalau Pin-nya punya 1080p, bisa diunduh di laptop?",
+        "a": "Bisa. Pilihan kualitasnya sama di HP dan laptop: kebanyakan video ada dalam 720p, dan kalau Pin-nya juga punya 1080p, kamu tinggal memilihnya sebelum mengunduh."
+      },
+      {
+        "q": "Bisa di Chromebook?",
+        "a": "Bisa. PintDownload adalah situs web, jadi jalan di ChromeOS seperti di Windows atau Mac. MP4-nya tersimpan di **Unduhan**, di dalam app File."
+      },
+      {
+        "q": "Di mana file-nya tersimpan?",
+        "a": "Di folder **Unduhan** (Downloads), kecuali browser kamu diatur menyimpan ke tempat lain. Tekan **Ctrl + J** di Chrome atau Edge untuk melihat daftar unduhan."
+      },
+      {
+        "q": "Bagaimana cara download foto Pinterest di laptop?",
+        "a": "Sama seperti video: salin alamat Pin foto, tempel di [[pinterest-image-downloader|download foto Pinterest]], lalu simpan. Hasilnya ukuran terbesar yang dipublikasikan Pinterest, jauh lebih tajam daripada screenshot."
+      },
+      {
+        "q": "Ada shortcut satu klik untuk Chrome?",
+        "a": "Ada, yaitu bookmarklet PintDownload. Seret ke bilah bookmark, lalu klik saat kamu membuka Pin: PintDownload terbuka dengan tautannya sudah terisi. Ini bukan ekstensi, jadi tidak meminta izin apa pun."
+      }
+    ]
+  },
+  "related": {
+    "title": "Panduan lain"
+  },
+  "schema": {
+    "appName": "Download Video Pinterest di Laptop — PintDownload",
+    "howToName": "Cara download video Pinterest di laptop atau PC",
+    "howToDescription": "Salin alamat Pin video di browser laptop, tempel di PintDownload, lalu simpan MP4 ke folder Unduhan."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

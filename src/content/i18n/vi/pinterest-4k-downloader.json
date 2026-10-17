@@ -1,0 +1,143 @@
+{
+  "pageId": "pinterest-4k-downloader",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải video Pinterest 4K được không? Chất lượng thật",
+    "description": "Tải video Pinterest 4K? Pinterest hiếm khi có 4K: thường 720p, có khi 1080p; ảnh rộng khoảng 1.200 px. Ở đây bạn lấy bản nét nhất có thật, không ghi 4K giả."
+  },
+  "keywords": {
+    "primary": "tải video pinterest 4k",
+    "secondary": [
+      "tải ảnh pinterest 4k",
+      "tải video pinterest full hd",
+      "tải video pinterest 1080p",
+      "tải hình nền pinterest 4k",
+      "lưu video pinterest 4k"
+    ]
+  },
+  "nav": {
+    "label": "Video Pinterest 4K?",
+    "short": "4K?",
+    "card": {
+      "title": "Video Pinterest 4K được không?",
+      "blurb": "Pinterest thật sự có độ phân giải nào, và cách lấy bản nét nhất.",
+      "badge": "HD"
+    }
+  },
+  "hero": {
+    "h1": "Tải video Pinterest 4K được không?",
+    "lede": "Pinterest thật sự lưu video và ảnh ở **độ phân giải nào**, và cách lấy **bản nét nhất có sẵn**: không phóng to, không gắn nhãn 4K cho video 720p."
+  },
+  "intro": [
+    "“4K” xuất hiện trong gần như mọi lượt tìm cách tải video, ảnh hay hình nền Pinterest. Câu trả lời thật: Pinterest gần như không đăng 4K. Trang này nói rõ bạn thực sự lấy được gì, và cách kiểm tra trước khi tải."
+  ],
+  "features": [
+    {
+      "h": "Video (MP4)",
+      "p": "Thường 720p, 1080p khi Ghim có bản này. Phần kết quả liệt kê đủ các bản có sẵn để bạn chọn."
+    },
+    {
+      "h": "Ảnh (JPG, PNG, WebP)",
+      "p": "Rộng tối đa khoảng 1.200 px: bản lớn nhất Pinterest công khai. File người đăng tải lên không được công khai."
+    },
+    {
+      "h": "Âm thanh (MP3)",
+      "p": "192 kbps, do trình duyệt của bạn tạo từ tiếng của video. Không có gì bị tải lên."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Trả lời ngắn: Pinterest gần như không có 4K",
+      "paragraphs": [
+        "Pinterest mã hóa lại mọi video được tải lên. File video công khai **thường là 720p, 1080p khi Ghim có bản này**, còn ảnh chỉ rộng tối đa khoảng **1.200 px**. Một “trình tải Pinterest 4K” chỉ có thể kéo giãn những file đó, nên chúng tôi không làm. PintDownload lưu file lớn nhất mà Ghim thật sự có và ghi rõ kích thước của nó."
+      ]
+    },
+    {
+      "h2": "Vì sao nhiều web vẫn ghi “4K”",
+      "paragraphs": [
+        "Chữ “4K” trên nút bấm không làm video nét hơn. Phóng một video 720p lên 3840×2160 chỉ thêm điểm ảnh chứ không thêm chi tiết: phần mềm đoán phần còn thiếu, và kết quả thường nhòe hoặc trông giả. File nặng hơn, nhưng không nét hơn."
+      ]
+    },
+    {
+      "h2": "Hình nền Pinterest 4K",
+      "paragraphs": [
+        "Ảnh hình nền trên Pinterest cũng chỉ có bản công khai rộng khoảng 1.200 px, dù tiêu đề Ghim ghi “4K”. Trên điện thoại, cỡ này thường vẫn đẹp; kéo giãn làm hình nền máy tính 4K thì sẽ mờ. Muốn ảnh 4K thật, hãy mở link nguồn của Ghim hoặc tìm trang của tác giả."
+      ]
+    },
+    {
+      "h2": "Khi bạn cần nhiều hơn những gì Pinterest có",
+      "paragraphs": [
+        "Để in ấn, chiếu màn hình lớn hay làm cho khách hàng, bản trên Pinterest chỉ là ảnh tham khảo, không phải file chuẩn để làm việc. Hãy liên hệ tác giả để xin file và mua giấy phép nếu dùng cho mục đích thương mại. Còn để lưu thường ngày, [[pinterest-video-downloader|tải video Pinterest]] và [[pinterest-image-downloader|tải ảnh Pinterest]] cho bạn đúng những bản tốt nhất có sẵn."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách lấy bản nét nhất của một Ghim",
+    "intro": "Chỉ Ghim công khai. Phần kết quả ghi độ phân giải thật trước khi bạn lưu.",
+    "exampleLabel": "Link Ghim mẫu",
+    "items": [
+      {
+        "title": "Sao chép link Ghim",
+        "body": "Trong app: **biểu tượng chia sẻ** › **Sao chép liên kết**. Trên web: địa chỉ có `/pin/`. Link `pin.it` cũng dùng được."
+      },
+      {
+        "title": "Dán vào ô phía trên",
+        "body": "PintDownload đọc các file Pinterest đăng cho Ghim công khai đó."
+      },
+      {
+        "title": "Chọn chất lượng cao nhất",
+        "body": "Ghim video hiện 720p, và 1080p khi Ghim có bản này. Phần kết quả ghi độ phân giải thật bên cạnh mỗi file."
+      },
+      {
+        "title": "Lưu file",
+        "body": "Tải file MP4 hoặc ảnh đúng như bản Pinterest đăng. Nhớ ghi nguồn tác giả nếu bạn chia sẻ lại."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về 4K và chất lượng video Pinterest",
+    "items": [
+      {
+        "q": "Pinterest có video 4K không?",
+        "a": "Hầu như không. Pinterest mã hóa lại video, và file công khai thường là 720p, 1080p khi Ghim có bản này. Web nào ghi “4K” cho một Ghim chỉ có thể phóng to nó: thêm điểm ảnh nhưng không thêm chi tiết."
+      },
+      {
+        "q": "Vì sao nhiều web tải video vẫn ghi 4K?",
+        "a": "Vì nhãn “4K” dễ thu hút người tìm kiếm. Phóng to không thể tạo lại chi tiết vốn không có: file nặng lên, độ nét giữ nguyên hoặc kém đi."
+      },
+      {
+        "q": "Làm sao lấy bản nét nhất, 1080p khi có?",
+        "a": "Dán link Ghim ở [[pinterest-video-downloader|tải video Pinterest]]. Nếu Ghim có cả 720p và 1080p, phần kết quả liệt kê cả hai và bạn chọn bản 1080p."
+      },
+      {
+        "q": "Hình nền Pinterest 4K có tải đúng 4K không?",
+        "a": "Không. Ảnh công khai trên Pinterest rộng tối đa khoảng 1.200 px, kể cả khi Ghim ghi “4K”. Bạn nhận đúng bản lớn nhất đó; muốn ảnh lớn hơn, hãy tìm nơi ảnh được đăng đầu tiên hoặc liên hệ tác giả."
+      },
+      {
+        "q": "Video, ảnh Pinterest bị mờ phải làm sao?",
+        "a": "Xem độ phân giải trong phần kết quả và chọn bản lớn nhất. Nếu Ghim chỉ có 720p thì không công cụ nào lấy được bản nét hơn. Video mờ sau khi gửi qua Zalo hay Messenger là do app nén lại; gửi dạng file để giữ độ nét."
+      },
+      {
+        "q": "PintDownload có nén file hay chèn logo không?",
+        "a": "Không. Bạn nhận đúng file Pinterest phát, không thêm logo. File duy nhất được tạo ra phía bạn là MP3: trình duyệt của bạn tạo nó từ tiếng của video, ở 192 kbps."
+      },
+      {
+        "q": "PintDownload có trực thuộc Pinterest không?",
+        "a": "Không. Đây là công cụ độc lập: không thuộc Pinterest Inc., không được Pinterest bảo trợ, và chỉ làm việc với Ghim công khai."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Video Pinterest chất lượng thật — PintDownload",
+    "howToName": "Cách lấy bản nét nhất của một Ghim Pinterest",
+    "howToDescription": "Dán link một Ghim công khai và lưu file lớn nhất mà Pinterest đăng cho Ghim đó, không phóng to."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Honest 4K explainer per user decision 2 (2026-10-15); written from facts (720p, 1080p when listed; ~1200 px images; no upscaling), not translated from English."
+  }
+}

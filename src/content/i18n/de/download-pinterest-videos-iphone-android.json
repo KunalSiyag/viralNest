@@ -1,0 +1,113 @@
+{
+  "pageId": "download-pinterest-videos-iphone-android",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Video aufs iPhone & Android-Handy herunterladen",
+    "description": "Pinterest-Videos auf dem iPhone in der Fotos-App oder auf Android in der Galerie speichern: Link kopieren, in Safari oder Chrome einfügen – ohne App."
+  },
+  "keywords": {
+    "primary": "pinterest video herunterladen iphone",
+    "secondary": [
+      "pinterest video auf iphone speichern",
+      "pinterest video herunterladen android",
+      "pinterest video herunterladen samsung handy",
+      "pinterest video speichern handy android",
+      "pinterest videos herunterladen app"
+    ]
+  },
+  "nav": {
+    "label": "Auf iPhone & Android laden",
+    "short": "Handy",
+    "card": {
+      "title": "Pinterest-Video aufs Handy",
+      "blurb": "Safari auf dem iPhone, Chrome oder Samsung Internet auf Android, ohne App.",
+      "badge": "Handy"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Video auf iPhone & Android herunterladen",
+    "lede": "In Safari oder Chrome, **ohne App** aus dem Store."
+  },
+  "intro": [
+    "Eine Downloader-App aus dem App Store oder Play Store brauchst du nicht. Der Browser, der schon auf deinem Handy ist, reicht: Link aus der Pinterest-App kopieren, bei PintDownload einfügen, MP4 speichern. Unterschiedlich ist nur, wo das Video danach liegt.",
+    "Wie du es von dort in die Galerie holst, erklärt die Anleitung [[how-to-download-pinterest-video-in-gallery|Pinterest-Video in der Galerie speichern]]."
+  ],
+  "sections": [
+    {
+      "h2": "iPhone und iPad mit Safari",
+      "paragraphs": [
+        "Öffne pintdownload.app in Safari, füge den Link ein, tippe auf **Video herunterladen** und im Ergebnis auf **MP4 herunterladen**. Fragt Safari nach, ob du die Datei laden willst, bestätige mit **Laden**. Das MP4 liegt danach in **Dateien** › **Downloads**; dort tippst du es an, dann auf **Teilen** › **Video sichern**, und es ist in der Fotos-App. Auf dem iPad sind die Schritte gleich."
+      ]
+    },
+    {
+      "h2": "Android mit Chrome",
+      "paragraphs": [
+        "In Chrome tippst du nach dem Einfügen auf **Video herunterladen** und dann auf **MP4 herunterladen**; die Datei landet im Ordner **Download**. Google Fotos und die Galerie zeigen sie meist im Album **Download**. Chrome meldet den fertigen Download unten am Bildschirm; tippst du darauf, öffnet sich das Video."
+      ]
+    },
+    {
+      "h2": "Samsung Internet und Samsung-Tablets",
+      "paragraphs": [
+        "Im Browser Samsung Internet funktioniert es genauso. Die Datei findest du in **Eigene Dateien** › **Downloads**, und die Samsung Galerie zeigt sie im Album **Download**. Auf Samsung-Tablets mit Android gilt dasselbe."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest-Video aufs Handy laden",
+    "intro": "Gilt für iPhone, iPad und Android-Handys.",
+    "exampleLabel": "Kurzlink aus der App",
+    "items": [
+      {
+        "title": "In der App den Link kopieren",
+        "body": "Video-Pin öffnen, auf **Teilen** tippen und **Link kopieren** wählen."
+      },
+      {
+        "title": "Im Browser einfügen",
+        "body": "Safari auf dem iPhone oder Chrome auf Android öffnen, pintdownload.app aufrufen, Link einfügen, **Video herunterladen** und dann **MP4 herunterladen** tippen."
+      },
+      {
+        "title": "In Fotos oder Galerie sichern",
+        "body": "iPhone: in **Dateien** das Video öffnen, auf **Teilen** tippen und **Video sichern** wählen. Android: Das Video steht in der Galerie im Album **Download**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zu iPhone und Android",
+    "items": [
+      {
+        "q": "Wie kommt das Video auf dem iPhone in die Fotos-App?",
+        "a": "Safari speichert es erst in der App **Dateien** unter **Downloads**. Dort öffnest du das Video, tippst auf **Teilen** und wählst **Video sichern**."
+      },
+      {
+        "q": "Landet das Video auf Android in der Galerie oder in Google Fotos?",
+        "a": "In beiden, meist im Album **Download**. Erscheint es nicht gleich, warte ein paar Sekunden oder schau in der Dateien-App unter **Downloads** nach."
+      },
+      {
+        "q": "Warum brauche ich keine App aus dem App Store oder Play Store?",
+        "a": "Weil der Download im Browser passiert. Das spart Speicherplatz, und du gibst keiner fremden App Zugriff auf dein Handy."
+      },
+      {
+        "q": "Klappt das in Samsung Internet und auf dem Samsung-Tablet?",
+        "a": "Ja. Die Datei liegt danach in **Eigene Dateien** › **Downloads**, und die Samsung Galerie zeigt sie im Album **Download**."
+      },
+      {
+        "q": "Gilt das auch fürs iPad?",
+        "a": "Ja, mit Safari sind die Schritte dieselben wie auf dem iPhone: herunterladen, in **Dateien** öffnen, **Video sichern**."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Anleitungen und Tools"
+  },
+  "schema": {
+    "appName": "Pinterest-Video aufs Handy herunterladen – PintDownload",
+    "howToName": "Pinterest-Video auf iPhone und Android herunterladen",
+    "howToDescription": "Den Link aus der Pinterest-App kopieren, in Safari oder Chrome bei PintDownload einfügen und das MP4 in Fotos oder der Galerie speichern."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). For the native reviewer: verify the iOS Safari download prompt button (Laden), Dateien › Downloads, Video sichern, Samsung Eigene Dateien and the Chrome download notice.",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

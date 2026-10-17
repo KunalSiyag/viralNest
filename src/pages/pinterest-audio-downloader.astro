@@ -24,22 +24,26 @@ const steps = [
   },
   {
     title: 'Download audio',
-    body: 'Choose the MP3 / audio option when listed, or download the MP4 and keep the soundtrack. Credit the creator if you reuse the sound.',
+    body: 'Pick the MP3 line. Your browser makes a 192 kbps MP3 from the video\'s sound; nothing is uploaded. Credit the creator if you reuse the sound.',
   },
 ];
 
 const faqs = [
   {
     q: 'How do I download audio from a Pinterest video?',
-    a: 'Paste a public video pin URL into this Pinterest audio downloader. When a soundtrack is available, save the MP3 (or download the MP4 and keep the audio track).',
+    a: 'Paste a public video pin URL into this Pinterest audio downloader and extract it. The MP3 line then makes an MP3 (192 kbps) from the video\'s sound in your browser. You can also keep the MP4, which has the sound too.',
   },
   {
     q: 'Is a Pinterest audio downloader legal?',
     a: 'Only extract audio you have rights to use (your own pin, licensed music, or personal reference). Public access is not a commercial license.',
   },
   {
-    q: 'Why is there no MP3 on my pin?',
-    a: 'The pin may be silent, a GIF, or a still. Confirm playback with sound on Pinterest, then retry. Some pins only expose video, not a separate audio file.',
+    q: 'Why can\'t I get an MP3 from my pin?',
+    a: 'The pin may be silent, a GIF, or a still photo, so there is no sound to save. Pinterest has no separate audio file: the MP3 is made from the video, so a very old browser that cannot read the video\'s sound cannot make it either. Try a current Chrome, Edge, Safari or Firefox.',
+  },
+  {
+    q: 'How is the MP3 made?',
+    a: 'Your browser fetches the video through PintDownload, decodes its sound and encodes a 192 kbps MP3 with LAME, the open-source MP3 encoder (LGPL, lame.sourceforge.io). The MP3 is made on your device and never uploaded.',
   },
   {
     q: 'Does this work without a Pinterest account?',
@@ -56,7 +60,7 @@ const jsonLd = [
   }),
   howToSchema({
     name: 'How to extract audio from a Pinterest video',
-    description: 'Paste a public video pin and save the soundtrack when Pinterest exposes it.',
+    description: 'Paste a public video pin and save its sound as an MP3 made in your browser.',
     steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
   }),
   faqSchema(faqs),
@@ -64,9 +68,9 @@ const jsonLd = [
 ---
 
 <BaseLayout field="tangerine" title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
-  <TicketHero title={"Pinterest Audio Downloader"} lede={"Extract music or voice from a public Pinterest video pin — MP3 when the stream allows it."} variant="video" />
+  <TicketHero title={"Pinterest Audio Downloader"} lede={"Save the music or voice from a public Pinterest video pin as an MP3, made in your browser from the video’s sound."} variant="video" />
 
-  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-left">
+  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-start">
     <HowToSteps
       title="How to extract audio from Pinterest"
       intro="Public video pins with sound only. Credit creators if you reuse the track."

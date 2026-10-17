@@ -1,0 +1,135 @@
+{
+  "pageId": "pinterest-pin-downloader",
+  "locale": "it",
+  "meta": {
+    "title": "Scaricare un Pin da Pinterest — immagine, video o GIF",
+    "description": "Incolla il link di un Pin pubblico e scarica l’immagine, il video MP4, la GIF o tutte le foto di un carosello. Gratis, senza account e senza installare app."
+  },
+  "keywords": {
+    "primary": "scaricare pin da pinterest",
+    "secondary": [
+      "scaricare pin pinterest",
+      "come scaricare un pin da pinterest",
+      "scarica pin da pinterest",
+      "salvare pin da pinterest",
+      "pinterest pin downloader"
+    ]
+  },
+  "nav": {
+    "label": "Scarica un Pin",
+    "short": "Pin",
+    "card": {
+      "title": "Scarica un Pin",
+      "blurb": "Immagine, video, GIF o tutte le slide di un carosello da un solo link.",
+      "badge": "Pin"
+    }
+  },
+  "hero": {
+    "h1": "Scarica un Pin da Pinterest",
+    "lede": "Incolla il link di **un Pin pubblico** e ricevi quello che contiene: immagine, video **MP4**, GIF o **tutte le slide** di un carosello."
+  },
+  "intro": [
+    "Non sai se il Pin è una foto, un video o un carosello? Non importa: incolla il link e PintDownload capisce da solo che cosa contiene, poi ti propone il file giusto. Gratis, senza account e senza app.",
+    "Il link di un Pin ha questo aspetto: `pinterest.it/pin/123…`, `it.pinterest.com/pin/123…` oppure il link breve `pin.it/…` che copia l’app."
+  ],
+  "features": [
+    {
+      "h": "Solo link di Pin",
+      "p": "Pensato per `/pin/…` e `pin.it`. Bacheche e profili hanno uno strumento a parte."
+    },
+    {
+      "h": "Caroselli completi",
+      "p": "I Pin con più immagini restituiscono tutte le slide, non solo la copertina."
+    },
+    {
+      "h": "Il file più grande",
+      "p": "Foto fino a 1200 px di larghezza; video di solito in 720p, in 1080p quando il Pin ce l’ha."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "«Salva» su Pinterest non vuol dire scaricare",
+      "paragraphs": [
+        "Il pulsante rosso **Salva** di Pinterest mette il Pin in una delle tue bacheche: resta su Pinterest e non arriva sul telefono. Per avere il file, cioè l’immagine, il video o la GIF, devi scaricarlo, ed è quello che fa questa pagina. Le due cose non si escludono: puoi salvare il Pin in bacheca e tenerne anche una copia offline."
+      ]
+    },
+    {
+      "h2": "Quando usare questa pagina",
+      "paragraphs": [
+        "Scegli lo strumento in base a quanti Pin ti servono:"
+      ],
+      "list": [
+        "Ti serve **un solo** Pin: una ricetta, un outfit, un video o una GIF. Sei nel posto giusto.",
+        "Il Pin è un **carosello** e vuoi tutte le slide: anche qui, tutte insieme o una per una.",
+        "Vuoi **tutti i Pin di una bacheca**: usa lo strumento per [[pinterest-board-downloader|scaricare una bacheca Pinterest]] in ZIP.",
+        "Sai già che è un video e vuoi scegliere la qualità: vai a [[pinterest-video-downloader|scaricare video da Pinterest]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Come scaricare un Pin, passo per passo",
+    "intro": "Usa questo percorso quando hai il link di un singolo Pin. Per le bacheche intere c’è lo strumento apposito.",
+    "exampleLabel": "Link di un Pin",
+    "items": [
+      {
+        "title": "Apri il Pin",
+        "body": "Nell’app o sul sito, apri proprio il Pin che ti interessa, non la griglia della bacheca."
+      },
+      {
+        "title": "Copia il link del Pin",
+        "body": "Tocca l’**icona di condivisione** › **Copia link**, oppure copia l’indirizzo dal browser quando contiene `/pin/`."
+      },
+      {
+        "title": "Incollalo su PintDownload",
+        "body": "Incolla nel tagliando qui sopra il link, anche quello breve `pin.it`, e tocca **Scarica il Pin**."
+      },
+      {
+        "title": "Scarica i file",
+        "body": "Salva l’immagine o l’MP4. Per un carosello scarica ogni slide, oppure tocca **Scarica ZIP** per averle tutte insieme."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti sui Pin",
+    "items": [
+      {
+        "q": "Che aspetto ha il link di un Pin?",
+        "a": "Porta a un solo Pin e di solito è così: `pinterest.it/pin/123456789/`, `it.pinterest.com/pin/123456789/` oppure il link breve `pin.it/…` dell’app. Il link di una bacheca ha invece due parti dopo il dominio, `nomeutente/nome-bacheca/`, e quello di un profilo solo `nomeutente/`."
+      },
+      {
+        "q": "«Salva» su Pinterest e scaricare sono la stessa cosa?",
+        "a": "No. **Salva** aggiunge il Pin a una tua bacheca su Pinterest. Scaricare significa avere il file sul dispositivo, ed è quello che ottieni qui incollando il link."
+      },
+      {
+        "q": "Posso scaricare tutte le immagini di un carosello?",
+        "a": "Sì. PintDownload legge l’intero carosello e ti dà ogni slide: puoi scaricarle una per una oppure tutte in un unico ZIP."
+      },
+      {
+        "q": "Funziona anche con video e GIF?",
+        "a": "Sì. I Pin video si scaricano in MP4 quando Pinterest pubblica un video scaricabile, le GIF restano animate e le foto si salvano in JPG. Pin privati o eliminati non si possono scaricare."
+      },
+      {
+        "q": "E se incollo il link di una bacheca o di un profilo?",
+        "a": "Il modulo riconosce il tipo di link e passa da solo allo strumento giusto: per una bacheca prepara lo ZIP dei suoi Pin, per un profilo quello dei Pin pubblici dell’account. Per le bacheche c’è anche una pagina dedicata: [[pinterest-board-downloader|scaricare una bacheca Pinterest]]."
+      },
+      {
+        "q": "Lo strumento per i Pin è gratis e senza account?",
+        "a": "Sì. Funziona nel browser, è gratuito e non chiede di registrarti. Basta che il Pin sia pubblico."
+      }
+    ]
+  },
+  "related": {
+    "title": "Bacheca, video o immagine?"
+  },
+  "schema": {
+    "appName": "Pinterest Pin downloader — PintDownload",
+    "howToName": "Come scaricare un Pin da Pinterest",
+    "howToDescription": "Passi per scaricare l’immagine, il video, la GIF o tutte le slide di un singolo Pin pubblico."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-it (agent). Salva (save to board) and Copia link from help.pinterest.com/it.",
+    "nativeReviewer": "review-it (agent), 2026-10-16: read on the live build at 390/1440 for fluency, tu register, glossary (Pin, bacheca, la GIF, tagliando, Galleria/Foto), honesty and English leftovers. Pinterest labels rechecked on help.pinterest.com/it: Scarica immagine, Copia link, Invia; secret boards are now called private (Mantieni la bacheca privata). Device labels (iOS File › Download, Salva video/Salva immagine, Samsung Archivio, Files di Google) are the standard it-IT names, not checked on a phone."
+  }
+}

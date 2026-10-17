@@ -1,0 +1,125 @@
+{
+  "pageId": "pinterest-video-downloader-chrome",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Video-Downloader für Chrome – ohne Erweiterung",
+    "description": "Pinterest-Videos, Bilder und Pinnwände in Chrome laden – per Lesezeichen (Bookmarklet) statt Erweiterung: nichts installieren, ein Klick im offenen Tab."
+  },
+  "keywords": {
+    "primary": "pinterest video downloader chrome",
+    "secondary": [
+      "pinterest downloader chrome",
+      "pinterest erweiterung chrome",
+      "pinterest downloader erweiterung",
+      "pinterest bookmarklet chrome",
+      "pinterest video downloader firefox"
+    ]
+  },
+  "nav": {
+    "label": "Downloader für Chrome",
+    "short": "Chrome",
+    "card": {
+      "title": "Pinterest-Downloader für Chrome",
+      "blurb": "Ein Lesezeichen statt einer Erweiterung: ein Klick im offenen Pinterest-Tab.",
+      "badge": "Chrome"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Downloader für Chrome",
+    "lede": "Ein **Lesezeichen** statt einer Erweiterung: Auf einem Pin oder einer Pinnwand einmal klicken, und PintDownload öffnet sich mit dem Link."
+  },
+  "intro": [
+    "Eine Chrome-Erweiterung von PintDownload gibt es nicht, und du brauchst auch keine. Das Lesezeichen, ein sogenanntes Bookmarklet, liegt in deiner Lesezeichenleiste und schickt den Link des offenen Pinterest-Tabs an PintDownload. Installiert wird nichts.",
+    "Es funktioniert in Chrome, Edge, Brave und Safari, unter Windows, macOS, Linux und auf dem Chromebook. Auf dem Handy fügst du den Link einfach ins Ticket oben ein."
+  ],
+  "features": [
+    {
+      "h": "Keine Berechtigungen",
+      "p": "Kein Zugriff auf deinen Verlauf oder andere Websites. Das Lesezeichen läuft nur, wenn du es anklickst."
+    },
+    {
+      "h": "Ein Klick im Tab",
+      "p": "Auf einem Pin, Video oder einer Pinnwand das Lesezeichen anklicken, und PintDownload öffnet sich mit dem Link."
+    },
+    {
+      "h": "In jedem Desktop-Browser",
+      "p": "Chrome, Edge, Brave, Firefox und Safari kennen Lesezeichen. Nichts aus einem Web Store nötig."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Was das Lesezeichen macht",
+      "paragraphs": [
+        "Klickst du es an, liest es die Adresse des Tabs, prüft, ob es eine Pinterest-Seite ist, und öffnet PintDownload in einem neuen Tab mit genau diesem Link. Mehr nicht. Es läuft nicht im Hintergrund, sieht keine anderen Seiten und braucht keine Updates."
+      ]
+    },
+    {
+      "h2": "Und Chrome auf dem Handy?",
+      "paragraphs": [
+        "Auf Android und dem iPhone lassen sich Lesezeichen mit Code nur umständlich anlegen. Schneller geht es so: In der Pinterest-App **Teilen** › **Link kopieren**, dann pintdownload.app öffnen und den Link einfügen. Mehr dazu in der Anleitung [[download-pinterest-videos-iphone-android|Pinterest-Video auf iPhone & Android herunterladen]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So richtest du das Lesezeichen ein",
+    "intro": "Einmal einrichten, danach reicht ein Klick auf jedem Pin.",
+    "exampleLabel": "Funktioniert auf Seiten wie",
+    "items": [
+      {
+        "title": "Lesezeichenleiste einblenden",
+        "body": "Drück `Strg+Umschalt+B` (Mac: `⌘+Umschalt+B`), damit die Lesezeichenleiste unter der Adresszeile erscheint."
+      },
+      {
+        "title": "Button in die Leiste ziehen",
+        "body": "Zieh den gelben Button weiter unten mit der Maus in die Lesezeichenleiste. Klicken allein reicht nicht. Danach kannst du das Lesezeichen in „PintDownload“ umbenennen."
+      },
+      {
+        "title": "Auf Pinterest anklicken",
+        "body": "Öffne einen Pin oder eine Pinnwand auf pinterest.de und klick auf das Lesezeichen. PintDownload öffnet sich in einem neuen Tab mit dem Link."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zum Lesezeichen",
+    "items": [
+      {
+        "q": "Gibt es PintDownload als Chrome-Erweiterung?",
+        "a": "Nein, mit Absicht. Statt einer Erweiterung aus dem Chrome Web Store gibt es ein Lesezeichen (Bookmarklet), das du in die Lesezeichenleiste ziehst. Es erfüllt denselben Zweck: ein Klick auf dem Pin, und PintDownload öffnet sich mit dem Link."
+      },
+      {
+        "q": "Warum ist ein Lesezeichen sicherer als eine Erweiterung?",
+        "a": "Viele Erweiterungen verlangen das Recht, alle Daten auf allen Websites zu lesen, und laufen ständig mit. Das Lesezeichen hat keine Berechtigungen und tut nur etwas, wenn du es anklickst."
+      },
+      {
+        "q": "Wie lege ich das Lesezeichen an?",
+        "a": "Lesezeichenleiste mit `Strg+Umschalt+B` einblenden (Mac: `⌘+Umschalt+B`) und den gelben Button auf dieser Seite hineinziehen. Klicken statt Ziehen legt kein Lesezeichen an."
+      },
+      {
+        "q": "Funktioniert es auch in Firefox, Edge und Safari?",
+        "a": "Ja. In Edge und Brave wie in Chrome, in Firefox ziehst du es in die Lesezeichen-Symbolleiste, in Safari in die Favoritenleiste."
+      },
+      {
+        "q": "Klappt das unter Windows und macOS?",
+        "a": "Ja, unter Windows 11 und 10, macOS, Linux und ChromeOS. Entscheidend ist nur, dass dein Browser eine Lesezeichenleiste hat."
+      },
+      {
+        "q": "Und auf dem Handy?",
+        "a": "Dort ist der Weg über den Link schneller: in der Pinterest-App kopieren und auf pintdownload.app einfügen. Das Lesezeichen ist für den Computer gedacht."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Tools für den Computer"
+  },
+  "schema": {
+    "appName": "Pinterest-Downloader für Chrome – PintDownload",
+    "howToName": "Pinterest-Downloader als Lesezeichen in Chrome einrichten",
+    "howToDescription": "Lesezeichenleiste einblenden, den PintDownload-Button hineinziehen und auf einem Pin anklicken."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). Honest angle: no extension exists (the English twin overclaims); never target pinterest chrome alone (nail designs).",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

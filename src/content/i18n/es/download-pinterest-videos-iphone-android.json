@@ -1,0 +1,137 @@
+{
+  "pageId": "download-pinterest-videos-iphone-android",
+  "locale": "es",
+  "meta": {
+    "title": "Descargar videos de Pinterest en el celular (iPhone y Android)",
+    "description": "Descarga videos de Pinterest en tu iPhone o Android desde Safari o Chrome, sin instalar apps, y guárdalos en Fotos o en la Galería. Gratis y en MP4."
+  },
+  "keywords": {
+    "primary": "cómo descargar videos de Pinterest en el celular",
+    "secondary": [
+      "cómo descargar videos de Pinterest en el celular sin aplicaciones",
+      "cómo descargar videos de Pinterest en iPhone",
+      "descargar videos de Pinterest en Android",
+      "app para descargar videos de Pinterest en iPhone",
+      "descargar videos de Pinterest en el móvil",
+      "cómo bajar videos de Pinterest en Android"
+    ]
+  },
+  "nav": {
+    "label": "Descargar en el celular",
+    "short": "Celular",
+    "card": {
+      "title": "Videos en el celular",
+      "blurb": "iPhone con Safari y Android con Chrome: del enlace al MP4 en tu galería.",
+      "badge": "Celular"
+    }
+  },
+  "hero": {
+    "h1": "Descargar videos de Pinterest en el celular",
+    "lede": "Paso a paso para **iPhone** y **Android**, desde el navegador del celular (o móvil) y sin instalar apps de la App Store ni de Google Play."
+  },
+  "intro": [
+    "En el celular el proceso tiene dos partes: descargar el MP4 con PintDownload y llevarlo a donde ves tus videos. Abajo están los pasos de cada sistema, con los nombres de los botones que vas a encontrar.",
+    "Si el video ya está descargado pero no lo encuentras, ve directo a [[how-to-download-pinterest-video-in-gallery|guardar videos de Pinterest en la galería]]."
+  ],
+  "sections": [
+    {
+      "h2": "En el iPhone, con Safari",
+      "paragraphs": [
+        "Safari guarda las descargas en la app **Archivos**, no en Fotos, así que hay un paso más que en Android:"
+      ],
+      "list": [
+        "En la app de Pinterest, abre el video y toca **Compartir** › **Copiar enlace**.",
+        "Abre pintdownload.app en **Safari**, pega el enlace y toca **Descargar video**.",
+        "Toca el botón de descarga del MP4 y, si Safari pregunta, confirma con **Descargar**.",
+        "Toca la flecha de descargas de Safari (o abre **Archivos** › **Descargas**) y luego el video.",
+        "Toca **Compartir** y elige **Guardar video**. Desde ahora está en Fotos."
+      ]
+    },
+    {
+      "h2": "En Android, con Chrome",
+      "paragraphs": [
+        "En Android es más corto: Chrome guarda el video en **Descargas** y la galería lo encuentra sola."
+      ],
+      "list": [
+        "En la app de Pinterest, abre el video, toca **Compartir** y después **Copiar enlace**.",
+        "Abre pintdownload.app en **Chrome**, pega el enlace y toca **Descargar video**.",
+        "Toca el botón de descarga del MP4. Chrome te avisa cuando termina.",
+        "Abre **Google Fotos** o la **Galería**: el video está en el álbum de descargas. En un Samsung también lo encuentras en **Mis archivos** › **Descargas**."
+      ]
+    },
+    {
+      "h2": "Samsung, Xiaomi, Motorola y otros Android",
+      "paragraphs": [
+        "Los pasos son los mismos en cualquier marca; lo que cambia es dónde ves el video. Samsung y Xiaomi traen su propia **Galería**, y Motorola usa **Google Fotos**. Si navegas con Samsung Internet en lugar de Chrome, también funciona."
+      ]
+    },
+    {
+      "h2": "Pinterest Lite, tablets y iPad",
+      "paragraphs": [
+        "Con Pinterest Lite el método es el mismo, siempre que copies el enlace del pin desde su opción de compartir. En el iPad sigue los pasos del iPhone con Safari, y en una tablet Android, los de Chrome."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar un video de Pinterest en el celular",
+    "intro": "El resumen para cualquier celular. Arriba están los pasos detallados de iPhone y Android.",
+    "exampleLabel": "Enlace que copia la app",
+    "items": [
+      {
+        "title": "Copia el enlace en la app",
+        "body": "Abre el video y toca **Compartir** › **Copiar enlace**."
+      },
+      {
+        "title": "Pégalo en el navegador",
+        "body": "Abre pintdownload.app en Safari o Chrome, pega el enlace y toca **Descargar video**."
+      },
+      {
+        "title": "Guárdalo en tu galería",
+        "body": "En el iPhone, desde **Archivos** con **Compartir** › **Guardar video**. En Android ya está en la Galería o en Google Fotos."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre el celular",
+    "items": [
+      {
+        "q": "¿Cómo guardo un video de Pinterest en el iPhone?",
+        "a": "Descárgalo desde Safari en pintdownload.app. Después abre **Archivos** › **Descargas**, toca el video, luego **Compartir** y **Guardar video**. Así queda en Fotos."
+      },
+      {
+        "q": "¿Cómo lo guardo en la Galería o en Google Fotos de Android?",
+        "a": "No tienes que hacer nada más: Chrome lo guarda en **Descargas** y la Galería o Google Fotos lo muestran en el álbum de descargas. Si no lo ves enseguida, cierra la galería y vuelve a abrirla."
+      },
+      {
+        "q": "¿Necesito una app de la App Store o de Google Play?",
+        "a": "No. El navegador del celular es suficiente, y no ocupas espacio ni das permisos a otra app solo para descargar videos."
+      },
+      {
+        "q": "¿Funciona en Samsung Galaxy, Xiaomi y Motorola?",
+        "a": "Sí, en cualquier Android con un navegador actual: Chrome, Samsung Internet, Firefox o el que traiga tu celular."
+      },
+      {
+        "q": "¿Funciona con Pinterest Lite?",
+        "a": "Sí, si puedes copiar el enlace del pin desde la opción de compartir. PintDownload solo necesita ese link."
+      },
+      {
+        "q": "¿Funciona en tablet o iPad?",
+        "a": "Sí. En el iPad usa Safari y sigue los pasos del iPhone; en una tablet Android, los de Chrome."
+      }
+    ]
+  },
+  "related": {
+    "title": "Más guías para guardar videos"
+  },
+  "schema": {
+    "appName": "Descargar videos de Pinterest en el celular — PintDownload",
+    "howToName": "Cómo descargar videos de Pinterest en iPhone y Android",
+    "howToDescription": "Descarga el MP4 de un pin de video desde Safari o Chrome y guárdalo en Fotos o en la Galería del celular."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16. Verificar en el celular: aviso de Safari (Descargar), Guardar video en iOS es-MX, Mis archivos en Samsung, opción de compartir en Pinterest Lite",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: sin cambios de texto"
+  }
+}

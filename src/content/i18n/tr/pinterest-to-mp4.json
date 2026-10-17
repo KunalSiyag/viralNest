@@ -1,0 +1,125 @@
+{
+  "pageId": "pinterest-to-mp4",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest MP4 Dönüştürücü — Pin Linkini MP4'e Çevir",
+    "description": "Pinterest video linkini MP4 dosyasına dönüştürün. Herkese açık Pin linkini yapıştırın, her telefonda ve PC'de oynayan MP4'ü indirin; üyelik ve filigran yok."
+  },
+  "keywords": {
+    "primary": "pinterest mp4 dönüştürücü",
+    "secondary": [
+      "pinterest video dönüştürücü mp4",
+      "pinterest to mp4",
+      "pinterest mp4 video indir",
+      "pinterest link to mp4",
+      "pinterest video mp4"
+    ]
+  },
+  "nav": {
+    "label": "MP4 Dönüştürücü",
+    "short": "MP4",
+    "card": {
+      "title": "MP4 Dönüştürücü",
+      "blurb": "Pin linkini her cihazda oynayan bir MP4 dosyasına çevirin.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest MP4 Dönüştürücü",
+    "lede": "Bir video Pininin **linkini**, her telefonda, PC’de ve düzenleyicide oynayan bir **MP4 dosyasına** çevirin; video sesliyse ses de içinde."
+  },
+  "intro": [
+    "Pinterest’te bir video izlerken tarayıcınız onu kaydedilebilir tek bir dosya olarak değil, parça parça gelen bir akış (HLS) olarak alır. Pinterest bu videoların bir **MP4** sürümünü de barındırır; PintDownload onu linkten bulur ve indirmenize sunar.",
+    "Bu yüzden buradaki “dönüştürme” hiçbir şeyi yeniden sıkıştırmaz: MP4, Pinterest’in yayınladığı dosyadır ve kalitesi de odur. [[pinterest-video-downloader|Video indiricinin]] verdiği dosyanın aynısıdır; bu sayfa işin format tarafını anlatır."
+  ],
+  "features": [
+    {
+      "h": "Her yerde açılan MP4",
+      "p": "iPhone Fotoğraflar, Android Galeri, VLC, Windows, Mac, CapCut: MP4 hepsinin kabul ettiği formattır."
+    },
+    {
+      "h": "Yeniden sıkıştırma yok",
+      "p": "Video, kaliteyi düşüren bir dönüştürücüden geçmez. Dosyayı Pinterest’in yayınladığı gibi alırsınız."
+    },
+    {
+      "h": "Bizden filigran yok",
+      "p": "Logo ya da yazı eklemeyiz. İçerik üreticisinin videoya koyduğu her şey yerinde kalır."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Video neden doğrudan Pinterest’ten kaydedilmiyor?",
+      "paragraphs": [
+        "Web’de Pinterest oynatıcısı videoyu bir `.m3u8` listesinden okuduğu parçalarla birleştirir. Bu yüzden sağ tıklayınca videoyu dosya olarak kaydedemezsiniz ya da oynamayan bir şey kaydedilir. PintDownload, Pinin linkiyle Pinterest’in ayrıca yayınladığı tam MP4’e ulaşır."
+      ]
+    },
+    {
+      "h2": "MP4’ün kalitesi",
+      "paragraphs": [
+        "Pinde ne varsa o: genellikle 720p, Pinterest yayınlıyorsa 1080p. Daha yüksek bir çözünürlük vaat eden dönüştürücüler görüntüyü büyütür, ayrıntı kurtarmaz. Biz bunu yapmayız."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest videosu MP4’e nasıl dönüştürülür",
+    "intro": "Herkese açık video Pinleriyle çalışır. GIF Pinleri GIF olarak kalır.",
+    "exampleLabel": "Uygulamanın kısa linki",
+    "items": [
+      {
+        "title": "Video Pinini açın",
+        "body": "Uygulamada ya da tarayıcıda oynayan Pini açın."
+      },
+      {
+        "title": "Linki kopyalayın",
+        "body": "Paylaş simgesi › **Bağlantıyı kopyala** ya da `/pin/` içeren adres."
+      },
+      {
+        "title": "Yapıştırıp MP4’ü indirin",
+        "body": "Linki yukarıya yapıştırın, **Videoyu indir**’e dokunun ve MP4’ü kaydedin. Birden çok kalite varsa birini seçin."
+      }
+    ]
+  },
+  "faq": {
+    "title": "MP4 dönüştürücü hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Pinterest videosu MP4’e nasıl dönüştürülür?",
+        "a": "Video Pininin linkini kopyalayın, yukarıdaki kutuya yapıştırın ve indirin. Program kurmanız gerekmez: MP4 zaten Pinterest’te vardır, PintDownload onu size ulaştırır."
+      },
+      {
+        "q": "MP4’e dönüştürmek ücretsiz mi?",
+        "a": "Evet, üyelik de gerekmez. Yalnızca herkese açık videolarla çalışır."
+      },
+      {
+        "q": "MP4 dönüştürücü ile video indirici arasındaki fark ne?",
+        "a": "Aynı link aynı MP4’ü verir; ikisi de aynı motoru kullanır. Bu sayfa format tarafını anlatır, [[pinterest-video-downloader|video indirici]] ise kaliteyi, filigranı ve adımları."
+      },
+      {
+        "q": "GIF’i MP4’e çevirebilir miyim?",
+        "a": "Hayır, PintDownload GIF’i videoya çevirmez. Bir GIF Pini [[pinterest-gif-downloader|GIF indiricide]] GIF olarak iner; bu sayfa zaten video olan Pinler içindir."
+      },
+      {
+        "q": "iPhone ve Android’de çalışır mı?",
+        "a": "Evet. Uygulamanın kopyaladığı `pin.it` linkini Safari’ye ya da Chrome’a yapıştırın ve MP4’ü kaydedin. iPhone’da dosya **Dosyalar**’a iner; **Videoyu Kaydet** ile Fotoğraflar’a geçirirsiniz."
+      },
+      {
+        "q": "MP4’te ses var mı?",
+        "a": "Video Pinterest’te sesliyse evet: uygulamada oynayan videonun aynısıdır, sesiyle birlikte. Yalnızca sesi istiyorsanız [[pinterest-audio-downloader|MP3 dönüştürücüyü]] kullanın."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer Pinterest araçları"
+  },
+  "schema": {
+    "appName": "Pinterest MP4 Dönüştürücü — PintDownload",
+    "howToName": "Pinterest video linki MP4’e nasıl dönüştürülür",
+    "howToDescription": "Herkese açık bir video Pininin linkini yapıştırıp Pinterest’in yayınladığı MP4 dosyasını indirme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. “Dönüştürücü” aranan ad (araştırma); metin yeniden kodlama olmadığını açıkça söylüyor.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edit: “format dönüştürmez” → “GIF’i videoya çevirmez” (contradicted the converter page)."
+  }
+}

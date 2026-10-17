@@ -98,7 +98,7 @@ FIXES = {
         ('description', 'ขนาดเต็มตามที่ผู้โพสต์อัปโหลดไว้', 'ขนาดใหญ่สุดที่ Pinterest เปิดให้โหลด', 'honesty: "full size as the poster uploaded it" is false (1200px public copy)'),
     ],
     ('tr', 'pinterest-4k-downloader'): [
-        ('title', None, "Pinterest'te 4K Video Var mı? Gerçek Kaliteyi MP4 İndir", 'honesty: old title/H1 promised 4K; the extractor serves 720p/1080p'),
+        ('title', None, "Pinterest'te 4K Video Var mı? Gerçek Kalitede MP4 İndir", 'honesty: old title/H1 promised 4K; the extractor serves 720p/1080p. Native review (tr-1): locative "Kalitede", not "Kaliteyi … İndir" ("lower the quality")'),
         ('description', None, "Pinterest videoları çoğunlukla 720p, bazen 1080p yayınlanır; 4K nadirdir. Pinin sunduğu en yüksek kaliteyi MP4 olarak indirin, sahte 4K üretmeyiz.", 'honesty: old text claimed "4K yüklendiyse 4K", which the extractor never returns'),
         ('h1', None, "Pinterest'te 4K Var mı?", 'honesty: H1 must not promise 4K'),
     ],
@@ -108,6 +108,24 @@ FIXES = {
     ],
     ('vi', 'pinterest-4k-downloader'): [
         ('h1', None, 'Tải video Pinterest 4K được không?', 'honesty: H1 must ask, not promise 4K'),
+    ],
+    # i18n fixer, 2026-10-17 (native reviews and honesty checks after the build)
+    ('es', 'pinterest-audio-downloader'): [
+        ('description', 'usa solo audio que puedas conservar.', 'usa el audio solo con permiso.', 'native review (review-es-5): calque of "only keep audio you may"'),
+    ],
+    ('vi', 'pinterest-4k-downloader'): [
+        ('description', 'khoảng 1200px.', 'khoảng 1.200 px.', 'native review (vi-1): same number format as the page body'),
+    ],
+    ('vi', 'pinterest-image-downloader'): [
+        ('description', 'hợp lưu hình nền', 'hợp làm hình nền', 'native review (vi-2): "hợp lưu" reads as the noun "confluence"'),
+    ],
+    ('ru', 'pinterest-board-downloader'): [
+        ('title', None, 'Скачать доску Пинтерест — публичные пины одним ZIP-архивом', 'honesty (R4): boards are capped at 250 pins; "целиком — все пины" promised every pin'),
+        ('description', 'доску Pinterest полностью:', 'доску Pinterest:', 'honesty (R4): "полностью" promised the whole board past the cap'),
+    ],
+    ('fr', 'pinterest-profile-picture-downloader'): [
+        ('title', None, 'Photo de profil Pinterest en grand — voir et télécharger', 'honesty: most avatars Pinterest serves are 280–1000 px, not HD'),
+        ('h1', None, 'Photo de profil Pinterest en grand', 'honesty: H1 must not promise HD'),
     ],
     ('pt', 'how-to-download-pinterest-videos'): [
         ('title', None, 'Como Baixar Vídeo do Pinterest no Celular e no PC, sem App', 'hard-coded "(2026)" goes stale'),

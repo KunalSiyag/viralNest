@@ -13,7 +13,7 @@ const path = '/pinterest-carousel-downloader';
 const pageUrl = absoluteUrl(path);
 const title = 'Pinterest Carousel Downloader — Save All Carousel Slides Free';
 const description =
-  'Save all image slides, multi-photo pins, and gallery graphics from Pinterest carousels in full HD resolution with 1-click easy download.';
+  'Save every slide, multi-photo pin and gallery graphic from a Pinterest carousel, in the largest size Pinterest publishes, with 1-click download.';
 
 const steps = [
   {
@@ -36,8 +36,8 @@ const faqs = [
     a: 'Yes! PintDownload detects multi-image carousel pins and Idea Pins, providing single-click options to download individual slides or batch download all slides inside a ZIP file.',
   },
   {
-    q: 'Are carousel images extracted in original full resolution?',
-    a: 'Yes. We extract original uncompressed 1080p source graphics directly from Pinterest CDN servers, avoiding screenshot compression quality loss.',
+    q: 'What resolution are the carousel slides?',
+    a: 'The largest size Pinterest publishes for each slide: photos up to 1200 px wide, video slides usually 720p. That is sharper than a screenshot, but it is not the file the creator uploaded, which Pinterest keeps private.',
   },
   {
     q: 'What happens if a carousel contains both videos and photos?',
@@ -66,15 +66,15 @@ const jsonLd = [
   <TicketHero title={"Pinterest Carousel Downloader"} variant="image" />
 
   <!-- SEO Content downside -->
-  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-left">
+  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-start">
     <div class="w-full max-w-3xl mb-8 counter-rule pt-4">
       <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
-        Extract all <strong class="text-slate-900 dark:text-white">photos, videos, and slides</strong> from multi-image Pinterest carousel pins in full HD resolution.
+        Extract all <strong class="text-slate-900 dark:text-white">photos, videos, and slides</strong> from multi-image Pinterest carousel pins, in the largest size Pinterest publishes.
       </p>
     </div>
 
     <!-- Unique Carousel Feature Cards -->
-    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm mb-12">
+    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-start text-sm mb-12">
       <div class="pt-3 border-t-2 border-[var(--ink)]">
         <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-rose-700 dark:text-rose-300 flex items-center justify-center font-bold mb-3">🖼️</div>
         <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Full Carousel Parsing</h3>
@@ -89,8 +89,8 @@ const jsonLd = [
 
       <div class="pt-3 border-t-2 border-[var(--ink)]">
         <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-rose-700 dark:text-rose-300 flex items-center justify-center font-bold mb-3">✨</div>
-        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">No Compression Loss</h3>
-        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Extract original 1080p source graphics directly from CDN servers without pixelation or quality degradation.</p>
+        <h3 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">No Screenshot Blur</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Saves each slide as Pinterest serves it, untouched, instead of a blurry screenshot.</p>
       </div>
     </div>
 

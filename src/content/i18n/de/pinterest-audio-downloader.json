@@ -1,0 +1,122 @@
+{
+  "pageId": "pinterest-audio-downloader",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Audio herunterladen – Musik & Ton als MP3",
+    "description": "Musik oder Ton aus einem öffentlichen Pinterest-Video als MP3 speichern: Link einfügen, Audio extrahieren – kostenlos. Nutze nur Ton, den du verwenden darfst."
+  },
+  "keywords": {
+    "primary": "pinterest audio herunterladen",
+    "secondary": [
+      "pinterest musik herunterladen",
+      "pinterest sound herunterladen",
+      "pinterest lied herunterladen",
+      "pinterest video als mp3",
+      "pinterest musik aus video extrahieren",
+      "pinterest audio downloader"
+    ]
+  },
+  "nav": {
+    "label": "Audio als MP3",
+    "short": "MP3",
+    "card": {
+      "title": "Pinterest-Audio als MP3",
+      "blurb": "Musik oder Ton aus einem Video-Pin als MP3, erstellt in deinem Browser.",
+      "badge": "MP3"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Audio herunterladen",
+    "lede": "Musik oder Ton aus einem öffentlichen Pinterest-Video als **MP3** speichern. Das MP3 entsteht **in deinem Browser** und wird nicht hochgeladen."
+  },
+  "intro": [
+    "Eine eigene Audiodatei hat Pinterest nicht: Der Ton steckt im Video. PintDownload holt das MP4 des Pins, dein Browser liest daraus die Tonspur und macht ein MP3 mit 192 kbps. Das passiert auf deinem Gerät.",
+    "Funktioniert mit öffentlichen Video-Pins, die Ton haben. Nutze nur Ton, den du verwenden darfst."
+  ],
+  "features": [
+    {
+      "h": "Echtes MP3",
+      "p": "Kein umbenanntes Video: Die Tonspur wird mit LAME, dem freien MP3-Encoder, neu kodiert."
+    },
+    {
+      "h": "Ton kürzen",
+      "p": "Mit **Ton kürzen** schneidest du einen Ausschnitt heraus und speicherst ihn als MP3 oder WAV."
+    },
+    {
+      "h": "Bleibt auf deinem Gerät",
+      "p": "Dekodieren und Kodieren laufen im Browser. Das fertige MP3 wird nirgendwo hochgeladen."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Warum es bei manchem Pin kein MP3 gibt",
+      "paragraphs": [
+        "Bilder, GIFs und stumme Videos haben keinen Ton. Prüf auf Pinterest, ob das Video mit Ton läuft. Sehr alte Browser können die Tonspur nicht lesen; nimm dann eine aktuelle Version von Chrome, Edge, Safari oder Firefox, oder lade das MP4, das den Ton ebenfalls enthält."
+      ]
+    },
+    {
+      "h2": "Darf ich Musik aus Pinterest-Videos speichern?",
+      "paragraphs": [
+        "Musik in Pins ist fast immer urheberrechtlich geschützt. Einen Song privat anzuhören ist etwas anderes, als ihn in einem eigenen Video oder Podcast zu verwenden. Für alles, was du veröffentlichst, brauchst du die Rechte; nenne außerdem die Creator. Das ist keine Rechtsberatung."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So holst du den Ton aus einem Pinterest-Video",
+    "intro": "Nur öffentliche Video-Pins mit Ton. Nenne die Creator, wenn du den Ton weiterverwendest.",
+    "exampleLabel": "Link zu einem Video-Pin",
+    "items": [
+      {
+        "title": "Link zum Video mit Ton kopieren",
+        "body": "Prüf auf Pinterest, ob das Video Ton hat, und kopiere den Link: **Teilen** › **Link kopieren** oder eine Adresse mit `/pin/`."
+      },
+      {
+        "title": "Link einfügen",
+        "body": "Füge den Link oben ein und tippe auf **Video herunterladen**, um den Pin abzurufen."
+      },
+      {
+        "title": "MP3 speichern",
+        "body": "Tippe im Ergebnis in der Zeile **Audio** auf **Speichern**. Dein Browser erstellt das MP3 mit 192 kbps. Mit **Ton kürzen** speicherst du nur einen Ausschnitt."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zu Pinterest-Audio",
+    "items": [
+      {
+        "q": "Wie bekomme ich die Musik aus einem Pinterest-Video?",
+        "a": "Füge den Link des öffentlichen Video-Pins oben ein und ruf ihn ab. Die Zeile **Audio** erstellt dann in deinem Browser ein MP3 (192 kbps) aus dem Ton des Videos. Das MP4 enthält den Ton auch."
+      },
+      {
+        "q": "Wie entsteht das MP3?",
+        "a": "Dein Browser lädt das Video über PintDownload, dekodiert die Tonspur und kodiert sie mit LAME, dem quelloffenen MP3-Encoder (LGPL), als MP3 mit 192 kbps. Das MP3 entsteht auf deinem Gerät und wird nicht hochgeladen."
+      },
+      {
+        "q": "Kann ich den Ton kürzen?",
+        "a": "Ja. Mit **Ton kürzen** legst du Start und Ende fest, hörst den Ausschnitt an und speicherst ihn als MP3 oder WAV."
+      },
+      {
+        "q": "MP3 oder MP4 – was ist besser?",
+        "a": "Willst du nur hören, reicht das MP3. Zum Schneiden ist das MP4 oft besser, weil es Bild und Ton unverändert enthält."
+      },
+      {
+        "q": "Brauche ich ein Pinterest-Konto?",
+        "a": "Nein, nicht für öffentliche Video-Pins. Private und geheime Pins lassen sich nicht abrufen."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Video-Tools"
+  },
+  "schema": {
+    "appName": "Pinterest-Audio-Downloader – PintDownload",
+    "howToName": "Ton aus einem Pinterest-Video als MP3 speichern",
+    "howToDescription": "Einen öffentlichen Video-Pin einfügen und seinen Ton als MP3 speichern, das in deinem Browser entsteht."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). Real MP3 (user decision 1): 192 kbps, LAME, made in the browser; check that the result row is labelled Audio.",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

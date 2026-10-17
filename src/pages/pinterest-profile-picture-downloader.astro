@@ -12,7 +12,7 @@ const path = '/pinterest-profile-picture-downloader';
 const pageUrl = absoluteUrl(path);
 const title = 'Pinterest Profile Picture Downloader — HD PFP / DP Free';
 const description =
-  'Download a Pinterest profile picture full size (PFP, DP, avatar). Paste a public profile URL and save the HD photo — no login, no watermark, phone or desktop.';
+  'Download a Pinterest profile picture (PFP, DP, avatar) in the largest size Pinterest publishes. Paste a public profile URL — no login, no watermark.';
 
 const steps = [
   {
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: 'What resolution will I get?',
-    a: 'Pinterest typically serves profile avatars up to about 600×600. PintDownload extracts the largest public source available for that user — we do not invent pixels beyond the original file.',
+    a: 'Pinterest typically serves profile avatars up to about 600×600. PintDownload saves the largest size Pinterest publishes for that user. We never upscale or invent pixels.',
   },
   {
     q: 'Does this work without a Pinterest account or app?',
@@ -83,15 +83,15 @@ const jsonLd = [
 <BaseLayout field="blush" title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
   <TicketHero title={"Pinterest Profile Picture Downloader <span class=\"block mt-2 text-[0.5em] leading-none\">HD PFP, DP &amp; full-size avatar</span>"} lede={"Free HD / full-size avatar & DP saver — paste any public profile link."} variant="profile-picture" />
 
-  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-left">
+  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-start">
     <div class="w-full max-w-3xl mb-8 counter-rule pt-4">
       <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
-        Download original <strong class="text-slate-900 dark:text-white">full-resolution profile pictures</strong> from public Pinterest accounts.
+        Download <strong class="text-slate-900 dark:text-white">profile pictures in the largest size Pinterest publishes</strong> from public Pinterest accounts.
         Perfect when you need a clean avatar — not a tiny grid thumbnail — for offline reference or design moodboards.
       </p>
     </div>
 
-    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm mb-10">
+    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-start text-sm mb-10">
       <div class="pt-3 border-t-2 border-[var(--ink)]">
         <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 text-rose-700 dark:text-rose-300 flex items-center justify-center font-bold mb-3" aria-hidden="true">HD</div>
         <h2 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Full-size HD avatars</h2>
@@ -117,7 +117,7 @@ const jsonLd = [
       </div>
     </div>
 
-    <section class="w-full max-w-3xl text-left mb-12 space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+    <section class="w-full max-w-3xl text-start mb-12 space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
       <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white text-center mb-2">
         Download Pinterest profile picture vs full profile ZIP
       </h2>
@@ -132,7 +132,7 @@ const jsonLd = [
         <a href="/pinterest-profile-downloader" class="text-rose-700 dark:text-rose-400 font-semibold underline-offset-2 hover:underline">Pinterest Profile Downloader</a>
         (ZIP pack) instead. For one pin, video, or board, use the matching tool in the nav.
       </p>
-      <ul class="list-disc pl-5 space-y-2">
+      <ul class="list-disc ps-5 space-y-2">
         <li><strong>Profile picture / DP / avatar</strong> → this tool (single image).</li>
         <li><strong>Profile pins bulk backup</strong> → <a href="/pinterest-profile-downloader" class="text-rose-700 dark:text-rose-400 font-semibold underline-offset-2 hover:underline">Profile ZIP</a>.</li>
         <li><strong>Board as ZIP</strong> → <a href="/pinterest-board-downloader" class="text-rose-700 dark:text-rose-400 font-semibold underline-offset-2 hover:underline">Board Downloader</a>.</li>

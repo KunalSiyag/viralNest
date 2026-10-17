@@ -257,7 +257,11 @@ export async function extractPinterest(req: ExtractRequest, opts: ExtractOptions
       fetchImpl,
       defaultCap,
     );
-    if ('error' in result) return fail(400, 'collection_empty', result.error);
+    if ('error' in result) {
+      return result.unavailable
+        ? fail(503, 'collection_unavailable', result.error)
+        : fail(400, 'collection_empty', result.error);
+    }
     return result.kind === 'board'
       ? { ok: true, status: 200, kind: 'board', body: result.body, meta: collectionMeta() }
       : { ok: true, status: 200, kind: 'profile', body: result.body, meta: collectionMeta() };

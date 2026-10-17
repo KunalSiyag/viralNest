@@ -1,7 +1,16 @@
 import type { APIRoute } from 'astro';
 import { BLOCKED_USER_AGENTS, extractPinterest } from '../../lib/extract';
+import type { ExtractErrorCode } from '../../lib/extract/types';
 
 export const prerender = false;
+
+/**
+ * Machine-readable `code` sent next to the English `error` on every failure
+ * (additive field, i18n plan §6 islands): the extractor's codes plus this
+ * route's own. Localized pages show their catalog's text for the code
+ * (src/i18n/island/<loc>.ts → api); English pages still print `error`.
+ */
+export type ApiExtractErrorCode = Exclude<ExtractErrorCode, 'wrong_link_type'> | 'access_denied' | 'origin_denied' | 'server_error';
 
 function jsonResponse(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -15,7 +24,7 @@ export const POST: APIRoute = async ({ request }) => {
     // 1. DMCA / Bot User-Agent Protection
     const ua = (request.headers.get('user-agent') || '').toLowerCase();
     if (BLOCKED_USER_AGENTS.some((bot) => ua.includes(bot))) {
-      return jsonResponse({ error: 'Access denied.' }, 403);
+      return jsonResponse({ error: 'Access denied.', code: 'access_denied' satisfies ApiExtractErrorCode }, 403);
     }
 
     // 2. Origin & Referer Verification (Protects against external API scraping)
@@ -37,7 +46,7 @@ export const POST: APIRoute = async ({ request }) => {
       referer.includes('localhost');
 
     if (!isAllowedOrigin) {
-      return jsonResponse({ error: 'Direct API scraping is unauthorized.' }, 403);
+      return jsonResponse({ error: 'Direct API scraping is unauthorized.', code: 'origin_denied' satisfies ApiExtractErrorCode }, 403);
     }
 
     // 3. Extraction (src/lib/extract; shared with the MCP server)
@@ -46,12 +55,13 @@ export const POST: APIRoute = async ({ request }) => {
     const outcome = await extractPinterest({ url, intent });
     return outcome.ok
       ? jsonResponse(outcome.body)
-      : jsonResponse({ error: outcome.error }, outcome.status);
+      : jsonResponse({ error: outcome.error, code: outcome.code }, outcome.status);
   } catch (error: any) {
     console.error('Unhandled Pinterest Extraction error:', error);
     return jsonResponse(
       {
         error: 'Failed to process Pinterest link. Please ensure the link is a valid public Pin.',
+        code: 'server_error' satisfies ApiExtractErrorCode,
       },
       400,
     );

@@ -1,0 +1,147 @@
+{
+  "pageId": "pinterest-board-downloader",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Pinnwand herunterladen – alle Pins als ZIP",
+    "description": "Ganze Pinterest-Pinnwand herunterladen: öffentlichen Pinnwand-Link einfügen und alle Bilder und Videos als ZIP-Datei speichern. Kostenlos, ohne Anmeldung."
+  },
+  "keywords": {
+    "primary": "pinterest pinnwand herunterladen",
+    "secondary": [
+      "pinterest board herunterladen",
+      "pinterest ganze pinnwand herunterladen",
+      "pinterest alle bilder einer pinnwand herunterladen",
+      "pinterest pinnwand bilder herunterladen",
+      "pinterest board downloader",
+      "pinterest pinnwand herunterladen zip"
+    ]
+  },
+  "nav": {
+    "label": "Pinnwand herunterladen",
+    "short": "Pinnwände",
+    "card": {
+      "title": "Pinnwand als ZIP",
+      "blurb": "Link einer öffentlichen Pinnwand einfügen und ihre Pins als ZIP-Datei speichern.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Pinnwand herunterladen",
+    "lede": "Füge den Link einer **öffentlichen Pinnwand** ein und speichere ihre Bilder und Videos in **einer ZIP-Datei**."
+  },
+  "intro": [
+    "Lade eine ganze Pinterest-Pinnwand (auf Englisch **Board**) auf einmal herunter: Link einfügen, die gefundenen Pins ansehen, alles als **ZIP** speichern. Ohne Chrome-Erweiterung und ohne Konto.",
+    "Die Seite erwartet Links wie `de.pinterest.com/nutzername/pinnwand-name/`. Adressen mit `pinterest.de`, `.at` oder `.ch` gehen auch. Nur öffentliche Pinnwände."
+  ],
+  "features": [
+    {
+      "h": "Nur Pinnwand-Links",
+      "p": "Für Adressen mit Nutzername und Pinnwand-Name. Ein einzelner Pin gehört in den [[pinterest-pin-downloader|Pin-Download]]."
+    },
+    {
+      "h": "Alles in einer ZIP-Datei",
+      "p": "Die öffentlichen Pins der Pinnwand in einer Datei, fürs Moodboard offline oder zum Weitergeben im Team."
+    },
+    {
+      "h": "Bilder und Videos",
+      "p": "Enthält die Bilder und Videos der Pins, die die öffentliche Pinnwand-Seite lädt."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Kommt wirklich die ganze Pinnwand?",
+      "paragraphs": [
+        "Gespeichert werden die öffentlichen Pins, die beim Laden der Pinnwand-Seite erscheinen, bis zu einer festen Obergrenze. Bei sehr großen Pinnwänden können ältere Pins fehlen. Von Karussell-Pins landet das Titelbild im ZIP; alle Bilder bekommst du, wenn du den Pin im [[pinterest-pin-downloader|Pin-Download]] öffnest."
+      ]
+    },
+    {
+      "h2": "Link prüfen, bevor du ihn einfügst",
+      "paragraphs": [
+        "Der falsche Link-Typ ist der häufigste Fehler. So unterscheidest du sie:"
+      ],
+      "list": [
+        "`pinterest.de/nutzername/pinnwand-name/`: eine Pinnwand, richtig hier.",
+        "`pinterest.de/pin/123…/`: ein einzelner Pin, nimm den [[pinterest-pin-downloader|Pin-Download]].",
+        "`pinterest.de/nutzername/`: ein Profil, nimm den [[pinterest-profile-downloader|Profil-Download]].",
+        "Geheime Pinnwände und private Konten lassen sich nicht laden."
+      ]
+    },
+    {
+      "h2": "Die ZIP-Datei öffnen",
+      "paragraphs": [
+        "Auf dem iPhone tippst du die ZIP-Datei in der App **Dateien** an, dann entpackt iOS sie in einen Ordner. Auf Android öffnest du sie in der Dateien-App (bei Samsung **Eigene Dateien**) und entpackst sie dort. Unter Windows und macOS reicht ein Doppelklick."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So lädst du eine Pinterest-Pinnwand als ZIP herunter",
+    "intro": "Diese Seite ist nur für Pinnwand-Links. Steht `/pin/` im Link, nimm den Pin-Download.",
+    "exampleLabel": "Beispiel für einen Pinnwand-Link",
+    "exampleUrl": "https://www.pinterest.de/pinterest/pinterest-presents/",
+    "items": [
+      {
+        "title": "Öffentliche Pinnwand öffnen",
+        "body": "Öffne auf Pinterest die Pinnwand selbst, also das Raster mit den Pins, nicht einen einzelnen Pin in der Großansicht."
+      },
+      {
+        "title": "Pinnwand-Link kopieren",
+        "body": "Kopier die Adresse aus der Adressleiste oder tippe auf **Teilen** › **Link kopieren**. Der Link sieht aus wie `pinterest.de/nutzername/pinnwand-name/`."
+      },
+      {
+        "title": "Einfügen und Pins abrufen",
+        "body": "Füge den Link oben ein und tippe auf **Pinnwand abrufen**. Danach siehst du die öffentlichen Pins."
+      },
+      {
+        "title": "ZIP herunterladen",
+        "body": "Tippe auf **ZIP herunterladen**, um Bilder und Videos in einer Datei zu speichern, oder lade einzelne Pins direkt herunter."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zum Pinnwand-Download",
+    "items": [
+      {
+        "q": "Wie lade ich alle Bilder einer Pinnwand herunter?",
+        "a": "Kopiere den Link der öffentlichen Pinnwand, füge ihn oben ein, tippe auf **Pinnwand abrufen** und dann auf **ZIP herunterladen**. Bilder und Videos landen zusammen in einer ZIP-Datei."
+      },
+      {
+        "q": "Wie sieht ein Pinnwand-Link aus?",
+        "a": "Nach der Domain kommen Nutzername und Pinnwand-Name, etwa `de.pinterest.com/nutzername/pinnwand-name/`. Links mit `pinterest.de`, `.at` oder `.ch` leiten auf `de.`, `at.` oder `ch.pinterest.com` weiter; beide Formen funktionieren."
+      },
+      {
+        "q": "Kann ich geheime Pinnwände herunterladen?",
+        "a": "Nein. Was Pinterest als **privat** markiert (früher „geheim“), bleibt privat: Private Pinnwände, private Konten und Pins hinter einer Anmeldung kann PintDownload nicht abrufen, auch deine eigenen nicht."
+      },
+      {
+        "q": "Wie viele Pins landen im ZIP?",
+        "a": "Alle öffentlichen Pins, die die Pinnwand-Seite beim Laden liefert, bis zu einer festen Obergrenze. Sehr große Pinnwände kommen eventuell nicht vollständig mit."
+      },
+      {
+        "q": "Pinnwand oder Profil – welches Tool passt?",
+        "a": "Für eine Sammlung zu einem Thema, etwa „Wohnzimmer“ oder „Hochzeit“, nimm diese Seite. Willst du alle Pins von der Profilseite eines Kontos, nimm den [[pinterest-profile-downloader|Profil-Download]]."
+      },
+      {
+        "q": "Sind bei Karussell-Pins alle Bilder im ZIP?",
+        "a": "Im Pinnwand-ZIP steckt pro Pin das Titelbild. Willst du jedes Bild eines Karussells, öffne diesen einen Pin im [[pinterest-carousel-downloader|Karussell-Download]]."
+      },
+      {
+        "q": "Brauche ich eine Chrome-Erweiterung?",
+        "a": "Nein, alles läuft im Browser. Wenn du am PC oft Pinnwände speicherst, spart dir das [[pinterest-video-downloader-chrome|Lesezeichen für Chrome]] das Kopieren."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Tools für viele Pins"
+  },
+  "schema": {
+    "appName": "Pinterest-Pinnwand-Downloader – PintDownload",
+    "howToName": "Pinterest-Pinnwand als ZIP herunterladen",
+    "howToDescription": "Schritte, um die Pins einer öffentlichen Pinterest-Pinnwand gesammelt als ZIP-Datei zu speichern."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). For the native reviewer: verify the Android unzip wording (Dateien-App, Samsung Eigene Dateien) and that iOS Dateien unpacks a ZIP on tap.",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

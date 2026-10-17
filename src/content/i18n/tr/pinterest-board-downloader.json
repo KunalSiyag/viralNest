@@ -1,0 +1,145 @@
+{
+  "pageId": "pinterest-board-downloader",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest Pano İndirme — Tüm Panoyu ZIP Olarak Kaydet",
+    "description": "Herkese açık bir Pinterest panosunun linkini yapıştırın, pinleri tek ZIP dosyasında toplu indirin. Fotoğraflar ve videolar birlikte gelir; üyelik gerekmez."
+  },
+  "keywords": {
+    "primary": "pinterest pano indirme",
+    "secondary": [
+      "pinterest tüm panoyu indirme",
+      "pinterest panosu indirme",
+      "pinterest toplu fotoğraf indirme",
+      "pinterest toplu indirme",
+      "pinterest toplu pin indirme"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest Pano İndirme",
+    "short": "Pano",
+    "card": {
+      "title": "Pano İndirme",
+      "blurb": "Herkese açık bir panonun Pinlerini tek ZIP dosyasında toplu indirin.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Pano İndirme",
+    "lede": "Herkese açık bir **panonun** linkini yapıştırın; Pinlerini, fotoğraflarını ve videolarını **tek bir ZIP dosyasında** toplu indirin."
+  },
+  "intro": [
+    "Bir Pinterest panosunu tek seferde indirin: linki yapıştırın, bulduğumuz Pinlere göz atın ve hepsini **ZIP** olarak kaydedin. Moodboard, düğün fikirleri ya da tarif arşivi; Pin Pin uğraşmadan **toplu indirme**. Chrome eklentisi ya da üyelik gerekmez.",
+    "`pinterest.com/kullanici/pano-adi/` biçimindeki linkleri alır. Yalnızca herkese açık panolar."
+  ],
+  "features": [
+    {
+      "h": "Yalnızca pano linkleri",
+      "p": "`/kullanici/pano-adi/` biçimindeki adresler için. Tek bir Pin, Pin indiriciye gider."
+    },
+    {
+      "h": "Hepsi tek ZIP’te",
+      "p": "Panodaki herkese açık Pinler tek dosyada; çevrimdışı bir moodboard ya da paylaşmak için."
+    },
+    {
+      "h": "Fotoğraflar ve videolar",
+      "p": "Pano sayfası yüklenirken görünen Pinlerin fotoğraflarını ve videolarını birlikte alır."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Panonun tamamı iner mi?",
+      "paragraphs": [
+        "Pano sayfası açıldığında yüklenen herkese açık Pinleri, güvenli bir sınıra kadar indirir. Çok büyük panolarda eski Pinlerin bir kısmı gelmeyebilir; sonuç ekranı kaç Pin bulunduğunu yazar ve sayı uydurmaz. Karusel Pinlerde ZIP’e kapak kartı girer; bütün kartlar için o Pini [[pinterest-pin-downloader|Pin indiricide]] açın."
+      ]
+    },
+    {
+      "h2": "Yapıştırmadan önce linkinizi kontrol edin",
+      "paragraphs": [
+        "En sık hata yanlış türde link yapıştırmaktır. Hangisinin ne olduğu şöyle anlaşılır:"
+      ],
+      "list": [
+        "`pinterest.com/kullanici/pano-adi/`: bu bir pano, burada kullanın.",
+        "`pinterest.com/pin/123…/`: bu bir Pin; [[pinterest-pin-downloader|Pin indiriciyi]] kullanın.",
+        "`pinterest.com/kullanici/`: bu bir profil; [[pinterest-profile-downloader|profil indiriciyi]] kullanın.",
+        "Gizli panolar ve gizli hesaplar indirilemez."
+      ]
+    },
+    {
+      "h2": "Telefonda ZIP nasıl açılır?",
+      "paragraphs": [
+        "iPhone’da ZIP **Dosyalar** › **İndirilenler**’e iner; dosyaya dokunduğunuzda aynı yerde bir klasöre açılır. Android’de **Dosyalarım** (Samsung) ya da **Files** uygulamasında ZIP’e dokunup dosyaları çıkarın. Bilgisayarda çift tıklamanız yeterli."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest panosu ZIP olarak nasıl indirilir",
+    "intro": "Bu sayfa yalnızca pano linkleri içindir. Linkinizde `/pin/` varsa Pin indiriciyi kullanın.",
+    "exampleLabel": "Örnek pano linki",
+    "items": [
+      {
+        "title": "Herkese açık panoyu açın",
+        "body": "Pinterest’te panonun kendi sayfasını (Pin ızgarasını) açın, büyütülmüş tek bir Pini değil."
+      },
+      {
+        "title": "Panonun linkini kopyalayın",
+        "body": "Adres çubuğundan ya da paylaş simgesi › **Bağlantıyı kopyala** ile. Link `pinterest.com/kullanici/pano-adi/` gibi görünmeli."
+      },
+      {
+        "title": "Yapıştırıp Pinleri getirin",
+        "body": "Linki yukarıdaki kutuya yapıştırın ve **Panodaki Pinleri getir**’e dokunun; herkese açık Pinler listelenir."
+      },
+      {
+        "title": "ZIP’i indirin",
+        "body": "Fotoğrafları ve videoları tek dosyada kaydetmek için **ZIP indir**’e dokunun ya da Pinleri tek tek indirin."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Pano indirme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Bütün bir Pinterest panosu nasıl indirilir?",
+        "a": "Herkese açık panonun linkini kopyalayın, yukarıya yapıştırın, Pin listesine göz atın ve **ZIP indir**’e dokunun. Pano sayfasının yüklediği herkese açık Pinler bir sınıra kadar iner; çok büyük panolarda bazı eski Pinler eksik kalabilir."
+      },
+      {
+        "q": "Pano linki neye benzer, nasıl kopyalanır?",
+        "a": "Alan adından sonra iki parça vardır: kullanıcı adı ve pano adı, örneğin `pinterest.com/kullanici/kahvalti-tarifleri/`. Uygulamada panoyu açıp paylaş simgesi › **Bağlantıyı kopyala**’ya dokunun. Ortada `/pin/` görüyorsanız o bir Pindir, pano değil."
+      },
+      {
+        "q": "Gizli panoyu indirebilir miyim?",
+        "a": "Hayır. PintDownload yalnızca herkese açık panoları okur; gizli panolar, gizli hesaplar ve giriş isteyen Pinler indirilemez. Kendi gizli panonuzu indirmek istiyorsanız panoyu düzenleyip **Bu panoyu gizli yap** seçeneğini kısa bir süre kapatabilirsiniz."
+      },
+      {
+        "q": "Bir panodan kaç Pin gelir?",
+        "a": "Pano sayfası açıldığında yüklenen herkese açık Pinler, güvenli bir sınıra kadar. Sabit bir sayı vermiyoruz, çünkü Pinterest’in ne kadarını yüklediği panoya göre değişir; sonuç ekranında kaç Pin bulunduğunu görürsünüz."
+      },
+      {
+        "q": "Pano mu, profil mi: hangisini kullanmalıyım?",
+        "a": "“Kahvaltı” ya da “düğün” gibi tek bir koleksiyon için bu sayfayı kullanın. Bir hesabın profilinde görünen Pinlerin tamamı için [[pinterest-profile-downloader|profil indirmeyi]] kullanın."
+      },
+      {
+        "q": "Karusel Pinlerin bütün kartları ZIP’e girer mi?",
+        "a": "ZIP’e her Pinin kapağı girer. Bir karusel Pinin bütün kartları için o Pini [[pinterest-pin-downloader|Pin indiricide]] açın."
+      },
+      {
+        "q": "Chrome eklentisi gerekiyor mu?",
+        "a": "Hayır, her şey sayfada olur. Bilgisayarda Pinterest’ten buraya tek tıkla geçmek isterseniz [[how-to-download-pinterest-video-on-laptop|PC rehberindeki]] yer işareti aracı, PintDownload’u link yapıştırılmış olarak açar."
+      }
+    ]
+  },
+  "related": {
+    "title": "İlgili araçlar"
+  },
+  "schema": {
+    "appName": "Pinterest Pano İndirici — PintDownload",
+    "howToName": "Pinterest panosu ZIP olarak nasıl indirilir",
+    "howToDescription": "Herkese açık bir Pinterest panosunun Pinlerini tek bir ZIP dosyasında toplu indirme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Doğrulanacak: panoda paylaş simgesi › Bağlantıyı kopyala; pano ayarındaki Bu panoyu gizli tut etiketi.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edits: existing-board toggle is “Bu panoyu gizli yap” (help.pinterest.com/tr/article/secret-boards); bookmarklet sentence reworded."
+  }
+}

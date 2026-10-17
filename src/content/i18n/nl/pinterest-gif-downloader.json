@@ -1,0 +1,122 @@
+{
+  "pageId": "pinterest-gif-downloader",
+  "locale": "nl",
+  "meta": {
+    "title": "Pinterest GIF downloaden — bewegende GIF's gratis opslaan",
+    "description": "Download een GIF van Pinterest mét animatie: plak de link van een openbare GIF-pin en sla het bewegende bestand op. Gratis, zonder account of app."
+  },
+  "keywords": {
+    "primary": "pinterest gif downloaden",
+    "secondary": [
+      "gif van pinterest downloaden",
+      "pinterest gif downloader",
+      "pinterest gif opslaan",
+      "hoe sla je een gif op iphone",
+      "pinterest gif naar mp4"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest GIF downloaden",
+    "short": "GIF’s",
+    "card": {
+      "title": "GIF downloaden",
+      "blurb": "Bewegende GIF’s van Pinterest die blijven bewegen, geen stilstaand plaatje.",
+      "badge": "GIF"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest GIF downloaden",
+    "lede": "De **hele animatie**, geen stilstaand plaatje. Gratis en zonder account."
+  },
+  "intro": [
+    "Wil je een **GIF van Pinterest downloaden** zonder dat er een stilstaande foto van overblijft? Plak de link van een openbare GIF-pin: PintDownload haalt het bewegende GIF-bestand op, niet de JPG van het eerste beeld.",
+    "Werkt met links met `/pin/` erin en met korte pin.it-links. Alleen openbare GIF-pins."
+  ],
+  "features": [
+    {
+      "h": "Een echte GIF",
+      "p": "Je krijgt het bewegende bestand dat Pinterest publiceert, niet de stilstaande omslag."
+    },
+    {
+      "h": "Soms ook als MP4",
+      "p": "Heeft Pinterest de GIF ook als video, dan kun je die MP4 ernaast downloaden. Handig voor apps die geen GIF’s afspelen."
+    },
+    {
+      "h": "Telefoon en computer",
+      "p": "Werkt in Safari, Chrome en elke andere gangbare browser, zonder app en zonder account."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Waarom je soms een stilstaand plaatje krijgt",
+      "paragraphs": [
+        "Veel downloaders pakken bij een GIF-pin alleen de omslag: een JPG van het eerste beeld. Ook lang drukken op een GIF in je browser levert soms zo’n plaatje op. PintDownload zoekt het echte .gif-bestand op.",
+        "Lijkt je download toch stil te staan, open hem dan in een app die animaties afspeelt. Sommige galerijen tonen eerst alleen het eerste beeld en spelen de GIF pas af als je hem opent."
+      ]
+    },
+    {
+      "h2": "GIF of MP4: wat is het verschil?",
+      "paragraphs": [
+        "Een GIF is een bewegend plaatje zonder geluid dat in een lus blijft spelen, en werkt bijna overal waar je afbeeldingen kunt plaatsen. Een MP4 is een echte video: meestal kleiner, met een tijdbalk en soms met geluid. Wil je een GIF-pin als MP4, kijk dan of er naast de GIF een MP4-regel staat. Speelt de pin af als video met geluid, gebruik dan [[pinterest-video-downloader|Pinterest video downloaden]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Zo sla je een GIF van Pinterest op",
+    "intro": "Drie stappen. Alleen openbare GIF-pins, zonder account.",
+    "exampleLabel": "Link van een GIF-pin",
+    "items": [
+      {
+        "title": "Open de GIF-pin",
+        "body": "Kijk of hij beweegt als een GIF: meestal zonder geluid en zonder tijdbalk. Een echte video hoort bij [[pinterest-video-downloader|Pinterest video downloaden]]."
+      },
+      {
+        "title": "Kopieer de link van de pin",
+        "body": "Tik op **Delen** › **Link kopiëren**, of kopieer een adres met `/pin/` erin. Korte pin.it-links werken ook."
+      },
+      {
+        "title": "Plak hem en sla de GIF op",
+        "body": "Plak de link hierboven, tik op **GIF downloaden** en sla het bestand op. Open het in een app die animaties afspeelt om te zien dat hij beweegt."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Vragen over GIF’s van Pinterest",
+    "items": [
+      {
+        "q": "Hoe download je een GIF van Pinterest?",
+        "a": "Kopieer de link van de openbare GIF-pin, plak hem hierboven en tik op **GIF downloaden**. Je krijgt het .gif-bestand, dat blijft bewegen."
+      },
+      {
+        "q": "Waarom werd mijn GIF opgeslagen als stilstaande foto?",
+        "a": "Waarschijnlijk had je alleen de omslag: een JPG van het eerste beeld. Dat gebeurt bij lang drukken of met tools die alleen de omslag pakken. Hier krijg je het echte GIF-bestand."
+      },
+      {
+        "q": "Blijft de GIF bewegen in Foto’s of mijn galerij?",
+        "a": "Op Android spelen de meeste galerijen GIF’s gewoon af. Op de iPhone zet de app Foto’s bewegende GIF’s in het album **Geanimeerd**; in het gewone overzicht kan een GIF stil lijken tot je hem opent."
+      },
+      {
+        "q": "Hoe stuur ik een GIF van Pinterest via WhatsApp?",
+        "a": "Download de GIF hier, zodat hij in je galerij of Foto’s staat. Kies hem daarna in WhatsApp bij de bijlagen, net als een foto. Speelt hij daar niet af, download dan de MP4-versie als die er is: een video speelt elke chat-app af."
+      },
+      {
+        "q": "Heb ik een Pinterest-account nodig?",
+        "a": "Nee. Je hoeft nergens in te loggen. Het werkt alleen met openbare GIF-pins; privépins en pins op verborgen borden kun je niet downloaden."
+      }
+    ]
+  },
+  "related": {
+    "title": "Meer downloaders voor Pinterest"
+  },
+  "schema": {
+    "appName": "Pinterest GIF downloaden — PintDownload",
+    "howToName": "Een GIF van Pinterest downloaden",
+    "howToDescription": "Kopieer de link van een openbare GIF-pin, plak hem in PintDownload en sla het bewegende bestand op."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-nl; verify on an iPhone set to Dutch: Photos album name Geanimeerd",
+    "nativeReviewer": "review-nl (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, je register, glossary (pins, bord, videopin, afhaalbon, omslag), search vocabulary, honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/nl: Afbeelding downloaden (desktop), Download afbeelding (app), drie puntjes, Delen › Link kopiëren, deelpictogram, Bewaren, Privébord. OS labels (Bewaar video/afbeelding, Bestanden, Mijn bestanden, Geanimeerd, album Download) are the standard Dutch iOS/Android names, not checked on a device."
+  }
+}

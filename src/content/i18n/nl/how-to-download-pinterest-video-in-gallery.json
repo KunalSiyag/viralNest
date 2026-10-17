@@ -1,0 +1,128 @@
+{
+  "pageId": "how-to-download-pinterest-video-in-gallery",
+  "locale": "nl",
+  "meta": {
+    "title": "Pinterest video opslaan in galerij of filmrol — zonder app",
+    "description": "Zo zet je een Pinterest-video in de Foto's-app van je iPhone of de galerij van je Android-telefoon: link kopiëren, plakken, MP4 opslaan. Gratis, zonder app."
+  },
+  "keywords": {
+    "primary": "pinterest video opslaan",
+    "secondary": [
+      "video opslaan van pinterest",
+      "pinterest video opslaan in galerij",
+      "pinterest foto opslaan in filmrol",
+      "pinterest afbeelding opslaan op telefoon",
+      "pinterest video downloaden iphone",
+      "pinterest video downloaden android"
+    ]
+  },
+  "nav": {
+    "label": "Video opslaan in galerij",
+    "short": "Galerij",
+    "card": {
+      "title": "Video opslaan in je galerij",
+      "blurb": "Zo komt een Pinterest-video in Foto’s op je iPhone of in de galerij van je Android.",
+      "badge": "Galerij"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest video opslaan in je galerij",
+    "lede": "Van link naar **filmrol** of **galerij** in drie stappen. Werkt op iPhone, iPad en Android: op je telefoon of gsm, zonder app."
+  },
+  "intro": [
+    "Downloaden is maar de helft van het werk. Op de iPhone komt de MP4 eerst in de app **Bestanden**, op Android in de map **Downloads**. Hier lees je hoe je de video in **Foto’s** of je **galerij** krijgt, en wat je doet als hij daar niet staat.",
+    "Alles gebeurt in je browser en met de apps die al op je telefoon staan. Je hebt geen app uit de App Store of Play Store nodig."
+  ],
+  "sections": [
+    {
+      "h2": "Waarom staat de video niet in je galerij?",
+      "paragraphs": [
+        "Je browser slaat een download op als bestand, niet als foto of video. Safari op de iPhone zet hem in **Bestanden** › **Downloads**, en de app Foto’s toont hem pas als je hem daar zelf naartoe zet. Chrome op Android zet hem in **Downloads**; de galerij of Google Foto’s laat hem meestal zien in een album met downloads, soms pas na een paar seconden."
+      ]
+    },
+    {
+      "h2": "iPhone en iPad: van Bestanden naar Foto’s",
+      "paragraphs": [
+        "Is de download klaar, open dan de app **Bestanden** en ga naar **Downloads**. Tik op de video, dan op het deelpictogram, en kies **Bewaar video**. Vanaf dat moment staat hij in je filmrol, in de app Foto’s."
+      ],
+      "list": [
+        "Zie je **Bewaar video** niet? Veeg het menu omhoog: de optie staat onder de rij met apps.",
+        "Opent de video niet, kijk dan in Safari bij de downloads of hij echt klaar is."
+      ]
+    },
+    {
+      "h2": "Android: van Downloads naar je galerij",
+      "paragraphs": [
+        "Open de app **Bestanden** (op een Samsung heet die **Mijn bestanden**) en ga naar **Downloads**: daar staat de MP4. De galerij en Google Foto’s tonen hem meestal in het album **Download**. Staat hij er niet, houd het bestand dan ingedrukt en verplaats het naar de map **DCIM** of **Movies**."
+      ]
+    },
+    {
+      "h2": "Werkt dit ook voor foto’s?",
+      "paragraphs": [
+        "Ja. Wil je een **Pinterest-foto in je filmrol** of op je telefoon opslaan, dan gaat het net zo: download de foto via [[pinterest-image-downloader|Pinterest foto downloaden]] en kies op de iPhone **Bewaar afbeelding** in plaats van **Bewaar video**. Op Android staat de foto meestal meteen in de galerij."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Zo zet je een Pinterest-video in je galerij",
+    "intro": "Drie stappen in Safari op de iPhone of in Chrome op Android.",
+    "exampleLabel": "Link van een videopin",
+    "items": [
+      {
+        "title": "Kopieer de link van de video",
+        "body": "Open de video in de Pinterest-app, tik op **Delen** en dan op **Link kopiëren**."
+      },
+      {
+        "title": "Plak hem in PintDownload",
+        "body": "Open pintdownload.app in Safari of Chrome, plak de link in het vak hierboven en tik op **Video downloaden**."
+      },
+      {
+        "title": "Zet hem in je galerij",
+        "body": "Op de iPhone: **Bestanden** › **Downloads** › deelpictogram › **Bewaar video**. Op Android staat hij in de galerij, in het album **Download**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Vragen over video’s opslaan op je telefoon",
+    "items": [
+      {
+        "q": "Hoe zet ik een Pinterest-video in mijn filmrol op de iPhone?",
+        "a": "Download de video hier, open daarna **Bestanden** › **Downloads**, tik op de video en op het deelpictogram, en kies **Bewaar video**. Je vindt hem dan in de app Foto’s."
+      },
+      {
+        "q": "Hoe krijg ik de video in de galerij of Google Foto’s op Android?",
+        "a": "Meestal vanzelf: de galerij en Google Foto’s tonen downloads in het album **Download**. Zie je hem niet, verplaats het bestand dan met de app **Bestanden** naar de map **DCIM**."
+      },
+      {
+        "q": "Waarom staat mijn gedownloade video niet in de galerij?",
+        "a": "Omdat je browser hem als bestand opslaat. Op de iPhone blijft hij in **Bestanden** tot je hem naar Foto’s zet; op Android staat hij in **Downloads**, en soms pikt de galerij hem pas na een paar seconden op."
+      },
+      {
+        "q": "Heb ik een app nodig?",
+        "a": "Nee. Je gebruikt alleen je browser en de apps die al op je telefoon staan: Bestanden en Foto’s op de iPhone, Bestanden en de galerij op Android. Geen app uit de App Store of Play Store."
+      },
+      {
+        "q": "Kost het geld of moet ik inloggen?",
+        "a": "Nee. Het is gratis en je hoeft niet in te loggen, niet bij ons en niet bij Pinterest. Het werkt alleen met openbare video’s."
+      },
+      {
+        "q": "Werkt het ook op een iPad of een Samsung?",
+        "a": "Ja. Op een iPad gaat het precies zoals op de iPhone. Op een Samsung heet de bestandsapp **Mijn bestanden**; de video staat daarna in de **Galerij**, meestal in het album **Download**."
+      }
+    ]
+  },
+  "related": {
+    "title": "Meer uitleg en tools"
+  },
+  "schema": {
+    "appName": "Pinterest video opslaan in je galerij — PintDownload",
+    "howToName": "Een Pinterest-video opslaan in de galerij of filmrol van je telefoon",
+    "howToDescription": "Download de MP4 van een openbare videopin en zet hem in de galerij van je Android of in Foto’s op je iPhone."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-nl; verify on devices set to Dutch: iOS share-sheet labels Bewaar video and Bewaar afbeelding, Samsung Mijn bestanden, Android album name Download",
+    "nativeReviewer": "review-nl (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, je register, glossary (pins, bord, videopin, afhaalbon, omslag), search vocabulary, honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/nl: Afbeelding downloaden (desktop), Download afbeelding (app), drie puntjes, Delen › Link kopiëren, deelpictogram, Bewaren, Privébord. OS labels (Bewaar video/afbeelding, Bestanden, Mijn bestanden, Geanimeerd, album Download) are the standard Dutch iOS/Android names, not checked on a device."
+  }
+}

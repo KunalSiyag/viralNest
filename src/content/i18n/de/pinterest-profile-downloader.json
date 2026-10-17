@@ -1,0 +1,133 @@
+{
+  "pageId": "pinterest-profile-downloader",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Profil herunterladen – alle Pins als ZIP sichern",
+    "description": "Öffentliche Pins eines Pinterest-Profils gesammelt herunterladen: Profil-Link einfügen und Bilder und Videos als ZIP speichern. Kostenlos und ohne Login."
+  },
+  "keywords": {
+    "primary": "pinterest profil herunterladen",
+    "secondary": [
+      "pinterest profil downloader",
+      "pinterest profil bilder herunterladen",
+      "pinterest alle pins herunterladen",
+      "pinterest profile downloader online"
+    ]
+  },
+  "nav": {
+    "label": "Profil herunterladen",
+    "short": "Profile",
+    "card": {
+      "title": "Profil als ZIP",
+      "blurb": "Die öffentlichen Pins eines Profils gesammelt als ZIP-Datei herunterladen.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Profil herunterladen",
+    "lede": "Füge einen **Profil-Link** ein und lade die öffentlichen Pins dieses Kontos gesammelt als **ZIP** herunter."
+  },
+  "intro": [
+    "Mit dem Profil-Link bekommst du die öffentlichen Pins, die auf der Profilseite eines Kontos erscheinen, in einer ZIP-Datei: praktisch als Backup deiner eigenen Pins oder als Moodboard für unterwegs. Das Ergebnis zeigt außerdem die Pinnwände des Profils, die du einzeln öffnen kannst.",
+    "Die Seite erwartet Links wie `pinterest.de/nutzername/`, also nur den Nutzernamen ohne Pinnwand-Namen dahinter. Mit Kontoeinstellungen wie Profil löschen oder privat stellen hat diese Seite nichts zu tun."
+  ],
+  "features": [
+    {
+      "h": "Nur Profil-Links",
+      "p": "Für Adressen mit Nutzername. Steht ein Pinnwand-Name dahinter, nimm den [[pinterest-board-downloader|Pinnwand-Download]]."
+    },
+    {
+      "h": "Pins gesammelt als ZIP",
+      "p": "Eine Datei statt Dutzender einzelner Downloads, mit Bildern und Videos."
+    },
+    {
+      "h": "Nur öffentlich",
+      "p": "Keine privaten Konten, keine geheimen Pinnwände, nichts hinter einer Anmeldung."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Bekomme ich jeden Pin, den jemand je gepostet hat?",
+      "paragraphs": [
+        "Nein, das kann kein Tool versprechen. PintDownload lädt die öffentlichen Pins, die die Profilseite liefert, bis zu einer festen Obergrenze. Bei sehr aktiven Konten fehlen ältere Pins; dann hilft es, einzelne Pinnwände über den [[pinterest-board-downloader|Pinnwand-Download]] zu laden."
+      ]
+    },
+    {
+      "h2": "Profil, Pinnwand oder Profilbild?",
+      "paragraphs": [
+        "Drei Tools, drei Arten von Link. So findest du das richtige:"
+      ],
+      "list": [
+        "`pinterest.de/nutzername/` mit allen sichtbaren Pins als ZIP: diese Seite.",
+        "`pinterest.de/nutzername/pinnwand-name/` für eine einzelne Sammlung: [[pinterest-board-downloader|Pinnwand-Download]].",
+        "Nur das runde Bild des Kontos: [[pinterest-profile-picture-downloader|Profilbild-Download]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So lädst du die Pins eines Profils als ZIP herunter",
+    "intro": "Nur Profil-Links. Steht nach dem Nutzernamen noch ein Pinnwand-Name, nimm den Pinnwand-Download.",
+    "exampleLabel": "Beispiel für einen Profil-Link",
+    "items": [
+      {
+        "title": "Öffentliches Profil öffnen",
+        "body": "Geh auf die Profilseite des Kontos, also die Seite mit Profilbild und Nutzername."
+      },
+      {
+        "title": "Profil-Link kopieren",
+        "body": "Kopier einen Link wie `https://www.pinterest.de/nutzername/`, ohne Pinnwand-Namen dahinter."
+      },
+      {
+        "title": "Einfügen und abrufen",
+        "body": "Füge ihn oben ein und tippe auf **Profil abrufen (ZIP)**. Du siehst die gefundenen Pins und Pinnwände."
+      },
+      {
+        "title": "ZIP herunterladen",
+        "body": "Tippe auf **ZIP herunterladen**, oder lade einzelne Pins direkt aus dem Raster."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zum Profil-Download",
+    "items": [
+      {
+        "q": "Wie lade ich die Pins eines Pinterest-Profils herunter?",
+        "a": "Öffne das öffentliche Profil, kopiere den Link (`pinterest.de/nutzername/`), füge ihn oben ein und lade danach das ZIP mit den sichtbaren Pins herunter."
+      },
+      {
+        "q": "Profil oder Pinnwand – was ist der Unterschied?",
+        "a": "Ein Profil-Link endet nach dem Nutzernamen, ein Pinnwand-Link hat danach noch den Namen der Pinnwand. Das Profil bündelt die Pins eines ganzen Kontos, eine Pinnwand ist eine einzelne Sammlung."
+      },
+      {
+        "q": "Funktionieren private Konten?",
+        "a": "Nein. Private oder eingeschränkte Profile lassen sich nicht abrufen, nur öffentliche Profile und öffentliche Pins."
+      },
+      {
+        "q": "Darf ich die Pins eines fremden Profils speichern?",
+        "a": "Für dich privat, etwa als Inspiration, ist das etwas anderes, als die Bilder selbst zu veröffentlichen. Verwendest du etwas weiter, nenne die Creator und frag im Zweifel nach. Das ist keine Rechtsberatung."
+      },
+      {
+        "q": "Kann ich meine eigenen Pins sichern?",
+        "a": "Ja, wenn dein Profil öffentlich ist. Geheime Pinnwände kommen dabei nicht mit, weil PintDownload nur sieht, was alle sehen."
+      },
+      {
+        "q": "Ich will nur das Profilbild – welches Tool?",
+        "a": "Nimm den [[pinterest-profile-picture-downloader|Profilbild-Download]]. Er speichert nur das Bild des Kontos, ohne ZIP."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Tools für viele Pins"
+  },
+  "schema": {
+    "appName": "Pinterest-Profil-Downloader – PintDownload",
+    "howToName": "Pins eines Pinterest-Profils als ZIP herunterladen",
+    "howToDescription": "Den Link eines öffentlichen Pinterest-Profils einfügen und die sichtbaren Pins gesammelt als ZIP-Datei speichern."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). Thin-demand page (P3): bare pinterest profil means account settings, so the intro rules that out.",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

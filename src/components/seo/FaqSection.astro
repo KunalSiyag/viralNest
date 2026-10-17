@@ -1,4 +1,6 @@
 ---
+import { headingHtml } from '../../i18n/inline';
+import { localeOfPath } from '../../i18n/routes';
 interface FaqItem {
   q: string;
   a: string;
@@ -9,19 +11,22 @@ interface Props {
   items?: FaqItem[];
   faqs?: FaqItem[];
   stripe?: boolean;
+  /** Answers are pre-rendered inline HTML (localized pages, src/i18n/inline.ts). */
+  html?: boolean;
 }
 
-const { title = 'Frequently asked questions', items, faqs, stripe = true } = Astro.props;
+const { title = 'Frequently asked questions', items, faqs, stripe = true, html = false } = Astro.props;
 const faqList = items || faqs || [];
+const brandTr = localeOfPath(Astro.url.pathname) === 'tr'; // Turkish caps: brand names in lang="en" (inline.ts headingHtml)
 ---
 
 <section
-  class:list={['w-full text-left', stripe ? 'py-12 sm:py-16' : 'mt-10 sm:mt-14']}
+  class:list={['w-full text-start', stripe ? 'py-12 sm:py-16' : 'mt-10 sm:mt-14']}
   aria-labelledby="faq-heading"
 >
   <div class:list={['grid lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] gap-x-12 gap-y-6', stripe ? 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8' : '']}>
     <div class="counter-rule pt-4">
-      <h2 id="faq-heading" class="t-display text-4xl sm:text-5xl leading-[0.95] lg:sticky lg:top-6">{title}</h2>
+      <h2 id="faq-heading" class="t-display text-4xl sm:text-5xl leading-[0.95] lg:sticky lg:top-6">{brandTr ? <Fragment set:html={headingHtml(title, 'tr')} /> : title}</h2>
     </div>
     <div class="flex flex-col gap-2">
       {faqList.map((item, i) => (
@@ -31,9 +36,13 @@ const faqList = items || faqs || [];
             <svg class="shrink-0 mt-0.5 transition-transform duration-200 group-open:rotate-45" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
           <div class="mx-4 sm:mx-5 border-t-2 border-dashed border-[var(--rule)]" aria-hidden="true"></div>
-          <div class="px-4 sm:px-5 py-4 text-[0.9375rem] text-[var(--ink-2)] leading-relaxed max-w-[68ch]">
-            {item.a}
-          </div>
+          {html ? (
+            <div class="px-4 sm:px-5 py-4 text-[0.9375rem] text-[var(--ink-2)] leading-relaxed max-w-[68ch] [&_a]:font-semibold [&_a]:text-[var(--ink)] [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-2 [&_strong]:text-[var(--ink)] [&_code]:font-semibold [&_code]:text-[var(--ink)]" set:html={item.a} />
+          ) : (
+            <div class="px-4 sm:px-5 py-4 text-[0.9375rem] text-[var(--ink-2)] leading-relaxed max-w-[68ch]">
+              {item.a}
+            </div>
+          )}
         </details>
       ))}
     </div>

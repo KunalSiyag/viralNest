@@ -45,7 +45,7 @@ import background from '../assets/background.svg';
 	#background {
 		position: fixed;
 		top: 0;
-		left: 0;
+		inset-inline-start: 0;
 		width: 100%;
 		height: 100%;
 		z-index: -1;
@@ -96,7 +96,7 @@ import background from '../assets/background.svg';
 
 	#links a svg {
 		height: 1em;
-		margin-left: 8px;
+		margin-inline-start: 8px;
 	}
 
 	#links a.button {
@@ -160,7 +160,7 @@ import background from '../assets/background.svg';
 	#news {
 		position: absolute;
 		bottom: 16px;
-		right: 16px;
+		inset-inline-end: 16px;
 		max-width: 300px;
 		text-decoration: none;
 		transition: background 0.2s;
@@ -197,8 +197,7 @@ import background from '../assets/background.svg';
 		}
 
 		#news {
-			right: 16px;
-			left: 16px;
+			inset-inline: 16px;
 			bottom: 2.5rem;
 			max-width: 100%;
 		}

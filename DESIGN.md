@@ -275,6 +275,7 @@ Tools that are not a URL type (device guides, audio, browser tools) print on pla
 
 **Display Font:** Big Shoulders Display 800/900, self-hosted woff2, preloaded (fallback Arial Narrow, ui-sans-serif)
 **Body Font:** System sans stack (ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial)
+**Display fonts per locale** (one `--font-display` switched by `:lang()` in `src/styles/ticket.css`; preloads from `src/i18n/fonts.ts`; files built by `scripts/fonts/build_script_fonts.py`): Latin locales and English keep Big Shoulders Display; tr and vi add Big Shoulders' latin-ext and Vietnamese subsets; ru sets the gothic in Sofia Sans Extra Condensed 900 (scaled to Big Shoulders' cap height); th uses Noto Sans Thai Condensed 900 and ar Noto Sans Arabic Condensed 900, both after Big Shoulders so Latin words and digits stay in the gothic. Thai and Arabic are never uppercased or letter-spaced, and get line-height 1.3 (labels 1.5); vi display lines get 1.2 so stacked marks clear the line above. The brand mark always prints in Big Shoulders (`lang="en"`), and the language menu's endonyms stay in the body font so no page loads another script's face.
 **Serif:** none in use. A Charter stack is still defined in `tailwind.config.mjs`, but no surface applies it; article prose is the system sans.
 
 **Character:** A tall, condensed ticket-printing gothic shouts the claim in uppercase with tabular numerals; the system sans stays out of the way so the instructions read instantly on a phone.

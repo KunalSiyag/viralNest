@@ -1,0 +1,148 @@
+{
+  "pageId": "pinterest-video-downloader",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger une vidéo Pinterest en MP4 HD — gratuit, en ligne",
+    "description": "Collez le lien d’une épingle vidéo et enregistrez-la en MP4 HD, sans logo ajouté. Liens pin.it acceptés, sans appli ni compte, sur téléphone comme sur PC."
+  },
+  "keywords": {
+    "primary": "télécharger vidéo pinterest",
+    "secondary": [
+      "télécharger vidéo pinterest en ligne gratuit",
+      "télécharger vidéo pinterest hd",
+      "télécharger vidéo pinterest avec lien",
+      "telecharger video pinterest sans logo",
+      "enregistrer vidéo pinterest",
+      "pinterest video downloader"
+    ]
+  },
+  "nav": {
+    "label": "Télécharger une vidéo",
+    "short": "Vidéos",
+    "card": {
+      "title": "Télécharger une vidéo",
+      "blurb": "Épingles vidéo publiques en MP4, avec le lien de l’épingle ou un lien pin.it.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Télécharger une vidéo Pinterest",
+    "lede": "Enregistrez les épingles vidéo publiques en **MP4** : gratuit, sans compte et sans logo ajouté."
+  },
+  "intro": [
+    "Collez le lien d’une **épingle vidéo** et récupérez le **MP4** que Pinterest publie, sans installer d’appli. Les vidéos courtes façon Reels sont des épingles vidéo comme les autres et se téléchargent de la même façon.",
+    "Les liens avec `/pin/` et les liens courts `pin.it` sont acceptés. Épingles vidéo publiques uniquement."
+  ],
+  "features": [
+    {
+      "h": "La vidéo, en MP4",
+      "p": "Pour les épingles qui se lisent. Pour une image fixe, passez par [[pinterest-image-downloader|la page photo]]."
+    },
+    {
+      "h": "La qualité publiée par Pinterest",
+      "p": "Souvent 720p, et 1080p quand l’épingle le propose. S’il existe plusieurs versions, vous choisissez laquelle garder."
+    },
+    {
+      "h": "Téléphone et PC",
+      "p": "Fonctionne dans Safari sur iPhone, Chrome sur Android et n’importe quel navigateur d’ordinateur."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Sans logo ajouté, vraiment ?",
+      "paragraphs": [
+        "Quand le bouton **Télécharger** de l’appli Pinterest existe (le créateur doit l’avoir autorisé), la vidéo enregistrée peut porter la marque de Pinterest. PintDownload récupère le MP4 public de l’épingle et n’y ajoute rien. En revanche, ce que le créateur a incrusté dans sa vidéo, comme son nom ou un texte, reste visible : cela fait partie de l’image."
+      ]
+    },
+    {
+      "h2": "Vidéo, épingle, photo ou tableau : quel outil ?",
+      "paragraphs": [
+        "Restez ici quand l’épingle **se lit** et que vous voulez un seul MP4. Pour une photo fixe, ouvrez [[pinterest-image-downloader|Télécharger une photo]]. Si vous ne savez pas s’il s’agit d’une image, d’un GIF ou d’un carrousel, essayez [[pinterest-pin-downloader|Télécharger une épingle]]. Pour beaucoup d’épingles d’un coup, passez par [[pinterest-board-downloader|le tableau en ZIP]]."
+      ],
+      "list": [
+        "**Épingle vidéo › MP4** : cette page.",
+        "**Seulement le son** : [[pinterest-audio-downloader|le son en MP3]].",
+        "**Photo ou illustration** : [[pinterest-image-downloader|la page photo]].",
+        "**Tableau entier** : [[pinterest-board-downloader|la page tableau]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment télécharger une vidéo Pinterest",
+    "intro": "Pour les épingles vidéo publiques. Un lien de tableau va sur la page tableau.",
+    "exampleLabel": "Lien court habituel",
+    "items": [
+      {
+        "title": "Trouvez une épingle vidéo",
+        "body": "Ouvrez une épingle qui se lit vraiment, pas une photo. Vérifiez d’abord que la vidéo démarre sur Pinterest."
+      },
+      {
+        "title": "Copiez le lien de la vidéo",
+        "body": "Touchez l’**icône de partage** puis **Copier le lien**, ou copiez l’adresse du navigateur qui contient `/pin/`. Les liens courts `pin.it` de l’appli marchent aussi."
+      },
+      {
+        "title": "Collez et lancez",
+        "body": "Collez le lien dans le ticket ci-dessus et touchez **Télécharger la vidéo**. Si plusieurs qualités s’affichent, choisissez-en une."
+      },
+      {
+        "title": "Récupérez le MP4",
+        "body": "Téléchargez le MP4. Sur téléphone, il arrive dans Téléchargements ; de là, déplacez-le vers Photos ou la Galerie."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur les vidéos Pinterest",
+    "items": [
+      {
+        "q": "Comment télécharger une vidéo Pinterest avec son lien ?",
+        "a": "Copiez le lien de l’épingle vidéo dans l’appli (**icône de partage** › **Copier le lien**) ou dans le navigateur, collez-le ci-dessus et touchez **Télécharger la vidéo**. Épingles vidéo publiques uniquement."
+      },
+      {
+        "q": "Quelle qualité : 720p, 1080p ou 4K ?",
+        "a": "Celle que Pinterest publie : souvent 720p, et 1080p quand l’épingle le propose. Si plusieurs versions existent, PintDownload les affiche toutes. Pinterest ne publie presque jamais de 4K, et nous n’agrandissons jamais la vidéo : [[pinterest-4k-downloader|pourquoi la 4K est si rare]]."
+      },
+      {
+        "q": "La vidéo aura-t-elle un logo ou un watermark ?",
+        "a": "Nous n’en ajoutons aucun : c’est le MP4 public de l’épingle. Si le créateur a incrusté son nom ou un texte dans la vidéo, il reste visible."
+      },
+      {
+        "q": "Pinterest a déjà un bouton « Télécharger » : à quoi bon ?",
+        "a": "Ce bouton n’apparaît que si le créateur autorise le téléchargement, et l’appli demande d’être connecté. PintDownload part du lien seul, sans compte, pour les épingles vidéo publiques."
+      },
+      {
+        "q": "Ça marche sur iPhone et Android sans appli ?",
+        "a": "Oui. Ouvrez pintdownload.app dans Safari ou Chrome, collez le lien et enregistrez le MP4. Les guides [[download-pinterest-videos-iphone-android|iPhone]] et [[how-to-download-pinterest-video-in-gallery|galerie Android]] expliquent comment le retrouver dans Photos ou la Galerie."
+      },
+      {
+        "q": "Peut-on garder seulement le son en MP3 ?",
+        "a": "Oui, si la vidéo a du son. Une fois le lien traité, la ligne MP3 crée un MP3 (192 kbit/s) à partir du son de la vidéo, directement dans votre navigateur. Détails sur [[pinterest-audio-downloader|la page MP3]]."
+      },
+      {
+        "q": "Pourquoi mon épingle n’a-t-elle pas de vidéo ?",
+        "a": "C’est peut-être une photo ou un GIF, ou l’épingle est privée ou supprimée. Les anciennes Épingles Idées sont devenues des épingles ordinaires : collez leur lien comme pour une autre vidéo. Si ce n’est pas une vidéo, essayez [[pinterest-pin-downloader|Télécharger une épingle]]."
+      },
+      {
+        "q": "Peut-on télécharger toutes les vidéos d’un tableau ?",
+        "a": "Cette page traite une épingle à la fois. Pour plusieurs épingles, utilisez [[pinterest-board-downloader|Télécharger un tableau]], qui les regroupe dans un ZIP."
+      },
+      {
+        "q": "Puis-je monter la vidéo dans CapCut ?",
+        "a": "Oui, le MP4 s’ouvre dans CapCut, iMovie ou tout autre logiciel de montage. Si vous publiez le résultat, créditez le créateur et respectez ses droits."
+      }
+    ]
+  },
+  "related": {
+    "title": "Autres outils pour Pinterest"
+  },
+  "schema": {
+    "appName": "Télécharger une vidéo Pinterest — PintDownload",
+    "howToName": "Comment télécharger une vidéo Pinterest en MP4",
+    "howToDescription": "Les étapes pour enregistrer une épingle vidéo Pinterest publique en fichier MP4."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Unverified: whether the Pinterest app's own video « Télécharger » (⋯ menu, creator-allowed) adds a Pinterest mark; wording kept to « peut porter ».",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. Linked \"la page photo\" / \"la page tableau\" in the tool list; \"Une fois le lien traité\" instead of the ambiguous \"l’épingle lue\"; FAQ question inverted (n’a-t-elle pas)."
+  }
+}

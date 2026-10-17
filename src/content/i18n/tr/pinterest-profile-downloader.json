@@ -1,0 +1,142 @@
+{
+  "pageId": "pinterest-profile-downloader",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest Profil İndir — Tüm Pinleri ZIP Olarak Kaydet",
+    "description": "Herkese açık bir Pinterest profilindeki pinleri fotoğraf ve videolarıyla tek ZIP dosyasında indirin. Profil linkini yapıştırmanız yeterli; giriş gerekmez."
+  },
+  "keywords": {
+    "primary": "pinterest profil indir",
+    "secondary": [
+      "pinterest profil indirme",
+      "pinterest tüm pinleri indirme",
+      "pinterest kullanıcının pinlerini indirme"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest Profil İndir",
+    "short": "Profil",
+    "card": {
+      "title": "Profil İndir",
+      "blurb": "Herkese açık bir profilde görünen Pinleri tek ZIP dosyasında indirin.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Profil İndir",
+    "lede": "Herkese açık bir **profilin** linkini yapıştırın, profilde görünen Pinleri **tek bir ZIP dosyasında** indirin. Yalnızca PP mi lazım? [[pinterest-profile-picture-downloader|Profil fotoğrafı indirici]] tek resmi verir."
+  },
+  "intro": [
+    "Bir içerik üreticisinin ya da markanın Pinterest **profilindeki** Pinleri tek tek kaydetmek yerine toplu indirin: linki yapıştırın, bulunan Pinlere göz atın ve **ZIP** olarak kaydedin. Hesabın panoları da listelenir; yalnızca birinin Pinlerini istiyorsanız o panoyu açabilirsiniz.",
+    "`pinterest.com/kullaniciadi/` biçimindeki linkleri alır: alan adından sonra yalnızca kullanıcı adı. Yalnızca herkese açık profiller; giriş gerekmez."
+  ],
+  "features": [
+    {
+      "h": "Yalnızca profil linkleri",
+      "p": "`/kullaniciadi/` biçimindeki adresler için. Bir pano linki pano indirmeye, tek bir Pin Pin indiriciye gider."
+    },
+    {
+      "h": "Pinler ve panolar",
+      "p": "Profilde görünen herkese açık Pinler tek ZIP’te. Hesabın panoları da listelenir; birini açıp yalnızca onu alabilirsiniz."
+    },
+    {
+      "h": "Profil fotoğrafı da yanında",
+      "p": "Varsa hesabın profil fotoğrafı, Pinterest’in yayınladığı en büyük boyutta sonuçta ayrıca yer alır."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Kullanıcının bütün Pinleri iner mi?",
+      "paragraphs": [
+        "Dürüst cevap: her zaman değil. PintDownload, profil sayfası açıldığında yüklenen herkese açık Pinleri pratik bir sınıra kadar indirir. Yıllardır Pin kaydeden büyük bir hesabın bütün geçmişini hiçbir toplu araç garanti edemez. Sonuç ekranı kaç Pin bulunduğunu gösterir; sayı uydurmayız."
+      ]
+    },
+    {
+      "h2": "Profil mi, pano mu, PP mi?",
+      "paragraphs": [
+        "Linkin biçimi hangi aracı kullanacağınızı söyler:"
+      ],
+      "list": [
+        "`pinterest.com/kullaniciadi/`: bir profil, burada kullanın.",
+        "`pinterest.com/kullaniciadi/pano-adi/`: tek bir koleksiyon; [[pinterest-board-downloader|pano indirmeyi]] kullanın.",
+        "Yalnızca hesabın fotoğrafı mı lazım? [[pinterest-profile-picture-downloader|Profil fotoğrafı indiriciyi]] kullanın; ZIP’e gerek yok."
+      ]
+    },
+    {
+      "h2": "Başkasının profilini indirirken",
+      "paragraphs": [
+        "Herkese açık bir profili kişisel arşiv, moodboard ya da yedek için indirebilirsiniz, ama içeriklerin telif hakkı sahiplerinde kalır. Başkasının Pinlerini yeniden paylaşacaksanız izin isteyin ve kaynak gösterin. Kendi hesabınızın eksiksiz yedeği içinse Pinterest’in kendi veri indirme talebi daha uygundur."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest profili ZIP olarak nasıl indirilir",
+    "intro": "Bu sayfa yalnızca profil linkleri içindir: alan adından sonra tek bir kullanıcı adı.",
+    "exampleLabel": "Örnek profil linki",
+    "items": [
+      {
+        "title": "Herkese açık profili açın",
+        "body": "Pinterest’te hesabın profil sayfasına gidin: profil fotoğrafının ve kullanıcı adının olduğu sayfa."
+      },
+      {
+        "title": "Profil linkini kopyalayın",
+        "body": "Uygulamada paylaş simgesi › **Bağlantıyı kopyala** ya da tarayıcıdan `https://www.pinterest.com/kullaniciadi/` adresi. Kullanıcı adından sonra pano adı olmamalı."
+      },
+      {
+        "title": "Yapıştırıp Pinleri getirin",
+        "body": "Linki yukarıya yapıştırın ve **Profili indir (ZIP)** düğmesine dokunun; görünen herkese açık Pinler listelenir."
+      },
+      {
+        "title": "ZIP’i indirin",
+        "body": "**ZIP indir** ile paketin tamamını kaydedin ya da listedeki Pinleri tek tek indirin."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Profil indirme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Bir Pinterest profilindeki Pinleri nasıl indiririm?",
+        "a": "Uygulamada profili açıp paylaş simgesi › **Bağlantıyı kopyala**’ya dokunun ya da tarayıcıdan `pinterest.com/kullaniciadi/` adresini kopyalayın. Linki buraya yapıştırın, Pinleri getirin ve görünen herkese açık Pinleri ZIP olarak indirin."
+      },
+      {
+        "q": "Profil indirme ile pano indirme arasındaki fark nedir?",
+        "a": "Profil linkinde alan adından sonra yalnızca kullanıcı adı vardır; pano linkinde kullanıcı adının ardından pano adı da gelir. Profil, hesabın sayfasında görünen Pinleri; pano ise tek bir koleksiyonu indirir."
+      },
+      {
+        "q": "Kullanıcının bütün Pinlerini indirebilir miyim?",
+        "a": "Her zaman değil. Profil sayfası açıldığında yüklenen herkese açık Pinler pratik bir sınıra kadar iner; büyük hesaplarda eski Pinlerin bir kısmı eksik kalabilir. Belirli bir koleksiyonun tamamı için o panoyu [[pinterest-board-downloader|pano indirmede]] açın."
+      },
+      {
+        "q": "Gizli hesaplar çalışır mı?",
+        "a": "Hayır. Yalnızca herkese açık profiller ve herkese açık Pinler indirilebilir; gizli ya da giriş isteyen hesaplara erişemeyiz."
+      },
+      {
+        "q": "Profil indirmek yasal mı?",
+        "a": "Kişisel arşiv ya da moodboard için kaydetmek yaygın bir kullanımdır, ancak içeriklerin telif hakkı sahiplerinde kalır. Yeniden paylaşmadan önce izin isteyin ve kaynak gösterin."
+      },
+      {
+        "q": "Yalnızca profil fotoğrafını (PP) istiyorum, doğru araç bu mu?",
+        "a": "Hayır. Bu sayfa Pinleri ZIP olarak paketler. Yalnızca hesabın fotoğrafı için [[pinterest-profile-picture-downloader|profil fotoğrafı indiriciyi]] kullanın."
+      },
+      {
+        "q": "Pinleri neden tek tek değil de ZIP olarak indireyim?",
+        "a": "İçerik üreticileri, ajanslar ve araştırmacılar bir hesabın herkese açık akışını çevrimdışı bir moodboard ya da yedek olarak hızlıca saklamak ister. ZIP, onlarca Pini tek tek indirme zahmetini ortadan kaldırır."
+      }
+    ]
+  },
+  "related": {
+    "title": "İlgili araçlar"
+  },
+  "schema": {
+    "appName": "Pinterest Profil İndirici — PintDownload",
+    "howToName": "Pinterest profili ZIP olarak nasıl indirilir",
+    "howToDescription": "Herkese açık bir Pinterest profilinde görünen Pinleri tek bir ZIP dosyasında toplu indirme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. P3: talep düşük, aramaların yarısı PP niyetli; bu yüzden lede’de PP sayfasına bağlantı var (araştırma notu).",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edit: calque “profil sayfasının yanıtında” → “profil sayfası açıldığında yüklenen”."
+  }
+}

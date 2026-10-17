@@ -10,6 +10,7 @@ import {
   isShortLink,
   normalizeTargetUrl,
   pinIdFromUrl,
+  PLACEHOLDER_PIN_TITLE,
   type CollectionPin,
   type ExpectedLinkType,
   type ExtractFailure,
@@ -287,6 +288,8 @@ function failureToToolError(f: ExtractFailure, wanted: string): ToolCallResult {
       return toolError('not_found', f.error);
     case 'collection_empty':
       return toolError('private_or_empty', f.error);
+    case 'collection_unavailable':
+      return UPSTREAM_FAILED();
     case 'no_media':
       return toolError('no_media', f.error);
     case 'blocked':
@@ -596,7 +599,6 @@ const getPinterestPinMedia: ToolDefinition = {
 
 // ── Collections: shared paging ────────────────────────────────────────────
 
-const PLACEHOLDER_PIN_TITLE = /^Pin \d{1,6}$/;
 
 function collectionPins(pins: CollectionPin[], offset: number, limit: number, origin: string) {
   const out: Record<string, unknown>[] = [];

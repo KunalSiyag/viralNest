@@ -56,7 +56,7 @@ measured with fontTools (numbers below are measured unless marked "estimate").
 - **`wrangler.jsonc`:** `not_found_handling: "404-page"`. Cloudflare serves "the nearest `404.html`", walking up the directory tree.
 - **Astro build naming:** in `astro/dist/core/util.js` `getOutputFilename`, only `/404` and `/500` become `404.html`/`500.html`. `/es/404` would be written as `es/404/index.html`, which is why the rename hook is needed.
 - **`/api/extract`** returns `{ error: "<English sentence>" }`, although `src/lib/extract/types.ts` already has `ExtractErrorCode`:
-  - Codes: `invalid_input | blocked | not_pinterest | removed_or_private | wrong_link_type | avatar_not_found | collection_empty | no_media`.
+  - Codes: `invalid_input | blocked | not_pinterest | removed_or_private | wrong_link_type | avatar_not_found | collection_empty | collection_unavailable | no_media`. (`collection_unavailable`, 503: the board page says public with pins but Pinterest sent none; retryable.)
   - The mcp-server branch promises identical `/api/extract` responses, so adding a `code` field is a follow-up that must wait for that merge and update the parity fixtures.
 - **`src/lib/pinterest-route.ts`** returns English `path`, `label` and `badge` strings, used by DownloaderForm route notices and by StickyPasteBar's redirect target.
 - **SEO gates:**
@@ -258,7 +258,7 @@ only need `currentLocale`, which `routeForPath` already provides.
 
 Confirm in the build that `dir` resolves to the asset root (`dist/`) with the Cloudflare adapter. Otherwise target `dist/` explicitly.
 
-Result: `/es/no-existe` → Cloudflare looks for `es/no-existe/404.html`, then `es/404.html` → 404 status with the Spanish page. `/es/404` itself is no longer an asset, so it returns 404 as well.
+Result: `/es/no-existe` → Cloudflare looks for `es/no-existe/404.html`, then `es/404.html` → 404 status with the Spanish page. `/es/404` itself is still an asset (`html_handling` maps it to `es/404.html`), so it answers 200 with `noindex, nofollow`, the same as English `/404`.
 
 ---
 
@@ -298,7 +298,7 @@ export const PageContent = z.object({
   }),
   keywords: z.object({ primary: z.string(), secondary: z.array(z.string()) }),   // QA only, never rendered (no meta keywords)
   nav: z.object({                                 // used by other pages' nav, footer matrix, related cards
-    label: z.string().max(28), short: z.string().max(14),
+    label: z.string().max(28), short: z.string().max(14), shortWide: z.string().max(18).optional(), // shortWide: fuller header label from 1280px
     card: z.object({ title: z.string().max(40), blurb: z.string().max(90), badge: z.string().max(8) }),
   }),
   hero: z.object({ h1: z.string().max(60).refine(noHtml), lede: Inline.max(220) }),
@@ -326,7 +326,7 @@ section.
 
 - `**bold**` and `` `code` ``.
 - `[[pageId|anchor text]]`: an internal link resolved with `pathFor(pageId, locale)`. **The build fails** if that page does not exist in the locale. This keeps internal links in-locale by construction.
-- `[[en:/blog/slug|anchor]]`: an explicit English link, rendered with `hreflang="en" lang="en"`.
+- `[[en:/blog/slug|anchor]]`: an explicit English link, rendered with `hreflang="en"`; the anchor stays in the page language. `[[en!:/path|anchor]]` is for an anchor left in English ("Profile Downloader") and adds `lang="en"`.
 - `[text](https://…)`: external links, allowed only to `help.pinterest.com` and `pinterest.com`. Rendered with `rel="noopener"`.
 
 ### 6.3 Writing rules for content writers
@@ -449,7 +449,7 @@ the full alternate set:
    - Each component imports `EN_ISLAND` as its default. That is the same weight as today's inline literals, so English JS is unchanged.
 2. **Per-locale catalogs** (`src/i18n/island/<loc>.ts`) are imported **only by Astro templates** on the server and passed as a serialized prop: `<DownloaderForm client:load variant=… messages={pickIsland(locale, variant)} routes={…} />`.
    - `pickIsland` sends `common`, `errors`, `results`, `zip`, `trimmer`, `cropper`, `routeNotice` and only the current variant's copy.
-   - Estimate: 4–7 KB raw JSON in the island's `props` attribute, about 1.5–2 KB after brotli.
+   - Estimate: 4–7 KB raw JSON in the island's `props` attribute, about 1.5–2 KB after brotli. Measured after the catalogs were written (2026-10-17): 12–23 KB of JSON (UTF-8 bytes; th, ru and ar are the largest), 4–5 KB brotli, because a page's form reaches up to five variants and every receipt state. The budget is restated as < 24 KB UTF-8 and < 5.5 KB brotli per `messages` prop, measured in bytes (tests/islands.entry.ts). Route props carry only the pages an island links to (`routesProp(locale, ISLAND_PAGE_IDS)`; the sticky bar gets home, board and profile).
    - No locale catalog enters any client bundle. Verify with a build check (`grep` of `dist/_astro/*.js` for a unique Spanish string must be empty).
 3. **Merge:** `const m = useMemo(() => deepMerge(EN_ISLAND, props.messages), [props.messages])`. A missing key falls back to English, and the tests make sure no key is missing.
 4. **Interpolation and plurals.**
@@ -725,7 +725,7 @@ th and ar. Writers check with the same counter.
      - the language menu is reachable by keyboard;
      - RTL: the stub tear goes the right way, chevrons are mirrored, the input caret is LTR on paste.
 4. **SEO crawl** against `wrangler dev`: the section 13.5 table plus a full-site link crawl.
-5. **Perf:** Lighthouse mobile on `/`, `/es`, `/ru`, `/th`, `/ar` and one deep page each. Font bytes match the section 12 budget, CLS = 0, and the island props size is under 8 KB raw.
+5. **Perf:** Lighthouse mobile on `/`, `/es`, `/ru`, `/th`, `/ar` and one deep page each. Font bytes match the section 12 budget, CLS = 0, and each island `messages` prop is under 24 KB UTF-8 and 5.5 KB brotli (restated from "8 KB raw", see §10).
 
 ### Phase 5: close-out
 

@@ -1,0 +1,149 @@
+{
+  "pageId": "pinterest-video-downloader",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest Video İndir — HD MP4, Filigransız ve Ücretsiz",
+    "description": "Pinterest video indir: video Pininin linkini yapıştırın, HD MP4 dosyasını filigran eklemeden kaydedin. pin.it linki de olur; uygulama ve üyelik gerekmez."
+  },
+  "keywords": {
+    "primary": "pinterest video indir",
+    "secondary": [
+      "pinterest video indirici",
+      "pinterest video indirme",
+      "pinterestten video indir",
+      "pinterest video indir online",
+      "pinterest video indirici hd",
+      "pinterest video download"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest Video İndir",
+    "short": "Video",
+    "card": {
+      "title": "Video İndir",
+      "blurb": "Herkese açık video Pinlerini MP4 olarak indirin; pin.it linki de olur.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Video İndir",
+    "lede": "Herkese açık video Pinlerini **MP4** olarak kaydedin: ücretsiz, üyeliksiz ve bizden hiçbir filigran eklenmeden."
+  },
+  "intro": [
+    "Bir **video Pininin** linkini yapıştırın, Pinterest’in yayınladığı **MP4** dosyasını uygulama kurmadan indirin. Ana sayfa akışında oynayan kısa videolar da birer video Pinidir ve aynı şekilde iner.",
+    "`/pin/` içeren adresleri ve uygulamanın verdiği `pin.it` kısa linklerini alır. Yalnızca herkese açık video Pinleri."
+  ],
+  "features": [
+    {
+      "h": "Yalnızca video, MP4 olarak",
+      "p": "Oynayan Pinler için. Pin sabit bir fotoğrafsa fotoğraf indiriciyi kullanın."
+    },
+    {
+      "h": "Pinterest’in yayınladığı kalite",
+      "p": "Genellikle 720p, Pinde varsa 1080p. Birden çok sürüm varsa hangisini kaydedeceğinizi siz seçersiniz."
+    },
+    {
+      "h": "Telefonda ve PC’de",
+      "p": "iPhone’da Safari, Android’de Chrome ve bilgisayardaki her güncel tarayıcıda çalışır."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Video filigransız mı iner?",
+      "paragraphs": [
+        "Pinterest uygulaması bazı videolarda üç nokta menüsünden **İndir** seçeneği sunar; bu yolla kaydedilen videolara Pinterest logosu eklenebilir. PintDownload ise Pinin herkese açık MP4 dosyasını alır ve biz üzerine hiçbir filigran eklemeyiz. İçerik üreticisinin videoya koyduğu yazı ya da kullanıcı adı görüntünün parçası olduğu için yerinde kalır."
+      ]
+    },
+    {
+      "h2": "Video, fotoğraf, GIF ya da pano: hangi araç?",
+      "paragraphs": [
+        "Pin **oynuyorsa** ve tek bir MP4 istiyorsanız bu sayfa doğru yer. Sabit bir fotoğraf için [[pinterest-image-downloader|fotoğraf indiriciyi]] açın. Pinin fotoğraf mı, GIF mi, karusel mi olduğundan emin değilseniz [[pinterest-pin-downloader|Pin indiriciyi]] deneyin. Bir panodaki bütün videolar için [[pinterest-board-downloader|pano indirmeyi]] kullanın.",
+        "Yalnızca sesi mi lazım? [[pinterest-audio-downloader|MP3 dönüştürücü]] videonun sesinden tarayıcınızda MP3 hazırlar. İlk kez mi indiriyorsunuz? [[how-to-download-pinterest-videos|Adım adım rehber]], video inmediğinde ne yapacağınızı da anlatır."
+      ]
+    },
+    {
+      "h2": "Video indirme uygulamasına gerek var mı?",
+      "paragraphs": [
+        "Yok. Mağazalardaki Pinterest video indirme uygulamaları da linkle çalışır; fark, telefonunuza bir şey kurmanız ve çoğu zaman reklam izlemenizdir. Resmî mağaza dışından APK kurmak ise telefonunuza ne girdiğini bilmeden izin vermek demektir. PintDownload tarayıcıda çalışır, hiçbir şey kurdurmaz ve Pinterest şifrenizi asla sormaz."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest video nasıl indirilir",
+    "intro": "Herkese açık video Pinleriyle çalışır. Pano linkleri pano indiriciye gider.",
+    "exampleLabel": "Sık kullanılan kısa link",
+    "items": [
+      {
+        "title": "Bir video Pini bulun",
+        "body": "Gerçekten oynayan bir Pin açın, fotoğraf değil. Videonun Pinterest’te oynadığını önce kontrol edin."
+      },
+      {
+        "title": "Videonun linkini kopyalayın",
+        "body": "Paylaş simgesine, sonra **Bağlantıyı kopyala**’ya dokunun ya da tarayıcıdaki `/pin/` adresini kopyalayın. Uygulamanın verdiği `pin.it` linkleri de olur."
+      },
+      {
+        "title": "Yapıştırıp indirin",
+        "body": "Linki yukarıdaki kutuya yapıştırın ve **Videoyu indir**’e dokunun. Birden çok kalite çıkarsa birini seçin."
+      },
+      {
+        "title": "MP4’ü kaydedin",
+        "body": "MP4’ü indirin. Telefonda dosya önce İndirilenler’e iner; oradan Fotoğraflar’a ya da Galeri’ye taşıyabilirsiniz."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Pinterest video indirme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Pinterest videosu MP4 olarak nasıl indirilir?",
+        "a": "Video Pininin linkini uygulamada (paylaş simgesi › **Bağlantıyı kopyala**) ya da tarayıcıda kopyalayın, yukarıya yapıştırın ve **Videoyu indir**’e dokunun. Yalnızca herkese açık video Pinleri indirilebilir."
+      },
+      {
+        "q": "Hangi kalitede iner: 720p mi, 1080p mi?",
+        "a": "Pinterest’in yayınladığı kalitede: genellikle 720p, Pinde varsa 1080p. Birden çok sürüm varsa PintDownload hepsini listeler. Pinterest neredeyse hiç 4K yayınlamaz, biz de çözünürlüğü yapay olarak artırmayız; ayrıntılar [[pinterest-4k-downloader|Pinterest video kalitesi]] sayfasında."
+      },
+      {
+        "q": "Pinterest videosunu neden indiremiyorum?",
+        "a": "En sık nedenler: Pin aslında bir fotoğraf ya da GIF’tir, gizli bir panodadır ya da silinmiştir. Bazen de kopyalanan link bir Pin değil, arama sayfası ya da ana sayfa akışıdır. Linki gizli sekmede açın; Pinterest giriş istiyorsa Pin herkese açık değildir. Türünden emin değilseniz [[pinterest-pin-downloader|Pin indiriciyi]] deneyin."
+      },
+      {
+        "q": "Pinterest video indirme uygulaması ya da APK gerekiyor mu?",
+        "a": "Hayır. PintDownload tarayıcıda çalışır; uygulama, APK ya da eklenti kurmanız gerekmez ve Pinterest şifreniz hiçbir zaman istenmez. Video indirmek için APK kurdurmak isteyen sitelere karşı dikkatli olun."
+      },
+      {
+        "q": "iPhone ve Android’de çalışır mı?",
+        "a": "Evet. pintdownload.app adresini iPhone’da Safari’de, Android’de Chrome’da açın, linki yapıştırın ve MP4’ü kaydedin. MP4’ü Fotoğraflar’a ya da Galeri’ye taşımanın adımları [[how-to-download-pinterest-video-in-gallery|galeriye kaydetme rehberinde]]."
+      },
+      {
+        "q": "Videonun yalnızca sesini alabilir miyim?",
+        "a": "Evet, videoda ses varsa. Pini getirdikten sonra MP3 satırı, videonun sesinden tarayıcınızda 192 kbps bir MP3 hazırlar. Ayrıntılar [[pinterest-audio-downloader|Pinterest MP3 dönüştürücü]] sayfasında."
+      },
+      {
+        "q": "Bir panodaki bütün videoları indirebilir miyim?",
+        "a": "Bu sayfa her seferinde bir Pin indirir. Bir panonun Pinlerini toplu indirmek için [[pinterest-board-downloader|pano indirme]] aracını kullanın; fotoğraflar ve videolar tek ZIP’te gelir."
+      },
+      {
+        "q": "Pinterest’teki story videolarını da indirir mi?",
+        "a": "Pinterest’te bulduğunuz story arka planları ve story videoları aslında sıradan Pinlerdir; eski Fikir Pinleri de artık normal Pin olarak görünür. Videoysa burada MP4 olarak, fotoğrafsa [[pinterest-image-downloader|fotoğraf indiricide]] indirin."
+      },
+      {
+        "q": "İndirdiğim videoyu CapCut’ta düzenleyebilir miyim?",
+        "a": "Evet, MP4 CapCut’ta ve diğer video düzenleyicilerde açılır. Düzenleyip paylaşacaksanız içerik üreticisini kaynak gösterin ve haklarına saygı duyun."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer Pinterest araçları"
+  },
+  "schema": {
+    "appName": "Pinterest Video İndirici — PintDownload",
+    "howToName": "Pinterest videosu MP4 olarak nasıl indirilir",
+    "howToDescription": "Herkese açık bir Pinterest video Pinini MP4 dosyası olarak kaydetme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Doğrulanacak: Pinterest TR uygulamasında video Pinlerinin üç nokta menüsündeki İndir seçeneği ve bu yolla indirilen videoya logo eklenip eklenmediği; paylaş simgesinin (metin etiketi yok) iOS ve Android’deki görünümü.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edit: FAQ question “Pinterest videosunu neden indiremiyorum?” (grammatical form of the searched phrase)."
+  }
+}

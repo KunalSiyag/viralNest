@@ -1,0 +1,186 @@
+{
+  "pageId": "home",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Downloader – Videos, Bilder & GIFs kostenlos",
+    "description": "Kostenloser Pinterest-Downloader: Videos als MP4, Bilder, GIFs sowie ganze Pinnwände und Profile als ZIP speichern. Ohne Anmeldung, ohne Wasserzeichen."
+  },
+  "keywords": {
+    "primary": "pinterest downloader",
+    "secondary": [
+      "pinterest downloader kostenlos",
+      "pinterest downloader online",
+      "pinterest video downloader deutsch",
+      "pinterest bilder herunterladen ohne anmeldung",
+      "pinterest downloader ohne wasserzeichen",
+      "pinterest download kostenlos deutsch"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest-Downloader",
+    "short": "Start",
+    "card": {
+      "title": "Pinterest-Downloader",
+      "blurb": "Link zu einem Pin, einer Pinnwand oder einem Profil einfügen und die Datei speichern.",
+      "badge": "Alles"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Downloader",
+    "lede": "**Link abgeben, Datei abholen.** Videos als **MP4**, Bilder so groß, wie Pinterest sie veröffentlicht, GIFs und ganze **Pinnwände oder Profile als ZIP**. Kostenlos, ohne Anmeldung, auf Handy und PC."
+  },
+  "aside": [
+    {
+      "dt": "Pin",
+      "dd": "MP4, JPG, GIF oder alle Bilder eines Karussells"
+    },
+    {
+      "dt": "Pinnwand",
+      "dd": "Alle öffentlichen Pins in einer ZIP-Datei"
+    },
+    {
+      "dt": "Profil",
+      "dd": "Pins als ZIP oder nur das Profilbild"
+    }
+  ],
+  "intro": [
+    "PintDownload ist ein **Pinterest-Downloader** im Browser, nicht die Pinterest-App. Wer „Pinterest herunterladen“ sucht, um die App zu installieren, findet sie im App Store, bei Google Play oder im Microsoft Store. Hier fügst du nur den Link zu einem Pin, einer Pinnwand oder einem Profil ein und speicherst die Datei.",
+    "Funktioniert mit Links aus der App (`pin.it/…`) und aus dem Browser (`pinterest.com/pin/…`), auch mit `pinterest.de`, `pinterest.at`, `pinterest.ch` und Adressen wie `de.pinterest.com`. Nur öffentliche Inhalte."
+  ],
+  "sections": [
+    {
+      "h2": "Was du von Pinterest herunterladen kannst",
+      "paragraphs": [
+        "Füg den Link oben ins Ticket ein, und PintDownload erkennt selbst, was dahintersteckt. Für jede Art von Link gibt es außerdem eine eigene Seite:"
+      ],
+      "list": [
+        "**Videos** als MP4, meist in 720p und in 1080p, wenn der Pin es hat: [[pinterest-video-downloader|Pinterest-Videos herunterladen]].",
+        "**Bilder** in der größten Version, die Pinterest veröffentlicht, statt des unscharfen Vorschaubilds: [[pinterest-image-downloader|Pinterest-Bilder herunterladen]].",
+        "**GIFs**, die animiert bleiben, und **Karussells** mit allen Bildern: [[pinterest-gif-downloader|GIFs]] und [[pinterest-carousel-downloader|Karussells]].",
+        "Öffentliche **Pinnwände** mit ihren Pins als ZIP: [[pinterest-board-downloader|Pinterest-Pinnwand herunterladen]].",
+        "Öffentliche **Profile** als ZIP oder nur das [[pinterest-profile-picture-downloader|Profilbild in groß]]."
+      ]
+    },
+    {
+      "h2": "Wenn „Bild herunterladen“ in der App fehlt",
+      "paragraphs": [
+        "Viele landen hier, weil der Menüpunkt **Bild herunterladen** hinter dem Drei-Punkte-Symbol fehlt oder nichts mehr tut, auf dem Handy, dem iPad oder am PC. Der Weg über den Link ist davon unabhängig: **Teilen** › **Link kopieren**, hier einfügen, Datei speichern. Und Achtung: **Merken** legt einen Pin nur auf deiner Pinnwand ab, eine Datei auf dem Gerät entsteht dabei nicht."
+      ]
+    },
+    {
+      "h2": "Was PintDownload nicht kann",
+      "paragraphs": [
+        "Private Pins, geheime Pinnwände, Inhalte hinter einer Anmeldung und gelöschte Pins bleiben außen vor. Wir erfinden auch keine Qualität: Veröffentlicht Pinterest ein Video in 720p, ist das MP4 720p und kein hochgerechnetes Pseudo-HD.",
+        "Wir fügen kein Wasserzeichen hinzu; Text oder Logo, die der Creator selbst ins Video gesetzt hat, bleiben drin. PintDownload ist ein unabhängiges Tool und steht in keiner Verbindung zu Pinterest Inc."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "In 3 Schritten von Pinterest herunterladen",
+    "intro": "Klappt im Browser auf iPhone, Android, Mac und PC. Nur öffentliche Pins, ohne Konto und ohne Installation.",
+    "exampleLabel": "Beispiel-Link",
+    "items": [
+      {
+        "title": "Link kopieren",
+        "body": "Öffne den Pin, die Pinnwand oder das Profil in der App oder im Browser. Tippe auf **Teilen** und dann auf **Link kopieren**, oder kopiere die Adresse mit `/pin/`. Kurzlinks wie `pin.it/…` gehen auch."
+      },
+      {
+        "title": "Bei PintDownload einfügen",
+        "body": "Füge den öffentlichen Link oben ins Ticket ein und tippe auf **Herunterladen**. Videos, Bilder, GIFs, Pinnwände und Profile nimmt dasselbe Feld."
+      },
+      {
+        "title": "Prüfen und speichern",
+        "body": "Wähl die Qualität, wenn es mehrere gibt, und speichere die Datei in Downloads, Fotos oder der Galerie. Pinnwände und Profile kommen als ZIP-Datei."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zum Pinterest-Downloader",
+    "items": [
+      {
+        "q": "Kann ich von Pinterest ohne Konto herunterladen?",
+        "a": "Ja. Kopiere den Link in der App oder im Browser und füge ihn hier ein. Du brauchst weder ein Pinterest-Konto noch eine Anmeldung bei uns, solange der Pin öffentlich ist."
+      },
+      {
+        "q": "Ist PintDownload kostenlos?",
+        "a": "Ja. Videos, Bilder, GIFs, Pinnwände und Profile herunterzuladen kostet nichts und braucht keine Registrierung. Auf den Seiten für [[pinterest-pin-downloader|Pins]] und [[pinterest-video-downloader|Videos]] fügst du im Modus **Bis zu 5** mehrere Links auf einmal ein."
+      },
+      {
+        "q": "Ist das die Pinterest-App?",
+        "a": "Nein. PintDownload ist eine unabhängige Website und gehört nicht zu Pinterest. Die offizielle Pinterest-App gibt es im App Store, bei Google Play und im Microsoft Store; Pins als Datei speichern kannst du hier im Browser."
+      },
+      {
+        "q": "Warum fehlt „Bild herunterladen“ in der Pinterest-App?",
+        "a": "Pinterest zeigt den Menüpunkt nicht bei jedem Pin, und bei manchen klappt er nicht. Über den Link geht es trotzdem: **Teilen** › **Link kopieren**, hier einfügen. Mehr dazu auf der Seite [[pinterest-image-downloader|Pinterest-Bilder herunterladen]]."
+      },
+      {
+        "q": "Ist das Herunterladen von Pinterest legal?",
+        "a": "Für dich privat zu speichern ist etwas anderes, als fremde Inhalte neu zu veröffentlichen. Wenn du ein Bild oder Video weiterverwendest, nenne die Creator und frag im Zweifel um Erlaubnis. Das ist keine Rechtsberatung."
+      },
+      {
+        "q": "Funktioniert das auf iPhone, iPad, Android und PC?",
+        "a": "Ja, in Safari, Chrome, Edge, Firefox oder Samsung Internet. Wie das Video danach in die Fotos-App oder die Galerie kommt, erklärt die [[how-to-download-pinterest-video-in-gallery|Galerie-Anleitung]]."
+      },
+      {
+        "q": "Was funktioniert nicht?",
+        "a": "Private Pins, geheime Pinnwände, Links, die eine Anmeldung verlangen, und gelöschte Pins. Die Qualität heben wir auch nicht an: Du bekommst die beste Version, die Pinterest für den Pin veröffentlicht."
+      },
+      {
+        "q": "Haben die Dateien ein Wasserzeichen?",
+        "a": "Von uns nicht. Du bekommst die Datei, die Pinterest veröffentlicht. Hat der Creator seinen Namen oder einen Text ins Video gesetzt, ist das Teil des Bildes und bleibt."
+      },
+      {
+        "q": "Gehört PintDownload zu Pinterest?",
+        "a": "Nein. PintDownload ist ein unabhängiges Tool und steht in keiner Verbindung zu Pinterest Inc. Wir greifen nur auf Inhalte zu, die Pinterest öffentlich zeigt."
+      }
+    ]
+  },
+  "related": {
+    "title": "Ein Tool für jeden Link"
+  },
+  "schema": {
+    "appName": "Pinterest-Downloader – PintDownload",
+    "howToName": "Videos, Bilder, GIFs, Pinnwände und Profile von Pinterest herunterladen",
+    "howToDescription": "Öffentlichen Pinterest-Link kopieren, bei PintDownload einfügen, das Ergebnis prüfen und die Datei oder das ZIP speichern."
+  },
+  "guides": {
+    "title": "Anleitungen Schritt für Schritt",
+    "intro": "Für jedes Gerät und jedes Ziel, mit den Menüpunkten, die du auf deinem Bildschirm siehst.",
+    "items": [
+      {
+        "page": "how-to-download-pinterest-videos",
+        "tag": "Anleitung",
+        "title": "Pinterest-Videos speichern: So geht’s",
+        "blurb": "Vom Link zum MP4, auf dem Handy und am PC, ohne App."
+      },
+      {
+        "page": "how-to-download-pinterest-video-in-gallery",
+        "tag": "Galerie",
+        "title": "Pinterest-Video in der Galerie speichern",
+        "blurb": "Damit das Video in der Galerie oder in der Fotos-App landet, und was du tust, wenn es fehlt."
+      },
+      {
+        "page": "download-pinterest-videos-iphone-android",
+        "tag": "Handy",
+        "title": "Pinterest-Video auf iPhone & Android herunterladen",
+        "blurb": "Safari auf dem iPhone, Chrome oder Samsung Internet auf Android, ohne App aus dem Store."
+      },
+      {
+        "page": "how-to-download-pinterest-video-on-laptop",
+        "tag": "PC",
+        "title": "Pinterest-Video am PC herunterladen",
+        "blurb": "Windows, Mac oder Chromebook: Adresse kopieren, das MP4 landet im Downloads-Ordner."
+      }
+    ]
+  },
+  "credit": {
+    "h2": "Nenne die Creator",
+    "body": "Wenn du das Video oder Bild einer anderen Person in etwas verwendest, das du veröffentlichst (Reels, TikTok, YouTube, Werbung), **nenne die Person, die es erstellt hat**. Offline anschauen ist das eine; ohne Nennung oder Erlaubnis neu hochladen ist etwas anderes."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). For the native reviewer: Pinterest DE labels Teilen, Link kopieren, Merken, Bild herunterladen and Drei-Punkte-Symbol come from help.pinterest.com/de via the research; check them in the current app.",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

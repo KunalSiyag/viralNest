@@ -1,0 +1,133 @@
+{
+  "pageId": "pinterest-pin-downloader",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Pin herunterladen – Bild, Video & GIF kostenlos",
+    "description": "Einzelnen Pinterest-Pin herunterladen: Link einfügen, dann Bild, MP4-Video, GIF oder alle Karussell-Bilder speichern. Kostenlos, ohne Anmeldung, auch pin.it."
+  },
+  "keywords": {
+    "primary": "pinterest pin herunterladen",
+    "secondary": [
+      "pinterest pins herunterladen",
+      "pinterest pin herunterladen kostenlos",
+      "pinterest pin herunterladen pc",
+      "pinterest pin downloader",
+      "pins herunterladen"
+    ]
+  },
+  "nav": {
+    "label": "Pin herunterladen",
+    "short": "Pins",
+    "card": {
+      "title": "Pinterest-Pin herunterladen",
+      "blurb": "Ein Pin-Link: Bild, MP4-Video, GIF oder alle Bilder eines Karussells.",
+      "badge": "Pin"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Pin herunterladen",
+    "lede": "Ein Pin-Link genügt: PintDownload erkennt, ob es ein **Bild**, ein **Video**, ein **GIF** oder ein **Karussell** ist, und gibt dir die passende Datei."
+  },
+  "intro": [
+    "Nicht sicher, was für ein Pin das ist? Dann bist du hier richtig. Füge den Link ein, und PintDownload sucht die passende Datei aus: JPG für Bilder, MP4 für Videos, ein GIF mit Animation oder alle Bilder eines Karussells.",
+    "Funktioniert mit `pinterest.de/pin/…`, `de.pinterest.com/pin/…` und `pin.it/…`. Für Pinnwände und Profile gibt es eigene Tools."
+  ],
+  "features": [
+    {
+      "h": "Erkennt den Pin-Typ",
+      "p": "Bild, Video, GIF oder Karussell: Du musst vorher nicht wissen, welches Tool passt."
+    },
+    {
+      "h": "Alle Karussell-Bilder",
+      "p": "Bei Pins mit mehreren Bildern bekommst du jedes einzeln oder alle zusammen als ZIP."
+    },
+    {
+      "h": "Auch pin.it-Kurzlinks",
+      "p": "Der Link, den die App beim Teilen kopiert, funktioniert direkt. Ein Konto brauchst du nicht."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "„Merken“ ist nicht herunterladen",
+      "paragraphs": [
+        "Wer auf Pinterest **Merken** tippt, legt den Pin auf einer eigenen Pinnwand ab. Eine Datei auf dem Handy entsteht dabei nicht, deshalb findest du gemerkte Pins auch nicht in der Galerie. Herunterladen heißt: Die Datei kommt aufs Gerät. Genau das macht PintDownload mit dem Pin-Link."
+      ]
+    },
+    {
+      "h2": "Pin, Pinnwand oder Profil?",
+      "paragraphs": [
+        "Ein Pin-Link enthält `/pin/` und eine lange Nummer, oder er ist ein `pin.it`-Kurzlink. Ein Link mit Nutzername und Pinnwand-Name führt zu einer Pinnwand, einer nur mit Nutzername zu einem Profil. Dafür gibt es den [[pinterest-board-downloader|Pinnwand-Download]] und den [[pinterest-profile-downloader|Profil-Download]]; fügst du so einen Link hier ein, zeigt dir das Ticket das passende Tool."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So lädst du einen Pinterest-Pin herunter",
+    "intro": "Für einzelne Pins jeder Art. Für viele Pins auf einmal nimm den Pinnwand-Download.",
+    "exampleLabel": "Beispiel für einen Pin-Link",
+    "items": [
+      {
+        "title": "Pin öffnen",
+        "body": "Öffne den Pin in der App oder im Browser in der Großansicht."
+      },
+      {
+        "title": "Link kopieren",
+        "body": "In der App: **Teilen** › **Link kopieren**. Im Browser: die Adresse mit `/pin/` kopieren."
+      },
+      {
+        "title": "Einfügen und abrufen",
+        "body": "Füge den Link oben ein und tippe auf **Pin herunterladen**. Der Pin-Typ wird automatisch erkannt."
+      },
+      {
+        "title": "Datei wählen",
+        "body": "Speichere das Bild, das MP4 oder das GIF, bei Karussells einzelne Bilder oder alle zusammen als ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zum Pin-Download",
+    "items": [
+      {
+        "q": "Was ist ein Pin-Link?",
+        "a": "Die Adresse eines einzelnen Pins, etwa `pinterest.de/pin/1234…`, `de.pinterest.com/pin/1234…` oder der Kurzlink `pin.it/…` aus der App. Alle drei Formen funktionieren hier."
+      },
+      {
+        "q": "Wie kopiere ich den Link in der App?",
+        "a": "Öffne den Pin, tippe auf das Teilen-Symbol und dann auf **Link kopieren**. Die App kopiert einen `pin.it`-Kurzlink, den du hier direkt einfügen kannst."
+      },
+      {
+        "q": "Ich habe den Pin gemerkt – warum ist er nicht auf meinem Handy?",
+        "a": "**Merken** speichert den Pin auf einer deiner Pinnwände bei Pinterest, nicht als Datei auf dem Gerät. Für eine Datei in der Galerie musst du ihn herunterladen, zum Beispiel hier mit dem Link."
+      },
+      {
+        "q": "Kann ich alle Bilder eines Karussell-Pins laden?",
+        "a": "Ja. PintDownload zeigt jedes Bild des Karussells einzeln an, und mit dem ZIP-Button bekommst du alle auf einmal."
+      },
+      {
+        "q": "Klappt das auch mit Video- und GIF-Pins?",
+        "a": "Ja. Video-Pins kommen als MP4, meist in 720p und in 1080p, wenn der Pin es hat. GIF-Pins bleiben animierte GIFs."
+      },
+      {
+        "q": "Warum funktioniert mein Pinnwand- oder Profil-Link hier nicht?",
+        "a": "Weil diese Seite einzelne Pins erwartet. Das Ticket erkennt Pinnwand- und Profil-Links und zeigt dir den Weg zum passenden Tool, das die Pins als ZIP packt."
+      },
+      {
+        "q": "Ist der Pin-Download kostenlos?",
+        "a": "Ja, ohne Registrierung und ohne Anmeldung bei Pinterest. Es funktioniert mit öffentlichen Pins."
+      }
+    ]
+  },
+  "related": {
+    "title": "Tools für jede Art von Pin"
+  },
+  "schema": {
+    "appName": "Pinterest-Pin-Downloader – PintDownload",
+    "howToName": "Einen Pinterest-Pin herunterladen",
+    "howToDescription": "Den Link eines öffentlichen Pins einfügen und je nach Pin-Typ Bild, MP4, GIF oder alle Karussell-Bilder speichern."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). For the native reviewer: Merken vs. herunterladen is the local intent trap (autocomplete: pinterest pin speichern nicht möglich).",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "pageId": "pinterest-video-downloader-chrome",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar Vídeo do Pinterest no Chrome sem Extensão",
+    "description": "Baixe vídeos, fotos e pastas do Pinterest direto da aba do Chrome com um favorito de 1 clique (bookmarklet). Não é extensão: nada para instalar na loja."
+  },
+  "keywords": {
+    "primary": "extensão para baixar vídeo do pinterest",
+    "secondary": [
+      "baixar vídeo pinterest extensão chrome",
+      "pinterest downloader chrome",
+      "extensão chrome pinterest download",
+      "baixar vídeo do pinterest no chrome",
+      "bookmarklet pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest no Chrome",
+    "short": "Chrome",
+    "card": {
+      "title": "Favorito de 1 clique no Chrome",
+      "blurb": "Sem extensão: um favorito abre o PintDownload com o link do pin.",
+      "badge": "Chrome"
+    }
+  },
+  "hero": {
+    "h1": "Baixar vídeo do Pinterest no Chrome",
+    "lede": "Procurando **extensão para baixar vídeo do Pinterest**? Um **favorito de 1 clique** faz o mesmo trabalho, sem instalar nada da loja do Chrome."
+  },
+  "intro": [
+    "O PintDownload não é uma extensão. É um **favorito** (bookmarklet): você arrasta um botão para a barra de favoritos e, quando estiver num pin, clica nele. O PintDownload abre em outra aba com o link já colado.",
+    "Funciona no Chrome, no Edge, no Brave e no Opera, no Windows, no Mac e no Chromebook. No celular, é mais simples colar o link direto no site."
+  ],
+  "features": [
+    {
+      "h": "Nada para instalar",
+      "p": "Sem passar pela Chrome Web Store e sem extensão rodando o tempo todo em segundo plano."
+    },
+    {
+      "h": "Sem permissões extras",
+      "p": "O favorito não pede para ler todos os sites. Ele só roda quando você clica."
+    },
+    {
+      "h": "Um clique no pin",
+      "p": "Com o pin, a pasta ou o perfil aberto, clique no favorito e o link chega pronto."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Por que um favorito em vez de extensão",
+      "paragraphs": [
+        "Muitas extensões de download pedem permissão para ler e alterar os dados de todos os sites que você abre, e ficam rodando o tempo todo. O favorito é só um pequeno código que roda quando você clica, na aba aberta. Se não quiser mais, é só apagar o favorito."
+      ]
+    },
+    {
+      "h2": "No celular e no Safari",
+      "paragraphs": [
+        "No celular, favoritos não se arrastam. Lá, o jeito mais rápido é tocar em **Compartilhar** › **Copiar link** no app do Pinterest e colar em pintdownload.app. No Safari do Mac, arraste o botão para os Favoritos e use do mesmo jeito."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como usar o PintDownload no Chrome",
+    "intro": "Três passos para baixar com um clique no computador.",
+    "exampleLabel": "Link do Pinterest",
+    "items": [
+      {
+        "title": "Arraste o botão para a barra de favoritos",
+        "body": "Arraste o botão **PintDownload** desta página até a barra de favoritos do Chrome, do Edge ou do Safari."
+      },
+      {
+        "title": "Navegue no Pinterest",
+        "body": "Use o Pinterest normalmente. Quando achar o vídeo, o pin ou a pasta que quer, fique nessa página."
+      },
+      {
+        "title": "Clique no favorito",
+        "body": "Clique em **PintDownload** na barra: o site abre em outra aba com o link do pin já colado, pronto para baixar."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre o Chrome",
+    "items": [
+      {
+        "q": "O PintDownload é uma extensão do Chrome?",
+        "a": "Não. É um favorito de 1 clique (bookmarklet). Ele faz o papel de uma extensão de download sem passar pela loja, sem rodar em segundo plano e sem pedir permissões."
+      },
+      {
+        "q": "Por que um favorito é mais seguro que uma extensão?",
+        "a": "Porque não pede permissão para ler todos os sites que você visita. O código só roda quando você clica, na aba do Pinterest, e só abre o PintDownload com o link."
+      },
+      {
+        "q": "Funciona no Edge, Opera, Firefox, Brave e Safari?",
+        "a": "Sim, em qualquer navegador de computador com barra de favoritos. No Safari, arraste o botão para os Favoritos."
+      },
+      {
+        "q": "Funciona no Mac, no Windows e no Chromebook?",
+        "a": "Funciona nos três, e no Linux também. O que importa é o navegador, não o sistema."
+      },
+      {
+        "q": "E no celular?",
+        "a": "No celular é melhor colar o link: no app do Pinterest, toque em **Compartilhar** › **Copiar link** e cole em pintdownload.app. O guia [[download-pinterest-videos-iphone-android|vídeo do Pinterest no iPhone e Android]] mostra o passo a passo."
+      },
+      {
+        "q": "Dá para baixar uma pasta inteira pelo favorito?",
+        "a": "Dá. Clique no favorito com a pasta aberta e o PintDownload abre com o link dela, pronto para listar os pins e gerar o ZIP."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outras ferramentas para o Pinterest"
+  },
+  "schema": {
+    "appName": "PintDownload no Chrome (favorito de 1 clique)",
+    "howToName": "Como baixar vídeo do Pinterest no Chrome sem extensão",
+    "howToDescription": "Arraste o favorito de 1 clique para a barra de favoritos e clique nele num pin para abrir o PintDownload com o link."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. Chrome pt-BR: Favoritos, barra de favoritos (Ctrl+Shift+B). Bookmarklet opens /pt?url=…&auto=true, which handles pins, pastas and perfis.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device."
+  }
+}

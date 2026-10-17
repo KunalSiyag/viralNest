@@ -1,0 +1,143 @@
+{
+  "pageId": "how-to-download-pinterest-video-on-laptop",
+  "locale": "th",
+  "meta": {
+    "title": "โหลดวิดีโอ Pinterest ลงคอม Windows และ Mac ฟรี ทีละขั้นตอน",
+    "description": "สอนโหลดวิดีโอ Pinterest ลงคอมและโน้ตบุ๊ก ทั้ง Windows, Mac และ Chromebook คัดลอกลิงก์จากแถบที่อยู่ วางในช่อง แล้วได้ไฟล์ MP4 ฟรี ไม่ต้องลงโปรแกรม"
+  },
+  "keywords": {
+    "primary": "โหลดวิดีโอ pinterest ลงคอม",
+    "secondary": [
+      "โหลดวิดีโอ pinterest ในคอม",
+      "สอนโหลดคลิป pinterest ในคอม",
+      "เซฟวิดีโอ pinterest ลงเครื่องคอม",
+      "โหลดคลิป pinterest ลงเครื่อง mac",
+      "วิธีบันทึกวิดีโอ pinterest pc"
+    ]
+  },
+  "nav": {
+    "label": "โหลดลงคอม",
+    "short": "คอม",
+    "card": {
+      "title": "โหลดวิดีโอลงคอม",
+      "blurb": "Windows, Mac และ Chromebook คัดลอกลิงก์จากแถบที่อยู่ แล้วเซฟ MP4",
+      "badge": "คอม"
+    }
+  },
+  "hero": {
+    "h1": "โหลดวิดีโอ Pinterest ลงคอม",
+    "lede": "Windows · Mac · Chromebook คัดลอกลิงก์จาก**แถบที่อยู่ของเบราว์เซอร์** วางที่นี่ แล้วไฟล์ **MP4** จะอยู่ในโฟลเดอร์ดาวน์โหลด"
+  },
+  "intro": [
+    "บนคอมง่ายที่สุด เพราะลิงก์ของพินอยู่บนแถบที่อยู่ของเบราว์เซอร์อยู่แล้ว เปิดคลิปบน pinterest.com คัดลอกที่อยู่ วางในช่องด้านบน แล้วไฟล์ **MP4** จะลงโฟลเดอร์ดาวน์โหลด ไม่ต้องลงโปรแกรมเสริม",
+    "หน้านี้สอนโหลดคลิปจากพิน ไม่ใช่วิธีติดตั้งแอป Pinterest ลงคอม ถ้าอยากได้แอปจริง หาได้ใน Microsoft Store หรือเปิด pinterest.com ในเบราว์เซอร์ก็ใช้ได้เหมือนกัน"
+  ],
+  "sections": [
+    {
+      "h2": "Windows: Chrome หรือ Edge",
+      "paragraphs": [
+        "ใช้ได้ทั้งคอมตั้งโต๊ะและโน้ตบุ๊ก:"
+      ],
+      "list": [
+        "เปิด pinterest.com แล้วคลิกคลิปที่ต้องการ ให้ที่อยู่บนแถบมี `/pin/`",
+        "คลิกที่แถบที่อยู่ แล้วกด `Ctrl + C`",
+        "เปิด pintdownload.app ในแท็บใหม่ คลิกช่องด้านบน กด `Ctrl + V` แล้วกด**โหลดวิดีโอ**",
+        "คลิกโหลด MP4 ไฟล์จะอยู่ในโฟลเดอร์ Downloads (ดาวน์โหลด) กด `Ctrl + J` เพื่อเปิดรายการดาวน์โหลดของเบราว์เซอร์"
+      ]
+    },
+    {
+      "h2": "Mac: Safari หรือ Chrome",
+      "paragraphs": [
+        "ขั้นตอนเหมือน Windows แค่เปลี่ยนปุ่มลัด:"
+      ],
+      "list": [
+        "เปิดพินบน pinterest.com แล้วคัดลอกที่อยู่ด้วย `Cmd + C`",
+        "วางใน pintdownload.app ด้วย `Cmd + V` แล้วคลิก**โหลดวิดีโอ**",
+        "ไฟล์จะลงโฟลเดอร์ Downloads (ดาวน์โหลด) เปิดได้จาก Finder หรือไอคอนดาวน์โหลดของเบราว์เซอร์"
+      ]
+    },
+    {
+      "h2": "Chromebook",
+      "paragraphs": [
+        "ทำแบบเดียวกับ Windows ใน Chrome ได้เลย ไฟล์ MP4 จะอยู่ในแอปไฟล์ › ดาวน์โหลด เปิดดูได้ทันที"
+      ]
+    },
+    {
+      "h2": "ปุ่มลัดบนแถบบุ๊กมาร์ก",
+      "paragraphs": [
+        "ถ้าโหลดจาก Pinterest บนคอมบ่อยๆ ลากบุ๊กมาร์กเล็ตด้านล่างไปไว้ที่แถบบุ๊กมาร์ก แล้วกดครั้งเดียวบนหน้าพิน PintDownload จะเปิดพร้อมลิงก์ให้ทันที รายละเอียดอยู่ที่[[pinterest-video-downloader-chrome|หน้าโหลด Pinterest บน Chrome]]"
+      ]
+    }
+  ],
+  "steps": {
+    "title": "โหลดวิดีโอ Pinterest ลงคอมทีละขั้น",
+    "intro": "ใช้ได้กับคลิปสาธารณะบน Windows, Mac และ Chromebook",
+    "exampleLabel": "ที่อยู่ที่คัดลอกจากเบราว์เซอร์",
+    "exampleUrl": "https://www.pinterest.com/pin/…",
+    "items": [
+      {
+        "title": "เปิดคลิปบน pinterest.com",
+        "body": "คลิกพินวิดีโอให้เปิดเต็มหน้า ไม่ใช่หน้าตารางของบอร์ดหรือหน้าค้นหา"
+      },
+      {
+        "title": "คัดลอกที่อยู่",
+        "body": "คลิกแถบที่อยู่ แล้วกด `Ctrl + C` (บน Mac กด `Cmd + C`) ที่อยู่ต้องมี `/pin/`"
+      },
+      {
+        "title": "วางแล้วกดโหลด",
+        "body": "วางในช่องด้านบน แล้วกด**โหลดวิดีโอ** ถ้ามีหลายความละเอียด ให้เลือกอันที่ต้องการ"
+      },
+      {
+        "title": "เปิดโฟลเดอร์ดาวน์โหลด",
+        "body": "ไฟล์ MP4 อยู่ในโฟลเดอร์ Downloads เปิดด้วยโปรแกรมดูวิดีโอหรือโปรแกรมตัดต่อได้เลย"
+      }
+    ]
+  },
+  "faq": {
+    "title": "คำถามที่พบบ่อยเรื่องโหลดลงคอม",
+    "items": [
+      {
+        "q": "โหลดวิดีโอ Pinterest ลงคอม Windows หรือ Mac ยังไง?",
+        "a": "เปิดคลิปบน pinterest.com คัดลอกที่อยู่จากแถบเบราว์เซอร์ วางในช่องด้านบน แล้วกด**โหลดวิดีโอ** ไฟล์ MP4 จะลงโฟลเดอร์ Downloads"
+      },
+      {
+        "q": "ต้องลงโปรแกรมไหม?",
+        "a": "ไม่ต้อง ทำทุกอย่างในเบราว์เซอร์ ระวังเว็บที่ให้โหลดไฟล์ .exe มาติดตั้งก่อน ส่วนถ้าตั้งใจจะติดตั้งแอป Pinterest เอง นั่นเป็นอีกเรื่อง หน้านี้ไม่ได้ติดตั้งอะไรลงเครื่อง"
+      },
+      {
+        "q": "บนคอมได้วิดีโอ 720p หรือ 1080p?",
+        "a": "ขึ้นกับพิน ไม่ใช่อุปกรณ์ ปกติได้ 720p และได้ 1080p ถ้าพินนั้นมีไฟล์ขนาดนี้ ถ้ามีหลายขนาดจะเห็นให้เลือกทั้งหมด"
+      },
+      {
+        "q": "ใช้บน Chromebook ได้ไหม?",
+        "a": "ได้ เปิด pintdownload.app ใน Chrome แล้วทำตามขั้นตอนเดียวกับ Windows ไฟล์จะอยู่ในแอปไฟล์ › ดาวน์โหลด"
+      },
+      {
+        "q": "โหลดแล้วไฟล์อยู่ที่ไหน?",
+        "a": "ในโฟลเดอร์ Downloads (ดาวน์โหลด) ของเครื่อง เว้นแต่ตั้งค่าให้เบราว์เซอร์ถามที่เก็บทุกครั้ง บน Chrome และ Edge กด `Ctrl + J` จะเห็นรายการไฟล์ที่เพิ่งโหลด"
+      },
+      {
+        "q": "โหลดรูปและ GIF ลงคอมได้ด้วยไหม?",
+        "a": "ได้ วิธีเดียวกัน แค่วางลิงก์ที่[[pinterest-image-downloader|หน้าโหลดรูป]]หรือ[[pinterest-gif-downloader|หน้าโหลด GIF]] ถ้าอยากได้ทั้งบอร์ดใช้[[pinterest-board-downloader|หน้าโหลดบอร์ด]]"
+      },
+      {
+        "q": "มีปุ่มลัดในเบราว์เซอร์ไหม?",
+        "a": "มี เป็นบุ๊กมาร์กเล็ต ไม่ใช่ส่วนขยาย ลากไปไว้ที่แถบบุ๊กมาร์กครั้งเดียว แล้วกดบนหน้าพินเมื่อไรก็ได้ ดูวิธีที่[[pinterest-video-downloader-chrome|หน้าโหลด Pinterest บน Chrome]]"
+      }
+    ]
+  },
+  "related": {
+    "title": "เครื่องมือสำหรับคอม"
+  },
+  "schema": {
+    "appName": "โหลดวิดีโอ Pinterest ลงคอม — PintDownload",
+    "howToName": "วิธีโหลดวิดีโอ Pinterest ลงคอม Windows, Mac และ Chromebook",
+    "howToDescription": "คัดลอกที่อยู่ของพินวิดีโอจากเบราว์เซอร์ วางใน PintDownload แล้วเซฟไฟล์ MP4 ลงโฟลเดอร์ดาวน์โหลด"
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-th (agent), 2026-10-16. Thais say คอม, not laptop (research); the slug keeps the English word on purpose. For the native reviewer: verify the ChromeOS Files label (ไฟล์ › ดาวน์โหลด).",
+    "nativeReviewer": "review-th (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, friendly-neutral register (no ครับ/ค่ะ/ท่าน), search vocabulary (โหลด/ดาวน์โหลด/เซฟ, คอม, ไอแพด, ให้ชัด), glossary (พิน, บอร์ด, บอร์ดส่วนตัว, พินหลายรูป, วิดีโอ not วีดีโอ, ลิงก์), honesty (720p/1080p conditional, 1200 px, no 4K promise, MP3 made in the browser, no watermark from us) and English leftovers. Pinterest labels rechecked on help.pinterest.com/th/article/download-an-image on 2026-10-17: ไอคอนจุดไข่ปลา › ดาวน์โหลดรูปภาพ, บันทึก saves to a board, หน้าฟีดหลัก, not every Pin can be downloaded. แชร์ › คัดลอกลิงก์ is the standard Thai share-sheet wording but was not checked in the Thai app on a device. No copy changes needed. ChromeOS ไฟล์ › ดาวน์โหลด not checked on a device."
+  }
+}

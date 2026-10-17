@@ -1,0 +1,131 @@
+{
+  "pageId": "how-to-download-pinterest-video-on-laptop",
+  "locale": "pt",
+  "meta": {
+    "title": "Como Baixar Vídeo do Pinterest no PC, Notebook ou Mac",
+    "description": "Baixe vídeos do Pinterest no PC com Windows, no notebook ou no Mac pelo navegador: copie o link do pin, cole aqui e salve o MP4 na pasta Downloads. Grátis."
+  },
+  "keywords": {
+    "primary": "como baixar vídeo do pinterest no pc",
+    "secondary": [
+      "baixar vídeo pinterest pc",
+      "como baixar vídeo do pinterest no notebook",
+      "como baixar vídeo do pinterest no computador",
+      "como baixar vídeo do pinterest no mac",
+      "pinterest video downloader pc"
+    ]
+  },
+  "nav": {
+    "label": "Vídeo no PC",
+    "short": "PC",
+    "card": {
+      "title": "Baixar vídeo no PC",
+      "blurb": "Windows, Mac ou Chromebook: copie o link e salve o MP4.",
+      "badge": "PC"
+    }
+  },
+  "hero": {
+    "h1": "Baixar vídeo do Pinterest no PC",
+    "lede": "No **PC com Windows**, no **notebook** ou no **Mac**: copie o link do pin, cole aqui e o MP4 vai para a pasta **Downloads**. Pelo navegador, sem programa."
+  },
+  "intro": [
+    "No computador, baixar vídeo do Pinterest é mais rápido que no celular: o link já está na barra de endereço e o arquivo vai direto para a pasta Downloads. Funciona no Chrome, no Edge, no Safari e no Firefox.",
+    "Em Portugal, o notebook é o **portátil** e a pasta Downloads pode aparecer como **Transferências**; o caminho é o mesmo."
+  ],
+  "features": [
+    {
+      "h": "Windows, Mac e Chromebook",
+      "p": "Funciona no Windows 11 e 10, no macOS (MacBook Air e Pro) e no ChromeOS, sem instalar nada."
+    },
+    {
+      "h": "Ctrl+V e Enter",
+      "p": "Cole com `Ctrl+V` (`Cmd+V` no Mac) e aperte Enter para ler o pin na hora."
+    },
+    {
+      "h": "A maior versão do pin",
+      "p": "Salva o maior MP4 que o Pinterest publica para o pin: geralmente 720p, e 1080p quando existe."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Copiar o link no computador",
+      "paragraphs": [
+        "Abra o vídeo em pinterest.com. O jeito mais simples é copiar o endereço da barra do navegador (ele tem `/pin/`). Também dá para clicar com o botão direito no pin e escolher **Copiar endereço do link**, ou usar o ícone **Compartilhar** › **Copiar link**."
+      ]
+    },
+    {
+      "h2": "Onde fica o arquivo depois de baixar",
+      "paragraphs": [
+        "Na pasta **Downloads**, a não ser que você tenha mudado o destino no navegador. No Chrome para Windows, `Ctrl+J` abre a lista de downloads, com o link **Mostrar na pasta**. No Mac, abra o Finder e clique em **Downloads** na barra lateral."
+      ]
+    },
+    {
+      "h2": "Atalho: favorito de 1 clique",
+      "paragraphs": [
+        "Se você baixa do Pinterest com frequência no computador, instale o favorito logo abaixo: com o pin aberto, um clique abre o PintDownload com o link já colado. Mais detalhes em [[pinterest-video-downloader-chrome|baixar vídeo do Pinterest no Chrome]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como baixar vídeo do Pinterest no PC",
+    "intro": "Três passos no Windows, no Mac ou no Chromebook.",
+    "exampleLabel": "Link de vídeo do Pinterest",
+    "items": [
+      {
+        "title": "Copie o link do vídeo",
+        "body": "Abra o pin em pinterest.com e copie o endereço da barra, ou use **Compartilhar** › **Copiar link**."
+      },
+      {
+        "title": "Cole no PintDownload",
+        "body": "Abra o PintDownload em outra aba, cole o link na caixa acima e aperte Enter."
+      },
+      {
+        "title": "Salve o MP4",
+        "body": "Clique em **Baixar MP4** e o vídeo vai para a pasta Downloads do Windows, do Mac ou do Chromebook."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre baixar no PC",
+    "items": [
+      {
+        "q": "Funciona igual no Windows e no Mac?",
+        "a": "Sim. É tudo pelo navegador: Chrome, Edge, Safari ou Firefox. Só muda o atalho de colar (`Ctrl+V` no Windows, `Cmd+V` no Mac)."
+      },
+      {
+        "q": "Onde fica o arquivo depois de baixar?",
+        "a": "Na pasta **Downloads** (em Portugal, **Transferências**), a não ser que você tenha escolhido outro destino no navegador."
+      },
+      {
+        "q": "Dá para baixar em 1080p no PC, se o pin tiver?",
+        "a": "Quando o pin tem a versão 1080p, dá: ela aparece na lista e você escolhe. Muitos vídeos do Pinterest só existem em 720p, e aí é essa a qualidade que vem."
+      },
+      {
+        "q": "Funciona no Chromebook?",
+        "a": "Funciona. O PintDownload é um site, então roda no ChromeOS como em qualquer computador, e o MP4 vai para a pasta Downloads do app Arquivos."
+      },
+      {
+        "q": "Preciso instalar programa ou extensão?",
+        "a": "Não. Nada de programa. Se quiser agilizar, há o [[pinterest-video-downloader-chrome|favorito de 1 clique]], que também não é extensão."
+      },
+      {
+        "q": "Dá para baixar os vídeos de uma pasta inteira no PC?",
+        "a": "Dá: cole o link da pasta no [[pinterest-board-downloader|baixador de pastas]] e baixe tudo em um ZIP."
+      }
+    ]
+  },
+  "related": {
+    "title": "Mais guias e ferramentas"
+  },
+  "schema": {
+    "appName": "Baixar vídeo do Pinterest no PC — PintDownload",
+    "howToName": "Como baixar vídeo do Pinterest no PC, notebook ou Mac",
+    "howToDescription": "Copie o link do pin no navegador do computador, cole no PintDownload e salve o MP4 na pasta Downloads."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. To verify: Chrome pt-BR context menu “Copiar endereço do link” and downloads page “Mostrar na pasta”; macOS pt-PT shows the Downloads folder as “Transferências”.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device."
+  }
+}

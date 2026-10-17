@@ -79,7 +79,7 @@ Secondary keywords, Spanish FAQ topics and per-page autocomplete evidence are in
 - **Boards:** **tablero** / **tableros**, **tableros grupales**. The secret-board toggle reads "Convertir este tablero en secreto".
 - **Profiles:** **perfil**, **foto de perfil**, **Editar perfil**.
 - **Video pins:** **Pin de video**. The newsroom keeps "Idea Pins" in English.
-- **Device steps must match the OS labels:** iOS **Archivos → Descargas → Compartir → Guardar video**; Android **Descargas**, **Galería**, **Google Fotos**, **Mis archivos** (Samsung); Chrome **barra de marcadores**.
+- **Device steps must match the OS labels:** iOS **Archivos → Descargas → Compartir → Guardar video**; Android **Descargas**, **Galería**, **Google Fotos**, **Mis archivos** (Samsung); Chrome **barra de favoritos** (es-419; Spain: **barra de marcadores**, so write "barra de favoritos (o de marcadores)").
 
 ## Glossary highlights (full list in `es.json` under `glossary`)
 

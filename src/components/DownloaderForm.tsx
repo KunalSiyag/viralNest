@@ -1,13 +1,26 @@
-import { useState, useEffect, useRef, type MouseEvent, type ReactNode } from 'react';
+import { useState, useEffect, useRef, useMemo, createElement, Fragment, type MouseEvent, type ReactNode } from 'react';
 import { Loader2, Download, Image as ImageIcon, Copy, Check, Clipboard, Play, Pause, Layers, Archive, User, ChevronRight, ChevronDown, Crop, Scissors, QrCode, ExternalLink, RefreshCw, X, Film, ArrowUp, Link2 } from 'lucide-react';
 import ImageCropperModal from './ImageCropperModal';
 import { Receipt, Specs, Perf, LineItem, Fill } from './results/parts';
 import '../styles/results.css';
 import AudioTrimmer from './AudioTrimmer';
-import { TRANSLATIONS, type LanguageCode } from '../lib/i18n';
 import { gifCandidateUrls, isGifUrl, isMediaContentType, mediaFileExtension, toDownloadablePinUrl } from '../lib/pin-media';
-import { classifyPinterestInput, getSuitableToolForMedia } from '../lib/pinterest-route';
+import {
+  EN_ISLAND_PATHS,
+  classifyPinterestInput,
+  getSuitableToolForMedia,
+  isPinterestLink,
+  routeTo,
+  type IslandPageId,
+  type IslandRoutes,
+} from '../lib/pinterest-route';
+import { MP3_KBPS } from '../lib/audio/mp3-constants';
 import { STOCKS, type StockKey } from '../lib/stocks';
+import { EN_ISLAND } from '../i18n/island/en';
+import type { DeepPartial, ErrorKind, IslandMessages, ResultKind } from '../i18n/island/types';
+import { API_ERROR_KIND, CLIENT_ERROR_KIND, apiErrorKey, errorKind, mp3ErrorCode } from '../i18n/island/errors';
+import { deepMerge, fmt, fmtParts, listSeparator, noticeSeparator, numberFormatter, plural, pluralParts } from '../i18n/island/fmt';
+import { PLACEHOLDER_PIN_TITLE } from '../lib/extract/types';
 
 interface BoardPinItem {
   pin_id: string;
@@ -80,156 +93,46 @@ export type FormLayout = 'default' | 'hero';
 const ZIP_ITEM_HEADERS_MS = 45_000;
 const ZIP_ITEM_IDLE_MS = 30_000;
 
-const VARIANT_COPY: Record<
-  FormVariant,
-  {
-    worksLabel: string;
-    singleTab: string;
-    showBatch: boolean;
-    placeholder: string;
-    ariaLabel: string;
-    submitLabel: string;
-    hint: string;
-  }
-> = {
-  hub: {
-    worksLabel: 'Works with',
-    singleTab: 'Pin / Board / Profile',
-    showBatch: true,
-    placeholder: 'Paste Pinterest link here… e.g. https://pin.it/…',
-    ariaLabel: 'Pinterest pin, board, or profile link',
-    submitLabel: 'Download',
-    hint: 'Public pin, board, or profile URLs. Board & profile links download as ZIP.',
-  },
-  pin: {
-    worksLabel: 'Best for',
-    singleTab: 'Single Pin URL',
-    showBatch: true,
-    placeholder: 'Paste pin URL… https://pinterest.com/pin/… or pin.it/…',
-    ariaLabel: 'Pinterest pin link',
-    submitLabel: 'Download Pin',
-    hint: 'Supports image pins, video pins, GIFs, and multi-image carousels (all slides).',
-  },
-  video: {
-    worksLabel: 'Best for',
-    singleTab: 'Video Pin URL',
-    showBatch: true,
-    placeholder: 'Paste video pin URL… https://pinterest.com/pin/… or pin.it/…',
-    ariaLabel: 'Pinterest video pin link',
-    submitLabel: 'Download Video',
-    hint: 'Extracts HD MP4 (and optional MP3 audio) from public video pins and Idea Pins.',
-  },
-  image: {
-    worksLabel: 'Best for',
-    singleTab: 'Image Pin URL',
-    showBatch: true,
-    placeholder: 'Paste image pin URL… https://pinterest.com/pin/…',
-    ariaLabel: 'Pinterest image pin link',
-    submitLabel: 'Download Image',
-    hint: 'Saves original-resolution photos and artwork. Carousels return every slide.',
-  },
-  gif: {
-    worksLabel: 'Best for',
-    singleTab: 'GIF Pin URL',
-    showBatch: true,
-    placeholder: 'Paste GIF pin URL… https://pinterest.com/pin/… or pin.it/…',
-    ariaLabel: 'Pinterest GIF pin link',
-    submitLabel: 'Download GIF',
-    hint: 'Saves the looping animated GIF — not a still JPG of the first frame.',
-  },
-  board: {
-    worksLabel: 'Best for',
-    singleTab: 'Board URL',
-    showBatch: false,
-    placeholder: 'Paste board URL… https://pinterest.com/username/board-name/',
-    ariaLabel: 'Pinterest board link',
-    submitLabel: 'Extract Board Pins',
-    hint: 'Paste a public board link to list pins, then Download ZIP for the full pack.',
-  },
-  profile: {
-    worksLabel: 'Best for',
-    singleTab: 'Profile URL',
-    showBatch: false,
-    placeholder: 'Paste profile URL… https://pinterest.com/username/',
-    ariaLabel: 'Pinterest profile link',
-    submitLabel: 'Extract Profile Pins (ZIP)',
-    hint: 'Downloads all public pins posted by this user account as a ZIP archive.',
-  },
-  'profile-picture': {
-    worksLabel: 'Best for',
-    singleTab: 'Profile Avatar URL',
-    showBatch: false,
-    placeholder: 'Paste profile URL… https://pinterest.com/username/',
-    ariaLabel: 'Pinterest profile link for avatar DP',
-    submitLabel: 'Get Profile Picture (HD)',
-    hint: 'Extracts full-resolution uncropped avatar photo & DP image from any Pinterest account.',
-  },
+/** Behaviour per variant (copy lives in the island catalog: src/i18n/island/en.ts → variants). */
+const SHOW_BATCH: Record<FormVariant, boolean> = {
+  hub: true,
+  pin: true,
+  video: true,
+  image: true,
+  gif: true,
+  board: false,
+  profile: false,
+  'profile-picture': false,
 };
 
-
-const STOCK_TOOLS: { href: string; label: string; stock: StockKey; variant: FormVariant }[] = [
-  { href: '/pinterest-pin-downloader', label: 'Pin', stock: 'pin', variant: 'pin' },
-  { href: '/pinterest-video-downloader', label: 'Video MP4', stock: 'video', variant: 'video' },
-  { href: '/pinterest-image-downloader', label: 'HD photo', stock: 'image', variant: 'image' },
-  { href: '/pinterest-gif-downloader', label: 'GIF', stock: 'gif', variant: 'gif' },
-  { href: '/pinterest-board-downloader', label: 'Board ZIP', stock: 'board', variant: 'board' },
-  { href: '/pinterest-profile-downloader', label: 'Profile ZIP', stock: 'profile', variant: 'profile' },
-  { href: '/pinterest-profile-picture-downloader', label: 'Avatar / DP', stock: 'avatar', variant: 'profile-picture' },
+const STOCK_TOOLS: { pageId: IslandPageId; stock: StockKey; variant: FormVariant }[] = [
+  { pageId: 'pinterest-pin-downloader', stock: 'pin', variant: 'pin' },
+  { pageId: 'pinterest-video-downloader', stock: 'video', variant: 'video' },
+  { pageId: 'pinterest-image-downloader', stock: 'image', variant: 'image' },
+  { pageId: 'pinterest-gif-downloader', stock: 'gif', variant: 'gif' },
+  { pageId: 'pinterest-board-downloader', stock: 'board', variant: 'board' },
+  { pageId: 'pinterest-profile-downloader', stock: 'profile', variant: 'profile' },
+  { pageId: 'pinterest-profile-picture-downloader', stock: 'avatar', variant: 'profile-picture' },
 ];
 
-const VARIANT_EXPECT: Record<FormVariant, string> = {
-  hub: 'Waiting for a link',
-  pin: 'Takes a pin link',
-  video: 'Takes a video pin',
-  image: 'Takes an image pin',
-  gif: 'Takes a GIF pin',
-  board: 'Takes a board link',
-  profile: 'Takes a profile link',
-  'profile-picture': 'Takes a profile link',
-};
-
-type ResultKind = 'image' | 'video' | 'gif' | 'carousel' | 'board' | 'profile' | 'avatar';
-
-const KIND_LABEL: Record<ResultKind, string> = {
-  image: 'Image pin',
-  video: 'Video pin',
-  gif: 'GIF pin',
-  carousel: 'Carousel',
-  board: 'Board',
-  profile: 'Profile',
-  avatar: 'Profile picture',
-};
-
-type ErrorKind = 'validation' | 'link' | 'private' | 'removed' | 'download' | 'other';
-
-/** Sort an error message into the recovery it needs (wording comes from the API or this form). */
-function errorKind(msg: string): ErrorKind {
-  if (!msg) return 'other';
-  if (/^Paste (a public|at least)|^Please enter valid Pinterest URLs/.test(msg)) return 'validation';
-  if (/invalid link|valid Pinterest link/i.test(msg)) return 'link';
-  if (/removed/i.test(msg)) return 'removed';
-  if (/could not download|download failed|no response body|could not pack|failed to create zip|qr code|copy the link/i.test(msg)) return 'download';
-  if (/private|public|empty/i.test(msg)) return 'private';
-  return 'other';
+/** A message the form wrote itself (already in the page's language), with its recovery. */
+class IslandError extends Error {
+  constructor(
+    message: string,
+    readonly kind: ErrorKind,
+  ) {
+    super(message);
+    this.name = 'IslandError';
+  }
 }
 
-const VOID_COPY: Record<ErrorKind, { title: string; hint?: string }> = {
-  validation: { title: 'Paste a link first' },
-  link: {
-    title: 'That isn\u2019t a Pinterest link',
-    hint: 'In the Pinterest app tap Share \u2192 Copy link, then paste it into the ticket.',
-  },
-  private: {
-    title: 'Nothing public to collect',
-    hint: 'Only public pins, boards and profiles can be saved. Secret boards and private accounts stay private.',
-  },
-  removed: { title: 'This pin was taken down' },
-  download: { title: 'The file didn\u2019t download', hint: 'Pinterest sometimes stops serving a file. Try the link again.' },
-  other: { title: 'Couldn\u2019t collect this link', hint: 'Check the link opens on Pinterest, then try again.' },
-};
+/** Message nodes: text with `{token}` values (strings or elements) in place. */
+function nodes(parts: (string | ReactNode)[]): ReactNode {
+  return createElement(Fragment, null, ...parts);
+}
 
 /** Read a pasted link the way a cloakroom attendant reads a ticket: type + number. */
-function readTicket(raw: string, variant: FormVariant): {
+function readTicket(raw: string, variant: FormVariant, m: IslandMessages): {
   stamp: string;
   tone: 'ok' | 'warn' | 'none';
   serial: string;
@@ -238,21 +141,19 @@ function readTicket(raw: string, variant: FormVariant): {
   expect: string;
   help?: string;
 } {
-  const expect = VARIANT_EXPECT[variant];
+  const expect = (m.variants[variant] || EN_ISLAND.variants[variant]).expect;
   const text = raw.trim();
   if (!text) return { stamp: '', tone: 'none', serial: '', color: '', expect };
   const route = classifyPinterestInput(text);
   if (!route) {
     const looksLikeUrl = /^(https?:\/\/|www\.)|\.[a-z]{2,}\//i.test(text);
     return {
-      stamp: looksLikeUrl ? 'Not Pinterest' : '',
+      stamp: looksLikeUrl ? m.stamps.notPinterest : '',
       tone: looksLikeUrl ? 'warn' : 'none',
       serial: '',
       color: '',
       expect,
-      help: looksLikeUrl
-        ? 'This isn’t a Pinterest link. In the Pinterest app tap Share → Copy link, then paste it here.'
-        : undefined,
+      help: looksLikeUrl ? m.ticket.notPinterestHelp : undefined,
     };
   }
   let serial = '';
@@ -270,14 +171,14 @@ function readTicket(raw: string, variant: FormVariant): {
   }
   const stamp =
     route.type === 'board'
-      ? 'Board → ZIP'
+      ? m.stamps.board
       : route.type === 'profile'
         ? variant === 'profile-picture'
-          ? 'Profile → Avatar'
-          : 'Profile → ZIP'
+          ? m.stamps.profileAvatar
+          : m.stamps.profileZip
         : short
-          ? 'Pin · short link'
-          : 'Pin';
+          ? m.stamps.pinShort
+          : m.stamps.pin;
   const key: StockKey = route.type === 'board' ? 'board' : route.type === 'profile' ? (variant === 'profile-picture' ? 'avatar' : 'profile') : 'pin';
   return { stamp, tone: 'ok', serial, color: STOCKS[key].color, onColor: STOCKS[key].onColor, expect };
 }
@@ -285,49 +186,83 @@ function readTicket(raw: string, variant: FormVariant): {
 export default function DownloaderForm({
   variant = 'hub',
   layout = 'default',
+  messages,
+  routes,
+  locale,
 }: {
   variant?: FormVariant;
   /** hero = Pinpea-style pill input + download on landing */
   layout?: FormLayout;
+  /**
+   * Localized pages only: this locale's island catalog slice
+   * (src/i18n/island/catalogs.ts islandMessagesFor). English uses EN_ISLAND.
+   */
+  messages?: DeepPartial<IslandMessages> | null;
+  /** Localized pages only: live paths of this locale ({pageId → path} & { home }). */
+  routes?: IslandRoutes | null;
+  /** Localized pages only: the page locale (number format fallback when messages lack `lang`). */
+  locale?: string;
 }) {
   const isHero = layout === 'hero';
+  /** English pages pass no messages: they keep the browser's number format and the browser's own error text. */
+  const localized = !!messages;
+  const m = useMemo(() => deepMerge(EN_ISLAND, messages), [messages]);
+  const paths: IslandRoutes = routes || EN_ISLAND_PATHS;
+  const lang = localized ? messages?.lang || locale || m.lang : undefined;
+  /**
+   * Accessible name of a "Download" line button on localized pages, from the
+   * catalog's word order (tr: object first, "Sesi (MP3) İndir"). English keeps
+   * the visible verb plus its sr-only suffix.
+   */
+  const itemAria = (item: string) => (localized ? fmt(m.receipt.itemAria, { verb: m.receipt.downloadShort, item }).trim() : undefined);
+  /** Turkish uppercase stamps print PİNTEREST unless the brand is marked English. */
+  const brandNodes = (text: string): ReactNode =>
+    lang && /^tr\b/i.test(lang)
+      ? text.split(/(Pinterest|PintDownload)/).map((part, i) => (i % 2 ? <span key={i} lang="en">{part}</span> : part))
+      : text;
+  // The page this form was served on: route notices pushState the tool's path
+  // into the address bar, so location.pathname alone cannot tell them apart.
+  const servedPath = useRef('');
+  useEffect(() => {
+    servedPath.current = window.location.pathname;
+  }, []);
+  const samePage = (path: string) => {
+    const norm = (p: string) => p.replace(/\/+$/, '') || '/';
+    return !!servedPath.current && norm(path) === norm(servedPath.current);
+  };
+  /** Links, file names and serials stay left-to-right inside RTL copy (localized pages only; English HTML unchanged). */
+  const ltr = localized ? ('ltr' as const) : undefined;
+  const isolate = (text: string): ReactNode => (localized ? <bdi>{text}</bdi> : text);
   const [activeVariant, setActiveVariant] = useState<FormVariant>(variant);
-  const [routeNotice, setRouteNotice] = useState<{ badge: string; message: string; path: string } | null>(null);
+  const [routeNotice, setRouteNotice] = useState<{ message: string; path: string } | null>(null);
   const [gifPlaying, setGifPlaying] = useState<boolean>(true);
 
   useEffect(() => {
     setActiveVariant(variant);
   }, [variant]);
 
-  const copy = VARIANT_COPY[activeVariant] || VARIANT_COPY.hub;
-  const [currentLang, setCurrentLang] = useState<LanguageCode>('en');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('preferred_lang') as LanguageCode;
-    if (saved && TRANSLATIONS[saved]) {
-      setCurrentLang(saved);
-    }
-
-    const handleLangChange = (e: Event) => {
-      const customEvent = e as CustomEvent<{ lang: LanguageCode }>;
-      if (customEvent.detail?.lang && TRANSLATIONS[customEvent.detail.lang]) {
-        setCurrentLang(customEvent.detail.lang);
-      }
-    };
-
-    window.addEventListener('languageChange', handleLangChange);
-    return () => window.removeEventListener('languageChange', handleLangChange);
-  }, []);
-
-  const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
-  const activePlaceholder = currentLang !== 'en' ? t.downloadPlaceholder : copy.placeholder;
-  const activeSubmitLabel = currentLang !== 'en' ? t.downloadButton : copy.submitLabel;
+  const copy = m.variants[activeVariant] || m.variants.hub;
+  const showBatch = SHOW_BATCH[activeVariant] ?? SHOW_BATCH.hub;
 
   const [mode, setMode] = useState<'single' | 'batch'>('single');
   const [url, setUrl] = useState('');
   const [batchUrls, setBatchUrls] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  /** The current failure: its text (already in the page's language), its recovery, and whether it is the partial-ZIP note. */
+  const [errorState, setErrorState] = useState<{ text: string; kind: ErrorKind; partial?: boolean } | null>(null);
+  const error = errorState?.text ?? '';
+  /** Clear with '', or set a message; English text without a kind is sorted by errorKind(). */
+  const setError = (text: string, kind?: ErrorKind, partial = false) =>
+    setErrorState(text ? { text, kind: kind ?? errorKind(text), partial } : null);
+  /** Text and recovery for a caught error: the form's own, an MP3 failure, or (English only) the browser's text. */
+  const caught = (err: any, fallback: string, fallbackKind: ErrorKind): [string, ErrorKind] => {
+    if (err instanceof IslandError) return [err.message, err.kind];
+    const mp3Code = mp3ErrorCode(err);
+    if (mp3Code) return [m.mp3[mp3Code], 'other'];
+    if (localized) return [fallback, fallbackKind];
+    const text = err?.message || fallback;
+    return [text, errorKind(text)];
+  };
   const [result, setResult] = useState<ExtractionResult | null>(null);
   const [batchResults, setBatchResults] = useState<ExtractionResult[]>([]);
   const [selectedQuality, setSelectedQuality] = useState<string>('');
@@ -350,14 +285,17 @@ export default function DownloaderForm({
   const [downloadProgress, setDownloadProgress] = useState<{
     loaded: number;
     total: number;
-    phase: 'connecting' | 'transferring';
+    /** reading/encoding: making an MP3 in the browser after the video arrived. */
+    phase: 'connecting' | 'transferring' | 'reading' | 'encoding';
+    /** 0–1 while encoding. */
+    ratio?: number;
   } | null>(null);
   const [qrOpen, setQrOpen] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState('');
   const [qrLoading, setQrLoading] = useState(false);
   const [qrFor, setQrFor] = useState('');
   // Receipt-only display state: what was handed to the browser, and copy feedback.
-  const [zipDone, setZipDone] = useState<{ name: string; packed: number; total: number } | null>(null);
+  const [zipDone, setZipDone] = useState<{ name: string; packed: number; total: number; noMp3?: string } | null>(null);
   const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
   const [attemptFile, setAttemptFile] = useState<string | null>(null);
@@ -403,7 +341,7 @@ export default function DownloaderForm({
       setQrDataUrl(dataUrl);
       setQrFor(primaryMediaUrl);
     } catch {
-      setError('Could not generate QR code. Copy the link instead.');
+      setError(m.errors.qr, CLIENT_ERROR_KIND.qr);
     } finally {
       setQrLoading(false);
     }
@@ -452,7 +390,7 @@ export default function DownloaderForm({
           item.title ||
           item.profile_title ||
           item.board_title ||
-          (item.is_profile ? 'Pinterest Profile' : item.is_board ? 'Pinterest Board' : 'Pinterest Pin'),
+          (item.is_profile ? m.fallbacks.profile : item.is_board ? m.fallbacks.board : m.fallbacks.pin),
         thumbnail:
           item.thumbnail_url ||
           item.image_url ||
@@ -480,13 +418,10 @@ export default function DownloaderForm({
     if (classification) {
       if (classification.type === 'board' && activeVariant !== 'board') {
         setActiveVariant('board');
-        setRouteNotice({
-          badge: classification.badge,
-          message: 'Pinterest Board link detected — automatically switched to Board Downloader',
-          path: classification.path,
-        });
+        const path = routeTo(paths, classification.pageId);
+        setRouteNotice({ message: m.routeNotice.boardLink, path });
         if (typeof window !== 'undefined' && window.history?.pushState) {
-          window.history.pushState(null, '', `${classification.path}?url=${encodeURIComponent(trimmed)}`);
+          window.history.pushState(null, '', `${path}?url=${encodeURIComponent(trimmed)}`);
         }
       } else if (
         classification.type === 'profile' &&
@@ -494,13 +429,10 @@ export default function DownloaderForm({
         activeVariant !== 'profile-picture'
       ) {
         setActiveVariant('profile');
-        setRouteNotice({
-          badge: classification.badge,
-          message: 'Pinterest Profile link detected — automatically switched to Profile Downloader',
-          path: classification.path,
-        });
+        const path = routeTo(paths, classification.pageId);
+        setRouteNotice({ message: m.routeNotice.profileLink, path });
         if (typeof window !== 'undefined' && window.history?.pushState) {
-          window.history.pushState(null, '', `${classification.path}?url=${encodeURIComponent(trimmed)}`);
+          window.history.pushState(null, '', `${path}?url=${encodeURIComponent(trimmed)}`);
         }
       }
     }
@@ -539,63 +471,55 @@ export default function DownloaderForm({
         body: JSON.stringify({ url: target, ...(activeVariant === 'profile-picture' ? { intent: 'avatar' } : {}) }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to extract media from Pinterest.');
+      if (!res.ok) {
+        // Known codes read from the catalog on localized pages; English keeps the server's own sentence.
+        const key = apiErrorKey(data?.code, classifyPinterestInput(target)?.type);
+        if (key && localized) throw new IslandError(m.api[key], API_ERROR_KIND[key]);
+        // A code the catalog has no text for (e.g. collection_unavailable, a
+        // retryable upstream miss): localized pages say "could not extract"
+        // with the try-again hint instead of printing the English server text.
+        if (localized) throw new IslandError(m.errors.extractFailed, 'other');
+        const text = data.error || m.errors.extractFailed;
+        throw new IslandError(text, key ? API_ERROR_KIND[key] : errorKind(text));
+      }
       setResult(data);
       if (data.video_url) setSelectedQuality(data.video_url);
       saveToHistory(data, target);
 
       // Smart Media-Type Auto-Routing:
       const suitable = getSuitableToolForMedia(data);
+      const suitablePath = routeTo(paths, suitable.pageId);
       if (data.is_gif && activeVariant !== 'gif') {
         setActiveVariant('gif');
-        setRouteNotice({
-          badge: suitable.badge,
-          message: 'Looping animated GIF detected — switched to GIF Downloader suite',
-          path: suitable.path,
-        });
+        setRouteNotice({ message: m.routeNotice.gif, path: suitablePath });
         if (typeof window !== 'undefined' && window.history?.pushState) {
-          window.history.pushState(null, '', `${suitable.path}?url=${encodeURIComponent(target)}`);
+          window.history.pushState(null, '', `${suitablePath}?url=${encodeURIComponent(target)}`);
         }
       } else if (data.is_video && !data.is_gif && activeVariant !== 'video' && activeVariant !== 'hub') {
         setActiveVariant('video');
-        setRouteNotice({
-          badge: suitable.badge,
-          message: 'HD Video pin detected — switched to Video Downloader suite',
-          path: suitable.path,
-        });
+        setRouteNotice({ message: m.routeNotice.video, path: suitablePath });
         if (typeof window !== 'undefined' && window.history?.pushState) {
-          window.history.pushState(null, '', `${suitable.path}?url=${encodeURIComponent(target)}`);
+          window.history.pushState(null, '', `${suitablePath}?url=${encodeURIComponent(target)}`);
         }
       } else if (data.is_carousel && activeVariant !== 'image' && activeVariant !== 'hub') {
         setActiveVariant('image');
-        setRouteNotice({
-          badge: suitable.badge,
-          message: `Multi-slide carousel detected (${data.media_items?.length || 0} slides) — switched to Carousel Downloader`,
-          path: suitable.path,
-        });
+        const slides = data.media_items?.length || 0;
+        setRouteNotice({ message: plural(m.routeNotice.carousel, slides, { n: n0(slides) }, lang), path: suitablePath });
       } else if (data.is_board && activeVariant !== 'board') {
         setActiveVariant('board');
-        setRouteNotice({
-          badge: suitable.badge,
-          message: 'Pinterest Board detected — switched to Board Downloader',
-          path: suitable.path,
-        });
+        setRouteNotice({ message: m.routeNotice.board, path: suitablePath });
         if (typeof window !== 'undefined' && window.history?.pushState) {
-          window.history.pushState(null, '', `${suitable.path}?url=${encodeURIComponent(target)}`);
+          window.history.pushState(null, '', `${suitablePath}?url=${encodeURIComponent(target)}`);
         }
       } else if (data.is_profile && activeVariant !== 'profile' && activeVariant !== 'profile-picture') {
         setActiveVariant('profile');
-        setRouteNotice({
-          badge: suitable.badge,
-          message: 'Pinterest Profile detected — switched to Profile Downloader',
-          path: suitable.path,
-        });
+        setRouteNotice({ message: m.routeNotice.profile, path: suitablePath });
         if (typeof window !== 'undefined' && window.history?.pushState) {
-          window.history.pushState(null, '', `${suitable.path}?url=${encodeURIComponent(target)}`);
+          window.history.pushState(null, '', `${suitablePath}?url=${encodeURIComponent(target)}`);
         }
       }
     } catch (err: any) {
-      setError(err.message || 'An error occurred. Check the Pinterest URL.');
+      setError(...caught(err, m.errors.unknown, CLIENT_ERROR_KIND.unknown));
     } finally {
       setLoading(false);
     }
@@ -604,12 +528,12 @@ export default function DownloaderForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if ((mode === 'single' || isHero) && !url.trim()) {
-      setError('Paste a public Pinterest link first. In the app: Share → Copy link.');
+      setError(m.errors.emptyLink, CLIENT_ERROR_KIND.emptyLink);
       document.getElementById('pinterest-url-input')?.focus();
       return;
     }
     if (mode === 'batch' && !isHero && !batchUrls.trim()) {
-      setError('Paste at least one Pinterest link, one per line.');
+      setError(m.errors.emptyBatch, CLIENT_ERROR_KIND.emptyBatch);
       return;
     }
 
@@ -627,11 +551,11 @@ export default function DownloaderForm({
         batchUrls
           .split(/[\n,\s]+/)
           .map(l => l.trim())
-          .filter(l => l.length > 5 && (l.includes('pinterest.com') || l.includes('pin.it')))
+          .filter(l => l.length > 5 && isPinterestLink(l))
       )).slice(0, 10);
 
       if (links.length === 0) {
-        setError('Please enter valid Pinterest URLs (e.g., https://pinterest.com/pin/... or https://pin.it/...)');
+        setError(m.errors.batchInvalid, CLIENT_ERROR_KIND.batchInvalid);
         setLoading(false);
         return;
       }
@@ -674,7 +598,7 @@ export default function DownloaderForm({
       if (results.length > 0) {
         setBatchResults(results);
       } else {
-        setError('Failed to extract batch links. Please check if the Pinterest URLs are public.');
+        setError(m.errors.batchFailed, CLIENT_ERROR_KIND.batchFailed);
       }
       setLoading(false);
     }
@@ -703,16 +627,24 @@ export default function DownloaderForm({
       .toLowerCase()
       .slice(0, 60) || 'pinterest';
 
+  /** Counts in the page's number format (English: the browser's default, as before). */
+  const nf = useMemo(() => numberFormatter(lang), [lang]);
+  const nf1 = useMemo(() => numberFormatter(lang, { minimumFractionDigits: 1, maximumFractionDigits: 1, useGrouping: false }), [lang]);
+  const nf0 = useMemo(() => numberFormatter(lang, { maximumFractionDigits: 0, useGrouping: false }), [lang]);
+  /** Numbers English printed raw (percentages, file counts in sentences): raw in English, localized elsewhere. */
+  const n0 = (n: number) => (lang ? nf0(n) : String(n));
+
   const formatBytes = (n: number) => {
-    if (!n) return '0 B';
-    const units = ['B', 'KB', 'MB', 'GB'];
+    if (!n) return `0 ${m.bytes.B}`;
+    const units = [m.bytes.B, m.bytes.KB, m.bytes.MB, m.bytes.GB];
     let i = 0;
     let v = n;
     while (v >= 1024 && i < units.length - 1) {
       v /= 1024;
       i++;
     }
-    return `${v < 10 && i > 0 ? v.toFixed(1) : Math.round(v)}\u00a0${units[i]}`;
+    const value = v < 10 && i > 0 ? (lang ? nf1(v) : v.toFixed(1)) : lang ? nf0(v) : Math.round(v);
+    return `${value}\u00a0${units[i]}`;
   };
 
   /** iOS Safari ignores the download attribute and navigates instead. */
@@ -741,48 +673,82 @@ export default function DownloaderForm({
     return null;
   };
 
-  const saveProxyDownload = async (mediaUrl: string, filename: string) => {
+  /** Fetch a file through /api/download, reporting bytes as they arrive. */
+  const fetchProxyBlob = async (mediaUrl: string, filename: string): Promise<Blob> => {
+    const res = await fetch(proxyDownloadHref(mediaUrl, filename));
+    const type = res.headers.get('content-type') || '';
+    if (!res.ok || !isMediaContentType(type)) {
+      throw new IslandError(m.errors.fileUnavailable, CLIENT_ERROR_KIND.fileUnavailable);
+    }
+    const contentLength = res.headers.get('content-length');
+    const total = contentLength ? parseInt(contentLength, 10) : 0;
+
+    const reader = res.body?.getReader();
+    if (!reader) throw new IslandError(m.errors.noBody, CLIENT_ERROR_KIND.noBody);
+
+    const chunks: Uint8Array[] = [];
+    let loaded = 0;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      chunks.push(value);
+      loaded += value.byteLength;
+      setDownloadProgress({ loaded, total, phase: 'transferring' });
+    }
+    return new Blob(chunks as BlobPart[], { type: type || 'application/octet-stream' });
+  };
+
+  const handBlobToBrowser = (blob: Blob, filename: string) => {
+    const objectUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = objectUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(objectUrl);
+  };
+
+  const startSaving = (filename: string) => {
     setError('');
     setLastSaved(null);
     setAttemptFile(filename);
     setSavingFile(filename);
     setDownloadProgress({ loaded: 0, total: 0, phase: 'connecting' });
+  };
+
+  const saveProxyDownload = async (mediaUrl: string, filename: string) => {
+    startSaving(filename);
     try {
-      const res = await fetch(proxyDownloadHref(mediaUrl, filename));
-      const type = res.headers.get('content-type') || '';
-      if (!res.ok || !isMediaContentType(type)) {
-        throw new Error(
-          'Could not download this file. The pin may be private, or Pinterest is no longer serving that media URL.',
-        );
-      }
-      const contentLength = res.headers.get('content-length');
-      const total = contentLength ? parseInt(contentLength, 10) : 0;
-
-      const reader = res.body?.getReader();
-      if (!reader) throw new Error('No response body');
-
-      const chunks: Uint8Array[] = [];
-      let loaded = 0;
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        chunks.push(value);
-        loaded += value.byteLength;
-        setDownloadProgress({ loaded, total, phase: 'transferring' });
-      }
-
-      const blob = new Blob(chunks, { type: type || 'application/octet-stream' });
-      const objectUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = objectUrl;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(objectUrl);
+      handBlobToBrowser(await fetchProxyBlob(mediaUrl, filename), filename);
       setLastSaved(filename);
     } catch (err: any) {
-      setError(err?.message || 'Download failed.');
+      setError(...caught(err, m.errors.downloadFailed, CLIENT_ERROR_KIND.downloadFailed));
+    } finally {
+      setSavingFile(null);
+      setDownloadProgress(null);
+    }
+  };
+
+  /**
+   * A real MP3: fetch the video through our proxy, decode its sound and encode
+   * MP3 in this browser (lib/audio, loaded only now). Nothing is uploaded.
+   */
+  const saveMp3FromVideo = async (videoUrl: string, filename: string, title: string) => {
+    startSaving(filename);
+    try {
+      const converter = import('../lib/audio/to-mp3');
+      const video = await fetchProxyBlob(videoUrl, filename.replace(/\.mp3$/i, '.mp4'));
+      setDownloadProgress({ loaded: 0, total: 0, phase: 'reading' });
+      const { videoToMp3 } = await converter;
+      const mp3 = await videoToMp3(video, {
+        title,
+        onProgress: (p) => setDownloadProgress({ loaded: 0, total: 0, phase: p.stage, ratio: p.ratio }),
+      });
+      handBlobToBrowser(mp3, filename);
+      setLastSaved(filename);
+    } catch (err: any) {
+      setError(...caught(err, m.mp3.failed, 'other'));
     } finally {
       setSavingFile(null);
       setDownloadProgress(null);
@@ -804,20 +770,28 @@ export default function DownloaderForm({
 
   const downloadStatusLabel = () => {
     if (!savingFile || !downloadProgress) return '';
+    if (downloadProgress.phase === 'reading') return m.progress.reading;
+    if (downloadProgress.phase === 'encoding') {
+      return fmt(m.progress.making, { pct: n0(Math.round((downloadProgress.ratio ?? 0) * 100)) });
+    }
     if (downloadProgress.phase === 'connecting' || downloadProgress.loaded === 0) {
-      return 'Connecting to Pinterest…';
+      return m.progress.connecting;
     }
     if (downloadProgress.total > 0) {
       const pct = Math.min(100, Math.round((downloadProgress.loaded / downloadProgress.total) * 100));
-      return `Downloading… ${formatBytes(downloadProgress.loaded)} of ${formatBytes(downloadProgress.total)} (${pct}%)`;
+      return fmt(m.progress.downloadingOf, {
+        loaded: formatBytes(downloadProgress.loaded),
+        total: formatBytes(downloadProgress.total),
+        pct: n0(pct),
+      });
     }
-    return `Downloading… ${formatBytes(downloadProgress.loaded)}`;
+    return fmt(m.progress.downloading, { loaded: formatBytes(downloadProgress.loaded) });
   };
 
-  const downloadUrlsAsZip = async (
-    entries: { url: string; filename: string }[],
-    archiveName: string,
-  ) => {
+  /** A ZIP entry; `mp3` entries are made in the browser from the video at `url`. */
+  type ZipEntry = { url: string; filename: string; mp3?: { title: string } };
+
+  const downloadUrlsAsZip = async (entries: ZipEntry[], archiveName: string) => {
     if (!entries.length || zipping) return;
     const run = new AbortController();
     zipAbortRef.current = run;
@@ -834,6 +808,8 @@ export default function DownloaderForm({
       let done = 0;
       let packed = 0;
       let failed = 0;
+      /** Why the MP3 was left out (the ZIP holds a real MP3 or none). */
+      let noMp3: string | undefined;
 
       // Each file gets a deadline: one stalled body must not freeze the archive.
       // Headers can take a while (the proxy probes several CDN paths); after
@@ -867,15 +843,44 @@ export default function DownloaderForm({
         }
       };
 
+      // The MP4 and the MP3 made from it share one download.
+      const fetched = new Map<string, Promise<Blob>>();
+      const fetchOnce = (entry: ZipEntry) => {
+        let pending = fetched.get(entry.url);
+        if (!pending) {
+          pending = fetchItem(
+            `/api/download?url=${encodeURIComponent(toDownloadablePinUrl(entry.url))}&filename=${encodeURIComponent(entry.filename)}`,
+          );
+          pending.catch(() => {});
+          fetched.set(entry.url, pending);
+        }
+        return pending;
+      };
+
       const concurrency = 4;
       for (let i = 0; i < entries.length && !run.signal.aborted; i += concurrency) {
         const batch = entries.slice(i, i + concurrency);
         await Promise.all(
           batch.map(async (entry) => {
             try {
-              const blob = await fetchItem(
-                `/api/download?url=${encodeURIComponent(toDownloadablePinUrl(entry.url))}&filename=${encodeURIComponent(entry.filename)}`,
-              );
+              if (entry.mp3) {
+                let video: Blob;
+                try {
+                  video = await fetchOnce(entry);
+                } catch {
+                  noMp3 = m.errors.noMp3Video;
+                  return;
+                }
+                try {
+                  const { videoToMp3 } = await import('../lib/audio/to-mp3');
+                  folder.file(entry.filename, await videoToMp3(video, { title: entry.mp3.title, signal: run.signal }));
+                  packed++;
+                } catch (e: any) {
+                  if (!run.signal.aborted) noMp3 = caught(e, m.errors.noMp3Browser, 'other')[0];
+                }
+                return;
+              }
+              const blob = await fetchOnce(entry);
               folder.file(entry.filename, blob);
               packed++;
             } catch (e) {
@@ -893,7 +898,7 @@ export default function DownloaderForm({
       if (run.signal.aborted) return;
 
       if (packed === 0) {
-        throw new Error('Could not pack any media into the ZIP. Files may be unavailable.');
+        throw new IslandError(m.errors.zipNothing, CLIENT_ERROR_KIND.zipNothing);
       }
 
       const zipBlob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
@@ -905,13 +910,14 @@ export default function DownloaderForm({
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(objectUrl);
-      setZipDone({ name: `${slugify(archiveName)}.zip`, packed, total: entries.length });
+      const total = entries.length - (noMp3 ? 1 : 0);
+      setZipDone({ name: `${slugify(archiveName)}.zip`, packed, total, noMp3 });
 
       if (failed > 0) {
-        setError(`ZIP ready with ${entries.length - failed} of ${entries.length} files (${failed} failed).`);
+        setError(plural(m.errors.zipPartial, total, { ok: n0(total - failed), total: n0(total), failed: n0(failed) }, lang), 'other', true);
       }
     } catch (err: any) {
-      if (!run.signal.aborted) setError(err?.message || 'Failed to create ZIP archive.');
+      if (!run.signal.aborted) setError(...caught(err, m.errors.zipFailed, CLIENT_ERROR_KIND.zipFailed));
     } finally {
       if (zipAbortRef.current === run) zipAbortRef.current = null;
       setZipping(false);
@@ -929,10 +935,10 @@ export default function DownloaderForm({
         const ext = pin.is_video && pin.video_url ? 'mp4' : mediaFileExtension(pin.image_url, 'jpg');
         return {
           url: mediaUrl,
-          filename: `${String(idx + 1).padStart(2, '0')}_${slugify(pin.title || pin.pin_id)}.${ext}`,
+          filename: `${String(idx + 1).padStart(2, '0')}_${slugify((!PLACEHOLDER_PIN_TITLE.test(pin.title) && pin.title) || pin.pin_id)}.${ext}`,
         };
       })
-      .filter((e): e is { url: string; filename: string } => !!e);
+      .filter((e): e is ZipEntry => !!e);
     return downloadUrlsAsZip(entries, archiveName);
   };
 
@@ -955,7 +961,7 @@ export default function DownloaderForm({
     const vUrl = selectedQuality || res.video_url;
     const gUrl = resolvedGifUrl(res);
     const safeTitle = slugify(res.title || res.pin_id || 'pinterest_pin');
-    const entries: { url: string; filename: string }[] = [];
+    const entries: ZipEntry[] = [];
 
     if (gUrl) {
       entries.push({ url: gUrl, filename: `${safeTitle}_animation.gif` });
@@ -963,7 +969,7 @@ export default function DownloaderForm({
 
     if (vUrl) {
       entries.push({ url: vUrl, filename: `${safeTitle}_video.mp4` });
-      entries.push({ url: vUrl, filename: `${safeTitle}_audio.mp3` });
+      entries.push({ url: vUrl, filename: `${safeTitle}_audio.mp3`, mp3: { title: res.title || '' } });
     }
 
     if (res.image_url && res.image_url !== gUrl) {
@@ -989,9 +995,9 @@ export default function DownloaderForm({
     ((result.media_items && result.media_items.length > 1) || result.is_carousel)
   );
 
-  const reading = readTicket(url, activeVariant);
-  const showBatchTabs = !isHero && copy.showBatch;
-  const batchActive = mode === 'batch' && copy.showBatch && !isHero;
+  const reading = readTicket(url, activeVariant, m);
+  const showBatchTabs = !isHero && showBatch;
+  const batchActive = mode === 'batch' && showBatch && !isHero;
 
   /* ── Receipt (post-extraction) helpers: presentation only ─────────────── */
   const gifUrl = resolvedGifUrl(result);
@@ -1011,7 +1017,6 @@ export default function DownloaderForm({
               ? 'video'
               : 'image';
   const receiptSerial = result?.pin_id || reading.serial || (result?.username ? `@${result.username}` : '');
-  const nf = (n: number) => new Intl.NumberFormat().format(n);
   const pctOf = (done: number, total: number) => (total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0);
 
   /** The one file this receipt is for, in the order the old panel offered them. */
@@ -1034,11 +1039,16 @@ export default function DownloaderForm({
           : null;
   const currentQuality = result?.qualities?.find((q) => q.url === (selectedQuality || result?.video_url));
 
-  const isPartialZipMsg = /^ZIP ready with/.test(error);
-  const errKind = errorKind(error);
+  const isPartialZipMsg = !!errorState?.partial;
+  const errKind: ErrorKind = errorState?.kind ?? 'other';
 
   const savingNow = (filename: string) => savingFile === filename && !!downloadProgress;
-  const savingPct = downloadProgress?.total ? pctOf(downloadProgress.loaded, downloadProgress.total) : null;
+  const savingPct =
+    downloadProgress?.phase === 'encoding'
+      ? Math.round((downloadProgress.ratio ?? 0) * 100)
+      : downloadProgress?.total
+        ? pctOf(downloadProgress.loaded, downloadProgress.total)
+        : null;
 
   const focusReceipt = (el: HTMLElement | null) => {
     if (!el) return;
@@ -1071,7 +1081,7 @@ export default function DownloaderForm({
 
   // A failed claim takes focus too, except empty-field validation (the input keeps focus).
   useEffect(() => {
-    if (!error || loading || result || batchResults.length || errorKind(error) === 'validation') return;
+    if (!error || loading || result || batchResults.length || errKind === 'validation') return;
     const id = requestAnimationFrame(() => focusReceipt(voidHeadingRef.current));
     return () => cancelAnimationFrame(id);
   }, [error, loading]);
@@ -1105,34 +1115,39 @@ export default function DownloaderForm({
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2000);
     } catch {
-      setError('Could not copy the link. Long-press the download button to copy it instead.');
+      setError(m.errors.copyLink, CLIENT_ERROR_KIND.copyLink);
     }
   };
 
   const captionFor = (res: ExtractionResult, platform: 'reels' | 'tiktok' | 'shorts') => {
     const tagsStr = (res.tags || []).map((t) => `#${t}`).join(' ');
-    if (platform === 'reels') return `✨ ${res.title}\n\nTag someone who needs to see this! 👇\n\n📌 Saved via PintDownload\n\n${tagsStr} #reels #viral #aesthetic`;
-    if (platform === 'tiktok') return `POV: ${res.title} 🌿🔥\n\nFollow for more daily aesthetic pins & inspo!\n\n${tagsStr} #fyp #viral #pinterest #foryou`;
-    return `🔥 ${res.title} | Pinterest Aesthetic\n\nLike & Subscribe for more daily visual content!\n\n${tagsStr} #shorts #pintdownload #pinterest`;
+    const vars = { title: String(res.title), tags: tagsStr };
+    if (platform === 'reels') return fmt(m.extras.captionReels, vars);
+    if (platform === 'tiktok') return fmt(m.extras.captionTiktok, vars);
+    return fmt(m.extras.captionShorts, vars);
   };
 
   // Screen-reader narration: coarse steps only, so progress never floods the queue.
   const liveMsg = loading
     ? batchActive
-      ? 'Reading your links…'
-      : 'Reading your link…'
+      ? m.live.readingLinks
+      : m.live.readingLink
     : zipping && zipProgress.total
-      ? `Packing ZIP, ${Math.floor(pctOf(zipProgress.done, zipProgress.total) / 25) * 25}% done`
+      ? fmt(m.live.packingZip, { pct: n0(Math.floor(pctOf(zipProgress.done, zipProgress.total) / 25) * 25) })
       : savingFile && downloadProgress
-        ? savingPct === null
-          ? `Downloading ${savingFile}…`
-          : `Downloading ${savingFile}, ${Math.floor(savingPct / 25) * 25}% done`
+        ? downloadProgress.phase === 'reading' || downloadProgress.phase === 'encoding'
+          ? savingPct
+            ? fmt(m.live.makingPct, { file: savingFile, pct: n0(Math.floor(savingPct / 25) * 25) })
+            : fmt(m.live.making, { file: savingFile })
+          : savingPct === null
+            ? fmt(m.live.downloading, { file: savingFile })
+            : fmt(m.live.downloadingPct, { file: savingFile, pct: n0(Math.floor(savingPct / 25) * 25) })
         : zipDone
-          ? `ZIP packed with ${zipDone.packed} of ${zipDone.total} files. Download started.`
+          ? plural(m.live.zipPacked, zipDone.total, { packed: n0(zipDone.packed), total: n0(zipDone.total) }, lang)
           : lastSaved
-            ? `Download started: ${lastSaved}`
+            ? fmt(m.live.started, { file: lastSaved })
             : copiedLink || copiedTags || copiedCaption || copiedColor
-              ? 'Copied to clipboard.'
+              ? m.live.copied
               : '';
 
   /** Collect button: label stays put; a spinner and a stock-coloured strip show progress. */
@@ -1158,7 +1173,7 @@ export default function DownloaderForm({
         <p
           className="rc-note"
           role="progressbar"
-          aria-label="Download progress"
+          aria-label={m.receipt.downloadProgressAria}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={savingPct ?? undefined}
@@ -1169,7 +1184,7 @@ export default function DownloaderForm({
       ) : (
         <p className="rc-note">
           <span className="rc-file">
-            Saves as <b translate="no">{file.filename}</b>
+            {nodes(fmtParts(m.receipt.savesAs, { file: <b translate="no" dir={ltr}>{file.filename}</b> }))}
           </span>
         </p>
       )}
@@ -1196,24 +1211,26 @@ export default function DownloaderForm({
         ) : (
           <Archive aria-hidden="true" />
         )}
-        <span>Download ZIP ({nf(count)})</span>
+        <span>{nodes(fmtParts(m.receipt.downloadZip, { n: nf(count) }))}</span>
         {zipping && zipProgress.total > 0 && <Fill value={zipProgress.done / zipProgress.total} />}
       </button>
       {zipping && zipProgress.total > 0 ? (
         <div className="rc-note rc-note--row">
           <p
             role="progressbar"
-            aria-label="ZIP packing progress"
+            aria-label={m.receipt.zipProgressAria}
             aria-valuemin={0}
             aria-valuemax={zipProgress.total}
             aria-valuenow={zipProgress.done}
-            aria-valuetext={`${zipProgress.done} of ${zipProgress.total} files packed`}
+            aria-valuetext={plural(m.receipt.zipProgressText, zipProgress.total, { done: n0(zipProgress.done), total: n0(zipProgress.total) }, lang)}
           >
-            Packing <b>{nf(zipProgress.done)}</b> of {nf(zipProgress.total)} files…
+            {nodes(
+              pluralParts(m.receipt.packing, zipProgress.total, { done: <b>{nf(zipProgress.done)}</b>, total: nf(zipProgress.total) }, lang),
+            )}
           </p>
           <button type="button" className="rc-btn rc-btn--quiet" onClick={cancelZip}>
             <X aria-hidden="true" />
-            Cancel<span className="sr-only"> ZIP</span>
+            {m.receipt.cancel}<span className="sr-only">{m.receipt.cancelSr}</span>
           </button>
         </div>
       ) : zipDone ? (
@@ -1221,7 +1238,7 @@ export default function DownloaderForm({
       ) : (
         <p className="rc-note">
           <span className="rc-file">
-            Saves as <b translate="no">{slugify(archiveName)}.zip</b>
+            {nodes(fmtParts(m.receipt.savesAs, { file: <b translate="no" dir={ltr}>{slugify(archiveName)}.zip</b> }))}
           </span>
         </p>
       )}
@@ -1234,10 +1251,22 @@ export default function DownloaderForm({
       <div className="rc-notice" data-zip-done="">
         {zipDone.packed < zipDone.total ? (
           <>
-            <span className="stamp stamp-warn" aria-hidden="true">Partial</span>
+            <span className="stamp stamp-warn" aria-hidden="true">{m.marks.partial}</span>
             <p>
-              <b translate="no">{zipDone.name}</b> has {nf(zipDone.packed)} of {nf(zipDone.total)} files.{' '}
-              {nf(zipDone.total - zipDone.packed)} could not be fetched from Pinterest; save those one at a time.
+              {nodes(
+                pluralParts(
+                  m.receipt.zipPartial,
+                  zipDone.total,
+                  {
+                    name: <b translate="no" dir={ltr}>{zipDone.name}</b>,
+                    packed: nf(zipDone.packed),
+                    total: nf(zipDone.total),
+                    missing: nf(zipDone.total - zipDone.packed),
+                  },
+                  lang,
+                ),
+              )}
+              {zipDone.noMp3 ? fmt(m.receipt.noMp3, { reason: zipDone.noMp3 }) : null}
             </p>
           </>
         ) : (
@@ -1247,10 +1276,11 @@ export default function DownloaderForm({
               aria-hidden="true"
               style={{ '--stamp-bg': STOCKS[stock].color, '--stamp-ink': STOCKS[stock].onColor } as React.CSSProperties}
             >
-              Packed
+              {m.marks.packed}
             </span>
             <p>
-              <b translate="no">{zipDone.name}</b>: all {nf(zipDone.total)} files. Download started.
+              {nodes(pluralParts(m.receipt.zipAll, zipDone.total, { name: <b translate="no" dir={ltr}>{zipDone.name}</b>, total: nf(zipDone.total) }, lang))}
+              {zipDone.noMp3 ? fmt(m.receipt.noMp3, { reason: zipDone.noMp3 }) : null}
             </p>
           </>
         )}
@@ -1262,7 +1292,7 @@ export default function DownloaderForm({
   const receiptError =
     error && !isPartialZipMsg ? (
       <div className="rc-notice" role="alert">
-        <span className="stamp stamp-warn" aria-hidden="true">Void</span>
+        <span className="stamp stamp-warn" aria-hidden="true">{m.marks.void}</span>
         <p>{error}</p>
       </div>
     ) : null;
@@ -1270,17 +1300,15 @@ export default function DownloaderForm({
   const savedNotice =
     lastSaved && !savingFile && lastSaved === primaryFile?.filename ? (
       <div className="rc-notice">
-        <span className="stamp stamp-ok" aria-hidden="true">Done</span>
-        <p>
-          Download started: <b translate="no">{lastSaved}</b>
-        </p>
+        <span className="stamp stamp-ok" aria-hidden="true">{m.marks.done}</span>
+        <p>{nodes(fmtParts(m.receipt.started, { file: <b translate="no" dir={ltr}>{lastSaved}</b> }))}</p>
       </div>
     ) : null;
 
   const anotherBtn = (
     <button type="button" className="rc-btn rc-btn--quiet rc-push" onClick={startAnother}>
       <ArrowUp aria-hidden="true" />
-      Download another
+      {m.receipt.another}
     </button>
   );
 
@@ -1305,7 +1333,7 @@ export default function DownloaderForm({
     isVideo: boolean;
     srName: string;
   }) => {
-    const fmt = opts.isVideo ? 'MP4' : opts.ext === 'gif' ? 'GIF' : opts.ext.toUpperCase();
+    const fileFmt = opts.isVideo ? 'MP4' : opts.ext === 'gif' ? 'GIF' : opts.ext.toUpperCase();
     return (
       <li key={opts.key} className="rc-tile">
         <div className="rc-thumb">
@@ -1317,7 +1345,7 @@ export default function DownloaderForm({
               aria-hidden="true"
               style={{ '--kind': STOCKS[opts.isVideo ? 'video' : 'gif'].color } as React.CSSProperties}
             >
-              {opts.isVideo ? 'Video' : 'GIF'}
+              {opts.isVideo ? m.receipt.tagVideo : m.receipt.tagGif}
             </span>
           )}
         </div>
@@ -1335,8 +1363,8 @@ export default function DownloaderForm({
             <Download aria-hidden="true" />
           )}
           <span>
-            Save {fmt}
-            <span className="sr-only">, {opts.srName}</span>
+            {nodes(fmtParts(m.receipt.save, { format: fileFmt }))}
+            <span className="sr-only">{fmt(m.receipt.tileSr, { name: opts.srName })}</span>
           </span>
         </a>
       </li>
@@ -1353,23 +1381,23 @@ export default function DownloaderForm({
       >
         <div className="ticket-paper">
         <div className="ticket-head">
-          <span className="t-label">Admit one · public link</span>
+          <span className="t-label">{m.ticket.admitOne}</span>
           <span className="ticket-serial" aria-live="polite" translate="no">
-            {reading.serial ? <>No.&nbsp;{reading.serial}</> : 'No. ——————'}
+            {reading.serial ? nodes(fmtParts<ReactNode>(m.ticket.serial, { serial: isolate(reading.serial) })) : m.ticket.serialEmpty}
           </span>
         </div>
 
         <div className="ticket-body">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-3 min-h-[2rem]">
             {showBatchTabs ? (
-              <div className="inline-flex rounded-md border-2 border-[var(--ink)] overflow-hidden text-sm font-bold" role="group" aria-label="Link mode">
+              <div className="inline-flex rounded-md border-2 border-[var(--ink)] overflow-hidden text-sm font-bold" role="group" aria-label={m.ticket.modeGroup}>
                 <button
                   type="button"
                   aria-pressed={mode === 'single'}
                   onClick={() => { setMode('single'); setError(''); }}
                   className={`px-3 min-h-[2.75rem] touch-manipulation ${mode === 'single' ? 'bg-[var(--ink)] text-[var(--paper)]' : 'hover:bg-black/5 dark:hover:bg-white/10'}`}
                 >
-                  One link
+                  {m.ticket.oneLink}
                 </button>
                 <button
                   type="button"
@@ -1378,12 +1406,12 @@ export default function DownloaderForm({
                   className={`px-3 min-h-[2.75rem] touch-manipulation inline-flex items-center gap-1.5 ${mode === 'batch' ? 'bg-[var(--ink)] text-[var(--paper)]' : 'hover:bg-black/5 dark:hover:bg-white/10'}`}
                 >
                   <Layers className="w-4 h-4" aria-hidden="true" />
-                  Up to 5
+                  {m.ticket.upToFive}
                 </button>
               </div>
             ) : (
               <label htmlFor="pinterest-url-input" className="text-sm font-bold">
-                {activeVariant === 'hub' ? 'Pinterest link' : copy.singleTab}
+                {activeVariant === 'hub' ? m.ticket.hubLabel : copy.singleTab}
               </label>
             )}
             {!batchActive && (
@@ -1393,7 +1421,7 @@ export default function DownloaderForm({
                   className={`stamp stamp-in ${reading.tone === 'warn' ? 'stamp-warn' : 'stamp-ok'}`}
                   style={reading.tone === 'ok' ? ({ '--stamp-bg': reading.color, '--stamp-ink': reading.onColor } as React.CSSProperties) : undefined}
                 >
-                  {reading.stamp}
+                  {brandNodes(reading.stamp)}
                 </span>
               ) : (
                 <span className="text-sm text-[var(--ink-2)]">{reading.expect}</span>
@@ -1419,10 +1447,11 @@ export default function DownloaderForm({
                     handleUrlInput(text.trim());
                   }
                 }}
-                placeholder={activePlaceholder}
+                placeholder={copy.placeholder}
                 required
                 aria-label={copy.ariaLabel}
                 aria-describedby="ticket-hint"
+                dir={ltr}
                 autoComplete="url"
                 inputMode="url"
                 spellCheck={false}
@@ -1432,7 +1461,7 @@ export default function DownloaderForm({
                   type="button"
                   onClick={() => handleUrlInput('')}
                   className="shrink-0 min-h-[44px] min-w-[44px] px-2 rounded text-sm font-bold text-[var(--ink-2)] hover:text-[var(--ink)] hover:bg-black/5 dark:hover:bg-white/10 touch-manipulation"
-                  aria-label="Clear link"
+                  aria-label={m.ticket.clearAria}
                 >
                   <X className="w-5 h-5 mx-auto" aria-hidden="true" />
                 </button>
@@ -1441,17 +1470,19 @@ export default function DownloaderForm({
                   type="button"
                   onClick={handlePaste}
                   className="shrink-0 min-h-[44px] px-3 rounded inline-flex items-center gap-1.5 text-sm font-bold bg-[var(--ink)] text-[var(--paper)] hover:bg-brand-600 hover:text-white touch-manipulation"
-                  aria-label="Paste link from clipboard"
+                  aria-label={m.ticket.pasteAria}
                 >
                   <Clipboard className="w-4 h-4" aria-hidden="true" />
-                  Paste
+                  {/* Localized paste labels («Вставить», "Einfügen") take a third of the
+                      field on phones: below 400px show the icon only (name in aria-label). */}
+                  {localized ? <span className="hidden min-[400px]:inline">{m.ticket.paste}</span> : m.ticket.paste}
                 </button>
               )}
             </div>
           ) : (
             <div className="ticket-input flex-col">
               <label htmlFor="batch-urls-input" className="sr-only">
-                Batch Pinterest URLs (up to 5 URLs, one per line)
+                {m.ticket.batchLabel}
               </label>
               <textarea
                 id="batch-urls-input"
@@ -1459,18 +1490,19 @@ export default function DownloaderForm({
                 rows={4}
                 value={batchUrls}
                 onChange={(e) => setBatchUrls(e.target.value)}
-                placeholder={'One link per line, up to 5…\nhttps://pinterest.com/pin/1234567/\nhttps://pin.it/abc1234'}
+                placeholder={m.ticket.batchPlaceholder}
                 required
                 spellCheck={false}
                 aria-describedby="ticket-hint"
+                dir={ltr}
               />
               <button
                 type="button"
                 onClick={handlePaste}
-                className="self-end mb-1 mr-1 min-h-[44px] px-3 rounded inline-flex items-center gap-1.5 text-sm font-bold bg-[var(--ink)] text-[var(--paper)] hover:bg-brand-600 hover:text-white touch-manipulation"
+                className="self-end mb-1 me-1 min-h-[44px] px-3 rounded inline-flex items-center gap-1.5 text-sm font-bold bg-[var(--ink)] text-[var(--paper)] hover:bg-brand-600 hover:text-white touch-manipulation"
               >
                 <Clipboard className="w-4 h-4" aria-hidden="true" />
-                Paste
+                {m.ticket.paste}
               </button>
             </div>
           )}
@@ -1479,8 +1511,14 @@ export default function DownloaderForm({
             <p className="mt-3 flex items-start gap-2 text-sm font-semibold" role="status">
               <RefreshCw className="w-4 h-4 mt-0.5 shrink-0 text-brand-600" aria-hidden="true" />
               <span className="min-w-0">
-                {routeNotice.message.replace(/—\s*automatically switched to/, '· switched to')}.{' '}
-                <a href={routeNotice.path} className="underline font-bold">Open that tool</a>
+                {routeNotice.message}
+                {/* Where the tool's page is this page (a locale without that tool falls back to its home), the link would only reload it. */}
+                {samePage(routeNotice.path) ? null : (
+                  <>
+                    {localized ? noticeSeparator(lang) : '. '}
+                    <a href={routeNotice.path} className="underline font-bold">{m.routeNotice.open}</a>
+                  </>
+                )}
               </span>
             </p>
           )}
@@ -1506,29 +1544,29 @@ export default function DownloaderForm({
             {loading ? (
               <>
                 <Loader2 className="w-6 h-6 animate-spin" aria-hidden="true" />
-                <span>{batchActive ? 'Processing links…' : t.processingText}</span>
+                <span>{batchActive ? m.ticket.batchProcessing : m.ticket.processing}</span>
               </>
             ) : (
               <>
                 <Download className="w-6 h-6" aria-hidden="true" />
-                <span>{batchActive ? 'Extract all' : activeSubmitLabel}</span>
+                <span>{batchActive ? m.ticket.batchSubmit : copy.submitLabel}</span>
               </>
             )}
           </button>
         </div>
       </form>
 
-      <nav aria-label="Pick the tool for your link" className="mt-4 flex flex-wrap gap-2">
-        {STOCK_TOOLS.map((tool) => (
+      <nav aria-label={m.ticket.toolsNav} className="mt-4 flex flex-wrap gap-2">
+        {STOCK_TOOLS.filter((tool) => paths[tool.pageId]).map((tool) => (
           <a
-            key={tool.href}
-            href={tool.href}
+            key={paths[tool.pageId]}
+            href={paths[tool.pageId]}
             className="stock-chip"
             data-stock={tool.stock}
             style={{ '--chip': STOCKS[tool.stock].color, '--chip-ink': STOCKS[tool.stock].onColor } as React.CSSProperties}
             aria-current={tool.variant === activeVariant ? 'page' : undefined}
           >
-            {tool.label}
+            {m.chips[tool.stock]}
           </a>
         ))}
       </nav>
@@ -1539,9 +1577,9 @@ export default function DownloaderForm({
       {loading && (
         <section className="rc rc--loading rc--wide" aria-hidden="true" data-loading="">
           <div className="rc-band">
-            <span className="t-label">Fetching from Pinterest…</span>
+            <span className="t-label">{m.receipt.fetching}</span>
             {reading.serial && !batchActive ? (
-              <span className="rc-serial" translate="no">No.&nbsp;{reading.serial}</span>
+              <span className="rc-serial" translate="no">{nodes(fmtParts<ReactNode>(m.ticket.serial, { serial: isolate(reading.serial) }))}</span>
             ) : null}
           </div>
           <div className="rc-split">
@@ -1569,13 +1607,13 @@ export default function DownloaderForm({
       {error && !loading && !result && batchResults.length === 0 && (
         errKind === 'validation' ? (
           <div role="alert" className="rc rc--compact">
-            <span className="stamp stamp-warn" aria-hidden="true">Void</span>
+            <span className="stamp stamp-warn" aria-hidden="true">{m.marks.void}</span>
             <p>{error}</p>
           </div>
         ) : (
           <section className="rc rc--void" aria-labelledby="void-heading" data-print="" data-void={errKind}>
             <div className="rc-void-head">
-              <span className="stamp stamp-warn" aria-hidden="true">Void</span>
+              <span className="stamp stamp-warn" aria-hidden="true">{m.marks.void}</span>
               <h2
                 id="void-heading"
                 ref={voidHeadingRef}
@@ -1583,19 +1621,19 @@ export default function DownloaderForm({
                 aria-describedby="void-msg"
                 className="rc-title"
               >
-                {VOID_COPY[errKind].title}
+                {m.voidCopy[errKind].title}
               </h2>
             </div>
             <p id="void-msg" className="rc-void-msg">{error}</p>
-            {VOID_COPY[errKind].hint && <p className="rc-void-hint">{VOID_COPY[errKind].hint}</p>}
+            {m.voidCopy[errKind].hint && <p className="rc-void-hint">{m.voidCopy[errKind].hint}</p>}
             <div className="rc-tools">
               <button type="button" className="rc-btn" onClick={focusTicket}>
                 <RefreshCw aria-hidden="true" />
-                Try another link
+                {m.receipt.tryAnother}
               </button>
-              {(errKind === 'link' || errKind === 'private') && (
-                <a href="/how-to-download-pinterest-videos" className="rc-btn rc-btn--quiet">
-                  Read the step-by-step guide
+              {(errKind === 'link' || errKind === 'private') && paths['how-to-download-pinterest-videos'] && (
+                <a href={paths['how-to-download-pinterest-videos']} className="rc-btn rc-btn--quiet">
+                  {m.receipt.guide}
                   <ChevronRight aria-hidden="true" />
                 </a>
               )}
@@ -1615,23 +1653,24 @@ export default function DownloaderForm({
           return (
             <Receipt
               stock="image"
-              label="Ready · Carousel"
+              label={fmt(m.receipt.ready, { kind: m.kinds.carousel })}
               icon={<Layers aria-hidden="true" />}
               serial={receiptSerial}
               labelledBy="result-heading"
+              serialTemplate={localized ? m.ticket.serial : undefined}
               key={`carousel-${result.pin_id || result.title}`}
               className="rc--wide"
             >
               <div className="rc-top">
               <div className="rc-body rc-body--plain">
-                {resultHeading(result.title || 'Pinterest Carousel', result.description || undefined)}
+                {resultHeading(result.title || m.fallbacks.carousel, result.description || undefined)}
                 <div className="rc-info">
                   <Specs
                     items={[
-                      { label: 'Slides', value: nf(items.length) },
-                      { label: 'Images', value: items.length - vids - gifs ? nf(items.length - vids - gifs) : null },
-                      { label: 'Videos', value: vids ? nf(vids) : null },
-                      { label: 'GIFs', value: gifs ? nf(gifs) : null },
+                      { label: m.specs.slides, value: nf(items.length) },
+                      { label: m.specs.images, value: items.length - vids - gifs ? nf(items.length - vids - gifs) : null },
+                      { label: m.specs.videos, value: vids ? nf(vids) : null },
+                      { label: m.specs.gifs, value: gifs ? nf(gifs) : null },
                     ]}
                   />
                 </div>
@@ -1644,7 +1683,7 @@ export default function DownloaderForm({
               </div>
               <Perf />
               <div className="rc-section">
-                <h3 className="rc-h3">Every slide</h3>
+                <h3 className="rc-h3">{m.carousel.everySlide}</h3>
                 <ul className="rc-grid">
                   {items.map((item, idx) => {
                     const ext =
@@ -1657,12 +1696,12 @@ export default function DownloaderForm({
                       key: String(idx),
                       no: `${String(idx + 1).padStart(pad, '0')}/${String(items.length).padStart(pad, '0')}`,
                       thumb: item.thumbnail_url || (item.type === 'image' ? item.url : result.thumbnail_url) || '',
-                      title: item.title || `Slide ${idx + 1}`,
+                      title: item.title || fmt(m.fallbacks.slide, { n: n0(idx + 1) }),
                       mediaUrl: item.url,
                       filename: `slide_${idx + 1}.${ext}`,
                       ext,
                       isVideo: item.type === 'video',
-                      srName: `slide ${idx + 1}`,
+                      srName: fmt(m.fallbacks.slideSr, { n: n0(idx + 1) }),
                     });
                   })}
                 </ul>
@@ -1675,14 +1714,15 @@ export default function DownloaderForm({
         /* ── Profile picture only ─────────────────────────────────── */
         (() => {
           const avatarName = `pinterest_avatar_${result.username || 'user'}.jpg`;
-          const name = result.profile_title || (result.username ? `@${result.username}` : 'Pinterest user');
+          const name = result.profile_title || (result.username ? `@${result.username}` : m.fallbacks.user);
           return (
             <Receipt
               stock="avatar"
-              label="Ready · Profile picture"
+              label={fmt(m.receipt.ready, { kind: m.kinds.avatar })}
               icon={<User aria-hidden="true" />}
               serial={reading.serial || (result.username ? `@${result.username}` : '')}
               labelledBy="result-heading"
+              serialTemplate={localized ? m.ticket.serial : undefined}
               key={`avatar-${result.username}`}
               className="rc--wide"
             >
@@ -1691,26 +1731,26 @@ export default function DownloaderForm({
               <div className="rc-body">
                 <div className="rc-media rc-media--square">
                   {result.profile_avatar_url ? (
-                    <img src={result.profile_avatar_url} alt={`${name} profile picture`} width={400} height={400} decoding="async" />
+                    <img src={result.profile_avatar_url} alt={fmt(m.avatar.alt, { name })} width={400} height={400} decoding="async" />
                   ) : (
                     <div className="grid h-full place-items-center text-[var(--ink-2)]">
                       <User className="h-12 w-12" aria-hidden="true" />
                     </div>
                   )}
                 </div>
-                {resultHeading(name, result.username && result.profile_title ? <span translate="no">@{result.username}</span> : undefined)}
+                {resultHeading(name, result.username && result.profile_title ? <span translate="no" dir={ltr}>@{result.username}</span> : undefined)}
                 <div className="rc-info">
                   <Specs
                     items={[
-                      { label: 'Format', value: 'JPG' },
-                      { label: 'Crop', value: 'Uncropped' },
+                      { label: m.specs.format, value: 'JPG' },
+                      { label: m.specs.crop, value: m.specs.uncropped },
                     ]}
                   />
                 </div>
               </div>
               {result.profile_avatar_url && (
                 <div className="rc-collect">
-                  {fileCta({ url: result.profile_avatar_url, filename: avatarName, format: 'JPG' }, 'Download JPG')}
+                  {fileCta({ url: result.profile_avatar_url, filename: avatarName, format: 'JPG' }, fmt(m.receipt.download, { format: 'JPG' }))}
                   {receiptError}
                   {savedNotice}
                 </div>
@@ -1722,24 +1762,28 @@ export default function DownloaderForm({
                 {result.profile_avatar_url && (
                   <a href={result.profile_avatar_url} target="_blank" rel="noopener noreferrer" className="rc-btn">
                     <ExternalLink aria-hidden="true" />
-                    Open full size
-                    <span className="sr-only"> (opens in a new tab)</span>
+                    {m.avatar.openFull}
+                    <span className="sr-only">{m.avatar.newTabSr}</span>
                   </a>
                 )}
                 {result.profile_avatar_url && (
                   <button type="button" className="rc-btn" onClick={() => void copyFileLink(result.profile_avatar_url!)}>
                     {copiedLink ? <Check aria-hidden="true" /> : <Link2 aria-hidden="true" />}
-                    {copiedLink ? 'Link copied' : 'Copy file link'}
+                    {copiedLink ? m.receipt.linkCopied : m.receipt.copyLink}
                   </button>
                 )}
                 {anotherBtn}
               </div>
               <p className="rc-void-hint pb-4">
-                Want every pin from this profile? Use the{' '}
-                <a href="/pinterest-profile-downloader" className="font-bold text-[var(--ink)] underline">
-                  Profile Downloader (ZIP)
-                </a>{' '}
-                instead.
+                {nodes(
+                  fmtParts(m.avatar.promo, {
+                    link: (
+                      <a href={routeTo(paths, 'pinterest-profile-downloader')} className="font-bold text-[var(--ink)] underline">
+                        {m.avatar.profileLink}
+                      </a>
+                    ),
+                  }),
+                )}
               </p>
               </div>
               </div>
@@ -1752,8 +1796,8 @@ export default function DownloaderForm({
           const pins = result.pins;
           const isProfile = resultKind === 'profile';
           const title = isProfile
-            ? result.profile_title || result.board_title || 'Pinterest Profile'
-            : result.board_title || 'Pinterest Board';
+            ? result.profile_title || result.board_title || m.fallbacks.profile
+            : result.board_title || m.fallbacks.board;
           const archiveName = isProfile
             ? `profile_${result.username || 'pinterest'}`
             : `board_${result.board_title || 'pinterest'}`;
@@ -1764,10 +1808,11 @@ export default function DownloaderForm({
           return (
             <Receipt
               stock={isProfile ? 'profile' : 'board'}
-              label={isProfile ? 'Ready · Profile' : 'Ready · Board'}
+              label={fmt(m.receipt.ready, { kind: isProfile ? m.kinds.profile : m.kinds.board })}
               icon={isProfile ? <User aria-hidden="true" /> : <Archive aria-hidden="true" />}
               serial={reading.serial || (result.username ? `@${result.username}` : '')}
               labelledBy="result-heading"
+              serialTemplate={localized ? m.ticket.serial : undefined}
               key={`${resultKind}-${result.board_url || result.username}`}
               className="rc--wide"
             >
@@ -1775,18 +1820,23 @@ export default function DownloaderForm({
               <div className={`rc-body ${isProfile && result.profile_avatar_url ? '' : 'rc-body--plain'}`}>
                 {isProfile && result.profile_avatar_url && (
                   <div className="rc-media rc-media--square">
-                    <img src={result.profile_avatar_url} alt={`${title} profile picture`} width={400} height={400} decoding="async" />
+                    <img src={result.profile_avatar_url} alt={fmt(m.avatar.alt, { name: title })} width={400} height={400} decoding="async" />
                   </div>
                 )}
-                {resultHeading(title, result.username ? <span translate="no">{isProfile ? '' : 'by '}@{result.username}</span> : undefined)}
+                {resultHeading(
+                  title,
+                  result.username ? (
+                    <span translate="no">{fmt(isProfile ? m.collection.atUser : m.collection.byUser, { user: result.username })}</span>
+                  ) : undefined,
+                )}
                 <div className="rc-info">
                   <Specs
                     items={[
-                      { label: 'Pins', value: nf(pins.length) },
-                      { label: 'Images', value: pins.length - vids - gifs ? nf(pins.length - vids - gifs) : null },
-                      { label: 'Videos', value: vids ? nf(vids) : null },
-                      { label: 'GIFs', value: gifs ? nf(gifs) : null },
-                      { label: 'Boards', value: isProfile && result.boards?.length ? nf(result.boards.length) : null },
+                      { label: m.specs.pins, value: nf(pins.length) },
+                      { label: m.specs.images, value: pins.length - vids - gifs ? nf(pins.length - vids - gifs) : null },
+                      { label: m.specs.videos, value: vids ? nf(vids) : null },
+                      { label: m.specs.gifs, value: gifs ? nf(gifs) : null },
+                      { label: m.specs.boards, value: isProfile && result.boards?.length ? nf(result.boards.length) : null },
                     ]}
                   />
                 </div>
@@ -1800,14 +1850,15 @@ export default function DownloaderForm({
               <Perf />
               {isProfile && result.profile_avatar_url && (
                 <div className="rc-section">
-                  <h3 className="rc-h3">Also on this profile</h3>
+                  <h3 className="rc-h3">{m.collection.alsoOnProfile}</h3>
                   <ul className="rc-items">
-                    <LineItem format="JPG" name="Profile picture" note="Full size, uncropped">
+                    <LineItem format="JPG" name={m.collection.profilePicture} note={m.collection.largestSize}>
                       <a
                         href={proxyDownloadHref(result.profile_avatar_url, avatarName)}
                         download={avatarName}
                         onClick={(e) => onProxyDownloadClick(e, result.profile_avatar_url!, avatarName)}
                         aria-busy={savingFile === avatarName}
+                        aria-label={itemAria(m.collection.profilePictureSr)}
                         className="rc-btn"
                       >
                         {savingFile === avatarName ? (
@@ -1815,7 +1866,7 @@ export default function DownloaderForm({
                         ) : (
                           <Download aria-hidden="true" />
                         )}
-                        Download<span className="sr-only"> profile picture (JPG)</span>
+                        {m.receipt.downloadShort}<span className="sr-only">{m.collection.profilePictureSr}</span>
                       </a>
                     </LineItem>
                   </ul>
@@ -1823,8 +1874,8 @@ export default function DownloaderForm({
               )}
               {isProfile && result.boards && result.boards.length > 0 && (
                 <div className="rc-section">
-                  <h3 className="rc-h3">Boards ({nf(result.boards.length)})</h3>
-                  <p className="rc-item-note mt-1">Open a board to collect just its pins.</p>
+                  <h3 className="rc-h3">{nodes(fmtParts(m.collection.boardsHeading, { n: nf(result.boards.length) }))}</h3>
+                  <p className="rc-item-note mt-1">{m.collection.boardsHint}</p>
                   <ul className="rc-rows">
                     {result.boards.map((b, idx) => (
                       <li key={idx}>
@@ -1839,11 +1890,11 @@ export default function DownloaderForm({
                           <span className="rc-row-main">
                             <span className="rc-row-name">{b.name}</span>
                             {typeof b.pin_count === 'number' && (
-                              <span className="rc-row-meta">{nf(b.pin_count)} pins</span>
+                              <span className="rc-row-meta">{nodes(pluralParts(m.collection.boardPins, b.pin_count, { n: nf(b.pin_count) }, lang))}</span>
                             )}
                           </span>
                           <span className="rc-row-go">
-                            Open board
+                            {m.collection.openBoard}
                             <ChevronRight aria-hidden="true" />
                           </span>
                         </button>
@@ -1853,7 +1904,7 @@ export default function DownloaderForm({
                 </div>
               )}
               <div className="rc-section">
-                <h3 className="rc-h3">Pins</h3>
+                <h3 className="rc-h3">{m.collection.pinsHeading}</h3>
                 <ul className="rc-grid rc-grid--dense">
                   {pins.slice(0, displayLimit).map((pin, idx) => {
                     const mediaUrl = pin.is_video && pin.video_url ? pin.video_url : pin.image_url;
@@ -1862,25 +1913,24 @@ export default function DownloaderForm({
                       key: pin.pin_id || String(idx),
                       no: String(idx + 1),
                       thumb: pin.thumbnail_url || pin.image_url,
-                      title: pin.title || `Pin ${idx + 1}`,
+                      // "Pin 783444" / "Pin" are the extractor's placeholders, not titles.
+                      title: (!PLACEHOLDER_PIN_TITLE.test(pin.title) && pin.title) || fmt(m.fallbacks.pinN, { n: n0(idx + 1) }),
                       mediaUrl,
                       filename: `pin_${pin.pin_id}.${ext}`,
                       ext,
                       isVideo: !!(pin.is_video && pin.video_url),
-                      srName: `pin ${idx + 1}`,
+                      srName: fmt(m.fallbacks.pinSr, { n: n0(idx + 1) }),
                     });
                   })}
                 </ul>
                 {pins.length > displayLimit && (
                   <div className="rc-more">
-                    <span>
-                      Showing {nf(shown)} of {nf(pins.length)}. The ZIP has all of them.
-                    </span>
+                    <span>{nodes(fmtParts(m.collection.showing, { shown: nf(shown), total: nf(pins.length) }))}</span>
                     <button type="button" className="rc-btn" onClick={() => setDisplayLimit((prev) => prev + 24)}>
-                      Load {nf(Math.min(24, pins.length - displayLimit))} more
+                      {nodes(fmtParts(m.collection.loadMore, { n: nf(Math.min(24, pins.length - displayLimit)) }))}
                     </button>
                     <button type="button" className="rc-btn rc-btn--quiet" onClick={() => setDisplayLimit(pins.length)}>
-                      Show all {nf(pins.length)}
+                      {nodes(fmtParts(m.collection.showAll, { n: nf(pins.length) }))}
                     </button>
                   </div>
                 )}
@@ -1903,20 +1953,22 @@ export default function DownloaderForm({
           const showCoverLine = !!result.image_url && !!primaryFile && primaryFile.url !== result.image_url && result.image_url !== gifUrl;
           const showMp4Line = !!videoUrl && primaryFile?.format !== 'MP4';
           const showPack = !!(result.is_video || gifUrl || result.is_gif);
-          const packParts = [gifUrl ? 'GIF' : '', videoUrl ? 'MP4, MP3' : '', 'cover image'].filter(Boolean).join(', ');
-          const ctaLabel = primaryFile ? `Download ${primaryFile.format}` : '';
+          const packParts = [gifUrl ? 'GIF' : '', videoUrl ? 'MP4' : '', videoUrl ? 'MP3' : '', m.single.packCover]
+            .filter(Boolean)
+            .join(localized ? listSeparator(lang) : ', ');
+          const ctaLabel = primaryFile ? fmt(m.receipt.download, { format: primaryFile.format }) : '';
           const dims = currentQuality?.width && currentQuality?.height ? `${currentQuality.width}×${currentQuality.height}` : null;
           const rowFiles = [mp4Name, mp3Name, coverName, 'pack'];
           const errorInRow = !!error && !isPartialZipMsg && !!attemptFile && rowFiles.includes(attemptFile);
           const rowAlert = (file: string) =>
             errorFor(file) ? (
               <div className="rc-notice" role="alert">
-                <span className="stamp stamp-warn" aria-hidden="true">Void</span>
+                <span className="stamp stamp-warn" aria-hidden="true">{m.marks.void}</span>
                 <p>{error}</p>
               </div>
             ) : null;
           const rowNote = (file: string, idle: string) =>
-            savingNow(file) ? downloadStatusLabel() : lastSaved === file && !savingFile ? 'Download started' : idle;
+            savingNow(file) ? downloadStatusLabel() : lastSaved === file && !savingFile ? m.receipt.startedShort : idle;
           const lineBtn = (saving: boolean) =>
             saving ? (
               <Loader2 className="animate-spin motion-reduce:animate-none" aria-hidden="true" />
@@ -1926,10 +1978,11 @@ export default function DownloaderForm({
           return (
             <Receipt
               stock={stock}
-              label={`Ready · ${KIND_LABEL[resultKind]}`}
+              label={fmt(m.receipt.ready, { kind: m.kinds[resultKind] })}
               icon={resultKind === 'video' ? <Film aria-hidden="true" /> : <ImageIcon aria-hidden="true" />}
               serial={receiptSerial}
               labelledBy="result-heading"
+              serialTemplate={localized ? m.ticket.serial : undefined}
               key={`pin-${result.pin_id || result.title}`}
               className="rc--wide"
             >
@@ -1945,7 +1998,7 @@ export default function DownloaderForm({
                       loop
                       playsInline
                       preload="auto"
-                      aria-label={`Preview: ${result.title}`}
+                      aria-label={fmt(m.single.previewAria, { title: String(result.title) })}
                     />
                   ) : (
                     <>
@@ -1968,7 +2021,7 @@ export default function DownloaderForm({
                         <button type="button" className="rc-play" onClick={() => setShowPlayer(true)}>
                           <span className="rc-play-tile">
                             <Play aria-hidden="true" />
-                            Play preview
+                            {m.single.playPreview}
                           </span>
                         </button>
                       )}
@@ -1980,24 +2033,24 @@ export default function DownloaderForm({
                           onClick={() => setGifPlaying(!gifPlaying)}
                         >
                           {gifPlaying ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
-                          {gifPlaying ? 'Freeze' : 'Play loop'}
+                          {gifPlaying ? m.single.freeze : m.single.playLoop}
                         </button>
                       )}
                     </>
                   )}
                 </div>
-                {resultHeading(result.title || 'Pinterest Pin', result.description || undefined)}
+                {resultHeading(result.title || m.fallbacks.pin, result.description || undefined)}
                 <div className="rc-info">
                   <Specs
                     items={[
-                      { label: 'Format', value: primaryFile?.format || null },
-                      { label: 'Resolution', value: primaryFile?.format === 'MP4' ? dims : null },
-                      { label: 'Plays', value: primaryFile?.format === 'GIF' ? 'Looping' : null },
+                      { label: m.specs.format, value: primaryFile?.format || null },
+                      { label: m.specs.resolution, value: primaryFile?.format === 'MP4' ? dims : null },
+                      { label: m.specs.plays, value: primaryFile?.format === 'GIF' ? m.specs.looping : null },
                     ]}
                   />
                   {result.qualities && result.qualities.length > 1 && primaryFile?.format === 'MP4' && (
                     <fieldset className="rc-q">
-                      <legend>Quality</legend>
+                      <legend>{m.specs.quality}</legend>
                       <div className="rc-q-row">
                         {result.qualities.map((q, idx) => {
                           const checked = (selectedQuality || result.video_url) === q.url;
@@ -2012,7 +2065,7 @@ export default function DownloaderForm({
                               />
                               <span>{q.label}</span>
                               {q.width && q.height ? (
-                                <span className="rc-q-dim">
+                                <span className="rc-q-dim" dir={localized ? 'ltr' : undefined}>
                                   {q.width}&times;{q.height}
                                 </span>
                               ) : null}
@@ -2039,28 +2092,29 @@ export default function DownloaderForm({
                 <>
                   <Perf />
                   <div className="rc-section">
-                    <h3 className="rc-h3">Also in this pin</h3>
+                    <h3 className="rc-h3">{m.single.alsoInPin}</h3>
                     <ul className="rc-items">
                       {showMp4Line && videoUrl && (
-                        <LineItem format="MP4" name="Video" note={rowNote(mp4Name, dims || 'With sound')} after={rowAlert(mp4Name)}>
+                        <LineItem format="MP4" name={m.single.videoName} note={rowNote(mp4Name, dims || m.single.withSound)} after={rowAlert(mp4Name)}>
                           <a
                             href={proxyDownloadHref(videoUrl, mp4Name)}
                             download={mp4Name}
                             onClick={(e) => onProxyDownloadClick(e, videoUrl, mp4Name)}
                             aria-busy={savingFile === mp4Name}
+                            aria-label={itemAria(m.single.videoSr)}
                             className="rc-btn"
                             data-line="mp4"
                           >
                             {lineBtn(savingFile === mp4Name)}
-                            Download<span className="sr-only"> video (MP4)</span>
+                            {m.receipt.downloadShort}<span className="sr-only">{m.single.videoSr}</span>
                           </a>
                         </LineItem>
                       )}
                       {videoUrl && (
                         <LineItem
                           format="MP3"
-                          name="Audio"
-                          note={rowNote(mp3Name, 'The sound from this video')}
+                          name={fmt(m.single.audioName, { kbps: n0(MP3_KBPS) })}
+                          note={rowNote(mp3Name, m.single.audioNote)}
                           after={rowAlert(mp3Name)}
                         >
                           <button
@@ -2069,22 +2123,23 @@ export default function DownloaderForm({
                             onClick={(e) => {
                               e.preventDefault();
                               if (savingFile) return;
-                              void saveProxyDownload(videoUrl, mp3Name);
+                              void saveMp3FromVideo(videoUrl, mp3Name, result.title || '');
                             }}
                             aria-busy={savingFile === mp3Name}
+                            aria-label={itemAria(m.single.audioSr)}
                             className="rc-btn"
                             data-line="mp3"
                           >
                             {lineBtn(savingFile === mp3Name)}
-                            Download<span className="sr-only"> audio (MP3)</span>
+                            {m.receipt.downloadShort}<span className="sr-only">{m.single.audioSr}</span>
                           </button>
                         </LineItem>
                       )}
                       {showCoverLine && result.image_url && (
                         <LineItem
                           format={coverFmt}
-                          name="Cover image"
-                          note={rowNote(coverName, 'The still shown on Pinterest')}
+                          name={m.single.coverName}
+                          note={rowNote(coverName, m.single.coverNote)}
                           after={rowAlert(coverName)}
                         >
                           <a
@@ -2092,29 +2147,30 @@ export default function DownloaderForm({
                             download={coverName}
                             onClick={(e) => onProxyDownloadClick(e, result.image_url!, coverName)}
                             aria-busy={savingFile === coverName}
+                            aria-label={itemAria(fmt(m.single.coverSr, { format: coverFmt }))}
                             className="rc-btn"
                             data-line="cover"
                           >
                             {lineBtn(savingFile === coverName)}
-                            Download<span className="sr-only"> cover image ({coverFmt})</span>
+                            {m.receipt.downloadShort}<span className="sr-only">{fmt(m.single.coverSr, { format: coverFmt })}</span>
                           </a>
                         </LineItem>
                       )}
                       {showPack && (
                         <LineItem
                           format="ZIP"
-                          name="Everything"
+                          name={m.single.packName}
                           note={
                             zipping && zipProgress.total
-                              ? `Packing ${zipProgress.done} of ${zipProgress.total} files…`
-                              : packParts.charAt(0).toUpperCase() + packParts.slice(1)
+                              ? plural(m.receipt.packing, zipProgress.total, { done: n0(zipProgress.done), total: n0(zipProgress.total) }, lang)
+                              : (lang ? packParts.charAt(0).toLocaleUpperCase(lang) : packParts.charAt(0).toUpperCase()) + packParts.slice(1)
                           }
                           after={rowAlert('pack')}
                         >
                           {zipping ? (
                             <button type="button" onClick={cancelZip} className="rc-btn" data-line="pack">
                               <X aria-hidden="true" />
-                              Cancel<span className="sr-only"> ZIP</span>
+                              {m.receipt.cancel}<span className="sr-only">{m.receipt.cancelSr}</span>
                             </button>
                           ) : (
                             <button
@@ -2123,11 +2179,12 @@ export default function DownloaderForm({
                                 setAttemptFile('pack');
                                 void downloadSinglePinCompletePack(result);
                               }}
+                              aria-label={itemAria(m.single.packSr)}
                               className="rc-btn"
                               data-line="pack"
                             >
                               {lineBtn(false)}
-                              Download<span className="sr-only"> everything (ZIP)</span>
+                              {m.receipt.downloadShort}<span className="sr-only">{m.single.packSr}</span>
                             </button>
                           )}
                         </LineItem>
@@ -2143,7 +2200,7 @@ export default function DownloaderForm({
                 {primaryFile && (
                   <button type="button" className="rc-btn" onClick={() => void copyFileLink(primaryFile.url)}>
                     {copiedLink ? <Check aria-hidden="true" /> : <Link2 aria-hidden="true" />}
-                    {copiedLink ? 'Link copied' : 'Copy file link'}
+                    {copiedLink ? m.receipt.linkCopied : m.receipt.copyLink}
                   </button>
                 )}
                 {primaryMediaUrl && (
@@ -2155,7 +2212,7 @@ export default function DownloaderForm({
                     aria-controls="phone-qr-panel"
                   >
                     <QrCode aria-hidden="true" />
-                    {qrOpen ? 'Hide phone QR' : 'Send to phone'}
+                    {qrOpen ? m.single.hideQr : m.single.sendToPhone}
                   </button>
                 )}
                 {result.image_url && (
@@ -2168,7 +2225,7 @@ export default function DownloaderForm({
                     }}
                   >
                     <Crop aria-hidden="true" />
-                    Crop / resize
+                    {m.single.crop}
                   </button>
                 )}
                 {result.is_video && (
@@ -2181,7 +2238,7 @@ export default function DownloaderForm({
                     }}
                   >
                     <Scissors aria-hidden="true" />
-                    Trim sound
+                    {m.single.trim}
                   </button>
                 )}
                 {anotherBtn}
@@ -2195,33 +2252,31 @@ export default function DownloaderForm({
                       src={qrDataUrl}
                       width="128"
                       height="128"
-                      alt={`QR code linking to the extracted ${result.is_video ? 'video' : 'image'} file — scan to open it on your phone`}
+                      alt={result.is_video ? m.single.qrAltVideo : m.single.qrAltImage}
                     />
                   ) : null}
-                  <p className="min-w-0">
-                    Scan with your phone camera to open this file instantly — then long-press to save it to your gallery. No app or login needed.
-                  </p>
+                  <p className="min-w-0">{m.single.qrText}</p>
                 </div>
               )}
 
               {((result.colors && result.colors.length > 0) || (result.tags && result.tags.length > 0) || result.title) && (
                 <details className="rc-extras" data-extras="">
                   <summary>
-                    <span>Colours, tags and repost captions</span>
+                    <span>{m.extras.summary}</span>
                     <ChevronDown aria-hidden="true" />
                   </summary>
                   <div className="rc-extras-body">
                     {result.colors && result.colors.length > 0 && (
                       <div>
                         <div className="rc-extras-head">
-                          <h3 className="rc-h3">Palette</h3>
-                          <span className="rc-extras-hint">Shades of the pin's main colour. Tap to copy.</span>
+                          <h3 className="rc-h3">{m.extras.palette}</h3>
+                          <span className="rc-extras-hint">{m.extras.paletteHint}</span>
                         </div>
                         <div className="rc-chips">
                           {result.colors.map((hex, idx) => (
                             <button key={idx} type="button" className="rc-swatch" onClick={() => copyColorHex(hex)}>
                               <i style={{ backgroundColor: hex }} aria-hidden="true" />
-                              <span translate="no">{copiedColor === hex ? 'Copied' : hex}</span>
+                              <span translate="no">{copiedColor === hex ? m.extras.copied : hex}</span>
                             </button>
                           ))}
                         </div>
@@ -2230,10 +2285,10 @@ export default function DownloaderForm({
                     {result.tags && result.tags.length > 0 && (
                       <div>
                         <div className="rc-extras-head">
-                          <h3 className="rc-h3">Tags</h3>
+                          <h3 className="rc-h3">{m.extras.tags}</h3>
                           <button type="button" className="rc-btn" onClick={copyTagsToClipboard}>
                             {copiedTags ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-                            {copiedTags ? 'Copied' : 'Copy tags'}
+                            {copiedTags ? m.extras.copied : m.extras.copyTags}
                           </button>
                         </div>
                         <div className="rc-chips">
@@ -2245,9 +2300,9 @@ export default function DownloaderForm({
                     )}
                     <div>
                       <div className="rc-extras-head">
-                        <h3 className="rc-h3">Repost caption</h3>
+                        <h3 className="rc-h3">{m.extras.repostCaption}</h3>
                       </div>
-                      <div className="rc-seg" role="group" aria-label="Caption for">
+                      <div className="rc-seg" role="group" aria-label={m.extras.captionFor}>
                         {(
                           [
                             ['reels', 'Instagram Reels'],
@@ -2276,7 +2331,7 @@ export default function DownloaderForm({
                         }}
                       >
                         {copiedCaption ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-                        {copiedCaption ? 'Copied caption' : 'Copy caption & tags'}
+                        {copiedCaption ? m.extras.copiedCaption : m.extras.copyCaption}
                       </button>
                     </div>
                   </div>
@@ -2294,12 +2349,13 @@ export default function DownloaderForm({
       {batchResults.length > 0 && (
         <Receipt
           stock="pin"
-          label={`Ready · ${batchResults.length} pins`}
+          label={plural(m.batch.ready, batchResults.length, { n: n0(batchResults.length) }, lang)}
           icon={<Layers aria-hidden="true" />}
           labelledBy="result-heading"
+          serialTemplate={localized ? m.ticket.serial : undefined}
         >
           <div className="rc-body rc-body--plain">
-            {resultHeading(`${batchResults.length} files collected`)}
+            {resultHeading(plural(m.batch.heading, batchResults.length, { n: n0(batchResults.length) }, lang))}
           </div>
           <div className="rc-collect">
             <button
@@ -2323,10 +2379,10 @@ export default function DownloaderForm({
               }}
             >
               <Download aria-hidden="true" />
-              <span>Download all ({batchResults.length})</span>
+              <span>{nodes(fmtParts(m.batch.downloadAll, { n: n0(batchResults.length) }))}</span>
             </button>
             <p className="rc-note">
-              {savingFile && downloadProgress ? downloadStatusLabel() : 'Files download one after another.'}
+              {savingFile && downloadProgress ? downloadStatusLabel() : m.batch.oneAfterAnother}
             </p>
             {receiptError}
           </div>
@@ -2335,8 +2391,8 @@ export default function DownloaderForm({
             <ul className="list-none m-0 p-0">
               {batchResults.map((res, idx) => {
                 const gif = resolvedGifUrl(res);
-                const fmt = gif ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg');
-                const name = `${slugify(res.title || 'pin')}.${fmt}`;
+                const ext = gif ? 'gif' : res.is_video ? 'mp4' : mediaFileExtension(res.image_url || '', 'jpg');
+                const name = `${slugify(res.title || 'pin')}.${ext}`;
                 const mediaUrl = gif || res.video_url || res.image_url!;
                 const stock: StockKey = gif ? 'gif' : res.is_video ? 'video' : 'image';
                 return (
@@ -2345,7 +2401,7 @@ export default function DownloaderForm({
                     <div className="min-w-0">
                       <p className="rc-item-name line-clamp-2 break-words">{res.title}</p>
                       <span className="rc-pill" style={{ '--kind': STOCKS[stock].color } as React.CSSProperties}>
-                        {gif ? 'GIF pin' : res.is_video ? 'Video pin' : 'Image pin'}
+                        {gif ? m.kinds.gif : res.is_video ? m.kinds.video : m.kinds.image}
                       </span>
                     </div>
                     <a
@@ -2360,7 +2416,7 @@ export default function DownloaderForm({
                       ) : (
                         <Download aria-hidden="true" />
                       )}
-                      Download {fmt.toUpperCase()}
+                      {nodes(fmtParts(m.receipt.download, { format: ext.toUpperCase() }))}
                     </a>
                   </li>
                 );
@@ -2374,7 +2430,7 @@ export default function DownloaderForm({
       {/* Recent links: previous claims on this device */}
       {history.length > 0 && !result && batchResults.length === 0 && !loading && !error && (
         <div className="rc-recent">
-          <h2 className="rc-h3">Recent links</h2>
+          <h2 className="rc-h3">{m.recent.heading}</h2>
           <ul>
             {history.map((item, idx) => (
               <li key={idx}>
@@ -2394,6 +2450,8 @@ export default function DownloaderForm({
           imageUrl={result.image_url}
           title={result.title || 'pinterest_image'}
           onClose={() => setShowCropper(false)}
+          messages={localized ? m.cropper : undefined}
+          lang={lang}
         />
       )}
 
@@ -2403,6 +2461,8 @@ export default function DownloaderForm({
           audioUrl={selectedQuality || result!.video_url!}
           title={result?.title || 'pinterest_audio'}
           onClose={() => setShowTrimmer(false)}
+          messages={localized ? { trimmer: m.trimmer, mp3: m.mp3 } : undefined}
+          lang={lang}
         />
       )}
     </div>

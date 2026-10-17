@@ -1,0 +1,134 @@
+{
+  "pageId": "how-to-download-pinterest-video-on-laptop",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest Video İndir PC — Bilgisayara ve Laptopa MP4 Kaydet",
+    "description": "Pinterest videolarını Windows PC, Mac veya laptopa indirin. Tarayıcıda Pin linkini kopyalayıp yapıştırın; MP4 İndirilenler klasörüne iner. Program kurmak yok."
+  },
+  "keywords": {
+    "primary": "pinterest video indir pc",
+    "secondary": [
+      "pinterestten video nasıl indirilir pc",
+      "pinterest pc video downloader",
+      "pinterestten bilgisayara fotoğraf indirme",
+      "pinterest bilgisayara indir",
+      "pinterest video indirme programı"
+    ]
+  },
+  "nav": {
+    "label": "PC ve Laptopa İndir",
+    "short": "PC",
+    "card": {
+      "title": "Bilgisayara Video İndirme",
+      "blurb": "Windows, Mac ya da Chromebook: Pin linkini yapıştırın, MP4 İndirilenler’e insin.",
+      "badge": "PC"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Video İndir: PC ve Laptop",
+    "lede": "Bilgisayarda iş daha da kısa: Pinin adresini kopyalayın, **Ctrl + V** ile yapıştırın ve MP4’ü **İndirilenler** klasörüne kaydedin. Windows, Mac ve Chromebook için; program kurmadan."
+  },
+  "intro": [
+    "Tarayıcısı olan her bilgisayarda çalışır: Windows PC, Mac, Chromebook ya da laptop. Kurulacak bir **video indirme programı** ya da eklenti yok; her şey tarayıcıda olur.",
+    "Videoyu telefonda izlemek mi istiyorsunuz? Pini getirdikten sonra **Telefona gönder** düğmesi bir QR kod gösterir; telefonunuzun kamerasıyla okutup dosyayı orada açın."
+  ],
+  "sections": [
+    {
+      "h2": "Bilgisayarda linki kopyalama",
+      "paragraphs": [
+        "Pini pinterest.com’da açın ve tarayıcının adres çubuğundaki adresi kopyalayın: içinde `/pin/` ve bir sayı olmalı. Pinin paylaş simgesine tıklayıp **Bağlantıyı kopyala**’yı da seçebilirsiniz.",
+        "Klavyeyle daha da hızlı: Windows’ta ve Chromebook’ta **Ctrl + L**, ardından **Ctrl + C**; Mac’te **Cmd + L** ve **Cmd + C**."
+      ]
+    },
+    {
+      "h2": "İndirdiğim video bilgisayarda nerede?",
+      "paragraphs": [
+        "Tarayıcıda başka bir klasör seçmediyseniz kullanıcı klasörünüzdeki **İndirilenler**’de. Windows’ta Chrome ve Edge’in indirme listesini **Ctrl + J** açar; Mac’te Safari’de **Cmd + Option + L**."
+      ]
+    },
+    {
+      "h2": "Bilgisayarda Pinterest videosu neden inmiyor?",
+      "paragraphs": [
+        "Bilgisayarda en sık hata yanlış adresi kopyalamaktır:"
+      ],
+      "list": [
+        "**Panonun ya da ana sayfanın adresini kopyaladınız.** Videoya tıklayıp Pini açın ve o adresi kopyalayın.",
+        "**Pin video değil ya da gizli.** Türünü öğrenmek için linki [[pinterest-pin-downloader|Pin indiriciye]] yapıştırın.",
+        "**Tarayıcı güncel değil.** Chrome, Edge, Firefox ya da Safari’yi güncelleyip yeniden deneyin."
+      ]
+    },
+    {
+      "h2": "Tek tıkla indirme: yer işareti aracı",
+      "paragraphs": [
+        "Sık indiriyorsanız PintDownload yer işareti aracını (bookmarklet) yer işaretleri çubuğuna ekleyin. Pinterest’te bir Pindeyken ona tıkladığınızda PintDownload, link yapıştırılmış olarak açılır.",
+        "Bu bir mağaza eklentisi değil, tarayıcınızın kendi yer işaretidir: kurulum ya da izin gerektirmez. Düğmeyi ve kurulum adımlarını aşağıda bulabilirsiniz."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Bilgisayara Pinterest videosu nasıl indirilir",
+    "intro": "Windows, Mac ya da Chromebook’ta üç adım.",
+    "exampleLabel": "Video Pini linki",
+    "items": [
+      {
+        "title": "Pinin adresini kopyalayın",
+        "body": "Videoyu pinterest.com’da açın ve adres çubuğundaki `/pin/` içeren adresi kopyalayın."
+      },
+      {
+        "title": "PintDownload’a yapıştırın",
+        "body": "pintdownload.app’i yeni bir sekmede açın, **Ctrl + V** (Mac’te **Cmd + V**) ile yapıştırın ve **Enter**’a basın."
+      },
+      {
+        "title": "MP4’ü kaydedin",
+        "body": "İndir düğmesine tıklayın. Dosya **İndirilenler**’e iner ve her video oynatıcıda açılır."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Bilgisayarda indirme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Windows PC’de ya da Mac’te Pinterest videosu nasıl indirilir?",
+        "a": "Pini tarayıcıda açın, adres çubuğundaki linki kopyalayın, pintdownload.app’e yapıştırın ve MP4’ü indirin. Windows’ta, Mac’te ve Chromebook’ta adımlar aynı."
+      },
+      {
+        "q": "Program ya da eklenti kurmam gerekiyor mu?",
+        "a": "Hayır. Pinterest video indirme programı aramanıza gerek yok; her şey tarayıcıda olur. İsterseniz tek tıklık bir yer işareti ekleyebilirsiniz, o da kurulum gerektirmez."
+      },
+      {
+        "q": "Bilgisayarda hangi kalitede iner, 720p mi 1080p mi?",
+        "a": "Pinterest’in yayınladığı kalitede: genellikle 720p, Pinde varsa 1080p, ikisi de listede görünür. Pinterest’in yayınladığından yüksek bir kalite üretmeyiz."
+      },
+      {
+        "q": "Chromebook’ta çalışır mı?",
+        "a": "Evet. Chrome’da pintdownload.app’i açın, Pinin adresini **Ctrl + V** ile yapıştırın ve indirin. Dosya, Dosyalar uygulamasındaki **İndirilenler** klasörüne iner."
+      },
+      {
+        "q": "İndirdiğim video bilgisayarda nerede?",
+        "a": "**İndirilenler** klasöründe. Tarayıcının indirme geçmişini Windows’ta **Ctrl + J**, Mac’te Safari’de **Cmd + Option + L** açar."
+      },
+      {
+        "q": "Bilgisayara Pinterest’ten fotoğraf da indirebilir miyim?",
+        "a": "Evet. Fotoğraf Pininin adresini [[pinterest-image-downloader|fotoğraf indiriciye]] yapıştırın; Pinterest’in yayınladığı en büyük boyut **İndirilenler**’e iner."
+      },
+      {
+        "q": "Yer işareti aracı nasıl kurulur?",
+        "a": "Aşağıdaki düğmeyi tarayıcınızın yer işaretleri çubuğuna sürükleyin; çubuk görünmüyorsa **Ctrl + Shift + B** (Mac’te **Cmd + Shift + B**) ile açın. Sonra Pinterest’te bir Pindeyken yer işaretine tıklayın."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer rehberler ve araçlar"
+  },
+  "schema": {
+    "appName": "Pinterest video indir: PC ve laptop — PintDownload",
+    "howToName": "Bilgisayara Pinterest videosu nasıl indirilir",
+    "howToDescription": "Windows, Mac ya da Chromebook’ta bir Pinterest video Pininin adresini kopyalayıp MP4 olarak indirme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Atlanan Chrome sayfasının yer işareti aracı (bookmarklet) bu rehberde. “Laptop” başlıkta ikincil terim olarak kalıyor (araştırma).",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device."
+  }
+}

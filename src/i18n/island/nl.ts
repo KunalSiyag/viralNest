@@ -1,0 +1,433 @@
+/**
+ * Island catalog, Dutch (one version for NL and BE; je/jij, sentence case).
+ * Same keys and {tokens} as en.ts; Intl.PluralRules('nl') lists one and other.
+ * Vocabulary: docs/i18n/research/nl.json glossary (link, bord/borden, pins,
+ * videopin, afbeeldingspin, GIF-pin, Delen › Link kopiëren, afhaalbon, Nr.,
+ * Klaar / Ongeldig / Deels, Bestand ophalen…). Buttons use the Dutch UI
+ * infinitive ("Video downloaden", "Annuleren"), one label per variant.
+ * Never "bewaren" for files: that is Pinterest's own save-to-board button.
+ * No → in display strings: use ›.
+ */
+import type { IslandMessages } from './types';
+
+export const ISLAND: IslandMessages = {
+  lang: 'nl',
+
+  variants: {
+    hub: {
+      singleTab: 'Pin, bord of profiel',
+      placeholder: 'Plak hier een Pinterest-link… bijv. https://pin.it/…',
+      ariaLabel: 'Link van een Pinterest-pin, -bord of -profiel',
+      submitLabel: 'Downloaden',
+      hint: 'Openbare links van pins, borden of profielen. Borden en profielen krijg je als ZIP.',
+      expect: 'Wacht op een link',
+    },
+    pin: {
+      singleTab: 'Link van de pin',
+      placeholder: 'Plak de pinlink… https://pinterest.com/pin/… of pin.it/…',
+      ariaLabel: 'Link van een Pinterest-pin',
+      submitLabel: 'Pin downloaden',
+      hint: 'Voor foto’s, video’s, GIF’s en carrousels (alle afbeeldingen).',
+      expect: 'Voor een pinlink',
+    },
+    video: {
+      singleTab: 'Link van de videopin',
+      placeholder: 'Plak de link van de videopin… https://pinterest.com/pin/… of pin.it/…',
+      ariaLabel: 'Link van een Pinterest-videopin',
+      submitLabel: 'Video downloaden',
+      hint: 'Slaat de MP4 op (meestal 720p, 1080p als de pin dat heeft). Kan in je browser ook een MP3 van het geluid maken.',
+      expect: 'Voor een videopin',
+    },
+    image: {
+      singleTab: 'Link van de afbeeldingspin',
+      placeholder: 'Plak de link van de afbeeldingspin… https://pinterest.com/pin/…',
+      ariaLabel: 'Link van een Pinterest-afbeeldingspin',
+      submitLabel: 'Foto downloaden',
+      hint: 'Slaat de grootste versie op die Pinterest publiceert (tot 1200 px breed). Bij een carrousel krijg je alle afbeeldingen.',
+      expect: 'Voor een afbeeldingspin',
+    },
+    gif: {
+      singleTab: 'Link van de GIF-pin',
+      placeholder: 'Plak de link van de GIF-pin… https://pinterest.com/pin/… of pin.it/…',
+      ariaLabel: 'Link van een GIF-pin op Pinterest',
+      submitLabel: 'GIF downloaden',
+      hint: 'Slaat de bewegende GIF op, geen stilstaande JPG van het eerste beeld.',
+      expect: 'Voor een GIF-pin',
+    },
+    board: {
+      singleTab: 'Link van het bord',
+      placeholder: 'Plak de bordlink… https://pinterest.com/gebruiker/naam-van-bord/',
+      ariaLabel: 'Link van een Pinterest-bord',
+      submitLabel: 'Bord ophalen',
+      hint: 'Plak de link van een openbaar bord om de pins te zien en download daarna de hele ZIP.',
+      expect: 'Voor een bordlink',
+    },
+    profile: {
+      singleTab: 'Link van het profiel',
+      placeholder: 'Plak de profiellink… https://pinterest.com/gebruiker/',
+      ariaLabel: 'Link van een Pinterest-profiel',
+      submitLabel: 'Profiel ophalen (ZIP)',
+      hint: 'Zet de openbare pins van dit account in één ZIP.',
+      expect: 'Voor een profiellink',
+    },
+    'profile-picture': {
+      singleTab: 'Link van het profiel',
+      placeholder: 'Plak de profiellink… https://pinterest.com/gebruiker/',
+      ariaLabel: 'Link van een Pinterest-profiel, voor de profielfoto',
+      submitLabel: 'Profielfoto ophalen',
+      hint: 'Slaat de grootste profielfoto op die Pinterest voor een openbaar account publiceert.',
+      expect: 'Voor een profiellink',
+    },
+  },
+
+  ticket: {
+    admitOne: 'Afhaalbon · openbare link',
+    serial: 'Nr. {serial}',
+    serialEmpty: 'Nr. ——————',
+    modeGroup: 'Aantal links',
+    oneLink: 'Eén link',
+    upToFive: 'Tot 5',
+    hubLabel: 'Pinterest-link',
+    clearAria: 'Link wissen',
+    pasteAria: 'Link plakken vanaf het klembord',
+    paste: 'Plakken',
+    batchLabel: 'Meerdere Pinterest-links (tot 5, één per regel)',
+    batchPlaceholder: 'Eén link per regel, tot 5…\nhttps://pinterest.com/pin/1234567/\nhttps://pin.it/abc1234',
+    processing: 'Bestand ophalen…',
+    batchProcessing: 'Links verwerken…',
+    batchSubmit: 'Alles ophalen',
+    toolsNav: 'Kies de tool voor je link',
+    notPinterestHelp: 'Dit is geen Pinterest-link. Tik in de Pinterest-app op Delen › Link kopiëren en plak de link hier.',
+  },
+
+  stamps: {
+    notPinterest: 'Geen Pinterest',
+    board: 'Bord › ZIP',
+    profileZip: 'Profiel › ZIP',
+    profileAvatar: 'Profiel › Foto',
+    pinShort: 'Pin · korte link',
+    pin: 'Pin',
+  },
+
+  marks: { void: 'Ongeldig', partial: 'Deels', packed: 'Ingepakt', done: 'Klaar' },
+
+  chips: {
+    pin: 'Pin',
+    video: 'MP4-video',
+    image: 'HD-foto',
+    gif: 'GIF',
+    board: 'Bord-ZIP',
+    profile: 'Profiel-ZIP',
+    avatar: 'Profielfoto',
+  },
+
+  routeNotice: {
+    boardLink: 'Bordlink herkend · we gebruiken nu de bord-downloader',
+    profileLink: 'Profiellink herkend · we halen nu de openbare pins van dit profiel op',
+    gif: 'Bewegende GIF herkend · we gebruiken nu de GIF-downloader',
+    video: 'Videopin herkend · we gebruiken nu de video-downloader',
+    carousel: {
+      one: 'Carrousel met {n} afbeelding herkend · we gebruiken nu de foto-downloader',
+      other: 'Carrousel met {n} afbeeldingen herkend · we gebruiken nu de foto-downloader',
+    },
+    board: 'Pinterest-bord herkend · we gebruiken nu de bord-downloader',
+    profile: 'Pinterest-profiel herkend · we halen nu de openbare pins op',
+    open: 'Open die tool',
+  },
+
+  progress: {
+    reading: 'Geluid van de video lezen…',
+    making: 'MP3 maken… {pct}%',
+    connecting: 'Verbinden met Pinterest…',
+    downloadingOf: 'Downloaden… {loaded} van {total} ({pct}%)',
+    downloading: 'Downloaden… {loaded}',
+  },
+
+  bytes: { B: 'B', KB: 'KB', MB: 'MB', GB: 'GB' },
+
+  live: {
+    readingLink: 'Je link wordt gelezen…',
+    readingLinks: 'Je links worden gelezen…',
+    packingZip: 'ZIP inpakken, {pct}% klaar',
+    making: '{file} wordt in je browser gemaakt…',
+    makingPct: '{file} wordt in je browser gemaakt, {pct}% klaar',
+    downloading: '{file} downloaden…',
+    downloadingPct: '{file} downloaden, {pct}% klaar',
+    zipPacked: {
+      one: 'ZIP ingepakt met {packed} van {total} bestand. Het downloaden is begonnen.',
+      other: 'ZIP ingepakt met {packed} van {total} bestanden. Het downloaden is begonnen.',
+    },
+    started: 'Download gestart: {file}',
+    copied: 'Gekopieerd naar het klembord.',
+  },
+
+  kinds: {
+    image: 'Afbeeldingspin',
+    video: 'Videopin',
+    gif: 'GIF-pin',
+    carousel: 'Carrousel',
+    board: 'Bord',
+    profile: 'Profiel',
+    avatar: 'Profielfoto',
+  },
+
+  voidCopy: {
+    validation: { title: 'Plak eerst een link' },
+    link: {
+      title: 'Dit is geen Pinterest-link',
+      hint: 'Tik in de Pinterest-app op Delen › Link kopiëren en plak de link op de bon.',
+    },
+    private: {
+      title: 'Niets openbaars om op te halen',
+      hint: 'Alleen openbare pins, borden en profielen kun je downloaden. Privéborden, verborgen borden en privéaccounts blijven privé.',
+    },
+    removed: { title: 'Deze pin is verwijderd' },
+    download: { title: 'Het bestand is niet gedownload', hint: 'Pinterest levert een bestand soms even niet. Probeer de link opnieuw.' },
+    other: { title: 'Deze link konden we niet ophalen', hint: 'Controleer of de link op Pinterest opent en probeer het opnieuw.' },
+  },
+
+  receipt: {
+    ready: 'Klaar · {kind}',
+    fetching: 'Ophalen bij Pinterest…',
+    another: 'Nog een downloaden',
+    tryAnother: 'Probeer een andere link',
+    guide: 'Lees de uitleg stap voor stap',
+    savesAs: 'Wordt opgeslagen als {file}',
+    download: '{format} downloaden',
+    downloadShort: 'Downloaden',
+    itemAria: '{verb}:{item}',
+    downloadProgressAria: 'Voortgang van de download',
+    zipProgressAria: 'Voortgang van de ZIP',
+    zipProgressText: {
+      one: '{done} van {total} bestand ingepakt',
+      other: '{done} van {total} bestanden ingepakt',
+    },
+    packing: {
+      one: 'Inpakken: {done} van {total} bestand…',
+      other: 'Inpakken: {done} van {total} bestanden…',
+    },
+    cancel: 'Annuleren',
+    cancelSr: ' ZIP',
+    downloadZip: 'ZIP downloaden ({n})',
+    zipPartial: {
+      one: '{name} bevat {packed} van {total} bestand. Pinterest leverde er {missing} niet; download die los.',
+      other: '{name} bevat {packed} van {total} bestanden. Pinterest leverde er {missing} niet; download die los.',
+    },
+    zipAll: {
+      one: '{name}: {total} bestand. Het downloaden is begonnen.',
+      other: '{name}: alle {total} bestanden. Het downloaden is begonnen.',
+    },
+    noMp3: ' Deze ZIP bevat geen MP3. {reason}',
+    started: 'Download gestart: {file}',
+    startedShort: 'Download gestart',
+    copyLink: 'Link kopiëren',
+    linkCopied: 'Link gekopieerd',
+    save: '{format} opslaan',
+    tileSr: ', {name}',
+    tagVideo: 'Video',
+    tagGif: 'GIF',
+  },
+
+  specs: {
+    slides: 'Afbeeldingen',
+    images: 'Foto’s',
+    videos: 'Video’s',
+    gifs: 'GIF’s',
+    pins: 'Pins',
+    boards: 'Borden',
+    format: 'Formaat',
+    crop: 'Uitsnede',
+    uncropped: 'Niet bijgesneden',
+    resolution: 'Resolutie',
+    plays: 'Afspelen',
+    looping: 'In een lus',
+    quality: 'Kwaliteit',
+  },
+
+  fallbacks: {
+    pin: 'Pinterest-pin',
+    carousel: 'Pinterest-carrousel',
+    board: 'Pinterest-bord',
+    profile: 'Pinterest-profiel',
+    user: 'Pinterest-gebruiker',
+    slide: 'Afbeelding {n}',
+    pinN: 'Pin nr. {n}',
+    slideSr: 'afbeelding {n}',
+    pinSr: 'pin nr. {n}',
+  },
+
+  carousel: { everySlide: 'Alle afbeeldingen' },
+
+  avatar: {
+    alt: 'Profielfoto van {name}',
+    openFull: 'Grootste versie openen',
+    newTabSr: ' (opent in een nieuw tabblad)',
+    promo: 'Wil je alle openbare pins van dit profiel? Plak de profiellink in de {link}.',
+    profileLink: 'downloader op de startpagina (ZIP)',
+  },
+
+  collection: {
+    byUser: 'van @{user}',
+    atUser: '@{user}',
+    alsoOnProfile: 'Ook op dit profiel',
+    profilePicture: 'Profielfoto',
+    largestSize: 'Grootste versie die Pinterest publiceert',
+    profilePictureSr: ' profielfoto (JPG)',
+    boardsHeading: 'Borden ({n})',
+    boardsHint: 'Open een bord om alleen die pins op te halen.',
+    boardPins: { one: '{n} pin', other: '{n} pins' },
+    openBoard: 'Bord openen',
+    pinsHeading: 'Alle pins',
+    showing: '{shown} van {total} zichtbaar. De ZIP bevat ze allemaal.',
+    loadMore: 'Nog {n} laden',
+    showAll: 'Alle {n} tonen',
+  },
+
+  single: {
+    previewAria: 'Voorbeeld: {title}',
+    playPreview: 'Voorbeeld afspelen',
+    freeze: 'Stilzetten',
+    playLoop: 'Lus afspelen',
+    alsoInPin: 'Ook in deze pin',
+    videoName: 'Video',
+    withSound: 'Met geluid',
+    videoSr: ' videobestand (MP4)',
+    audioName: 'Geluid, {kbps} kbps',
+    audioNote: 'In je browser gemaakt van het geluid van de video',
+    audioSr: ' geluid (MP3)',
+    coverName: 'Omslag',
+    coverNote: 'Het stilstaande beeld dat Pinterest toont',
+    coverSr: ' omslagafbeelding ({format})',
+    packName: 'Alles',
+    packCover: 'omslag',
+    packSr: ' alles (ZIP)',
+    sendToPhone: 'Naar telefoon',
+    hideQr: 'QR-code verbergen',
+    crop: 'Bijsnijden',
+    trim: 'Inkorten',
+    qrAltVideo: 'QR-code met de link naar de video: scan hem om de video op je telefoon te openen',
+    qrAltImage: 'QR-code met de link naar de afbeelding: scan hem om de afbeelding op je telefoon te openen',
+    qrText:
+      'Scan de code met de camera van je telefoon om het bestand te openen. Houd het daarna ingedrukt om het in je galerij of Foto’s te zetten. Zonder app en zonder inloggen.',
+  },
+
+  extras: {
+    summary: 'Kleuren, hashtags en bijschriften',
+    palette: 'Palet',
+    paletteHint: 'Tinten van de hoofdkleur van de pin. Tik om te kopiëren.',
+    copied: 'Gekopieerd',
+    tags: 'Hashtags',
+    copyTags: 'Hashtags kopiëren',
+    repostCaption: 'Bijschrift voor een repost',
+    captionFor: 'Bijschrift voor',
+    copyCaption: 'Bijschrift en hashtags kopiëren',
+    copiedCaption: 'Bijschrift gekopieerd',
+    captionReels: '✨ {title}\n\nTag iemand die dit moet zien! 👇\n\n📌 Opgeslagen met PintDownload\n\n{tags} #reels #viral #aesthetic',
+    captionTiktok: 'POV: {title} 🌿🔥\n\nVolg me voor elke dag nieuwe pins en inspiratie!\n\n{tags} #fyp #viral #pinterest #voorjou',
+    captionShorts: '🔥 {title} | Pinterest-inspiratie\n\nLike en abonneer voor elke dag nieuwe beelden!\n\n{tags} #shorts #pintdownload #pinterest',
+  },
+
+  batch: {
+    ready: { one: 'Klaar · {n} pin', other: 'Klaar · {n} pins' },
+    heading: { one: '{n} bestand opgehaald', other: '{n} bestanden opgehaald' },
+    downloadAll: 'Alles downloaden ({n})',
+    oneAfterAnother: 'De bestanden worden na elkaar gedownload.',
+  },
+
+  recent: { heading: 'Recente links' },
+
+  errors: {
+    emptyLink: 'Plak eerst een openbare Pinterest-link. In de app: Delen › Link kopiëren.',
+    emptyBatch: 'Plak minstens één Pinterest-link, één per regel.',
+    batchInvalid: 'Vul geldige Pinterest-links in (bijv. https://pinterest.com/pin/… of https://pin.it/…)',
+    batchFailed: 'De links konden niet worden opgehaald. Controleer of de Pinterest-links openbaar zijn.',
+    extractFailed: 'Het ophalen bij Pinterest is mislukt.',
+    unknown: 'Er ging iets mis. Controleer de Pinterest-link en probeer het opnieuw.',
+    qr: 'De QR-code kon niet worden gemaakt. Kopieer de link in plaats daarvan.',
+    copyLink: 'De link kon niet worden gekopieerd. Houd de downloadknop ingedrukt om hem te kopiëren.',
+    fileUnavailable:
+      'Dit bestand kon niet worden gedownload. Misschien is de pin privé of levert Pinterest dit bestand niet meer.',
+    noBody: 'De server stuurde geen antwoord',
+    downloadFailed: 'Downloaden mislukt.',
+    zipNothing: 'Er kon niets in de ZIP worden gezet. De bestanden zijn misschien niet beschikbaar.',
+    zipFailed: 'De ZIP kon niet worden gemaakt.',
+    zipPartial: {
+      one: 'ZIP klaar met {ok} van {total} bestand ({failed} mislukt).',
+      other: 'ZIP klaar met {ok} van {total} bestanden ({failed} mislukt).',
+    },
+    noMp3Video: 'De video kon niet bij Pinterest worden opgehaald.',
+    noMp3Browser: 'Deze browser kon de MP3 niet maken.',
+  },
+
+  api: {
+    invalid_input: 'Vul een geldige Pinterest-link in.',
+    blocked: 'Deze inhoud is op verzoek van de maker verwijderd.',
+    not_pinterest:
+      'Ongeldige link. Vul een geldige Pinterest-link in (bijv. https://pinterest.com/pin/… of https://pin.it/…)',
+    left_pinterest: 'Deze link leidt weg van Pinterest, dus er is niets om te downloaden.',
+    removed_or_private:
+      'Deze pin is verwijderd of privé gemaakt, dus er is niets om te downloaden. Controleer of de link op Pinterest opent.',
+    avatar_not_found: 'We vonden geen profielfoto voor deze Pinterest-gebruiker. Misschien is het profiel privé.',
+    collection_empty_board: 'We vonden geen openbare pins op dit bord. Misschien is het bord privé of leeg.',
+    collection_empty_profile: 'We vonden geen openbare pins op dit profiel. Misschien is het profiel privé of leeg.',
+    collection_unavailable: 'Pinterest gaf de pins van dit bord net niet door. Probeer het over een minuut opnieuw.',
+    no_media: 'We vonden niets om te downloaden bij deze link. Controleer of de pin openbaar is.',
+    access_denied: 'Toegang geweigerd.',
+    origin_denied: 'De API rechtstreeks gebruiken is niet toegestaan.',
+    server_error: 'De Pinterest-link kon niet worden verwerkt. Controleer of het een geldige openbare pin is.',
+  },
+
+  mp3: {
+    no_audio: 'Deze video heeft geen geluid om als MP3 op te slaan. Download de MP4.',
+    unsupported:
+      'Deze browser kan het geluid van de video niet lezen en dus geen MP3 maken. Probeer Chrome, Edge, Safari of Firefox, of download de MP4.',
+    failed: 'De MP3 kon niet worden gemaakt. Probeer het opnieuw of download de MP4, die het geluid behoudt.',
+    aborted: 'MP3 geannuleerd.',
+  },
+
+  trimmer: {
+    title: 'Geluid inkorten en opslaan',
+    reading: 'Geluid van de video lezen…',
+    loadFailed: 'Het geluid van deze video kon niet worden geladen. Controleer je verbinding en probeer het opnieuw.',
+    start: 'Begin: {time}',
+    end: 'Einde: {time}',
+    seconds: '{n} s',
+    startAria: 'Begin van het fragment, in seconden',
+    endAria: 'Einde van het fragment, in seconden',
+    length: 'Lengte van het fragment: {len}',
+    lengthValue: '{n} s',
+    pause: 'Pauzeren',
+    listen: 'Fragment beluisteren',
+    cancel: 'Annuleren',
+    wav: 'Fragment als WAV',
+    mp3: 'Fragment als MP3 ({kbps} kbps)',
+    exportFailed: 'Het fragment kon niet als {format} worden gemaakt. Probeer het opnieuw.',
+    making: 'MP3 maken… {pct}%',
+    note: 'In je browser gemaakt van het geluid van de video. Er wordt niets geüpload.',
+  },
+
+  cropper: {
+    title: 'Bijsnijden en formaat wijzigen',
+    pick: 'Kies de verhouding voor social media',
+    presets: {
+      original: 'Niet bijsnijden',
+      square: '1:1 vierkant (IG-post)',
+      story: '9:16 story/reel (TikTok)',
+      portrait: '4:5 staand (IG)',
+      landscape: '16:9 liggend (YT)',
+    },
+    previewAlt: 'Voorbeeld van de uitsnede',
+    processing: 'Afbeelding verwerken…',
+    cancel: 'Annuleren',
+    download: 'Uitsnede downloaden ({ratio})',
+  },
+
+  sticky: {
+    close: 'Plakbalk sluiten',
+    label: 'Pinterest-link plakken',
+    placeholder: 'Link…',
+    paste: 'Plakken',
+    save: 'Ophalen',
+    top: 'Terug naar boven',
+  },
+};

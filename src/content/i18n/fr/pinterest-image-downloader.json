@@ -1,0 +1,140 @@
+{
+  "pageId": "pinterest-image-downloader",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger une photo Pinterest en HD — grand format",
+    "description": "Enregistrez une photo ou une image Pinterest en grand format, pas en miniature. Collez le lien de l’épingle : gratuit et sans compte Pinterest."
+  },
+  "keywords": {
+    "primary": "télécharger photo pinterest",
+    "secondary": [
+      "télécharger image pinterest",
+      "telecharger photo pinterest hd",
+      "telecharger image pinterest sans compte",
+      "enregistrer photo pinterest",
+      "télécharger image pinterest en ligne",
+      "telecharger photo pinterest lien"
+    ]
+  },
+  "nav": {
+    "label": "Télécharger une photo",
+    "short": "Photos",
+    "card": {
+      "title": "Télécharger une photo",
+      "blurb": "La plus grande taille publiée par Pinterest, pas la miniature du fil.",
+      "badge": "JPG"
+    }
+  },
+  "hero": {
+    "h1": "Télécharger une photo Pinterest",
+    "lede": "Enregistrez **photos, fonds d’écran et illustrations** dans la plus grande taille que Pinterest publie : gratuit, sans compte."
+  },
+  "intro": [
+    "Collez le lien d’une **épingle image** et téléchargez la photo en **grand format**, jusqu’à 1200 px de large, au lieu de la miniature floue qu’on obtient par un appui long. Sans compte et sans logo ajouté.",
+    "Les liens `/pin/` et `pin.it` sont acceptés. Épingles image publiques uniquement."
+  ],
+  "features": [
+    {
+      "h": "Le plus grand format publié",
+      "p": "Jusqu’à 1200 px de large : la plus grande version que Pinterest rend publique, pas la vignette du fil."
+    },
+    {
+      "h": "Photos fixes uniquement",
+      "p": "Pour les images, illustrations et fonds d’écran. Une épingle qui se lit va sur [[pinterest-video-downloader|la page vidéo]]."
+    },
+    {
+      "h": "Sans compte Pinterest",
+      "p": "Le bouton de l’appli demande une connexion. Ici, le lien public suffit."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "« Télécharger l’image » dans l’appli ou PintDownload ?",
+      "paragraphs": [
+        "Dans l’appli comme sur le site, le menu **⋯** d’une épingle propose **Télécharger l’image**, à condition d’être connecté. PintDownload part du lien seul, sans compte : pratique sur un ordinateur partagé ou si vous n’utilisez pas Pinterest. Le fichier est celui que Pinterest publie, dans sa plus grande taille."
+      ]
+    },
+    {
+      "h2": "Quelle taille allez-vous obtenir ?",
+      "paragraphs": [
+        "La plus grande que Pinterest publie pour cette épingle, jusqu’à 1200 px de large ; certaines épingles anciennes n’existent qu’en plus petit. Le fichier envoyé par le créateur n’est pas public, donc aucun outil ne peut le récupérer depuis Pinterest. Nous n’agrandissons pas l’image et n’inventons aucun pixel."
+      ]
+    },
+    {
+      "h2": "Photo, vidéo ou épingle : quel outil ?",
+      "paragraphs": [
+        "Cette page sert aux **images fixes**. Les épingles vidéo vont sur [[pinterest-video-downloader|Télécharger une vidéo]]. Pour une épingle dont vous ignorez le type (image, GIF, carrousel ou vidéo), prenez [[pinterest-pin-downloader|Télécharger une épingle]]. Pour la photo d’un compte, utilisez [[pinterest-profile-picture-downloader|la photo de profil en HD]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment télécharger une photo Pinterest en HD",
+    "intro": "Utilisez le lien d’une épingle image. Pour tout un tableau, passez par la page tableau.",
+    "exampleLabel": "Exemple de lien d’épingle image",
+    "items": [
+      {
+        "title": "Ouvrez l’épingle image",
+        "body": "Ouvrez l’épingle en grand pour que l’adresse contienne `/pin/` et que vous voyiez une photo fixe, pas une vidéo."
+      },
+      {
+        "title": "Copiez le lien",
+        "body": "**Icône de partage** › **Copier le lien**, ou copiez la barre d’adresse. Les liens courts `pin.it` fonctionnent aussi."
+      },
+      {
+        "title": "Collez et lancez",
+        "body": "Collez le lien dans le ticket ci-dessus et touchez **Télécharger l’image**. Si plusieurs tailles apparaissent, prenez la plus grande."
+      },
+      {
+        "title": "Récupérez la photo",
+        "body": "Téléchargez le JPG ou le PNG dans la plus grande taille publiée, pour un fond d’écran, un moodboard ou une référence hors ligne."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur les photos Pinterest",
+    "items": [
+      {
+        "q": "Comment télécharger une image Pinterest sans compte ?",
+        "a": "Collez ici le lien public de l’épingle image. PintDownload enregistre la plus grande version publiée par Pinterest, sans connexion ni inscription."
+      },
+      {
+        "q": "Quelle différence avec « Télécharger l’image » dans l’appli ?",
+        "a": "Le menu **⋯** de Pinterest propose **Télécharger l’image**, mais seulement une fois connecté. PintDownload fonctionne avec le lien seul, y compris sur un ordinateur où vous n’avez pas de compte."
+      },
+      {
+        "q": "Vais-je obtenir la photo en grand ou une miniature ?",
+        "a": "Ni la miniature, ni le fichier envoyé par le créateur, qui n’est pas public : vous obtenez la plus grande taille que Pinterest publie, jusqu’à 1200 px de large. Nous n’agrandissons jamais l’image."
+      },
+      {
+        "q": "La photo sera-t-elle assez nette pour un fond d’écran ?",
+        "a": "Sur téléphone, souvent oui : 1200 px de large couvrent la largeur de la plupart des écrans. Sur un grand écran d’ordinateur, l’image peut manquer un peu de netteté. Pour une impression, demandez le fichier au créateur."
+      },
+      {
+        "q": "Et les épingles carrousel à plusieurs images ?",
+        "a": "Elles fonctionnent : chaque image du carrousel s’affiche et se télécharge séparément ou en ZIP. Le même lien collé dans [[pinterest-pin-downloader|Télécharger une épingle]] donne le même résultat."
+      },
+      {
+        "q": "Et si je colle une épingle vidéo ici ?",
+        "a": "Le formulaire la reconnaît et passe à l’outil vidéo pour vous proposer le MP4. Vous pouvez aussi aller directement sur [[pinterest-video-downloader|Télécharger une vidéo]]."
+      },
+      {
+        "q": "Puis-je réutiliser la photo ?",
+        "a": "Pour un usage personnel (fond d’écran, moodboard), oui. Pour la publier ou l’utiliser dans un projet commercial, il faut l’accord du créateur : le droit d’auteur s’applique même à une épingle publique. Créditez toujours l’auteur."
+      }
+    ]
+  },
+  "related": {
+    "title": "D’autres outils pour vos épingles"
+  },
+  "schema": {
+    "appName": "Télécharger une photo Pinterest — PintDownload",
+    "howToName": "Comment télécharger une photo Pinterest en HD",
+    "howToDescription": "Les étapes pour enregistrer une photo Pinterest publique dans la plus grande taille publiée."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Pinterest label « Télécharger l’image » (⋯ menu) is from the French help center; check the login requirement on web and app.",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. \"peut paraître un peu douce\" (calque of soft) changed to \"peut manquer un peu de netteté\"."
+  }
+}

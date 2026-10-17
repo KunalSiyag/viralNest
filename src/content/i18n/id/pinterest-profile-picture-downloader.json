@@ -1,0 +1,144 @@
+{
+  "pageId": "pinterest-profile-picture-downloader",
+  "locale": "id",
+  "meta": {
+    "title": "Download Foto Profil Pinterest (PP) Ukuran Penuh — Gratis",
+    "description": "Download foto profil (PP) Pinterest dari profil publik dalam ukuran terbesar yang tersedia, bukan ikon kecil. Tempel link profil, lihat, lalu simpan. Gratis."
+  },
+  "keywords": {
+    "primary": "download foto profil pinterest",
+    "secondary": [
+      "download pp pinterest",
+      "cara download foto profil pinterest",
+      "unduh foto profil pinterest",
+      "cara melihat foto profil pinterest",
+      "pinterest profile picture downloader",
+      "pinterest pfp downloader"
+    ]
+  },
+  "nav": {
+    "label": "Download Foto Profil",
+    "short": "Foto Profil",
+    "card": {
+      "title": "Foto Profil (PP)",
+      "blurb": "Lihat dan simpan PP akun publik dalam ukuran terbesar yang tersedia.",
+      "badge": "PP"
+    }
+  },
+  "hero": {
+    "h1": "Download Foto Profil Pinterest",
+    "lede": "Ambil **PP Pinterest** dalam ukuran terbesar yang disimpan Pinterest, cukup dengan menempelkan **link profil publik**."
+  },
+  "intro": [
+    "Di Pinterest, foto profil tampil kecil dan terpotong bulat. Halaman ini mencari versi terbesar yang dipublikasikan Pinterest untuk foto itu, menampilkannya utuh, lalu kamu tinggal menyimpannya.",
+    "Lagi cari **ide PP** (aesthetic, anime, couple)? Itu tempatnya di pencarian Pinterest. Di sini kamu mengunduh foto profil dari satu akun tertentu."
+  ],
+  "features": [
+    {
+      "h": "Utuh, bukan lingkaran kecil",
+      "p": "Kamu melihat gambar lengkapnya dalam ukuran terbesar yang dipublikasikan Pinterest, bukan ikon bulat di halaman profil."
+    },
+    {
+      "h": "Fotonya saja, bukan Pin-nya",
+      "p": "Untuk menyimpan Pin dari akun itu dalam ZIP, ada [[en!:/pinterest-profile-downloader|Profile Downloader]] (bahasa Inggris)."
+    },
+    {
+      "h": "Tanpa akun",
+      "p": "Tempel link profilnya, selesai. Tidak perlu login ke Pinterest dan tidak ada yang perlu dipasang."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Resolusinya berapa?",
+      "paragraphs": [
+        "Tergantung foto yang diunggah pemilik akun. Pinterest biasanya menyimpan foto profil sekitar **600 × 600 px**. PintDownload mengambil file publik terbesar dan tidak memperbesarnya atau memberi filter supaya terlihat HD. Karena itu halaman ini menyebut “ukuran penuh”, bukan “HD”: kalau fotonya kecil, yang kamu dapat juga kecil."
+      ]
+    },
+    {
+      "h2": "Foto profil atau semua Pin di profil",
+      "paragraphs": [
+        "Kedua alat memakai link yang sama (`pinterest.com/pengguna/`), tapi hasilnya berbeda:"
+      ],
+      "list": [
+        "**Foto profil (PP)**: satu gambar saja, yaitu foto akunnya. Itu halaman ini.",
+        "**Semua Pin di profil**: Pin publik akun itu dalam satu ZIP. Tempel link profilnya di [[home|beranda PintDownload]], atau pakai [[en!:/pinterest-profile-downloader|Profile Downloader]] versi bahasa Inggris."
+      ]
+    },
+    {
+      "h2": "Ambil lagi PP milikmu sendiri",
+      "paragraphs": [
+        "Foto yang kamu pakai di Pinterest sudah hilang dari HP? Tempel link profilmu sendiri dan unduh. Caranya: buka profilmu di aplikasi, ketuk **Bagikan**, lalu **Salin tautan**. Di web, salin alamat profilmu dari bilah alamat."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara download foto profil Pinterest",
+    "intro": "Tiga langkah dengan link profil, bukan link Pin.",
+    "exampleLabel": "Contoh link profil",
+    "items": [
+      {
+        "title": "Salin link profilnya",
+        "body": "Buka akunnya di Pinterest dan salin alamatnya (`pinterest.com/pengguna/`), atau pakai **Bagikan** › **Salin tautan** di aplikasi."
+      },
+      {
+        "title": "Tempel, lalu lihat fotonya",
+        "body": "Tempel link di kotak atas dan ketuk **Lihat foto profil**. Fotonya muncul dalam ukuran besar."
+      },
+      {
+        "title": "Simpan ke HP atau laptop",
+        "body": "Unduh gambarnya, atau buka ukuran penuhnya di tab baru."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab foto profil Pinterest",
+    "items": [
+      {
+        "q": "Bagaimana cara download PP Pinterest?",
+        "a": "Salin link profil akunnya, tempel di kotak atas, lalu ketuk **Lihat foto profil**. Setelah fotonya muncul, unduh sebagai JPG."
+      },
+      {
+        "q": "Bagaimana cara melihat foto profil Pinterest dalam ukuran penuh?",
+        "a": "Tempel link profilnya di sini. Fotonya tampil utuh, tidak terpotong bulat, dalam ukuran terbesar yang dipublikasikan Pinterest, dan bisa dibuka di tab baru."
+      },
+      {
+        "q": "Resolusinya berapa, bisa HD?",
+        "a": "Biasanya sekitar 600 × 600 px, karena segitulah ukuran yang disimpan Pinterest untuk kebanyakan foto profil. Kami mengambil file publik terbesar dan tidak memperbesarnya. Kalau pemilik akun mengunggah foto kecil, versi yang lebih besar memang tidak ada."
+      },
+      {
+        "q": "Apakah ini sama dengan download semua Pin di profil?",
+        "a": "Tidak. Di sini kamu hanya menyimpan foto profilnya. Untuk Pin publik dari akun itu dalam ZIP, pakai [[en!:/pinterest-profile-downloader|Profile Downloader]] (bahasa Inggris)."
+      },
+      {
+        "q": "Bisa foto profil akun privat?",
+        "a": "Tidak. Kalau profilnya privat atau harus login untuk melihatnya, foto profilnya tidak publik dan tidak bisa diunduh."
+      },
+      {
+        "q": "Format file-nya apa?",
+        "a": "Biasanya JPG, tanpa watermark atau bingkai tambahan dari kami."
+      },
+      {
+        "q": "Perlu akun Pinterest atau aplikasi?",
+        "a": "Tidak. Cukup link profil dan browser, di HP maupun laptop."
+      },
+      {
+        "q": "Boleh pakai PP orang lain?",
+        "a": "Melihat atau menyimpannya untuk referensi itu satu hal; memakainya sebagai foto profilmu sendiri atau mengunggahnya ulang itu lain cerita. Itu foto milik orang lain, jadi minta izin dulu."
+      }
+    ]
+  },
+  "related": {
+    "title": "Alat Pinterest lainnya"
+  },
+  "schema": {
+    "appName": "Download Foto Profil Pinterest — PintDownload",
+    "howToName": "Cara download foto profil (PP) Pinterest ukuran penuh",
+    "howToDescription": "Tempel link profil publik Pinterest untuk melihat dan menyimpan foto profilnya dalam ukuran terbesar yang dipublikasikan."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16. Cek: opsi “Bagikan” › “Salin tautan” di halaman profil sendiri pada aplikasi Pinterest Indonesia.",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

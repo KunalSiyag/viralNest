@@ -135,7 +135,7 @@ Researched 2026-10-14. Primary market: Italy. Secondary: Italian-speaking Switze
 - **FAQ topics:**
   - Come scaricare un’intera bacheca da Pinterest?
   - Che aspetto ha il link di una bacheca? (pinterest.it/nomeutente/nome-bacheca/)
-  - Posso scaricare le bacheche segrete? (no; Pinterest’s Italian UI says 'Segreta')
+  - Posso scaricare le bacheche segrete? (no; Pinterest’s Italian UI now says 'private': 'Bacheche private', toggle 'Mantieni la bacheca privata'; "bacheche segrete" stays as the search term)
   - Quanti Pin scarica? (honest: the public Pins the board page loads, up to a limit)
   - Posso scaricare tutti i Pin di un profilo? (yes, with the profile ZIP tool; absorbs the skipped profile page)
   - Le slide dei caroselli finiscono nello ZIP? (cover only; use the Pin page)
@@ -294,7 +294,7 @@ Pages fetched (title / H1):
 - video pin: **Pin video**
 - board: **bacheca / bacheche**
 - create board: **Crea bacheca**
-- secret board: **bacheca segreta / Segreta ('Rendi segreta questa bacheca')**
+- secret board: **bacheca segreta** (search term) / Pinterest UI label **privata** ('Mantieni la bacheca privata', 'Rendi privata questa bacheca'; help.pinterest.com/it/article/secret-boards, checked 2026-10-17). Do not quote 'Segreta' as a live UI label.
 - profile: **profilo**
 - edit profile: **Modifica profilo**
 - profile picture: **foto profilo / foto del profilo**

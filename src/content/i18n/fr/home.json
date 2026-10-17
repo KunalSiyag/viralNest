@@ -1,0 +1,180 @@
+{
+  "pageId": "home",
+  "locale": "fr",
+  "meta": {
+    "title": "Téléchargeur Pinterest — vidéo, photo et GIF | PintDownload",
+    "description": "Téléchargez gratuitement vidéos MP4, photos HD, GIF et tableaux Pinterest publics. Copiez le lien, collez-le, enregistrez le fichier. Sans compte ni appli."
+  },
+  "keywords": {
+    "primary": "téléchargeur pinterest",
+    "secondary": [
+      "pinterest downloader gratuit",
+      "télécharger pinterest vidéo",
+      "télécharger pinterest photo",
+      "télécharger pinterest mp4",
+      "telecharger pinterest lien",
+      "site pour telecharger video pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Téléchargeur Pinterest",
+    "short": "Accueil",
+    "card": {
+      "title": "Téléchargeur Pinterest",
+      "blurb": "Collez un lien d’épingle, de tableau ou de profil et récupérez le fichier.",
+      "badge": "Tout"
+    }
+  },
+  "hero": {
+    "h1": "Téléchargeur Pinterest",
+    "lede": "**Collez le lien, récupérez le fichier.** Vidéos Pinterest en **MP4**, photos dans la plus grande taille publiée, GIF animés et **tableaux publics en ZIP**. Gratuit, sans compte, sur téléphone comme sur PC."
+  },
+  "aside": [
+    {
+      "dt": "Épingle",
+      "dd": "MP4, JPG, GIF ou toutes les images d’un carrousel"
+    },
+    {
+      "dt": "Tableau",
+      "dd": "Ses épingles publiques dans un seul ZIP"
+    },
+    {
+      "dt": "Profil",
+      "dd": "La photo de profil en grand, ou ses épingles en ZIP"
+    }
+  ],
+  "intro": [
+    "PintDownload est un site pour **télécharger depuis Pinterest**, pas l’application Pinterest, et encore moins un APK. Vous cherchez l’appli officielle ? Elle est sur l’App Store, Google Play ou le Microsoft Store. Ici, vous collez le lien d’une épingle, d’un tableau ou d’un profil, et vous récupérez le fichier.",
+    "Les liens copiés dans l’appli (`pin.it/…`) comme ceux du navigateur (`pinterest.com/pin/…`) fonctionnent, y compris depuis `fr.pinterest.com`, `pinterest.fr` ou `pinterest.ca`. Seul le contenu public est accessible."
+  ],
+  "sections": [
+    {
+      "h2": "Ce que vous pouvez télécharger",
+      "paragraphs": [
+        "Collez le lien dans le ticket ci-dessus : PintDownload reconnaît le type de lien et choisit le bon outil. Chaque cas a aussi sa page dédiée :"
+      ],
+      "list": [
+        "**Vidéos** en MP4, souvent en 720p, en 1080p quand l’épingle le propose : [[pinterest-video-downloader|télécharger une vidéo Pinterest]].",
+        "**Photos et images** dans la plus grande taille publiée par Pinterest, pas la miniature : [[pinterest-image-downloader|télécharger une photo Pinterest]].",
+        "**GIF** qui restent animés et **carrousels** avec toutes leurs images : [[pinterest-gif-downloader|télécharger un GIF]], [[pinterest-pin-downloader|télécharger une épingle]].",
+        "**Tableaux** publics, toutes leurs épingles réunies dans un ZIP : [[pinterest-board-downloader|télécharger un tableau Pinterest]].",
+        "**Photos de profil** en grand : [[pinterest-profile-picture-downloader|photo de profil Pinterest en HD]]. Collé ici, un lien de profil donne aussi ses épingles publiques en ZIP."
+      ]
+    },
+    {
+      "h2": "Ce que PintDownload ne fait pas",
+      "paragraphs": [
+        "Il ne récupère ni les épingles privées, ni les tableaux secrets, ni ce qui demande une connexion, ni les épingles supprimées. Il n’invente pas non plus de qualité : une vidéo publiée en 720p arrive en 720p, sans agrandissement artificiel.",
+        "Nous n’ajoutons aucun logo. Le texte ou la signature que le créateur a placés dans sa vidéo restent visibles, puisqu’ils font partie de l’image. PintDownload est un service indépendant, non affilié à Pinterest Inc."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Télécharger depuis Pinterest en 3 étapes",
+    "intro": "Fonctionne dans le navigateur de l’iPhone, d’Android, d’un Mac ou d’un PC. Contenu public uniquement, sans compte et sans rien installer.",
+    "exampleLabel": "Exemple de lien",
+    "items": [
+      {
+        "title": "Copiez le lien",
+        "body": "Ouvrez l’épingle, le tableau ou le profil dans l’appli ou sur le site. Touchez l’**icône de partage**, puis **Copier le lien**, ou copiez l’adresse qui contient `/pin/`. Les liens courts `pin.it` fonctionnent aussi."
+      },
+      {
+        "title": "Collez-le sur PintDownload",
+        "body": "Collez le lien public dans le ticket ci-dessus et touchez **Télécharger**. Vidéos, photos, GIF, tableaux et profils passent par la même case."
+      },
+      {
+        "title": "Vérifiez, puis téléchargez",
+        "body": "Choisissez la qualité s’il y en a plusieurs, puis retrouvez le fichier dans Téléchargements, Photos ou la Galerie. Les tableaux et les profils arrivent en ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "q": "Comment télécharger depuis Pinterest sans compte ?",
+        "a": "Copiez le lien de l’épingle dans l’appli ou sur le site, puis collez-le ici. Vous n’avez ni à vous connecter à Pinterest ni à créer de compte chez nous : seul le contenu public est accessible."
+      },
+      {
+        "q": "PintDownload est-il vraiment gratuit ?",
+        "a": "Oui. Vidéos, photos, GIF, tableaux et photos de profil publics se téléchargent gratuitement, sans inscription ni abonnement."
+      },
+      {
+        "q": "Je cherche l’application Pinterest officielle : c’est ici ?",
+        "a": "Non. PintDownload est un site indépendant, non affilié à Pinterest Inc. L’appli Pinterest s’installe depuis l’App Store, Google Play ou le Microsoft Store. Méfiez-vous des sites qui proposent un APK de Pinterest ou d’un « téléchargeur » : vous n’en avez pas besoin."
+      },
+      {
+        "q": "Faut-il installer une application ou une extension ?",
+        "a": "Non. Tout se passe dans le navigateur : Chrome, Safari, Edge, Firefox ou Samsung Internet. Sur ordinateur, le [[pinterest-video-downloader-chrome|favori pour Chrome]] vous évite même de copier le lien."
+      },
+      {
+        "q": "Où trouver le lien d’une épingle dans l’appli ?",
+        "a": "Ouvrez l’épingle, touchez l’**icône de partage**, puis **Copier le lien**. L’appli copie un lien court `pin.it`, que PintDownload accepte tel quel."
+      },
+      {
+        "q": "Les fichiers ont-ils un logo ou un watermark ?",
+        "a": "Nous n’en ajoutons aucun. Vous recevez le fichier que Pinterest publie ; si le créateur a mis son nom ou un texte dans la vidéo, il reste visible."
+      },
+      {
+        "q": "Les tableaux secrets et les comptes privés fonctionnent-ils ?",
+        "a": "Non. Seuls les épingles, tableaux et profils publics, encore en ligne, peuvent être lus. Nous ne gonflons pas non plus la qualité : vous recevez la meilleure version que Pinterest publie pour l’épingle."
+      },
+      {
+        "q": "Je cherche des idées de photo de profil ou des GIF « bonne nuit » : c’est ici ?",
+        "a": "PintDownload ne cherche pas d’images à votre place. Trouvez l’épingle sur Pinterest, copiez son lien, puis collez-le ici pour garder le fichier. Pour voir une photo de profil en grand, passez par [[pinterest-profile-picture-downloader|la page photo de profil]]."
+      },
+      {
+        "q": "Ai-je le droit de réutiliser ce que je télécharge ?",
+        "a": "Garder un fichier pour le regarder hors ligne ne pose pas de souci. Pour le republier, demandez l’accord du créateur et créditez-le : le droit d’auteur s’applique, même à une épingle publique. Ce n’est pas un conseil juridique."
+      }
+    ]
+  },
+  "related": {
+    "title": "Un outil pour chaque lien"
+  },
+  "schema": {
+    "appName": "Téléchargeur Pinterest — PintDownload",
+    "howToName": "Comment télécharger vidéos, photos, GIF et tableaux Pinterest",
+    "howToDescription": "Copiez un lien Pinterest public, collez-le dans PintDownload, vérifiez le résultat et récupérez le fichier ou le ZIP."
+  },
+  "guides": {
+    "title": "Guides pas à pas",
+    "intro": "Des instructions par appareil, avec les noms de menus que vous verrez à l’écran.",
+    "items": [
+      {
+        "page": "how-to-download-pinterest-videos",
+        "tag": "Méthodes",
+        "title": "Comment télécharger une vidéo Pinterest",
+        "blurb": "Option de l’appli, PintDownload ou enregistrement d’écran : laquelle choisir, et quand."
+      },
+      {
+        "page": "how-to-download-pinterest-video-in-gallery",
+        "tag": "Galerie",
+        "title": "Enregistrer une vidéo Pinterest dans sa galerie",
+        "blurb": "Faire apparaître le MP4 dans la Galerie d’un Samsung ou d’un Android, et que faire s’il n’y est pas."
+      },
+      {
+        "page": "download-pinterest-videos-iphone-android",
+        "tag": "iPhone",
+        "title": "Télécharger une vidéo Pinterest sur iPhone",
+        "blurb": "De Safari à l’app Photos, en passant par Fichiers, sans application à installer."
+      },
+      {
+        "page": "how-to-download-pinterest-video-on-laptop",
+        "tag": "PC et Mac",
+        "title": "Télécharger une vidéo Pinterest sur PC ou Mac",
+        "blurb": "Windows, Mac ou Chromebook : copiez l’URL, collez-la, le MP4 arrive dans Téléchargements."
+      }
+    ]
+  },
+  "credit": {
+    "h2": "Créditez les créateurs",
+    "body": "Si vous réutilisez la vidéo ou l’image de quelqu’un dans une publication (Reels, TikTok, YouTube, publicité), **citez le créateur** et demandez-lui son accord. La garder pour la revoir hors ligne, oui ; la republier sans crédit ni permission, non."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Unverified labels for the reviewer: Pinterest app « icône de partage › Copier le lien » taken from the French help center; app-store names as listed.",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. Fixed \"souvent en 720p et en 1080p\" to the standard quality phrasing. Pinterest labels (icône de partage › Copier le lien, Télécharger l’image, épingle, tableau) match the research help-center extraction; help.pinterest.com/fr is JS-rendered and could not be re-fetched."
+  }
+}

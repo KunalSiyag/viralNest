@@ -1,0 +1,130 @@
+{
+  "pageId": "pinterest-gif-downloader",
+  "locale": "id",
+  "meta": {
+    "title": "Download GIF Pinterest — Simpan GIF Bergerak, Gratis",
+    "description": "Download GIF Pinterest tanpa kehilangan animasinya. Tempel link Pin GIF publik, lalu simpan file .gif aslinya ke HP atau laptop. Gratis, tanpa login."
+  },
+  "keywords": {
+    "primary": "download gif pinterest",
+    "secondary": [
+      "pinterest gif downloader",
+      "cara download gif di pinterest",
+      "cara menyimpan gif dari pinterest",
+      "download gif pinterest hd",
+      "download gif pinterest link"
+    ]
+  },
+  "nav": {
+    "label": "Download GIF Pinterest",
+    "short": "GIF",
+    "card": {
+      "title": "Download GIF",
+      "blurb": "GIF Pinterest yang tetap bergerak, bukan foto diam dari frame pertama.",
+      "badge": "GIF"
+    }
+  },
+  "hero": {
+    "h1": "Download GIF Pinterest",
+    "lede": "Simpan **GIF Pinterest yang tetap bergerak**, bukan cuma gambar diamnya."
+  },
+  "intro": [
+    "Banyak Pin bergerak di Pinterest adalah GIF. Kalau disimpan dengan cara biasa, misalnya tekan lama atau screenshot, yang tersisa sering cuma gambar diam dari frame pertama. PintDownload mencari file **.gif** publik Pin itu, yang berulang terus, dan memberikannya apa adanya.",
+    "Tempel link `/pin/` atau `pin.it`. Hanya Pin publik, tidak perlu akun Pinterest."
+  ],
+  "features": [
+    {
+      "h": "GIF, bukan foto",
+      "p": "Kami mengambil file animasinya, tidak pernah JPG frame pertama yang dinamai seolah-olah GIF."
+    },
+    {
+      "h": "GIF atau video? Kami kasih tahu",
+      "p": "Kalau Pin-nya ternyata video, formulirnya beralih ke download video supaya kamu mendapat MP4."
+    },
+    {
+      "h": "Di HP atau laptop",
+      "p": "Jalan di browser iPhone, Android, Mac, atau Windows, tanpa install aplikasi."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Kenapa GIF Pinterest tersimpan jadi foto diam",
+      "paragraphs": [
+        "Biasanya karena salah satu dari dua hal: yang tersimpan adalah gambar sampulnya, bukan file animasinya, atau GIF-nya sebenarnya baik-baik saja tapi galeri hanya menampilkan frame pertama sebagai thumbnail. Buka dulu sebelum menyerah:"
+      ],
+      "list": [
+        "Di **iPhone**, simpan ke Foto lalu ketuk GIF-nya: animasinya jalan saat dibuka, walaupun thumbnail-nya terlihat diam.",
+        "Di **Android**, tergantung app galerinya. Google Foto dan kebanyakan galeri bisa memutar GIF; kalau galerimu tidak bisa, buka lewat Google Foto atau browser.",
+        "Di **laptop**, kalau aplikasi foto tidak menggerakkannya, seret file-nya ke tab browser."
+      ]
+    },
+    {
+      "h2": "GIF atau video: cara membedakannya",
+      "paragraphs": [
+        "GIF Pinterest berulang sendiri, tanpa suara, dan tanpa bilah waktu. Kalau Pin-nya bersuara atau punya bilah untuk maju-mundur, itu **Pin video**: unduh sebagai MP4 di [[pinterest-video-downloader|download video Pinterest]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara download GIF di Pinterest",
+    "intro": "Tiga langkah, tanpa akun dan tanpa aplikasi. Khusus GIF publik.",
+    "exampleLabel": "Link Pin GIF",
+    "items": [
+      {
+        "title": "Buka Pin GIF-nya",
+        "body": "Pastikan gambarnya berulang sendiri tanpa suara. Kalau ada suara atau bilah waktu, itu video."
+      },
+      {
+        "title": "Salin tautannya",
+        "body": "Di aplikasi: **Bagikan** › **Salin tautan**. Di laptop: alamat browser yang berisi `/pin/`."
+      },
+      {
+        "title": "Tempel, lalu simpan GIF-nya",
+        "body": "Tempel tautannya di kotak atas, ketuk **Unduh GIF**, lalu simpan file .gif-nya. Buka file itu untuk melihat animasinya."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab download GIF Pinterest",
+    "items": [
+      {
+        "q": "Bagaimana cara download GIF di Pinterest?",
+        "a": "Salin tautan Pin GIF-nya, tempel di kotak atas, lalu ketuk **Unduh GIF**. File .gif yang tersimpan tetap bergerak dan siap dikirim ke teman."
+      },
+      {
+        "q": "Bagaimana cara menyimpan GIF dari Pinterest ke HP?",
+        "a": "Lewat browser HP: buka pintdownload.app, tempel tautan Pin GIF, lalu unduh. Di Android, GIF masuk ke folder **Unduhan** dan tampil di galeri; di iPhone, buka dari app **File** lalu simpan ke **Foto**."
+      },
+      {
+        "q": "Kenapa GIF Pinterest tersimpan jadi foto diam?",
+        "a": "Bisa jadi yang tersimpan sampulnya, bukan file animasinya, atau galeri hanya menampilkan frame pertama di thumbnail. Buka file-nya: kalau bergerak, berarti aman. Kalau tidak, unduh ulang dari halaman ini."
+      },
+      {
+        "q": "Apakah GIF tetap bergerak di galeri HP atau iPhone?",
+        "a": "Ya, saat dibuka. Di iPhone, app Foto memutarnya ketika GIF diketuk. Di Android, tergantung app galerinya; Google Foto bisa memutarnya."
+      },
+      {
+        "q": "Bisa jadikan GIF Pinterest sebagai video MP4?",
+        "a": "Tidak, PintDownload tidak mengubah format. Tiap Pin diunduh dalam format yang dipublikasikan Pinterest: GIF untuk GIF, MP4 untuk video ([[pinterest-to-mp4|Pinterest ke MP4]]). Untuk mengubah GIF jadi video, pakai aplikasi edit setelahnya."
+      },
+      {
+        "q": "Perlu akun Pinterest?",
+        "a": "Tidak. Semua GIF publik bisa diunduh tanpa login. GIF di papan privat atau akun privat tidak bisa diambil."
+      }
+    ]
+  },
+  "related": {
+    "title": "Format lain dari Pinterest"
+  },
+  "schema": {
+    "appName": "Download GIF Pinterest — PintDownload",
+    "howToName": "Cara download GIF Pinterest yang tetap bergerak",
+    "howToDescription": "Tempel tautan Pin GIF publik dan simpan file .gif animasinya ke HP atau laptop."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "pageId": "pinterest-profile-picture-downloader",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Profilbild herunterladen – groß ansehen & speichern",
+    "description": "Pinterest-Profilbild groß ansehen und speichern statt nur als Mini-Kreis: öffentlichen Profil-Link einfügen, Bild als JPG laden – kostenlos, ohne Anmeldung."
+  },
+  "keywords": {
+    "primary": "pinterest profilbild herunterladen",
+    "secondary": [
+      "pinterest profilbild in voller größe anzeigen",
+      "pinterest profilbild vergrößern",
+      "pinterest profilbild zoom",
+      "pinterest pfp downloader",
+      "pinterest profilbild speichern"
+    ]
+  },
+  "nav": {
+    "label": "Profilbild herunterladen",
+    "short": "Profilbild",
+    "card": {
+      "title": "Pinterest-Profilbild speichern",
+      "blurb": "Das Profilbild eines öffentlichen Kontos groß ansehen und als JPG speichern.",
+      "badge": "PFP"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Profilbild herunterladen",
+    "lede": "Sieh dir ein Pinterest-Profilbild **groß** an statt nur als kleinen Kreis, und speichere es als **JPG**."
+  },
+  "intro": [
+    "Auf Pinterest ist das Profilbild nur ein kleiner Kreis, und Zoomen macht es bloß unscharf. Füge den Link zu einem öffentlichen Profil ein: PintDownload zeigt das Profilbild, auch PFP genannt, in der größten Version, die Pinterest dafür veröffentlicht.",
+    "Die Seite erwartet Profil-Links wie `pinterest.de/nutzername/`. Wer Ideen für ein eigenes Profilbild sucht, findet sie auf Pinterest selbst; hier geht es darum, ein vorhandenes Bild zu speichern."
+  ],
+  "features": [
+    {
+      "h": "Groß statt Mini-Kreis",
+      "p": "Das Bild in der größten Version, die Pinterest bereitstellt, nicht die kleine Vorschau von der Profilseite."
+    },
+    {
+      "h": "Nur das Profilbild",
+      "p": "Eine einzelne Bilddatei, kein ZIP. Alle Pins eines Profils gibt es im [[pinterest-profile-downloader|Profil-Download]]."
+    },
+    {
+      "h": "Ohne Konto",
+      "p": "Nur öffentliche Profile. Du brauchst weder die Pinterest-App noch eine Anmeldung."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Wie groß ist das Profilbild?",
+      "paragraphs": [
+        "Profilbilder stellt Pinterest deutlich kleiner bereit als die Bilder in Pins. PintDownload nimmt die größte Version, die es für das Konto gibt, und rechnet nichts hoch. Als Wallpaper reicht das selten, um ein Gesicht oder ein Logo genau anzusehen schon."
+      ]
+    },
+    {
+      "h2": "Profilbild oder Profil-Download?",
+      "paragraphs": [
+        "Beide Tools nehmen denselben Profil-Link. Diese Seite speichert nur das runde Bild des Kontos. Willst du die öffentlichen Pins des Profils gesammelt als ZIP, nimm den [[pinterest-profile-downloader|Profil-Download]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So speicherst du ein Pinterest-Profilbild",
+    "intro": "Du brauchst nur den Link zum öffentlichen Profil.",
+    "exampleLabel": "Beispiel für einen Profil-Link",
+    "items": [
+      {
+        "title": "Profil-Link kopieren",
+        "body": "Öffne das Profil und kopiere den Link über das Teilen-Symbol oder aus der Adressleiste, etwa `pinterest.de/nutzername/`."
+      },
+      {
+        "title": "Link einfügen",
+        "body": "Füge den Link oben ein und tippe auf **Profilbild abrufen**."
+      },
+      {
+        "title": "Ansehen und speichern",
+        "body": "Das Profilbild erscheint groß. Speichere es als Datei oder öffne es in voller Größe in einem neuen Tab."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zum Profilbild",
+    "items": [
+      {
+        "q": "Wie sehe ich ein Pinterest-Profilbild in voller Größe?",
+        "a": "Füge den Profil-Link oben ein und tippe auf **Profilbild abrufen**. Die Vorschau zeigt schon die größte Version, die Pinterest veröffentlicht; mit **In voller Größe öffnen** siehst du sie in einem eigenen Tab."
+      },
+      {
+        "q": "Wie speichere ich ein Profilbild (PFP)?",
+        "a": "Nach dem Abrufen tippst du auf den Download-Button. Auf dem iPhone holst du das Bild danach aus der App **Dateien** in die Fotos-App, auf Android steht es in der Galerie."
+      },
+      {
+        "q": "Welche Auflösung bekomme ich?",
+        "a": "Die größte, die Pinterest für dieses Konto veröffentlicht. Wir vergrößern nichts künstlich; ein kleines Profilbild bleibt klein."
+      },
+      {
+        "q": "Ist das dasselbe wie der Profil-Download als ZIP?",
+        "a": "Nein. Hier bekommst du nur das Profilbild. Der [[pinterest-profile-downloader|Profil-Download]] packt die öffentlichen Pins eines Kontos in eine ZIP-Datei."
+      },
+      {
+        "q": "Geht das bei privaten Profilen?",
+        "a": "Nein. Nur Profilbilder öffentlicher Konten lassen sich abrufen."
+      },
+      {
+        "q": "Welches Dateiformat hat das Profilbild?",
+        "a": "Meist JPG, je nachdem, welche Datei Pinterest bereitstellt. Ein Wasserzeichen oder einen Rahmen fügen wir nicht hinzu."
+      },
+      {
+        "q": "Brauche ich ein Pinterest-Konto oder die App?",
+        "a": "Nein. Du brauchst nur den Link eines öffentlichen Profils, keinen Login, keine Erweiterung und keine Installation."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Tools für Profile und Pins"
+  },
+  "schema": {
+    "appName": "Pinterest-Profilbild-Downloader – PintDownload",
+    "howToName": "Pinterest-Profilbild groß ansehen und speichern",
+    "howToDescription": "Den Link eines öffentlichen Pinterest-Profils einfügen, das Profilbild groß ansehen und als Datei speichern."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). For the native reviewer: avoid the inspiration intent (pinterest profilbilder = ideas); profile share icon wording in the app is kept generic.",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

@@ -1,0 +1,19 @@
+---
+/** Locale homes: /es, /pt … (only live locales; see src/i18n/routes.ts). */
+import HomePage from '../../components/i18n/HomePage.astro';
+import { LOCALES, type Locale } from '../../i18n/locales';
+import { isLive } from '../../i18n/routes';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return LOCALES.filter((locale) => isLive('home', locale)).map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+---
+
+<HomePage locale={locale} />

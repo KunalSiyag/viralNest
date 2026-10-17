@@ -1,0 +1,127 @@
+{
+  "pageId": "how-to-download-pinterest-video-in-gallery",
+  "locale": "pt",
+  "meta": {
+    "title": "Como Salvar Vídeo do Pinterest na Galeria do Celular",
+    "description": "Salve vídeos do Pinterest direto na galeria do Android ou no app Fotos do iPhone, sem instalar aplicativo. Copie o link, cole aqui e baixe o MP4 em 3 passos."
+  },
+  "keywords": {
+    "primary": "como salvar vídeo do pinterest na galeria",
+    "secondary": [
+      "como baixar vídeo do pinterest na galeria",
+      "salvar vídeo do pinterest na galeria do celular",
+      "tem como salvar vídeo do pinterest na galeria",
+      "como colocar vídeo do pinterest na galeria",
+      "como baixar vídeo do pinterest para galeria do celular"
+    ]
+  },
+  "nav": {
+    "label": "Salvar na galeria",
+    "short": "Galeria",
+    "card": {
+      "title": "Salvar na galeria",
+      "blurb": "Para o vídeo do Pinterest aparecer na Galeria ou no app Fotos.",
+      "badge": "Galeria"
+    }
+  },
+  "hero": {
+    "h1": "Salvar vídeo do Pinterest na galeria",
+    "lede": "Do link do pin até a **Galeria** do Android ou o app **Fotos** do iPhone, sem instalar aplicativo."
+  },
+  "intro": [
+    "Tem como salvar vídeo do Pinterest na galeria? Tem, mas baixar é só metade do caminho: no iPhone o MP4 vai primeiro para o app **Arquivos**, e no Android para a pasta **Download**. Este guia mostra como levar o vídeo até a galeria e o que fazer quando ele não aparece.",
+    "Os passos de cada aparelho, do link ao download, estão em [[download-pinterest-videos-iphone-android|vídeo do Pinterest no iPhone e Android]]."
+  ],
+  "sections": [
+    {
+      "h2": "Por que o vídeo não aparece na galeria",
+      "paragraphs": [
+        "O navegador salva downloads como arquivos, não como fotos. No iPhone, o Safari guarda em **Arquivos** › **Downloads**, e o app Fotos só mostra o vídeo depois que você o salva lá. No Android, o Chrome guarda na pasta **Download**; a Galeria e o Google Fotos costumam mostrar essa pasta, às vezes alguns segundos depois."
+      ]
+    },
+    {
+      "h2": "iPhone: do app Arquivos para o Fotos",
+      "paragraphs": [
+        "Quando o download terminar, abra o app **Arquivos** e entre em **Downloads**. Toque no vídeo, depois em **Compartilhar** e escolha **Salvar Vídeo**. Pronto: ele aparece no app Fotos, em **Recentes**."
+      ],
+      "list": [
+        "Não achou **Salvar Vídeo**? Deslize a lista de opções para cima: ela fica abaixo da fileira de apps.",
+        "No iPhone, a “galeria” é o app **Fotos**: é lá que o vídeo fica depois desse passo."
+      ]
+    },
+    {
+      "h2": "Android: da pasta Download para a Galeria",
+      "paragraphs": [
+        "Abra o app **Arquivos** (no Samsung, **Meus Arquivos**) e entre em **Downloads**: o MP4 está lá. Na Galeria do Samsung e no Google Fotos, ele aparece na pasta **Download**. Se não aparecer, toque e segure o arquivo e mova para a pasta **DCIM** ou **Movies**."
+      ]
+    },
+    {
+      "h2": "GIFs e fotos também vão para a galeria",
+      "paragraphs": [
+        "O caminho é o mesmo para uma foto ou um GIF baixado do Pinterest. No iPhone, abra o arquivo e use **Compartilhar** › **Salvar Imagem**. Se o GIF ficar parado na galeria, abra-o no app Fotos: algumas telas mostram só o primeiro quadro. Para baixar o GIF animado, use o [[pinterest-gif-downloader|baixador de GIF]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como salvar vídeo do Pinterest na galeria",
+    "intro": "Três passos no Safari do iPhone ou no Chrome do Android.",
+    "exampleLabel": "Link de um pin de vídeo",
+    "items": [
+      {
+        "title": "Copie o link do vídeo",
+        "body": "No app do Pinterest, abra o vídeo, toque em **Compartilhar** e depois em **Copiar link**."
+      },
+      {
+        "title": "Cole no PintDownload",
+        "body": "Abra pintdownload.app no Safari ou no Chrome, cole o link na caixa acima e toque em **Baixar vídeo**."
+      },
+      {
+        "title": "Leve para a galeria",
+        "body": "No iPhone: **Arquivos** › **Downloads** › **Compartilhar** › **Salvar Vídeo**. No Android, o vídeo aparece na Galeria, na pasta **Download**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre a galeria",
+    "items": [
+      {
+        "q": "Tem como salvar vídeo do Pinterest na galeria sem aplicativo?",
+        "a": "Tem. Tudo acontece no navegador e nos apps que já vêm no celular: Arquivos e Fotos no iPhone, Arquivos (ou Meus Arquivos) e Galeria no Android."
+      },
+      {
+        "q": "Baixei, mas o vídeo não aparece na galeria. E agora?",
+        "a": "No Android, abra o app **Arquivos** e procure em **Downloads**; se a Galeria não mostrar, mova o MP4 para **DCIM**. No iPhone, o vídeo fica em **Arquivos** › **Downloads** até você tocar em **Compartilhar** › **Salvar Vídeo**."
+      },
+      {
+        "q": "No iPhone, onde fica a galeria?",
+        "a": "É o app **Fotos**. Depois de **Salvar Vídeo**, o vídeo aparece em **Recentes**, junto com as fotos da câmera."
+      },
+      {
+        "q": "Precisa pagar ou fazer login?",
+        "a": "Não. É grátis e não pede login, nem no PintDownload nem no Pinterest. Só funciona com vídeos públicos."
+      },
+      {
+        "q": "Dá para salvar GIF e foto na galeria também?",
+        "a": "Dá. Baixe a foto no [[pinterest-image-downloader|baixador de imagem]] ou o GIF no [[pinterest-gif-downloader|baixador de GIF]] e siga os mesmos passos; no iPhone, a opção se chama **Salvar Imagem**."
+      },
+      {
+        "q": "O vídeo salvo vem com marca d’água?",
+        "a": "Não adicionamos nenhuma. Se o criador colocou o nome dele no vídeo, isso continua, e vale dar crédito se você for repostar."
+      }
+    ]
+  },
+  "related": {
+    "title": "Mais guias e ferramentas"
+  },
+  "schema": {
+    "appName": "Salvar vídeo do Pinterest na galeria — PintDownload",
+    "howToName": "Como salvar vídeo do Pinterest na galeria do celular",
+    "howToDescription": "Baixe o MP4 de um pin de vídeo e salve na Galeria do Android ou no app Fotos do iPhone."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. To verify on a phone: iOS pt-BR share sheet “Salvar Vídeo”/“Salvar Imagem”, Files folder “Downloads”, Samsung “Meus Arquivos”, and that Samsung Galeria and Google Fotos list a “Download” folder.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device. Edits: “Deslize a lista de opções para cima”."
+  }
+}

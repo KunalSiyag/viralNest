@@ -10,22 +10,22 @@ import { absoluteUrl } from '../lib/urls';
 
 const path = '/pinterest-image-downloader';
 const pageUrl = absoluteUrl(path);
-const title = 'Pinterest Image Downloader — Save HD Original Photos Free';
+const title = 'Pinterest Image Downloader — Save HD Photos Free, No Login';
 const description =
-  'Free Pinterest image downloader for original-resolution photos, wallpapers, and artwork. Save HD JPG images from Pinterest without an account or login.';
+  'Free Pinterest image downloader for HD photos, wallpapers and artwork in the largest size Pinterest publishes. Save JPG images without an account or login.';
 
 const faqs = [
   {
     q: 'How to download images from Pinterest without an account?',
-    a: 'Paste any public Pinterest image pin URL into PintDownload. The tool extracts the original high-resolution photo from the Pinterest CDN so you can save it without creating or logging into an account.',
+    a: 'Paste any public Pinterest image pin URL into PintDownload. The tool saves the largest version Pinterest publishes for that photo (up to 1200 px wide) so you can keep it without creating or logging into an account.',
   },
   {
     q: 'How do I download a high-resolution Pinterest image?',
-    a: 'Open the image pin, copy the share link or browser URL with /pin/, paste it into this image downloader, extract, then download the HD/original image file — not the tiny grid thumbnail.',
+    a: 'Open the image pin, copy the share link or browser URL with /pin/, paste it into this image downloader, extract, then download the HD image file — not the tiny grid thumbnail.',
   },
   {
-    q: 'Will I get the original size or a tiny thumbnail?',
-    a: 'PintDownload prefers original or largest public CDN variants when available. Some pins only expose mid-size variants; we never invent pixels beyond the source.',
+    q: 'Will I get the uploaded size or a tiny thumbnail?',
+    a: 'Neither: you get the largest size Pinterest publishes, up to 1200 px wide. The file the creator uploaded is not public, and some pins only have smaller sizes. We never upscale or invent pixels.',
   },
   {
     q: 'Can I download multi-image carousels?',
@@ -60,7 +60,7 @@ const steps = [
   },
   {
     title: 'Download HD photo',
-    body: 'Save the original-resolution JPG/PNG to your device for offline use or design reference.',
+    body: 'Save the JPG/PNG in the largest size Pinterest publishes, for offline use or design reference.',
   },
 ];
 
@@ -72,8 +72,8 @@ const jsonLd = [
     url: pageUrl,
   }),
   howToSchema({
-    name: 'How to download Pinterest images in full resolution',
-    description: 'Steps to save original HD photos from public Pinterest pin links.',
+    name: 'How to download Pinterest images in HD',
+    description: 'Steps to save HD photos, in the largest size Pinterest publishes, from public pin links.',
     steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
   }),
   faqSchema(faqs),
@@ -81,13 +81,13 @@ const jsonLd = [
 ---
 
 <BaseLayout field="canary" title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
-  <TicketHero title={"Pinterest Image Downloader"} lede={"Save <strong>original-resolution photos</strong> & artwork — free, no login."} variant="image" />
+  <TicketHero title={"Pinterest Image Downloader"} lede={"Save <strong>HD photos</strong> & artwork in the largest size Pinterest publishes — free, no login."} variant="image" />
 
-  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-left">
+  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-start">
     <div class="w-full max-w-3xl mb-6 counter-rule pt-4">
       <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-3 leading-relaxed">
-        Download <strong class="text-slate-900 dark:text-white">full-resolution</strong> Pinterest photos, wallpapers,
-        and artwork from a public pin link — free, no login, no watermark.
+        Download Pinterest photos, wallpapers, and artwork in the <strong class="text-slate-900 dark:text-white">largest size Pinterest publishes</strong>
+        (up to 1200&nbsp;px wide) from a public pin link — free, no login, no watermark.
       </p>
       <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
         Works with <code class="text-[11px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">/pin/</code> URLs.
@@ -95,9 +95,9 @@ const jsonLd = [
       </p>
     </div>
 
-    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm mb-10">
+    <div class="w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-start text-sm mb-10">
       <div class="pt-3 border-t-2 border-[var(--ink)]">
-        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">HD originals first</h2>
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base">Largest size first</h2>
         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
           Prefers the largest public image source instead of the blurry feed thumbnail you get from long-press alone.
         </p>
@@ -116,7 +116,7 @@ const jsonLd = [
       </div>
     </div>
 
-    <section class="w-full max-w-3xl text-left mb-12 space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+    <section class="w-full max-w-3xl text-start mb-12 space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
       <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white text-center mb-2">
         Image vs video vs pin downloader
       </h2>

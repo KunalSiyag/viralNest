@@ -1,0 +1,150 @@
+{
+  "pageId": "pinterest-board-downloader",
+  "locale": "nl",
+  "meta": {
+    "title": "Pinterest bord downloaden — alle pins als ZIP, gratis",
+    "description": "Download een openbaar Pinterest-bord in één keer: plak de bordlink en sla de pins op als ZIP met foto's en video's. Gratis, zonder account of extensie."
+  },
+  "keywords": {
+    "primary": "pinterest bord downloaden",
+    "secondary": [
+      "pinterest board downloaden",
+      "pinterest bord exporteren",
+      "pinterest bord opslaan",
+      "pinterest borden downloaden",
+      "pinterest profiel downloaden"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest bord downloaden",
+    "short": "Borden",
+    "card": {
+      "title": "Bord downloaden",
+      "blurb": "Plak de link van een openbaar bord en download de pins als één ZIP.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest bord downloaden",
+    "lede": "Een heel **openbaar bord** in **één ZIP**, met de foto’s en video’s van de pins. Gratis, zonder account of extensie."
+  },
+  "intro": [
+    "Download een openbaar **Pinterest-bord** in één keer: plak de bordlink, bekijk de pins die we vinden en sla ze op als **ZIP**. Je hebt geen Chrome-extensie en geen account nodig.",
+    "Werkt met links als `pinterest.com/gebruiker/naam-van-bord/`, ook van `nl.pinterest.com`. Alleen openbare borden."
+  ],
+  "features": [
+    {
+      "h": "Alleen bordlinks",
+      "p": "Voor adressen als `/gebruiker/bord/`. Eén losse pin hoort bij [[pinterest-pin-downloader|Pinterest pin downloaden]]."
+    },
+    {
+      "h": "Alles in één ZIP",
+      "p": "De openbare pins van het bord in één bestand, voor een moodboard zonder internet of om door te sturen."
+    },
+    {
+      "h": "Foto’s en video’s",
+      "p": "Met de afbeeldingen en video’s van de pins die op de openbare bordpagina laden."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Waarvoor download je een bord?",
+      "paragraphs": [
+        "Een bord is vaak een verzameling waar je lang aan hebt gewerkt. Als ZIP heb je de beelden bij de hand, ook zonder Pinterest of internet:"
+      ],
+      "list": [
+        "Een **moodboard** voor je interieur, verbouwing of bruiloft, om te laten zien aan een aannemer, stylist of fotograaf.",
+        "Een bord met recepten of klusideeën, voordat pins van Pinterest verdwijnen.",
+        "Een map met referentiebeelden voor een ontwerp, als één bestand naar je team of opdrachtgever."
+      ]
+    },
+    {
+      "h2": "Krijg je het hele bord?",
+      "paragraphs": [
+        "Je krijgt de openbare pins die laden als de bordpagina opent, tot een vast maximum. Bij heel grote borden kunnen oudere pins ontbreken. Van een carrousel komt de eerste afbeelding (de omslag) in de ZIP; wil je alle afbeeldingen, open die pin dan bij [[pinterest-pin-downloader|Pinterest pin downloaden]]."
+      ]
+    },
+    {
+      "h2": "Controleer je link voordat je hem plakt",
+      "paragraphs": [
+        "Met een pin- of profiellink krijg je hier niet wat je zoekt. Zo zie je het verschil:"
+      ],
+      "list": [
+        "`pinterest.com/gebruiker/naam-van-bord/`: een bord, die plak je hier.",
+        "`pinterest.com/pin/123…/`: een pin; gebruik [[pinterest-pin-downloader|Pinterest pin downloaden]].",
+        "`pinterest.com/gebruiker/`: een profiel; plak die in de downloader op de [[home|startpagina]], dan krijg je de pins van het profiel als ZIP.",
+        "Privéborden, verborgen borden en privéaccounts: niet te downloaden."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Zo download je een Pinterest-bord als ZIP",
+    "intro": "Deze pagina is alleen voor bordlinks. Staat er `/pin/` in je link, gebruik dan [[pinterest-pin-downloader|Pinterest pin downloaden]].",
+    "exampleLabel": "Voorbeeld van een bordlink",
+    "items": [
+      {
+        "title": "Open het openbare bord",
+        "body": "Open op Pinterest de pagina van het bord, met alle pins in een raster, en niet één losse pin."
+      },
+      {
+        "title": "Kopieer de bordlink",
+        "body": "Kopieer het adres uit de adresbalk, of tik in de app op het deelpictogram (**Delen**) en dan op **Link kopiëren**."
+      },
+      {
+        "title": "Plak hem en haal de pins op",
+        "body": "Plak de link in het vak hierboven en tik op **Bord ophalen**. Je ziet dan de openbare pins van het bord."
+      },
+      {
+        "title": "Download de ZIP",
+        "body": "Tik op **ZIP downloaden** om de foto’s en video’s in één bestand op te slaan, of download pins los."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Vragen over borden downloaden",
+    "items": [
+      {
+        "q": "Hoe download je een heel Pinterest-bord?",
+        "a": "Kopieer de link van het openbare bord, plak hem hierboven, bekijk de lijst met pins en tik op **ZIP downloaden**. Je krijgt de openbare pins die de bordpagina laadt, tot een vast maximum; bij een enorm bord kan een oudere pin ontbreken."
+      },
+      {
+        "q": "Hoe kopieer ik de link van een bord?",
+        "a": "In de browser kopieer je het adres van de bordpagina. In de app open je het bord, tik je op het deelpictogram en kies je **Link kopiëren**. Een bordlink heeft na de domeinnaam twee delen: de gebruikersnaam en de naam van het bord."
+      },
+      {
+        "q": "Kan ik een privébord of verborgen bord downloaden?",
+        "a": "Nee. PintDownload leest alleen openbare borden. Privéborden, verborgen borden en privéaccounts blijven privé, ook als iemand je de link van zo’n bord heeft gestuurd."
+      },
+      {
+        "q": "Kan ik een Pinterest-bord exporteren?",
+        "a": "Pinterest heeft geen knop om de afbeeldingen van een bord in één keer te downloaden. Plak de bordlink hier en download de pins als ZIP: dan heb je de foto’s en video’s als losse bestanden op je telefoon of computer."
+      },
+      {
+        "q": "Bord of profiel: wat is het verschil?",
+        "a": "Een bord is één verzameling, zoals ‘keuken’ of ‘bruiloft’. Een profiel is het hele account. Wil je de zichtbare pins van een profiel, plak de profiellink dan in de downloader op de [[home|startpagina]]; ook die maakt er een ZIP van."
+      },
+      {
+        "q": "Zitten alle afbeeldingen van een carrousel in de ZIP?",
+        "a": "Nee, de ZIP bevat van elke pin de omslag. Voor alle afbeeldingen van een carrousel open je die pin bij [[pinterest-pin-downloader|Pinterest pin downloaden]]."
+      },
+      {
+        "q": "Heb ik een extensie of account nodig?",
+        "a": "Nee. Alles werkt op deze pagina, zonder Chrome-extensie en zonder in te loggen."
+      }
+    ]
+  },
+  "related": {
+    "title": "Verwante tools"
+  },
+  "schema": {
+    "appName": "Pinterest bord downloaden — PintDownload",
+    "howToName": "Een Pinterest-bord downloaden als ZIP",
+    "howToDescription": "Stappen om de openbare pins van een Pinterest-bord in één ZIP-bestand op te slaan."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-nl",
+    "nativeReviewer": "review-nl (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, je register, glossary (pins, bord, videopin, afhaalbon, omslag), search vocabulary, honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/nl: Afbeelding downloaden (desktop), Download afbeelding (app), drie puntjes, Delen › Link kopiëren, deelpictogram, Bewaren, Privébord. OS labels (Bewaar video/afbeelding, Bestanden, Mijn bestanden, Geanimeerd, album Download) are the standard Dutch iOS/Android names, not checked on a device."
+  }
+}

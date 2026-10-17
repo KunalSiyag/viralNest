@@ -1,0 +1,124 @@
+{
+  "pageId": "pinterest-carousel-downloader",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar Carrossel do Pinterest: Todas as Imagens, Grátis",
+    "description": "Baixe todas as imagens de um pin em carrossel do Pinterest de uma vez, na maior resolução disponível. Cole o link do pin e salve cada cartão, sem login."
+  },
+  "keywords": {
+    "primary": "baixar carrossel do pinterest",
+    "secondary": [
+      "baixar carrossel do pinterest grátis online",
+      "baixar fotos do carrossel pinterest",
+      "baixar todas as fotos de um pin pinterest",
+      "pin carrossel pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Baixar carrossel",
+    "short": "Carrossel",
+    "card": {
+      "title": "Baixar carrossel",
+      "blurb": "Todos os cartões de um pin em carrossel, um por um ou em ZIP.",
+      "badge": "Cartões"
+    }
+  },
+  "hero": {
+    "h1": "Baixar carrossel do Pinterest",
+    "lede": "Baixe **todas as imagens** de um pin em carrossel de uma vez: cada cartão separado ou **tudo junto em um ZIP**. Grátis e sem login."
+  },
+  "intro": [
+    "Pin em carrossel é aquele que você desliza para o lado para ver mais imagens; o Pinterest chama cada uma de **cartão**. Cole o link do pin aqui e o PintDownload lista todos os cartões, não só a capa.",
+    "Atenção à busca: “carrossel Pinterest” também traz ideias de carrossel para o Instagram. Esta página é para **baixar** um carrossel que já está no Pinterest."
+  ],
+  "features": [
+    {
+      "h": "Todos os cartões",
+      "p": "Lista cada imagem do carrossel e também os cartões em vídeo, quando houver."
+    },
+    {
+      "h": "Um por um ou em ZIP",
+      "p": "Baixe só o cartão que precisa ou tudo junto em um arquivo, com um toque."
+    },
+    {
+      "h": "Sem print borrado",
+      "p": "Cada imagem vem no maior tamanho que o Pinterest publica, até 1200 px de largura."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Carrossel com foto e vídeo",
+      "paragraphs": [
+        "Alguns carrosséis misturam imagens e vídeos. Cada cartão vem no formato dele: imagem em JPG (ou PNG), vídeo em MP4, geralmente em 720p. Nada é recortado nem recomprimido."
+      ]
+    },
+    {
+      "h2": "Para imprimir as imagens de um pin",
+      "paragraphs": [
+        "Muita gente baixa carrossel para imprimir: um passo a passo de crochê, um resumo de estudos, um molde. Com até 1200 px de largura, cada cartão costuma ficar bom impresso numa folha A5. Para tamanhos maiores, procure a fonte do pin; e se o material for de outra pessoa, use só para você."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como baixar todas as imagens de um carrossel",
+    "intro": "Três passos com o link do pin.",
+    "exampleLabel": "Link de pin em carrossel",
+    "items": [
+      {
+        "title": "Copie o link do carrossel",
+        "body": "Abra o pin que tem vários cartões e toque em **Compartilhar** › **Copiar link**."
+      },
+      {
+        "title": "Cole e liste os cartões",
+        "body": "Cole o link na caixa acima e toque em **Baixar imagem**. O PintDownload mostra cada cartão do carrossel."
+      },
+      {
+        "title": "Baixe um por um ou em ZIP",
+        "body": "Salve só os cartões que quiser ou toque em **Baixar ZIP** para levar todos de uma vez."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre carrossel",
+    "items": [
+      {
+        "q": "Dá para baixar todas as imagens do carrossel de uma vez?",
+        "a": "Dá. Depois de colar o link, toque em **Baixar ZIP** e todos os cartões vêm num arquivo só. Também dá para baixar cada um separado."
+      },
+      {
+        "q": "As imagens vêm em que resolução?",
+        "a": "No maior tamanho que o Pinterest publica para cada cartão: fotos com até 1200 px de largura, vídeos geralmente em 720p. É melhor que um print, mas não é o arquivo que o criador enviou, que o Pinterest não deixa público."
+      },
+      {
+        "q": "E se o carrossel tiver vídeo e foto?",
+        "a": "Cada cartão vem no formato dele: as fotos como imagem e os vídeos como MP4."
+      },
+      {
+        "q": "Para imprimir, como baixar todas as fotos de um pin?",
+        "a": "Cole o link do pin aqui, baixe o ZIP e imprima a partir da pasta extraída. Para folhas grandes, a resolução pode não bastar; procure o arquivo na fonte do pin."
+      },
+      {
+        "q": "Precisa de conta?",
+        "a": "Não. Só o link de um pin público. Sem login no Pinterest e sem cadastro aqui."
+      },
+      {
+        "q": "Por que a pasta em ZIP só trouxe a capa do carrossel?",
+        "a": "O ZIP de pasta guarda a capa de cada pin. Para todos os cartões, cole o link daquele pin aqui, ou no [[pinterest-pin-downloader|baixador de pin]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outras ferramentas para o Pinterest"
+  },
+  "schema": {
+    "appName": "Baixador de carrossel do Pinterest — PintDownload",
+    "howToName": "Como baixar todas as imagens de um carrossel do Pinterest",
+    "howToDescription": "Cole o link de um pin em carrossel e salve cada cartão ou todos juntos em um ZIP."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. “Pins em carrossel” and “cartões” from help.pinterest.com/pt-br/business/article/create-a-carousel.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device. Edits: “costuma ficar bom impresso numa folha A5”."
+  }
+}

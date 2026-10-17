@@ -9,10 +9,10 @@
 - [Pinterest Board Downloader](https://pintdownload.app/pinterest-board-downloader): Board URL (`/username/board/`) → multi-pin ZIP.
 - [Pinterest Profile Downloader](https://pintdownload.app/pinterest-profile-downloader): Profile URL (`/username/`) → visible pins ZIP.
 - [Pinterest Profile Picture Downloader](https://pintdownload.app/pinterest-profile-picture-downloader): Public profile URL → HD avatar / PFP / DP (not a pin ZIP).
-- [Pinterest Image Downloader](https://pintdownload.app/pinterest-image-downloader): Original-resolution still photos from pin links.
+- [Pinterest Image Downloader](https://pintdownload.app/pinterest-image-downloader): Still photos in the largest size Pinterest publishes (up to 1200 px wide).
 - [Pinterest GIF Downloader](https://pintdownload.app/pinterest-gif-downloader): Animated GIF pins.
 - [Pinterest to MP4](https://pintdownload.app/pinterest-to-mp4): Video pin link → downloadable MP4.
-- [Pinterest Audio Downloader](https://pintdownload.app/pinterest-audio-downloader): MP3 extraction from video pins.
+- [Pinterest Audio Downloader](https://pintdownload.app/pinterest-audio-downloader): MP3 of a video pin's sound, encoded in the visitor's browser (192 kbps).
 
 ## MCP server (for AI assistants)
 
@@ -29,6 +29,24 @@
 - [RSS](https://pintdownload.app/rss.xml): Full blog feed for subscribers and discovery.
 - [Sitemap](https://pintdownload.app/sitemap.xml): All public URLs for crawlers.
 - [robots.txt](https://pintdownload.app/robots.txt): Crawl rules.
+
+## Languages
+
+English lives at the site root. Localized versions are written for each language, not translated word for word from English, and live under a language prefix, such as `/es`; each page lists its versions with `hreflang`, and the sitemap repeats them. Released languages:
+
+- English (en): https://pintdownload.app/
+- Español (es): https://pintdownload.app/es
+- Português (pt): https://pintdownload.app/pt
+- Français (fr): https://pintdownload.app/fr
+- Deutsch (de): https://pintdownload.app/de
+- Italiano (it): https://pintdownload.app/it
+- Nederlands (nl): https://pintdownload.app/nl
+- Bahasa Indonesia (id): https://pintdownload.app/id
+- Türkçe (tr): https://pintdownload.app/tr
+- Tiếng Việt (vi): https://pintdownload.app/vi
+- Русский (ru): https://pintdownload.app/ru
+- ไทย (th): https://pintdownload.app/th
+- العربية (ar): https://pintdownload.app/ar
 
 ## URL types
 

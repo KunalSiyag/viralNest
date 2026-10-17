@@ -1,0 +1,69 @@
+---
+/** Localized tool page (mirrors the English tool pages' structure). */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TicketHero from '../TicketHero.astro';
+import HowToSteps from '../seo/HowToSteps.astro';
+import CompareTable from '../seo/CompareTable.astro';
+import FaqSection from '../seo/FaqSection.astro';
+import RelatedTools from '../seo/RelatedTools.astro';
+import BookmarkletGuide from '../seo/BookmarkletGuide.astro';
+import PageBody from './PageBody.astro';
+import { headingHtml, renderInline } from '../../i18n/inline';
+import type { Locale } from '../../i18n/locales';
+import type { PageId } from '../../i18n/routes';
+import { exampleUrlFor, pageContext } from './page-data';
+
+interface Props {
+  locale: Locale;
+  pageId: PageId;
+}
+
+const { locale, pageId } = Astro.props;
+const ctx = await pageContext(locale, pageId);
+const { page, ui, def } = ctx;
+const r = (s: string) => renderInline(s, locale);
+const highlight = ctx.variant === 'board' ? 'board' : ctx.variant === 'profile' ? 'profile' : 'pin';
+const withBookmarklet = pageId === 'pinterest-video-downloader-chrome';
+---
+
+<BaseLayout
+  field={def.field}
+  title={page.meta.title}
+  description={page.meta.description}
+  canonicalUrl={ctx.url}
+  jsonLd={ctx.jsonLd}
+  fullBleed
+  locale={locale}
+  ui={ui}
+>
+  <TicketHero
+    title={headingHtml(page.hero.h1, locale)}
+    lede={r(page.hero.lede)}
+    variant={ctx.variant}
+    locale={locale}
+    messages={ctx.messages}
+    routes={ctx.routes}
+  />
+
+  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-start">
+    <PageBody page={page} locale={locale} kind="tool" />
+
+    <div class="w-full">
+      <HowToSteps
+        title={page.steps.title}
+        intro={r(page.steps.intro)}
+        introHtml
+        exampleUrl={page.steps.exampleUrl ?? exampleUrlFor(ctx.variant)}
+        exampleLabel={page.steps.exampleLabel}
+        steps={page.steps.items.map((s) => ({ title: s.title, body: r(s.body) }))}
+        visual
+        stripe={true}
+        ui={ui}
+      />
+      {withBookmarklet && <BookmarkletGuide ui={ui} locale={locale} />}
+      <CompareTable highlight={highlight} ui={ui} links={ctx.compareLinks} />
+      <FaqSection title={page.faq.title} items={page.faq.items.map((f) => ({ q: f.q, a: r(f.a) }))} html />
+      <RelatedTools title={page.related.title} tools={ctx.related} intro={ui.related.intro} />
+    </div>
+  </article>
+</BaseLayout>

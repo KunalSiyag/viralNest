@@ -1,5 +1,7 @@
 ---
 import DownloaderForm, { type FormVariant, type FormLayout } from './DownloaderForm';
+import type { AnyLocale } from '../i18n/locales';
+import type { RoutesProp } from '../i18n/routes';
 
 interface Props {
   /** H1 text (may contain inline HTML such as <br>) */
@@ -8,9 +10,21 @@ interface Props {
   lede?: string;
   variant?: FormVariant;
   layout?: FormLayout;
+  /** Localized pages only (English passes nothing, so its island props stay as they are). */
+  locale?: AnyLocale;
+  /** This locale's island catalog slice (islandMessagesFor in src/i18n/island/catalogs.ts). */
+  messages?: Record<string, unknown>;
+  /** Live paths of this locale for route notices: Partial<Record<PageId,string>> & { home }. */
+  routes?: RoutesProp;
 }
 
-const { title, lede, variant = 'hub', layout = 'default' } = Astro.props;
+const { title, lede, variant = 'hub', layout = 'default', locale, messages, routes } = Astro.props;
+/** Only defined keys reach the island, so English serializes exactly the props it did before. */
+const localeProps = {
+  ...(locale && locale !== 'en' ? { locale } : {}),
+  ...(messages ? { messages } : {}),
+  ...(routes ? { routes } : {}),
+};
 const hasAside = Astro.slots.has('aside');
 ---
 
@@ -36,7 +50,7 @@ const hasAside = Astro.slots.has('aside');
       <slot name="aside" />
     </div>
     <div class="seam-form min-w-0 relative z-10 mt-6 sm:mt-8">
-      <DownloaderForm client:load variant={variant} layout={layout} />
+      <DownloaderForm client:load variant={variant} layout={layout} {...localeProps} />
     </div>
   </div>
 </section>

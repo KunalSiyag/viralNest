@@ -1,0 +1,141 @@
+{
+  "pageId": "pinterest-image-downloader",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar Imagem do Pinterest em Alta Resolução, Grátis",
+    "description": "Baixe fotos, wallpapers e artes do Pinterest na maior resolução que o pin oferece. Cole o link e salve a imagem na galeria ou no PC, sem conta e sem login."
+  },
+  "keywords": {
+    "primary": "baixar imagem do pinterest",
+    "secondary": [
+      "baixar foto do pinterest",
+      "baixar imagem pinterest hd",
+      "baixar imagem do pinterest alta resolução",
+      "baixar imagem pinterest pelo link",
+      "baixar imagem pinterest sem login",
+      "baixar wallpaper pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Baixar imagem",
+    "short": "Fotos",
+    "card": {
+      "title": "Baixar imagem",
+      "blurb": "Fotos, wallpapers e artes no maior tamanho que o Pinterest publica.",
+      "badge": "Foto"
+    }
+  },
+  "hero": {
+    "h1": "Baixar imagem do Pinterest",
+    "lede": "Salve fotos, wallpapers e artes no **maior tamanho que o Pinterest publica**, e não a miniatura borrada do feed. Grátis e sem login."
+  },
+  "intro": [
+    "Para **baixar foto do Pinterest**, cole o link do pin e salve o arquivo na maior resolução disponível, até 1200 px de largura. Serve para wallpaper, referência de desenho, receita ou moodboard.",
+    "Também resolve quando o app não mostra a opção **Baixar imagem** no menu de três pontinhos. Só pins públicos, com links `/pin/` ou `pin.it`."
+  ],
+  "features": [
+    {
+      "h": "A maior versão primeiro",
+      "p": "Buscamos a maior imagem pública do pin, não a miniatura que você pega com print ou segurando o dedo na foto."
+    },
+    {
+      "h": "Só imagens paradas",
+      "p": "Para fotos, artes e wallpapers. Pin que toca vai no [[pinterest-video-downloader|baixador de vídeo]]."
+    },
+    {
+      "h": "Sem conta",
+      "p": "Cole o link público e salve. Pins privados ou que pedem login não funcionam."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Qual resolução vem",
+      "paragraphs": [
+        "O Pinterest guarda a foto que o criador enviou e publica cópias menores dela. A maior cópia pública tem até 1200 px de largura, e é essa que o PintDownload salva. Alguns pins só têm tamanhos menores. Não aumentamos a imagem nem inventamos pixels.",
+        "Para imprimir pequeno (uma etiqueta, um cartão, uma página de caderno), 1200 px costuma bastar. Para pôster ou impressão grande, peça o arquivo ao criador ou abra o site de origem do pin."
+      ]
+    },
+    {
+      "h2": "Quando o app não mostra “Baixar imagem”",
+      "paragraphs": [
+        "No app do Pinterest, a opção **Baixar imagem** fica no menu de três pontinhos do pin, e nem todo pin mostra. Aí o caminho é o link: **Compartilhar** › **Copiar link**, cole aqui e baixe. Em Portugal, o menu diz **Partilhar** › **Copiar ligação**."
+      ]
+    },
+    {
+      "h2": "Imagem, vídeo ou pin: qual ferramenta usar",
+      "paragraphs": [
+        "Esta página é para fotos paradas. Pins que podem ser qualquer coisa (imagem, GIF, carrossel) vão no [[pinterest-pin-downloader|baixador de pin]]. Para todas as imagens de uma pasta de uma vez, use o [[pinterest-board-downloader|baixador de pastas]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como baixar imagem do Pinterest",
+    "intro": "Use o link de um pin de foto. Para salvar uma pasta inteira, vá ao baixador de pastas.",
+    "exampleLabel": "Link de pin de imagem",
+    "items": [
+      {
+        "title": "Abra o pin da imagem",
+        "body": "Abra o pin ampliado, para que o endereço tenha `/pin/` e você veja uma foto parada, não um vídeo."
+      },
+      {
+        "title": "Copie o link",
+        "body": "**Compartilhar** › **Copiar link**, ou copie a barra de endereço. Links curtos `pin.it` também servem."
+      },
+      {
+        "title": "Cole e escolha o tamanho",
+        "body": "Cole na caixa acima e toque em **Baixar imagem**. Se aparecer mais de um tamanho, fique com o maior."
+      },
+      {
+        "title": "Salve a foto",
+        "body": "Salve o JPG (ou PNG, quando o pin é PNG) na galeria, no app Fotos ou na pasta Downloads do PC."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre imagens do Pinterest",
+    "items": [
+      {
+        "q": "Como baixar imagem do Pinterest sem conta ou login?",
+        "a": "Cole o link de um pin público aqui. O PintDownload salva a maior versão que o Pinterest publica, sem você entrar no Pinterest nem criar conta."
+      },
+      {
+        "q": "Como baixar em alta resolução, e não a miniatura?",
+        "a": "Não use print nem toque e segure na foto do feed: isso pega uma versão pequena. Copie o link do pin, cole aqui e escolha o maior tamanho da lista, que pode chegar a 1200 px de largura."
+      },
+      {
+        "q": "Por que não aparece “Baixar imagem” no app?",
+        "a": "Nem todo pin mostra essa opção no menu de três pontinhos: o próprio Pinterest avisa que nem todos os pins podem ser baixados. Pelo link funciona igual: **Compartilhar** › **Copiar link** e cole aqui."
+      },
+      {
+        "q": "Dá para baixar em PNG?",
+        "a": "Salvamos o formato que o Pinterest entrega, quase sempre JPG. Se o pin foi publicado em PNG, vem em PNG. Não convertemos o arquivo."
+      },
+      {
+        "q": "A qualidade serve para imprimir?",
+        "a": "Para coisas pequenas, como etiquetas, cartões ou uma folha A5, geralmente sim. Para pôster ou A3, 1200 px fica pouco: procure a fonte do pin ou peça o arquivo ao criador, e respeite os direitos de quem fez a arte."
+      },
+      {
+        "q": "Como baixar várias imagens de uma vez?",
+        "a": "Para todas as imagens de uma pasta, cole o link dela no [[pinterest-board-downloader|baixador de pastas]] e baixe o ZIP. Se as imagens estão num mesmo pin, em carrossel, o [[pinterest-carousel-downloader|baixador de carrossel]] traz todas juntas."
+      },
+      {
+        "q": "Dá para baixar wallpaper em 4K?",
+        "a": "Não. A maior cópia pública de uma imagem do Pinterest tem até 1200 px de largura, bem menos que 4K. Site que promete wallpaper 4K de um pin está só esticando a imagem; nós não aumentamos nada."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outras ferramentas para o Pinterest"
+  },
+  "schema": {
+    "appName": "Baixador de imagem do Pinterest — PintDownload",
+    "howToName": "Como baixar imagem do Pinterest no maior tamanho publicado",
+    "howToDescription": "Passos para salvar a foto de um pin público do Pinterest no maior tamanho que o Pinterest publica."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. “Baixar imagem” is from help.pinterest.com/pt-br/article/download-an-image; “três pontinhos” is the colloquial name for the ellipsis icon.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device. Edits: intro now carries “baixar foto do Pinterest”; step 1 “Abra o pin ampliado…”; FAQ 3 follows Pinterest help (“nem todos os pins podem ser baixados”) instead of claiming the mobile browser lacks the option."
+  }
+}

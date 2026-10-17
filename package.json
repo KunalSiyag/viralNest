@@ -9,12 +9,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "postbuild": "python3 scripts/seo_health_check.py",
-    "test": "node tests/seo-invariants.test.mjs && node tests/extract-parity.test.mjs && node tests/mcp.test.mjs",
-    "test:seo-build": "python3 scripts/verify_seo_build_artifacts.py",
-    "preview": "astro build && node -e \"require('fs').writeFileSync('dist/.assetsignore','_worker.js\\n_routes.json\\n')\" && wrangler dev",
+    "test": "node tests/seo-invariants.test.mjs && node tests/extract-parity.test.mjs && node tests/mcp.test.mjs && node tests/audio.test.mjs && node tests/islands.test.mjs",
+    "test:seo-build": "python3 scripts/verify_seo_build_artifacts.py && python3 scripts/verify_i18n_build.py",
+    "i18n:check": "node scripts/i18n-check.mjs",
+    "preview": "astro build && node -e \"require('fs').writeFileSync('dist/.assetsignore','_worker.js\\n_routes.json\\n.i18n-routes.json\\n')\" && wrangler dev",
     "announce": "node scripts/announce.mjs",
     "links:scan": "node scripts/link_ops.mjs",
-    "deploy": "astro build && node -e \"require('fs').writeFileSync('dist/.assetsignore','_worker.js\\n_routes.json\\n')\" && wrangler deploy",
+    "deploy": "astro build && node -e \"require('fs').writeFileSync('dist/.assetsignore','_worker.js\\n_routes.json\\n.i18n-routes.json\\n')\" && wrangler deploy",
     "deploy:prod": "npm run deploy",
     "cf:login": "wrangler login",
     "cf:whoami": "wrangler whoami",
@@ -25,6 +26,7 @@
     "@astrojs/node": "^9.5.5",
     "@astrojs/react": "^5.0.7",
     "@astrojs/tailwind": "^6.0.2",
+    "@breezystack/lamejs": "1.2.7",
     "@fontsource/big-shoulders-display": "^5.3.0",
     "@modelcontextprotocol/server": "2.3.1",
     "@types/react": "^19.2.17",
@@ -39,6 +41,7 @@
     "wrangler": "^4.59.2"
   },
   "devDependencies": {
+    "@fontsource/sofia-sans-extra-condensed": "^5.3.0",
     "@types/jszip": "^3.4.0",
     "@types/qrcode": "^1.5.6"
   }

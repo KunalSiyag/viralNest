@@ -1,5 +1,6 @@
-import type { CSSProperties, ReactNode } from 'react';
+import { createElement, Fragment, type CSSProperties, type ReactNode } from 'react';
 import { STOCKS, type StockKey } from '../../lib/stocks';
+import { fmtParts } from '../../i18n/island/fmt';
 
 /** The claim receipt: paper slip with a band printed in the collected item's stock. */
 export function Receipt({
@@ -8,6 +9,7 @@ export function Receipt({
   icon,
   serial,
   labelledBy,
+  serialTemplate,
   print = true,
   className = '',
   children,
@@ -18,6 +20,11 @@ export function Receipt({
   icon?: ReactNode;
   serial?: string;
   labelledBy: string;
+  /**
+   * Localized pages only: the catalog's serial line ("No.\u00a0{serial}"); the
+   * serial is then bidi-isolated. English keeps the built-in "No. {serial}".
+   */
+  serialTemplate?: string;
   print?: boolean;
   className?: string;
   children: ReactNode;
@@ -40,7 +47,7 @@ export function Receipt({
         </span>
         {serial ? (
           <span className="rc-serial" translate="no">
-            No.&nbsp;{serial}
+            {serialTemplate ? createElement(Fragment, null, ...fmtParts<ReactNode>(serialTemplate, { serial: <bdi>{serial}</bdi> })) : <>No.&nbsp;{serial}</>}
           </span>
         ) : null}
       </div>

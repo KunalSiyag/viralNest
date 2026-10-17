@@ -1,0 +1,120 @@
+{
+  "pageId": "pinterest-video-downloader-chrome",
+  "locale": "th",
+  "meta": {
+    "title": "ส่วนขยาย Chrome โหลด Pinterest? ใช้บุ๊กมาร์กเล็ตแทน ฟรี",
+    "description": "อยากได้ส่วนขยาย Chrome ไว้โหลด Pinterest? ใช้บุ๊กมาร์กเล็ตแทน ลากไปไว้ที่แถบบุ๊กมาร์ก แล้วกดครั้งเดียวบนหน้าพิน บอร์ด หรือโปรไฟล์ ไม่ต้องติดตั้งอะไร"
+  },
+  "keywords": {
+    "primary": "ส่วนขยาย chrome โหลด pinterest",
+    "secondary": [
+      "pinterest video downloader chrome",
+      "pinterest chrome extension",
+      "โหลด pinterest บน chrome",
+      "บุ๊กมาร์กเล็ต"
+    ]
+  },
+  "nav": {
+    "label": "โหลด Pinterest บน Chrome",
+    "short": "Chrome",
+    "card": {
+      "title": "ปุ่มลัดบน Chrome",
+      "blurb": "บุ๊กมาร์กเล็ตแทนส่วนขยาย กดครั้งเดียวบนหน้าพิน บอร์ด หรือโปรไฟล์",
+      "badge": "Chrome"
+    }
+  },
+  "hero": {
+    "h1": "โหลด Pinterest บน Chrome",
+    "lede": "**ไม่ต้องลงส่วนขยาย:** ลากปุ่มไปที่แถบบุ๊กมาร์ก เปิดพิน บอร์ด หรือโปรไฟล์ แล้วกดครั้งเดียว"
+  },
+  "intro": [
+    "ถ้ากำลังหา**ส่วนขยาย Chrome** ไว้โหลด Pinterest ทางเลือกที่ใกล้เคียงที่สุดโดยไม่ต้องติดตั้งอะไรคือ**บุ๊กมาร์กเล็ต** หรือปุ่มลัดในแถบบุ๊กมาร์ก อยู่หน้าพินเมื่อไรก็กดได้ แล้ว PintDownload จะเปิดในแท็บใหม่พร้อมลิงก์ของพินนั้น",
+    "นี่ไม่ใช่ส่วนขยายปุ่มบันทึกของ Pinterest เพราะตัวนั้นมีไว้เก็บพินลงบอร์ด ไม่ได้ดาวน์โหลดไฟล์ลงคอม"
+  ],
+  "sections": [
+    {
+      "h2": "ทำไมใช้บุ๊กมาร์กเล็ตแทนส่วนขยาย",
+      "paragraphs": [
+        "ส่วนขยายต้องติดตั้งจาก Chrome เว็บสโตร์ และหลายตัวขอสิทธิ์อ่านและเปลี่ยนข้อมูลบนทุกเว็บที่เปิด บุ๊กมาร์กเล็ตไม่ต้องติดตั้ง เป็นแค่บุ๊กมาร์กที่กดแล้วส่งที่อยู่ของแท็บนั้นไปเปิดใน PintDownload ไม่ทำงานเบื้องหลัง และถ้าวันไหนไม่อยากใช้ ก็ลบทิ้งได้เหมือนบุ๊กมาร์กทั่วไป"
+      ]
+    },
+    {
+      "h2": "Edge, Brave, Opera, Firefox และ Safari",
+      "paragraphs": [
+        "เบราว์เซอร์ที่ใช้ Chromium อย่าง Edge, Brave และ Opera ใช้ได้แบบเดียวกัน แค่ลากไปไว้ที่แถบรายการโปรดหรือแถบบุ๊กมาร์ก บน Firefox ลากไปที่แถบบุ๊กมาร์ก ส่วน Safari บน Mac ลากไปที่รายการโปรด"
+      ]
+    },
+    {
+      "h2": "บน Chrome มือถือใช้ได้ไหม",
+      "paragraphs": [
+        "ใช้ได้แต่ไม่สะดวก เพราะมือถือไม่มีแถบบุ๊กมาร์กให้กดง่ายๆ บนมือถือคัดลอกลิงก์จากแอป Pinterest (**แชร์** › **คัดลอกลิงก์**) แล้ววางในหน้าเว็บจะเร็วกว่า ขั้นตอนอยู่ใน[[download-pinterest-videos-iphone-android|คู่มือโหลดวิดีโอ Pinterest ลงมือถือ]]"
+      ]
+    }
+  ],
+  "steps": {
+    "title": "วิธีใช้บุ๊กมาร์กเล็ตบน Chrome",
+    "intro": "ติดตั้งครั้งเดียว ใช้ได้ตลอด บน Windows, Mac, Linux และ Chromebook",
+    "exampleLabel": "ลิงก์ Pinterest",
+    "items": [
+      {
+        "title": "ลากปุ่มไปที่แถบบุ๊กมาร์ก",
+        "body": "ลากปุ่ม **PintDownload** ในหน้านี้ไปวางบนแถบบุ๊กมาร์กของ Chrome"
+      },
+      {
+        "title": "เปิดพินบน Pinterest",
+        "body": "ใช้ pinterest.com ตามปกติ แล้วเปิดคลิป รูป หรือบอร์ดที่อยากเซฟ"
+      },
+      {
+        "title": "กดบุ๊กมาร์ก",
+        "body": "PintDownload จะเปิดในแท็บใหม่พร้อมลิงก์ที่วางไว้ให้แล้ว กดโหลดไฟล์จากตรงนั้นได้เลย"
+      }
+    ]
+  },
+  "faq": {
+    "title": "คำถามที่พบบ่อยเรื่อง Chrome",
+    "items": [
+      {
+        "q": "PintDownload เป็นส่วนขยาย Chrome ไหม?",
+        "a": "ไม่ใช่ เป็นหน้าเว็บที่มีบุ๊กมาร์กเล็ตกดครั้งเดียว ทำงานคล้ายส่วนขยายง่ายๆ แต่ไม่ต้องติดตั้งจาก Chrome เว็บสโตร์ และไม่ทำงานอยู่เบื้องหลัง"
+      },
+      {
+        "q": "ทำไมบุ๊กมาร์กเล็ตปลอดภัยกว่าส่วนขยาย?",
+        "a": "เพราะไม่มีสิทธิ์อะไรเลย มองไม่เห็นแท็บอื่นหรือประวัติการเข้าเว็บ และทำงานเฉพาะตอนกดเท่านั้น ส่วนส่วนขยายบางตัวทำงานอยู่ในทุกหน้าที่เปิด"
+      },
+      {
+        "q": "ส่วนขยายโหลด Pinterest ใช้ไม่ได้แล้ว ทำยังไง?",
+        "a": "ส่วนขยายจำนวนมากพังเมื่อ Pinterest เปลี่ยนหน้าเว็บ หรือถูกถอดออกจากสโตร์ บุ๊กมาร์กเล็ตแค่ส่งลิงก์มาที่ PintDownload จึงไม่ต้องรออัปเดต และถ้าไม่สะดวก จะคัดลอกลิงก์มาวางเองก็ได้"
+      },
+      {
+        "q": "เพิ่มบุ๊กมาร์กเล็ตไปที่แถบบุ๊กมาร์กยังไง?",
+        "a": "กด `Ctrl + Shift + B` (บน Mac กด `Cmd + Shift + B`) ให้แถบบุ๊กมาร์กแสดงขึ้นมา แล้วลากปุ่ม **PintDownload** ในหน้านี้ไปวางบนแถบนั้น"
+      },
+      {
+        "q": "ใช้บน Edge, Safari, Firefox และ Mac หรือ Windows ได้ไหม?",
+        "a": "ได้ทุกตัว บน Edge, Brave และ Opera ลากไปที่แถบรายการโปรดหรือบุ๊กมาร์ก บน Safari สำหรับ Mac ลากไปที่รายการโปรด ใช้ได้ทั้ง Windows, Mac, Linux และ Chromebook"
+      },
+      {
+        "q": "ใช้บน Chrome มือถือได้ไหม?",
+        "a": "ได้ แต่ไม่สะดวก บนมือถือวางลิงก์ที่ pintdownload.app โดยตรงจะเร็วกว่า"
+      },
+      {
+        "q": "ส่วนขยายปุ่มบันทึกของ Pinterest ใช้ดาวน์โหลดได้ไหม?",
+        "a": "ไม่ได้ ปุ่มบันทึกของ Pinterest สำหรับ Chrome เก็บรูปจากเว็บต่างๆ ลงบอร์ดใน Pinterest ไม่ได้เซฟไฟล์ลงคอม ถ้าต้องการไฟล์ ให้ใช้บุ๊กมาร์กเล็ตนี้หรือวางลิงก์ใน PintDownload"
+      }
+    ]
+  },
+  "related": {
+    "title": "เครื่องมืออื่นสำหรับคอม"
+  },
+  "schema": {
+    "appName": "บุ๊กมาร์กเล็ตโหลด Pinterest บน Chrome — PintDownload",
+    "howToName": "วิธีใช้บุ๊กมาร์กเล็ต PintDownload บน Chrome",
+    "howToDescription": "ลากบุ๊กมาร์กเล็ตไปที่แถบบุ๊กมาร์ก เปิดพินบน Pinterest แล้วกดครั้งเดียวเพื่อเปิด PintDownload พร้อมลิงก์นั้น"
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-th (agent), 2026-10-16. Chrome's own Thai term for extensions is ส่วนขยาย (research). For the native reviewer: check the Thai names of the Chrome Web Store (Chrome เว็บสโตร์) and Safari Favorites (รายการโปรด).",
+    "nativeReviewer": "review-th (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, friendly-neutral register (no ครับ/ค่ะ/ท่าน), search vocabulary (โหลด/ดาวน์โหลด/เซฟ, คอม, ไอแพด, ให้ชัด), glossary (พิน, บอร์ด, บอร์ดส่วนตัว, พินหลายรูป, วิดีโอ not วีดีโอ, ลิงก์), honesty (720p/1080p conditional, 1200 px, no 4K promise, MP3 made in the browser, no watermark from us) and English leftovers. Pinterest labels rechecked on help.pinterest.com/th/article/download-an-image on 2026-10-17: ไอคอนจุดไข่ปลา › ดาวน์โหลดรูปภาพ, บันทึก saves to a board, หน้าฟีดหลัก, not every Pin can be downloaded. แชร์ › คัดลอกลิงก์ is the standard Thai share-sheet wording but was not checked in the Thai app on a device. Edits: intro calque ตัวนี้ใกล้เคียงที่สุด changed to ทางเลือกที่ใกล้เคียงที่สุด. Chrome เว็บสโตร์, Edge แถบรายการโปรด and Safari รายการโปรด are the standard Thai names."
+  }
+}

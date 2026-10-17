@@ -1,0 +1,124 @@
+{
+  "pageId": "pinterest-to-mp4",
+  "locale": "vi",
+  "meta": {
+    "title": "Chuyển video Pinterest sang MP4 online, miễn phí",
+    "description": "Chuyển video Pinterest sang MP4 bằng link Ghim: file phát được trên mọi điện thoại, máy tính, giữ tiếng nếu video gốc có. Không cần đăng ký, không chèn logo."
+  },
+  "keywords": {
+    "primary": "chuyển video pinterest sang mp4",
+    "secondary": [
+      "pinterest sang mp4",
+      "chuyển pinterest sang mp4",
+      "tải video pinterest mp4",
+      "tải video pinterest sang mp4",
+      "pinterest to mp4"
+    ]
+  },
+  "nav": {
+    "label": "Chuyển sang MP4",
+    "short": "MP4",
+    "card": {
+      "title": "Chuyển video Pinterest sang MP4",
+      "blurb": "Từ link Ghim video ra file MP4 phát được trên mọi máy, giữ nguyên tiếng.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Chuyển video Pinterest sang MP4",
+    "lede": "Pinterest phát video **dạng luồng**; PintDownload lấy bản **MP4** để bạn giữ lại và xem offline."
+  },
+  "intro": [
+    "Khi bạn xem video trên Pinterest, trình duyệt nhận video thành từng mảnh nhỏ (luồng HLS), không phải một file lưu lại được. Pinterest cũng lưu sẵn một bản **MP4** cho các video đó, và PintDownload tìm ra bản này từ link Ghim để bạn tải về.",
+    "Vì vậy “chuyển đổi” ở đây không mã hóa lại video: file MP4 là file Pinterest đăng, giữ nguyên chất lượng. Nó cũng chính là file mà công cụ [[pinterest-video-downloader|tải video Pinterest]] đưa cho bạn; trang này giải thích phần định dạng."
+  ],
+  "features": [
+    {
+      "h": "MP4 mở được ở mọi nơi",
+      "p": "App Ảnh trên iPhone, thư viện ảnh Android, VLC, Windows, MacBook, CapCut: MP4 là định dạng ai cũng đọc được."
+    },
+    {
+      "h": "Không mã hóa lại",
+      "p": "Video không đi qua bộ chuyển đổi làm giảm chất lượng. Bạn nhận đúng file Pinterest đăng."
+    },
+    {
+      "h": "Không chèn logo",
+      "p": "Chúng tôi không thêm logo hay chữ. Những gì người đăng gắn sẵn trong video thì vẫn còn."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Vì sao không lưu thẳng video từ Pinterest được",
+      "paragraphs": [
+        "Trên web, trình phát của Pinterest ghép video từ các mảnh nhỏ đọc theo một danh sách `.m3u8`. Vì thế bấm chuột phải không lưu được video, hoặc chỉ lưu ra một file không phát được. Từ link Ghim, PintDownload đi thẳng tới file MP4 hoàn chỉnh mà Pinterest cũng lưu sẵn."
+      ]
+    },
+    {
+      "h2": "Chất lượng của file MP4",
+      "paragraphs": [
+        "Đúng như Ghim có: thường 720p, 1080p khi Pinterest có bản này. Web chuyển đổi nào hứa video Pinterest 4K thì chỉ đang phóng to video, không lấy lại được chi tiết; chúng tôi không làm vậy. Xem thêm ở [[pinterest-4k-downloader|tải video Pinterest 4K được không]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách chuyển video Pinterest sang MP4",
+    "intro": "Chỉ Ghim video công khai. Không cần phần mềm, không cần đăng ký.",
+    "exampleLabel": "Link Ghim video",
+    "items": [
+      {
+        "title": "Sao chép link video",
+        "body": "Mở một Ghim đang phát và sao chép link: **biểu tượng chia sẻ** › **Sao chép liên kết**, hoặc địa chỉ có `/pin/`."
+      },
+      {
+        "title": "Dán vào ô chuyển đổi",
+        "body": "Dán link vào ô phía trên rồi bấm **Tải video**. PintDownload tìm file MP4 công khai của Ghim."
+      },
+      {
+        "title": "Tải file MP4",
+        "body": "Lưu file rồi mở ở bất cứ đâu: app Ảnh, VLC hay app chỉnh sửa video."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về chuyển Pinterest sang MP4",
+    "items": [
+      {
+        "q": "Chuyển Pinterest sang MP4 có mất phí không?",
+        "a": "Không. Miễn phí, không đăng ký, không cài phần mềm. Chỉ dùng được với video công khai."
+      },
+      {
+        "q": "Trang này khác gì trang Tải video Pinterest?",
+        "a": "Cùng một link cho ra cùng một file MP4. Trang này giải thích định dạng; trang [[pinterest-video-downloader|tải video Pinterest]] tập trung vào chất lượng, logo và các bước tải."
+      },
+      {
+        "q": "Chuyển GIF Pinterest sang MP4 được không?",
+        "a": "Không, PintDownload không chuyển định dạng. Ghim GIF được tải về dạng GIF ở [[pinterest-gif-downloader|tải GIF Pinterest]]; trang này dành cho Ghim vốn đã là video."
+      },
+      {
+        "q": "Chuyển MP4 sang MP3 thì sao?",
+        "a": "Dùng [[pinterest-audio-downloader|tải nhạc Pinterest]]: với cùng link Ghim, trình duyệt của bạn tạo file MP3 từ tiếng của video."
+      },
+      {
+        "q": "Dùng trên iPhone, Android được không?",
+        "a": "Được. Mở pintdownload.app bằng Safari hoặc Chrome, dán link `pin.it` mà app sao chép rồi tải MP4. Trên iPhone, file nằm trong app **Tệp**; chọn **Chia sẻ** › **Lưu video** để đưa vào app Ảnh."
+      },
+      {
+        "q": "File MP4 có tiếng không?",
+        "a": "Có, nếu video trên Pinterest có tiếng. Đó là cùng một video bạn xem trong app, kèm âm thanh của nó."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Chuyển video Pinterest sang MP4 — PintDownload",
+    "howToName": "Cách chuyển video Pinterest sang MP4",
+    "howToDescription": "Dán link một Ghim video công khai để lấy file MP4 mà Pinterest đăng, không mã hóa lại."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. 'video gốc' in the fixed description means the creator's own video (with or without sound), not a resolution claim."
+  }
+}

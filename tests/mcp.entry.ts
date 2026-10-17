@@ -12,7 +12,8 @@ import { ATTRIBUTION, UNTRUSTED_NOTICE, safePinimgUrl, safePinterestUrl, untrust
 import { MODERN_PROTOCOL_VERSIONS } from '../src/lib/mcp/http';
 import { clientKey } from '../src/lib/mcp/rate-limit';
 import { MAX_UPSTREAM_CALLS_PER_REQUEST } from '../src/lib/mcp/tools';
-import { extractPinterest, isPinterestUrl } from '../src/lib/extract';
+import { PINTEREST_DOMAINS, extractPinterest, isPinterestUrl } from '../src/lib/extract';
+import { classifyPinterestInput, isPinterestLink } from '../src/lib/pinterest-route';
 import {
   BOARD_URL,
   IMAGE_PIN_DATA,
@@ -611,7 +612,7 @@ describe('list_pinterest_profile_pins', () => {
     assert.equal(s.returned, 2);
     assert.equal(s.max_reachable, 200);
     assert.equal(s.has_more, false);
-    assert.equal(s.untrusted_text.profile_title, 'Maker One Studio (maker_one) - Profile');
+    assert.equal(s.untrusted_text.profile_title, 'Maker One Studio');
   });
 });
 
@@ -1171,3 +1172,58 @@ function wrapProfileBoards(extra: { name: string; url: string; pin_count: number
     return res(html, { url });
   };
 }
+
+describe('F2: Pinterest country links (tr., nl., ru., … and country domains)', () => {
+  const COUNTRY_PREFIXES = ['tr', 'nl', 'ru', 'pt', 'mx', 'at', 'ch', 'pl', 'se', 'ar', 'br', 'in', 'uk', 'jp', 'kr', 'id', 'vn', 'th', 'sa', 'ae'];
+  const accepted = [
+    ...COUNTRY_PREFIXES.map((cc) => `https://${cc}.pinterest.com/pin/100000000000000001/`),
+    ...[...PINTEREST_DOMAINS].flatMap((d) => [`https://${d}/pin/1/`, `https://www.${d}/pin/1/`]),
+    'https://tr.pinterest.com/maker_one/cozy-rooms/',
+    'https://nl.pinterest.com/maker_one/',
+    'https://www.pinterest.co.nz/pin/1/',
+    'https://in.pinterest.co.in/pin/1/',
+  ];
+  const rejected = [
+    'https://abc.pinterest.com/pin/1/',
+    'https://tr.www.pinterest.com/pin/1/',
+    'https://t.pinterest.com/pin/1/',
+    'https://tr.pinterest.evil.com/pin/1/',
+    'https://tr-pinterest.com/pin/1/',
+    'https://pinterest.co/pin/1/',
+  ];
+
+  it('the shared extractor accepts every country prefix and verified country domain', () => {
+    for (const url of accepted) assert.equal(isPinterestUrl(url), true, url);
+  });
+
+  it('…and still rejects lookalikes and deeper or longer prefixes', () => {
+    for (const url of rejected) assert.equal(isPinterestUrl(url), false, url);
+  });
+
+  it('DownloaderForm agrees: batch filter and link classifier use the same rule, with or without https://', () => {
+    for (const url of accepted) {
+      assert.equal(isPinterestLink(url), true, url);
+      assert.equal(isPinterestLink(url.replace(/^https:\/\//, '')), true, `no scheme: ${url}`);
+      assert.notEqual(classifyPinterestInput(url), null, `classified: ${url}`);
+    }
+    for (const url of rejected) {
+      assert.equal(isPinterestLink(url), false, url);
+      assert.equal(classifyPinterestInput(url), null, url);
+    }
+    assert.equal(classifyPinterestInput('https://tr.pinterest.com/pin/1/')?.type, 'pin');
+    assert.equal(classifyPinterestInput('https://nl.pinterest.com/maker_one/cozy-rooms/')?.type, 'board');
+    assert.equal(classifyPinterestInput('https://ru.pinterest.com/maker_one/')?.type, 'profile');
+  });
+
+  it('/api/extract-style extraction of a tr. pin link returns the pin (was "not a Pinterest link" before)', async () => {
+    const trUrl = 'https://tr.pinterest.com/pin/100000000000000001/';
+    const stubbed = makeFetch((url, init) => {
+      if (url === trUrl) return res('<html><head></head><body></body></html>', { url: trUrl });
+      return route('07_pinresource_image')(url, init);
+    });
+    const outcome = await extractPinterest({ url: trUrl }, { fetchImpl: stubbed.fetch });
+    assert.equal(outcome.ok, true, JSON.stringify(outcome).slice(0, 300));
+    assert.equal((outcome as any).body.pin_id, '100000000000000001');
+    assert.ok(stubbed.calls.every((u) => new URL(u).hostname.endsWith('pinterest.com')), stubbed.calls.join('\n'));
+  });
+});

@@ -1,0 +1,130 @@
+{
+  "pageId": "how-to-download-pinterest-video-on-laptop",
+  "locale": "es",
+  "meta": {
+    "title": "Cómo descargar videos de Pinterest en PC, computadora o Mac",
+    "description": "Descarga videos de Pinterest en tu computadora con Windows, Mac o Chromebook: copia el enlace del pin, pégalo y guarda el MP4 en Descargas. Gratis."
+  },
+  "keywords": {
+    "primary": "cómo descargar videos de Pinterest en PC",
+    "secondary": [
+      "cómo descargar videos de Pinterest en computadora",
+      "cómo descargar videos de Pinterest en el ordenador",
+      "descargar videos de Pinterest en Mac",
+      "cómo descargar un video de Pinterest en laptop",
+      "por qué no puedo descargar videos de Pinterest en mi PC",
+      "descargar videos de Pinterest en Chromebook"
+    ]
+  },
+  "nav": {
+    "label": "Descargar en PC",
+    "short": "PC",
+    "card": {
+      "title": "Videos en la PC",
+      "blurb": "Windows, Mac y Chromebook, con atajos de teclado y un marcador de un clic.",
+      "badge": "PC"
+    }
+  },
+  "hero": {
+    "h1": "Descargar videos de Pinterest en PC",
+    "lede": "En la computadora es todavía más rápido: copia la dirección del pin, pégala con **Ctrl + V** y guarda el MP4 en **Descargas**. Para Windows, Mac y Chromebook."
+  },
+  "intro": [
+    "Sirve en cualquier computadora u ordenador con navegador: PC con Windows, Mac, Chromebook o laptop (portátil). No hay programa que instalar ni extensión que agregar.",
+    "¿Lo descargas para verlo en el celular? Cuando aparezca el resultado, el botón **Enviar al celular** muestra un código QR para abrirlo en tu teléfono."
+  ],
+  "sections": [
+    {
+      "h2": "Copiar el enlace en la computadora",
+      "paragraphs": [
+        "Abre el pin en pinterest.com y copia la dirección de la barra del navegador: tiene que llevar `/pin/` y un número. También puedes usar el botón **Compartir** del pin y elegir **Copiar enlace**.",
+        "Con el teclado es aún más rápido: **Ctrl + L** y luego **Ctrl + C** en Windows y Chromebook, o **Cmd + L** y **Cmd + C** en Mac."
+      ]
+    },
+    {
+      "h2": "Dónde queda el archivo",
+      "paragraphs": [
+        "En la carpeta **Descargas** de tu usuario, salvo que hayas elegido otra en el navegador. En Windows, **Ctrl + J** abre la lista de descargas de Chrome y Edge; en Safari para Mac, **Cmd + Opción + L**."
+      ]
+    },
+    {
+      "h2": "Por qué no puedo descargar videos de Pinterest en mi PC",
+      "paragraphs": [
+        "En la computadora, el error más común es copiar la dirección equivocada:"
+      ],
+      "list": [
+        "**Copiaste la dirección del tablero o de la página de inicio.** Haz clic en el video para abrir el pin y copia esa dirección.",
+        "**El pin no es un video, o es privado.** Pégalo en el [[pinterest-pin-downloader|descargador de pines]] para saber qué tipo de pin es.",
+        "**El navegador está desactualizado.** Actualiza Chrome, Edge, Firefox o Safari y vuelve a intentarlo."
+      ]
+    },
+    {
+      "h2": "Un atajo de un clic",
+      "paragraphs": [
+        "Si descargas seguido, agrega el marcador de PintDownload a la barra de favoritos (o de marcadores): con un clic sobre cualquier pin se abre PintDownload con el enlace ya pegado. Abajo tienes el botón, y más detalles en [[pinterest-video-downloader-chrome|descargar videos de Pinterest en Chrome]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar un video de Pinterest en la computadora",
+    "intro": "Tres pasos en Windows, Mac o Chromebook.",
+    "exampleLabel": "Enlace de un pin de video",
+    "items": [
+      {
+        "title": "Copia la dirección del pin",
+        "body": "Abre el video en pinterest.com y copia la URL de la barra del navegador (la que tiene `/pin/`)."
+      },
+      {
+        "title": "Pégala en PintDownload",
+        "body": "Abre pintdownload.app en otra pestaña, pega con **Ctrl + V** (o **Cmd + V**) y pulsa **Enter**."
+      },
+      {
+        "title": "Guarda el MP4",
+        "body": "Haz clic en **Descargar MP4**. El archivo queda en **Descargas**, listo para abrirlo con tu reproductor."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre la PC",
+    "items": [
+      {
+        "q": "¿Cómo descargo videos de Pinterest en Windows o Mac?",
+        "a": "Copia el link del pin desde la barra del navegador, pégalo en PintDownload y descarga el MP4. Funciona en Chrome, Edge, Firefox y Safari, sin instalar nada."
+      },
+      {
+        "q": "¿Se descarga en 720p o en 1080p desde la computadora?",
+        "a": "En la que Pinterest publica para ese pin: normalmente 720p, y 1080p cuando el pin la tiene. Si hay varias calidades, PintDownload te deja elegir."
+      },
+      {
+        "q": "¿Funciona en Chromebook?",
+        "a": "Sí. Es una página web, así que funciona en ChromeOS igual que en Windows o Mac. El MP4 se guarda en **Descargas**, dentro de la app Archivos."
+      },
+      {
+        "q": "¿Por qué no puedo descargar videos de Pinterest en mi PC?",
+        "a": "Casi siempre se copió la dirección de un tablero o de la página de inicio en lugar de la del pin. Abre el video y copia la URL que contiene `/pin/`. Si aun así falla, el pin puede ser privado o no ser un video."
+      },
+      {
+        "q": "¿Dónde queda el archivo?",
+        "a": "En la carpeta **Descargas**, salvo que tu navegador guarde en otra. Con **Ctrl + J** (Chrome y Edge en Windows) ves la lista de descargas."
+      },
+      {
+        "q": "¿Hay un atajo de un clic?",
+        "a": "Sí, el marcador de PintDownload. Arrástralo a la barra de favoritos y haz clic en él cuando estés en un pin: se abre PintDownload con el enlace pegado. No es una extensión, así que no pide permisos."
+      }
+    ]
+  },
+  "related": {
+    "title": "Más guías de descarga"
+  },
+  "schema": {
+    "appName": "Descargar videos de Pinterest en PC — PintDownload",
+    "howToName": "Cómo descargar videos de Pinterest en la computadora",
+    "howToDescription": "Copia la dirección de un pin de video en el navegador, pégala en PintDownload y guarda el MP4 en Descargas."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16. Verificar: tecla Opción en macOS en español; ruta Descargas en Archivos de ChromeOS",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: barra de favoritos (Chrome es-419); botón real Descargar MP4; FAQ 720p/1080p respondía \"Sí\" a una pregunta disyuntiva (ahora responde con la calidad); quitado el calco \"extraer el video\""
+  }
+}

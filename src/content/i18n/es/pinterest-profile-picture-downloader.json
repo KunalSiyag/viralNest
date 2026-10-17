@@ -1,0 +1,143 @@
+{
+  "pageId": "pinterest-profile-picture-downloader",
+  "locale": "es",
+  "meta": {
+    "title": "Descargar foto de perfil de Pinterest y verla en grande",
+    "description": "Mira en grande y descarga la foto de perfil de una cuenta pública de Pinterest: pega el enlace del perfil y guarda la imagen más grande disponible."
+  },
+  "keywords": {
+    "primary": "descargar foto de perfil de Pinterest",
+    "secondary": [
+      "ver foto de perfil de Pinterest en grande",
+      "descargar foto de perfil de Pinterest en HD",
+      "cómo descargar mi foto de perfil de Pinterest",
+      "descargar foto perfil Pinterest PC",
+      "Pinterest profile picture downloader"
+    ]
+  },
+  "nav": {
+    "label": "Descargar foto de perfil",
+    "short": "Avatar",
+    "card": {
+      "title": "Foto de perfil",
+      "blurb": "Mira en grande y guarda la foto de perfil de una cuenta pública.",
+      "badge": "Foto"
+    }
+  },
+  "hero": {
+    "h1": "Descargar foto de perfil de Pinterest",
+    "lede": "Pega el enlace de un **perfil público** y mira su foto de perfil **en grande**, no en el circulito de la app. Después, guárdala con un toque."
+  },
+  "intro": [
+    "En Pinterest la foto de perfil se ve pequeña y recortada en círculo. Esta página busca la versión más grande que Pinterest publica de esa foto, te la muestra completa y te deja descargarla.",
+    "¿Buscabas **ideas** para tu foto de perfil (aesthetic, anime, para WhatsApp)? Esas se encuentran con el buscador de Pinterest. Aquí descargas la foto de perfil de una cuenta concreta."
+  ],
+  "features": [
+    {
+      "h": "En grande y completa",
+      "p": "Ves la imagen entera en el tamaño más grande que Pinterest publica, no el círculo pequeño del perfil."
+    },
+    {
+      "h": "Solo la foto, no los pines",
+      "p": "Para guardar los pines de la cuenta en un ZIP está el [[pinterest-profile-downloader|descargador de perfiles]]."
+    },
+    {
+      "h": "Sin cuenta",
+      "p": "Pega el enlace del perfil y listo. No inicias sesión en Pinterest ni instalas nada."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "¿De qué tamaño es la foto de perfil?",
+      "paragraphs": [
+        "Depende de la imagen que subió la cuenta. Muchas fotos de perfil de Pinterest rondan los **600 × 600 px**. PintDownload pide la versión más grande que Pinterest publica y no la agranda ni le aplica filtros para que parezca HD: si la foto es pequeña, la recibes pequeña."
+      ]
+    },
+    {
+      "h2": "Foto de perfil o perfil completo",
+      "paragraphs": [
+        "Las dos herramientas usan el mismo enlace (`pinterest.com/usuario/`), pero guardan cosas distintas:"
+      ],
+      "list": [
+        "**Foto de perfil**: una sola imagen, la de la cuenta. Es esta página.",
+        "**Perfil completo**: los pines públicos de la cuenta en un ZIP, con el [[pinterest-profile-downloader|descargador de perfiles de Pinterest]]."
+      ]
+    },
+    {
+      "h2": "Recupera tu propia foto de perfil",
+      "paragraphs": [
+        "Si ya no tienes la foto que usas en Pinterest, pega el enlace de tu perfil y descárgala. Para copiarlo, abre tu perfil en la app, toca **Compartir** y elige **Copiar enlace**; en la web, copia la dirección de tu perfil."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar la foto de perfil de Pinterest",
+    "intro": "Tres pasos con el enlace del perfil, no con el de un pin.",
+    "exampleLabel": "Ejemplo de enlace de perfil",
+    "items": [
+      {
+        "title": "Copia el enlace del perfil",
+        "body": "Abre la cuenta en Pinterest y copia su dirección (`pinterest.com/usuario/`), o usa **Compartir** › **Copiar enlace** en la app."
+      },
+      {
+        "title": "Pégalo y toca Ver foto de perfil",
+        "body": "Pega el enlace en el recuadro de arriba y toca **Ver foto de perfil**. La foto aparece en grande."
+      },
+      {
+        "title": "Guárdala",
+        "body": "Descarga la imagen o ábrela en tamaño completo en otra pestaña."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre la foto de perfil",
+    "items": [
+      {
+        "q": "¿Cómo veo en grande la foto de perfil de alguien en Pinterest?",
+        "a": "Copia el link de su perfil, pégalo arriba y toca **Ver foto de perfil**. Aparece completa, en el tamaño más grande que Pinterest publica, y puedes abrirla en otra pestaña."
+      },
+      {
+        "q": "¿Cómo descargo mi propia foto de perfil de Pinterest?",
+        "a": "Igual que la de cualquier cuenta: copia el enlace de tu perfil (en la app, **Compartir** › **Copiar enlace**) y pégalo aquí. Funciona si tu perfil es público."
+      },
+      {
+        "q": "¿En qué resolución se descarga?",
+        "a": "En la más grande que Pinterest publica para esa cuenta, que suele rondar los 600 × 600 px. Si la persona subió una foto pequeña, no existe una versión más grande."
+      },
+      {
+        "q": "¿Es lo mismo que descargar el perfil en ZIP?",
+        "a": "No. Aquí guardas solo la foto de perfil. Para los pines de la cuenta, usa el [[pinterest-profile-downloader|descargador de perfiles]]."
+      },
+      {
+        "q": "¿Funciona con cuentas privadas?",
+        "a": "No. Si el perfil es privado o hay que iniciar sesión para verlo, su foto no es pública y no se puede descargar."
+      },
+      {
+        "q": "¿En qué formato se guarda?",
+        "a": "Normalmente en JPG, sin marca de agua ni marcos añadidos por nosotros."
+      },
+      {
+        "q": "¿Necesito cuenta o app?",
+        "a": "No. Solo el enlace del perfil y un navegador, en el celular o en la PC."
+      },
+      {
+        "q": "¿Puedo usar la foto de perfil de otra persona?",
+        "a": "Verla o guardarla como referencia es una cosa; ponerla como tu foto de perfil o publicarla es otra. Es la imagen de alguien más: pídele permiso."
+      }
+    ]
+  },
+  "related": {
+    "title": "Herramientas para perfiles y pines"
+  },
+  "schema": {
+    "appName": "Descargador de fotos de perfil de Pinterest — PintDownload",
+    "howToName": "Cómo descargar la foto de perfil de una cuenta de Pinterest",
+    "howToDescription": "Pega el enlace de un perfil público de Pinterest y guarda su foto de perfil en el tamaño más grande disponible."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16. Verificar en el celular: Compartir › Copiar enlace desde tu propio perfil en la app",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: schema.appName como sustantivo (Descargador de fotos de perfil), como el resto"
+  }
+}

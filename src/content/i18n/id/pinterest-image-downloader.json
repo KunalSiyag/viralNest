@@ -1,0 +1,147 @@
+{
+  "pageId": "pinterest-image-downloader",
+  "locale": "id",
+  "meta": {
+    "title": "Download Foto Pinterest HD — Ukuran Terbesar, Gratis",
+    "description": "Download foto dan gambar Pinterest dalam ukuran terbesar yang tersedia, bukan thumbnail yang pecah. Cocok untuk wallpaper. Gratis, tanpa login."
+  },
+  "keywords": {
+    "primary": "download foto pinterest",
+    "secondary": [
+      "download gambar pinterest",
+      "download foto pinterest hd",
+      "unduh foto pinterest",
+      "download gambar pinterest hd",
+      "download foto pinterest tanpa watermark",
+      "cara download foto pinterest hd"
+    ]
+  },
+  "nav": {
+    "label": "Download Foto Pinterest",
+    "short": "Foto",
+    "card": {
+      "title": "Download Foto",
+      "blurb": "Foto dan gambar dalam ukuran terbesar yang dipublikasikan Pinterest.",
+      "badge": "Foto"
+    }
+  },
+  "hero": {
+    "h1": "Download Foto Pinterest",
+    "lede": "Simpan foto dan gambar Pinterest dalam **ukuran terbesar yang tersedia**, bukan thumbnail yang pecah. Gratis, tanpa login."
+  },
+  "intro": [
+    "Tempel link **Pin foto**, lalu unduh gambarnya dalam resolusi publik terbesar: lebarnya hingga **1200 px**, jauh lebih tajam daripada thumbnail di beranda atau hasil screenshot.",
+    "Bisa pakai link `/pin/` atau `pin.it`. Hanya Pin publik, tanpa perlu login ke Pinterest. Foto dan gambar di sini maksudnya sama: semua Pin yang berupa gambar diam."
+  ],
+  "features": [
+    {
+      "h": "Lebih besar dari thumbnail",
+      "p": "Beranda Pinterest menampilkan versi kecil. Di sini kami meminta versi terbesar yang dipublikasikan untuk Pin itu."
+    },
+    {
+      "h": "Potong untuk media sosial",
+      "p": "Setelah fotonya terbaca, kamu bisa memotongnya jadi 1:1, 4:5, 9:16, atau 16:9 langsung di browser."
+    },
+    {
+      "h": "Semua slide carousel",
+      "p": "Pin carousel berisi beberapa foto? Semuanya ditampilkan, bisa disimpan satu per satu atau sekaligus dalam ZIP."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Kenapa foto Pinterest yang didownload pecah?",
+      "paragraphs": [
+        "Biasanya karena yang tersimpan adalah thumbnail, yaitu gambar kecil yang dipakai Pinterest di beranda, atau screenshot dari layar HP. PintDownload meminta versi terbesar yang dipublikasikan Pinterest untuk Pin itu: umumnya selebar **1200 px**, dan lebih kecil kalau Pin-nya memang hanya ada dalam ukuran kecil.",
+        "File yang diunggah kreatornya tidak dibuka untuk publik oleh Pinterest, jadi tidak ada situs yang bisa memberikannya, walaupun ada yang menjanjikan. Kami juga tidak memperbesar foto atau “mempertajamnya” dengan AI supaya terlihat HD."
+      ]
+    },
+    {
+      "h2": "Untuk wallpaper, cek resolusinya dulu",
+      "paragraphs": [
+        "Banyak yang mencari foto Pinterest untuk wallpaper HP. Foto selebar 1200 px biasanya cukup tajam di layar HP, tapi bisa terlihat pecah kalau dipasang di monitor besar. Setelah diunduh, cek ukurannya di detail file (di galeri atau app File) sebelum memasangnya.",
+        "Kalau fotonya akan dipakai di konten yang kamu unggah atau jual, minta izin atau cantumkan nama kreatornya."
+      ]
+    },
+    {
+      "h2": "“Unduh gambar” di aplikasi atau PintDownload?",
+      "paragraphs": [
+        "Aplikasi Pinterest punya opsinya sendiri: buka Pin, ketuk ikon titik tiga, lalu pilih **Unduh gambar**, dan fotonya masuk ke galeri. Untuk itu kamu perlu aplikasi dan akun, dan menurut pusat bantuan Pinterest tidak semua Pin bisa diunduh.",
+        "PintDownload berguna kalau opsi itu tidak muncul, kalau kamu sedang di laptop tanpa aplikasi, atau kalau Pin-nya carousel dan kamu mau semua slide sekaligus."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara download foto Pinterest",
+    "intro": "Untuk foto diam. Kalau Pin-nya bisa diputar, itu video: pakai [[pinterest-video-downloader|download video Pinterest]].",
+    "exampleLabel": "Contoh link Pin foto",
+    "items": [
+      {
+        "title": "Buka Pin fotonya",
+        "body": "Buka Pin dalam tampilan besar, di aplikasi atau di pinterest.com, dan pastikan itu foto, bukan video."
+      },
+      {
+        "title": "Salin tautannya",
+        "body": "**Bagikan** › **Salin tautan** di aplikasi, atau salin alamat browser yang berisi `/pin/`."
+      },
+      {
+        "title": "Tempel, lalu unduh",
+        "body": "Tempel tautan di kotak atas dan ketuk **Unduh foto**. Beberapa detik kemudian fotonya muncul di struk, siap disimpan."
+      },
+      {
+        "title": "Simpan ke perangkat",
+        "body": "Di laptop dan Android, file masuk ke folder **Unduhan**. Di iPhone, Safari menyimpannya di app **File**: buka fotonya, ketuk **Bagikan**, lalu pilih **Simpan Gambar** agar masuk ke **Foto**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab download foto Pinterest",
+    "items": [
+      {
+        "q": "Kenapa foto Pinterest yang saya download tidak HD atau pecah?",
+        "a": "Kemungkinan besar yang tersimpan adalah thumbnail atau screenshot. Tempel tautan Pin-nya di sini untuk mendapatkan ukuran terbesar yang dipublikasikan Pinterest, umumnya selebar 1200 px."
+      },
+      {
+        "q": "Yang saya dapat ukuran penuh atau cuma thumbnail?",
+        "a": "Ukuran terbesar yang dipublikasikan Pinterest untuk foto itu, bukan thumbnail di beranda. File yang diunggah kreatornya tidak dibuka untuk publik oleh Pinterest, jadi tidak ada yang bisa memberikannya."
+      },
+      {
+        "q": "Bisa download foto Pinterest tanpa akun atau login?",
+        "a": "Bisa. Salin tautan Pin (link yang dikirim teman lewat WhatsApp juga bisa), tempel di atas, lalu unduh. Tidak perlu login ke Pinterest dan tidak perlu daftar di sini."
+      },
+      {
+        "q": "Bisa untuk wallpaper 4K?",
+        "a": "Tidak. Ukuran terbesar yang dipublikasikan Pinterest umumnya selebar 1200 px, jauh di bawah 4K. Kami tidak memperbesar foto supaya terlihat 4K, jadi hati-hati dengan situs yang menjanjikannya. Untuk wallpaper HP, 1200 px biasanya sudah cukup."
+      },
+      {
+        "q": "Apa bedanya dengan “Unduh gambar” di aplikasi Pinterest?",
+        "a": "**Unduh gambar** ada di menu titik tiga, butuh aplikasi dan akun, dan tidak muncul di semua Pin. PintDownload jalan di browser mana pun tanpa akun, dan mengambil semua slide Pin carousel sekaligus."
+      },
+      {
+        "q": "Bisa simpan semua foto di Pin carousel?",
+        "a": "Bisa. Halaman ini menampilkan semua slide-nya, dan kamu bisa menyimpannya satu per satu atau sekaligus dalam ZIP. Untuk Pin yang isinya campuran, [[pinterest-pin-downloader|download Pin Pinterest]] juga bisa dipakai."
+      },
+      {
+        "q": "Kenapa Pin video gagal di halaman ini?",
+        "a": "Karena halaman ini mencari foto diam. Kalau kamu menempelkan Pin video, formulirnya memberi tahu dan beralih ke download video supaya kamu mendapat MP4-nya. Bisa juga langsung buka [[pinterest-video-downloader|download video Pinterest]]."
+      },
+      {
+        "q": "Fotonya disimpan dalam format apa?",
+        "a": "Biasanya JPG, format yang dipakai Pinterest untuk sebagian besar foto. Nama file-nya terlihat sebelum kamu mengunduh."
+      }
+    ]
+  },
+  "related": {
+    "title": "Alat lain untuk Pinterest"
+  },
+  "schema": {
+    "appName": "Download Foto Pinterest — PintDownload",
+    "howToName": "Cara download foto Pinterest dalam ukuran terbesar",
+    "howToDescription": "Langkah menyimpan foto atau gambar dari Pin publik Pinterest dalam ukuran terbesar yang dipublikasikan."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16. Lede diganti dari plan: “resolusi asli” melanggar aturan kejujuran. Cek di perangkat: “Simpan Gambar” dan app “File” di iOS bahasa Indonesia.",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "pageId": "pinterest-pin-downloader",
+  "locale": "nl",
+  "meta": {
+    "title": "Pinterest pin downloaden — foto, video of GIF gratis",
+    "description": "Download één Pinterest-pin: plak de pin- of pin.it-link en sla de foto, MP4-video, GIF of alle afbeeldingen uit een carrousel op. Gratis, zonder account."
+  },
+  "keywords": {
+    "primary": "pinterest pin downloaden",
+    "secondary": [
+      "pinterest pins downloaden",
+      "pin downloaden",
+      "pinterest pin downloader",
+      "pin.it link",
+      "pinterest carrousel downloaden"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest pin downloaden",
+    "short": "Pins",
+    "card": {
+      "title": "Pin downloaden",
+      "blurb": "Eén pin in elk formaat: foto, video, GIF of alle afbeeldingen van een carrousel.",
+      "badge": "Pin"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest pin downloaden",
+    "lede": "Eén pin, elk formaat: **foto**, **video**, **GIF** of alle afbeeldingen van een **carrousel**. Gratis en zonder account."
+  },
+  "intro": [
+    "Plak de link van **één openbare pin** en download wat erin zit: de foto in de grootste versie die Pinterest publiceert, de MP4, de GIF of **alle afbeeldingen van een carrousel**. Je hoeft niet te weten wat voor pin het is; dat zoekt PintDownload zelf uit.",
+    "Geschikt voor adressen met `/pin/` en voor korte pin.it-links. Bord- en profiellinks horen bij een andere tool."
+  ],
+  "features": [
+    {
+      "h": "Alleen pinlinks",
+      "p": "Voor adressen met `/pin/…` en voor pin.it-links, niet voor borden of profielen."
+    },
+    {
+      "h": "Hele carrousels",
+      "p": "Een pin met meerdere afbeeldingen geeft je ze allemaal, niet alleen de eerste."
+    },
+    {
+      "h": "Foto, video of GIF",
+      "p": "Foto’s tot 1200 px breed; video meestal in 720p, en in 1080p als de pin dat heeft."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Een pin downloaden is iets anders dan bewaren",
+      "paragraphs": [
+        "Tik je op Pinterest op **Bewaren**, dan zet je de pin op een van je borden. Het bestand blijft op Pinterest staan, en verdwijnt de pin daar, dan ben jij hem ook kwijt. **Downloaden** zet het bestand zelf op je telefoon of computer, zodat je het zonder internet hebt en in andere apps kunt gebruiken."
+      ]
+    },
+    {
+      "h2": "Wanneer gebruik je deze pagina?",
+      "paragraphs": [
+        "Kies deze pagina als je één ding van Pinterest wilt hebben:"
+      ],
+      "list": [
+        "**Eén** recept, outfit, idee of video.",
+        "Een **carrousel** waarvan je alle afbeeldingen offline wilt hebben.",
+        "Een pin waarvan je niet zeker weet of het een foto, GIF of video is.",
+        "Niet voor een heel bord: daarvoor is er [[pinterest-board-downloader|Pinterest bord downloaden]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Zo download je een Pinterest-pin",
+    "intro": "Gebruik dit als je de link van één pin hebt. Voor een heel bord kies je hieronder een andere tool.",
+    "exampleLabel": "Voorbeeld van een pinlink",
+    "items": [
+      {
+        "title": "Open de pin op Pinterest",
+        "body": "Open in de app of op de website precies de pin die je wilt, niet het overzicht van een bord."
+      },
+      {
+        "title": "Kopieer de link van de pin",
+        "body": "Tik op **Delen** › **Link kopiëren**, of kopieer het adres uit je browser als er `/pin/` in staat."
+      },
+      {
+        "title": "Plak hem in PintDownload",
+        "body": "Plak de pinlink of pin.it-link in het vak hierboven en tik op **Pin downloaden**."
+      },
+      {
+        "title": "Download het bestand",
+        "body": "Sla de foto of de MP4 op. Bij een carrousel download je elke afbeelding los, of alles in één keer als ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Vragen over pins downloaden",
+    "items": [
+      {
+        "q": "Wat is een pin.it-link, en is die veilig?",
+        "a": "Een pin.it-link is de korte link die Pinterest zelf maakt als je in de app op **Link kopiëren** tikt. Hij stuurt je door naar de gewone pin op pinterest.com, en PintDownload accepteert hem zoals hij is. Twijfel je over een korte link die je van iemand anders kreeg, open hem dan eerst in de Pinterest-app en kijk of je bij een pin uitkomt."
+      },
+      {
+        "q": "Hoe kopieer ik de link van een pin?",
+        "a": "In de app open je de pin, tik je op het deelpictogram (**Delen**) en dan op **Link kopiëren**. Op een computer staat de link in de adresbalk zodra je de pin hebt geopend; daar zit `/pin/` in."
+      },
+      {
+        "q": "Kan ik alle foto’s uit een carrousel downloaden?",
+        "a": "Ja. Pinterest noemt de afbeeldingen in een carrousel **kaarten**. PintDownload geeft je ze allemaal, niet alleen de eerste, zodat je ze los of samen als ZIP kunt downloaden."
+      },
+      {
+        "q": "Werkt het ook voor video’s en GIF’s?",
+        "a": "Ja. Een openbare videopin krijg je als MP4 en een GIF blijft een bewegende GIF. Privépins en verwijderde pins werken niet."
+      },
+      {
+        "q": "Waarom werkt mijn bord- of profiellink hier niet?",
+        "a": "Deze pagina is voor één pin. Een bordlink plak je bij [[pinterest-board-downloader|Pinterest bord downloaden]]; een profiellink werkt in de downloader op de [[home|startpagina]]. Plak je er toch een, dan schakelt het formulier zelf over."
+      },
+      {
+        "q": "Is het gratis?",
+        "a": "Ja, gratis en zonder account. Je kunt alleen openbare pins downloaden."
+      }
+    ]
+  },
+  "related": {
+    "title": "Liever een bord, foto of video?"
+  },
+  "schema": {
+    "appName": "Pinterest pin downloaden — PintDownload",
+    "howToName": "Een Pinterest-pin downloaden",
+    "howToDescription": "Stappen om één openbare Pinterest-pin te downloaden als foto, video, GIF of carrousel."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-nl",
+    "nativeReviewer": "review-nl (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, je register, glossary (pins, bord, videopin, afhaalbon, omslag), search vocabulary, honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/nl: Afbeelding downloaden (desktop), Download afbeelding (app), drie puntjes, Delen › Link kopiëren, deelpictogram, Bewaren, Privébord. OS labels (Bewaar video/afbeelding, Bestanden, Mijn bestanden, Geanimeerd, album Download) are the standard Dutch iOS/Android names, not checked on a device."
+  }
+}

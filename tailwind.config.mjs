@@ -48,8 +48,9 @@ export default {
           'Arial',
           'sans-serif',
         ],
-        // Ticket printing gothic: headlines, serials, stamps
-        display: ['"Big Shoulders Display"', '"Arial Narrow"', 'ui-sans-serif', 'sans-serif'],
+        // Ticket printing gothic: headlines, serials, stamps. The stack lives in
+        // --font-display (src/styles/ticket.css) so each script's face switches by :lang().
+        display: ['var(--font-display)'],
         serif: ['Charter', '"Bitstream Charter"', '"Sitka Text"', 'Cambria', 'Georgia', 'serif'],
       },
       fontSize: {

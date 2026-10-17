@@ -1,0 +1,126 @@
+{
+  "pageId": "pinterest-carousel-downloader",
+  "locale": "es",
+  "meta": {
+    "title": "Descargar carrusel de Pinterest: todas las fotos del pin",
+    "description": "Descarga todas las imágenes de un carrusel de Pinterest de una vez: pega el enlace del pin y guarda cada foto por separado o todas juntas en un ZIP."
+  },
+  "keywords": {
+    "primary": "descargar carrusel de Pinterest",
+    "secondary": [
+      "descargar carrusel de Pinterest gratis",
+      "descargar carrusel de Pinterest online",
+      "descargar todas las imágenes de un pin",
+      "carrusel de pines de Pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Descargar carruseles",
+    "short": "Carruseles",
+    "card": {
+      "title": "Descargar carruseles",
+      "blurb": "Todas las fotos de un pin con varias imágenes, sueltas o en un ZIP.",
+      "badge": "Carrusel"
+    }
+  },
+  "hero": {
+    "h1": "Descargar carrusel de Pinterest",
+    "lede": "Un pin con varias fotos, **todas de una vez**: guárdalas una por una o juntas en un **ZIP**, en el tamaño más grande que Pinterest publica."
+  },
+  "intro": [
+    "Un carrusel es un pin con varias imágenes que pasas deslizando. Con una captura, o con una herramienta que solo lee la portada, te quedas con la primera foto. Aquí recibes todas.",
+    "Ojo: si buscabas **ideas para hacer carruseles** de Instagram, eso se encuentra con el buscador de Pinterest. Esta página descarga carruseles que ya están publicados en Pinterest."
+  ],
+  "features": [
+    {
+      "h": "Todas las fotos",
+      "p": "El resultado lista cada foto del carrusel, no solo la portada."
+    },
+    {
+      "h": "Sueltas o en ZIP",
+      "p": "Descarga la foto que quieras o todas juntas en un solo archivo ZIP."
+    },
+    {
+      "h": "El tamaño más grande",
+      "p": "Cada foto llega en el tamaño más grande que Pinterest publica, normalmente hasta 1200 px de ancho."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Cómo saber si un pin es un carrusel",
+      "paragraphs": [
+        "En la app, un carrusel muestra unos **puntos** debajo de la imagen y puedes deslizar hacia los lados para ver la siguiente foto; en la computadora aparecen flechas a los costados. Si solo hay una imagen, es un pin normal y te sirve el [[pinterest-image-downloader|descargador de imágenes]]."
+      ]
+    },
+    {
+      "h2": "Carruseles con fotos y videos",
+      "paragraphs": [
+        "Algunos carruseles mezclan fotos y videos. Cada elemento se descarga en su formato: las fotos como imagen y los videos como MP4. Lo mismo pasa con los antiguos Idea Pins de varias páginas, que Pinterest convirtió en pines normales."
+      ]
+    },
+    {
+      "h2": "Carruseles guardados en un tablero",
+      "paragraphs": [
+        "Si descargas un [[pinterest-board-downloader|tablero completo]], el ZIP trae solo la portada de cada carrusel. Para tener todas las fotos de uno de ellos, abre ese pin, copia su enlace y pégalo en esta página."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar todas las fotos de un carrusel",
+    "intro": "Tres pasos con el enlace del pin. Funciona en el celular y en la PC.",
+    "exampleLabel": "Enlace de un carrusel",
+    "items": [
+      {
+        "title": "Copia el enlace del carrusel",
+        "body": "Abre el pin y toca **Compartir** › **Copiar enlace**, o copia la dirección con `/pin/` en la computadora."
+      },
+      {
+        "title": "Pégalo arriba",
+        "body": "Pega el enlace y toca **Descargar imagen**. En el resultado verás todas las fotos del carrusel."
+      },
+      {
+        "title": "Guarda una o todas",
+        "body": "Descarga la foto que quieras o guárdalas todas juntas en un ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre carruseles",
+    "items": [
+      {
+        "q": "¿Puedo descargar todas las fotos del carrusel de una vez?",
+        "a": "Sí. Después de pegar el link, guárdalas todas juntas en un ZIP con un solo toque, o descárgalas por separado."
+      },
+      {
+        "q": "¿Cómo sé si un pin es un carrusel?",
+        "a": "Tiene varios puntos debajo de la imagen y puedes deslizar para ver más fotos. Si pegas el enlace en otra herramienta de PintDownload, te avisamos de que es un carrusel."
+      },
+      {
+        "q": "¿Las imágenes salen en la mejor resolución disponible?",
+        "a": "Sí, en la mayor que Pinterest publica para cada foto, normalmente hasta 1200 px de ancho. Es más nítida que una captura, aunque no es el archivo que subió el creador, que Pinterest no hace público."
+      },
+      {
+        "q": "¿Qué pasa si el carrusel mezcla fotos y videos?",
+        "a": "Cada elemento conserva su formato: las fotos se descargan como imagen y los videos como MP4."
+      },
+      {
+        "q": "¿Funciona con los Idea Pins?",
+        "a": "Sí. Los Idea Pins ahora son pines normales, y si tienen varias páginas se descargan como un carrusel, con cada foto o video por separado."
+      }
+    ]
+  },
+  "related": {
+    "title": "Más herramientas para fotos"
+  },
+  "schema": {
+    "appName": "Descargador de carruseles de Pinterest — PintDownload",
+    "howToName": "Cómo descargar todas las fotos de un carrusel de Pinterest",
+    "howToDescription": "Pega el enlace de un pin con varias fotos y guárdalas una por una o todas juntas en un ZIP."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16. Verificar en el celular: los puntos debajo de un carrusel en la app",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: sin cambios de texto"
+  }
+}

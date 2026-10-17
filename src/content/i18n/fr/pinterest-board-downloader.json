@@ -1,0 +1,150 @@
+{
+  "pageId": "pinterest-board-downloader",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger un tableau Pinterest entier en ZIP — gratuit",
+    "description": "Collez le lien d’un tableau Pinterest public et téléchargez ses épingles, images et vidéos, dans un seul fichier ZIP. Gratuit, sans compte ni extension."
+  },
+  "keywords": {
+    "primary": "télécharger tableau pinterest",
+    "secondary": [
+      "telecharger tout un tableau pinterest",
+      "télécharger images tableau pinterest",
+      "télécharger toutes les images d'un tableau pinterest",
+      "telecharger board pinterest",
+      "enregistrer tableau pinterest",
+      "télécharger toutes les épingles pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Télécharger un tableau",
+    "short": "Tableaux",
+    "card": {
+      "title": "Télécharger un tableau",
+      "blurb": "Collez le lien d’un tableau public et récupérez ses épingles dans un ZIP.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Télécharger un tableau Pinterest",
+    "lede": "Collez le lien d’un **tableau public** et récupérez ses épingles, photos et vidéos dans **un seul ZIP**."
+  },
+  "intro": [
+    "Téléchargez un **tableau** Pinterest public en une fois : collez son lien, vérifiez la liste des épingles trouvées, puis enregistrez le tout en **ZIP**. Pas besoin d’extension Chrome ni de compte.",
+    "Les liens de la forme `pinterest.com/nom/nom-du-tableau/` sont acceptés. Tableaux publics uniquement."
+  ],
+  "features": [
+    {
+      "h": "Liens de tableau uniquement",
+      "p": "Pour les adresses `/nom/tableau/`. Une épingle seule va sur [[pinterest-pin-downloader|Télécharger une épingle]]."
+    },
+    {
+      "h": "Tout dans un ZIP",
+      "p": "Les épingles publiques du tableau réunies dans un fichier, pour un moodboard hors ligne ou à partager."
+    },
+    {
+      "h": "Photos et vidéos",
+      "p": "Le ZIP contient les images et les vidéos des épingles que la page publique du tableau affiche."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Récupère-t-on vraiment tout le tableau ?",
+      "paragraphs": [
+        "PintDownload lit les épingles publiques que la page du tableau charge, jusqu’à une limite raisonnable. Sur un très grand tableau, les épingles les plus anciennes peuvent manquer. Pour un carrousel, le ZIP garde l’image de couverture ; pour toutes ses images, ouvrez l’épingle dans [[pinterest-pin-downloader|Télécharger une épingle]]."
+      ]
+    },
+    {
+      "h2": "Vérifiez votre lien avant de le coller",
+      "paragraphs": [
+        "Un lien du mauvais type est l’erreur la plus fréquente. Voici comment les reconnaître :"
+      ],
+      "list": [
+        "`pinterest.com/nom/nom-du-tableau/` : c’est un tableau, collez-le ici.",
+        "`pinterest.com/pin/123…/` : c’est une épingle ; utilisez [[pinterest-pin-downloader|Télécharger une épingle]].",
+        "`pinterest.com/nom/` : c’est un profil ; collez-le sur [[home|l’accueil]] pour ses épingles en ZIP, ou sur [[pinterest-profile-picture-downloader|la page photo de profil]] pour son avatar.",
+        "Tableaux secrets et comptes privés : impossible à télécharger."
+      ]
+    },
+    {
+      "h2": "Ouvrir le ZIP sur téléphone",
+      "paragraphs": [
+        "Sur iPhone, le ZIP arrive dans l’app **Fichiers**, dossier **Téléchargements** : touchez-le et iOS crée un dossier avec les photos et les vidéos. Sur Android, ouvrez **Fichiers** (ou **Mes fichiers** sur Samsung), touchez le ZIP puis **Extraire**. Pour voir les photos dans la Galerie, rangez-les ensuite dans un dossier d’images."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment télécharger un tableau Pinterest en ZIP",
+    "intro": "Cette page est réservée aux liens de tableau. Si votre lien contient `/pin/`, utilisez la page épingle.",
+    "exampleLabel": "Exemple de lien de tableau",
+    "items": [
+      {
+        "title": "Ouvrez le tableau public",
+        "body": "Sur Pinterest, ouvrez la page du tableau (la grille d’épingles), pas une épingle en grand."
+      },
+      {
+        "title": "Copiez le lien du tableau",
+        "body": "Copiez-le depuis la barre d’adresse ou via **icône de partage** › **Copier le lien**. Il doit ressembler à `pinterest.com/nom/nom-du-tableau/`."
+      },
+      {
+        "title": "Collez et listez les épingles",
+        "body": "Collez le lien dans le ticket ci-dessus et touchez **Voir les épingles** pour en afficher la liste."
+      },
+      {
+        "title": "Téléchargez le ZIP",
+        "body": "Touchez **Télécharger le ZIP** pour regrouper photos et vidéos dans un fichier, ou téléchargez les épingles une par une."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur les tableaux",
+    "items": [
+      {
+        "q": "Comment télécharger toutes les images d’un tableau Pinterest ?",
+        "a": "Copiez le lien du tableau public, collez-le ci-dessus, vérifiez la liste puis touchez **Télécharger le ZIP**. Vous récupérez les épingles publiques que la page du tableau charge, jusqu’à une limite ; sur un tableau immense, quelques anciennes peuvent manquer."
+      },
+      {
+        "q": "À quoi ressemble le lien d’un tableau ?",
+        "a": "Il a deux parties après le domaine : le nom du compte puis celui du tableau, par exemple `pinterest.com/nom/recettes-d-automne/`. Si vous voyez `/pin/` au milieu, c’est une épingle, pas un tableau."
+      },
+      {
+        "q": "Peut-on télécharger un tableau secret ?",
+        "a": "Non. PintDownload ne lit que les tableaux publics. Les tableaux secrets, les comptes privés et les épingles qui demandent une connexion restent inaccessibles."
+      },
+      {
+        "q": "Faut-il une extension Chrome ?",
+        "a": "Non, tout se fait sur la page. Si vous voulez un clic depuis Pinterest sur ordinateur, le [[pinterest-video-downloader-chrome|favori pour Chrome]] ouvre PintDownload avec le lien déjà collé."
+      },
+      {
+        "q": "Comment télécharger mes propres tableaux ?",
+        "a": "S’ils sont publics, comme n’importe quel autre : copiez le lien et collez-le ici. Pour un tableau secret, rendez-le public un instant dans Pinterest, ou demandez l’export de vos données dans les paramètres de votre compte Pinterest."
+      },
+      {
+        "q": "Comment ouvrir le ZIP sur iPhone ou Android ?",
+        "a": "Sur iPhone, ouvrez l’app **Fichiers**, dossier **Téléchargements**, puis touchez le ZIP pour le décompresser. Sur Android, ouvrez **Fichiers** ou **Mes fichiers**, touchez le ZIP puis **Extraire**."
+      },
+      {
+        "q": "Et toutes les épingles d’un profil ?",
+        "a": "Collez le lien du profil (`pinterest.com/nom/`) sur [[home|l’accueil]] : vous obtenez en ZIP les épingles publiques visibles sur le profil. La page dédiée n’existe qu’en anglais : [[en!:/pinterest-profile-downloader|Pinterest Profile Downloader]] (en anglais)."
+      },
+      {
+        "q": "Le ZIP contient-il toutes les images des carrousels ?",
+        "a": "Le ZIP garde l’image de couverture de chaque épingle. Pour toutes les images d’un carrousel, ouvrez cette épingle dans [[pinterest-pin-downloader|Télécharger une épingle]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outils associés"
+  },
+  "schema": {
+    "appName": "Télécharger un tableau Pinterest — PintDownload",
+    "howToName": "Comment télécharger un tableau Pinterest en ZIP",
+    "howToDescription": "Les étapes pour enregistrer les épingles publiques d’un tableau Pinterest dans un fichier ZIP."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Unverified phone labels: Files by Google / Samsung Mes fichiers « Extraire » on a ZIP; iOS Fichiers unzips on tap.",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. Step 3 no longer repeats \"épingles\" twice."
+  }
+}

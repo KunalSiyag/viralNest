@@ -1,0 +1,135 @@
+{
+  "pageId": "pinterest-pin-downloader",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger une épingle Pinterest — image, vidéo ou GIF",
+    "description": "Collez le lien d’une épingle Pinterest (ou pin.it) et récupérez l’image HD, la vidéo MP4, le GIF ou toutes les images d’un carrousel. Gratuit, sans compte."
+  },
+  "keywords": {
+    "primary": "télécharger épingle pinterest",
+    "secondary": [
+      "telecharger pin pinterest",
+      "pinterest pin downloader",
+      "enregistrer epingle pinterest",
+      "telecharger pinterest lien",
+      "épingle carrousel pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Télécharger une épingle",
+    "short": "Épingles",
+    "card": {
+      "title": "Télécharger une épingle",
+      "blurb": "Image, vidéo, GIF ou toutes les images d’un carrousel, à partir d’un seul lien.",
+      "badge": "Épingle"
+    }
+  },
+  "hero": {
+    "h1": "Télécharger une épingle Pinterest",
+    "lede": "Un seul lien d’épingle pour l’**image HD**, la **vidéo MP4**, le **GIF** ou **toutes les images d’un carrousel**."
+  },
+  "intro": [
+    "Collez le lien d’une **épingle** publique : PintDownload reconnaît s’il s’agit d’une photo, d’une vidéo, d’un GIF ou d’un **carrousel**, et vous propose le bon fichier. Gratuit, sans compte et sans logo ajouté.",
+    "Les liens `pinterest.com/pin/…` et les liens courts `pin.it/…` sont acceptés. Épingles publiques uniquement."
+  ],
+  "features": [
+    {
+      "h": "Liens d’épingle uniquement",
+      "p": "Pour `/pin/…` et `pin.it`. Un tableau entier va sur [[pinterest-board-downloader|Télécharger un tableau]]."
+    },
+    {
+      "h": "Carrousels complets",
+      "p": "Les épingles à plusieurs images renvoient toutes leurs images, pas seulement la couverture."
+    },
+    {
+      "h": "La meilleure version publiée",
+      "p": "Photos jusqu’à 1200 px de large, vidéo souvent en 720p, en 1080p quand l’épingle le propose."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Les épingles carrousel",
+      "paragraphs": [
+        "Une **épingle carrousel** regroupe plusieurs images que l’on fait défiler. Collez son lien ici : chaque image s’affiche et se télécharge séparément, ou toutes ensemble dans un ZIP. Le lien se copie comme pour n’importe quelle épingle, avec l’**icône de partage**."
+      ]
+    },
+    {
+      "h2": "Quand utiliser cette page",
+      "paragraphs": [
+        "Cette page traite une épingle à la fois, quel que soit son type :"
+      ],
+      "list": [
+        "Vous voulez garder **une** idée : une recette en vidéo, une tenue, un GIF.",
+        "L’épingle est un **carrousel** et vous voulez toutes ses images hors ligne.",
+        "Vous ne savez pas si l’épingle est une photo, une vidéo ou un GIF.",
+        "Pas pour tout un tableau : c’est le rôle de [[pinterest-board-downloader|Télécharger un tableau]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment télécharger une épingle Pinterest",
+    "intro": "Pour un lien d’épingle unique. Pour un tableau entier, changez d’outil.",
+    "exampleLabel": "Exemple de lien d’épingle",
+    "items": [
+      {
+        "title": "Ouvrez l’épingle",
+        "body": "Dans l’appli ou sur le site, ouvrez l’épingle voulue en grand, pas la grille du tableau."
+      },
+      {
+        "title": "Copiez son lien",
+        "body": "Touchez l’**icône de partage** › **Copier le lien**, ou copiez l’adresse du navigateur qui contient `/pin/`."
+      },
+      {
+        "title": "Collez-le ici",
+        "body": "Collez le lien `/pin/` ou `pin.it` dans le ticket ci-dessus et touchez **Télécharger l’épingle**."
+      },
+      {
+        "title": "Récupérez le ou les fichiers",
+        "body": "Téléchargez l’image HD ou le MP4. Pour un carrousel, chaque image séparément ou tout en ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur les épingles",
+    "items": [
+      {
+        "q": "Qu’est-ce qu’un lien d’épingle ?",
+        "a": "Un lien qui mène à une seule épingle, en général `pinterest.com/pin/123456789/` ou un lien court `pin.it/…`. Il diffère d’un lien de tableau (`nom/tableau`) ou de profil (`nom` seul)."
+      },
+      {
+        "q": "Comment récupérer toutes les images d’une épingle carrousel ?",
+        "a": "Collez le lien de l’épingle ici : PintDownload lit le carrousel complet et affiche chaque image. Téléchargez-les une par une ou d’un coup en ZIP."
+      },
+      {
+        "q": "L’outil marche-t-il avec les épingles vidéo et les GIF ?",
+        "a": "Oui. Une épingle vidéo donne un MP4 quand Pinterest en publie un, un GIF reste un GIF animé, et une photo arrive dans sa plus grande taille publiée. Les épingles privées ou supprimées restent inaccessibles."
+      },
+      {
+        "q": "Pourquoi mon lien de tableau ou de profil ne marche-t-il pas ici ?",
+        "a": "Le formulaire le reconnaît et bascule vers le bon outil. Un tableau se télécharge en ZIP sur [[pinterest-board-downloader|Télécharger un tableau]] ; pour un profil, passez par [[pinterest-profile-picture-downloader|la page photo de profil]], ou collez-le sur [[home|l’accueil]] pour obtenir ses épingles."
+      },
+      {
+        "q": "« Pin » ou « épingle », c’est pareil ?",
+        "a": "Oui. L’appli Pinterest en français parle d’**épingle**, mais beaucoup de gens disent « pin ». Les liens sont exactement les mêmes."
+      },
+      {
+        "q": "Le téléchargement d’épingles est-il gratuit ?",
+        "a": "Oui, gratuit et sans compte, directement dans le navigateur. Seules les épingles publiques fonctionnent."
+      }
+    ]
+  },
+  "related": {
+    "title": "Un tableau, une vidéo ou une photo ?"
+  },
+  "schema": {
+    "appName": "Télécharger une épingle Pinterest — PintDownload",
+    "howToName": "Comment télécharger une épingle Pinterest",
+    "howToDescription": "Les étapes pour télécharger l’image, la vidéo, le GIF ou toutes les images d’un carrousel à partir d’un lien d’épingle."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Carousel page is not localized in fr: this page absorbs it (plan §5).",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. Quality phrasing standardised; \"Vous voulez garder une idée\"; FAQ question inverted (ne marche-t-il pas); profile pointer reworded to \"la page photo de profil\"."
+  }
+}

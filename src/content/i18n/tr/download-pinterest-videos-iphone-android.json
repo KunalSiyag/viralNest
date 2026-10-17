@@ -1,0 +1,137 @@
+{
+  "pageId": "download-pinterest-videos-iphone-android",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest Video İndir iPhone ve Android — Uygulamasız MP4",
+    "description": "iPhone'da Safari, Android'de Chrome ile Pinterest videosunu telefona indirin: Bağlantıyı kopyala'ya dokunun, linki yapıştırın, MP4'ü kaydedin. Uygulama yok."
+  },
+  "keywords": {
+    "primary": "pinterest video indir iphone",
+    "secondary": [
+      "pinterest video indir android",
+      "pinterest video nasıl indirilir iphone",
+      "pinterest video nasıl indirilir android",
+      "pinterest telefona video indirme",
+      "pinterest video indir ios",
+      "pinterest video indirme uygulaması ios"
+    ]
+  },
+  "nav": {
+    "label": "iPhone ve Android’de İndir",
+    "short": "Telefon",
+    "card": {
+      "title": "Telefona Video İndirme",
+      "blurb": "iPhone’da Safari, Android’de Chrome: linkten galerideki MP4’e.",
+      "badge": "Telefon"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Video İndir: iPhone ve Android",
+    "lede": "**iPhone** ve **Android** için adım adım: telefonun tarayıcısından, App Store’dan ya da Google Play’den uygulama kurmadan Pinterest videosunu telefona indirin."
+  },
+  "intro": [
+    "Telefonda iş iki parçadır: MP4’ü PintDownload ile indirmek ve videoyu izlediğiniz yere taşımak. Aşağıda her sistemin adımları, ekranda göreceğiniz düğme adlarıyla birlikte var.",
+    "Video indi ama bulamıyorsanız doğrudan [[how-to-download-pinterest-video-in-gallery|galeriye kaydetme rehberine]] geçin."
+  ],
+  "sections": [
+    {
+      "h2": "iPhone’da Safari ile",
+      "paragraphs": [
+        "Safari indirilenleri Fotoğraflar’a değil **Dosyalar** uygulamasına koyar; bu yüzden Android’e göre bir adım fazladır:"
+      ],
+      "list": [
+        "Pinterest uygulamasında videoyu açın, paylaş simgesine ve **Bağlantıyı kopyala**’ya dokunun.",
+        "**Safari**’de pintdownload.app adresini açın, linki yapıştırın ve **Videoyu indir**’e dokunun.",
+        "MP4’ün indirme düğmesine dokunun; Safari sorarsa **İndir** ile onaylayın.",
+        "Safari’nin indirme okuna dokunun (ya da **Dosyalar** › **İndirilenler**’i açın) ve videoyu seçin.",
+        "Paylaş simgesine dokunup **Videoyu Kaydet**’i seçin. Video artık Fotoğraflar’da."
+      ]
+    },
+    {
+      "h2": "Android’de Chrome ile",
+      "paragraphs": [
+        "Android’de yol daha kısadır: Chrome videoyu **İndirilenler**’e kaydeder, galeri de onu kendisi bulur."
+      ],
+      "list": [
+        "Pinterest uygulamasında videoyu açın, paylaş simgesine, sonra **Bağlantıyı kopyala**’ya dokunun.",
+        "**Chrome**’da pintdownload.app adresini açın, linki yapıştırıp **Videoyu indir**’e dokunun.",
+        "MP4’ün indirme düğmesine dokunun; indirme bitince Chrome haber verir.",
+        "**Galeri**’yi ya da **Google Fotoğraflar**’ı açın: video indirilenler albümündedir. Samsung’da **Dosyalarım** › **İndirilenler** altında da bulursunuz."
+      ]
+    },
+    {
+      "h2": "Samsung, Xiaomi, Oppo ve diğer Android telefonlar",
+      "paragraphs": [
+        "Adımlar her markada aynıdır; değişen, videoyu nerede gördüğünüzdür. Samsung ve Xiaomi kendi **Galeri** uygulamalarıyla gelir, birçok telefon ise **Google Fotoğraflar**’ı kullanır. Chrome yerine Samsung Internet ya da telefonunuzun kendi tarayıcısını kullanıyorsanız o da olur."
+      ]
+    },
+    {
+      "h2": "Mağazadan uygulama kurmak neden gerekmiyor?",
+      "paragraphs": [
+        "App Store’da ve Google Play’de Pinterest video indirme uygulamaları var; onlar da aynı işi linkle yapar, farkları telefonunuzda yer kaplamaları ve izin istemeleridir. Tanımadığınız sitelerden kurulan APK’lar ise neye erişeceği belli olmayan izinler isteyebilir. Bu iş için telefonun tarayıcısı yeterlidir."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Telefona Pinterest videosu nasıl indirilir",
+    "intro": "Her telefon için kısa özet. Ayrıntılı iPhone ve Android adımları yukarıda.",
+    "exampleLabel": "Uygulamanın kopyaladığı link",
+    "items": [
+      {
+        "title": "Uygulamada linki kopyalayın",
+        "body": "Videoyu açın, paylaş simgesi › **Bağlantıyı kopyala**."
+      },
+      {
+        "title": "Tarayıcıya yapıştırın",
+        "body": "pintdownload.app adresini Safari’de ya da Chrome’da açın, linki yapıştırıp **Videoyu indir**’e dokunun."
+      },
+      {
+        "title": "Galeriye kaydedin",
+        "body": "iPhone’da **Dosyalar**’dan paylaş › **Videoyu Kaydet**. Android’de video zaten Galeri’de ya da Google Fotoğraflar’da."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Telefonda indirme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "iPhone’da Pinterest videosu Fotoğraflar’a nasıl kaydedilir?",
+        "a": "Videoyu Safari’de pintdownload.app üzerinden indirin. Sonra **Dosyalar** › **İndirilenler**’i açın, videoya ve ardından paylaş simgesine dokunup **Videoyu Kaydet**’i seçin. Video Fotoğraflar’a geçer."
+      },
+      {
+        "q": "Android’de Galeri’ye ya da Google Fotoğraflar’a nasıl kaydedilir?",
+        "a": "Ek bir şey yapmanız gerekmez: Chrome videoyu **İndirilenler**’e kaydeder, Galeri ya da Google Fotoğraflar da onu indirilenler albümünde gösterir. Hemen görünmezse galeriyi kapatıp yeniden açın."
+      },
+      {
+        "q": "Neden App Store ya da Play Store uygulaması gerekmiyor?",
+        "a": "Çünkü telefonun tarayıcısı yeterli. “Pinterest video indirici APK” gibi aramalarla bulunan dosyalar resmî mağazadan gelmez ve ne yaptıkları belli değildir; yalnızca video indirmek için telefonunuza böyle bir şey kurmanız gerekmez."
+      },
+      {
+        "q": "Samsung’da indirilen video nerede?",
+        "a": "**Dosyalarım** › **İndirilenler** klasöründe. Samsung’un Galeri uygulaması onu ayrıca indirilenler albümünde gösterir."
+      },
+      {
+        "q": "iPad’de çalışır mı?",
+        "a": "Evet. iPad’de Safari’yi kullanıp iPhone adımlarını izleyin; Android tabletlerde Chrome adımları geçerli."
+      },
+      {
+        "q": "İndirdiğim videoyu WhatsApp’ta gönderebilir miyim?",
+        "a": "Evet. MP4 telefonunuza indikten sonra galeriden ya da Dosyalar’dan WhatsApp’a gönderebilirsiniz. Başkasının videosunu paylaşırken içerik üreticisini belirtin."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer rehberler ve araçlar"
+  },
+  "schema": {
+    "appName": "Pinterest video indir: iPhone ve Android — PintDownload",
+    "howToName": "iPhone’da ve Android’de Pinterest videosu nasıl indirilir",
+    "howToDescription": "Telefonun tarayıcısıyla bir Pinterest video Pinini MP4 olarak indirip galeriye kaydetme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Doğrulanacak: Safari’nin indirme onayındaki İndir düğmesi ve iOS paylaşım sayfasında Videoyu Kaydet (Türkçe iOS); Samsung Dosyalarım › İndirilenler yolu; Pinterest uygulamasında paylaş simgesi › Bağlantıyı kopyala sırası.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device."
+  }
+}

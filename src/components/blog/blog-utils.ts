@@ -20,7 +20,7 @@ export interface BlogTool {
 export const BLOG_TOOLS: BlogTool[] = [
   { href: '/pinterest-pin-downloader', title: 'Pin Downloader', blurb: 'One pin URL → HD image, video, GIF, or full carousel.', badge: 'Pin' },
   { href: '/pinterest-video-downloader', title: 'Video Downloader', blurb: 'Save public Pinterest videos as MP4 (HD streams).', badge: 'MP4' },
-  { href: '/pinterest-image-downloader', title: 'Image Downloader', blurb: 'Original-resolution photos and artwork from pin links.', badge: 'HD' },
+  { href: '/pinterest-image-downloader', title: 'Image Downloader', blurb: 'Photos and artwork in the largest size Pinterest publishes.', badge: 'HD' },
   { href: '/pinterest-board-downloader', title: 'Board Downloader', blurb: 'Paste a board URL and download public pins as a ZIP.', badge: 'ZIP' },
   { href: '/pinterest-profile-downloader', title: 'Profile Downloader', blurb: 'Pack visible public pins from a profile into a ZIP.', badge: 'ZIP' },
   { href: '/pinterest-gif-downloader', title: 'GIF Downloader', blurb: 'Download animated GIF pins without quality loss.', badge: 'GIF' },
@@ -28,10 +28,10 @@ export const BLOG_TOOLS: BlogTool[] = [
   { href: '/pinterest-carousel-downloader', title: 'Carousel Downloader', blurb: 'Download all photos and slides from multi-image pins.', badge: 'Slides' },
   { href: '/pinterest-video-downloader-chrome', title: 'Chrome Extension Tool', blurb: '1-click browser download tool for Chrome, Safari, and Edge.', badge: 'Chrome' },
   { href: '/how-to-download-pinterest-video-in-gallery', title: 'Gallery Video Saver', blurb: 'Step-by-step guide to saving Pinterest videos in phone gallery.', badge: 'Gallery' },
-  { href: '/how-to-download-pinterest-video-on-laptop', title: 'Laptop & PC Downloader', blurb: 'Download 1080p HD Pinterest videos on Mac, Windows, & PC.', badge: 'PC' },
-  { href: '/pinterest-profile-picture-downloader', title: 'Profile Picture Downloader', blurb: 'Extract full HD profile pictures & avatar icons.', badge: 'PFP' },
+  { href: '/how-to-download-pinterest-video-on-laptop', title: 'Laptop & PC Downloader', blurb: 'Download Pinterest videos as MP4 on Mac, Windows, & PC.', badge: 'PC' },
+  { href: '/pinterest-profile-picture-downloader', title: 'Profile Picture Downloader', blurb: 'Save the largest profile photo Pinterest publishes.', badge: 'PFP' },
   { href: '/pinterest-to-mp4', title: 'Pinterest to MP4', blurb: 'Convert a Pinterest video link to a downloadable MP4.', badge: 'MP4' },
-  { href: '/pinterest-audio-downloader', title: 'Audio / MP3 Extractor', blurb: 'Save the sound track from a public Pinterest video pin.', badge: 'MP3' },
+  { href: '/pinterest-audio-downloader', title: 'Audio / MP3 Extractor', blurb: 'An MP3 of a video pin\'s sound, made in your browser.', badge: 'MP3' },
 ];
 
 /** URL-type stock per tool path (same mapping as RelatedTools). Others print on ink. */

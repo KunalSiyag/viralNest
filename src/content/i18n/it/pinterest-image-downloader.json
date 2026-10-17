@@ -1,0 +1,144 @@
+{
+  "pageId": "pinterest-image-downloader",
+  "locale": "it",
+  "meta": {
+    "title": "Scaricare immagini e foto da Pinterest in alta risoluzione",
+    "description": "Scarica foto e immagini da Pinterest nella massima risoluzione disponibile: incolla il link del Pin e salva il file JPG. Gratis e senza registrarsi."
+  },
+  "keywords": {
+    "primary": "scaricare immagini da pinterest",
+    "secondary": [
+      "scaricare foto da pinterest",
+      "scaricare immagini da pinterest senza registrarsi",
+      "come scaricare immagini ad alta risoluzione da pinterest",
+      "scaricare immagini da pinterest con link",
+      "sito per scaricare foto da pinterest",
+      "come scaricare foto da pinterest su iphone"
+    ]
+  },
+  "nav": {
+    "label": "Scarica immagini",
+    "short": "Immagini",
+    "card": {
+      "title": "Scarica immagini",
+      "blurb": "Foto dei Pin nella dimensione più grande che Pinterest pubblica.",
+      "badge": "JPG"
+    }
+  },
+  "hero": {
+    "h1": "Scarica immagini da Pinterest",
+    "lede": "Salva foto, sfondi e illustrazioni dai Pin pubblici nella **dimensione più grande che Pinterest pubblica**, non la miniatura. Gratis e senza registrarti."
+  },
+  "intro": [
+    "Incolla il link di un Pin immagine e scarica il **JPG** più grande che Pinterest mette a disposizione, fino a 1200 px di larghezza. Niente miniature sgranate e niente account.",
+    "Va bene per sfondi, ricette, idee per la casa e anche per le immagini del buongiorno o di buon compleanno da mandare su WhatsApp. Accetta i link con `/pin/`, da `pinterest.it` e i link brevi `pin.it`."
+  ],
+  "features": [
+    {
+      "h": "La dimensione più grande",
+      "p": "Fino a 1200 px di larghezza: la versione più grande che Pinterest pubblica per quel Pin. Non ingrandiamo e non inventiamo pixel."
+    },
+    {
+      "h": "Tutte le slide",
+      "p": "Se il Pin è un carosello, ricevi ogni immagine e non solo la copertina."
+    },
+    {
+      "h": "Senza registrarti",
+      "p": "Non serve un account Pinterest né un account qui. Funziona con i Pin pubblici."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Alta risoluzione: cosa ricevi davvero",
+      "paragraphs": [
+        "Nella griglia di Pinterest vedi miniature piccole. PintDownload legge il Pin e ti dà la **versione più grande che Pinterest pubblica**, di solito larga fino a 1200 px. Il file caricato dal creatore non è pubblico, e alcuni Pin esistono solo in misure più piccole: in quel caso ricevi la più grande disponibile, senza ingrandimenti finti."
+      ]
+    },
+    {
+      "h2": "«Scarica immagine» nell’app o PintDownload?",
+      "paragraphs": [
+        "Nell’app Pinterest le foto hanno la voce **Scarica immagine**, nel menu dell’**icona a tre puntini**. Funziona, ma ti serve l’app con un account, e con i caroselli devi salvare una slide alla volta. PintDownload lavora dal browser, senza login, e ti dà tutte le slide di un carosello insieme, anche in uno ZIP."
+      ]
+    },
+    {
+      "h2": "Da iPhone e iPad",
+      "paragraphs": [
+        "Apri pintdownload.app in Safari, incolla il link del Pin e tocca **Scarica JPG**. Safari mette il file nell’app **File**, nella cartella **Download**: aprilo, tocca **Condividi** e scegli **Salva immagine** per metterlo in Foto. Su Android il JPG va in Download e compare in Galleria."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Come scaricare un’immagine da Pinterest",
+    "intro": "Funziona con i Pin immagine pubblici. Per i video c’è lo strumento video.",
+    "exampleLabel": "Link di un Pin immagine",
+    "items": [
+      {
+        "title": "Apri il Pin immagine",
+        "body": "Apri il Pin a schermo intero, in modo che l’indirizzo contenga `/pin/` e tu veda una foto ferma, non un video."
+      },
+      {
+        "title": "Copia il link",
+        "body": "Tocca l’**icona di condivisione** › **Copia link**, oppure copia l’URL dalla barra degli indirizzi. Anche i link brevi `pin.it` vanno bene."
+      },
+      {
+        "title": "Incollalo qui sopra",
+        "body": "Incolla il link nel tagliando e tocca **Scarica immagine**. Se compaiono più misure, scegli la più grande."
+      },
+      {
+        "title": "Salva il JPG",
+        "body": "Tocca **Scarica JPG** e ritrova il file nella cartella Download, in Foto o in Galleria."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti sulle immagini di Pinterest",
+    "items": [
+      {
+        "q": "Come scarico immagini da Pinterest senza registrarmi?",
+        "a": "Incolla qui sopra il link di un Pin immagine pubblico e scarica il JPG. Non devi accedere a Pinterest e non devi creare un account su PintDownload."
+      },
+      {
+        "q": "Come ottengo l’immagine ad alta risoluzione e non la miniatura?",
+        "a": "Non salvare l’anteprima della griglia: apri il Pin, copia il suo link e incollalo qui. Ricevi la versione più grande che Pinterest pubblica, fino a 1200 px di larghezza."
+      },
+      {
+        "q": "Che differenza c’è con «Scarica immagine» dell’app Pinterest?",
+        "a": "L’opzione dell’app (**icona a tre puntini** › **Scarica immagine**) richiede l’app e un account. Qui lavori dal browser, senza login, e con i caroselli ricevi tutte le slide in un colpo solo."
+      },
+      {
+        "q": "Scaricare immagini da Pinterest è legale?",
+        "a": "Tenere un’immagine pubblica per uso personale, come ispirazione o come sfondo, è una cosa; ripubblicarla è un’altra. Il diritto d’autore resta di chi l’ha creata: cita la fonte e chiedi il permesso prima di riutilizzarla. Questa non è una consulenza legale."
+      },
+      {
+        "q": "È sicuro?",
+        "a": "Non installi niente, non accedi con il tuo account e non ci dai dati personali: incolli un link pubblico e scarichi un file JPG."
+      },
+      {
+        "q": "Come scarico foto da Pinterest su iPhone e iPad?",
+        "a": "In Safari incolla il link del Pin qui sopra e scarica il JPG. Il file finisce nell’app **File**, in **Download**; da lì tocca **Condividi** › **Salva immagine** per metterlo in Foto."
+      },
+      {
+        "q": "Posso scaricare tutte le foto di un carosello?",
+        "a": "Sì. Incolla il link del carosello e ricevi ogni slide: puoi salvarle una per una o tutte insieme in uno ZIP. Lo stesso vale nello strumento per [[pinterest-pin-downloader|scaricare un Pin]]."
+      },
+      {
+        "q": "E se incollo un Pin video?",
+        "a": "Il modulo se ne accorge e passa allo strumento video, così ricevi l’MP4. Per i dettagli sulla qualità dei video leggi la pagina per [[pinterest-video-downloader|scaricare video da Pinterest]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Ti serve un video o una bacheca?"
+  },
+  "schema": {
+    "appName": "Pinterest image downloader — PintDownload",
+    "howToName": "Come scaricare immagini da Pinterest in alta risoluzione",
+    "howToDescription": "Passi per salvare la foto di un Pin pubblico nella dimensione più grande che Pinterest pubblica."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-it (agent). Unverified on an it-IT phone: iOS app File › Download, share sheet wording.",
+    "nativeReviewer": "review-it (agent), 2026-10-16: read on the live build at 390/1440 for fluency, tu register, glossary (Pin, bacheca, la GIF, tagliando, Galleria/Foto), honesty and English leftovers. Pinterest labels rechecked on help.pinterest.com/it: Scarica immagine, Copia link, Invia; secret boards are now called private (Mantieni la bacheca privata). Device labels (iOS File › Download, Salva video/Salva immagine, Samsung Archivio, Files di Google) are the standard it-IT names, not checked on a phone."
+  }
+}

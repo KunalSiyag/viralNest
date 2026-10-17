@@ -1,0 +1,125 @@
+{
+  "pageId": "pinterest-audio-downloader",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest MP3 Dönüştürücü — Video Pininin Sesini İndir",
+    "description": "Herkese açık Pinterest video Pininin sesini indirin: linki yapıştırın, ses dosyasını kaydedin. Ücretsiz ve üyeliksiz; yalnızca hakkınız olan sesleri saklayın."
+  },
+  "keywords": {
+    "primary": "pinterest mp3 dönüştürücü",
+    "secondary": [
+      "pinterest video mp3",
+      "pinterest video sesi indirme",
+      "pinterest mp3 downloader",
+      "pinterest video mp3 download"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest MP3 Dönüştürücü",
+    "short": "MP3",
+    "card": {
+      "title": "MP3 Dönüştürücü",
+      "blurb": "Video Pininin sesinden tarayıcınızda gerçek bir MP3 hazırlayın.",
+      "badge": "MP3"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest MP3 Dönüştürücü",
+    "lede": "Bir video Pinindeki **müziği ya da konuşmayı** MP3 olarak kaydedin. Dosyayı tarayıcınız videonun sesinden hazırlar; MP3 hiçbir yere yüklenmez."
+  },
+  "intro": [
+    "Pinterest sesi ayrı bir dosya olarak yayınlamaz; ses videonun içindedir. Bu yüzden PintDownload Pinin herkese açık MP4’ünü getirir, tarayıcınız da onun sesini **192 kbps MP3** dosyasına dönüştürür. Uzantısı değiştirilmiş bir video değil, gerçek bir MP3.",
+    "Sesli bir videonun `/pin/` ya da `pin.it` linkini yapıştırın. GIF’lerde ve fotoğraflarda ses yoktur."
+  ],
+  "features": [
+    {
+      "h": "Gerçek bir MP3",
+      "p": "Videonun sesinden 192 kbps olarak kodlanır; her müzik çalarda, telefonda ve bilgisayarda açılır."
+    },
+    {
+      "h": "Parçayı kırpın",
+      "p": "Yalnızca nakarat ya da birkaç saniye mi lazım? Başlangıcı ve bitişi seçin, dinleyin, o parçayı MP3 ya da WAV olarak kaydedin."
+    },
+    {
+      "h": "Üyelik ve uygulama yok",
+      "p": "Telefonun ya da bilgisayarın tarayıcısında çalışır. Kayıt ya da Pinterest girişi istemez."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "MP3 nasıl hazırlanıyor?",
+      "paragraphs": [
+        "Tarayıcınız videoyu PintDownload üzerinden indirir, ses kanalını çözer ve açık kaynaklı MP3 kodlayıcısı LAME (LGPL lisansı) ile 192 kbps MP3’e dönüştürür. Bunların hepsi telefonunuzda ya da bilgisayarınızda olur: MP3 tarayıcının belleğinde oluşur ve hiçbir yere yüklenmez.",
+        "Hiçbir şey dönüştürmek istemiyorsanız MP4’ü indirin; videonun sesi onda da var."
+      ]
+    },
+    {
+      "h2": "Yalnızca hakkınız olan sesleri saklayın",
+      "paragraphs": [
+        "Pinterest videolarındaki müziklerin çoğu telif hakkıyla korunur. Sesi kendiniz dinlemek ya da referans olarak saklamak bir şey; kendi videolarınızda kullanmak, satmak ya da kendinizinmiş gibi yayınlamak başka bir şey. Sesi yeniden kullanırsanız videonun içerik üreticisini kaynak gösterin ve müziğin lisansına uyun."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest videosu MP3’e nasıl dönüştürülür",
+    "intro": "Yalnızca sesli video Pinleri. Videonun Pinterest’te sesli oynadığını önce kontrol edin.",
+    "exampleLabel": "Video Pini linki",
+    "items": [
+      {
+        "title": "Sesli bir video bulun",
+        "body": "Videoyu Pinterest’te açıp sesini açın. Hiçbir şey duyulmuyorsa MP3 de olmaz."
+      },
+      {
+        "title": "Linki kopyalayıp yapıştırın",
+        "body": "Uygulamada paylaş simgesi › **Bağlantıyı kopyala**; linki yukarıya yapıştırıp **Videoyu indir**’e dokunun."
+      },
+      {
+        "title": "MP3’ü kaydedin",
+        "body": "Sonuçtaki **MP3** satırından indirin. Tarayıcınız dosyayı birkaç saniyede hazırlar ve **İndirilenler** klasörüne kaydeder."
+      }
+    ]
+  },
+  "faq": {
+    "title": "MP3 dönüştürme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Pinterest videosunun sesi nasıl indirilir?",
+        "a": "Herkese açık video Pininin linkini yukarıya yapıştırın ve **Videoyu indir**’e dokunun. Sonuçtaki MP3 satırı, videonun sesinden tarayıcınızda 192 kbps bir MP3 hazırlar. Sesi de içeren MP4’ü indirmek de bir seçenek."
+      },
+      {
+        "q": "Pinterest’ten müzik indirmek yasal mı?",
+        "a": "Yalnızca kullanma hakkınız olan sesleri saklayın: kendi Pininiz, lisanslı müzik ya da kişisel referans. Bir videonun herkese açık olması, içindeki müziği ticari olarak kullanma izni vermez."
+      },
+      {
+        "q": "Pinimden neden MP3 çıkmıyor?",
+        "a": "Video sessiz olabilir ya da Pin bir GIF veya fotoğraftır; o zaman kaydedilecek ses yoktur. MP3 videodan hazırlandığı için videonun sesini okuyamayan çok eski bir tarayıcı da onu yapamaz; güncel bir Chrome, Edge, Safari ya da Firefox deneyin."
+      },
+      {
+        "q": "Videodaki şarkının adını nasıl bulurum?",
+        "a": "PintDownload şarkı tanımaz. Video oynarken Shazam gibi bir müzik tanıma uygulaması kullanabilir ya da Pinin açıklamasına ve yorumlarına bakabilirsiniz."
+      },
+      {
+        "q": "Sesin yalnızca bir kısmını kaydedebilir miyim?",
+        "a": "Evet. Sonuçtaki **Sesi kırp** düğmesiyle başlangıcı ve bitişi seçin, parçayı dinleyin ve MP3 ya da WAV olarak kaydedin."
+      },
+      {
+        "q": "Pinterest hesabı gerekiyor mu?",
+        "a": "Hayır, herkese açık video Pinleri için gerekmez. Gizli panolardaki ya da gizli hesaplardaki Pinlerin sesi alınamaz."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer Pinterest araçları"
+  },
+  "schema": {
+    "appName": "Pinterest MP3 Dönüştürücü — PintDownload",
+    "howToName": "Pinterest videosunun sesi MP3 olarak nasıl indirilir",
+    "howToDescription": "Herkese açık bir video Pininin sesinden tarayıcıda 192 kbps MP3 hazırlayıp kaydetme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Başlık ve H1 “MP3 Dönüştürücü” artık doğru: MP3 tarayıcıda LAME ile 192 kbps kodlanıyor (src/lib/audio, MP3_KBPS).",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device."
+  }
+}

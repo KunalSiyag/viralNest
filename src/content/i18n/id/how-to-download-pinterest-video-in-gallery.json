@@ -1,0 +1,127 @@
+{
+  "pageId": "how-to-download-pinterest-video-in-gallery",
+  "locale": "id",
+  "meta": {
+    "title": "Cara Menyimpan Video Pinterest ke Galeri HP tanpa Aplikasi",
+    "description": "Video Pinterest tidak masuk galeri? Salin tautan Pin, tempel di PintDownload, lalu simpan MP4 ke Galeri Android atau app Foto iPhone. Gratis, tanpa login."
+  },
+  "keywords": {
+    "primary": "cara menyimpan video pinterest ke galeri",
+    "secondary": [
+      "download video pinterest ke galeri",
+      "simpan video pinterest ke galeri",
+      "cara save video pinterest ke galeri",
+      "cara menyimpan video dari pinterest ke galeri tanpa aplikasi",
+      "download video pinterest ke galeri tanpa watermark"
+    ]
+  },
+  "nav": {
+    "label": "Simpan Video ke Galeri",
+    "short": "Galeri",
+    "card": {
+      "title": "Simpan Video ke Galeri",
+      "blurb": "Supaya video Pinterest muncul di Galeri Android atau app Foto iPhone.",
+      "badge": "Galeri"
+    }
+  },
+  "hero": {
+    "h1": "Cara Menyimpan Video Pinterest ke Galeri",
+    "lede": "Tiga langkah dari Pin ke **galeri HP**, tanpa install aplikasi apa pun."
+  },
+  "intro": [
+    "Mengunduh videonya baru separuh jalan. Di iPhone, MP4 masuk ke app **File** dulu, dan di Android ke folder **Unduhan**. Panduan ini menjelaskan cara memindahkannya ke galeri, dan apa yang dicek kalau videonya tidak muncul.",
+    "Untuk langkah download di tiap jenis HP, lihat juga [[download-pinterest-videos-iphone-android|cara download video Pinterest di HP]]."
+  ],
+  "sections": [
+    {
+      "h2": "Kenapa video Pinterest tidak masuk galeri",
+      "paragraphs": [
+        "Browser menyimpan unduhan sebagai file, bukan langsung sebagai video galeri. Di iPhone, Safari menaruhnya di app **File** › **Unduhan**, dan app **Foto** tidak menampilkannya sampai kamu menyimpannya ke sana. Di Android, Chrome menaruhnya di folder **Unduhan** (Download); Galeri atau Google Foto biasanya menampilkannya di album unduhan, kadang setelah beberapa detik."
+      ]
+    },
+    {
+      "h2": "Tombol Simpan di Pinterest tidak ke galeri",
+      "paragraphs": [
+        "Tombol **Simpan** di aplikasi Pinterest hanya menambahkan Pin ke papanmu, bukan menyimpan video ke HP. Itu sebabnya video yang sudah “disimpan” tidak pernah muncul di galeri. Yang perlu kamu lakukan adalah mengunduh file MP4-nya, lalu memindahkannya ke galeri."
+      ]
+    },
+    {
+      "h2": "iPhone: dari app File ke Foto",
+      "paragraphs": [
+        "Setelah unduhan selesai, buka app **File** dan masuk ke **Unduhan**. Ketuk videonya, ketuk ikon **Bagikan**, lalu pilih **Simpan Video**. Sekarang videonya ada di app **Foto**, di bagian video terbaru."
+      ],
+      "list": [
+        "Tidak melihat **Simpan Video**? Geser daftar menu ke atas: opsinya ada di bawah deretan app.",
+        "File tidak bisa dibuka? Pastikan unduhan di Safari sudah selesai (ikon panah biru di bilah alamat)."
+      ]
+    },
+    {
+      "h2": "Android: dari Unduhan ke Galeri",
+      "paragraphs": [
+        "Buka app **File** (di Samsung: **File Saya**) dan masuk ke **Unduhan**: MP4-nya ada di sana. Galeri dan Google Foto menampilkannya di album **Download** atau **Unduhan**. Kalau tetap tidak muncul, tekan lama file-nya dan pindahkan ke folder **DCIM** atau **Movies**."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara menyimpan video Pinterest ke galeri",
+    "intro": "Tiga langkah di Safari iPhone atau Chrome Android.",
+    "exampleLabel": "Link Pin video",
+    "items": [
+      {
+        "title": "Salin tautan videonya",
+        "body": "Di aplikasi Pinterest, buka videonya, ketuk ikon **Bagikan**, lalu **Salin tautan**."
+      },
+      {
+        "title": "Tempel di PintDownload",
+        "body": "Buka pintdownload.app di Safari atau Chrome, tempel tautannya di kotak atas, lalu ketuk **Unduh Video**."
+      },
+      {
+        "title": "Pindahkan ke galeri",
+        "body": "iPhone: **File** › **Unduhan** › **Bagikan** › **Simpan Video**. Android: videonya muncul di Galeri, di album unduhan."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab menyimpan video ke galeri",
+    "items": [
+      {
+        "q": "Bagaimana cara menyimpan video Pinterest ke galeri tanpa aplikasi?",
+        "a": "Salin tautan videonya di aplikasi Pinterest, tempel di pintdownload.app lewat browser, lalu unduh MP4-nya. Di Android, video otomatis terlihat di galeri; di iPhone, simpan dulu dari app **File** ke **Foto**. Tidak ada aplikasi tambahan yang perlu dipasang."
+      },
+      {
+        "q": "Kenapa video Pinterest yang sudah didownload tidak muncul di galeri?",
+        "a": "Karena browser menyimpannya sebagai file. Di iPhone, video ada di **File** › **Unduhan** sampai kamu menyimpannya ke **Foto**. Di Android, cek folder **Unduhan**; kalau galeri belum menampilkannya, tutup lalu buka lagi app galerinya."
+      },
+      {
+        "q": "Kenapa tombol Simpan di Pinterest tidak memasukkan video ke galeri?",
+        "a": "Karena **Simpan** di Pinterest artinya menambahkan Pin ke papan, bukan mengunduh file. Videonya tetap di dalam Pinterest. Agar masuk galeri, unduh MP4-nya lewat tautan Pin."
+      },
+      {
+        "q": "Bisa langsung ke album tertentu?",
+        "a": "Browser selalu menyimpan ke folder unduhan dulu. Setelah itu, pindahkan videonya ke album pilihanmu dari app Foto, Galeri, atau Google Foto, seperti video lainnya."
+      },
+      {
+        "q": "Apakah berbayar atau perlu login?",
+        "a": "Tidak. Gratis, tanpa daftar di PintDownload dan tanpa login ke Pinterest. Hanya untuk video publik."
+      },
+      {
+        "q": "Videonya tersimpan tanpa watermark?",
+        "a": "Dari kami, tidak ada watermark yang ditambahkan ke MP4-nya. Username atau teks yang sudah ditempel kreator di videonya ikut tersimpan."
+      }
+    ]
+  },
+  "related": {
+    "title": "Panduan dan alat terkait"
+  },
+  "schema": {
+    "appName": "Simpan Video Pinterest ke Galeri — PintDownload",
+    "howToName": "Cara menyimpan video Pinterest ke galeri HP",
+    "howToDescription": "Unduh MP4 dari Pin video publik, lalu simpan ke Galeri Android atau app Foto iPhone."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16. Cek di perangkat (label belum diverifikasi): iOS “File” › “Unduhan”, “Bagikan” › “Simpan Video”; Samsung “File Saya”; album “Download/Unduhan” di Galeri dan Google Foto.",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

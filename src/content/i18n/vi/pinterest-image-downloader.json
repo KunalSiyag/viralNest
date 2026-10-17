@@ -1,0 +1,150 @@
+{
+  "pageId": "pinterest-image-downloader",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải ảnh Pinterest chất lượng cao, không bị mờ, miễn phí",
+    "description": "Tải ảnh Pinterest cỡ lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ. Dán link Ghim là xong, hợp làm hình nền, ảnh tham khảo. Không cần đăng nhập."
+  },
+  "keywords": {
+    "primary": "tải ảnh pinterest",
+    "secondary": [
+      "tải ảnh pinterest chất lượng cao",
+      "tải ảnh pinterest không bị mờ",
+      "tải ảnh pinterest nét",
+      "tải hình pinterest",
+      "lưu ảnh pinterest",
+      "tải hình nền pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Tải ảnh Pinterest",
+    "short": "Ảnh",
+    "card": {
+      "title": "Tải ảnh Pinterest",
+      "blurb": "Ảnh ở cỡ lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ.",
+      "badge": "JPG"
+    }
+  },
+  "hero": {
+    "h1": "Tải ảnh Pinterest chất lượng cao",
+    "lede": "Lấy bản ảnh **lớn nhất Pinterest công khai** (thường rộng khoảng 1.200 px), không phải ảnh thu nhỏ trong bảng tin nhà. Miễn phí, không cần tài khoản."
+  },
+  "intro": [
+    "Ảnh bạn thấy khi lướt Pinterest là bản thu nhỏ, chụp màn hình lại thì càng mờ. Dán link một **Ghim ảnh** vào đây, PintDownload sẽ lấy bản lớn nhất mà Pinterest công khai cho Ghim đó, thường rộng khoảng **1.200 px**.",
+    "Nhận link `/pin/` và link `pin.it`. Chỉ áp dụng cho Ghim công khai, không cần đăng nhập Pinterest."
+  ],
+  "features": [
+    {
+      "h": "Lớn hơn ảnh thu nhỏ",
+      "p": "Lưới Ghim chỉ hiện bản nhỏ. Ở đây bạn nhận bản lớn nhất Pinterest cung cấp cho Ghim đó."
+    },
+    {
+      "h": "Cắt ảnh cho mạng xã hội",
+      "p": "Lấy ảnh xong có thể cắt theo tỉ lệ 1:1, 4:5, 9:16 hoặc 16:9 ngay trong trình duyệt."
+    },
+    {
+      "h": "Không tài khoản, không app",
+      "p": "Chạy trên Safari, Chrome, Cốc Cốc hay trình duyệt bất kỳ. Không đăng ký, không đăng nhập Pinterest."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Ảnh tải về nét đến đâu?",
+      "paragraphs": [
+        "Nét đúng bằng bản lớn nhất Pinterest công khai: thường rộng khoảng **1.200 px**, nhỏ hơn nếu Ghim chỉ có bản nhỏ. File mà người đăng tải lên ban đầu không được Pinterest công khai, nên không công cụ nào lấy được nó, dù có quảng cáo thế nào.",
+        "Chúng tôi cũng không phóng to hay “làm nét” ảnh bằng AI. Nếu bạn tìm ảnh Pinterest 4K thì câu trả lời thật là Pinterest không đăng ảnh ở cỡ đó; bản bạn tải ở đây đã là bản lớn nhất có sẵn."
+      ]
+    },
+    {
+      "h2": "Nút Tải ảnh xuống của Pinterest so với PintDownload",
+      "paragraphs": [
+        "App Pinterest có sẵn cách tải: mở Ghim, chạm **biểu tượng ba chấm** rồi chọn **Tải ảnh xuống**. Ảnh vào app Ảnh trên iPhone hoặc thư viện ảnh trên Android. Nhưng bạn phải đăng nhập, và chính Pinterest cũng ghi rằng không phải Ghim nào cũng tải xuống được.",
+        "PintDownload hữu ích khi bạn không muốn đăng nhập, khi đang dùng máy tính không có app, hoặc khi Ghim có nhiều ảnh và bạn muốn lấy đủ từng ảnh một lần."
+      ]
+    },
+    {
+      "h2": "Hình nền, moodboard và ảnh tham khảo",
+      "paragraphs": [
+        "Trước khi đặt ảnh Pinterest làm hình nền, hãy xem độ phân giải ghi trong phần kết quả. Ảnh rộng 1.200 px trông đẹp trên điện thoại, nhưng kéo giãn trên màn hình máy tính lớn có thể bị vỡ.",
+        "Nếu dùng ảnh cho bài đăng hay sản phẩm bán ra, hãy xin phép và ghi nguồn tác giả."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tải ảnh Pinterest",
+    "intro": "Dành cho ảnh tĩnh. Ghim phát được là video, hãy dùng [[pinterest-video-downloader|tải video Pinterest]].",
+    "exampleLabel": "Link Ghim ảnh mẫu",
+    "items": [
+      {
+        "title": "Mở Ghim ảnh",
+        "body": "Mở Ghim ở chế độ xem lớn, trong app hay trên pinterest.com, và chắc rằng đó là ảnh chứ không phải video."
+      },
+      {
+        "title": "Sao chép link",
+        "body": "Trong app: **biểu tượng chia sẻ** › **Sao chép liên kết**. Trên máy tính: địa chỉ có `/pin/` trên thanh địa chỉ."
+      },
+      {
+        "title": "Dán link rồi tải",
+        "body": "Dán link vào ô phía trên và bấm **Tải ảnh**. Vài giây sau bạn thấy ảnh cùng độ phân giải của nó."
+      },
+      {
+        "title": "Lưu ảnh vào máy",
+        "body": "Trên máy tính, ảnh vào thư mục **Tải xuống**. Trên iPhone, Safari lưu ảnh vào app **Tệp**: mở ảnh, chạm **Chia sẻ** rồi **Lưu hình ảnh** để đưa vào app Ảnh."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải ảnh Pinterest",
+    "items": [
+      {
+        "q": "Vì sao ảnh lưu từ Pinterest bị mờ, bị vỡ?",
+        "a": "Thường do bạn lưu ảnh thu nhỏ trong lưới Ghim hoặc chụp màn hình. Dán link Ghim ở đây để lấy bản lớn nhất Pinterest có. Nếu Ghim chỉ có ảnh nhỏ thì không có bản nào nét hơn, và phóng to chỉ làm ảnh vỡ thêm."
+      },
+      {
+        "q": "Ảnh tải về có phải ảnh gốc của người đăng không?",
+        "a": "Không. Pinterest không công khai file người đăng tải lên, chỉ công khai các bản đã thu nhỏ, lớn nhất thường rộng khoảng 1.200 px. PintDownload lấy đúng bản lớn nhất đó, không hơn."
+      },
+      {
+        "q": "Không đăng nhập có tải được ảnh không?",
+        "a": "Được. Chỉ cần link Ghim công khai, kể cả link người khác gửi cho bạn. Bạn không phải đăng nhập Pinterest hay đăng ký ở đây."
+      },
+      {
+        "q": "Vì sao Pinterest không cho tải ảnh, không thấy nút Tải ảnh xuống?",
+        "a": "Nút **Tải ảnh xuống** trong menu ba chấm chỉ có khi bạn đăng nhập, và Pinterest cho biết không phải Ghim nào cũng tải xuống được. Với Ghim công khai, bạn sao chép liên kết rồi dán vào PintDownload."
+      },
+      {
+        "q": "Tải ảnh trên Pinterest có vi phạm bản quyền không?",
+        "a": "Lưu ảnh để xem riêng hay làm tham khảo thì thường không sao. Ảnh vẫn thuộc về tác giả: muốn đăng lại hay dùng để bán hàng, bạn cần xin phép và ghi nguồn."
+      },
+      {
+        "q": "Ảnh tải về nằm ở đâu trên điện thoại, máy tính?",
+        "a": "Trên máy tính là thư mục **Tải xuống**. Trên Android, ảnh nằm trong mục Download và thường hiện trong thư viện ảnh. Trên iPhone, ảnh ở app **Tệp** › **Tải về** cho tới khi bạn chọn **Lưu hình ảnh**."
+      },
+      {
+        "q": "Tải hình nền Pinterest 4K được không?",
+        "a": "Không. Pinterest không đăng ảnh ở cỡ 4K; bản lớn nhất thường rộng khoảng 1.200 px. Chúng tôi không phóng to để gắn nhãn 4K. Đọc thêm ở [[pinterest-4k-downloader|trang về chất lượng 4K]]."
+      },
+      {
+        "q": "Dán link Ghim video vào đây thì sao?",
+        "a": "Trang này dành cho ảnh tĩnh. Nếu bạn dán Ghim video, ô tải sẽ báo và chuyển bạn sang [[pinterest-video-downloader|công cụ tải video]] để lấy file MP4."
+      },
+      {
+        "q": "Ảnh được lưu ở định dạng gì?",
+        "a": "Thường là JPG, định dạng Pinterest dùng cho phần lớn ảnh. Tên file hiện trong phần kết quả trước khi bạn tải."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Tải ảnh Pinterest — PintDownload",
+    "howToName": "Cách tải ảnh Pinterest ở cỡ lớn nhất",
+    "howToDescription": "Các bước lưu ảnh từ một Ghim công khai ở kích thước lớn nhất Pinterest cung cấp."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Verify on device: Pinterest app ba chấm › Tải ảnh xuống (help.pinterest.com/vi); iOS share sheet 'Lưu hình ảnh' and Files 'Tải về' folder labels."
+  }
+}

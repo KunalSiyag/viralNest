@@ -1,0 +1,134 @@
+{
+  "pageId": "pinterest-gif-downloader",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest GIF İndir — Hareketli GIF'leri Ücretsiz Kaydet",
+    "description": "Pinterest GIF'lerini hareketi bozulmadan indirin. GIF Pininin linkini yapıştırın, döngüyü kaydedin; üyelik ve filigran yok, telefonda ve PC'de çalışır."
+  },
+  "keywords": {
+    "primary": "pinterest gif indir",
+    "secondary": [
+      "pinterest gif indirme",
+      "pinterest gif indirici",
+      "pinterestten gif indirme",
+      "pinterest hareketli gif indirme",
+      "pinterest gif nasıl indirilir"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest GIF İndir",
+    "short": "GIF",
+    "card": {
+      "title": "GIF İndir",
+      "blurb": "Hareketli GIF’leri döngüsü bozulmadan kaydedin; donuk fotoğraf değil.",
+      "badge": "GIF"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest GIF İndir",
+    "lede": "Pinterest’teki **hareketli GIF’leri** hareketi bozulmadan **.gif** dosyası olarak kaydedin. İlk karenin donuk bir fotoğrafı değil, döngünün kendisi."
+  },
+  "intro": [
+    "Bir **GIF Pininin** linkini yapıştırın; PintDownload Pinterest’in yayınladığı hareketli dosyayı bulur ve olduğu gibi indirir. Tepki GIF’leri, hareketli çizimler ya da döngülü arka planlar fark etmez.",
+    "`/pin/` içeren adresleri ve `pin.it` kısa linklerini alır. Yalnızca herkese açık Pinler; üyelik gerekmez."
+  ],
+  "features": [
+    {
+      "h": "Fotoğraf değil, GIF",
+      "p": "Pinin hareketli dosyasını alırız. İlk karenin JPG’sini size GIF diye vermeyiz."
+    },
+    {
+      "h": "GIF mi, video mu? Söyleriz",
+      "p": "Pin aslında bir videoysa form sizi MP4 alabileceğiniz video indiriciye geçirir."
+    },
+    {
+      "h": "Telefonda ve PC’de",
+      "p": "iPhone, Android, Mac ya da Windows tarayıcısında çalışır; uygulama kurmanız gerekmez."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "GIF neden fotoğraf olarak, tek kare iniyor?",
+      "paragraphs": [
+        "Genellikle iki nedenden biri vardır: ya kullandığınız araç hareketli dosya yerine kapak görselini kaydetmiştir ya da GIF sağlamdır ama galeri önizlemede yalnızca ilk kareyi gösterir. Silmeden önce dosyayı açın:"
+      ],
+      "list": [
+        "**iPhone**’da Fotoğraflar’a kaydedip GIF’e dokunun: küçük resim duruyor görünse de açınca oynar.",
+        "**Android**’de galeri uygulamasına bağlıdır. Google Fotoğraflar ve çoğu galeri GIF oynatır; sizinki oynatmıyorsa dosyayı Google Fotoğraflar’la ya da tarayıcıyla açın.",
+        "**Bilgisayarda** fotoğraf görüntüleyici oynatmıyorsa dosyayı bir tarayıcı sekmesine sürükleyin."
+      ]
+    },
+    {
+      "h2": "Hareketli GIF mi, video mu: nasıl anlaşılır?",
+      "paragraphs": [
+        "Pinterest’teki bir GIF kendiliğinden döngüde oynar, sesi yoktur ve zaman çubuğu göstermez. Pinde ses varsa ya da ileri sarmak için bir çubuk görünüyorsa o bir **video Pinidir**: [[pinterest-video-downloader|Pinterest video indir]] sayfasında MP4 olarak indirin."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest’ten GIF nasıl indirilir",
+    "intro": "Herkese açık GIF Pinleriyle çalışır. Gerçek bir video ise video indiriciye gider.",
+    "exampleLabel": "Örnek GIF Pini linki",
+    "items": [
+      {
+        "title": "GIF Pinini açın",
+        "body": "Pinin GIF gibi döngüde oynadığını kontrol edin: genellikle sesi ve zaman çubuğu yoktur."
+      },
+      {
+        "title": "Pinin linkini kopyalayın",
+        "body": "Paylaş simgesi › **Bağlantıyı kopyala** ya da `/pin/` içeren adres. `pin.it` kısa linkleri de olur."
+      },
+      {
+        "title": "Yapıştırıp GIF’i kaydedin",
+        "body": "Linki yukarıya yapıştırın ve **GIF’i indir**’e dokunun. Dosyayı GIF oynatabilen bir uygulamada ya da tarayıcıda açın."
+      }
+    ]
+  },
+  "faq": {
+    "title": "GIF indirme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Pinterest’ten GIF nasıl indirilir?",
+        "a": "GIF Pininin linkini kopyalayın, yukarıdaki kutuya yapıştırın ve **GIF’i indir**’e dokunun. Hareketiyle birlikte .gif dosyası iner, paylaşmaya hazır."
+      },
+      {
+        "q": "GIF’im neden donuk bir fotoğraf olarak indi?",
+        "a": "Ya hareketli dosya yerine kapak görseli kaydedildi ya da galeriniz önizlemede yalnızca ilk kareyi gösteriyor. Dosyayı açın: hareket ediyorsa sorun yok. Etmiyorsa bu sayfadan yeniden indirin."
+      },
+      {
+        "q": "GIF galeride hareketli kalır mı?",
+        "a": "Açtığınızda evet. iPhone’da Fotoğraflar GIF’e dokununca oynatır. Android’de galeri uygulamasına bağlıdır; Google Fotoğraflar oynatır, bazı galeriler yalnızca ilk kareyi gösterir."
+      },
+      {
+        "q": "GIF’i MP4’e ya da videoyu GIF’e çevirebilir miyim?",
+        "a": "Hayır, PintDownload GIF ile video arasında dönüştürme yapmaz. Her Pin, Pinterest’in yayınladığı formatta iner: GIF ise GIF, video ise MP4 (bkz. [[pinterest-to-mp4|MP4 dönüştürücü]]). Başka bir formata çevirmek için indirdikten sonra bir düzenleyici kullanın."
+      },
+      {
+        "q": "Hareketli PP için GIF kullanabilir miyim?",
+        "a": "Kullanacağınız uygulamaya bağlı: bazıları profil fotoğrafında hareketli GIF kabul eder, birçoğu yalnızca ilk kareyi gösterir. Başkasının çizimini kullanacaksanız önce içerik üreticisinden izin isteyin."
+      },
+      {
+        "q": "Pinterest hesabı gerekiyor mu?",
+        "a": "Hayır. Herkese açık her GIF Pininde çalışır. Gizli panolardaki ya da gizli hesaplardaki GIF’ler indirilemez."
+      },
+      {
+        "q": "Bilgisayarda GIF nasıl kaydedilir?",
+        "a": "Tarayıcıda Pinin adresini kopyalayın, buraya yapıştırın ve indirin. Dosya **İndirilenler** klasörüne iner."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer Pinterest araçları"
+  },
+  "schema": {
+    "appName": "Pinterest GIF İndirici — PintDownload",
+    "howToName": "Pinterest’ten hareketli GIF nasıl indirilir",
+    "howToDescription": "Herkese açık bir GIF Pinini hareketi bozulmadan .gif dosyası olarak kaydetme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edits: “döner” (reads as spins) → “döngüde oynar”; “format dönüştürmez” narrowed to GIF ↔ video (the site does make MP3s)."
+  }
+}

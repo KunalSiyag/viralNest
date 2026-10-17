@@ -1,0 +1,247 @@
+---
+/**
+ * Dev-only script test page: /dev/fonts (npx astro dev); /dev/fonts-ru etc.
+ * render one sample, so the fonts a single locale downloads can be measured.
+ *
+ * Shows the headline face, line-height and RTL rules from src/styles/ticket.css
+ * and results.css for each script group (Latin, tr, vi, ru, th, ar) on the
+ * real hero seam, ticket and stub, plus a two-line mark stress test and a
+ * receipt band. The strings are test copy, not site content.
+ *
+ * Production never builds it: getStaticPaths returns no paths outside
+ * `astro dev`, and the page answers 404 if it is ever rendered there.
+ */
+import '../../styles/ticket.css';
+import '../../styles/results.css';
+import { fontAssetsFor } from '../../i18n/fonts';
+import type { AnyLocale } from '../../i18n/locales';
+
+export function getStaticPaths() {
+  if (!import.meta.env.DEV) return [];
+  const ids = ['en', 'fr', 'es', 'tr', 'vi', 'ru', 'th', 'ar'];
+  return ['fonts', ...ids.map((id) => `fonts-${id}`)].map((page) => ({ params: { page } }));
+}
+
+if (!import.meta.env.DEV) {
+  return new Response(null, { status: 404 });
+}
+
+interface Sample {
+  id: string;
+  name: string;
+  lang: AnyLocale;
+  h1: string;
+  lede: string;
+  label: string;
+  serial: string;
+  stamp: string;
+  placeholder: string;
+  hint: string;
+  stub: string;
+  /** Two lines that put marks above line 2 under marks below line 1. */
+  stress: [string, string];
+  band: string;
+  dt: string;
+  dd: string;
+  cta: string;
+  kind: string;
+}
+
+const SAMPLES: Sample[] = [
+  {
+    id: 'en', name: 'English (control)', lang: 'en',
+    h1: 'Pinterest Video Downloader',
+    lede: 'Paste a public pin link. Video, image or GIF at the largest size Pinterest publishes.',
+    label: 'Admit one · public link', serial: 'No.&nbsp;1120271234567890', stamp: 'Video pin',
+    placeholder: 'Paste a Pinterest link…', hint: 'Public pins, boards and profiles. Nothing is stored.',
+    stub: 'Download', stress: ['Quick brown fox', 'Jumps over 1080'],
+    band: 'Ready · Video pin', dt: 'Quality', dd: '720p · MP4', cta: 'Download MP4', kind: 'Video',
+  },
+  {
+    id: 'fr', name: 'Latin: fr (longest H1)', lang: 'fr',
+    h1: 'Enregistrer une vidéo Pinterest dans sa galerie',
+    lede: 'Collez le lien d’une épingle publique. La vidéo arrive en MP4, souvent en 720p.',
+    label: 'Entrée · lien public', serial: 'N°&nbsp;1120271234567890', stamp: 'Épingle vidéo',
+    placeholder: 'Collez un lien Pinterest…', hint: 'Épingles, tableaux et profils publics.',
+    stub: 'Télécharger', stress: ['Çà et là, Œuvre', 'ÉTÉ À NÎMES, ÊTRE'],
+    band: 'À retirer · Épingle vidéo', dt: 'Qualité', dd: '720p · MP4', cta: 'Télécharger le MP4', kind: 'Vidéo',
+  },
+  {
+    id: 'es', name: 'Latin: es', lang: 'es',
+    h1: 'Descargar videos de Pinterest en el celular',
+    lede: 'Pega el enlace de un pin público y descarga el video en MP4.',
+    label: 'Entrada · enlace público', serial: 'N.º&nbsp;1120271234567890', stamp: 'Pin de video',
+    placeholder: 'Pega un enlace de Pinterest…', hint: 'Pines, tableros y perfiles públicos.',
+    stub: 'Descargar', stress: ['Año, señal, güeña', 'ÁNGEL ÚLTIMO ÍNDICE'],
+    band: 'Listo · Pin de video', dt: 'Calidad', dd: '720p · MP4', cta: 'Descargar MP4', kind: 'Video',
+  },
+  {
+    id: 'tr', name: 'Latin Extended: tr', lang: 'tr',
+    h1: '<span lang="en">Pinterest</span> Video İndir: <span lang="en">iPhone</span> ve <span lang="en">Android</span>',
+    lede: 'Herkese açık bir Pin linkini yapıştırın; videoyu MP4 olarak indirin.',
+    label: 'Emanet fişi · herkese açık link', serial: 'No.&nbsp;1120271234567890', stamp: 'Video Pin',
+    placeholder: 'Pinterest linkini yapıştırın…', hint: 'Herkese açık Pinler, panolar ve profiller.',
+    stub: 'İndir', stress: ['şişli çiğ ağaç', 'İĞNE ÖĞÜŞ IŞIK'],
+    band: 'Hazır · Video Pin', dt: 'Kalite', dd: '720p · MP4', cta: 'MP4 indir', kind: 'Video',
+  },
+  {
+    id: 'vi', name: 'Vietnamese: vi', lang: 'vi',
+    h1: 'Lưu video Pinterest vào thư viện ảnh',
+    lede: 'Dán link Ghim công khai và tải video MP4 về máy.',
+    label: 'Vé vào cửa · link công khai', serial: 'Số&nbsp;1120271234567890', stamp: 'Ghim video',
+    placeholder: 'Dán link Ghim, bảng hoặc hồ sơ Pinterest…', hint: 'Ghim, bảng và hồ sơ công khai.',
+    stub: 'Tải xuống', stress: ['cập nhật được dịch vụ', 'ắt ẩn ẫu ếch ổn'],
+    band: 'Đã sẵn sàng · Ghim video', dt: 'Chất lượng', dd: '720p · MP4', cta: 'Tải MP4', kind: 'Video',
+  },
+  {
+    id: 'ru', name: 'Cyrillic: ru', lang: 'ru',
+    h1: 'Как скачать видео с Pinterest на компьютер',
+    lede: 'Вставьте ссылку на публичный пин и скачайте видео в MP4.',
+    label: 'Билет · публичная ссылка', serial: '№&nbsp;1120271234567890', stamp: 'Видео-пин',
+    placeholder: 'Вставьте ссылку на пин, доску или профиль Pinterest…', hint: 'Публичные пины, доски и профили.',
+    stub: 'Скачать', stress: ['ёжик щёки йод № 15', 'ЙЁЖ ЩУКА ЪЫЬ ЮЛЯ'],
+    band: 'Готово · Видео-пин', dt: 'Качество', dd: '720p · MP4', cta: 'Скачать MP4', kind: 'Видео',
+  },
+  {
+    id: 'th', name: 'Thai: th', lang: 'th',
+    h1: 'โหลดวิดีโอ Pinterest ลงมือถือ',
+    lede: 'วางลิงก์พินสาธารณะ แล้วโหลดวิดีโอเป็นไฟล์ MP4',
+    label: '1 ลิงก์ 1 สิทธิ์ · สาธารณะเท่านั้น', serial: 'No.&nbsp;1120271234567890', stamp: 'พินวิดีโอ',
+    placeholder: 'วางลิงก์ Pinterest…', hint: 'พิน บอร์ด และโปรไฟล์สาธารณะ',
+    stub: 'โหลด', stress: ['ฤดูปู ปุ่มดู ญี่ปุ่น', 'ที่นี่ น้ำป้ำ ปั้นนี้'],
+    band: 'พร้อมโหลด · พินวิดีโอ', dt: 'คุณภาพ', dd: '720p · MP4', cta: 'โหลด MP4', kind: 'วิดีโอ',
+  },
+  {
+    id: 'ar', name: 'Arabic: ar (RTL)', lang: 'ar',
+    h1: 'تحميل فيديو بنترست على الآيفون والأندرويد',
+    lede: 'الصق رابط منشور عام من بنترست وحمّل الفيديو بصيغة MP4.',
+    label: 'تذكرة دخول · رابط عام', serial: 'رقم&nbsp;<bdi dir="ltr">1120271234567890</bdi>', stamp: 'منشور فيديو',
+    placeholder: 'الصق رابط بنترست هنا (منشور، فيديو، لوحة، حساب)…', hint: 'المنشورات واللوحات والحسابات العامة فقط.',
+    stub: 'تحميل', stress: ['كلّ الصّور طِبق الأصل', 'لكن ظلّ ضِفاف النّيل'],
+    band: 'جاهز · منشور فيديو', dt: 'الجودة', dd: '<bdi dir="ltr">720p · MP4</bdi>', cta: 'تحميل MP4', kind: 'فيديو',
+  },
+];
+
+const dirOf = (lang: AnyLocale) => (lang === 'ar' ? 'rtl' : 'ltr');
+const only = Astro.params.page?.replace(/^fonts-?/, '') || null;
+const shown = only ? SAMPLES.filter((s) => s.id === only) : SAMPLES;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Script test page</title>
+    <script is:inline>
+      if (new URLSearchParams(location.search).get('theme') === 'dark') document.documentElement.classList.add('dark');
+    </script>
+  </head>
+  <body class="min-h-screen font-sans antialiased overflow-x-hidden field-red">
+    {shown.map((s) => (
+      <div id={`s-${s.id}`} lang={s.lang} dir={dirOf(s.lang)} data-sample={s.id}>
+        <p class="px-4 py-2 text-xs font-bold bg-ink-900 text-white" lang="en" dir="ltr">
+          {s.name} · preload {fontAssetsFor(s.lang).preload.map((p) => p.replace('/fonts/', '')).join(', ')}
+        </p>
+        <section class="field seam-hero relative" aria-labelledby={`h-${s.id}`}>
+          <div class="seam-grid max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-8 lg:pt-12 pb-10 sm:pb-14 grid">
+            <div class="seam-copy min-w-0">
+              <h1 id={`h-${s.id}`} class="seam-h1 t-display text-[2.875rem] leading-[0.9] sm:text-6xl sm:leading-[0.88]" set:html={s.h1} />
+              <p class="seam-lede mt-4 sm:mt-5 text-[1.0625rem] sm:text-lg leading-relaxed max-w-xl text-[var(--on-field-2)]">{s.lede}</p>
+            </div>
+            <div class="seam-lip min-w-0">
+              <h2 class="t-display text-4xl sm:text-5xl leading-[0.95] mt-6" data-stress>{s.stress[0]}<br />{s.stress[1]}</h2>
+              <section class="rc mt-6 max-w-md" data-receipt>
+                <div class="rc-band">
+                  <span class="t-label">{s.band}</span>
+                  <span class="rc-serial" set:html={s.serial} />
+                </div>
+                <div class="rc-section">
+                  <dl class="rc-specs"><div><dt>{s.dt}</dt><dd set:html={s.dd} /></div></dl>
+                  <p class="rc-notice"><span class="stamp stamp-ok" style="--stamp-bg:#F08A3C">{s.kind}</span><span>{s.hint}</span></p>
+                </div>
+                <div class="rc-section pb-4">
+                  <a class="rc-cta relative" href="#" style="--rc-stock:#F08A3C">
+                    <span>{s.cta}</span>
+                    <span class="rc-cta-fill" style="--p:0.6"></span>
+                  </a>
+                  <div class="rc-tools mt-3">
+                    <a href="#" class="rc-btn rc-btn--quiet" data-chevron>
+                      {s.stub}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+                    </a>
+                    <span class="inline-flex items-center gap-1 text-sm font-bold" data-tw-chevron>
+                      rtl:-scale-x-100
+                      <svg class="w-4 h-4 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+                    </span>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="seam-form min-w-0 relative z-10 mt-6 sm:mt-8">
+              <astro-island style="display:contents">
+                <div class="w-full mx-auto max-w-2xl mt-0">
+                  <form class="ticket" data-tearing="false" onsubmit="return false">
+                    <div class="ticket-paper">
+                      <div class="ticket-head">
+                        <span class="t-label">{s.label}</span>
+                        <span class="ticket-serial" translate="no" set:html={s.serial} />
+                      </div>
+                      <div class="ticket-body">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3 min-h-[2rem]">
+                          <label for={`u-${s.id}`} class="text-sm font-bold">Pinterest</label>
+                          <span class="stamp stamp-in stamp-ok" style="--stamp-bg:#F08A3C;--stamp-ink:#17191E">{s.stamp}</span>
+                        </div>
+                        <div class="ticket-input">
+                          <input id={`u-${s.id}`} type="url" placeholder={s.placeholder} inputmode="url" spellcheck="false" data-url />
+                          <button type="button" class="shrink-0 min-h-[44px] px-3 rounded inline-flex items-center gap-1.5 text-sm font-bold bg-[var(--ink)] text-[var(--paper)]">Paste</button>
+                        </div>
+                        <p id="ticket-hint" class="mt-3 text-sm leading-relaxed text-[var(--ink-2)]">{s.hint}</p>
+                      </div>
+                    </div>
+                    <div class="perf" aria-hidden="true"></div>
+                    <div class="stub">
+                      <button type="submit" class="stub-btn">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="M7 10l5 5 5-5" /><path d="M12 15V3" /></svg>
+                        <span>{s.stub}</span>
+                      </button>
+                    </div>
+                  </form>
+                  <nav aria-label="Tools" class="mt-4 flex flex-wrap gap-2">
+                    <a href="#" class="stock-chip" data-stock="video" style="--chip:#F08A3C;--chip-ink:#17191E">Video</a>
+                    <a href="#" class="stock-chip" data-stock="image" style="--chip:#F4C531;--chip-ink:#17191E">Image</a>
+                    <a href="#" class="stock-chip" data-stock="board" style="--chip:#6CC79A;--chip-ink:#17191E">Board</a>
+                  </nav>
+                </div>
+              </astro-island>
+            </div>
+          </div>
+        </section>
+      </div>
+    ))}
+
+    {!only && <section class="px-4 py-10 bg-[var(--counter)] text-[var(--ink)]" lang="en" data-tear-demo>
+      <h2 class="t-display text-4xl mb-6">Stub tear (submitting)</h2>
+      <div class="grid gap-10 sm:grid-cols-2 max-w-4xl" style="--field:var(--counter)">
+        {(['en', 'ar'] as const).map((lang) => (
+          <div lang={lang} dir={dirOf(lang)} data-tear={lang}>
+            <form class="ticket" data-tearing="true" onsubmit="return false">
+              <div class="ticket-paper">
+                <div class="ticket-head">
+                  <span class="t-label">{lang === 'ar' ? 'تذكرة دخول · رابط عام' : 'Admit one · public link'}</span>
+                  <span class="ticket-serial">{lang === 'ar' ? 'رقم 1120271234567890' : 'No. 1120271234567890'}</span>
+                </div>
+                <div class="ticket-body">
+                  <div class="ticket-input"><input type="url" value="https://pin.it/2Xb7kQf" /></div>
+                </div>
+              </div>
+              <div class="perf" aria-hidden="true"></div>
+              <div class="stub"><button type="button" class="stub-btn">{lang === 'ar' ? 'تحميل' : 'Download'}</button></div>
+            </form>
+          </div>
+        ))}
+      </div>
+    </section>}
+  </body>
+</html>

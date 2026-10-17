@@ -1,7 +1,7 @@
 /** Board / profile collection and profile-picture extraction (moved from /api/extract). */
 import { metaContent } from './text';
-import { extractAvatarFromHtml, isPinimgAvatarUrl, upgradeAvatarUrl } from './media';
-import { fetchUserResourceAvatar, hydrateCollectionPins, paginateResourcePins } from './upstream';
+import { extractAvatarFromHtml, isPinimgAvatarUrl } from './media';
+import { fetchUserResourceAvatar, hydrateCollectionPins, paginateResourcePins, resolveAvatarUrl } from './upstream';
 import type { AvatarBody, BoardBody, FetchLike, ProfileBody } from './types';
 
 type Classified = { kind: 'board' | 'profile'; username?: string; boardSlug?: string };
@@ -47,6 +47,39 @@ export function extractBoardsFromReduxState(html: string): { name: string; url: 
   return boards;
 }
 
+/**
+ * The board's own record in the page's Redux state (id, pin count, privacy),
+ * matched by its /user/slug/ path. Null when the page has none.
+ */
+export function boardInfoFromHtml(
+  html: string,
+  username?: string,
+  boardSlug?: string,
+): { id: string; pinCount: number | null; privacy: string | null } | null {
+  if (!username || !boardSlug) return null;
+  const want = `/${username}/${boardSlug}/`.toLowerCase();
+  const scriptMatches = [...html.matchAll(/<script[^>]*type="application\/json"[^>]*>([\s\S]*?)<\/script>/gi)];
+  for (const s of scriptMatches) {
+    try {
+      const boards = JSON.parse(s[1])?.initialReduxState?.boards;
+      if (!boards) continue;
+      for (const b of Object.values(boards) as any[]) {
+        const path = typeof b?.url === 'string' ? b.url.replace(/^https?:\/\/[^/]+/, '').toLowerCase() : '';
+        if (b?.id && decodeURIComponent(path) === decodeURIComponent(want)) {
+          const count = typeof b.pin_count === 'number' ? b.pin_count : typeof b.pinCount === 'number' ? b.pinCount : null;
+          return { id: String(b.id), pinCount: count, privacy: typeof b.privacy === 'string' ? b.privacy : null };
+        }
+      }
+    } catch {}
+  }
+  return null;
+}
+
+/** Same image file at another size (pidgets give numeric pin ids, the board feed opaque ones). */
+function imageKey(url: string): string {
+  return url.replace(/^https:\/\/i\.pinimg\.com\/[^/]+\//, '').replace(/\.\w+$/, '');
+}
+
 export function collectionTitleFromHtml(
   html: string,
   kind: 'board' | 'profile',
@@ -55,10 +88,25 @@ export function collectionTitleFromHtml(
 ): string {
   const og = metaContent(html, 'og:title') || metaContent(html, 'twitter:title');
   if (og) {
-    return og
+    let title = og
       .replace(/\s*[|–-]\s*Pinterest\s*$/i, '')
       .replace(/\s+on Pinterest\s*$/i, '')
       .trim();
+    if (kind === 'profile') {
+      // Profile og:title is "Name (username) - Profile | Pinterest": the
+      // English page-type suffix and the repeated @username (the receipts
+      // print it separately) are not part of the name.
+      title = title
+        .replace(/\s*[-–]\s*Profile\s*$/i, '')
+        .replace(/\s*\|\s*[^|]*\bPinterest\b[^|]*$/i, '')
+        .trim();
+      if (username) {
+        const esc = username.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const stripped = title.replace(new RegExp(`\\s*\\(@?${esc}\\)\\s*$`, 'i'), '').trim();
+        if (stripped) title = stripped;
+      }
+    }
+    if (title) return title;
   }
   if (kind === 'board' && boardSlug) {
     const pretty = boardSlug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
@@ -85,7 +133,9 @@ export async function extractCollection(
   fetchImpl: FetchLike,
   idLimit: number = cap,
 ): Promise<
-  { kind: 'board'; body: BoardBody } | { kind: 'profile'; body: ProfileBody } | { error: string }
+  | { kind: 'board'; body: BoardBody }
+  | { kind: 'profile'; body: ProfileBody }
+  | { error: string; unavailable?: true }
 > {
   const pinIds = extractPinIdsFromHtml(html, idLimit);
   let pins = pinIds.length > 0 ? await hydrateCollectionPins(pinIds, fetchImpl) : [];
@@ -98,10 +148,16 @@ export async function extractCollection(
     try {
       const resourceName =
         classified.kind === 'profile' ? 'UserPinsResource' : 'BoardFeedResource';
+      // The board feed needs the board id and the grid field set; with only
+      // board_url it answers 403 "Invalid Resource Request" (live, 2026-10).
+      const board = classified.kind === 'board' ? boardInfoFromHtml(html, classified.username, classified.boardSlug) : null;
       const resourceOptions =
         classified.kind === 'profile'
           ? { username: classified.username }
-          : { board_url: `/${classified.username}/${classified.boardSlug}/` };
+          : {
+              board_url: `/${classified.username}/${classified.boardSlug}/`,
+              ...(board ? { board_id: board.id, field_set_key: 'react_grid_pin' } : {}),
+            };
 
       const paginatedPins = await paginateResourcePins(
         resourceName,
@@ -113,7 +169,15 @@ export async function extractCollection(
       );
 
       if (paginatedPins.length > 0) {
-        pins = [...pins, ...paginatedPins];
+        // The feed's opaque ids (e1_…) can repeat pins the pidgets already gave by number.
+        const seen = new Set(pins.map((p) => imageKey(p.image_url)));
+        const fresh = paginatedPins.filter((p) => {
+          const key = imageKey(p.image_url);
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+        pins = [...pins, ...fresh].slice(0, maxTotal);
       }
     } catch (e) {
       console.warn('Pagination failed, using HTML-only pins:', e);
@@ -150,9 +214,10 @@ export async function extractCollection(
         metaContent(html, 'twitter:image') ||
         null;
       if (ogImage && isPinimgAvatarUrl(ogImage)) {
-        profileAvatarUrl = upgradeAvatarUrl(ogImage);
+        profileAvatarUrl = ogImage;
       }
     }
+    profileAvatarUrl = await resolveAvatarUrl(profileAvatarUrl, fetchImpl);
 
     const profileBoards = extractBoardsFromReduxState(html);
 
@@ -173,6 +238,15 @@ export async function extractCollection(
     return { kind: 'profile', body };
   }
 
+  // The page itself says the board is public and has pins: Pinterest did not
+  // hand them over this time, so say so (retryable) instead of "private or empty".
+  if (classified.kind === 'board') {
+    const board = boardInfoFromHtml(html, classified.username, classified.boardSlug);
+    if (board && board.privacy === 'public' && (board.pinCount ?? 0) > 0) {
+      return { unavailable: true, error: COLLECTION_UNAVAILABLE_TEXT };
+    }
+  }
+
   return {
     error:
       classified.kind === 'profile'
@@ -180,6 +254,9 @@ export async function extractCollection(
         : 'Could not find public pins on this Pinterest board. The board may be private or empty.',
   };
 }
+
+export const COLLECTION_UNAVAILABLE_TEXT =
+  'Pinterest did not send the pins of this board just now. Try again in a minute.';
 
 /**
  * Avatar-only intent (profile-picture downloader). Null when no avatar is found.
@@ -215,9 +292,10 @@ export async function extractAvatar(
     // an avatar — those use /736x/ or /564x/ or /474x/ prefixes and contain
     // different hash paths.
     if (ogImage && isPinimgAvatarUrl(ogImage)) {
-      profileAvatarUrl = upgradeAvatarUrl(ogImage);
+      profileAvatarUrl = ogImage;
     }
   }
+  profileAvatarUrl = await resolveAvatarUrl(profileAvatarUrl, fetchImpl);
 
   const profileTitle = collectionTitleFromHtml(
     html,

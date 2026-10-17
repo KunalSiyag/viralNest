@@ -214,6 +214,7 @@ export type ExtractErrorCode =
   | 'wrong_link_type'      // 400 MCP only (expect mismatch)
   | 'avatar_not_found'     // 400 'Could not find a profile picture …'
   | 'collection_empty'     // 400 'Could not find public pins on this Pinterest board/profile …'
+  | 'collection_unavailable' // 503 public board with pins, none sent upstream (retryable)
   | 'no_media';            // 400 'Could not find downloadable media for this link …'
 
 export interface ExtractFailure {
@@ -587,7 +588,7 @@ Tool error codes and their sources:
 | `invalid_cursor` | cursor decode | no | "The cursor does not match this link. Call again without a cursor." |
 | `rate_limited` | tool or upstream limiter | yes | "Rate limit reached. Retry in about 60 seconds." with `retry_after_seconds: 60` |
 | `rate_limited` | more than 5 Pinterest-bound calls in one HTTP request (a JSON-RPC batch) | yes | "At most 5 Pinterest lookups per request. Send the rest in separate requests." (no `retry_after_seconds`; no limiter is charged) |
-| `upstream_failed` | exception thrown by `extractPinterest` | yes | "Pinterest did not respond as expected. Try again shortly." (internals stay in the log only) |
+| `upstream_failed` | exception thrown by `extractPinterest`, or `collection_unavailable` (public board with pins that Pinterest did not send) | yes | "Pinterest did not respond as expected. Try again shortly." (internals stay in the log only) |
 
 ---
 

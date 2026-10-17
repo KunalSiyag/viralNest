@@ -1,0 +1,125 @@
+{
+  "pageId": "pinterest-audio-downloader",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger le son d’une vidéo Pinterest en MP3 — gratuit",
+    "description": "Extrayez la musique ou la voix d’une épingle vidéo Pinterest publique en MP3, si la vidéo a du son. Gratuit, sans compte. Gardez seulement l’audio autorisé."
+  },
+  "keywords": {
+    "primary": "telecharger mp3 pinterest",
+    "secondary": [
+      "telecharger audio pinterest",
+      "telecharger son pinterest",
+      "télécharger vidéo pinterest mp3",
+      "convertisseur pinterest mp3",
+      "pinterest mp3"
+    ]
+  },
+  "nav": {
+    "label": "Le son en MP3",
+    "short": "MP3",
+    "card": {
+      "title": "Le son en MP3",
+      "blurb": "Le son d’une épingle vidéo en MP3, créé dans votre navigateur.",
+      "badge": "MP3"
+    }
+  },
+  "hero": {
+    "h1": "Le son d’une vidéo Pinterest en MP3",
+    "lede": "Gardez la musique ou la voix d’une épingle vidéo en **MP3**, créé dans votre navigateur à partir du son de la vidéo."
+  },
+  "intro": [
+    "Collez le lien d’une **épingle vidéo** qui a du son : PintDownload récupère la vidéo, puis votre navigateur en extrait la piste son et l’encode en **MP3** à 192 kbit/s. Le MP3 est créé sur votre appareil et n’est jamais envoyé en ligne.",
+    "Pinterest ne publie pas de fichier audio séparé : sans son dans la vidéo, pas de MP3. Ne gardez que l’audio que vous avez le droit d’utiliser."
+  ],
+  "features": [
+    {
+      "h": "Un vrai MP3",
+      "p": "Encodé avec LAME, l’encodeur MP3 libre, à 192 kbit/s. Pas une vidéo renommée en `.mp3`."
+    },
+    {
+      "h": "Découper l’audio",
+      "p": "Gardez seulement un extrait, pour une sonnerie par exemple, et récupérez-le en MP3 ou en WAV."
+    },
+    {
+      "h": "Le MP4 garde aussi le son",
+      "p": "Vous voulez l’image et le son ? Téléchargez simplement le MP4."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Comment le MP3 est fabriqué",
+      "paragraphs": [
+        "Votre navigateur télécharge la vidéo via PintDownload, décode sa piste son, puis l’encode en MP3 avec LAME (licence LGPL, lame.sourceforge.io). Tout se passe sur votre téléphone ou votre ordinateur. Un navigateur très ancien qui ne sait pas lire le son de la vidéo ne pourra pas créer le MP3 : essayez une version récente de Chrome, Edge, Safari ou Firefox."
+      ]
+    },
+    {
+      "h2": "Musique protégée : ce que vous pouvez en faire",
+      "paragraphs": [
+        "Une épingle publique n’est pas une licence. La musique d’une vidéo appartient souvent à un artiste ou à un label : l’écouter chez soi est une chose, la réutiliser dans une vidéo publiée en est une autre. Gardez l’audio de vos propres épingles, de musiques libres de droits ou pour un usage personnel, et créditez le créateur. Ce n’est pas un conseil juridique."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment récupérer le son d’une vidéo Pinterest en MP3",
+    "intro": "Épingles vidéo publiques avec du son uniquement. Créditez le créateur si vous réutilisez le son.",
+    "exampleLabel": "Lien d’une épingle vidéo",
+    "items": [
+      {
+        "title": "Choisissez une vidéo avec du son",
+        "body": "Activez le son sur Pinterest pour vérifier. Les vidéos muettes et les GIF n’ont rien à extraire."
+      },
+      {
+        "title": "Collez le lien",
+        "body": "**Icône de partage** › **Copier le lien**, ou une adresse avec `/pin/`. Collez-le dans le ticket ci-dessus et touchez **Télécharger la vidéo**."
+      },
+      {
+        "title": "Téléchargez le MP3",
+        "body": "Touchez la ligne MP3 : votre navigateur crée le fichier à 192 kbit/s. Pour un extrait, utilisez **Découper l’audio**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur le MP3",
+    "items": [
+      {
+        "q": "Comment récupérer le son d’une vidéo Pinterest en MP3 ?",
+        "a": "Collez ici le lien de l’épingle vidéo et touchez **Télécharger la vidéo**. La ligne MP3 crée alors un MP3 à 192 kbit/s à partir du son de la vidéo, dans votre navigateur. Le MP4, lui, garde aussi le son."
+      },
+      {
+        "q": "Pourquoi mon épingle ne propose-t-elle pas de MP3 ?",
+        "a": "L’épingle est peut-être une vidéo muette, un GIF ou une photo : il n’y a pas de son à garder. Si la vidéo a du son mais que le MP3 échoue, votre navigateur ne sait sans doute pas lire sa piste son ; essayez Chrome, Edge, Safari ou Firefox à jour."
+      },
+      {
+        "q": "Est-il légal de garder la musique ?",
+        "a": "Seulement si vous en avez le droit : votre propre épingle, une musique sous licence ou une écoute privée. L’accès public ne vaut pas autorisation de réutiliser. Ce n’est pas un conseil juridique."
+      },
+      {
+        "q": "Puis-je couper un extrait pour une sonnerie ?",
+        "a": "Oui. Touchez **Découper l’audio**, réglez le début et la fin, écoutez l’extrait, puis récupérez-le en MP3 ou en WAV. Tout se fait dans votre navigateur."
+      },
+      {
+        "q": "Le MP3 est-il envoyé sur un serveur ?",
+        "a": "Non. Le MP3 est fabriqué sur votre appareil, avec LAME, et n’est jamais envoyé en ligne. Seule la vidéo passe par PintDownload pour être téléchargée."
+      },
+      {
+        "q": "Faut-il un compte Pinterest ?",
+        "a": "Non, pour les épingles vidéo publiques. Les épingles privées ou secrètes ne sont pas accessibles."
+      }
+    ]
+  },
+  "related": {
+    "title": "Autres outils vidéo"
+  },
+  "schema": {
+    "appName": "Le son d’une vidéo Pinterest en MP3 — PintDownload",
+    "howToName": "Comment télécharger le son d’une vidéo Pinterest en MP3",
+    "howToDescription": "Coller le lien d’une épingle vidéo publique et en tirer un MP3, créé dans le navigateur à partir de la piste son."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Facts from the English audio page after the real-MP3 change (LAME, 192 kbit/s, made in the browser). Island label « Découper l’audio » per glossary (not « Couper le son »).",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. FAQ \"lancez la lecture du lien\" replaced by the real button name; questions inverted (ne propose-t-elle pas, Est-il légal). LAME / 192 kbit/s claims match src/lib/audio."
+  }
+}

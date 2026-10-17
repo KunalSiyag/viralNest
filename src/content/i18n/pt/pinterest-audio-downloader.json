@@ -1,0 +1,129 @@
+{
+  "pageId": "pinterest-audio-downloader",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar Som do Pinterest: Extraia o Áudio de um Vídeo",
+    "description": "Tire o som de um vídeo público do Pinterest e salve só o áudio, quando o pin tem trilha. Grátis e sem login. Guarde apenas áudio que você tem direito de usar."
+  },
+  "keywords": {
+    "primary": "baixar som do pinterest",
+    "secondary": [
+      "baixar áudio do pinterest",
+      "baixador de áudio do pinterest",
+      "extrair áudio do pinterest",
+      "como tirar o áudio de um vídeo do pinterest",
+      "pinterest mp3"
+    ]
+  },
+  "nav": {
+    "label": "Baixar som",
+    "short": "Som",
+    "card": {
+      "title": "Baixar som em MP3",
+      "blurb": "O som de um pin de vídeo em MP3, gerado no seu navegador.",
+      "badge": "MP3"
+    }
+  },
+  "hero": {
+    "h1": "Baixar som do Pinterest",
+    "lede": "Salve a música ou a voz de um pin de vídeo público como **MP3**, gerado **no seu navegador** a partir do som do vídeo. Grátis e sem login."
+  },
+  "intro": [
+    "Gostou do **som** de um vídeo do Pinterest? Cole o link do pin e, no resultado, a linha **MP3** tira o áudio do vídeo e cria um MP3 de 192 kbps. O MP3 é feito no seu aparelho e não é enviado para lugar nenhum.",
+    "Só funciona com vídeos que têm som. Foto, GIF e vídeo mudo não têm áudio para tirar."
+  ],
+  "features": [
+    {
+      "h": "MP3 de verdade",
+      "p": "O navegador decodifica o som do vídeo e grava um MP3 de 192 kbps com o LAME, um codificador de código aberto."
+    },
+    {
+      "h": "Só um trecho",
+      "p": "Quer só o refrão ou uma fala? O **Cortar som** separa um trecho em MP3 ou WAV."
+    },
+    {
+      "h": "Ou fique com o MP4",
+      "p": "O vídeo em MP4 já tem o som. Baixe o MP4 se quiser imagem e áudio juntos."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Como o MP3 é feito",
+      "paragraphs": [
+        "O Pinterest não publica um arquivo de áudio separado: o som está dentro do vídeo. Por isso o seu navegador baixa o vídeo pelo PintDownload, lê o som e codifica um MP3 de 192 kbps com o LAME (licença LGPL). Tudo acontece no seu aparelho. Um navegador muito antigo pode não conseguir; nesse caso, o MP4 continua disponível."
+      ]
+    },
+    {
+      "h2": "O som tem dono",
+      "paragraphs": [
+        "Estar público no Pinterest não é licença. Música de artista, trilha de novela ou a voz de outro criador têm dono. Baixe para ouvir ou como referência; para usar em vídeo, anúncio ou post na Shopee, use só áudio que é seu, que você licenciou ou que o criador liberou."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como tirar o som de um vídeo do Pinterest",
+    "intro": "Só pins de vídeo públicos com som. Dê crédito se reutilizar.",
+    "exampleLabel": "Link de pin de vídeo",
+    "items": [
+      {
+        "title": "Copie um pin de vídeo com som",
+        "body": "Ative o som no Pinterest primeiro. Vídeos mudos e GIFs não têm nada para extrair."
+      },
+      {
+        "title": "Cole o link aqui",
+        "body": "**Compartilhar** › **Copiar link**, ou um endereço com `/pin/`. Cole na caixa acima e toque em **Baixar vídeo**."
+      },
+      {
+        "title": "Baixe o MP3",
+        "body": "Escolha a linha **MP3**. O navegador gera o arquivo de 192 kbps a partir do som do vídeo, sem enviar nada."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre o som do Pinterest",
+    "items": [
+      {
+        "q": "Como tirar o áudio de um vídeo do Pinterest?",
+        "a": "Cole o link do pin de vídeo aqui e toque em **Baixar vídeo**. No resultado, a linha MP3 cria o áudio no seu navegador. Se preferir, baixe o MP4, que também tem o som."
+      },
+      {
+        "q": "Sai em MP3 mesmo?",
+        "a": "Sai. É um MP3 de verdade, de 192 kbps, codificado no seu navegador a partir do som do vídeo. Não é o vídeo com outro nome."
+      },
+      {
+        "q": "Por que meu pin não tem som para baixar?",
+        "a": "Porque é uma foto, um GIF ou um vídeo sem trilha. Confira no Pinterest se o vídeo toca com som antes de colar o link."
+      },
+      {
+        "q": "É legal baixar a música de um pin?",
+        "a": "Baixe só áudio que você tem direito de usar: o seu, um licenciado ou um liberado pelo criador. Estar público no Pinterest não quer dizer que é livre para reutilizar."
+      },
+      {
+        "q": "Precisa de conta no Pinterest?",
+        "a": "Não. Funciona com pins de vídeo públicos, sem login. Pins privados ou secretos não funcionam."
+      },
+      {
+        "q": "Dá para cortar só um trecho?",
+        "a": "Dá. No resultado, toque em **Cortar som**, marque o início e o fim e baixe o trecho em MP3 ou WAV. O corte também é feito no seu navegador."
+      },
+      {
+        "q": "Por que não consigo gerar o MP3 no meu celular?",
+        "a": "Navegadores muito antigos não conseguem ler o som do vídeo. Atualize o Chrome, o Safari, o Edge ou o Firefox, ou baixe o MP4."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outras ferramentas para o Pinterest"
+  },
+  "schema": {
+    "appName": "Baixar som do Pinterest — PintDownload",
+    "howToName": "Como tirar o som de um vídeo do Pinterest em MP3",
+    "howToDescription": "Cole o link de um pin de vídeo público com som e gere um MP3 de 192 kbps no seu navegador."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. Real MP3 (user decision 1): 192 kbps, LAME, made in the browser; facts from the English audio page.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device."
+  }
+}

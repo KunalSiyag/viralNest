@@ -2656,7 +2656,7 @@
         "Gallery (Android/Samsung)": "Galería",
         "Google Photos": "Google Fotos",
         "Samsung file manager": "Mis archivos",
-        "Chrome bookmarks bar": "barra de marcadores"
+        "Chrome bookmarks bar": "barra de favoritos (es-419) / barra de marcadores (es-ES)"
       }
     },
     "searchCentral": {
@@ -3133,7 +3133,7 @@
       "faqTopics": [
         "¿PintDownload es una extensión de Chrome? (no: es un marcador de un clic)",
         "¿Por qué un marcador es más seguro que una extensión?",
-        "¿Cómo agrego el marcador a la barra de marcadores?",
+        "¿Cómo agrego el marcador a la barra de Chrome?",
         "¿Funciona en Windows, Mac y Chromebook?",
         "¿Funciona en Edge, Brave, Opera o Safari?",
         "¿Funciona en Chrome para Android? (mejor usar el cuadro de la página en el celular)"
@@ -3462,7 +3462,7 @@
       },
       "bookmarklet": {
         "es": "bookmarklet (marcador de un clic)",
-        "note": "Chrome's Spanish UI calls bookmarks 'marcadores' and the bar 'barra de marcadores'. Keep the English word once, explain it as 'un marcador que descarga con un clic'."
+        "note": "Chrome in Latin American Spanish (es-419) calls bookmarks 'favoritos' and the bar 'barra de favoritos' (Más > Favoritos y listas > Mostrar barra de favoritos); Spain (es-ES) says 'marcadores' / 'barra de marcadores'. The site writes neutral Latin American Spanish, so name both: 'barra de favoritos (o de marcadores)'. Keep the English word once, explain it as 'un marcador que descarga con un clic'."
       },
       "extension": {
         "es": "extensión",

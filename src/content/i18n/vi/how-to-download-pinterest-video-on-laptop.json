@@ -1,0 +1,136 @@
+{
+  "pageId": "how-to-download-pinterest-video-on-laptop",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải video Pinterest về máy tính, laptop, MacBook",
+    "description": "Tải video Pinterest về máy tính Windows, laptop hay MacBook chỉ bằng trình duyệt, không cần phần mềm, tiện ích hay đăng nhập. File MP4 vào thư mục Tải xuống."
+  },
+  "keywords": {
+    "primary": "tải video pinterest về máy tính",
+    "secondary": [
+      "cách tải video pinterest trên máy tính",
+      "tải video pinterest về laptop",
+      "tải video pinterest trên macbook",
+      "tải video pinterest pc",
+      "web tải video trên pinterest về máy tính",
+      "cốc cốc tải video pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Tải video về máy tính",
+    "short": "Máy tính",
+    "card": {
+      "title": "Tải video Pinterest về máy tính",
+      "blurb": "Windows, laptop hay MacBook: dán link, file MP4 vào thư mục Tải xuống.",
+      "badge": "PC"
+    }
+  },
+  "hero": {
+    "h1": "Tải video Pinterest về máy tính",
+    "lede": "Chỉ cần trình duyệt: sao chép link Ghim, dán vào ô, file **MP4** vào thư mục **Tải xuống**."
+  },
+  "intro": [
+    "Cách này dùng được trên mọi máy tính có trình duyệt: PC Windows 10 hay 11, laptop, MacBook Air, MacBook Pro hoặc Chromebook. Không cần cài phần mềm, không cần thêm tiện ích. Lưu ý: nếu bạn đang muốn **cài app Pinterest** lên máy tính thì đó là chuyện khác: app có trong Microsoft Store. Trang này chỉ nói về việc tải video về.",
+    "Tải trên máy tính nhưng muốn xem trên điện thoại? Sau khi lấy video, nút **Gửi sang điện thoại** hiện một mã QR để bạn mở file ngay trên điện thoại."
+  ],
+  "sections": [
+    {
+      "h2": "Sao chép link Ghim trên máy tính",
+      "paragraphs": [
+        "Mở Ghim trên pinterest.com rồi sao chép địa chỉ trên thanh địa chỉ của trình duyệt: địa chỉ đúng có `/pin/` và một dãy số. Bạn cũng có thể bấm **biểu tượng chia sẻ** của Ghim rồi chọn **Sao chép liên kết**.",
+        "Dùng bàn phím còn nhanh hơn: **Ctrl + L** rồi **Ctrl + C** trên Windows và Chromebook, hoặc **Cmd + L** rồi **Cmd + C** trên MacBook."
+      ]
+    },
+    {
+      "h2": "Cốc Cốc, Chrome, Edge hay Safari đều được",
+      "paragraphs": [
+        "PintDownload là một trang web nên chạy trên mọi trình duyệt hiện nay. Cốc Cốc dùng nhân Chromium giống Chrome, nên dán link hay dùng bookmarklet đều y như trên Chrome. Nút tải video có sẵn của Cốc Cốc là tính năng riêng của trình duyệt đó; bạn không cần đến nó để dùng PintDownload.",
+        "Cũng không cần phần mềm tải video cài vào máy. Một phần mềm lạ có quyền truy cập máy tính của bạn nhiều hơn hẳn một trang web."
+      ]
+    },
+    {
+      "h2": "File MP4 nằm ở đâu",
+      "paragraphs": [
+        "Trong thư mục **Tải xuống** (Downloads) của tài khoản trên máy, trừ khi bạn đã chọn thư mục khác trong trình duyệt. Trên Windows, nhấn **Ctrl + J** để mở danh sách tải xuống của Chrome và Edge; trên MacBook dùng Safari, nhấn **Cmd + Option + L**."
+      ]
+    },
+    {
+      "h2": "Vì sao không tải được video Pinterest trên máy tính",
+      "paragraphs": [
+        "Trên máy tính, lỗi hay gặp nhất là sao chép nhầm địa chỉ:"
+      ],
+      "list": [
+        "**Bạn sao chép địa chỉ của bảng hoặc bảng tin nhà.** Bấm vào video để mở Ghim rồi sao chép lại địa chỉ đó.",
+        "**Ghim không phải video, hoặc là Ghim riêng tư.** Dán link vào [[pinterest-pin-downloader|trang tải Ghim]] để biết đó là loại Ghim gì.",
+        "**Trình duyệt quá cũ.** Cập nhật Chrome, Cốc Cốc, Edge, Firefox hay Safari rồi thử lại."
+      ]
+    },
+    {
+      "h2": "Tải bằng một cú nhấp",
+      "paragraphs": [
+        "Nếu thường tải video trên máy tính, hãy thêm bookmarklet PintDownload lên thanh dấu trang: khi đang xem một Ghim, bấm vào dấu trang là PintDownload mở ra với link đã dán sẵn. Nút kéo thả có ở bên dưới, chi tiết ở trang [[pinterest-video-downloader-chrome|tải video Pinterest trên Chrome]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tải video Pinterest về máy tính",
+    "intro": "Ba bước trên Windows, MacBook hoặc Chromebook.",
+    "exampleLabel": "Link Ghim video",
+    "items": [
+      {
+        "title": "Sao chép địa chỉ Ghim",
+        "body": "Mở video trên pinterest.com và sao chép địa chỉ có `/pin/` trên thanh địa chỉ."
+      },
+      {
+        "title": "Dán vào PintDownload",
+        "body": "Mở pintdownload.app ở thẻ khác, dán bằng **Ctrl + V** (hoặc **Cmd + V**) rồi nhấn **Enter**."
+      },
+      {
+        "title": "Lưu file MP4",
+        "body": "Bấm nút tải. File vào thư mục **Tải xuống**, mở bằng trình phát video bất kỳ."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải video trên máy tính",
+    "items": [
+      {
+        "q": "Lấy link video Pinterest trên máy tính ở đâu?",
+        "a": "Bấm vào video để mở Ghim, rồi sao chép địa chỉ trên thanh địa chỉ (có `/pin/`). Hoặc bấm **biểu tượng chia sẻ** của Ghim và chọn **Sao chép liên kết**."
+      },
+      {
+        "q": "Tại sao không tải được video Pinterest trên máy tính?",
+        "a": "Thường là bạn đã sao chép địa chỉ của bảng hoặc bảng tin nhà thay vì của Ghim. Mở video và sao chép địa chỉ có `/pin/`. Nếu vẫn lỗi, Ghim có thể là riêng tư hoặc không phải video."
+      },
+      {
+        "q": "Nếu Ghim có bản 1080p, trên máy tính có tải được không?",
+        "a": "Được, khi Pinterest có bản 1080p cho Ghim đó. Phần lớn video chỉ có 720p; nếu có nhiều bản, PintDownload cho bạn chọn."
+      },
+      {
+        "q": "Có cần Cốc Cốc, phần mềm hay tiện ích không?",
+        "a": "Không. Bất kỳ trình duyệt nào cũng được, kể cả Cốc Cốc. Không cần phần mềm tải video hay tiện ích mở rộng; nếu muốn bấm một lần là xong, hãy dùng bookmarklet (không đòi quyền gì)."
+      },
+      {
+        "q": "MacBook, Chromebook hay Windows 10 có khác gì không?",
+        "a": "Các bước như nhau, chỉ khác phím tắt: Ctrl trên Windows và Chromebook, Cmd trên MacBook. Trên Chromebook, file MP4 nằm trong mục **Tải xuống** của app Tệp."
+      },
+      {
+        "q": "File tải về nằm ở đâu?",
+        "a": "Trong thư mục **Tải xuống** (Downloads), trừ khi trình duyệt của bạn lưu vào chỗ khác. Nhấn **Ctrl + J** trong Chrome hoặc Edge trên Windows để xem danh sách tải xuống."
+      }
+    ]
+  },
+  "related": {
+    "title": "Hướng dẫn và công cụ khác"
+  },
+  "schema": {
+    "appName": "Tải video Pinterest về máy tính — PintDownload",
+    "howToName": "Cách tải video Pinterest về máy tính, laptop, MacBook",
+    "howToDescription": "Sao chép địa chỉ Ghim video trên trình duyệt máy tính, dán vào PintDownload và lưu file MP4 vào thư mục Tải xuống."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Verify: Windows vi folder name 'Tải xuống'; ChromeOS Files app 'Tệp' and 'Tải xuống'; Cốc Cốc built-in downloader described only as the browser's own feature (no partnership)."
+  }
+}

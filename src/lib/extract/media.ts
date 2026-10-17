@@ -8,12 +8,27 @@ import {
 import type { MediaItem } from './types';
 
 /**
- * Upgrade any avatar-sized Pinterest image URL to the highest resolution.
- * Handles all known size prefixes including RS (resize) and plain dimension variants.
+ * Upgrade any avatar-sized Pinterest image URL to 1200x (the pin rule). Avatars
+ * often 403 at 1200x, so the extractor probes avatarSizeCandidates() instead
+ * (upstream.ts resolveAvatarUrl) and keeps this only as a synchronous guess.
  */
 export function upgradeAvatarUrl(url: string): string {
-  // /originals/ is 403 from Akamai now; 1200x is the largest public size.
   return toPublicPinImageUrl(url);
+}
+
+const AVATAR_SIZE_SEGMENT =
+  /\/(?:originals|orig|1200x|736x|564x|474x|236x|30x30_RS|50x50_RS|75x75_RS|140x140_RS|280x280_RS|600x600_RS|150x150|170x|280x280|600x600)\//;
+
+/**
+ * Sizes of one avatar file to try, largest first, ending with the URL Pinterest
+ * itself returned. Which sizes exist differs per account (live, 2026-10: one
+ * avatar answers at 1200x, another only at /originals/ and 280x280_RS), so
+ * none can be assumed.
+ */
+export function avatarSizeCandidates(url: string): string[] {
+  if (!url || !/^https:\/\/i\.pinimg\.com\//.test(url) || !AVATAR_SIZE_SEGMENT.test(url) || isGifUrl(url)) return url ? [url] : [];
+  const sizes = ['originals', '1200x', '736x', '600x600_RS', '564x', '280x280_RS'];
+  return [...new Set([...sizes.map((size) => url.replace(AVATAR_SIZE_SEGMENT, `/${size}/`)), url])];
 }
 
 /**
@@ -25,7 +40,8 @@ export function isPinimgAvatarUrl(url: string): boolean {
 }
 
 /**
- * Extract the user's profile avatar URL from the page HTML.
+ * Extract the user's profile avatar URL from the page HTML, as Pinterest gives
+ * it (resolve the size to serve with upstream.ts resolveAvatarUrl).
  * Strategy (in priority order):
  *   1. Parse initialReduxState.users for image_xlarge_url / image_large_url
  *   2. Scan <img> tags whose src matches pinimg.com avatar size patterns
@@ -50,7 +66,7 @@ export function extractAvatarFromHtml(html: string, targetUsername?: string): st
             u?.image_small_url ||
             null;
           if (avatarUrl && avatarUrl.includes('pinimg.com')) {
-            return upgradeAvatarUrl(avatarUrl);
+            return avatarUrl;
           }
         }
         // If username didn't match, try any user as fallback
@@ -63,7 +79,7 @@ export function extractAvatarFromHtml(html: string, targetUsername?: string): st
               u?.image_small_url ||
               null;
             if (avatarUrl && avatarUrl.includes('pinimg.com')) {
-              return upgradeAvatarUrl(avatarUrl);
+              return avatarUrl;
             }
           }
         }
@@ -84,7 +100,7 @@ export function extractAvatarFromHtml(html: string, targetUsername?: string): st
       const bIdx = sizeOrder.findIndex((s) => b[1].includes(s));
       return (aIdx === -1 ? 99 : aIdx) - (bIdx === -1 ? 99 : bIdx);
     });
-    return upgradeAvatarUrl(imgMatches[0][1]);
+    return imgMatches[0][1];
   }
 
   // ── 3. Look for avatar in inline JSON (non-Redux script blocks) ─
@@ -97,7 +113,7 @@ export function extractAvatarFromHtml(html: string, targetUsername?: string): st
         /["'](?:image_xlarge_url|image_large_url|image_medium_url|profile_image|user_image|avatar)["']\s*:\s*["'](https?:\/\/i\.pinimg\.com\/[^"']+)["']/i,
       );
       if (avatarInScript?.[1]) {
-        return upgradeAvatarUrl(avatarInScript[1]);
+        return avatarInScript[1];
       }
     } catch {}
   }

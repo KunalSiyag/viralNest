@@ -1,0 +1,123 @@
+{
+  "pageId": "how-to-download-pinterest-video-in-gallery",
+  "locale": "it",
+  "meta": {
+    "title": "Come salvare un video da Pinterest nella Galleria, senza app",
+    "description": "Salva i video di Pinterest nella Galleria di Android o nell’app Foto di iPhone: copia il link del Pin, scarica l’MP4 e ritrovalo. Gratis e senza login."
+  },
+  "keywords": {
+    "primary": "come salvare un video da pinterest nella galleria",
+    "secondary": [
+      "come salvare un video di pinterest in galleria",
+      "salvare video pinterest",
+      "come salvare video da pinterest",
+      "come faccio a salvare i video da pinterest",
+      "salvare video pinterest senza logo"
+    ]
+  },
+  "nav": {
+    "label": "Salva in Galleria",
+    "short": "Galleria",
+    "card": {
+      "title": "Salva in Galleria",
+      "blurb": "Far comparire il video di Pinterest in Galleria o nell’app Foto.",
+      "badge": "Galleria"
+    }
+  },
+  "hero": {
+    "h1": "Salva i video di Pinterest in Galleria",
+    "lede": "Dal link del Pin alla **Galleria** di Android o all’app **Foto** di iPhone, senza installare app e senza login."
+  },
+  "intro": [
+    "Scaricare il video è solo metà del lavoro. Su iPhone l’MP4 finisce prima nell’app **File**, su Android nella cartella **Download**, e non sempre compare dove te lo aspetti. Questa guida spiega come portarlo in Galleria o in Foto e cosa fare se non lo trovi.",
+    "Per i passaggi di download su ogni telefono c’è anche la guida [[download-pinterest-videos-iphone-android|video di Pinterest su iPhone e Android]]."
+  ],
+  "sections": [
+    {
+      "h2": "Perché il video non compare in Galleria",
+      "paragraphs": [
+        "Il browser salva i download come file, non come foto. Su iPhone Safari li mette in **File** › **Download**, e l’app Foto non li mostra finché non ce li salvi tu. Su Android Chrome li mette in **Download**; Galleria e Google Foto di solito li fanno vedere in un album dei download, a volte dopo qualche secondo."
+      ]
+    },
+    {
+      "h2": "iPhone: dall’app File a Foto",
+      "paragraphs": [
+        "Finito il download, apri l’app **File** ed entra in **Download**. Tocca il video, poi il pulsante **Condividi**, e scegli **Salva video**. Da quel momento è in Foto, tra gli elementi più recenti: quello che una volta si chiamava rullino."
+      ],
+      "list": [
+        "Se **Salva video** non compare, scorri il menu verso l’alto: si trova sotto la fila delle app.",
+        "Se il file non si apre, controlla in Safari che il download sia finito, toccando l’icona dei download accanto alla barra degli indirizzi."
+      ]
+    },
+    {
+      "h2": "Android: da Download alla Galleria",
+      "paragraphs": [
+        "Apri l’app **Files** di Google, oppure **Archivio** sui Samsung, ed entra in **Download**: l’MP4 è lì. Galleria e Google Foto lo mostrano nell’album **Download**. Se non compare, tieni premuto il file e spostalo nella cartella **DCIM** o **Movies**."
+      ]
+    },
+    {
+      "h2": "E il logo sul video?",
+      "paragraphs": [
+        "Chi cerca come salvare un video di Pinterest «senza logo» di solito teme una filigrana aggiunta. PintDownload non aggiunge niente: salvi l’MP4 pubblico del Pin così com’è. Il nome o il logo che il creatore ha messo dentro il video, però, restano, perché fanno parte del video stesso."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Come salvare un video di Pinterest in Galleria",
+    "intro": "Tre passaggi con Safari su iPhone o con Chrome su Android.",
+    "exampleLabel": "Link di un Pin video",
+    "items": [
+      {
+        "title": "Copia il link del video",
+        "body": "Nell’app Pinterest apri il video, tocca l’**icona di condivisione** e poi **Copia link**."
+      },
+      {
+        "title": "Incollalo su PintDownload",
+        "body": "Apri pintdownload.app in Safari o in Chrome, incolla il link nel tagliando qui sopra e tocca **Scarica video**."
+      },
+      {
+        "title": "Portalo in Galleria",
+        "body": "Su iPhone: **File** › **Download** › **Condividi** › **Salva video**. Su Android il video compare in Galleria, nell’album Download."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti su Galleria e Foto",
+    "items": [
+      {
+        "q": "Perché il video scaricato non compare in Galleria?",
+        "a": "Perché il browser lo salva come file. Cercalo nella cartella **Download**: sui Samsung apri **Archivio** › **Download**, altrimenti guarda in Google Foto, nell’album dei download. Se proprio non c’è, il download potrebbe non essere finito."
+      },
+      {
+        "q": "Su iPhone dove finisce il video?",
+        "a": "Nell’app **File**, cartella **Download**. Per metterlo in Foto aprilo, tocca **Condividi** e scegli **Salva video**."
+      },
+      {
+        "q": "Serve un’app per salvare i video di Pinterest in Galleria?",
+        "a": "No. Bastano il browser e le app che il telefono ha già: File e Foto su iPhone, Files o Archivio e Galleria su Android."
+      },
+      {
+        "q": "È gratis e senza login?",
+        "a": "Sì. Non serve un account né su PintDownload né su Pinterest: funziona con tutti i video pubblici."
+      },
+      {
+        "q": "Il video mantiene l’audio?",
+        "a": "Sì. L’MP4 è quello pubblicato su Pinterest, con il suo audio quando il Pin ne ha uno. Se ti serve solo il suono, puoi creare un MP3 con lo strumento per [[pinterest-audio-downloader|scaricare l’audio da Pinterest]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Altre guide e strumenti"
+  },
+  "schema": {
+    "appName": "Salva i video di Pinterest in Galleria — PintDownload",
+    "howToName": "Come salvare un video da Pinterest nella Galleria del telefono",
+    "howToDescription": "Scarica l’MP4 di un Pin video e salvalo nella Galleria di Android o nell’app Foto di iPhone."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-it (agent). Unverified on an it-IT phone: iOS File › Download, Salva video, Samsung Archivio, Files di Google, Google Foto album Download, Safari download icon.",
+    "nativeReviewer": "review-it (agent), 2026-10-16: read on the live build at 390/1440 for fluency, tu register, glossary (Pin, bacheca, la GIF, tagliando, Galleria/Foto), honesty and English leftovers. Pinterest labels rechecked on help.pinterest.com/it: Scarica immagine, Copia link, Invia; secret boards are now called private (Mantieni la bacheca privata). Device labels (iOS File › Download, Salva video/Salva immagine, Samsung Archivio, Files di Google) are the standard it-IT names, not checked on a phone."
+  }
+}
