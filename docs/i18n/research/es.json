@@ -1,0 +1,3721 @@
+{
+  "locale": "es",
+  "hreflang": "es",
+  "htmlLang": "es",
+  "ogLocale": "es_LA",
+  "markets": [
+    {
+      "country": "MX",
+      "gl": "mx",
+      "note": "largest Spanish-speaking market; 'celular', 'computadora', 'video', 'link'"
+    },
+    {
+      "country": "ES",
+      "gl": "es",
+      "note": "'móvil', 'ordenador', 'portátil'; RAE prefers 'vídeo' but searchers type 'video'"
+    },
+    {
+      "country": "AR",
+      "gl": "ar",
+      "note": "voseo in speech, but tú reads naturally on the web; 'celular'"
+    },
+    {
+      "country": "CO",
+      "gl": "co",
+      "note": "'celular', 'computador/computadora'"
+    },
+    {
+      "country": "US",
+      "gl": "us",
+      "hl": "es",
+      "note": "US Hispanic; mixes English tool names ('pinterest video downloader para iphone')"
+    }
+  ],
+  "evidence": {
+    "autocomplete": {
+      "_method": "Google Suggest, client=firefox&ie=utf-8&oe=utf-8&hl=es&gl=<mx|es|ar|co|us>, 830 requests spaced 1.15 s apart, collected 2026-10-14. Values are the raw suggestion lists. Markets that returned an identical list are grouped under one comma-joined key. An empty list means Google offered no completions, which is a weak-demand signal.",
+      "raw": {
+        "home": {
+          "descargar de pinterest": {
+            "mx": [
+              "descargar de pinterest gif",
+              "descargar de pinterest imagen",
+              "descargar de pinterest gratis",
+              "descargar de pinterest fotos",
+              "descargar de pinterest imagen gratis",
+              "descargar de pinterest app",
+              "descargar de pinterest free"
+            ],
+            "es": [
+              "descargar de pinterest gratis",
+              "descargar de pinterest en linea",
+              "descargar de pinterest imagen",
+              "descargar de pinterest gif",
+              "descargar de pinterest fotos",
+              "descargar de pinterest imagen gratis",
+              "descargar de pinterest app",
+              "descargar de pinterest free"
+            ],
+            "ar": [
+              "descargar de pinterest gif",
+              "descargar de pinterest imagen",
+              "descargar de pinterest gratis",
+              "descargar de pinterest imagen gratis",
+              "descargar de pinterest fotos",
+              "descargar de pinterest en linea",
+              "descargar de pinterest app",
+              "descargar de pinterest free"
+            ],
+            "co": [
+              "descargar de pinterest gratis",
+              "descargar de pinterest gif",
+              "descargar de pinterest imagen",
+              "descargar de pinterest imagen gratis",
+              "descargar de pinterest fotos",
+              "descargar de pinterest app",
+              "descargar de pinterest free"
+            ],
+            "us": [
+              "descargar de pinterest imagen",
+              "descargar de pinterest gif",
+              "descargar de pinterest gratis",
+              "descargar de pinterest fotos",
+              "descargar de pinterest en linea",
+              "descargar de pinterest imagen gratis",
+              "descargar de pinterest app",
+              "descargar de pinterest free"
+            ]
+          },
+          "descargar pinterest": {
+            "mx": [
+              "descargar pinterest",
+              "descargar pinterest gratis",
+              "descargar pinterest videos downloader",
+              "descargar pinterest apk",
+              "descargar pinterest para computadora",
+              "descargar pinterest español gratis",
+              "descargar pinterest imágenes",
+              "descargar pinterest link",
+              "descargar pinterest para celular gratis",
+              "descargar pinterest gif"
+            ],
+            "es": [
+              "descargar pinterest",
+              "descargar pinterest gratis",
+              "descargar pinterest videos online",
+              "descargar pinterest pc",
+              "descargar pinterest imágenes",
+              "descargar pinterest gratis videos",
+              "descargar pinterest gratis en español",
+              "descargar pinterest gif",
+              "descargar pinterest para macbook",
+              "descargar pinterest enlace"
+            ],
+            "ar": [
+              "descargar pinterest",
+              "descargar pinterest gratis",
+              "descargar pinterest videos downloader",
+              "descargar pinterest pc",
+              "descargar pinterest apk",
+              "descargar pinterest imagen",
+              "descargar pinterest gif",
+              "descargar pinterest español gratis",
+              "descargar pinterest link",
+              "descargar pinterest downloader"
+            ],
+            "co": [
+              "descargar pinterest",
+              "descargar pinterest gratis",
+              "descargar pinterest en pc",
+              "descargar pinterest apk",
+              "descargar pinterest español gratis",
+              "descargar pinterest imágenes",
+              "descargar pinterest link",
+              "descargar pinterest para celular gratis",
+              "descargar pinterest gif",
+              "descargar pinterest lite"
+            ],
+            "us": [
+              "descargar pinterest",
+              "descargar pinterest gratis",
+              "descargar pinterest pc",
+              "descargar pinterest gratis videos",
+              "descargar pinterest fotos",
+              "descargar pinterest español gratis",
+              "descargar pinterest apk",
+              "descargar pinterest gif",
+              "descargar pinterest link",
+              "descargar pinterest para celular gratis"
+            ]
+          },
+          "descargador de pinterest": {
+            "mx": [
+              "descargador de pinterest gif",
+              "descargador de pinterest mp3",
+              "descargador de pinterest app",
+              "descargador de pinterest imagenes"
+            ],
+            "es": [
+              "descargador de pinterest mp3",
+              "descargador de pinterest app",
+              "descargador de pinterest gif",
+              "descargador de pinterest fotos"
+            ],
+            "ar": [
+              "descargador de pinterest app",
+              "descargador de pinterest mp3",
+              "descargador de pinterest imagenes",
+              "descargador de pinterest gif"
+            ],
+            "co,us": [
+              "descargador de pinterest mp3",
+              "descargador de pinterest app",
+              "descargador de pinterest imagenes",
+              "descargador de pinterest gif"
+            ]
+          },
+          "pinterest downloader": {
+            "mx": [
+              "pinterest downloader",
+              "pinterest downloader video ios",
+              "pinterest downloader gratis",
+              "pinterest downloader.com/es",
+              "pinterest downloader hd",
+              "pinterest downloader image",
+              "pinterest downloader extension",
+              "pinterest downloader com pint",
+              "pinterest downloader.com expertsphp.com/pinterest-video-downloader",
+              "pinterest downloader.c"
+            ],
+            "es": [
+              "pinterest downloader",
+              "pinterest downloader videos",
+              "pinterest downloader image",
+              "pinterest downloader 4k",
+              "pinterest downloader descargar",
+              "pinterest downloader io",
+              "pinterest downloader 1080p",
+              "pinterest downloader gif",
+              "pinterest downloader mac",
+              "pinterest downloader video ios"
+            ],
+            "ar": [
+              "pinterest downloader",
+              "pinterest downloader video ios",
+              "pinterest downloader videos",
+              "pinterest downloader gratis",
+              "pinterest downloader.com/es",
+              "pinterest downloader hd",
+              "pinterest downloader reddit",
+              "pinterest downloader mp4",
+              "pinterest downloader video hd",
+              "pinterest downloader image"
+            ],
+            "co": [
+              "pinterest downloader",
+              "pinterest downloader gratis",
+              "pinterest downloader video ios",
+              "pinterest downloader.com/es",
+              "pinterest downloader hd",
+              "pinterest downloader descargar",
+              "pinterest downloader image",
+              "pinterest downloader reddit",
+              "pinterest downloader experts php",
+              "pinterest downloader 1080p"
+            ],
+            "us": [
+              "pinterest downloader",
+              "pinterest downloader gratis",
+              "pinterest downloader video ios",
+              "pinterest downloader free",
+              "pinterest downloader app",
+              "pinterest downloader 1080p",
+              "pinterest downloader image",
+              "pinterest downloader gif",
+              "pinterest downloader pindown",
+              "pinterest downloader safe"
+            ]
+          },
+          "bajar de pinterest": {
+            "mx,es,ar,co,us": [
+              "bajar de pinterest",
+              "bajar de pinterest gratis",
+              "bajar pin de pinterest",
+              "bajar aplicación de pinterest",
+              "bajar reel de pinterest",
+              "bajar imagen de pinterest hd",
+              "bajar aplicación de pinterest gratis"
+            ]
+          },
+          "como descargar de pinterest": {
+            "mx": [
+              "como descargar de pinterest",
+              "como descargar de pinterest imagenes",
+              "como descargar de pinterest en alta calidad",
+              "como descargar videos de pinterest en tu galeria",
+              "como descargar videos de pinterest en pc",
+              "como descargar imagenes de pinterest en alta calidad"
+            ],
+            "es": [
+              "como descargar de pinterest",
+              "como descargar de pinterest en alta calidad",
+              "como descargar de pinterest imagenes",
+              "como descargar videos de pinterest en tu galeria",
+              "como descargar videos de pinterest en pc",
+              "como descargar imagenes de pinterest en alta calidad"
+            ],
+            "ar,co,us": [
+              "como descargar de pinterest",
+              "como descargar de pinterest videos",
+              "como descargar de pinterest imagenes",
+              "como descargar de pinterest en alta calidad",
+              "como descargar de pinterest sin registrarse",
+              "como descargar videos de pinterest en tu galeria",
+              "como descargar videos de pinterest en pc",
+              "como descargar videos de pinterest sin aplicaciones",
+              "como descargar videos de pinterest app",
+              "como descargar videos de pinterest en el celular"
+            ]
+          },
+          "pinterest descargar": {
+            "mx": [
+              "pinterest descargar",
+              "pinterest descargar por google",
+              "pinterest descargar gratis videos",
+              "pinterest descargar imágenes gratis",
+              "pinterest descargar videos hd",
+              "pinterest descargar apk",
+              "pinterest descargar pc",
+              "pinterest descargar gratis en español",
+              "pinterest descargar videos apk",
+              "pinterest descargar imágenes"
+            ],
+            "es": [
+              "pinterest descargar",
+              "pinterest descargar gratis",
+              "pinterest descargar pc",
+              "pinterest descargar gratis videos",
+              "pinterest descargar imágenes gratis",
+              "pinterest descargar videos hd",
+              "pinterest descargar link",
+              "pinterest descargar macbook",
+              "pinterest descargar fotos",
+              "pinterest descargar videos online"
+            ],
+            "ar": [
+              "pinterest descargar",
+              "pinterest descargar videos hd",
+              "pinterest descargar por google",
+              "pinterest descargar pc",
+              "pinterest descargar apk",
+              "pinterest descargar imágenes gratis",
+              "pinterest descargar gratis en español",
+              "pinterest descargar apk videos",
+              "pinterest descargar imágenes",
+              "pinterest descargar videos y fotos"
+            ],
+            "co": [
+              "pinterest descargar",
+              "pinterest descargar imágenes gratis",
+              "pinterest descargar por google",
+              "pinterest descargar pc",
+              "pinterest descargar apk",
+              "pinterest descargar gratis en español",
+              "pinterest descargar videos hd",
+              "pinterest descargar gratis videos",
+              "pinterest descargar gratis",
+              "pinterest descargar imágenes gratis para celular"
+            ],
+            "us": [
+              "pinterest descargar",
+              "pinterest descargar imágenes gratis",
+              "pinterest descargar gratis en español",
+              "pinterest descargar por google",
+              "pinterest descargar videos hd",
+              "pinterest descargar videos y fotos",
+              "pinterest descargar pc",
+              "pinterest descargar apk",
+              "pinterest descargar imágenes gratis para celular",
+              "pinterest descargar gratis videos"
+            ]
+          },
+          "guardar de pinterest": {
+            "mx,es,ar,co,us": [
+              "guardar de pinterest",
+              "guardar videos de pinterest",
+              "guardar videos de pinterest en galería",
+              "guardar fotos de pinterest",
+              "guardar gif de pinterest",
+              "guardar pines de pinterest",
+              "guardar videos de pinterest con enlace",
+              "guardar videos de pinterest sin marca",
+              "botón guardar de pinterest",
+              "guardar cosas de pinterest"
+            ]
+          },
+          "pagina para descargar de pinterest": {
+            "mx,es,ar,co,us": [
+              "pagina para descargar de pinterest",
+              "pagina para descargar videos de pinterest",
+              "pagina para descargar imagen de pinterest",
+              "pagina para descargar pin de pinterest",
+              "pagina para descargar gif de pinterest",
+              "para descargar de pinterest",
+              "pagina para descargar de pinterest gratis",
+              "pagina para descargar de pinterest sin marca de agua"
+            ]
+          },
+          "app para descargar de pinterest": {
+            "mx,es,co,us": [
+              "app para descargar de pinterest",
+              "app para descargar videos de pinterest apk",
+              "app para descargar videos de pinterest en iphone",
+              "app para descargar videos de pinterest online",
+              "app para descargar imágenes de pinterest",
+              "app para descargar cosas de pinterest",
+              "mejor app para descargar videos de pinterest",
+              "app para descargar fotos y videos de pinterest",
+              "como se llama la app para descargar videos de pinterest"
+            ],
+            "ar": [
+              "app para descargar de pinterest",
+              "app para descargar videos de pinterest en iphone",
+              "app para descargar imágenes de pinterest",
+              "app para descargar fotos de pinterest",
+              "como se llama la app para descargar videos de pinterest",
+              "cual es la mejor app para descargar videos de pinterest",
+              "app para descargar de pinterest gratis",
+              "app para descargar de pinterest sin marca de agua"
+            ]
+          }
+        },
+        "pin": {
+          "descargar pin de pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar pin de pinterest",
+              "descargar pin gif de pinterest",
+              "pagina para descargar pin de pinterest"
+            ]
+          },
+          "descargar pines de pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar pines de pinterest videos",
+              "app para descargar pines de pinterest"
+            ]
+          },
+          "pinterest pin downloader": {
+            "mx,es,ar,co,us": [
+              "pinterest pin downloader",
+              "pinterest pin downloader hd",
+              "pinterest pin downloader extension",
+              "pinterest pin downloader online",
+              "pinterest pin downloader reddit",
+              "pinterest pin downloader free",
+              "pinterest pin downloader video",
+              "pinterest pin downloader 4k",
+              "pinterest downloader pin down",
+              "pinterest board & pin downloader"
+            ]
+          },
+          "descargar pinterest link": {
+            "mx,es,ar,us": [
+              "descargar pinterest link",
+              "descargar foto pinterest link",
+              "descargar gif pinterest link",
+              "descargar pinterest por link",
+              "descargar videos pinterest por link",
+              "descargar pinterest links",
+              "descargar pinterest linkedin",
+              "descargar pinterest link para pc",
+              "descargar pinterest link gratis"
+            ],
+            "co": [
+              "descargar pinterest link",
+              "descargar foto pinterest link",
+              "descargar gif pinterest link",
+              "descargar pinterest por link",
+              "descargar videos pinterest por link",
+              "descargar pinterest links",
+              "descargar pinterest linkedin",
+              "descargar pinterest link para pc"
+            ]
+          },
+          "pin.it descargar": {
+            "mx,es,ar,co,us": [
+              "descargar pin it",
+              "pin.it descargar gratis",
+              "pin.it descargar musica"
+            ]
+          }
+        },
+        "video": {
+          "descargar video de pinterest": {
+            "mx": [
+              "descargar video de pinterest app",
+              "descargar video de pinterest en gif",
+              "descargar video de pinterest con link",
+              "descargar video de pinterest en google",
+              "descargar video de pinterest e",
+              "descargar video de pinterest para editar"
+            ],
+            "es": [
+              "descargar video de pinterest en gif",
+              "descargar video de pinterest app",
+              "descargar video de pinterest e",
+              "descargar video de pinterest en google",
+              "descargar video de pinterest hd",
+              "descargar video de pinterest para editar"
+            ],
+            "ar": [
+              "descargar video de pinterest como gif",
+              "descargar video de pinterest app",
+              "descargar video de pinterest por enlace",
+              "descargar video de pinterest e",
+              "descargar video de pinterest en google",
+              "descargar video de pinterest hd",
+              "descargar video de pinterest en celular",
+              "descargar video de pinterest para editar"
+            ],
+            "co": [
+              "descargar video de pinterest gif",
+              "descargar video de pinterest app",
+              "descargar video de pinterest en google",
+              "descargar video de pinterest para editar"
+            ],
+            "us": [
+              "descargar video de pinterest como gif",
+              "descargar video de pinterest en google",
+              "descargar video de pinterest app",
+              "descargar video de pinterest hd",
+              "descargar video de pinterest en línea",
+              "descargar video de pinterest e",
+              "descargar video de pinterest para editar"
+            ]
+          },
+          "descargar videos de pinterest": {
+            "mx": [
+              "descargar videos de pinterest app",
+              "descargar videos de pinterest app gratis",
+              "descargar videos de pinterest sin marca de agua aplicación",
+              "descargar videos de pinterest snap pin",
+              "descargar videos de pinterest sin watermark",
+              "descargar videos de pinterest gif",
+              "descargar videos de pinterest seguro",
+              "descargar videos de pinterest sin anuncios",
+              "descargar videos de pinterest en pc",
+              "descargar videos de pinterest klickpin"
+            ],
+            "es": [
+              "descargar videos de pinterest app",
+              "descargar videos de pinterest url",
+              "descargar videos de pinterest app gratis",
+              "descargar videos de pinterest sin watermark",
+              "descargar videos de pinterest gif",
+              "descargar videos de pinterest en pc",
+              "descargar videos de pinterest sin marca de agua aplicación",
+              "descargar videos de pinterest klickpin"
+            ],
+            "ar": [
+              "descargar videos de pinterest gif",
+              "descargar videos de pinterest app",
+              "descargar videos de pinterest con enlace",
+              "descargar videos de pinterest save pin",
+              "descargar videos de pinterest klickpin",
+              "descargar videos de pinterest en google",
+              "descargar videos de pinterest en pc",
+              "descargar videos de pinterest sin app",
+              "descargar videos de pinterest app gratis",
+              "descargar videos de pinterest sin marca de agua aplicación"
+            ],
+            "co": [
+              "descargar videos de pinterest gif",
+              "descargar videos de pinterest app",
+              "descargar videos de pinterest con enlace",
+              "descargar videos de pinterest en línea pin downloader",
+              "descargar videos de pinterest en pc",
+              "descargar videos de pinterest sin watermark",
+              "descargar videos de pinterest sin marca de agua aplicación",
+              "descargar videos de pinterest save pin"
+            ],
+            "us": [
+              "descargar videos de pinterest sin watermark",
+              "descargar videos de pinterest app",
+              "descargar videos de pinterest sin aplicaciones",
+              "descargar videos de pinterest en el celular",
+              "descargar videos de pinterest chrome",
+              "descargar videos de pinterest sin marca de agua aplicación",
+              "descargar videos de pinterest gif",
+              "descargar videos de pinterest en pc",
+              "descargar videos de pinterest en galería",
+              "descargar videos de pinterest app gratis"
+            ]
+          },
+          "descargar video pinterest": {
+            "mx": [
+              "descargar video pinterest hd",
+              "descargar video pinterest gif",
+              "descargar video pinterest con link",
+              "descargar video pinterest gratis hd",
+              "descargar video pinterest pc",
+              "descargar video pinterest mp4",
+              "descargar video pinterest app",
+              "descargar video pinterest free"
+            ],
+            "es": [
+              "descargar video pinterest url",
+              "descargar video pinterest link",
+              "descargar video pinterest hd",
+              "descargar video pinterest android",
+              "descargar video pinterest gif",
+              "descargar video pinterest mp4",
+              "descargar video pinterest ios",
+              "descargar video pinterest app",
+              "descargar video pinterest full hd",
+              "descargar video pinterest free"
+            ],
+            "ar": [
+              "descargar video pinterest link",
+              "descargar video pinterest hd",
+              "descargar video pinterest url",
+              "descargar video pinterest gif",
+              "descargar video pinterest free",
+              "descargar video pinterest mp4",
+              "descargar video pinterest app",
+              "descargar video pinterest android",
+              "descargar video pinterest pc",
+              "descargar video pinterest gratis hd"
+            ],
+            "co": [
+              "descargar video pinterest hd",
+              "descargar video pinterest pc",
+              "descargar video pinterest url",
+              "descargar video pinterest app",
+              "descargar video pinterest gratis hd",
+              "descargar video pinterest mp4",
+              "descargar video pinterest android",
+              "descargar video pinterest free",
+              "descargar video pinterest link",
+              "descargar video pinterest gif"
+            ],
+            "us": [
+              "descargar video pinterest hd",
+              "descargar video pinterest con link",
+              "descargar video pinterest free",
+              "descargar video pinterest gif",
+              "descargar video pinterest pc",
+              "descargar video pinterest app",
+              "descargar video pinterest android",
+              "descargar video pinterest mp4",
+              "descargar video pinterest gratis hd"
+            ]
+          },
+          "bajar videos de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "pinterest video downloader": {
+            "mx": [
+              "pinterest video downloader",
+              "pinterest video downloader mp3",
+              "pinterest video downloader expert",
+              "pinterest video downloader online",
+              "pinterest video downloader gratis",
+              "pinterest video downloader expertsphp",
+              "pinterest video downloader apk",
+              "pinterest video downloader mp4",
+              "pinterest video downloader es seguro",
+              "pinterest video downloader save pin"
+            ],
+            "es": [
+              "pinterest video downloader",
+              "pinterest video downloader gratis",
+              "pinterest video downloader online",
+              "pinterest video downloader x",
+              "pinterest video downloader expert",
+              "pinterest video downloader mp3",
+              "pinterest video downloader mp4",
+              "pinterest video downloader expertsphp",
+              "pinterest video downloader apk",
+              "pinterest video downloader chrome"
+            ],
+            "ar": [
+              "pinterest video downloader",
+              "pinterest video downloader gratis",
+              "pinterest video downloader expert",
+              "pinterest video downloader mp3",
+              "pinterest video downloader mp4",
+              "pinterest video downloader online",
+              "pinterest video downloader expertsphp",
+              "pinterest video downloader apk",
+              "pinterest video downloader chrome",
+              "pinterest video downloader app"
+            ],
+            "co": [
+              "pinterest video downloader",
+              "pinterest video downloader gratis",
+              "pinterest video downloader expert",
+              "pinterest video downloader mp3",
+              "pinterest video downloader online",
+              "pinterest video downloader script",
+              "pinterest video downloader mp4",
+              "pinterest video downloader expertsphp",
+              "pinterest video downloader apk",
+              "pinterest video downloader chrome"
+            ],
+            "us": [
+              "pinterest video downloader",
+              "pinterest video downloader mp3",
+              "pinterest video downloader para iphone",
+              "pinterest video downloader gratis",
+              "pinterest video downloader chrome",
+              "pinterest video downloader- download hd videos gifs & images in 1 click",
+              "pinterest video downloader without watermark",
+              "pinterest video downloader pindown",
+              "pinterest video downloader expert",
+              "pinterest video downloader online"
+            ]
+          },
+          "descargador de videos de pinterest": {
+            "mx": [
+              "descargador de videos de pinterest ¡descarga videos hd gif e imágenes con 1 clic",
+              "descargador de videos de pinterest online",
+              "descargador de videos de pinterest klickpin",
+              "descargador de videos de pinterest pc",
+              "descargador de videos de pinterest en línea",
+              "descargador de videos de pinterest app"
+            ],
+            "es,us": [
+              "descargador de videos de pinterest ¡descarga videos hd gif e imágenes con 1 clic",
+              "descargador de videos de pinterest online",
+              "descargador de videos de pinterest en hd",
+              "descargador de videos de pinterest app",
+              "descargador de videos de pinterest pc",
+              "descargador de videos de pinterest klickpin",
+              "descargador de videos de pinterest en línea"
+            ],
+            "ar": [
+              "descargador de videos de pinterest ¡descarga videos hd gif e imágenes con 1 clic",
+              "descargador de videos de pinterest online",
+              "descargador de videos de pinterest pc",
+              "descargador de videos de pinterest klickpin",
+              "descargador de videos de pinterest app",
+              "descargador de videos de pinterest en línea",
+              "descargador de videos de pinterest en hd"
+            ],
+            "co": [
+              "descargador de videos de pinterest ¡descarga videos hd gif e imágenes con 1 clic",
+              "descargador de videos de pinterest pc",
+              "descargador de videos de pinterest klickpin",
+              "descargador de videos de pinterest en línea",
+              "descargador de videos de pinterest app",
+              "descargador de videos de pinterest online",
+              "descargador de videos de pinterest en hd"
+            ]
+          },
+          "guardar video de pinterest": {
+            "mx,es,ar,co,us": [
+              "guardar video de pinterest",
+              "guardar video de pinterest sin marca de agua",
+              "como guardar video de pinterest en galeria",
+              "para guardar video de pinterest",
+              "como guardar un video de pinterest en mi pc",
+              "como guardar un video de pinterest en iphone",
+              "como guardar un video de pinterest en el celular",
+              "como puedo guardar un video de pinterest"
+            ]
+          },
+          "descargar videos de pinterest sin marca de agua": {
+            "mx,es,ar,co,us": [
+              "descargar videos de pinterest sin marca de agua aplicación"
+            ]
+          },
+          "descargar videos de pinterest gratis": {
+            "mx,es,ar,co,us": []
+          },
+          "pagina para descargar videos de pinterest": {
+            "mx,es,ar,co,us": [
+              "pagina para descargar videos de pinterest",
+              "para descargar videos de pinterest",
+              "aplicación para descargar videos de pinterest",
+              "link para descargar videos de pinterest",
+              "bot para descargar videos de pinterest",
+              "app para descargar videos de pinterest apk"
+            ]
+          },
+          "app para descargar videos de pinterest": {
+            "mx,es,ar,co": [
+              "app para descargar videos de pinterest apk",
+              "app para descargar videos de pinterest en iphone",
+              "app para descargar videos de pinterest online",
+              "mejor app para descargar videos de pinterest",
+              "app para descargar fotos y videos de pinterest",
+              "como se llama la app para descargar videos de pinterest"
+            ],
+            "us": [
+              "app para descargar videos de pinterest en iphone",
+              "app para descargar videos de pinterest apk",
+              "app para descargar videos de pinterest online",
+              "mejor app para descargar videos de pinterest",
+              "app para descargar fotos y videos de pinterest",
+              "como se llama la app para descargar videos de pinterest"
+            ]
+          }
+        },
+        "image": {
+          "descargar imagenes de pinterest": {
+            "mx": [
+              "descargar imagenes de pinterest",
+              "descargar imagenes de pinterest en alta calidad",
+              "descargar imagenes de pinterest app",
+              "descargar imagenes de pinterest por link",
+              "descargar imagenes de pinterest sin cuenta",
+              "descargar imagenes de pinterest online",
+              "descargar imagenes de pinterest es seguro"
+            ],
+            "es,co,us": [
+              "descargar imagenes de pinterest",
+              "descargar imagenes de pinterest en alta calidad",
+              "descargar imagenes de pinterest online",
+              "descargar imagenes de pinterest app",
+              "descargar imagenes de pinterest por link",
+              "descargar imagenes de pinterest es seguro",
+              "descargar imagenes de pinterest sin cuenta"
+            ],
+            "ar": [
+              "descargar imagenes de pinterest",
+              "descargar imagenes de pinterest en alta calidad",
+              "descargar imagenes de pinterest online",
+              "descargar imagenes de pinterest por link",
+              "descargar imagenes de pinterest sin cuenta",
+              "descargar imagenes de pinterest app",
+              "descargar imagenes de pinterest es seguro"
+            ]
+          },
+          "descargar fotos de pinterest": {
+            "mx": [
+              "descargar fotos de pinterest",
+              "descargar fotos de pinterest alta resolución",
+              "descargar fotos de pinterest 4k",
+              "descargar fotos de pinterest app",
+              "descargar fotos de pinterest con link"
+            ],
+            "es": [
+              "descargar fotos de pinterest",
+              "descargar fotos de pinterest 4k",
+              "descargar fotos de pinterest alta resolución",
+              "descargar fotos de pinterest con link",
+              "descargar fotos de pinterest app"
+            ],
+            "ar,co,us": [
+              "descargar fotos de pinterest",
+              "descargar fotos de pinterest alta resolución",
+              "descargar fotos de pinterest 4k",
+              "descargar fotos de pinterest con link",
+              "descargar fotos de pinterest app"
+            ]
+          },
+          "descargar imagen de pinterest": {
+            "mx,ar": [
+              "descargar imagen de pinterest",
+              "descargar imagen de pinterest sin perder calidad",
+              "descargar imagen de pinterest link",
+              "descargar imagen de pinterest online",
+              "descargar imagen de pinterest con movimiento",
+              "descargar imagen de pinterest sin registrarse"
+            ],
+            "es,us": [
+              "descargar imagen de pinterest",
+              "descargar imagen de pinterest sin perder calidad",
+              "descargar imagen de pinterest con enlace",
+              "descargar imagen de pinterest link",
+              "descargar imagen de pinterest con movimiento",
+              "descargar imagen de pinterest online",
+              "descargar imagen de pinterest sin registrarse"
+            ],
+            "co": [
+              "descargar imagen de pinterest",
+              "descargar imagen de pinterest sin perder calidad",
+              "descargar imagen de pinterest link",
+              "descargar imagen de pinterest con enlace",
+              "descargar imagen de pinterest con movimiento",
+              "descargar imagen de pinterest online",
+              "descargar imagen de pinterest sin registrarse"
+            ]
+          },
+          "como descargar fotos de pinterest": {
+            "mx": [
+              "como descargar fotos de pinterest",
+              "como descargar fotos de pinterest en pc",
+              "como descargar fotos de pinterest en alta calidad",
+              "como descargar fotos de pinterest en iphone",
+              "como descargar fotos de pinterest con calidad",
+              "como descargar fotos de pinterest en 4k",
+              "como descargar fotos de pinterest sin marca de agua",
+              "como descargar fotos de pinterest sin perder calidad"
+            ],
+            "es": [
+              "como descargar fotos de pinterest con calidad",
+              "como descargar fotos de pinterest",
+              "como descargar fotos de pinterest en iphone",
+              "como descargar fotos de pinterest en pc",
+              "como descargar fotos de pinterest en 4k",
+              "como descargar fotos de pinterest sin marca de agua",
+              "como descargar fotos de pinterest sin perder calidad"
+            ],
+            "ar": [
+              "como descargar fotos de pinterest",
+              "como descargar fotos de pinterest en iphone",
+              "como descargar fotos de pinterest en pc",
+              "como descargar fotos de pinterest con calidad",
+              "como descargar fotos de pinterest en 4k",
+              "como descargar fotos de pinterest sin marca de agua",
+              "como descargar fotos de pinterest sin perder calidad"
+            ],
+            "co": [
+              "como descargar fotos de pinterest",
+              "como descargar fotos de pinterest en alta calidad",
+              "como descargar fotos de pinterest en pc",
+              "como descargar fotos de pinterest con calidad",
+              "como descargar fotos de pinterest en 4k",
+              "como descargar fotos de pinterest sin marca de agua",
+              "como descargar fotos de pinterest en iphone",
+              "como descargar fotos de pinterest sin perder calidad"
+            ],
+            "us": [
+              "como descargar fotos de pinterest",
+              "como descargar fotos de pinterest en pc",
+              "como descargar fotos de pinterest con calidad",
+              "como descargar fotos de pinterest en 4k",
+              "como descargar fotos de pinterest sin marca de agua",
+              "como descargar fotos de pinterest en iphone",
+              "como descargar fotos de pinterest sin perder calidad"
+            ]
+          },
+          "descargar imagenes de pinterest en alta calidad": {
+            "mx,co": [
+              "descargar imagenes de pinterest en alta calidad",
+              "descargar imagenes de pinterest en alta calidad gratis"
+            ],
+            "es,ar,us": [
+              "descargar imagenes de pinterest en alta calidad",
+              "descargar imagenes de pinterest en alta calidad gratis",
+              "descargar imagenes de pinterest en alta calidad hd"
+            ]
+          },
+          "guardar fotos de pinterest": {
+            "mx,es,ar,co,us": [
+              "guardar fotos de pinterest",
+              "guardar fotos de pinterest en iphone",
+              "como guardar fotos de pinterest en galería",
+              "como guardar fotos de pinterest en galeria iphone",
+              "como guardar fotos de pinterest en ipad",
+              "como guardar fotos de pinterest en pc",
+              "para guardar fotos de pinterest",
+              "como guardar fotos de pinterest en laptop",
+              "como guardar fotos de pinterest en mi celular",
+              "se pueden guardar fotos de pinterest"
+            ]
+          },
+          "descargar fondos de pantalla de pinterest": {
+            "mx,ar,co,us": [
+              "descargar fondos de pantalla de pinterest",
+              "descargar fondos de pantalla de pinterest para pc"
+            ],
+            "es": [
+              "descargar fondos de pantalla de pinterest",
+              "como descargar fondos de pantalla en movimiento de pinterest",
+              "descargar fondos de pantalla de pinterest para pc"
+            ]
+          }
+        },
+        "gif": {
+          "descargar gif de pinterest": {
+            "mx": [
+              "descargar gif de pinterest con url",
+              "descargar gif de pinterest como video",
+              "descargar gif de pinterest en android",
+              "descargar gif de pinterest hd",
+              "como descargar gif de pinterest en el celular",
+              "descargar gif animado de pinterest",
+              "descargar pin gif de pinterest"
+            ],
+            "es,ar,co": [
+              "descargar gif de pinterest con url",
+              "descargar gif de pinterest como video",
+              "descargar gif de pinterest hd",
+              "descargar gif de pinterest en android",
+              "como descargar gif de pinterest en el celular",
+              "descargar gif animado de pinterest",
+              "descargar pin gif de pinterest"
+            ],
+            "us": [
+              "descargar gif de pinterest como video",
+              "descargar gif de pinterest con url",
+              "descargar gif de pinterest hd",
+              "descargar gif de pinterest en android",
+              "como descargar gif de pinterest en el celular",
+              "descargar gif animado de pinterest",
+              "descargar pin gif de pinterest"
+            ]
+          },
+          "descargar gifs de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "como descargar gif de pinterest": {
+            "mx,es,us": [
+              "como descargar gif de pinterest en el celular",
+              "como descargar gif de pinterest en pc",
+              "cómo descargar gif de pinterest",
+              "como descargar un gif de pinterest en android",
+              "descargar gif de pinterest con url",
+              "descargar gif de pinterest hd"
+            ],
+            "ar,co": [
+              "como descargar gif de pinterest en pc",
+              "como descargar gif de pinterest en el celular",
+              "cómo descargar gif de pinterest",
+              "como descargar un gif de pinterest en android",
+              "descargar gif de pinterest con url",
+              "descargar gif de pinterest hd"
+            ]
+          },
+          "guardar gif de pinterest": {
+            "mx,es,ar,co,us": [
+              "guardar gif de pinterest",
+              "como guardar gif de pinterest en galeria",
+              "como guardar un gif de pinterest en pc",
+              "guardar gif de pinterest sin marca de agua"
+            ]
+          },
+          "pinterest gif": {
+            "mx": [
+              "pinterest gif",
+              "pinterest gif downloader",
+              "pinterest gif download",
+              "pinterest gift",
+              "pinterest gif descargar",
+              "pinterest gif anime",
+              "pinterest gifs animados",
+              "pinterest gift card",
+              "pinterest gif wallpaper",
+              "pinterest gif meme"
+            ],
+            "es": [
+              "pinterest gif",
+              "pinterest gif downloader",
+              "pinterest gift",
+              "pinterest gif download",
+              "pinterest gifs animados",
+              "pinterest gif anime",
+              "pinterest gif descargar",
+              "pinterest gift card",
+              "pinterest gif wallpaper",
+              "pinterest gif meme"
+            ],
+            "ar": [
+              "pinterest gif",
+              "pinterest gif downloader",
+              "pinterest gif download",
+              "pinterest gift card",
+              "pinterest gif anime",
+              "pinterest gift",
+              "pinterest gif descargar",
+              "pinterest gifs animados",
+              "pinterest gif wallpaper",
+              "pinterest gif meme"
+            ],
+            "co": [
+              "pinterest gif",
+              "pinterest gif downloader",
+              "pinterest gif download",
+              "pinterest gif descargar",
+              "pinterest gif anime",
+              "pinterest gift",
+              "pinterest gifs animados",
+              "pinterest gift card",
+              "pinterest gif wallpaper",
+              "pinterest gif meme"
+            ],
+            "us": [
+              "pinterest gif downloader",
+              "pinterest gif",
+              "pinterest gif download",
+              "pinterest gift",
+              "pinterest gif anime",
+              "pinterest gif descargar",
+              "pinterest gifs animados",
+              "pinterest gift card",
+              "pinterest gif wallpaper",
+              "pinterest gif meme"
+            ]
+          }
+        },
+        "board": {
+          "descargar tablero de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar tableros de pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar tableros de pinterest gratis",
+              "descargar tableros de pinterest android",
+              "descargar tableros de pinterest online",
+              "descargar tableros completos de pinterest",
+              "extension para descargar tableros de pinterest",
+              "se pueden descargar tableros de pinterest",
+              "como descargar mis tableros de pinterest"
+            ]
+          },
+          "descargar todas las imagenes de un tablero de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar todo un tablero de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "pinterest board downloader": {
+            "mx,es,ar,co,us": [
+              "pinterest board downloader",
+              "pinterest board downloader online",
+              "pinterest board downloader android",
+              "pinterest board downloader bulk",
+              "pinterest board downloader online free",
+              "pinterest board downloader extension",
+              "pinterest board downloader free",
+              "pinterest board downloader github",
+              "pinterest board downloader apk",
+              "pinterest board downloader reddit"
+            ]
+          },
+          "tablero de pinterest": {
+            "mx,es,ar,co,us": [
+              "tablero de pinterest",
+              "tablero de pinterest en ingles",
+              "tablero de pinterest para manifestar",
+              "eliminar tablero de pinterest",
+              "tablero de ajedrez pinterest",
+              "recuperar tablero de pinterest",
+              "pinterest tablero de vision",
+              "pinterest tablero de carro",
+              "pinterest tablero de cumpleaños",
+              "compartir tablero de pinterest"
+            ]
+          }
+        },
+        "profile": {
+          "descargar perfil de pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar perfil de pinterest",
+              "descargar foto perfil de pinterest",
+              "como descargar mi foto de perfil de pinterest",
+              "descargar perfil de pinterest hd",
+              "descargar perfil de pinterest 4k"
+            ]
+          },
+          "descargar todos los pines de pinterest": {
+            "mx,es,ar,us": [
+              "descargar pines de pinterest videos"
+            ],
+            "co": [
+              "descargar pines de pinterest videos",
+              "descargar todos los pines de pinterest en español"
+            ]
+          },
+          "descargar todas las fotos de pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar todas las fotos de un tablero de pinterest",
+              "descargar todas las fotos de pinterest sin marca de agua"
+            ]
+          },
+          "pinterest profile downloader": {
+            "mx,es,ar,co,us": [
+              "pinterest profile downloader",
+              "pinterest profile downloader free",
+              "pinterest profile downloader online",
+              "pinterest profile picture downloader",
+              "pinterest profile picture downloader hd",
+              "pinterest profile picture downloader online free",
+              "pinterest full profile downloader",
+              "pinterest profile picture downloader online",
+              "pinterest profile banner downloader",
+              "pinterest profile picture downloader without watermark"
+            ]
+          }
+        },
+        "pfp": {
+          "descargar foto de perfil de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "foto de perfil pinterest": {
+            "mx,es,co": [
+              "foto de perfil pinterest",
+              "foto de perfil pinterest mujer",
+              "foto de perfil pinterest hombre",
+              "foto de perfil pinterest anime",
+              "foto de perfil pinterest aesthetic",
+              "foto de perfil pinterest gato",
+              "foto de perfil pinterest hombre anime",
+              "foto de perfil pinterest descargar",
+              "foto de perfil pinterest chica",
+              "foto de perfil pinterest whatsapp"
+            ],
+            "ar,us": [
+              "foto de perfil pinterest",
+              "foto de perfil pinterest hombre",
+              "foto de perfil pinterest mujer",
+              "foto de perfil pinterest anime",
+              "foto de perfil pinterest aesthetic",
+              "foto de perfil pinterest gato",
+              "foto de perfil pinterest hombre anime",
+              "foto de perfil pinterest descargar",
+              "foto de perfil pinterest chica",
+              "foto de perfil pinterest whatsapp"
+            ]
+          },
+          "ver foto de perfil pinterest": {
+            "mx,es,ar,us": [
+              "ver foto de perfil pinterest",
+              "foto de perfil pinterest hombre",
+              "foto de perfil pinterest mujer",
+              "foto de perfil pinterest aesthetic",
+              "foto de perfil pinterest gato",
+              "foto de perfil pinterest hombre anime",
+              "foto de perfil pinterest descargar",
+              "foto de perfil pinterest chica",
+              "foto de perfil pinterest 2025",
+              "pinterest foto de perfil girl"
+            ],
+            "co": [
+              "ver foto de perfil pinterest",
+              "foto de perfil pinterest hombre",
+              "foto de perfil pinterest mujer",
+              "foto de perfil pinterest aesthetic",
+              "foto de perfil pinterest gato",
+              "foto de perfil pinterest hombre anime",
+              "foto de perfil pinterest descargar",
+              "foto de perfil pinterest 2025",
+              "pinterest foto de perfil girl",
+              "foto de perfil pinterest"
+            ]
+          },
+          "pfp pinterest": {
+            "mx,es,ar,co,us": [
+              "pfp pinterest",
+              "pfp pinterest y2k",
+              "pfp pinterest boy",
+              "pfp pinterest anime",
+              "pfp pinterest discord",
+              "pfp pinterest aesthetic",
+              "pfp pinterest girl",
+              "pfp pinterest cute",
+              "pfp pinterest cat",
+              "pfp pinterest funny"
+            ]
+          },
+          "fotos de perfil de pinterest": {
+            "mx": [
+              "fotos de perfil de pinterest",
+              "fotos de perfil de pinterest aesthetic",
+              "fotos de perfil de pinterest hombre",
+              "fotos de perfil de pinterest mujer",
+              "fotos de perfil de pinterest de chicas",
+              "fotos de perfil de pinterest de snoopy",
+              "fotos de perfil de pinterest para whatsapp",
+              "fotos de perfil de pinterest de anime",
+              "fotos de perfil de pinterest para tiktok"
+            ],
+            "es,ar,co,us": [
+              "fotos de perfil de pinterest",
+              "fotos de perfil de pinterest aesthetic",
+              "fotos de perfil de pinterest hombre",
+              "fotos de perfil de pinterest mujer",
+              "fotos de perfil de pinterest de snoopy",
+              "fotos de perfil de pinterest para whatsapp",
+              "fotos de perfil de pinterest de chicas",
+              "fotos de perfil de pinterest de anime",
+              "fotos de perfil de pinterest para tiktok"
+            ]
+          },
+          "descargar foto de perfil": {
+            "mx": [
+              "descargar foto de perfil de tiktok",
+              "descargar foto de perfil de facebook",
+              "descargar foto de perfil de whatsapp",
+              "descargar foto de perfil de instagram app",
+              "descargar foto de perfil de vsco",
+              "descargar foto de perfil de facebook en grande",
+              "descargar foto de perfil de whatsapp online",
+              "descargar foto de perfil de discord",
+              "descargar foto de perfil de snapchat",
+              "descargar foto de perfil de whatsapp privado"
+            ],
+            "es": [
+              "descargar foto de perfil instagram",
+              "descargar foto de perfil de tiktok",
+              "descargar foto de perfil de whatsapp",
+              "descargar foto de perfil discord",
+              "descargar foto de perfil de instagram app",
+              "descargar foto de perfil de facebook",
+              "descargar foto de perfil linkedin",
+              "descargar foto de perfil de snapchat",
+              "descargar foto de perfil de whatsapp de otra persona",
+              "descargar foto de perfil de twitch"
+            ],
+            "ar": [
+              "descargar foto de perfil de tiktok",
+              "descargar foto de perfil de whatsapp",
+              "descargar foto de perfil de facebook",
+              "descargar foto de perfil de instagram app",
+              "descargar foto de perfil de vsco",
+              "descargar foto de perfil de discord",
+              "descargar foto de perfil de spotify",
+              "descargar foto de perfil de snapchat",
+              "descargar foto de perfil de whatsapp online",
+              "descargar foto de perfil de facebook en grande"
+            ],
+            "co": [
+              "descargar foto de perfil de tiktok",
+              "descargar foto de perfil de whatsapp",
+              "descargar foto de perfil de facebook",
+              "descargar foto de perfil de instagram app",
+              "descargar foto de perfil de discord",
+              "descargar foto de perfil de whatsapp online",
+              "descargar foto de perfil de vsco",
+              "descargar foto de perfil de facebook en grande",
+              "descargar foto de perfil de linkedin",
+              "descargar foto de perfil de whatsapp apk"
+            ],
+            "us": [
+              "descargar foto de perfil de tiktok",
+              "descargar foto de perfil de whatsapp",
+              "descargar foto de perfil de facebook",
+              "descargar foto de perfil de instagram app",
+              "descargar foto de perfil de snapchat",
+              "descargar foto de perfil de whatsapp privado",
+              "descargar foto de perfil de whatsapp online",
+              "descargar foto de perfil de discord",
+              "descargar foto de perfil de vsco",
+              "descargar foto de perfil de facebook en grande"
+            ]
+          }
+        },
+        "carousel": {
+          "descargar carrusel de pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar carrusel de pinterest",
+              "descargar carrusel de pinterest gratis",
+              "descargar carrusel de pinterest online"
+            ]
+          },
+          "carrusel pinterest": {
+            "mx": [
+              "carrusel pinterest",
+              "pinterest carrusel instagram",
+              "pinterest carrusel de fotos",
+              "crear carrusel pinterest",
+              "descargar carrusel pinterest",
+              "ideas carrusel pinterest",
+              "carrusel continuo pinterest",
+              "carrusel de pines pinterest",
+              "carrusel instagram ideas pinterest",
+              "carrusel pinterest s"
+            ],
+            "es,ar,co,us": [
+              "carrusel pinterest",
+              "pinterest carrusel instagram",
+              "pinterest carrusel de fotos",
+              "crear carrusel pinterest",
+              "descargar carrusel pinterest",
+              "ideas carrusel pinterest",
+              "carrusel continuo pinterest",
+              "carrusel de pines pinterest",
+              "carrusel instagram ideas pinterest"
+            ]
+          },
+          "descargar varias imagenes de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "pinterest carrusel": {
+            "mx": [
+              "pinterest carrusel",
+              "pinterest carrusel instagram",
+              "pinterest carrusel de fotos",
+              "crear carrusel pinterest",
+              "descargar carrusel pinterest",
+              "pinterest ideas de carrusel",
+              "pinterest carrusel de fondos",
+              "pinterest carrusel de niños"
+            ],
+            "es,ar,co,us": [
+              "pinterest carrusel instagram",
+              "pinterest carrusel",
+              "pinterest carrusel de fotos",
+              "crear carrusel pinterest",
+              "descargar carrusel pinterest",
+              "pinterest ideas de carrusel",
+              "pinterest carrusel de fondos",
+              "pinterest carrusel de niños"
+            ]
+          }
+        },
+        "story": {
+          "descargar idea pin pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar idea pin pinterest gratis"
+            ]
+          },
+          "pin de ideas pinterest": {
+            "mx,es,ar,co,us": [
+              "pin ideas pinterest",
+              "pin board ideas pinterest",
+              "pin design ideas pinterest",
+              "pin button ideas pinterest",
+              "pin badge ideas pinterest"
+            ]
+          },
+          "descargar historias de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "pinterest historias": {
+            "mx,es,us": [
+              "pinterest historias destacadas",
+              "pinterest historias",
+              "pinterest historias instagram",
+              "pinterest historias destacadas iconos para instagram",
+              "pinterest historias biblicas",
+              "pinterest historias de terror",
+              "pinterest historias instagram cumpleaños",
+              "pinterest historias de cumpleaños",
+              "pinterest historias aesthetic",
+              "pinterest historias destacadas instagram"
+            ],
+            "ar": [
+              "pinterest historias destacadas",
+              "pinterest historias instagram",
+              "pinterest historias",
+              "pinterest historias destacadas iconos para instagram",
+              "pinterest historias biblicas",
+              "pinterest historias de terror",
+              "pinterest historias instagram cumpleaños",
+              "pinterest historias de cumpleaños",
+              "pinterest historias aesthetic",
+              "pinterest historias destacadas instagram"
+            ],
+            "co": [
+              "pinterest historias",
+              "pinterest historias destacadas",
+              "pinterest historias instagram",
+              "pinterest historias destacadas iconos para instagram",
+              "pinterest historias biblicas",
+              "pinterest historias de terror",
+              "pinterest historias instagram cumpleaños",
+              "pinterest historias de cumpleaños",
+              "pinterest historias aesthetic",
+              "pinterest historias destacadas instagram"
+            ]
+          },
+          "idea pin pinterest": {
+            "mx,es,ar,co,us": [
+              "idea pin pinterest",
+              "idea pin pinterest meaning",
+              "idea pin vs pin pinterest",
+              "create idea pin pinterest",
+              "pinterest idea pin downloader",
+              "pinterest idea pin size",
+              "pinterest idea pin examples",
+              "pinterest idea pin builder",
+              "pinterest idea pin ads",
+              "idea pin not showing on pinterest"
+            ]
+          }
+        },
+        "audio": {
+          "descargar audio de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar musica de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "pinterest a mp3": {
+            "mx,es,ar,co,us": [
+              "pinterest a mp3",
+              "convertir pinterest a mp3",
+              "pinterest mp3 download app",
+              "pinterest mp3 audio",
+              "convertir video de pinterest a mp3",
+              "pinterest mp3 download",
+              "pinterest mp3 downloader",
+              "pinterest mp3 downloader online",
+              "pinterest mp3 audio download",
+              "pinterest mp3 video downloader"
+            ]
+          },
+          "descargar mp3 de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar cancion de pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar cancion de pinterest",
+              "descargar cancion de pinterest gratis",
+              "descargar cancion de pinterest mp3"
+            ]
+          },
+          "sonido de pinterest": {
+            "mx,ar,co": [
+              "sonido de pinterest al guardar",
+              "sonido de pinterest",
+              "sonido de pinterest descargar",
+              "sonido de notificación pinterest",
+              "como quitar sonido de pinterest",
+              "barra de sonido pinterest",
+              "sonido de pinterest mp3",
+              "sonido de pinterest mp4"
+            ],
+            "es,us": [
+              "sonido de pinterest al guardar",
+              "sonido de pinterest",
+              "sonido de pinterest descargar",
+              "sonido de notificación pinterest",
+              "como quitar sonido de pinterest",
+              "barra de sonido pinterest"
+            ]
+          }
+        },
+        "hd4k": {
+          "descargar video de pinterest en hd": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar videos de pinterest en alta calidad": {
+            "mx,es,ar,co,us": []
+          },
+          "pinterest 4k": {
+            "mx": [
+              "pinterest 4k",
+              "pinterest 4k wallpaper",
+              "pinterest 4k downloader",
+              "pinterest 4k wallpapers pc",
+              "pinterest 4k video download online",
+              "pinterest 4k hd video download",
+              "pinterest video 4k",
+              "pinterest 4k wallpaper download",
+              "pinterest download 4k photo",
+              "pinterest 4k photo downloader"
+            ],
+            "es,ar,co,us": [
+              "pinterest 4k",
+              "pinterest 4k wallpaper",
+              "pinterest 4k downloader",
+              "pinterest 4k wallpapers pc",
+              "pinterest 4k image downloader",
+              "pinterest 4k videos download",
+              "pinterest 4k mp4 download",
+              "pinterest 4k video download online",
+              "pinterest 4k hd video download",
+              "pinterest video 4k"
+            ]
+          },
+          "descargar video pinterest 1080": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar imagenes de pinterest en 4k": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar videos de pinterest en 4k": {
+            "mx,es,ar,co,us": []
+          }
+        },
+        "mp4": {
+          "pinterest a mp4": {
+            "mx,es,ar,co,us": [
+              "pinterest a mp4",
+              "convertidor pinterest a mp4",
+              "enlace pinterest a mp4",
+              "pinterest mp4 video download",
+              "pinterest mp4 download 4k",
+              "pinterest mp4 down",
+              "pinterest mp4 video download free",
+              "da pinterest a mp4",
+              "pinterest mp4 video converter"
+            ]
+          },
+          "pinterest mp4": {
+            "mx": [
+              "pinterest mp4",
+              "pinterest mp4 download",
+              "pinterest mp4 converter",
+              "pinterest mp4 descargar",
+              "pinterest mp4 video download",
+              "pinterest mp4 download 4k",
+              "pinterest mp4 video download free",
+              "pinterest mp40",
+              "pinterest mp4 video",
+              "pinterest mp4 to gif"
+            ],
+            "es,ar": [
+              "pinterest mp4",
+              "pinterest mp4 download",
+              "pinterest mp4 converter",
+              "pinterest mp4 video download",
+              "pinterest mp4 download 4k",
+              "pinterest mp4 descargar",
+              "pinterest mp4 video download free",
+              "pinterest mp40",
+              "pinterest mp4 video",
+              "pinterest mp4 to gif"
+            ],
+            "co": [
+              "pinterest mp4",
+              "pinterest mp4 download",
+              "pinterest mp4 descargar",
+              "pinterest mp4 converter",
+              "pinterest mp4 video download",
+              "pinterest mp4 download 4k",
+              "pinterest mp4 video download free",
+              "pinterest mp40",
+              "pinterest mp4 video",
+              "pinterest mp4 to gif"
+            ],
+            "us": [
+              "pinterest mp4",
+              "pinterest mp40",
+              "pinterest mp4 to gif",
+              "pinterest mp4 downloader 4k",
+              "pinterest mp4 to mp3",
+              "pinterest mp4 converter download",
+              "pinterest mp4 download hd",
+              "pinterest mp4 download free",
+              "pinterest mp4 to mp3 converter",
+              "pinterest mp4 link download"
+            ]
+          },
+          "convertir video de pinterest a mp4": {
+            "mx,es,ar,co,us": []
+          },
+          "convertidor pinterest": {
+            "mx": [
+              "convertidor pinterest",
+              "convertidor pinterest a mp4",
+              "convertidor pinterest video",
+              "convertidor pinterest mp3",
+              "convertidor pinterest hd",
+              "convertidor de pinterest sin marca de agua",
+              "convertidor de pinterest 4k",
+              "convertidor de pinterest a gif",
+              "convertidor de pinterest a imagen",
+              "convertidor para pinterest"
+            ],
+            "es": [
+              "convertidor pinterest",
+              "convertidor pinterest mp4",
+              "convertidor pinterest videos",
+              "convertidor pinterest mp3",
+              "convertidor pinterest hd",
+              "convertidor de pinterest sin marca de agua",
+              "convertidor de pinterest 4k",
+              "convertidor de pinterest a gif",
+              "convertidor de pinterest a imagen",
+              "convertidor para pinterest"
+            ],
+            "ar": [
+              "convertidor pinterest",
+              "convertidor pinterest a mp4",
+              "convertidor pinterest mp3",
+              "convertidor pinterest video",
+              "convertidor pinterest hd",
+              "convertidor de pinterest sin marca de agua",
+              "convertidor de pinterest 4k",
+              "convertidor de pinterest a gif",
+              "convertidor de pinterest a imagen",
+              "convertidor para pinterest"
+            ],
+            "co": [
+              "convertidor pinterest",
+              "convertidor pinterest a video",
+              "convertidor pinterest hd",
+              "convertidor de pinterest a imagen",
+              "convertidor pinterest a mp4"
+            ],
+            "us": [
+              "convertidor pinterest",
+              "convertidor pinterest a mp4",
+              "convertidor pinterest videos",
+              "convertidor pinterest mp3",
+              "convertidor pinterest hd",
+              "convertidor de pinterest sin marca de agua",
+              "convertidor de pinterest 4k",
+              "convertidor de pinterest a gif",
+              "convertidor de pinterest a imagen",
+              "convertidor para pinterest"
+            ]
+          },
+          "convertir pinterest a mp4": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar pinterest mp4": {
+            "mx,es,ar,co,us": []
+          }
+        },
+        "chrome": {
+          "descargar videos de pinterest chrome": {
+            "mx,es,ar,co,us": [
+              "descargar videos de pinterest chrome",
+              "descargar videos de pinterest extension chrome",
+              "descargar videos de pinterest chromebook"
+            ]
+          },
+          "extension para descargar videos de pinterest": {
+            "mx,es,ar,co,us": [
+              "extension para descargar videos de pinterest",
+              "extension para descargar videos de pinterest gratis",
+              "extension para descargar videos de pinterest sin marca de agua"
+            ]
+          },
+          "pinterest downloader chrome": {
+            "mx,es,ar,co,us": [
+              "pinterest downloader chrome",
+              "pinterest downloader chrome extension",
+              "pinterest downloader chrome free",
+              "pinterest downloader chrome plugin",
+              "pinterest video downloader chrome",
+              "pinterest image downloader chrome",
+              "pinterest image downloader chrome extension",
+              "pinterest video downloader chrome extension",
+              "pinterest video downloader chrome free",
+              "pinterest video downloader chrome apk"
+            ]
+          },
+          "extension pinterest chrome": {
+            "mx,es,ar,co,us": [
+              "extension pinterest chrome",
+              "extension de pinterest para chrome",
+              "pinterest extension chrome mobile",
+              "pinterest extension chrome download",
+              "pinterest extension chrome not working",
+              "chrome extension pinterest image downloader",
+              "chrome extension pinterest dark mode",
+              "chrome extension pinterest video downloader",
+              "chrome extension pinterest downloader",
+              "save to pinterest extension chrome"
+            ]
+          },
+          "descargar videos de pinterest en pc chrome": {
+            "mx,es,ar,co,us": [
+              "descargar videos de pinterest en pc chromebook",
+              "descargar videos de pinterest en pc chrome extension"
+            ]
+          }
+        },
+        "seo": {
+          "generador de titulos pinterest": {
+            "mx,es,ar,co,us": [
+              "generador de titulos pinterest gratis"
+            ]
+          },
+          "titulos para pinterest": {
+            "mx,es,ar,co,us": [
+              "titulos para cuadernos pinterest",
+              "letras para titulos pinterest",
+              "titulos bonitos pinterest para carteles",
+              "titulos bonitos pinterest para imprimir",
+              "ideas para titulos pinterest",
+              "marcos para titulos pinterest",
+              "fondos para titulos pinterest",
+              "decoraciones para titulos pinterest",
+              "letras bonitas para titulos pinterest",
+              "titulos bonitos para cuadernos pinterest"
+            ]
+          },
+          "seo pinterest": {
+            "mx,es,ar,co,us": [
+              "seo pinterest",
+              "seo pinterest meaning",
+              "seo pinterest 2025",
+              "seo pinterest 2026",
+              "seo in-guk pinterest",
+              "pinterest seo specialist",
+              "seo jun pinterest",
+              "pinterest seo tool",
+              "pinterest seo keywords",
+              "pinterest seo course"
+            ]
+          },
+          "palabras clave pinterest": {
+            "mx,es,ar": [
+              "palabras clave pinterest",
+              "palabras clave para buscar en pinterest"
+            ],
+            "co,us": [
+              "palabras clave pinterest",
+              "palabras clave para buscar en pinterest",
+              "palabras clave pinterest ads"
+            ]
+          },
+          "hashtags para pinterest": {
+            "mx,es,ar,co,us": [
+              "hashtags para pinterest",
+              "melhores hashtags para pinterest"
+            ]
+          },
+          "pinterest seo": {
+            "mx,es,ar,co,us": [
+              "pinterest seo",
+              "seo in-guk pinterest",
+              "pinterest seo tool",
+              "pinterest seo keywords",
+              "pinterest seonghyeon",
+              "pinterest seoul",
+              "pinterest seo meaning",
+              "pinterest seo course",
+              "pinterest seonghyeon cortis",
+              "pinterest seo optimization"
+            ]
+          },
+          "descripcion para pinterest": {
+            "mx,es,ar,co,us": [
+              "descripción para pinterest",
+              "descripcion para pinterest en español",
+              "descripcion para pinterest en ingles"
+            ]
+          }
+        },
+        "howto": {
+          "como descargar videos de pinterest": {
+            "mx": [
+              "como descargar videos de pinterest en pc",
+              "como descargar videos de pinterest sin aplicaciones",
+              "como descargar videos de pinterest app",
+              "como descargar videos de pinterest en el celular sin aplicaciones",
+              "como descargar videos de pinterest en celular",
+              "como descargar videos de pinterest en tablet",
+              "como descargar videos de pinterest lite",
+              "como descargar videos de pinterest en tu galeria",
+              "como descargar videos de pinterest en google",
+              "como descargar videos de pinterest para fondo de pantalla"
+            ],
+            "es": [
+              "como descargar videos de pinterest en pc",
+              "como descargar videos de pinterest en el celular sin aplicaciones",
+              "como descargar videos de pinterest en celular",
+              "como descargar videos de pinterest app",
+              "como descargar videos de pinterest en tu galeria",
+              "como descargar videos de pinterest sin aplicaciones",
+              "como descargar videos de pinterest en google",
+              "como descargar videos de pinterest en tablet",
+              "como descargar videos de pinterest lite",
+              "como descargar videos de pinterest para fondo de pantalla"
+            ],
+            "ar": [
+              "como descargar videos de pinterest en pc",
+              "como descargar videos de pinterest en celular",
+              "como descargar videos de pinterest app",
+              "como descargar videos de pinterest en el celular sin aplicaciones",
+              "como descargar videos de pinterest en tablet",
+              "como descargar videos de pinterest para fondo de pantalla",
+              "como descargar videos de pinterest lite",
+              "como descargar videos de pinterest sin aplicaciones",
+              "como descargar videos de pinterest para editar",
+              "como descargar videos de pinterest en google"
+            ],
+            "co": [
+              "como descargar videos de pinterest en pc",
+              "como descargar videos de pinterest app",
+              "como descargar videos de pinterest en google",
+              "como descargar videos de pinterest en celular",
+              "como descargar videos de pinterest en el celular sin aplicaciones",
+              "como descargar videos de pinterest para editar",
+              "como descargar videos de pinterest lite",
+              "como descargar videos de pinterest sin aplicaciones",
+              "como descargar videos de pinterest en tu galeria",
+              "como descargar videos de pinterest en tablet"
+            ],
+            "us": [
+              "como descargar videos de pinterest en el celular sin aplicaciones",
+              "como descargar videos de pinterest app",
+              "cómo descargar videos de pinterest en el celular",
+              "como descargar videos de pinterest en tu galeria",
+              "como descargar videos de pinterest lite",
+              "como descargar videos de pinterest sin aplicaciones",
+              "como descargar videos de pinterest en pc",
+              "como descargar videos de pinterest en google",
+              "como descargar videos de pinterest en tablet",
+              "como descargar videos de pinterest para fondo de pantalla"
+            ]
+          },
+          "como descargar videos de pinterest en el celular": {
+            "mx,es,ar,us": [
+              "como descargar videos de pinterest en el celular sin aplicaciones",
+              "cómo descargar videos de pinterest en el celular",
+              "como descargar videos de pinterest en el celular iphone",
+              "como descargar videos de pinterest en el celular android"
+            ],
+            "co": [
+              "cómo descargar videos de pinterest en el celular",
+              "como descargar videos de pinterest en el celular sin aplicaciones",
+              "como descargar videos de pinterest en el celular iphone",
+              "como descargar videos de pinterest en el celular android"
+            ]
+          },
+          "como descargar videos de pinterest sin app": {
+            "mx,es,ar,co,us": [
+              "descargar videos de pinterest sin app",
+              "como descargar videos de pinterest sin apps",
+              "como descargar videos de pinterest sin app store"
+            ]
+          },
+          "por que no puedo descargar videos de pinterest": {
+            "mx,es,ar,co": [
+              "no puedo descargar videos de pinterest",
+              "por que no puedo descargar videos de pinterest en mi pc"
+            ],
+            "us": [
+              "no puedo descargar videos de pinterest",
+              "por que no puedo descargar videos de pinterest en mi pc",
+              "por que no puedo descargar videos de pinterest que hago"
+            ]
+          },
+          "como guardar videos de pinterest": {
+            "mx": [
+              "como guardar videos de pinterest",
+              "como guardar videos de pinterest en galería",
+              "como guardar videos de pinterest en mi celular",
+              "como guardar videos de pinterest en pc",
+              "como guardar videos de pinterest sin marca de agua",
+              "como guardar videos de pinterest en iphone",
+              "como guardar videos de pinterest en galeria"
+            ],
+            "es,ar,co,us": [
+              "como guardar videos de pinterest",
+              "como guardar videos de pinterest en galería",
+              "como guardar videos de pinterest en pc",
+              "como guardar videos de pinterest en mi celular",
+              "como guardar videos de pinterest sin marca de agua",
+              "como guardar videos de pinterest en iphone",
+              "como guardar videos de pinterest en galeria"
+            ]
+          },
+          "como bajar videos de pinterest": {
+            "mx,es,ar,co,us": [
+              "como bajar videos de pinterest",
+              "como bajar videos de pinterest en android",
+              "como bajar videos de pinterest en iphone",
+              "como bajar videos cortos de pinterest",
+              "como bajar videos desde pinterest"
+            ]
+          }
+        },
+        "gallery": {
+          "como descargar videos de pinterest en la galeria": {
+            "mx,es,ar,co,us": []
+          },
+          "como guardar videos de pinterest en la galeria": {
+            "mx,es,ar,co,us": [
+              "como guardar videos de pinterest en la galería",
+              "como guardar videos de pinterest en la galeria iphone",
+              "como guardar videos de pinterest en la galeria de fotos"
+            ]
+          },
+          "descargar video de pinterest en galeria": {
+            "mx,es,us": [
+              "como descargar un video de pinterest en mi galeria",
+              "descargar video de pinterest en galeria gratis"
+            ],
+            "ar,co": [
+              "como descargar un video de pinterest en mi galeria",
+              "descargar video de pinterest en galeria gratis",
+              "descargar video de pinterest en galeria online"
+            ]
+          },
+          "guardar video de pinterest en galeria": {
+            "mx,es,ar,co,us": [
+              "como guardar video de pinterest en galeria",
+              "guardar video de pinterest en galeria online"
+            ]
+          },
+          "como guardar un video de pinterest en mi galeria": {
+            "mx,es,ar,co,us": [
+              "como guardar un video de pinterest en mi galeria",
+              "como guardar un video de pinterest en mi galeria gratis"
+            ]
+          }
+        },
+        "laptop": {
+          "como descargar videos de pinterest en pc": {
+            "mx,es,ar,co,us": [
+              "como descargar videos de pinterest en pc"
+            ]
+          },
+          "como descargar videos de pinterest en laptop": {
+            "mx,es,ar,co,us": []
+          },
+          "como descargar videos de pinterest en computadora": {
+            "mx,ar,co": [
+              "como descargar videos de pinterest en computadora",
+              "como descargar videos de pinterest en computadora gratis"
+            ],
+            "es,us": [
+              "como descargar videos de pinterest en computadora",
+              "como descargar videos de pinterest en computadora gratis",
+              "como descargar videos de pinterest en computadora gratis online",
+              "como descargar videos de pinterest en computadora gratis en español"
+            ]
+          },
+          "como descargar videos de pinterest en el ordenador": {
+            "mx,es,ar,co,us": [
+              "como descargar videos de pinterest en el ordenador gratis"
+            ]
+          },
+          "descargar videos de pinterest en pc": {
+            "mx,es,ar,co,us": [
+              "descargar videos de pinterest en pc",
+              "como descargar videos de pinterest en mi pc"
+            ]
+          },
+          "descargar videos de pinterest en mac": {
+            "mx,es,ar,co,us": [
+              "descargar videos de pinterest en mac",
+              "descargar videos de pinterest en macbook",
+              "descargar videos de pinterest en mac gratis"
+            ]
+          }
+        },
+        "mobile": {
+          "como descargar videos de pinterest en iphone": {
+            "mx,es,ar,co,us": []
+          },
+          "como descargar videos de pinterest en android": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar videos de pinterest iphone": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar videos de pinterest android": {
+            "mx,es,ar,co,us": [
+              "como descargar videos de pinterest en el celular android",
+              "descargar videos de pinterest android gratis"
+            ]
+          },
+          "como descargar videos de pinterest en el movil": {
+            "mx,es,ar,co,us": [
+              "como descargar videos de pinterest en movil",
+              "como descargar videos de pinterest en el movil gratis",
+              "como descargar videos de pinterest en el movil android"
+            ]
+          },
+          "descargar videos de pinterest en el celular": {
+            "mx,es,ar,co,us": [
+              "descargar videos de pinterest en el celular",
+              "como descargar videos de pinterest en el celular sin aplicaciones",
+              "como descargar videos de pinterest en el celular iphone",
+              "como descargar videos de pinterest en el celular android"
+            ]
+          }
+        },
+        "video2": {
+          "descargar reels de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "bajar reel de pinterest": {
+            "mx,es,us": [
+              "bajar reel de pinterest",
+              "bajar reel de pinterest online",
+              "bajar reel de pinterest gratis"
+            ],
+            "co,ar": [
+              "bajar reel de pinterest",
+              "bajar reel de pinterest online",
+              "bajar reel de pinterest gratis",
+              "bajar reel de pinterest online gratis"
+            ]
+          },
+          "descargar video de pinterest con audio": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar video de pinterest sin marca de agua": {
+            "mx,es,ar,co,us": []
+          },
+          "pinterest sin marca de agua": {
+            "mx,es,co": [
+              "pinterest sin marca de agua videos",
+              "pinterest sin marca de agua fotos",
+              "pinterest sin marca de agua hd",
+              "pinterest sin marca de agua app",
+              "descargar pinterest sin marca de agua aplicación",
+              "guardar pinterest sin marca de agua",
+              "convertidor de pinterest sin marca de agua",
+              "videos de pinterest sin marca de agua app"
+            ],
+            "ar": [
+              "pinterest sin marca de agua fotos",
+              "pinterest sin marca de agua hd",
+              "pinterest sin marca de agua app",
+              "descargar pinterest sin marca de agua aplicación",
+              "guardar pinterest sin marca de agua",
+              "convertidor de pinterest sin marca de agua",
+              "videos de pinterest sin marca de agua app"
+            ],
+            "us": [
+              "pinterest sin marca de agua foto",
+              "pinterest sin marca de agua hd",
+              "pinterest sin marca de agua app",
+              "descargar pinterest sin marca de agua aplicación",
+              "guardar pinterest sin marca de agua",
+              "convertidor de pinterest sin marca de agua",
+              "videos de pinterest sin marca de agua app"
+            ]
+          },
+          "descargar video de pinterest en iphone": {
+            "mx,es,ar,co,us": [
+              "como descargar un video de pinterest en mi iphone",
+              "descargar video de pinterest en iphone gratis"
+            ]
+          },
+          "descargar video de pinterest en mp4": {
+            "mx,es,ar,co,us": []
+          },
+          "como descargar un video de pinterest": {
+            "mx": [
+              "como descargar un video de pinterest en mi pc",
+              "como descargar un video de pinterest en celular",
+              "como descargar un video de pinterest para editar",
+              "como descargar un video de pinterest en iphone",
+              "como descargar un video de pinterest y ponerlo de fondo de pantalla",
+              "como descargar un video de pinterest en laptop",
+              "como descargar un video de pinterest en la galeria",
+              "como descargar un video de pinterest y editarlo",
+              "como descargar un video de pinterest en mac"
+            ],
+            "es": [
+              "como descargar un video de pinterest en mi pc",
+              "como descargar un video de pinterest en iphone",
+              "como descargar un video de pinterest en la galeria",
+              "como descargar un video de pinterest y ponerlo de fondo de pantalla",
+              "como descargar un video de pinterest para editar",
+              "como descargar un video de pinterest en laptop",
+              "como descargar un video de pinterest en mac",
+              "como descargar un video de pinterest y editarlo"
+            ],
+            "co": [
+              "como descargar un video de pinterest en mi pc",
+              "como descargar un video de pinterest en iphone",
+              "como descargar un video de pinterest y ponerlo de fondo de pantalla",
+              "como descargar un video de pinterest para editar",
+              "como descargar un video de pinterest en la galeria",
+              "como descargar un video de pinterest y editarlo",
+              "como descargar un video de pinterest en laptop",
+              "como descargar un video de pinterest en mac"
+            ],
+            "ar": [
+              "como descargar un video de pinterest en mi pc",
+              "como descargar un video de pinterest y ponerlo de fondo de pantalla",
+              "como descargar un video de pinterest en iphone",
+              "como descargar un video de pinterest en la galeria",
+              "como descargar un video de pinterest para editar",
+              "como descargar un video de pinterest y editarlo",
+              "como descargar un video de pinterest en laptop",
+              "como descargar un video de pinterest en mac"
+            ],
+            "us": [
+              "como descargar un video de pinterest en iphone",
+              "como descargar un video de pinterest en la galeria",
+              "como descargar un video de pinterest para editar",
+              "como descargar un video de pinterest en mi pc",
+              "como descargar un video de pinterest y ponerlo de fondo de pantalla",
+              "como descargar un video de pinterest en laptop",
+              "como descargar un video de pinterest en mac",
+              "como descargar un video de pinterest y editarlo"
+            ]
+          },
+          "como bajar un video de pinterest": {
+            "mx,es,ar,co,us": [
+              "como bajar un video de pinterest iphone"
+            ]
+          }
+        },
+        "board2": {
+          "descargar tablero completo de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar tablero de pinterest zip": {
+            "mx,es,ar,co,us": [
+              "descargar tablero de pinterest zip gratis",
+              "descargar tablero de pinterest zip download"
+            ]
+          },
+          "descargar tableros completos de pinterest": {
+            "mx,es,co,us": [
+              "descargar tableros completos de pinterest",
+              "descargar tableros completos de pinterest gratis",
+              "descargar tableros completos de pinterest en español"
+            ],
+            "ar": [
+              "descargar tableros completos de pinterest",
+              "descargar tableros completos de pinterest gratis"
+            ]
+          },
+          "descargar imagenes de un tablero de pinterest": {
+            "mx,es,ar,co,us": []
+          }
+        },
+        "pfp2": {
+          "descargar foto de perfil de pinterest en hd": {
+            "mx,es,ar,co,us": [
+              "descargar foto de perfil de pinterest en hd 4k",
+              "descargar foto de perfil de pinterest en hd gratis"
+            ]
+          },
+          "ver foto de perfil de pinterest en grande": {
+            "mx,ar": [
+              "ver foto de perfil de pinterest en grande online",
+              "ver foto de perfil de pinterest en grande gratis",
+              "ver foto de perfil de pinterest en grande online gratis"
+            ],
+            "es,co,us": [
+              "ver foto de perfil de pinterest en grande online"
+            ]
+          },
+          "foto de perfil de pinterest en hd": {
+            "mx,es,ar,co,us": [
+              "foto de perfil de pinterest en hd 4k"
+            ]
+          },
+          "como descargar foto de perfil de pinterest": {
+            "mx,es,ar,co,us": [
+              "como descargar foto de perfil de pinterest",
+              "como descargar mi foto de perfil de pinterest",
+              "como descargar foto de perfil de pinterest sin marca de agua"
+            ]
+          },
+          "descargar foto perfil pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar foto perfil pinterest",
+              "descargar foto perfil pinterest pc"
+            ]
+          }
+        },
+        "carousel2": {
+          "descargar carrusel pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar carrusel pinterest",
+              "descargar carrusel pinterest gratis"
+            ]
+          },
+          "descargar todas las imagenes de un pin": {
+            "mx,es,ar,co,us": []
+          },
+          "pin con varias imagenes pinterest": {
+            "mx,es,ar,co,us": [
+              "pin con varias imagenes pinterest gratis",
+              "pin con varias imagenes pinterest gratis en español"
+            ]
+          }
+        },
+        "audio2": {
+          "convertir pinterest a mp3": {
+            "mx,es,ar,co,us": [
+              "convertir pinterest a mp3",
+              "convertir video pinterest a mp3",
+              "convertir pinterest a mp3 gratis"
+            ]
+          },
+          "descargar audio de un video de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar sonido de pinterest": {
+            "mx,es,ar,co,us": [
+              "descargar sonido de pinterest",
+              "descargar sonido de pinterest gratis"
+            ]
+          },
+          "descargar musica de un video de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "pinterest mp3": {
+            "mx,es,ar,co,us": [
+              "pinterest mp3",
+              "pinterest mp3 download",
+              "pinterest mp3 downloader",
+              "pinterest mp3 download app",
+              "pinterest mp3 audio",
+              "pinterest mp3 descargar",
+              "pinterest mp3 converter",
+              "pinterest mp3 downloader online",
+              "pinterest mp3 audio download",
+              "pinterest mp3 video downloader"
+            ]
+          }
+        },
+        "hd2": {
+          "descargar video de pinterest 4k": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar pinterest en alta calidad": {
+            "mx,es": [
+              "descargar pinterest en alta calidad",
+              "descargar imagenes de pinterest en alta calidad",
+              "descargar pinterest en alta calidad gratis"
+            ],
+            "co,ar,us": [
+              "descargar pinterest en alta calidad",
+              "descargar imagenes de pinterest en alta calidad",
+              "descargar pinterest en alta calidad gratis",
+              "descargar pinterest en alta calidad pc"
+            ]
+          },
+          "descargar video de pinterest en 1080p": {
+            "mx,es,ar,co,us": []
+          },
+          "descargar imagenes de pinterest en hd": {
+            "mx,es,ar,co,us": []
+          }
+        },
+        "chrome2": {
+          "descargador de pinterest para pc": {
+            "mx,es,ar,co,us": [
+              "descargador de pinterest para pc gratis"
+            ]
+          },
+          "descargar videos de pinterest desde chrome": {
+            "mx,es,ar,co,us": [
+              "descargar videos de pinterest chrome",
+              "descargar videos de pinterest extension chrome",
+              "descargar videos de pinterest desde chrome gratis"
+            ]
+          },
+          "extension para descargar imagenes de pinterest": {
+            "mx,es,ar,co,us": [
+              "extension para descargar imagenes de pinterest",
+              "extension para descargar imagenes de pinterest gratis"
+            ]
+          },
+          "pinterest downloader extension": {
+            "mx,es,ar,co,us": [
+              "pinterest downloader extension",
+              "pinterest downloader extension chrome",
+              "pinterest downloader extension firefox",
+              "pinterest downloader extension free",
+              "pinterest downloader extension opera",
+              "pinterest downloader extension reddit",
+              "pinterest downloader extension github",
+              "pinterest video and image downloader extension",
+              "pinterest video downloader extension",
+              "pinterest image downloader extension"
+            ]
+          }
+        },
+        "seo2": {
+          "como hacer titulos para pinterest": {
+            "mx,es,ar,co,us": [
+              "como hacer titulos para pinterest gratis"
+            ]
+          },
+          "generador de descripciones para pinterest": {
+            "mx,es,ar,co,us": [
+              "generador de descripciones para pinterest gratis"
+            ]
+          },
+          "generador de hashtags pinterest": {
+            "mx,es,ar,co,us": [
+              "generador de hashtags pinterest gratis"
+            ]
+          },
+          "palabras clave para pinterest": {
+            "mx,es,us": [
+              "palabras clave para pinterest",
+              "palabras clave para buscar en pinterest",
+              "palabras clave para pinterest en español"
+            ],
+            "co,ar": [
+              "palabras clave para pinterest",
+              "palabras clave para buscar en pinterest",
+              "palabras clave para pinterest en español",
+              "palabras clave para pinterest ads"
+            ]
+          },
+          "como posicionar pines en pinterest": {
+            "mx,es,ar,co,us": [
+              "como posicionar pines en pinterest en español"
+            ]
+          }
+        },
+        "howto2": {
+          "por que no me deja descargar videos de pinterest": {
+            "mx,es,co": [
+              "porque no.me.deja descargar videos de pinterest"
+            ],
+            "ar,us": [
+              "porque no.me.deja descargar videos de pinterest",
+              "por que no me deja descargar videos de pinterest que hago"
+            ]
+          },
+          "donde se guardan los videos de pinterest": {
+            "mx,es,ar,co,us": [
+              "donde se guardan los videos de pinterest",
+              "como se guardan los videos de pinterest",
+              "como se guardan los videos de pinterest en galeria",
+              "donde se guardan los videos de pinterest en pc"
+            ]
+          },
+          "como descargar videos de pinterest en samsung": {
+            "mx,es,ar": [
+              "como descargar videos de pinterest en samsung",
+              "como descargar videos de pinterest en samsung tv",
+              "como descargar videos de pinterest en samsung galaxy"
+            ],
+            "co": [
+              "como descargar videos de pinterest en samsung",
+              "como descargar videos de pinterest en samsung tv"
+            ],
+            "us": [
+              "como descargar videos de pinterest en samsung",
+              "como descargar videos de pinterest en samsung tv",
+              "como descargar videos de pinterest en samsung tablet",
+              "como descargar videos de pinterest en samsung galaxy"
+            ]
+          },
+          "como descargar videos de pinterest sin aplicaciones": {
+            "mx,es,ar,co,us": [
+              "como descargar videos de pinterest sin aplicaciones",
+              "como descargar videos de pinterest en el celular sin aplicaciones",
+              "como descargar videos de pinterest sin aplicaciones en pc",
+              "como descargar videos de pinterest sin aplicaciones en iphone"
+            ]
+          },
+          "como descargar videos de pinterest en la computadora": {
+            "mx,es,ar,co,us": [
+              "como descargar videos de pinterest en la computadora",
+              "como descargar videos de pinterest en la computadora gratis"
+            ]
+          },
+          "como descargar videos de pinterest en el iphone": {
+            "mx,es,ar,co,us": [
+              "como descargar videos de pinterest en el celular iphone",
+              "como descargar videos de pinterest en el iphone gratis"
+            ]
+          },
+          "descargar videos de pinterest en laptop": {
+            "mx,es,ar,co,us": [
+              "descargar videos de pinterest en laptop",
+              "descargar videos de pinterest en laptop gratis"
+            ]
+          },
+          "como guardar videos de pinterest en el iphone": {
+            "mx,es,ar,co,us": [
+              "como guardar videos de pinterest en iphone"
+            ]
+          }
+        },
+        "story2": {
+          "descargar historia de pinterest": {
+            "mx,es,ar,co,us": []
+          },
+          "pinterest stories descargar": {
+            "mx,es,ar,co,us": [
+              "pinterest stories descargar gratis",
+              "pinterest stories descargar pc"
+            ]
+          },
+          "descargar pin de idea": {
+            "mx,es,ar": [
+              "descargar pin de ideas",
+              "descargar pin de ideas gratis",
+              "descargar pin de idealista",
+              "descargar pin de ideas principales"
+            ],
+            "co,us": [
+              "descargar pin de ideas",
+              "descargar pin de ideas gratis",
+              "descargar pin de ideas principales"
+            ]
+          }
+        }
+      }
+    },
+    "competitors": [
+      {
+        "site": "KlickPin",
+        "url": "https://klickpin.com/es/",
+        "hreflang": "es (one of 123 alternates, plus x-default)",
+        "slugPattern": "English slugs under /es/ (/es/pinterest-image-downloader, /es/pin-board-downloader, /es/pin-carousel-downloader, /es/pin-story-downloader, /es/pin-ideas-downloader, /es/pin-profile-downloader, /es/chrome-extension, /es/how-to)",
+        "title": "Descargador de videos de Pinterest: ¡descarga videos HD, GIF e imágenes con 1 clic!",
+        "h1": "Descargador de vídeos de Pinterest KlickPin",
+        "description": "Descarga fácilmente videos de Pinterest en alta calidad. Convierte videos de Pinterest a MP4 con nuestro descargador en línea rápido y gratuito. ¡Guarda tus videos favoritos ahora!",
+        "faqTopics": [
+          "¿Puedo descargar vídeos de Pinterest?",
+          "¿Cómo descargar vídeos de Pinterest?",
+          "¿Cómo puedo descargar imágenes de Pinterest?",
+          "¿Puedo descargar GIFs de Pinterest?",
+          "¿Dónde se guardan los archivos después de ser descargados?",
+          "Uso responsable y derechos de autor"
+        ],
+        "subpageH1s": {
+          "board": "Descargador de tableros de Pinterest KlickPin",
+          "carousel": "Descargador de carruseles de Pinterest KlickPin",
+          "story": "Descargador de historias de Pinterest KlickPin",
+          "profile": "Descargador de perfiles de Pinterest KlickPin",
+          "gif": "Descargador de GIF de Pinterest KlickPin",
+          "image": "Descargador de imágenes de Pinterest KlickPin",
+          "chrome": "KlickPin Extensiones del navegador"
+        },
+        "notes": "Its title string is itself an autocomplete suggestion ('descargador de videos de pinterest ¡descarga videos hd gif e imágenes con 1 clic'), and 'klickpin' shows up as a completion of 'descargar videos de pinterest'. That makes it the brand to beat. The Spanish is machine-translated and has mixed-language headings ('Does KlickPin ¿Trabajas en el móvil?', 'Is KlickPin ¿Seguro de usar?')."
+      },
+      {
+        "site": "SavePin",
+        "url": "https://www.savepin.app/pinterest-downloader/es/",
+        "hreflang": "es + x-default",
+        "slugPattern": "Spanish slugs (/es/descargar-gif-de-pinterest, /es/descargar-images-de-pinterest — typo 'images')",
+        "title": "Descargar Videos de Pinterest con SavePin - Rápido y Fácil",
+        "h1": "Descargar Videos De Pinterest",
+        "description": "Descargar videos de Pinterest en alta calidad con SavePin, el mejor Pinterest Downloader en línea. Simplemente pega el enlace del video y descarga en segundos.",
+        "faqTopics": [
+          "¿SavePin es gratuito de usar?",
+          "¿Puedo descargar cualquier video de Pinterest?",
+          "¿Necesito crear una cuenta?",
+          "¿Hay alguna limitación?",
+          "¿Es seguro usar SavePin?",
+          "¿Puedo descargar videos en mi dispositivo móvil?",
+          "¿Qué formatos están disponibles?",
+          "¿Tiene extensiones de navegador?",
+          "¿Cuánto tiempo toma?"
+        ],
+        "notes": "'save pin' completes 'descargar videos de pinterest' in AR and CO. Weak spots: H1 in Title Case, 'Descargar Image De Pinterest', and fake-looking review names (Ramesh, Priya). PintDownload's honesty rules are a differentiator here."
+      },
+      {
+        "site": "PinDown",
+        "url": "https://pindown.io/es2",
+        "hreflang": "es + x-default",
+        "slugPattern": "English slugs under /es/ and odd /es1, /es2 variants",
+        "title": "Descargar vídeos de Pinterest en Full HD y GIF online - Descargador de vídeos de Pinterest",
+        "h1": "Descargador de videos de Pinterest",
+        "description": "Descarga videos de Pinterest a tu teléfono, PC o tableta con la mejor calidad. Usa nuestro Descargador de videos de Pinterest con tu navegador. Compatible con Android e iOS.",
+        "faqTopics": [
+          "¿Cómo descargar videos de Pinterest en tu computadora?",
+          "¿Cómo descargar videos de Pinterest en Android?",
+          "¿Cómo Descargar Videos de Pinterest en 4K?",
+          "¿Cómo descargar videos de Pinterest en tu iPhone (iOS)?"
+        ],
+        "notes": "Claims '1080p - 2K - 4K', the dishonest pattern to avoid. It has its own how-to (/es/how-to-download-pinterest-videos) and GIF (/es/pinterest-gif-downloader) pages. Title is 91 characters."
+      },
+      {
+        "site": "PinterestVideo.com",
+        "url": "https://pinterestvideo.com/es1",
+        "hreflang": "es + x-default",
+        "slugPattern": "Mixed: /es/descargador-de-imagenes-pinterest (Spanish), /es/pinterest-gif-downloader (English)",
+        "title": "Pinterest Descarga de vídeo - Descargas HD MP4 gratuitas",
+        "h1": "Descargador de videos de Pinterest",
+        "description": "Descargador de vídeos de Pinterest es una herramienta en línea que te ayuda a descargar videos, imágenes, gifs e historias de Pinterest. Descarga videos de Pinterest en formato MP4 y calidad HD.",
+        "faqTopics": [
+          "¿Cómo descargar videos de Pinterest paso a paso con el móvil?",
+          "Cómo descargar videos, imágenes y gifs de Pinterest en Android, iPhone o PC"
+        ],
+        "notes": "Image page title 'Descargar imágenes de Pinterest en línea'; GIF page 'Descargar Gif de Pinterest en línea'."
+      },
+      {
+        "site": "Publer (photo downloader)",
+        "url": "https://publer.com/es/tools/pinterest-photo-downloader",
+        "hreflang": "es + x-default",
+        "slugPattern": "English slug under /es/tools/",
+        "title": "Descargar fotos de Pinterest en HD | Herramienta gratuita de Publer",
+        "h1": "Descargar fotos de Pinterest",
+        "description": "Descarga imágenes de Pinterest en alta calidad para tu dispositivo. Sin anuncios, marcas de agua o registro.",
+        "faqTopics": [],
+        "notes": "A big SaaS domain. Its image page H1 is the plain query 'Descargar fotos de Pinterest', which confirms H1 = verb + object."
+      },
+      {
+        "site": "AdaptlyPost",
+        "url": "https://adaptlypost.com/es/free-tools/pinterest-video-downloader",
+        "hreflang": "es-ES + es + x-default",
+        "slugPattern": "English slug under /es/free-tools/",
+        "title": "Resumen - Descargas videos de Pinterest | AdaptlyPost",
+        "h1": "Resumen claro - Descargas videos de Pinterest",
+        "description": "Descarga pines de vídeo de Pinterest. Pega la URL del pin y guarda contenido de vídeo para inspiración y referencia. Sin registro.",
+        "faqTopics": [
+          "¿Puedo descargar Pines de Ideas de Pinterest?",
+          "¿Qué pasa con los Story Pins de Pinterest?",
+          "¿Las descargas de vídeo de Pinterest son HD?"
+        ],
+        "notes": "Uses Spain's spelling 'vídeo' and declares es-ES alongside es."
+      },
+      {
+        "site": "VidAU",
+        "url": "https://www.vidau.ai/es/pinterest-video-downloader/",
+        "hreflang": "es",
+        "slugPattern": "English slug under /es/",
+        "title": "Descargador de vídeos de Pinterest – VidAU.ai",
+        "h1": "Descargador de vídeos de Pinterest",
+        "description": "(malformed, over 300 characters)",
+        "faqTopics": [
+          "¿El descargador de vídeos de VidAU es gratuito?",
+          "¿Puedo utilizar esta herramienta en mi dispositivo móvil?",
+          "¿Es seguro para mis dispositivos?",
+          "¿Dónde se guarda el vídeo después de descargarlo?",
+          "¿Hay algún límite en el número de vídeos que puedo descargar?",
+          "¿Cómo descargar vídeos de Pinterest en Mac OS?"
+        ],
+        "notes": "html lang='es-ES' with the Spain spelling 'vídeo'."
+      },
+      {
+        "site": "Editorial guides (Spanish SERP)",
+        "url": "https://metricool.com/es/descargar-video-pinterest/ ; https://metricool.com/es/descargar-tablero-pinterest/ ; https://tecnobits.net/descargar-videos-pinterest/ ; https://internetpasoapaso.com/descargar-videos-pinterest/ ; https://www.guru99.com/es/how-to-download-pinterest-videos.html ; https://blog.mercately.com/marketing/descargar-tablero-pinterest",
+        "hreflang": "n/a",
+        "slugPattern": "Spanish slugs: descargar-video-pinterest, descargar-tablero-pinterest, descargar-videos-pinterest",
+        "title": "e.g. 'Cómo descargar vídeos de Pinterest: 9 métodos que realmente funcionan'; 'Descargar Tableros Pinterest Online: Sin Apps Ni Límites'; 'Cómo descargar un tablero de Pinterest'",
+        "h1": "",
+        "description": "",
+        "faqTopics": [
+          "respetar derechos de autor",
+          "cuidado con anuncios engañosos",
+          "la descarga nativa de Pinterest añade marca de agua",
+          "pines privados/tableros secretos no se pueden"
+        ],
+        "notes": "The how-to queries are contested by publishers (Metricool, Tecnobits, internetpasoapaso). Their slugs are short Spanish ASCII like the ones proposed here."
+      }
+    ],
+    "pinterestAppTerms": {
+      "_sources": [
+        "https://help.pinterest.com/es/article/download-an-image (Descargar una imagen)",
+        "https://help.pinterest.com/es/article/send-pins-boards-and-profiles (Compartir Pines, tableros y perfiles)",
+        "https://help.pinterest.com/es/article/story-pins (Interactúa con los Pines)",
+        "https://help.pinterest.com/es/guide/boards (¿Qué es Pinterest? / tableros)",
+        "https://help.pinterest.com/es/article/create-a-board (Crear un tablero)",
+        "https://help.pinterest.com/es/articles/edit-your-profile (Editar tu perfil)",
+        "https://newsroom.pinterest.com/es/news/idea-pin-sharing-available/ (Idea Pins)"
+      ],
+      "Share": {
+        "es": "Compartir",
+        "where": "share icon on a Pin, board or profile; article title 'Compartir Pines, tableros y perfiles'"
+      },
+      "Copy link": {
+        "es": "Copiar enlace",
+        "where": "share sheet in the mobile app (Compartir → Copiar enlace)"
+      },
+      "Download image": {
+        "es": "Descargar imagen",
+        "where": "ellipsis menu ('icono de puntos suspensivos') under/next to a Pin; Android saves to 'Galería', iPhone to 'Fotos'"
+      },
+      "Download (generic)": {
+        "es": "Descargar",
+        "where": "ellipsis menu alongside 'Añadir al collage' and 'Denunciar'"
+      },
+      "Ellipsis icon": {
+        "es": "icono de puntos suspensivos",
+        "colloquial": "los tres puntos"
+      },
+      "Save": {
+        "es": "Guardar",
+        "where": "red button that saves a Pin to a board"
+      },
+      "Send": {
+        "es": "Enviar",
+        "where": "share sheet, to send to Pinterest contacts"
+      },
+      "Pin": {
+        "es": "Pin / Pines",
+        "note": "capitalised in Pinterest help; 'Pin de video', 'Pines de video', 'Pin de imagen'"
+      },
+      "Video Pin": {
+        "es": "Pin de video"
+      },
+      "Board": {
+        "es": "tablero / tableros",
+        "where": "'Crear tableros'; 'Compartir tablero'"
+      },
+      "Secret board": {
+        "es": "tablero secreto",
+        "where": "toggle 'Convertir este tablero en secreto' (Crear un tablero); help prose also says 'tablero privado'"
+      },
+      "Group board": {
+        "es": "tableros grupales"
+      },
+      "Profile": {
+        "es": "perfil",
+        "where": "'Ver perfil', 'Editar perfil'"
+      },
+      "Profile picture": {
+        "es": "foto de perfil",
+        "where": "Editar perfil → 'Editar' under the profile photo; 'Cambiar' on web"
+      },
+      "Home feed": {
+        "es": "feed de inicio"
+      },
+      "Idea Pin": {
+        "es": "Idea Pins (untranslated in Pinterest's Spanish newsroom)",
+        "note": "third parties write 'Pines de ideas'; format merged into standard Pins in 2023"
+      },
+      "Search bar": {
+        "es": "barra de búsqueda"
+      },
+      "Messages": {
+        "es": "Mensajes"
+      },
+      "Watermark": {
+        "es": "marca de agua",
+        "where": "Pinterest newsroom: downloaded Idea Pin video is 'video con marca de agua'"
+      },
+      "iOS / Android terms the guides must match": {
+        "Files app": "Archivos",
+        "Downloads": "Descargas",
+        "Photos": "Fotos",
+        "Save Video (iOS share sheet)": "Guardar video (es-ES iOS: 'Guardar vídeo')",
+        "Gallery (Android/Samsung)": "Galería",
+        "Google Photos": "Google Fotos",
+        "Samsung file manager": "Mis archivos",
+        "Chrome bookmarks bar": "barra de favoritos (es-419) / barra de marcadores (es-ES)"
+      }
+    },
+    "searchCentral": {
+      "url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+      "quote": "Only language codes listed in ISO 639-1 and region codes listed in ISO 3166-1 Alpha 2 are supported ... codes not listed in those standards, such as es-419, aren't supported. ... you can specify a language code by itself."
+    }
+  },
+  "pages": [
+    {
+      "enSlug": "index",
+      "skip": false,
+      "priority": "high",
+      "slug": "",
+      "path": "/es",
+      "primaryKeyword": "descargar de Pinterest",
+      "secondaryKeywords": [
+        "descargador de Pinterest",
+        "Pinterest downloader",
+        "descargar de Pinterest gratis",
+        "página para descargar de Pinterest",
+        "descargar de Pinterest en línea",
+        "descargar de Pinterest sin marca de agua"
+      ],
+      "title": "Descargador de Pinterest: videos, fotos y GIF | PintDownload",
+      "description": "Descarga videos de Pinterest en MP4, fotos, GIF, tableros y perfiles públicos con solo pegar el enlace. Gratis, sin registrarte y sin instalar apps.",
+      "h1": "Descargador de Pinterest",
+      "faqTopics": [
+        "¿Cómo descargar de Pinterest sin cuenta?",
+        "¿PintDownload es gratis?",
+        "¿Qué puedo descargar de Pinterest: videos, fotos, GIF, tableros o perfiles?",
+        "¿Cómo copio el enlace de un pin en la app? (Compartir → Copiar enlace)",
+        "¿Es seguro? ¿Tengo que instalar una app o un APK? (no)",
+        "¿Los archivos salen con marca de agua?",
+        "¿Esto es la app de Pinterest? (no: PintDownload no está afiliado a Pinterest; para la app oficial, ve a la tienda de apps)",
+        "¿Qué no funciona? (tableros secretos, pines privados, enlaces que piden iniciar sesión)",
+        "¿Debo dar crédito a quien creó el contenido?",
+        "¿Funciona en iPhone, Android y PC?"
+      ],
+      "evidence": [
+        "descargar de pinterest gratis / imagen / gif / fotos / app / en linea",
+        "descargador de pinterest gif / mp3 / app / imagenes / fotos",
+        "pinterest downloader gratis / hd / image / videos / descargar",
+        "pagina para descargar de pinterest sin marca de agua",
+        "como descargar de pinterest sin registrarse (AR, CO, US)",
+        "descargar pinterest apk / para pc / gratis en español (app-install intent, answer in FAQ)"
+      ],
+      "notes": "The bare 'descargar pinterest' query mostly means installing the Pinterest app (apk, para pc, para celular, en español). Target 'descargar DE Pinterest' instead, and say early in the page what PintDownload is not, so people looking for the app leave quickly instead of bouncing. 'Descargador de Pinterest' in the title matches the noun form that competitors and autocomplete use."
+    },
+    {
+      "enSlug": "pinterest-pin-downloader",
+      "skip": false,
+      "priority": "high",
+      "slug": "descargar-pin-pinterest",
+      "path": "/es/descargar-pin-pinterest",
+      "primaryKeyword": "descargar pin de Pinterest",
+      "secondaryKeywords": [
+        "descargar Pinterest por link",
+        "descargar pin de Pinterest con enlace",
+        "página para descargar pin de Pinterest",
+        "bajar pin de Pinterest",
+        "descargar pin.it",
+        "Pinterest pin downloader"
+      ],
+      "title": "Descargar pin de Pinterest por enlace: foto, video o GIF",
+      "description": "Pega el enlace de un pin público (pinterest.com/pin o pin.it) y descarga su imagen, video MP4, GIF o todas las fotos del carrusel. Gratis y sin cuenta.",
+      "h1": "Descargar pin de Pinterest",
+      "faqTopics": [
+        "¿Qué es el enlace de un pin y dónde lo copio? (Compartir → Copiar enlace, o la barra del navegador con /pin/)",
+        "¿Sirve el enlace corto pin.it?",
+        "¿Puedo descargar todas las fotos de un pin con carrusel?",
+        "¿Funciona con pines de video y GIF?",
+        "¿Por qué no funciona aquí el enlace de un tablero o perfil?",
+        "¿Es gratis y sin registro?"
+      ],
+      "evidence": [
+        "descargar pin de pinterest",
+        "pagina para descargar pin de pinterest",
+        "bajar pin de pinterest",
+        "descargar pinterest link / por link / links / link gratis",
+        "descargar foto pinterest link",
+        "descargar imagen de pinterest con enlace (ES, CO, US)",
+        "descargar pin it / pin.it descargar gratis",
+        "pinterest pin downloader hd / online / free / video"
+      ],
+      "notes": "'Link' and 'enlace' are both live: 'descargar pinterest link' has 9 completions. Title uses 'enlace' (Pinterest's UI word) and the FAQ/hint carries 'link' and 'pin.it'."
+    },
+    {
+      "enSlug": "pinterest-video-downloader",
+      "skip": false,
+      "priority": "high",
+      "slug": "descargar-videos-pinterest",
+      "path": "/es/descargar-videos-pinterest",
+      "primaryKeyword": "descargar videos de Pinterest",
+      "secondaryKeywords": [
+        "descargar video de Pinterest",
+        "descargador de videos de Pinterest",
+        "descargar videos de Pinterest sin marca de agua",
+        "descargar video de Pinterest con link",
+        "descargar video de Pinterest HD",
+        "página para descargar videos de Pinterest",
+        "Pinterest video downloader"
+      ],
+      "title": "Descargar videos de Pinterest en MP4, sin marca de agua",
+      "description": "Descarga videos de Pinterest en MP4 con el enlace del pin o de pin.it. Gratis, sin marca de agua añadida y sin instalar apps, en el celular o en la PC.",
+      "h1": "Descargar videos de Pinterest",
+      "faqTopics": [
+        "¿Cómo descargo un video de Pinterest en MP4?",
+        "¿El video sale con marca de agua? (no se añade ninguna; el texto que el creador puso en el video sigue ahí)",
+        "¿En qué calidad se descarga: 720p, 1080p o 4K? (la que Pinterest publica; nunca 4K inventado)",
+        "¿Funciona en iPhone y Android sin instalar una app?",
+        "¿Puedo sacar solo el audio en MP3?",
+        "¿Por qué no puedo descargar el video? (pin sin video, privado, eliminado o es un GIF)",
+        "¿Es seguro? ¿Hace falta un APK?",
+        "¿Puedo descargarlo para editarlo en CapCut? (sí, el MP4 sirve; respeta los derechos del creador)",
+        "¿Puedo bajar todos los videos de un tablero?"
+      ],
+      "evidence": [
+        "descargar video de pinterest app / con link / hd / para editar",
+        "descargar videos de pinterest sin marca de agua aplicación / sin watermark / seguro / sin anuncios / en pc",
+        "descargar video pinterest hd / mp4 / link / url / android / ios / full hd",
+        "descargador de videos de pinterest online / en hd / en línea",
+        "guardar video de pinterest sin marca de agua",
+        "pinterest sin marca de agua videos / hd / app",
+        "pagina para descargar videos de pinterest",
+        "bajar reel de pinterest (people call Pinterest videos 'reels')"
+      ],
+      "notes": "Biggest page. 'Sin marca de agua' is the strongest modifier, and it is honest here: Pinterest's own in-app 'Descargar' adds a watermark, but the public MP4 has none. Use 'reel' once in body copy ('¿un reel de Pinterest?') because 'bajar reel de pinterest' is a live query. Keep the 1080p/720p claim to 'la mejor calidad que Pinterest publica'."
+    },
+    {
+      "enSlug": "pinterest-image-downloader",
+      "skip": false,
+      "priority": "high",
+      "slug": "descargar-imagenes-pinterest",
+      "path": "/es/descargar-imagenes-pinterest",
+      "primaryKeyword": "descargar imágenes de Pinterest",
+      "secondaryKeywords": [
+        "descargar fotos de Pinterest",
+        "descargar imágenes de Pinterest en alta calidad",
+        "descargar imagen de Pinterest sin perder calidad",
+        "descargar imágenes de Pinterest sin cuenta",
+        "descargar imagen de Pinterest con enlace",
+        "descargar fondos de pantalla de Pinterest"
+      ],
+      "title": "Descargar imágenes de Pinterest en alta calidad, sin cuenta",
+      "description": "Descarga fotos, fondos de pantalla e imágenes de Pinterest en la mayor resolución pública disponible. Pega el enlace del pin; sin cuenta ni registro.",
+      "h1": "Descargar imágenes de Pinterest",
+      "faqTopics": [
+        "¿Cómo descargo imágenes de Pinterest sin cuenta?",
+        "¿Se descargan en alta calidad o en miniatura?",
+        "¿Se pueden descargar fotos de Pinterest en 4K? (respuesta honesta: no; se guarda la versión pública más grande, hasta unos 1200 px de ancho)",
+        "¿Qué diferencia hay con 'Descargar imagen' de la app de Pinterest? (sin iniciar sesión y desde cualquier navegador)",
+        "¿Puedo descargar todas las fotos de un carrusel?",
+        "¿Sirve para fondos de pantalla?",
+        "¿Es seguro descargar imágenes de Pinterest?",
+        "¿Por qué falla con un pin de video?"
+      ],
+      "evidence": [
+        "descargar imagenes de pinterest en alta calidad / app / por link / sin cuenta / online / es seguro",
+        "descargar fotos de pinterest alta resolución / 4k / app / con link",
+        "descargar imagen de pinterest sin perder calidad / sin registrarse / con enlace",
+        "como descargar fotos de pinterest sin perder calidad / en 4k / en iphone / en pc",
+        "guardar fotos de pinterest en iphone / en galería",
+        "descargar fondos de pantalla de pinterest (para pc)",
+        "descargar imagenes de pinterest en alta calidad hd (ES, AR, US)",
+        "descargar pinterest en alta calidad → imagenes / gratis / pc (batch 2)"
+      ],
+      "notes": "Quality is the main angle ('alta calidad', 'sin perder calidad', 'alta resolución', '4k'). Code caps images at Pinterest's public 1200x size (src/lib/pin-media.ts PUBLIC_IMAGE_SIZE), so do not say 'original' or 'resolución original'. Say 'la mayor resolución pública disponible'. Answer the 4K query honestly in an FAQ instead of making a 4K page."
+    },
+    {
+      "enSlug": "pinterest-gif-downloader",
+      "skip": false,
+      "priority": "high",
+      "slug": "descargar-gif-pinterest",
+      "path": "/es/descargar-gif-pinterest",
+      "primaryKeyword": "descargar GIF de Pinterest",
+      "secondaryKeywords": [
+        "guardar GIF de Pinterest en galería",
+        "descargar GIF animado de Pinterest",
+        "cómo descargar GIF de Pinterest en el celular",
+        "descargar GIF de Pinterest con URL",
+        "descargar imagen de Pinterest con movimiento",
+        "Pinterest GIF downloader"
+      ],
+      "title": "Descargar GIF de Pinterest con animación, gratis y sin app",
+      "description": "Guarda GIF de Pinterest sin perder el movimiento: pega el enlace del pin y descarga el archivo GIF animado, no una foto fija. Gratis, en celular o PC.",
+      "h1": "Descargar GIF de Pinterest",
+      "faqTopics": [
+        "¿Cómo descargo un GIF de Pinterest?",
+        "¿Por qué mi GIF se descargó como foto fija?",
+        "¿El GIF se mueve en la galería del celular? (iPhone: álbum Animados en Fotos; Android: depende de la app de galería)",
+        "¿Puedo descargar el GIF como video MP4?",
+        "¿Cómo guardo un GIF de Pinterest en la PC?",
+        "¿Necesito cuenta de Pinterest?"
+      ],
+      "evidence": [
+        "descargar gif de pinterest con url / como video / en android / hd",
+        "como descargar gif de pinterest en el celular / en pc",
+        "descargar gif animado de pinterest",
+        "guardar gif de pinterest / en galeria / en pc / sin marca de agua",
+        "descargar imagen de pinterest con movimiento",
+        "pinterest gif downloader / gif descargar",
+        "descargar video de pinterest en gif / como gif"
+      ],
+      "notes": "Many people call GIFs 'imágenes con movimiento'. Put that phrase in the lede. Watch the GIF/MP4 overlap: 'descargar video de pinterest en gif' means video-to-GIF conversion, which the tool doesn't do. Say so in the FAQ."
+    },
+    {
+      "enSlug": "pinterest-board-downloader",
+      "skip": false,
+      "priority": "high",
+      "slug": "descargar-tableros-pinterest",
+      "path": "/es/descargar-tableros-pinterest",
+      "primaryKeyword": "descargar tableros de Pinterest",
+      "secondaryKeywords": [
+        "descargar tableros completos de Pinterest",
+        "descargar todas las fotos de un tablero de Pinterest",
+        "descargar tableros de Pinterest online gratis",
+        "extensión para descargar tableros de Pinterest",
+        "descargar tablero de Pinterest en ZIP",
+        "Pinterest board downloader"
+      ],
+      "title": "Descargar tableros de Pinterest en ZIP: fotos y videos",
+      "description": "Pega el enlace de un tablero público de Pinterest y descarga sus pines, fotos y videos, en un solo archivo ZIP. Sin extensiones, sin cuenta y gratis.",
+      "h1": "Descargar tableros de Pinterest",
+      "faqTopics": [
+        "¿Cómo descargo un tablero completo de Pinterest? (honesto: los pines públicos que carga la página, hasta un límite)",
+        "¿Cómo es el enlace de un tablero? (pinterest.com/usuario/nombre-del-tablero/)",
+        "¿Puedo descargar tableros secretos o privados?",
+        "¿Necesito una extensión de Chrome?",
+        "¿Cómo descargo mis propios tableros?",
+        "¿Tablero o perfil: qué herramienta uso?",
+        "¿El ZIP incluye todas las fotos de los carruseles?"
+      ],
+      "evidence": [
+        "descargar tableros de pinterest gratis / android / online",
+        "descargar tableros completos de pinterest",
+        "extension para descargar tableros de pinterest",
+        "se pueden descargar tableros de pinterest",
+        "como descargar mis tableros de pinterest",
+        "descargar todas las fotos de un tablero de pinterest",
+        "pinterest board downloader online / bulk / free / extension",
+        "descargar tableros completos de pinterest → gratis / en español (batch 2)",
+        "descargar tablero de pinterest zip → gratis / download (batch 2)"
+      ],
+      "notes": "Searchers use the plural ('descargar tableros'). The singular 'descargar tablero de pinterest' returned no completions, so the slug and H1 use the plural. The board FAQ in English says big boards may not return every pin, so do not put 'completo' in the title. Answer '¿completo?' honestly in the FAQ instead."
+    },
+    {
+      "enSlug": "pinterest-profile-downloader",
+      "skip": false,
+      "priority": "low",
+      "slug": "descargar-perfil-pinterest",
+      "path": "/es/descargar-perfil-pinterest",
+      "primaryKeyword": "descargar perfil de Pinterest",
+      "secondaryKeywords": [
+        "descargar todos los pines de un perfil de Pinterest",
+        "descargar todas las fotos de un perfil de Pinterest",
+        "descargar pines de Pinterest en ZIP",
+        "Pinterest profile downloader"
+      ],
+      "title": "Descargar perfil de Pinterest: pines públicos en un ZIP",
+      "description": "Descarga en un ZIP los pines públicos de un perfil de Pinterest, con fotos y videos, pegando el enlace de la cuenta. Gratis, sin registro y sin apps.",
+      "h1": "Descargar perfil de Pinterest",
+      "faqTopics": [
+        "¿Cómo descargo los pines de un perfil de Pinterest?",
+        "¿Perfil o tablero: cuál es la diferencia?",
+        "¿Se descargan todos los pines que publicó la cuenta? (no siempre: los públicos visibles, hasta un límite)",
+        "¿Funciona con perfiles privados?",
+        "¿Solo quieres la foto de perfil? (enlace a la herramienta de foto de perfil)",
+        "¿Es legal descargar un perfil?"
+      ],
+      "evidence": [
+        "descargar perfil de pinterest (completions lean to PFP: descargar foto perfil de pinterest, descargar perfil de pinterest hd / 4k)",
+        "descargar todos los pines de pinterest → only 'descargar pines de pinterest videos'",
+        "descargar todos los pines de pinterest en español (CO)",
+        "pinterest profile downloader free / online"
+      ],
+      "notes": "Thin demand, and the head term is ambiguous: half of 'descargar perfil de pinterest' means the profile picture. Ship it after the high-priority pages. Put a link to the foto de perfil page in the first screen. If Search Console shows it only gets PFP queries, consider noindex."
+    },
+    {
+      "enSlug": "pinterest-profile-picture-downloader",
+      "skip": false,
+      "priority": "medium",
+      "slug": "descargar-foto-perfil-pinterest",
+      "path": "/es/descargar-foto-perfil-pinterest",
+      "primaryKeyword": "descargar foto de perfil de Pinterest",
+      "secondaryKeywords": [
+        "ver foto de perfil de Pinterest en grande",
+        "descargar foto de perfil de Pinterest en HD",
+        "cómo descargar mi foto de perfil de Pinterest",
+        "descargar foto perfil Pinterest PC",
+        "Pinterest profile picture downloader"
+      ],
+      "title": "Descargar foto de perfil de Pinterest y verla en grande",
+      "description": "Mira en grande y descarga la foto de perfil de una cuenta pública de Pinterest: pega el enlace del perfil y guarda la imagen más grande disponible.",
+      "h1": "Descargar foto de perfil de Pinterest",
+      "faqTopics": [
+        "¿Cómo veo en grande la foto de perfil de alguien en Pinterest?",
+        "¿Cómo descargo mi propia foto de perfil de Pinterest?",
+        "¿En qué resolución se descarga? (normalmente hasta unos 600 × 600 px)",
+        "¿Es lo mismo que descargar el perfil en ZIP?",
+        "¿Funciona con cuentas privadas?",
+        "¿En qué formato se guarda? (JPG)",
+        "¿Necesito cuenta o app?"
+      ],
+      "evidence": [
+        "descargar perfil de pinterest → descargar foto perfil de pinterest, como descargar mi foto de perfil de pinterest, descargar perfil de pinterest hd / 4k",
+        "foto de perfil pinterest descargar",
+        "ver foto de perfil pinterest",
+        "pinterest profile picture downloader hd / online free (shown for es markets)",
+        "descargar foto de perfil de pinterest → 0 completions (long tail)",
+        "ver foto de perfil de pinterest en grande → online / gratis / online gratis (batch 2)",
+        "descargar foto de perfil de pinterest en hd → hd 4k / hd gratis (batch 2)",
+        "como descargar foto de perfil de pinterest → mi foto de perfil / sin marca de agua (batch 2)",
+        "descargar foto perfil pinterest pc (batch 2)"
+      ],
+      "notes": "Don't chase 'fotos de perfil de Pinterest (aesthetic, anime, hombre, mujer, para WhatsApp)'. That is a huge query family, but those people want profile-picture ideas found on Pinterest, not this tool. Chasing it would bring traffic that doesn't convert and a poor engagement signal. 'PFP/DP' are English-only in this market. Don't put 'HD' in the title: avatars top out around 600×600."
+    },
+    {
+      "enSlug": "pinterest-carousel-downloader",
+      "skip": false,
+      "priority": "medium",
+      "slug": "descargar-carrusel-pinterest",
+      "path": "/es/descargar-carrusel-pinterest",
+      "primaryKeyword": "descargar carrusel de Pinterest",
+      "secondaryKeywords": [
+        "descargar carrusel de Pinterest gratis",
+        "descargar carrusel de Pinterest online",
+        "descargar todas las imágenes de un pin",
+        "carrusel de pines de Pinterest"
+      ],
+      "title": "Descargar carrusel de Pinterest: todas las fotos del pin",
+      "description": "Descarga todas las imágenes de un carrusel de Pinterest de una vez: pega el enlace del pin y guarda cada foto por separado o todas juntas en un ZIP.",
+      "h1": "Descargar carrusel de Pinterest",
+      "faqTopics": [
+        "¿Puedo descargar todas las fotos del carrusel de una vez?",
+        "¿Cómo sé si un pin es un carrusel? (los puntos debajo de la imagen)",
+        "¿Las imágenes salen en la mejor resolución disponible?",
+        "¿Qué pasa si el carrusel mezcla fotos y videos?"
+      ],
+      "evidence": [
+        "descargar carrusel de pinterest / gratis / online",
+        "carrusel pinterest → descargar carrusel pinterest, carrusel de pines pinterest",
+        "competitor KlickPin ranks /es/pin-carousel-downloader with H1 'Descargador de carruseles de Pinterest'"
+      ],
+      "notes": "Small but real, low competition, and competitors' Spanish here is machine-translated. Note that most 'carrusel pinterest' searches are people looking for Instagram carousel design ideas, not this tool."
+    },
+    {
+      "enSlug": "pinterest-story-downloader",
+      "skip": true,
+      "skipReason": "No Spanish demand. 'descargar historias de pinterest' and 'descargar historia de pinterest' return no completions; 'pinterest historias' means Instagram story-highlight ideas (iconos, cumpleaños, aesthetic); 'idea pin' only completes in English. Pinterest folded Idea Pins into ordinary Pins in 2023 and its Spanish newsroom never translated the name. Fold one FAQ ('¿Funciona con Idea Pins o pines de varias páginas?') into the video and carousel pages instead. Batch 2 found only a thin trickle ('descargar pin de ideas', 'pinterest stories descargar gratis'), too little for a page of its own.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": [],
+      "evidence": [
+        "descargar idea pin pinterest → only 'descargar idea pin pinterest gratis'",
+        "descargar historias de pinterest → []",
+        "pinterest historias → historias destacadas / instagram / cumpleaños / terror",
+        "pinterest stories descargar → gratis / pc (batch 2, English-phrased)",
+        "descargar pin de idea → descargar pin de ideas / gratis (batch 2, thin)",
+        "descargar historia de pinterest → [] (batch 2)"
+      ]
+    },
+    {
+      "enSlug": "pinterest-audio-downloader",
+      "skip": false,
+      "priority": "medium",
+      "slug": "pinterest-a-mp3",
+      "path": "/es/pinterest-a-mp3",
+      "primaryKeyword": "Pinterest a MP3",
+      "secondaryKeywords": [
+        "convertir video de Pinterest a MP3",
+        "descargador de Pinterest MP3",
+        "descargar canción de Pinterest",
+        "descargar sonido de Pinterest",
+        "convertidor Pinterest MP3",
+        "Pinterest MP3 downloader"
+      ],
+      "title": "Pinterest a MP3: extrae el audio de un video de Pinterest",
+      "description": "Convierte un video de Pinterest a MP3: pega el enlace de un pin de video público y guarda la música o la voz. Gratis; usa solo audio que puedas conservar.",
+      "h1": "Pinterest a MP3",
+      "faqTopics": [
+        "¿Cómo saco el audio de un video de Pinterest?",
+        "¿Es legal descargar música de Pinterest?",
+        "¿Por qué mi pin no tiene MP3? (pin mudo, GIF o foto)",
+        "¿Puedo saber el nombre de la canción? (no; PintDownload no identifica canciones)",
+        "¿Funciona sin cuenta de Pinterest?"
+      ],
+      "evidence": [
+        "descargador de pinterest mp3 (2nd completion for 'descargador de pinterest' in MX and ES)",
+        "pinterest a mp3 → convertir pinterest a mp3, convertir video de pinterest a mp3, pinterest mp3 downloader online",
+        "descargar cancion de pinterest / gratis / mp3",
+        "sonido de pinterest descargar / mp3",
+        "convertidor pinterest mp3",
+        "pin.it descargar musica",
+        "pinterest video downloader mp3",
+        "convertir pinterest a mp3 → convertir video pinterest a mp3 / gratis (batch 2)",
+        "descargar sonido de pinterest → gratis (batch 2)",
+        "pinterest mp3 → descargar / converter / downloader online (batch 2)"
+      ],
+      "notes": "The slug follows the query shape 'pinterest a mp3', the same way the MP4 page does. Leave 'sonido de pinterest al guardar' alone: that is the app's notification sound."
+    },
+    {
+      "enSlug": "pinterest-4k-downloader",
+      "skip": true,
+      "skipReason": "Can't be made honest, and the demand is already covered. The pipeline serves images at Pinterest's public 1200x size (src/lib/pin-media.ts) and video at the 720p/1080p streams Pinterest publishes, so a Spanish '4K' page would make false claims (PRODUCT.md: 'no fake 4K'). The Spanish 4K queries ('descargar fotos de pinterest 4k', 'como descargar fotos de pinterest en 4k', 'pinterest downloader 4k', 'convertidor de pinterest 4k') are quality-anxiety modifiers on the image and video intents. Answer them in an honest FAQ on the image and video pages ('¿Se puede descargar en 4K?') and point any es hreflang for this page nowhere.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": [],
+      "evidence": [
+        "pinterest 4k → 4k wallpaper / downloader / video download online (English phrasing)",
+        "descargar fotos de pinterest 4k",
+        "descargar videos de pinterest en 4k → []",
+        "descargar video pinterest 1080 → []",
+        "descargar video de pinterest en hd → []"
+      ]
+    },
+    {
+      "enSlug": "pinterest-to-mp4",
+      "skip": false,
+      "priority": "medium",
+      "slug": "pinterest-a-mp4",
+      "path": "/es/pinterest-a-mp4",
+      "primaryKeyword": "Pinterest a MP4",
+      "secondaryKeywords": [
+        "convertidor Pinterest a MP4",
+        "enlace de Pinterest a MP4",
+        "convertir video de Pinterest a MP4",
+        "Pinterest MP4 descargar",
+        "convertidor de Pinterest sin marca de agua"
+      ],
+      "title": "Pinterest a MP4: convierte videos de Pinterest online gratis",
+      "description": "Convierte un enlace de Pinterest a MP4: pega la URL del pin y descarga un video que se reproduce en cualquier celular o PC. Sin registro y sin marca de agua.",
+      "h1": "Pinterest a MP4",
+      "faqTopics": [
+        "¿Cómo convierto un video de Pinterest a MP4?",
+        "¿Es gratis convertir Pinterest a MP4?",
+        "¿Pinterest a MP4 o descargador de videos: qué página uso?",
+        "¿Puedo convertir un GIF de Pinterest a MP4?",
+        "¿Funciona en iPhone y Android?",
+        "¿Y si solo quiero el audio? (enlace a Pinterest a MP3)"
+      ],
+      "evidence": [
+        "pinterest a mp4 → convertidor pinterest a mp4, enlace pinterest a mp4",
+        "pinterest mp4 → descargar / converter / download",
+        "convertidor pinterest → a mp4 / video / mp3 / hd / sin marca de agua / 4k / a gif / a imagen",
+        "descargar video pinterest mp4"
+      ],
+      "notes": "This page shares intent with descargar-videos-pinterest. Keep it about the converter angle (enlace → MP4 file that plays everywhere, why Pinterest uses HLS streams) and link the two pages to each other."
+    },
+    {
+      "enSlug": "pinterest-video-downloader-chrome",
+      "skip": false,
+      "priority": "low",
+      "slug": "descargar-videos-pinterest-chrome",
+      "path": "/es/descargar-videos-pinterest-chrome",
+      "primaryKeyword": "descargar videos de Pinterest en Chrome",
+      "secondaryKeywords": [
+        "extensión para descargar videos de Pinterest",
+        "extensión para descargar imágenes de Pinterest",
+        "descargar videos de Pinterest desde Chrome gratis",
+        "Pinterest video downloader Chrome",
+        "descargar videos de Pinterest en Chromebook"
+      ],
+      "title": "Descargar videos de Pinterest en Chrome sin extensión",
+      "description": "Descarga videos, fotos y tableros de Pinterest desde Chrome con un marcador de un clic (bookmarklet), sin instalar extensiones. Funciona en Windows y Mac.",
+      "h1": "Descargar videos de Pinterest en Chrome",
+      "faqTopics": [
+        "¿PintDownload es una extensión de Chrome? (no: es un marcador de un clic)",
+        "¿Por qué un marcador es más seguro que una extensión?",
+        "¿Cómo agrego el marcador a la barra de Chrome?",
+        "¿Funciona en Windows, Mac y Chromebook?",
+        "¿Funciona en Edge, Brave, Opera o Safari?",
+        "¿Funciona en Chrome para Android? (mejor usar el cuadro de la página en el celular)"
+      ],
+      "evidence": [
+        "descargar videos de pinterest chrome / extension chrome / chromebook",
+        "extension para descargar videos de pinterest / gratis / sin marca de agua",
+        "pinterest video downloader chrome (es, ar, co, us)",
+        "descargar videos de pinterest en pc chrome extension",
+        "descargar videos de pinterest desde chrome → extension chrome / gratis (batch 2)",
+        "extension para descargar imagenes de pinterest → gratis (batch 2)",
+        "pinterest downloader extension → chrome / firefox / opera (batch 2)"
+      ],
+      "notes": "Half the searchers expect an extension. Put 'sin extensión' in the title so the snippet is honest about what they get. Don't target 'extensión de Pinterest para Chrome': that means Pinterest's official Save button."
+    },
+    {
+      "enSlug": "pinterest-seo-title-generator",
+      "skip": true,
+      "skipReason": "The tool can't serve Spanish users, and the Spanish queries mean something else. /api/generate-seo always produces English: the fallback templates are hard-coded English and the Gemini prompt has no language parameter. A Spanish page would promise Spanish titles and deliver English. Demand is also off-intent: 'titulos para pinterest' means hand-lettering ideas for notebook titles ('titulos bonitos para cuadernos'), 'seo pinterest' completes in English, and 'generador de titulos pinterest' has a single completion ('gratis'). Revisit only if the API gains a lang parameter.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": [],
+      "evidence": [
+        "generador de titulos pinterest → gratis",
+        "titulos para pinterest → cuadernos / letras / carteles / imprimir",
+        "seo pinterest → meaning / 2025 / 2026 (English)",
+        "descripcion para pinterest → en español / en ingles (bio intent)"
+      ]
+    },
+    {
+      "enSlug": "how-to-download-pinterest-videos",
+      "skip": false,
+      "priority": "high",
+      "slug": "como-descargar-videos-pinterest",
+      "path": "/es/como-descargar-videos-pinterest",
+      "primaryKeyword": "cómo descargar videos de Pinterest",
+      "secondaryKeywords": [
+        "cómo descargar videos de Pinterest sin aplicaciones",
+        "cómo descargar un video de Pinterest",
+        "cómo guardar videos de Pinterest",
+        "por qué no me deja descargar videos de Pinterest",
+        "cómo descargar un video de Pinterest para editar",
+        "cómo bajar videos de Pinterest"
+      ],
+      "title": "Cómo descargar videos de Pinterest: guía paso a paso sin apps",
+      "description": "Guía para descargar videos de Pinterest: copia el enlace en la app, pégalo en PintDownload y guarda el MP4 en tu celular o PC. Sin apps y sin registro.",
+      "h1": "Cómo descargar videos de Pinterest",
+      "faqTopics": [
+        "¿Por qué no puedo descargar videos de Pinterest? (el creador desactivó la descarga, pin privado o eliminado, no es un video)",
+        "¿Se puede descargar desde la propia app de Pinterest? (a veces, desde los tres puntos → Descargar, con marca de agua)",
+        "¿Necesito instalar una aplicación?",
+        "¿Dónde se guarda el video?",
+        "¿Puedo descargar un video para editarlo o ponerlo de fondo de pantalla?",
+        "¿Es legal descargar videos de Pinterest?"
+      ],
+      "evidence": [
+        "como descargar videos de pinterest en pc / sin aplicaciones / app / en el celular sin aplicaciones / en tablet / lite / en tu galeria / para fondo de pantalla",
+        "como descargar un video de pinterest para editar / y editarlo / y ponerlo de fondo de pantalla",
+        "como guardar videos de pinterest en galería / sin marca de agua",
+        "como bajar videos de pinterest en android / en iphone",
+        "no puedo descargar videos de pinterest / en mi pc",
+        "por que no puedo descargar videos de pinterest que hago (US)",
+        "como descargar un video de pinterest → en mi pc / en celular / para editar / en iphone / y ponerlo de fondo de pantalla / en laptop / en la galeria / y editarlo / en mac (batch 2)",
+        "por que no me deja descargar videos de pinterest → que hago (batch 2)",
+        "como descargar videos de pinterest sin aplicaciones → en el celular / en pc / en iphone (batch 2)"
+      ],
+      "notes": "The hub guide. It should link to the three device guides (celular, galería, PC) rather than repeat them. The 'por qué no puedo' troubleshooting angle is something the English page lacks; make it a full H2."
+    },
+    {
+      "enSlug": "how-to-download-pinterest-video-in-gallery",
+      "skip": false,
+      "priority": "medium",
+      "slug": "guardar-videos-pinterest-galeria",
+      "path": "/es/guardar-videos-pinterest-galeria",
+      "primaryKeyword": "cómo guardar videos de Pinterest en la galería",
+      "secondaryKeywords": [
+        "descargar video de Pinterest en galería",
+        "cómo guardar un video de Pinterest en mi galería",
+        "cómo guardar videos de Pinterest en la galería del iPhone",
+        "guardar video de Pinterest en galería online",
+        "dónde se guardan los videos de Pinterest"
+      ],
+      "title": "Cómo guardar videos de Pinterest en la galería del celular",
+      "description": "Guarda videos de Pinterest directo en la galería de Android o en Fotos del iPhone. Paso a paso, gratis y sin apps, y qué hacer si el video no aparece.",
+      "h1": "Guardar videos de Pinterest en la galería",
+      "faqTopics": [
+        "¿Por qué el video descargado no aparece en mi galería?",
+        "¿Cómo paso el video de Archivos a Fotos en el iPhone? (Archivos → Descargas → Compartir → Guardar video)",
+        "¿Dónde se guardan los videos descargados en Android? (Descargas; aparecen en Galería o Google Fotos)",
+        "¿Puedo guardarlo en la galería sin instalar una app?",
+        "¿Es gratis? ¿Hace falta cuenta?"
+      ],
+      "evidence": [
+        "como guardar videos de pinterest en la galería / galeria iphone / galeria de fotos",
+        "descargar video de pinterest en galeria → como descargar un video de pinterest en mi galeria, gratis, online (AR, CO)",
+        "guardar video de pinterest en galeria / online",
+        "como guardar un video de pinterest en mi galeria / gratis",
+        "como descargar videos de pinterest en tu galeria (top completion of the how-to seed)",
+        "descargar videos de pinterest en galería (US)",
+        "donde se guardan los videos de pinterest → como se guardan los videos de pinterest en galeria / en pc (batch 2)"
+      ],
+      "notes": "Overlaps the celular guide. Keep this one about the destination and the 'no aparece en la galería' fix, and keep the celular guide about steps per device. Cross-link both."
+    },
+    {
+      "enSlug": "how-to-download-pinterest-video-on-laptop",
+      "skip": false,
+      "priority": "medium",
+      "slug": "descargar-videos-pinterest-pc",
+      "path": "/es/descargar-videos-pinterest-pc",
+      "primaryKeyword": "cómo descargar videos de Pinterest en PC",
+      "secondaryKeywords": [
+        "cómo descargar videos de Pinterest en computadora",
+        "cómo descargar videos de Pinterest en el ordenador",
+        "descargar videos de Pinterest en Mac",
+        "cómo descargar un video de Pinterest en laptop",
+        "por qué no puedo descargar videos de Pinterest en mi PC",
+        "descargar videos de Pinterest en Chromebook"
+      ],
+      "title": "Cómo descargar videos de Pinterest en PC, computadora o Mac",
+      "description": "Descarga videos de Pinterest en tu computadora con Windows, Mac o Chromebook: copia el enlace del pin, pégalo y guarda el MP4 en Descargas. Gratis.",
+      "h1": "Descargar videos de Pinterest en PC",
+      "faqTopics": [
+        "¿Cómo descargo videos de Pinterest en Windows o Mac?",
+        "¿Puedo descargar en 1080p desde la computadora? (si Pinterest publica esa calidad)",
+        "¿Funciona en Chromebook?",
+        "¿Por qué no puedo descargar videos de Pinterest en mi PC?",
+        "¿Dónde queda el archivo? (carpeta Descargas)",
+        "¿Hay un atajo de un clic? (marcador para Chrome)"
+      ],
+      "evidence": [
+        "como descargar videos de pinterest en pc (top completion of the how-to seed in MX and ES)",
+        "como descargar videos de pinterest en computadora / gratis / gratis online / gratis en español",
+        "como descargar videos de pinterest en el ordenador gratis",
+        "descargar videos de pinterest en pc → como descargar videos de pinterest en mi pc",
+        "descargar videos de pinterest en mac / macbook / gratis",
+        "como descargar un video de pinterest en laptop / en mac (batch 2)",
+        "como descargar videos de pinterest en laptop → [] (weak)",
+        "por que no puedo descargar videos de pinterest en mi pc",
+        "como descargar videos de pinterest en la computadora → gratis (batch 2)",
+        "descargar videos de pinterest en laptop → gratis (batch 2)",
+        "descargador de pinterest para pc → gratis (batch 2)",
+        "donde se guardan los videos de pinterest en pc (batch 2)"
+      ],
+      "notes": "'Laptop' is weak in Spanish autocomplete, while 'PC' and 'computadora' are strong, so the slug says 'pc' even though the English slug says 'laptop'. In body copy, name laptop, portátil (ES) and ordenador (ES) once each."
+    },
+    {
+      "enSlug": "download-pinterest-videos-iphone-android",
+      "skip": false,
+      "priority": "high",
+      "slug": "descargar-videos-pinterest-celular",
+      "path": "/es/descargar-videos-pinterest-celular",
+      "primaryKeyword": "cómo descargar videos de Pinterest en el celular",
+      "secondaryKeywords": [
+        "cómo descargar videos de Pinterest en el celular sin aplicaciones",
+        "cómo descargar videos de Pinterest en iPhone",
+        "descargar videos de Pinterest en Android",
+        "app para descargar videos de Pinterest en iPhone",
+        "descargar videos de Pinterest en el móvil",
+        "cómo bajar videos de Pinterest en Android"
+      ],
+      "title": "Descargar videos de Pinterest en el celular (iPhone y Android)",
+      "description": "Descarga videos de Pinterest en tu iPhone o Android desde Safari o Chrome, sin instalar apps, y guárdalos en Fotos o en la Galería. Gratis y en MP4.",
+      "h1": "Descargar videos de Pinterest en el celular",
+      "faqTopics": [
+        "¿Cómo guardo un video de Pinterest en el iPhone? (Safari → Descargas → Archivos → Compartir → Guardar video)",
+        "¿Cómo lo guardo en la Galería o en Google Fotos de Android?",
+        "¿Necesito una app de la App Store o de Google Play? (no)",
+        "¿Funciona en Samsung Galaxy, Xiaomi y Motorola?",
+        "¿Funciona con Pinterest Lite?",
+        "¿Funciona en tablet o iPad?"
+      ],
+      "evidence": [
+        "como descargar videos de pinterest en el celular sin aplicaciones / iphone / android",
+        "como descargar videos de pinterest en celular / en tablet / lite",
+        "descargar videos de pinterest android → como descargar videos de pinterest en el celular android, gratis",
+        "app para descargar videos de pinterest en iphone",
+        "como bajar videos de pinterest en android / en iphone",
+        "como guardar un video de pinterest en iphone / en el celular",
+        "descargar video de pinterest en iphone → como descargar un video de pinterest en mi iphone, gratis (batch 2)",
+        "descargar videos de pinterest iphone → [] (iPhone-only phrasing is weak)",
+        "como descargar videos de pinterest en samsung → samsung galaxy / samsung tablet (batch 2)",
+        "como descargar videos de pinterest en el iphone → en el celular iphone / gratis (batch 2)",
+        "como guardar videos de pinterest en el iphone (batch 2)"
+      ],
+      "notes": "Retargeted from the English 'iPhone & Android' to 'en el celular'. 'Celular' is how Latin America phrases it, and iPhone/Android show up as refinements of it. Slug: 'celular' rather than 'iphone-android'. Spain says 'móvil': put 'celular o móvil' in the lede once."
+    }
+  ],
+  "glossary": {
+    "_howToRead": "Key = English source term. 'es' = what to print on Spanish pages (neutral Latin American base that Spain also reads naturally). 'avoid' = renderings that are wrong, unnatural or market-specific. 'note' = why.",
+    "product": {
+      "Pinterest downloader": {
+        "es": "descargador de Pinterest",
+        "alt": [
+          "descargar de Pinterest"
+        ],
+        "note": "Noun 'descargador' is what competitors and autocomplete use ('descargador de pinterest gif/mp3/app'). In running copy prefer the verb 'descargar' — it is the query people type."
+      },
+      "download (verb)": {
+        "es": "descargar",
+        "alt": [
+          "bajar (colloquial, MX/AR — use once in body copy, never in titles)",
+          "guardar (when the destination is the gallery/camera roll)"
+        ],
+        "avoid": [
+          "downloadear",
+          "bajar in titles"
+        ],
+        "note": "'bajar' has far thinner autocomplete than 'descargar' ('bajar videos de pinterest' returned no completions). 'guardar' is the verb Pinterest uses for saving to a board — only use it for saving to the phone ('guardar en la galería'), never for the Pinterest 'Guardar' button."
+      },
+      "save (to device)": {
+        "es": "guardar",
+        "note": "'guardar video de pinterest en galería', 'guardar gif de pinterest' are real queries."
+      },
+      "free": {
+        "es": "gratis",
+        "avoid": [
+          "gratuito as the main adjective in titles"
+        ],
+        "note": "'gratis' is the query modifier ('descargar de pinterest gratis'). 'gratuito/gratuita' reads fine in body copy."
+      },
+      "online": {
+        "es": "online",
+        "alt": [
+          "en línea"
+        ],
+        "note": "Both appear in autocomplete ('descargar pinterest videos online', 'descargador de videos de pinterest en línea'). 'online' is shorter for titles."
+      },
+      "link / URL": {
+        "es": "enlace",
+        "alt": [
+          "link (MX/LatAm colloquial; use in secondary copy and FAQ)",
+          "URL"
+        ],
+        "note": "Pinterest's own Spanish UI says 'Copiar enlace'. But people search 'descargar pinterest link', 'por link', 'con link' as much as 'con enlace'. Use 'enlace' as the default word, and put 'link' once per page in a FAQ or hint so both match."
+      },
+      "paste": {
+        "es": "pega / pegar",
+        "note": "Imperative 'Pega el enlace' (tú). Spain and LatAm both use tú on the web; do not use usted or vos."
+      },
+      "no login / no account": {
+        "es": "sin cuenta / sin registrarte / sin iniciar sesión",
+        "note": "'descargar imagenes de pinterest sin cuenta', 'sin registrarse' are real queries."
+      },
+      "no app / no install": {
+        "es": "sin app / sin aplicaciones / sin instalar nada",
+        "note": "'como descargar videos de pinterest en el celular sin aplicaciones' is a top completion."
+      },
+      "no watermark": {
+        "es": "sin marca de agua",
+        "avoid": [
+          "sin watermark"
+        ],
+        "note": "High-intent modifier ('guardar video de pinterest sin marca de agua'). Honest form: 'sin la marca de agua que añade la descarga de Pinterest'; the creator's own on-video text can still be there."
+      },
+      "high quality / HD": {
+        "es": "alta calidad / HD / sin perder calidad",
+        "note": "'en alta calidad', 'sin perder calidad', 'alta resolución' are the Spanish quality modifiers. Promise only 'la mayor resolución pública disponible'."
+      },
+      "4K": {
+        "es": "4K (only in an honest FAQ answer)",
+        "note": "Pipeline caps images at Pinterest's public 1200x size and videos at the 720p/1080p streams Pinterest serves. Never promise 4K."
+      },
+      "phone": {
+        "es": "celular",
+        "alt": [
+          "móvil (Spain) — add once in body copy: 'celular (móvil)'",
+          "teléfono"
+        ],
+        "note": "LatAm 'celular' dominates autocomplete ('en el celular', 'para celular'). Spain says 'móvil'."
+      },
+      "computer": {
+        "es": "PC",
+        "alt": [
+          "computadora (LatAm)",
+          "ordenador (Spain)",
+          "laptop (LatAm) / portátil (Spain)"
+        ],
+        "note": "'PC' is neutral and is the strongest device modifier in autocomplete ('en pc'). Mention computadora/ordenador/laptop/portátil once each in the laptop guide."
+      },
+      "gallery / camera roll": {
+        "es": "galería (Android) / Fotos (iPhone)",
+        "alt": [
+          "carrete (Spain, iPhone)"
+        ],
+        "note": "Pinterest help: Android saves to 'Galería', iPhone to 'Fotos'. 'en tu galería' is a top completion."
+      },
+      "Downloads folder": {
+        "es": "Descargas",
+        "note": "Name of the folder in Chrome, Android, Windows, macOS and iOS Files ('Archivos > Descargas')."
+      },
+      "Files app (iOS)": {
+        "es": "Archivos",
+        "note": "iOS Spanish name."
+      },
+      "Save Video (iOS share sheet)": {
+        "es": "Guardar video",
+        "note": "iOS es-MX/es-419 label is 'Guardar video'; es-ES iOS shows 'Guardar vídeo'. Write 'Guardar video' in quotes."
+      },
+      "photo / image": {
+        "es": "foto / imagen",
+        "note": "Both are big ('descargar fotos de pinterest', 'descargar imagenes de pinterest'). Use 'imágenes' in the image page H1/title and 'fotos' in description and H2s."
+      },
+      "wallpaper": {
+        "es": "fondo de pantalla",
+        "note": "'descargar fondos de pantalla de pinterest', 'fondos de pantalla en movimiento' (= animated)."
+      },
+      "animated / GIF": {
+        "es": "GIF animado / con movimiento",
+        "note": "Colloquial 'imagen con movimiento' appears in autocomplete ('descargar imagen de pinterest con movimiento'). GIF is masculine: 'el GIF', plural 'los GIF' (RAE) — 'GIFs' is common online; prefer invariable 'GIF' in titles to save a character."
+      },
+      "ZIP": {
+        "es": "ZIP / archivo ZIP",
+        "note": "Masculine: 'un ZIP', 'en un solo ZIP'."
+      },
+      "MP4 / MP3": {
+        "es": "MP4 / MP3",
+        "note": "Masculine ('el MP4'). 'Pinterest a MP4', 'Pinterest a MP3' are the query shapes."
+      },
+      "converter": {
+        "es": "convertidor",
+        "note": "'convertidor pinterest a mp4/mp3' in autocomplete. 'conversor' is the Spain variant; skip it."
+      },
+      "bookmarklet": {
+        "es": "bookmarklet (marcador de un clic)",
+        "note": "Chrome in Latin American Spanish (es-419) calls bookmarks 'favoritos' and the bar 'barra de favoritos' (Más > Favoritos y listas > Mostrar barra de favoritos); Spain (es-ES) says 'marcadores' / 'barra de marcadores'. The site writes neutral Latin American Spanish, so name both: 'barra de favoritos (o de marcadores)'. Keep the English word once, explain it as 'un marcador que descarga con un clic'."
+      },
+      "extension": {
+        "es": "extensión",
+        "note": "'extension para descargar videos de pinterest' is the query; answer it honestly: no extension is needed."
+      },
+      "public only": {
+        "es": "solo contenido público",
+        "note": "Spanish orthography: 'solo' without accent (RAE 2010)."
+      },
+      "not affiliated with Pinterest": {
+        "es": "PintDownload no está afiliado a Pinterest, Inc. ni cuenta con su respaldo.",
+        "note": "Footer/legal line."
+      },
+      "credit creators": {
+        "es": "da crédito a quien lo creó / menciona al creador",
+        "note": "Avoid 'acreditar' (means to prove/accredit in many markets)."
+      },
+      "creator": {
+        "es": "creador / creadora",
+        "note": "Pinterest es uses 'creadores'."
+      }
+    },
+    "pinterestUi": {
+      "Pin": {
+        "es": "pin (plural: pines)",
+        "note": "Pinterest's help capitalises 'Pin'/'Pines'. Our copy uses lowercase 'pin/pines' as a common noun because that is what people search ('descargar pin de pinterest', 'descargar pines de pinterest'). Capitalise only when quoting a Pinterest label. Plural is always 'pines', never 'pins'."
+      },
+      "Video Pin": {
+        "es": "pin de video",
+        "note": "Pinterest help: 'Pin de video', 'Pines de video'."
+      },
+      "Board": {
+        "es": "tablero",
+        "note": "Pinterest help: 'tableros', 'Crear tableros'. Never 'pasta' (Portuguese) or 'carpeta'."
+      },
+      "Secret board": {
+        "es": "tablero secreto",
+        "alt": [
+          "tablero privado"
+        ],
+        "note": "Pinterest's Spanish help ('Crear un tablero') labels the toggle 'Convertir este tablero en secreto'; the general guide prose says 'tablero privado'. Write 'tableros secretos o privados' once, then 'secreto'."
+      },
+      "Board section": {
+        "es": "sección",
+        "note": "Rarely needed."
+      },
+      "Group board": {
+        "es": "tablero grupal",
+        "note": "Pinterest help: 'tableros grupales'."
+      },
+      "Profile": {
+        "es": "perfil",
+        "note": "Pinterest help: 'Ver tu perfil'."
+      },
+      "Profile picture": {
+        "es": "foto de perfil",
+        "note": "Pinterest help uses 'foto de perfil'. 'PFP' is used by younger searchers but mostly in English ('pfp pinterest aesthetic'); don't title with it."
+      },
+      "Share": {
+        "es": "Compartir",
+        "note": "Share icon; menu label 'Compartir'."
+      },
+      "Copy link": {
+        "es": "Copiar enlace",
+        "note": "Pinterest help (Compartir Pines, tableros y perfiles): 'Copiar enlace'."
+      },
+      "Download image": {
+        "es": "Descargar imagen",
+        "note": "Pinterest help (Descargar una imagen): under the ellipsis/three dots."
+      },
+      "Download (video)": {
+        "es": "Descargar",
+        "note": "Pinterest help (Interactúa con los Pines): ellipsis menu shows 'Descargar', 'Añadir al collage', 'Denunciar'."
+      },
+      "Ellipsis icon": {
+        "es": "los tres puntos (icono de puntos suspensivos)",
+        "note": "Pinterest help says 'icono de puntos suspensivos'; people say 'los tres puntos'."
+      },
+      "Save (Pinterest button)": {
+        "es": "Guardar",
+        "note": "Red button that saves a Pin to a board. Do not confuse with saving to the phone."
+      },
+      "Idea Pin / Story Pin": {
+        "es": "Idea Pin (Pin de ideas)",
+        "note": "Pinterest's Spanish newsroom kept the English 'Idea Pins'; third parties say 'Pines de ideas'. Pinterest folded the format into ordinary Pins in 2023, so only mention it in a FAQ."
+      },
+      "pin.it short link": {
+        "es": "enlace corto pin.it",
+        "note": "What 'Copiar enlace' in the mobile app produces."
+      },
+      "Home feed": {
+        "es": "feed de inicio",
+        "note": "Pinterest help: 'Explorar el feed de inicio'."
+      }
+    },
+    "claimTicket": {
+      "_principle": "Spanish has a native vocabulary for vouchers and counters. Use the 'vale' and 'mostrador' world rather than calquing 'ticket'. Gothic labels are uppercase and keep their accents (RAE: capitals carry tildes).",
+      "claim ticket (concept)": {
+        "es": "vale / comprobante",
+        "avoid": [
+          "ticket de reclamo"
+        ],
+        "note": "'Vale' is the coupon/voucher you exchange for something ('vale por un café') and reads the same in MX, ES, AR and CO. 'reclamar' leans 'complain' in Spain."
+      },
+      "Admit one · public link (ticket header)": {
+        "es": "PASE · ENLACE PÚBLICO",
+        "alt": [
+          "VALE POR UNO · ENLACE PÚBLICO (more charming but wider: 198px vs 153px English at 14px/0.08em; check it against the serial at 320–375px)",
+          "ENTRADA ÚNICA · ENLACE PÚBLICO (207px, too wide)"
+        ],
+        "note": "'Pase' is the admission pass in every market ('pase de abordar', 'pase de cortesía'). At label size with tracking it measures 142px, narrower than the English 153px, so the header never collides with the serial 'N.º 1120271234567890' (145px)."
+      },
+      "No. (serial prefix)": {
+        "es": "N.º",
+        "alt": [
+          "No. (common in MX)"
+        ],
+        "note": "RAE abbreviation is 'n.º' / 'N.º'; the º glyph exists in the self-hosted font subset. Pin IDs are never digit-grouped."
+      },
+      "stub (tear-off primary button)": {
+        "es": "talón",
+        "note": "Internal/design word only. Button text is the verb: 'DESCARGAR'."
+      },
+      "tear here / perforation": {
+        "es": "CORTAR AQUÍ / línea perforada",
+        "note": "Only if a visible label is ever printed."
+      },
+      "collect / claim the file": {
+        "es": "recoger / canjear",
+        "note": "'Canjea tu enlace por el archivo' is a natural voucher phrase in every market. Use it in at most one decorative line. Instructions still say 'descargar'."
+      },
+      "counter": {
+        "es": "mostrador",
+        "note": "Design narrative only."
+      },
+      "receipt (result card)": {
+        "es": "comprobante",
+        "avoid": [
+          "recibo (payment receipt)",
+          "ticket/tique (shop receipt in Spain)"
+        ],
+        "note": "Neutral across markets."
+      },
+      "Ready · Video pin (receipt band)": {
+        "es": "LISTO · PIN DE VIDEO",
+        "note": "Also LISTO · TABLERO, LISTO · PERFIL, LISTO · FOTO DE PERFIL, LISTO · CARRUSEL, LISTO · GIF, LISTO · IMAGEN."
+      },
+      "Void (error stamp)": {
+        "es": "ANULADO",
+        "alt": [
+          "NULO"
+        ],
+        "note": "Matches cancelled-ticket stamps."
+      },
+      "Download (stub label)": {
+        "es": "DESCARGAR",
+        "note": "120px at stub size, almost the same as DOWNLOAD."
+      },
+      "Download Video / Image / GIF / Pin": {
+        "es": "DESCARGAR VIDEO / DESCARGAR IMAGEN / DESCARGAR GIF / DESCARGAR PIN",
+        "note": "188 / 209 / 160 / 163px at stub size; all fit."
+      },
+      "Extract Board Pins": {
+        "es": "VER PINES DEL TABLERO",
+        "note": "246px at stub size (26px, 0.04em). Keep stub labels at or under about 9.7em (250px) so they fit a 288px stub at 320px width with the icon. A literal 'EXTRAER PINES DEL PERFIL (ZIP)' is 331px and overflows."
+      },
+      "Extract Profile Pins (ZIP)": {
+        "es": "DESCARGAR PERFIL (ZIP)",
+        "note": "252px, the longest acceptable stub label."
+      },
+      "Get Profile Picture (HD)": {
+        "es": "VER FOTO DE PERFIL",
+        "note": "205px. Drop '(HD)': avatars top out around 600×600."
+      },
+      "Download ZIP": {
+        "es": "DESCARGAR ZIP"
+      },
+      "Paste (input placeholder)": {
+        "es": "Pega aquí el enlace de Pinterest… p. ej. https://pin.it/…",
+        "note": "'p. ej.' is the Spanish abbreviation for e.g."
+      },
+      "expecting (hint)": {
+        "es": "Esperando un enlace de pin, tablero o perfil",
+        "note": ""
+      }
+    }
+  },
+  "formats": {
+    "htmlLang": "es",
+    "ogLocale": "es_LA (secondary og:locale:alternate es_ES)",
+    "decimal": {
+      "rule": "Format at runtime with Intl.NumberFormat(navigator.language if it starts with 'es', else 'es'). In static HTML, avoid decimals and thousands groups. Prefer whole numbers (1080p, 720p, 600 × 600, 12 MB).",
+      "es-ES/es-AR/es-CO": "12,4 MB (decimal comma), 12.345 or 12 345 for thousands",
+      "es-MX/es-US": "12.4 MB (decimal point), 12,345 for thousands",
+      "why": "A single 'es' page serves comma-decimal markets (ES, AR, CO) and point-decimal markets (MX, US). A hard-coded '12.4 MB' looks wrong in Spain, and a hard-coded '12,4 MB' looks wrong in Mexico."
+    },
+    "thousands": "RAE: no separator for 4-digit numbers (1080, 2026). Never group pin IDs or serials.",
+    "percent": "RAE: '50 %' (space). LatAm usage is mostly '50%'. Avoid percentages in copy; there are no real stats to quote anyway.",
+    "dimensions": "600 × 600 px (multiplication sign with spaces), 1200 px",
+    "resolution": "720p, 1080p, HD, Full HD — unchanged",
+    "date": {
+      "long": "14 de octubre de 2026 (month lowercase, no leading zero)",
+      "short": "14/10/2026 (dd/mm/aaaa). US Hispanic readers also read dd/mm in Spanish copy, but the long form avoids ambiguity.",
+      "intl": "new Intl.DateTimeFormat('es', { day: 'numeric', month: 'long', year: 'numeric' })",
+      "weekday": "lowercase: lunes, martes…",
+      "updatedLabel": "Actualizado: 14 de octubre de 2026"
+    },
+    "time": "Avoid clock times. If needed: 24 h for ES ('18:30'), MX uses 12 h with 'p. m.'.",
+    "readTime": "5 min de lectura",
+    "wordCount": "1240 palabras",
+    "quotes": "Use straight double quotes or « » for UI labels? Recommendation: bold the UI label (<strong>Copiar enlace</strong>) instead of quoting, matching the English pages.",
+    "questionMarks": "Spanish questions open with ¿ and close with ? — every FAQ question: '¿Es gratis?'. Exclamations open with ¡.",
+    "capitalisation": "Sentence case for titles and headings ('Descargar videos de Pinterest', not 'Descargar Videos De Pinterest'). Only proper nouns are capitalised: Pinterest, Pin/Pines (to mirror Pinterest), iPhone, Android, Chrome, Safari, Galería/Fotos when naming the app.",
+    "currency": "Not applicable (free tool). Never show a price other than 'gratis'.",
+    "abbreviations": "p. ej. (e.g.), N.º (No.), etc."
+  },
+  "notes": {
+    "hreflangDecision": "Use hreflang='es' and <html lang='es'>. Not es-419, and not regional codes. Reasons: (1) Google's documentation says codes outside ISO 639-1 / ISO 3166-1 alpha-2 'such as es-419, aren't supported'. (2) There is one Spanish version for all five markets, and a language-only 'es' tag matches Spanish users in every region, Spain included. es-MX alone would leave Spain, Argentina and Colombia on x-default. (3) Autocomplete is almost the same across markets: 384 of 464 market/seed pairs in batch 1 returned exactly the Mexico list, and most differences were one extra long-tail item. (4) Every Spanish competitor checked (KlickPin, SavePin, PinDown, PinterestVideo, Publer, VidAU) declares plain 'es'. Wire it as pairs: each English page lists hreflang='en' (itself) + hreflang='es' (/es/<slug>) + x-default (English); each Spanish page lists the same three. Skipped pages get no 'es' alternate. og:locale es_LA with og:locale:alternate es_ES.",
+    "urlStructure": "/es for the home page and /es/<spanish-slug> for the rest. Lowercase ASCII, hyphens, accents and ñ stripped ('imagenes', 'como'), no trailing slash (matches normalizeCanonical). Spanish slugs repeat the query words in the URL and breadcrumb. SavePin and the editorial guides use Spanish slugs; KlickPin and PinDown keep English slugs under /es/. Add the /es routes to SITEMAP_ROUTES with xhtml:link alternates.",
+    "neutralSpanish": "Write one neutral Latin American Spanish that Spain also reads naturally. Use tú. Spell it 'video', not 'vídeo': every Spanish query collected, from Spain included, types 'video', and the RAE accepts both. Device words: 'celular' in titles, 'móvil' once in body copy. 'PC'/'computadora' in titles, 'ordenador'/'portátil' once in the PC guide. Use 'enlace' as Pinterest's UI does, with 'link' once per page. No voseo (AR) and no vosotros (ES).",
+    "marketDifferences": "Autocomplete differences between markets are small long-tail additions: ES adds 'para macbook', 'en linea', 'videos online', 'pc'; AR and CO add 'save pin', 'con enlace', 'por enlace', 'sin registrarse', 'para editar'; US Hispanic adds 'en galería', 'en el celular', 'sin aplicaciones', 'chrome', and English phrasings ('pinterest video downloader para iphone', 'without watermark'). None of them justifies a regional page.",
+    "intentTraps": [
+      "'descargar pinterest' (no 'de') mostly means installing the app (apk, para pc, para celular, gratis en español). Target 'descargar de Pinterest' and say early on the home page that this is not the app.",
+      "'fotos de perfil de pinterest' and 'pfp pinterest' are people looking for profile-picture ideas (aesthetic, anime, hombre, mujer, para WhatsApp), not a downloader.",
+      "'titulos para pinterest' means hand-lettering for notebook titles.",
+      "'pinterest historias' means Instagram story-highlight icons.",
+      "'carrusel pinterest' mostly means Instagram carousel design ideas.",
+      "'sonido de pinterest al guardar' is the app's sound effect.",
+      "'extensión de Pinterest para Chrome' means Pinterest's official Save button."
+    ],
+    "honestyRisks": [
+      "Do not localise the 4K page. Images are capped at Pinterest's public 1200x size (src/lib/pin-media.ts) and video at the 720p/1080p streams Pinterest publishes, and PRODUCT.md says 'no fake 4K'. The English 4K page (title 'Pinterest 4K & 1080p Full HD Video Downloader Free', description '4K ultra quality ... original uncompressed') and the image page's 'original-resolution' wording already contradict the code. Flag to the English owner.",
+      "Say 'sin marca de agua' only as 'no watermark is added'. Creator overlays remain.",
+      "Board and profile ZIPs are not guaranteed complete (English FAQ says 'up to a safe public limit'). Keep 'completo' and 'todos' out of titles, and answer the question honestly in the FAQ.",
+      "Profile pictures are about 600×600 at most. Use 'en grande' or 'tamaño completo', not 'HD' or '4K'.",
+      "No ratings, user counts or reviews: SavePin's 'Opiniones de los usuarios' is exactly what not to copy.",
+      "Footer line: 'PintDownload no está afiliado a Pinterest, Inc.'"
+    ],
+    "cannibalization": "Video-intent pages: descargar-videos-pinterest (tool), pinterest-a-mp4 (converter angle), como-descargar-videos-pinterest (hub guide), descargar-videos-pinterest-celular, guardar-videos-pinterest-galeria and descargar-videos-pinterest-pc (device and destination guides). Give each a distinct H1 and primary keyword (see pages[]). The tool pages link to the guide hub, and the hub links to the three device guides. If Search Console later shows the celular and galería guides swapping places on the same queries, merge galería into celular.",
+    "typography": {
+      "glyphCoverage": "Checked with fontkitten against public/fonts/big-shoulders-display-latin-{800,900}-normal.woff2: every Spanish glyph is present (á é í ó ú ü ñ Á É Í Ó Ú Ü Ñ ¿ ¡ º ª « » € · — –). The 'latin' subset covers Latin-1, so there is no Arial Narrow fallback flash on accented capitals.",
+      "accentCollision": "Line-height is the real problem. Cap height is 0.80em, but accented capitals (Á É Í Ó Ú) reach 0.979em and Ñ reaches 0.961em. The display H1 is set at line-height 0.88–0.9, so an accent on line 2 rises about 0.08–0.10em into the baseline of line 1 and touches the letters above. An opening '¿' or '¡' descends to −0.21em and hits the caps of the next line. On the first line, accents also stick out about 0.14em above the line box, so any overflow:hidden or tight padding-top crops them. Fix: ':lang(es) h1, :lang(es) .article-title, :lang(es) .display { line-height: 1 }' (0.98 at minimum), no overflow:hidden on headline wrappers, and no ¿ at the start of display H1s. The proposed H1s are statements and avoid it, but FAQ H3s in system sans are fine with ¿.",
+      "uppercase": "text-transform: uppercase keeps the accents. Spanish requires accents on capitals (RAE), so write the source text with the accents and never strip them for the gothic. With <html lang='es'> the browser uppercases correctly.",
+      "lengthExpansion": "Untracked advance width in the 900 weight, in em: 'PINTEREST VIDEO DOWNLOADER' 11.50 vs 'DESCARGAR VIDEOS DE PINTEREST' 12.28 (+7%); 'PINTEREST BOARD DOWNLOADER' 11.80 vs 'DESCARGAR TABLEROS DE PINTEREST' 13.31 (+13%); 'PINTEREST PROFILE PICTURE DOWNLOADER' 15.47 vs 'DESCARGAR FOTO DE PERFIL DE PINTEREST' 15.24 (−1%). Greedy wrap simulation at the phone H1 size (2.875rem = 46px): at 375px width (343px measure) every proposed Spanish H1 takes at most 3 lines, the same maximum as the current English H1s. At 320px (288px measure) three Spanish H1s take 4 lines ('Cómo descargar videos de Pinterest', '…en Chrome', '…en el celular'), while two English guide H1s take 5. The longest single words ('DESCARGADOR', 'COMPUTADORA', 'PREGUNTAS') stay under 5em, so there are no forced breaks. Ticket labels: 'ADMIT ONE · PUBLIC LINK' is 153px at 14px with 0.08em tracking; 'PASE · ENLACE PÚBLICO' is 142px (use this); 'VALE POR UNO · ENLACE PÚBLICO' is 198px. Stub labels must stay at or under about 250px at 26px with 0.04em tracking (see glossary.claimTicket).",
+      "hyphenation": "Do not turn on hyphens:auto for gothic headlines, because hyphenated uppercase Spanish looks broken. Body copy may use hyphens:auto with lang='es'."
+    },
+    "i18nTsFixes": "The current client-side strings in src/lib/i18n.ts (es) should be aligned with this glossary: 'Extrayendo media HD…' → 'Preparando tu archivo…' ('media' is an anglicism; there is also no reason to promise HD). 'Descargador de' + 'Pinterest' hero → 'Descargador de Pinterest'. heroSubtitle claims 'calidad Full HD 1080p' for photos and boards, which is untrue → 'Descarga videos, fotos, GIF y tableros públicos de Pinterest, gratis y sin registrarte.' 'Cómo Funciona' / 'Preguntas Frecuentes' should be sentence case: 'Cómo funciona', 'Preguntas frecuentes'.",
+    "faqStyle": "Every Spanish FAQ question opens with ¿. Answers mirror the app's labels in bold (<strong>Compartir</strong> → <strong>Copiar enlace</strong>). Keep answers ≤ 68ch lines as in DESIGN.md.",
+    "contentAngles": [
+      "'para editar' / 'y editarlo' (CapCut, Reels) and 'ponerlo de fondo de pantalla' are Spanish-specific use cases. Give each an H2 or FAQ in the video and how-to pages, with a rights reminder.",
+      "'sin aplicaciones' is the strongest how-to modifier. Lead with 'sin instalar nada'.",
+      "'¿es seguro?' shows up for both images and videos ('descargar imagenes de pinterest es seguro', 'pinterest video downloader es seguro'), so add an honest safety FAQ: no APK, no extension, no login.",
+      "'por qué no me deja descargar' troubleshooting deserves its own H2 in the hub guide."
+    ]
+  }
+}

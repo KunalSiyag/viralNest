@@ -23,9 +23,14 @@ class SEOParser(HTMLParser):
         self.in_script_json_ld = False
         self.imgs_without_alt = []
         self.imgs_total = 0
+        self.html_lang = None
+        self.hreflang_hrefs = []
 
     def handle_starttag(self, tag, attrs):
         attrs_dict = {k.lower(): (v or "") for k, v in attrs}
+
+        if tag == "html":
+            self.html_lang = attrs_dict.get("lang")
 
         if tag == "title":
             self.in_title = True
@@ -41,6 +46,8 @@ class SEOParser(HTMLParser):
             rel = attrs_dict.get("rel", "").lower()
             if rel == "canonical":
                 self.canonical_url = attrs_dict.get("href", "")
+            elif rel == "alternate" and attrs_dict.get("hreflang"):
+                self.hreflang_hrefs.append(attrs_dict.get("href", ""))
 
         elif tag == "script":
             stype = attrs_dict.get("type", "").lower()
@@ -125,6 +132,18 @@ def check_html_file(file_path):
             errors.append("Missing <h1> tag on page")
         elif h1_count > 1:
             errors.append(f"Multiple ({h1_count}) <h1> tags found on page")
+
+    # <html lang> on every page (localized pages: docs/i18n/architecture.md §13.4)
+    if not (parser.html_lang or "").strip():
+        errors.append("Missing <html lang>")
+
+    # Indexable pages reference themselves in their hreflang cluster
+    if not is_noindex and canonical and canonical not in parser.hreflang_hrefs:
+        errors.append(f"Indexable page has no self-referencing hreflang (canonical {canonical})")
+
+    # Unfilled template markers in the title
+    if title and ("{" in title or "}" in title or "undefined" in title or "null" in title.split()):
+        errors.append(f"Template marker in <title>: '{title}'")
 
     # Check Image Alt attributes
     if imgs_without_alt:

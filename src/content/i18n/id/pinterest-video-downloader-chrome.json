@@ -1,0 +1,136 @@
+{
+  "pageId": "pinterest-video-downloader-chrome",
+  "locale": "id",
+  "meta": {
+    "title": "Download Video Pinterest di Chrome — Tanpa Ekstensi",
+    "description": "Download video, foto, dan papan Pinterest dari tab Chrome dengan bookmarklet satu klik, bukan ekstensi Web Store. Gratis untuk Windows, Mac, dan Chromebook."
+  },
+  "keywords": {
+    "primary": "download video pinterest di chrome",
+    "secondary": [
+      "pinterest video downloader chrome",
+      "download video pinterest di google chrome",
+      "cara download video pinterest di chrome",
+      "pinterest downloader chrome extension",
+      "pinterest download chrome"
+    ]
+  },
+  "nav": {
+    "label": "Download di Chrome",
+    "short": "Chrome",
+    "card": {
+      "title": "Bookmarklet Chrome",
+      "blurb": "Satu klik di Pin mana pun, PintDownload terbuka dengan link-nya. Tanpa ekstensi.",
+      "badge": "Chrome"
+    }
+  },
+  "hero": {
+    "h1": "Download Video Pinterest di Chrome",
+    "lede": "**Bookmarklet satu klik**, bukan ekstensi: kirim Pin yang sedang dibuka langsung ke PintDownload."
+  },
+  "intro": [
+    "Mencari **ekstensi Chrome** untuk download video Pinterest? Ini yang paling mirip tanpa install apa pun: sebuah bookmarklet, yaitu tombol bookmark satu klik di bilah bookmark Chrome. Saat kamu membuka Pin, klik tombol itu, dan PintDownload terbuka di tab baru dengan tautannya sudah terisi.",
+    "Jangan tertukar dengan ekstensi resmi Pinterest untuk Chrome: ekstensi itu gunanya menyimpan Pin ke papanmu (tombol **Simpan**), bukan mengunduh file ke laptop."
+  ],
+  "features": [
+    {
+      "h": "Tanpa izin akses",
+      "p": "Bookmarklet tidak membaca tab lain atau riwayat browsing. Ia hanya bekerja saat diklik, dan hanya mengambil alamat halaman yang sedang terbuka."
+    },
+    {
+      "h": "Satu klik dari Pin",
+      "p": "Lagi di sebuah Pin? Klik bookmark-nya, dan PintDownload terbuka dengan tautan yang siap diunduh."
+    },
+    {
+      "h": "Video, foto, dan papan",
+      "p": "Bisa dipakai di Pin video, Pin foto, GIF, dan juga di halaman papan."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Kenapa bookmarklet, bukan ekstensi?",
+      "paragraphs": [
+        "Ekstensi dipasang dari Chrome Web Store, dan banyak yang meminta izin untuk membaca dan mengubah data di semua situs yang kamu kunjungi. Bookmarklet tidak perlu dipasang: ini hanya bookmark biasa yang membuka PintDownload dengan alamat tab yang sedang aktif saat diklik. Kalau sudah tidak dipakai, hapus saja seperti bookmark biasa."
+      ]
+    },
+    {
+      "h2": "Windows, Mac, Chromebook, dan browser lain",
+      "paragraphs": [
+        "Bookmarklet ini jalan di Chrome versi desktop di mana saja: laptop Windows, MacBook, Chromebook, juga Linux. Browser berbasis Chromium seperti Edge, Brave, dan Opera juga bisa; seret tombolnya ke bilah favorit atau bilah bookmark. Di Firefox, taruh di bilah bookmark; di Safari untuk Mac, di **Favorit**."
+      ]
+    },
+    {
+      "h2": "Bagaimana dengan Chrome di Android?",
+      "paragraphs": [
+        "Di HP, bilah bookmark tidak praktis, jadi lebih cepat menyalin tautan di aplikasi Pinterest (**Bagikan** › **Salin tautan**) lalu menempelnya di pintdownload.app. Langkah lengkapnya ada di [[download-pinterest-videos-iphone-android|cara download video Pinterest di HP]].",
+        "Membuka Pinterest dari hasil pencarian Google di Chrome? Salin saja alamat Pin dari bilah alamat, lalu tempel di PintDownload."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara memakai bookmarklet di Chrome",
+    "intro": "Pasang sekali, pakai terus. Windows, Mac, Linux, dan Chromebook.",
+    "exampleLabel": "Link Pinterest",
+    "items": [
+      {
+        "title": "Seret bookmarklet-nya",
+        "body": "Tampilkan bilah bookmark dengan **Ctrl + Shift + B**, lalu seret tombol **PintDownload** dari halaman ini ke bilah itu."
+      },
+      {
+        "title": "Buka sebuah Pin",
+        "body": "Browsing di pinterest.com seperti biasa, lalu buka video, foto, atau papan yang mau disimpan."
+      },
+      {
+        "title": "Klik bookmarklet-nya",
+        "body": "PintDownload terbuka di tab lain dengan tautannya sudah terisi. Unduh file-nya dari sana."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab download di Chrome",
+    "items": [
+      {
+        "q": "Apakah PintDownload punya ekstensi Chrome?",
+        "a": "Tidak. PintDownload adalah situs web dengan bookmarklet satu klik. Fungsinya mirip ekstensi sederhana, tapi tidak dipasang dari Chrome Web Store dan tidak berjalan di latar belakang."
+      },
+      {
+        "q": "Kenapa bookmarklet lebih aman daripada ekstensi?",
+        "a": "Karena tidak punya izin apa pun: tidak bisa melihat tab lain atau riwayat browsing, dan hanya berjalan saat kamu mengkliknya. Ekstensi bisa tetap aktif di semua halaman yang kamu buka."
+      },
+      {
+        "q": "Bagaimana cara memasang bookmarklet di bilah bookmark?",
+        "a": "Tampilkan bilah bookmark dengan **Ctrl + Shift + B** (**Cmd + Shift + B** di Mac), lalu seret tombol **PintDownload** dari halaman ini ke sana."
+      },
+      {
+        "q": "Bisa di Chrome Android?",
+        "a": "Bisa, tapi tidak praktis: bookmark-nya harus dibuat manual dan dijalankan dari bilah alamat. Di HP, jauh lebih cepat menempelkan tautan langsung di pintdownload.app."
+      },
+      {
+        "q": "Bisa di Windows, Mac, dan Chromebook?",
+        "a": "Bisa, di komputer mana pun yang memakai Chrome, termasuk Linux."
+      },
+      {
+        "q": "Bisa di Edge, Brave, Opera, atau Safari?",
+        "a": "Bisa. Di Edge, Brave, dan Opera, seret ke bilah favorit atau bilah bookmark; di Safari untuk Mac, seret ke **Favorit**."
+      },
+      {
+        "q": "Ekstensi Pinterest untuk Chrome bisa dipakai untuk download?",
+        "a": "Tidak. Tombol **Simpan** dari ekstensi resmi Pinterest menyimpan gambar ke papanmu di Pinterest, bukan ke laptop. Untuk mendapatkan file-nya, pakai bookmarklet ini atau tempel tautannya di PintDownload."
+      }
+    ]
+  },
+  "related": {
+    "title": "Alat lain di PintDownload"
+  },
+  "schema": {
+    "appName": "Download Video Pinterest di Chrome — PintDownload",
+    "howToName": "Cara memakai bookmarklet PintDownload di Chrome",
+    "howToDescription": "Pasang bookmarklet di bilah bookmark Chrome, buka sebuah Pin, lalu klik untuk membukanya di PintDownload."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

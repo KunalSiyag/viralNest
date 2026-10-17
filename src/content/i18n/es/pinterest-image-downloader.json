@@ -1,0 +1,147 @@
+{
+  "pageId": "pinterest-image-downloader",
+  "locale": "es",
+  "meta": {
+    "title": "Descargar imágenes de Pinterest en alta calidad, sin cuenta",
+    "description": "Descarga fotos, fondos de pantalla e imágenes de Pinterest en la mayor resolución pública disponible. Pega el enlace del pin; sin cuenta ni registro."
+  },
+  "keywords": {
+    "primary": "descargar imágenes de Pinterest",
+    "secondary": [
+      "descargar fotos de Pinterest",
+      "descargar imágenes de Pinterest en alta calidad",
+      "descargar imagen de Pinterest sin perder calidad",
+      "descargar imágenes de Pinterest sin cuenta",
+      "descargar imagen de Pinterest con enlace",
+      "descargar fondos de pantalla de Pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Descargar imágenes",
+    "short": "Fotos",
+    "card": {
+      "title": "Descargar imágenes",
+      "blurb": "Fotos y fondos de pantalla en el tamaño más grande que Pinterest publica.",
+      "badge": "JPG"
+    }
+  },
+  "hero": {
+    "h1": "Descargar imágenes de Pinterest",
+    "lede": "Guarda fotos, ilustraciones y fondos de pantalla en **el tamaño más grande que Pinterest publica**, no en la miniatura borrosa del feed. Gratis y sin cuenta."
+  },
+  "intro": [
+    "Pega el enlace de un **pin de imagen** y descarga la foto en la mayor resolución pública: hasta **1200 px de ancho**, bastante más que la miniatura de la cuadrícula o que una captura de pantalla.",
+    "Sirve para enlaces `/pin/` y `pin.it`. Solo pines públicos; no hace falta iniciar sesión en Pinterest."
+  ],
+  "features": [
+    {
+      "h": "Más grande que la miniatura",
+      "p": "La cuadrícula de Pinterest muestra versiones pequeñas. Aquí pedimos la más grande que publica para ese pin."
+    },
+    {
+      "h": "Recórtala para tus redes",
+      "p": "Después de extraer la foto puedes recortarla en 1:1, 4:5, 9:16 o 16:9, sin salir del navegador."
+    },
+    {
+      "h": "Sin cuenta ni app",
+      "p": "Funciona en Safari, Chrome o cualquier navegador. No pide registro ni iniciar sesión en Pinterest."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "¿En qué calidad se descargan las fotos?",
+      "paragraphs": [
+        "En la más alta que Pinterest deja ver al público: normalmente **1200 px de ancho**, y menos si el pin solo existe en tamaños más pequeños. El archivo que subió el creador no es público, así que nadie puede dártelo, aunque lo prometa.",
+        "Tampoco agrandamos la foto ni la “mejoramos” con inteligencia artificial. Si buscabas fotos de Pinterest en 4K, la respuesta honesta es que Pinterest no las publica en ese tamaño: lo que descargas aquí es lo máximo disponible."
+      ]
+    },
+    {
+      "h2": "Descargar imagen en la app de Pinterest o aquí",
+      "paragraphs": [
+        "La app tiene su propia opción: abre el pin, toca los tres puntos y elige **Descargar imagen**. En Android la foto va a la **Galería** y en el iPhone a **Fotos**. Para eso necesitas la app y tu sesión iniciada.",
+        "PintDownload sirve cuando no quieres iniciar sesión, cuando estás en una computadora sin la app o cuando el pin es un carrusel y quieres todas sus fotos de una vez."
+      ]
+    },
+    {
+      "h2": "Fondos de pantalla, moodboards y referencias",
+      "paragraphs": [
+        "Antes de poner una foto de Pinterest como fondo de pantalla, mira la resolución que aparece en el resultado. Una imagen de 1200 px de ancho se ve bien en el celular, pero estirada en un monitor grande puede verse borrosa.",
+        "Si vas a usar la imagen en algo que publicas o vendes, pide permiso o da crédito a quien la creó."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar imágenes de Pinterest",
+    "intro": "Para fotos fijas. Si el pin se reproduce, es un video: usa [[pinterest-video-downloader|descargar videos]].",
+    "exampleLabel": "Ejemplo de enlace de imagen",
+    "items": [
+      {
+        "title": "Abre el pin de la foto",
+        "body": "Ábrelo en grande, en la app o en pinterest.com, y comprueba que es una foto y no un video."
+      },
+      {
+        "title": "Copia el enlace",
+        "body": "**Compartir** › **Copiar enlace** en la app, o la dirección del navegador con `/pin/`."
+      },
+      {
+        "title": "Pega y descarga",
+        "body": "Pega el enlace arriba y toca **Descargar imagen**. En unos segundos verás la foto con su resolución."
+      },
+      {
+        "title": "Guárdala en el dispositivo",
+        "body": "En la computadora queda en **Descargas**. En el iPhone, Safari la deja en **Archivos**: ábrela, toca **Compartir** y elige **Guardar imagen** para tenerla en Fotos."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre imágenes",
+    "items": [
+      {
+        "q": "¿Cómo descargo imágenes de Pinterest sin cuenta?",
+        "a": "Copia el link del pin (también vale si alguien te lo mandó por WhatsApp), pégalo arriba y descarga la foto. No inicias sesión en Pinterest ni te registras aquí."
+      },
+      {
+        "q": "¿Se descargan en alta calidad o en miniatura?",
+        "a": "En alta calidad: el tamaño más grande que Pinterest publica para esa foto, normalmente 1200 px de ancho. No es la miniatura de la cuadrícula ni una captura de pantalla."
+      },
+      {
+        "q": "¿Se pueden descargar fotos de Pinterest en 4K?",
+        "a": "No. Pinterest publica las fotos hasta unos 1200 px de ancho y no hace público el archivo que subió el creador. Nosotros nunca agrandamos la imagen para que parezca 4K, y desconfía de quien lo prometa."
+      },
+      {
+        "q": "¿Qué diferencia hay con Descargar imagen de la app?",
+        "a": "La opción **Descargar imagen** de la app pide tener la sesión iniciada y guarda una foto cada vez. Aquí no necesitas cuenta, funciona en cualquier navegador y te da todas las fotos de un carrusel."
+      },
+      {
+        "q": "¿Puedo descargar todas las fotos de un carrusel?",
+        "a": "Sí, esta misma página las muestra todas y puedes guardarlas juntas en un ZIP. Más detalles en [[pinterest-carousel-downloader|descargar carrusel de Pinterest]]."
+      },
+      {
+        "q": "¿Es seguro descargar imágenes de Pinterest?",
+        "a": "Con PintDownload no instalas nada: no hay APK ni extensión, y nunca te pedimos tu contraseña de Pinterest. Todo pasa en la página, en tu navegador."
+      },
+      {
+        "q": "¿Por qué falla con un pin de video?",
+        "a": "Porque esta página busca fotos fijas. Si pegas un pin de video, el recuadro te avisa y te cambia al [[pinterest-video-downloader|descargador de videos]] para que obtengas el MP4."
+      },
+      {
+        "q": "¿En qué formato se guardan?",
+        "a": "Normalmente en JPG, el formato en que Pinterest publica la mayoría de las fotos. Antes de descargar ves el nombre del archivo."
+      }
+    ]
+  },
+  "related": {
+    "title": "Más formas de guardar de Pinterest"
+  },
+  "schema": {
+    "appName": "Descargador de imágenes de Pinterest — PintDownload",
+    "howToName": "Cómo descargar imágenes de Pinterest en alta calidad",
+    "howToDescription": "Pasos para guardar la foto de un pin público en el tamaño más grande que Pinterest publica."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16. Verificar en el celular: los tres puntos › Descargar imagen; iOS Compartir › Guardar imagen",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: sin cambios de texto"
+  }
+}

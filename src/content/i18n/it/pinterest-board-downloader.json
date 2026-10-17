@@ -1,0 +1,143 @@
+{
+  "pageId": "pinterest-board-downloader",
+  "locale": "it",
+  "meta": {
+    "title": "Scaricare una bacheca Pinterest intera in ZIP — gratis",
+    "description": "Incolla il link di una bacheca pubblica e scarica i suoi Pin, immagini e video, in un unico file ZIP. Gratis e senza account. Bacheche segrete escluse."
+  },
+  "keywords": {
+    "primary": "scaricare bacheca pinterest",
+    "secondary": [
+      "come scaricare una bacheca di pinterest",
+      "come scaricare un’intera bacheca da pinterest",
+      "pinterest bacheca downloader",
+      "pinterest board downloader",
+      "download pinterest board zip"
+    ]
+  },
+  "nav": {
+    "label": "Scarica bacheche",
+    "short": "Bacheche",
+    "card": {
+      "title": "Scarica bacheche",
+      "blurb": "Incolla il link di una bacheca pubblica e salva i suoi Pin in uno ZIP.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Scarica una bacheca Pinterest",
+    "lede": "Incolla il link di una **bacheca pubblica** e salva i suoi Pin, foto e video, in **un unico file ZIP**."
+  },
+  "intro": [
+    "La moodboard del matrimonio, le ricette di Natale, le idee per rifare il bagno: con PintDownload scarichi una **bacheca** pubblica tutta in una volta. Incolli il link, controlli i Pin trovati e li salvi in uno **ZIP**. Non serve un’estensione di Chrome né un account.",
+    "Il link di una bacheca è fatto così: `pinterest.it/nomeutente/nome-bacheca/`. Solo bacheche pubbliche: quelle segrete restano escluse."
+  ],
+  "features": [
+    {
+      "h": "Solo link di bacheca",
+      "p": "Per indirizzi `nomeutente/nome-bacheca/`. Un singolo Pin va nello strumento per i Pin."
+    },
+    {
+      "h": "Tutto in uno ZIP",
+      "p": "I Pin pubblici della bacheca in un solo file, per una moodboard offline o da condividere."
+    },
+    {
+      "h": "Foto e video",
+      "p": "Include le immagini e i video dei Pin che compaiono nella pagina pubblica della bacheca."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Scarica davvero tutta la bacheca?",
+      "paragraphs": [
+        "Scarica i Pin pubblici che compaiono caricando la pagina della bacheca, fino a un limite di sicurezza: nelle bacheche molto grandi possono mancare i Pin più vecchi. Prima di scaricare vedi quanti Pin sono stati trovati. Dei caroselli lo ZIP tiene la copertina; per avere tutte le slide apri quel Pin con lo strumento per [[pinterest-pin-downloader|scaricare un Pin]]."
+      ]
+    },
+    {
+      "h2": "Controlla il link prima di incollarlo",
+      "paragraphs": [
+        "Il tipo di link sbagliato è l’errore più comune. Ecco come riconoscerli:"
+      ],
+      "list": [
+        "`pinterest.it/nomeutente/nome-bacheca/`: è una bacheca, incollala qui.",
+        "`pinterest.it/pin/123…/` o `pin.it/…`: è un Pin; usa lo strumento per [[pinterest-pin-downloader|scaricare un Pin]].",
+        "`pinterest.it/nomeutente/`: è un profilo; incollalo pure, il modulo prepara lo ZIP dei Pin pubblici dell’account.",
+        "Bacheche segrete e account privati: non si possono scaricare."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Come scaricare una bacheca Pinterest in ZIP",
+    "intro": "Questa pagina è solo per i link delle bacheche. Se il tuo link contiene `/pin/`, usa lo strumento per i Pin.",
+    "exampleLabel": "Esempio di link di una bacheca",
+    "items": [
+      {
+        "title": "Apri la bacheca pubblica",
+        "body": "Su Pinterest apri la pagina della bacheca, quella con la griglia dei Pin, non un singolo Pin ingrandito."
+      },
+      {
+        "title": "Copia il link della bacheca",
+        "body": "Copialo dalla barra degli indirizzi oppure con **Condividi** › **Copia link**. Deve avere la forma `pinterest.it/nomeutente/nome-bacheca/`."
+      },
+      {
+        "title": "Incollalo e cerca i Pin",
+        "body": "Incolla il link nel tagliando qui sopra e tocca **Vedi i Pin della bacheca** per avere l’elenco dei Pin pubblici."
+      },
+      {
+        "title": "Scarica lo ZIP",
+        "body": "Tocca **Scarica ZIP** per salvare foto e video in un solo file, oppure scarica i Pin uno alla volta."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti sulle bacheche",
+    "items": [
+      {
+        "q": "Come scarico un’intera bacheca da Pinterest?",
+        "a": "Copia il link della bacheca pubblica, incollalo qui sopra, controlla l’elenco dei Pin e tocca **Scarica ZIP**. Ricevi i Pin pubblici che la pagina della bacheca carica, fino a un limite: nelle bacheche enormi può mancare qualche Pin vecchio."
+      },
+      {
+        "q": "Che aspetto ha il link di una bacheca?",
+        "a": "Dopo il dominio ha due parti, il nome utente e il nome della bacheca: per esempio `pinterest.it/nomeutente/nome-bacheca/`. Se in mezzo vedi `/pin/`, è un singolo Pin."
+      },
+      {
+        "q": "Posso scaricare le bacheche segrete?",
+        "a": "No. Le bacheche segrete, che oggi Pinterest chiama private (l’opzione è **Mantieni la bacheca privata**), non sono pubbliche, e PintDownload legge solo contenuti pubblici. Lo stesso vale per gli account privati."
+      },
+      {
+        "q": "Quanti Pin scarica?",
+        "a": "I Pin pubblici che compaiono caricando la pagina della bacheca, fino a un limite di sicurezza. Dopo l’estrazione vedi quanti Pin sono stati trovati, prima di scaricare lo ZIP."
+      },
+      {
+        "q": "Posso scaricare tutti i Pin di un profilo?",
+        "a": "Sì, se il profilo è pubblico. Incolla il link `pinterest.it/nomeutente/` nel tagliando: il modulo passa al profilo e prepara uno ZIP con i Pin visibili dell’account. La pagina dedicata ai profili per ora è [[en:/pinterest-profile-downloader|in inglese]]."
+      },
+      {
+        "q": "Le slide dei caroselli finiscono nello ZIP?",
+        "a": "Lo ZIP contiene la copertina di ogni Pin. Per tutte le slide di un carosello, apri quel Pin con lo strumento per [[pinterest-pin-downloader|scaricare un Pin]]."
+      },
+      {
+        "q": "Come apro lo ZIP su iPhone e Android?",
+        "a": "Su iPhone tocca lo ZIP nell’app **File** e viene estratto in una cartella accanto. Su Android aprilo con **Files** di Google o con **Archivio** sui Samsung. Sul computer basta un doppio clic."
+      },
+      {
+        "q": "Serve un’estensione per Chrome?",
+        "a": "No. Molte guide consigliano un’estensione, ma qui fai tutto nella pagina. Se usi Pinterest dal computer, il bookmarklet descritto nella [[how-to-download-pinterest-video-on-laptop|guida per PC]] apre PintDownload con il link già incollato."
+      }
+    ]
+  },
+  "related": {
+    "title": "Strumenti collegati"
+  },
+  "schema": {
+    "appName": "Pinterest board downloader — PintDownload",
+    "howToName": "Come scaricare una bacheca Pinterest in ZIP",
+    "howToDescription": "Passi per salvare in un file ZIP i Pin pubblici di una bacheca Pinterest."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-it (agent). Segreta from help.pinterest.com/it. Unverified on a phone: iOS File extracting ZIPs, Files by Google, Samsung Archivio.",
+    "nativeReviewer": "review-it (agent), 2026-10-16: read on the live build at 390/1440 for fluency, tu register, glossary (Pin, bacheca, la GIF, tagliando, Galleria/Foto), honesty and English leftovers. Pinterest labels rechecked on help.pinterest.com/it: Scarica immagine, Copia link, Invia; secret boards are now called private (Mantieni la bacheca privata). Device labels (iOS File › Download, Salva video/Salva immagine, Samsung Archivio, Files di Google) are the standard it-IT names, not checked on a phone. Fixed the FAQ that quoted the old Segreta label."
+  }
+}

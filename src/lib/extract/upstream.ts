@@ -1,7 +1,7 @@
 /** Pinterest upstream calls (moved verbatim from src/pages/api/extract.ts; fetch is injectable). */
 import { BROWSER_UA } from './constants';
 import { decodeHtmlEntities } from './text';
-import { pickBestVideoUrl, upgradeAvatarUrl, upgradePinImageUrl } from './media';
+import { avatarSizeCandidates, pickBestVideoUrl, upgradePinImageUrl } from './media';
 import type { CollectionPin, FetchLike } from './types';
 
 /** Set by fetchPinResource when Pinterest answers that the pin does not exist. */
@@ -59,6 +59,16 @@ export async function fetchPinResource(
   return null;
 }
 
+/**
+ * Title for a pin Pinterest gives no text for. Numeric ids keep the historic
+ * "Pin 431342" (parity goldens); the opaque ids Pinterest's board feed now
+ * returns (e1_…) get a bare "Pin". The islands and MCP treat both as "no
+ * title" and print their own fallback.
+ */
+export function placeholderPinTitle(id: string): string {
+  return /^\d+$/.test(id) ? `Pin ${id.slice(-6)}` : 'Pin';
+}
+
 export function mapPidgetPin(raw: any): CollectionPin | null {
   if (!raw?.id) return null;
 
@@ -91,7 +101,7 @@ export function mapPidgetPin(raw: any): CollectionPin | null {
   return {
     pin_id: String(raw.id),
     url: `https://www.pinterest.com/pin/${raw.id}/`,
-    title: candidates[0] || `Pin ${String(raw.id).slice(-6)}`,
+    title: candidates[0] || placeholderPinTitle(String(raw.id)),
     image_url: imageUrl,
     thumbnail_url: thumb || imageUrl,
     video_url: videoUrl,
@@ -149,7 +159,7 @@ export async function fetchOembedFallback(pinId: string, fetchImpl: FetchLike): 
     return {
       pin_id: pinId,
       url: `https://www.pinterest.com/pin/${pinId}/`,
-      title: decodeHtmlEntities(data.title || `Pin ${pinId.slice(-6)}`),
+      title: decodeHtmlEntities(data.title || placeholderPinTitle(pinId)),
       image_url: imageUrl,
       thumbnail_url: thumb,
       video_url: null,
@@ -195,9 +205,9 @@ export async function paginateResourcePins(
 
     const payload: any = {
       options: {
-        ...resourceOptions,
         field_set_key: 'unauth_react_main_pin',
         page_size: 25,
+        ...resourceOptions,
       },
       context: {},
     };
@@ -218,6 +228,11 @@ export async function paginateResourcePins(
           'User-Agent': BROWSER_UA,
           Accept: 'application/json, text/javascript, */*; q=0.01',
           'X-Requested-With': 'XMLHttpRequest',
+          // BoardFeedResource answers 403 "Invalid Resource Request" without
+          // the board page's handler and source URL (live, 2026-10).
+          ...(resourceOptions.username
+            ? {}
+            : { 'X-Pinterest-PWS-Handler': 'www/[username]/[slug].js', 'X-Pinterest-Source-Url': sourceUrl }),
           Referer: `https://www.pinterest.com${sourceUrl}`,
         },
       });
@@ -229,7 +244,9 @@ export async function paginateResourcePins(
 
       const json = await res.json();
       const data = json?.resource_response?.data;
-      const newBookmark = json?.resource_response?.bookmark;
+      // Older feeds put the next-page cursor on resource_response, the board
+      // feed (react_grid_pin) on resource.options.bookmarks.
+      const newBookmark = json?.resource_response?.bookmark ?? json?.resource?.options?.bookmarks?.[0];
 
       if (!Array.isArray(data) || data.length === 0) break;
 
@@ -256,7 +273,33 @@ export async function paginateResourcePins(
   return collected;
 }
 
-/** Pinterest UserResource avatar (step 2 of the avatar branch, moved from /api/extract). */
+/**
+ * The largest size of an avatar that Pinterest actually serves: probes
+ * avatarSizeCandidates() in parallel (HEAD) and keeps the first that answers
+ * 200, else the URL Pinterest returned (never a size that 403s).
+ */
+export async function resolveAvatarUrl(url: string | null, fetchImpl: FetchLike): Promise<string | null> {
+  if (!url) return null;
+  const candidates = avatarSizeCandidates(url);
+  if (candidates.length < 2) return url;
+  const ok = await Promise.all(
+    candidates.map(async (candidate) => {
+      try {
+        const r = await fetchImpl(candidate, {
+          method: 'HEAD',
+          headers: { 'User-Agent': BROWSER_UA, Referer: 'https://www.pinterest.com/' },
+        });
+        return r.ok;
+      } catch {
+        return false;
+      }
+    }),
+  );
+  const i = ok.indexOf(true);
+  return i === -1 ? url : candidates[i];
+}
+
+/** Pinterest UserResource avatar as Pinterest gives it (step 2 of the avatar branch). */
 export async function fetchUserResourceAvatar(username: string, fetchImpl: FetchLike): Promise<string | null> {
   let profileAvatarUrl: string | null = null;
   try {
@@ -285,7 +328,7 @@ export async function fetchUserResourceAvatar(username: string, fetchImpl: Fetch
           userData.image_medium_url ||
           null;
         if (apiAvatar) {
-          profileAvatarUrl = upgradeAvatarUrl(apiAvatar);
+          profileAvatarUrl = apiAvatar;
         }
       }
     }

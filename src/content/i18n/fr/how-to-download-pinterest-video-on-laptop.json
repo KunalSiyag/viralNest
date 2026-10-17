@@ -1,0 +1,123 @@
+{
+  "pageId": "how-to-download-pinterest-video-on-laptop",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger une vidéo Pinterest sur PC ou Mac — gratuit",
+    "description": "Téléchargez une vidéo Pinterest sur PC Windows, Mac ou Chromebook, sans logiciel : copiez l’URL de l’épingle, collez-la, le MP4 arrive dans Téléchargements."
+  },
+  "keywords": {
+    "primary": "télécharger vidéo pinterest pc",
+    "secondary": [
+      "comment telecharger une video pinterest sur pc",
+      "comment enregistrer une video pinterest sur pc",
+      "telecharger video pinterest sur pc",
+      "télécharger vidéo pinterest ordinateur",
+      "download pinterest video mac"
+    ]
+  },
+  "nav": {
+    "label": "Sur PC ou Mac",
+    "short": "PC et Mac",
+    "card": {
+      "title": "Sur PC ou Mac",
+      "blurb": "Windows, Mac ou Chromebook : le MP4 arrive dans Téléchargements.",
+      "badge": "PC"
+    }
+  },
+  "hero": {
+    "h1": "Télécharger une vidéo Pinterest sur PC",
+    "lede": "Sur **PC Windows**, **Mac** ou **Chromebook** : copiez l’URL de l’épingle, collez-la, et le MP4 arrive dans **Téléchargements**."
+  },
+  "intro": [
+    "Sur ordinateur, c’est la méthode la plus rapide : ni logiciel, ni extension obligatoire. Le navigateur suffit, qu’il s’agisse de Chrome, Edge, Firefox ou Safari.",
+    "Attention, « télécharger Pinterest sur PC » désigne souvent l’application Pinterest elle-même, disponible sur le Microsoft Store. Ici, il s’agit d’enregistrer une vidéo, pas d’installer Pinterest."
+  ],
+  "sections": [
+    {
+      "h2": "Sur un PC Windows",
+      "paragraphs": [
+        "Ouvrez l’épingle vidéo sur pinterest.com, copiez l’adresse dans la barre du navigateur (`Ctrl+C`), collez-la ici (`Ctrl+V`) et appuyez sur Entrée. Le MP4 arrive dans le dossier **Téléchargements** ; `Ctrl+J` affiche la liste des téléchargements dans Chrome et Edge."
+      ]
+    },
+    {
+      "h2": "Sur Mac",
+      "paragraphs": [
+        "Dans Safari ou Chrome, copiez l’adresse de l’épingle (`Cmd+C`) et collez-la ici (`Cmd+V`). Le fichier arrive dans **Téléchargements**, accessible depuis le Dock ou le Finder. Dans Safari, le bouton de téléchargement en haut à droite affiche la liste."
+      ]
+    },
+    {
+      "h2": "Sur Chromebook",
+      "paragraphs": [
+        "Même chose dans Chrome : le MP4 arrive dans l’app **Fichiers**, dossier **Téléchargements**, et se lit directement dans le lecteur vidéo de ChromeOS."
+      ]
+    },
+    {
+      "h2": "Un clic depuis Pinterest avec le favori",
+      "paragraphs": [
+        "Si vous enregistrez souvent des vidéos, glissez le favori PintDownload dans la barre de favoris : sur une épingle, un clic ouvre PintDownload avec le lien déjà collé. Les étapes sont plus bas, et sur [[pinterest-video-downloader-chrome|la page Chrome]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment télécharger une vidéo Pinterest sur PC",
+    "intro": "Trois étapes sur Windows, Mac ou Chromebook.",
+    "exampleLabel": "URL d’une épingle vidéo",
+    "items": [
+      {
+        "title": "Copiez l’URL de l’épingle",
+        "body": "Sur pinterest.com, ouvrez la vidéo et copiez l’adresse, ou cliquez sur l’**icône de partage** puis **Copier le lien**."
+      },
+      {
+        "title": "Collez-la sur PintDownload",
+        "body": "Ouvrez PintDownload dans un nouvel onglet, collez l’URL dans le ticket ci-dessus et appuyez sur Entrée."
+      },
+      {
+        "title": "Enregistrez le MP4",
+        "body": "Cliquez sur **Télécharger le MP4** : le fichier part dans le dossier **Téléchargements** de votre ordinateur."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur PC et Mac",
+    "items": [
+      {
+        "q": "Comment télécharger une vidéo Pinterest sur un PC Windows ?",
+        "a": "Copiez l’adresse de l’épingle vidéo, collez-la dans PintDownload sous Chrome, Edge ou Firefox, puis cliquez sur **Télécharger le MP4**. Le fichier arrive dans **Téléchargements**."
+      },
+      {
+        "q": "Et sur Mac avec Safari ou Chrome ?",
+        "a": "Même méthode : copiez l’adresse avec `Cmd+C`, collez-la ici avec `Cmd+V`, puis téléchargez le MP4. Il se retrouve dans **Téléchargements**."
+      },
+      {
+        "q": "Ça marche sur Chromebook ?",
+        "a": "Oui. PintDownload est un site web : il fonctionne sur ChromeOS comme sur Windows, macOS et Linux, sans rien installer."
+      },
+      {
+        "q": "Peut-on avoir du 1080p sur ordinateur ?",
+        "a": "Oui, quand l’épingle le publie. La plupart des vidéos Pinterest existent en 720p ; quand une version 1080p existe, PintDownload la liste et vous la choisissez."
+      },
+      {
+        "q": "Où se trouve le fichier téléchargé ?",
+        "a": "Dans le dossier **Téléchargements** de votre session. Sous Windows, `Ctrl+J` ouvre la liste des téléchargements de Chrome et d’Edge, avec un lien vers le dossier."
+      },
+      {
+        "q": "Faut-il installer un logiciel ou l’appli Pinterest ?",
+        "a": "Non. Le navigateur suffit. L’application Pinterest du Microsoft Store sert à parcourir Pinterest, pas à enregistrer ses vidéos."
+      }
+    ]
+  },
+  "related": {
+    "title": "Guides pour chaque appareil"
+  },
+  "schema": {
+    "appName": "Télécharger une vidéo Pinterest sur PC ou Mac — PintDownload",
+    "howToName": "Comment télécharger une vidéo Pinterest sur PC",
+    "howToDescription": "Copier l’URL d’une épingle vidéo sur ordinateur, la coller dans PintDownload et enregistrer le MP4 dans Téléchargements."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Keyboard shortcuts use French key names where the OS does (Ctrl, Cmd); Ctrl+J for downloads checked for Chrome and Edge on Windows only.",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. FAQ \"720p ou 1080p sur ordinateur ?\" was answered \"Oui\"; question now \"Peut-on avoir du 1080p sur ordinateur ?\"."
+  }
+}

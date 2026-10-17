@@ -1,0 +1,139 @@
+{
+  "pageId": "pinterest-profile-downloader",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar Perfil do Pinterest: Todos os Pins em ZIP, Grátis",
+    "description": "Baixe os pins públicos de um perfil do Pinterest de uma vez: fotos e vídeos em um único ZIP. Cole o link do perfil; não precisa de conta nem de login."
+  },
+  "keywords": {
+    "primary": "baixar perfil do pinterest",
+    "secondary": [
+      "como baixar todos os pins do pinterest de uma vez",
+      "baixar todos os pins do pinterest",
+      "baixar fotos de um perfil do pinterest",
+      "baixar perfil do pinterest online"
+    ]
+  },
+  "nav": {
+    "label": "Baixar perfil",
+    "short": "Perfil",
+    "card": {
+      "title": "Baixar perfil em ZIP",
+      "blurb": "Os pins públicos de uma conta em um único ZIP.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Baixar perfil do Pinterest",
+    "lede": "Cole o link de um **perfil público** e baixe os pins que aparecem nele, fotos e vídeos, **em um único ZIP**."
+  },
+  "intro": [
+    "**Quer só a foto de perfil?** Use o [[pinterest-profile-picture-downloader|baixador de foto de perfil]]. Esta página é para baixar os **pins** de uma conta de uma vez.",
+    "Cole um link no formato `pinterest.com/usuario/`, sem nome de pasta depois do usuário. Só perfis públicos."
+  ],
+  "features": [
+    {
+      "h": "Link de perfil",
+      "p": "Para endereços só com o nome de usuário. Com nome de pasta depois, use o baixador de pastas."
+    },
+    {
+      "h": "Tudo em um ZIP",
+      "p": "Um arquivo com os pins públicos que o perfil mostra, para backup ou moodboard."
+    },
+    {
+      "h": "Só o que é público",
+      "p": "Nada de perfil privado, pasta secreta ou conteúdo que pede login."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Quantos pins vêm no ZIP",
+      "paragraphs": [
+        "Vêm os pins públicos que a página do perfil carrega, até um limite seguro. Em contas grandes, pins antigos podem ficar de fora, e nenhuma ferramenta garante o histórico completo de um perfil. Se o que você quer é uma coleção específica, a [[pinterest-board-downloader|pasta em ZIP]] costuma ser mais certeira."
+      ]
+    },
+    {
+      "h2": "Perfil, pasta ou foto de perfil",
+      "paragraphs": [
+        "Três ferramentas, três tipos de link:"
+      ],
+      "list": [
+        "**Perfil em ZIP** (esta página): `pinterest.com/usuario/`, os pins da conta.",
+        "**Pasta em ZIP**: `pinterest.com/usuario/nome-da-pasta/`, uma coleção.",
+        "**Foto de perfil**: o mesmo link de perfil, mas só a imagem redonda da conta."
+      ]
+    },
+    {
+      "h2": "Baixar o perfil de outra pessoa",
+      "paragraphs": [
+        "Para uso pessoal (referência, moodboard, backup do que você gosta), tudo bem. Os pins continuam sendo de quem criou: se for publicar algo, peça permissão e dê crédito. Para o seu próprio perfil, o Pinterest também tem a opção de pedir uma cópia dos seus dados."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como baixar os pins de um perfil em ZIP",
+    "intro": "Use um link de perfil. Se o endereço tem nome de pasta depois do usuário, troque para o baixador de pastas.",
+    "exampleLabel": "Exemplo de link de perfil",
+    "items": [
+      {
+        "title": "Abra o perfil público",
+        "body": "Vá até a página do perfil da pessoa ou da marca, a que mostra a foto e o nome de usuário."
+      },
+      {
+        "title": "Copie o link do perfil",
+        "body": "Copie um link como `pinterest.com/usuario/`, sem nome de pasta depois."
+      },
+      {
+        "title": "Cole e liste os pins",
+        "body": "Cole acima e toque em **Baixar perfil (ZIP)** para listar os pins públicos do perfil."
+      },
+      {
+        "title": "Baixe o ZIP",
+        "body": "Toque em **Baixar ZIP** para salvar o pacote, ou baixe pins avulsos na grade."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre perfis",
+    "items": [
+      {
+        "q": "Como baixar todos os pins de um perfil de uma vez?",
+        "a": "Abra o perfil público, copie o link (`pinterest.com/usuario/`), cole aqui, liste os pins e baixe o ZIP com os pins públicos que o perfil mostra."
+      },
+      {
+        "q": "Perfil ou pasta: qual a diferença?",
+        "a": "O link de perfil tem só o nome de usuário; o de pasta tem o usuário e o nome da pasta. O perfil reúne os pins da conta, e a pasta é uma coleção só."
+      },
+      {
+        "q": "Vem tudo o que a pessoa já postou?",
+        "a": "Vêm os pins públicos que a página do perfil mostra, até um limite. Em contas grandes, pins antigos podem não vir."
+      },
+      {
+        "q": "Funciona com perfil privado?",
+        "a": "Não. Só perfis e pins públicos."
+      },
+      {
+        "q": "Posso baixar o perfil de outra pessoa?",
+        "a": "Para uso pessoal, sim. Os direitos continuam com quem criou: para repostar ou usar em algo comercial, peça permissão e dê crédito."
+      },
+      {
+        "q": "Só quero a foto de perfil. É aqui?",
+        "a": "Não. Esta página baixa os pins em ZIP. Para a imagem do perfil, use o [[pinterest-profile-picture-downloader|baixador de foto de perfil]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Pin, pasta ou vídeo: outras ferramentas"
+  },
+  "schema": {
+    "appName": "Baixador de perfil do Pinterest — PintDownload",
+    "howToName": "Como baixar os pins de um perfil do Pinterest em ZIP",
+    "howToDescription": "Cole o link de um perfil público do Pinterest e baixe os pins visíveis em um arquivo ZIP."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. P3 (thin demand per research); avatar link placed first because “baixar perfil” queries often mean the profile picture.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device."
+  }
+}

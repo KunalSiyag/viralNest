@@ -1,0 +1,135 @@
+{
+  "pageId": "pinterest-video-downloader-chrome",
+  "locale": "es",
+  "meta": {
+    "title": "Descargar videos de Pinterest en Chrome sin extensión",
+    "description": "Descarga videos, fotos y tableros de Pinterest desde Chrome con un marcador de un clic (bookmarklet), sin instalar extensiones. Funciona en Windows y Mac."
+  },
+  "keywords": {
+    "primary": "descargar videos de Pinterest en Chrome",
+    "secondary": [
+      "extensión para descargar videos de Pinterest",
+      "extensión para descargar imágenes de Pinterest",
+      "descargar videos de Pinterest desde Chrome gratis",
+      "Pinterest video downloader Chrome",
+      "descargar videos de Pinterest en Chromebook"
+    ]
+  },
+  "nav": {
+    "label": "Descargar en Chrome",
+    "short": "Chrome",
+    "card": {
+      "title": "Marcador para Chrome",
+      "blurb": "Un clic sobre cualquier pin y PintDownload se abre con el enlace. Sin extensión.",
+      "badge": "Chrome"
+    }
+  },
+  "hero": {
+    "h1": "Descargar videos de Pinterest en Chrome",
+    "lede": "Sin extensión: un **marcador de un clic** (bookmarklet) que abre PintDownload con el pin que estás viendo. Para Chrome, Edge y otros navegadores de escritorio."
+  },
+  "intro": [
+    "Si buscabas una **extensión** para descargar videos de Pinterest, esto es lo más parecido sin instalar nada: un marcador en la barra de Chrome. Cuando estás en un pin, haces clic y PintDownload se abre en otra pestaña con ese enlace ya pegado.",
+    "No es la extensión oficial de Pinterest para Chrome: esa sirve para **Guardar** pines en tus tableros, no para descargar archivos a tu computadora."
+  ],
+  "features": [
+    {
+      "h": "Sin permisos",
+      "p": "Un marcador no lee tus pestañas ni tu historial. Solo actúa cuando haces clic, y solo toma la dirección de la página abierta."
+    },
+    {
+      "h": "Un clic desde el pin",
+      "p": "Estás en un pin, haces clic en el marcador y PintDownload se abre con el enlace listo."
+    },
+    {
+      "h": "Videos, fotos y tableros",
+      "p": "Funciona en pines de video, de foto o GIF, y también en la página de un tablero."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "¿Por qué un marcador y no una extensión?",
+      "paragraphs": [
+        "Las extensiones se instalan desde la Chrome Web Store y muchas piden permiso para leer y cambiar los datos de todos los sitios que visitas. Un marcador no se instala: es un enlace guardado que, al hacer clic, abre PintDownload con la dirección de la pestaña. Si un día no lo quieres, lo borras como cualquier otro marcador."
+      ]
+    },
+    {
+      "h2": "Edge, Brave, Opera, Firefox y Safari",
+      "paragraphs": [
+        "El marcador funciona igual en los navegadores basados en Chromium (Edge, Brave, Opera): se arrastra a su barra de favoritos o de marcadores. En Firefox va a la barra de marcadores, y en Safari para Mac, a **Favoritos**."
+      ]
+    },
+    {
+      "h2": "¿Y en Chrome para Android?",
+      "paragraphs": [
+        "En el celular no hay una barra de favoritos cómoda, así que es más rápido copiar el enlace en la app de Pinterest (**Compartir** › **Copiar enlace**) y pegarlo en la página. Los pasos están en [[download-pinterest-videos-iphone-android|descargar videos de Pinterest en el celular]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo usar el marcador en Chrome",
+    "intro": "Se agrega una vez y sirve siempre. Windows, Mac, Linux y Chromebook.",
+    "exampleLabel": "Enlace de Pinterest",
+    "items": [
+      {
+        "title": "Arrastra el marcador",
+        "body": "Arrastra el botón **PintDownload** de esta página hasta la barra de favoritos (o de marcadores) de Chrome."
+      },
+      {
+        "title": "Abre un pin",
+        "body": "Navega en pinterest.com como siempre y abre el video, la foto o el tablero que quieres guardar."
+      },
+      {
+        "title": "Haz clic en el marcador",
+        "body": "PintDownload se abre en otra pestaña con el enlace pegado. Descarga el archivo desde ahí."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre Chrome",
+    "items": [
+      {
+        "q": "¿PintDownload es una extensión de Chrome?",
+        "a": "No. Es una página web con un marcador de un clic (bookmarklet). Hace el trabajo de una extensión sencilla, pero no se instala desde la Chrome Web Store ni queda activo en segundo plano."
+      },
+      {
+        "q": "¿Por qué un marcador es más seguro que una extensión?",
+        "a": "Porque no tiene permisos: no ve tus otras pestañas ni tu historial y solo se ejecuta cuando haces clic. Una extensión, en cambio, puede quedar activa en todas las páginas que abres."
+      },
+      {
+        "q": "¿Cómo agrego el marcador a la barra de Chrome?",
+        "a": "Muestra la barra de favoritos (o de marcadores) con **Ctrl + Shift + B** (**Cmd + Shift + B** en Mac) y arrastra el botón **PintDownload** de esta página hasta ella."
+      },
+      {
+        "q": "¿Funciona en Windows, Mac y Chromebook?",
+        "a": "Sí, en cualquier computadora con Chrome, y también en Linux."
+      },
+      {
+        "q": "¿Funciona en Edge, Brave, Opera o Safari?",
+        "a": "Sí. En Edge, Brave y Opera se arrastra a la barra de favoritos o marcadores; en Safari para Mac, a **Favoritos**."
+      },
+      {
+        "q": "¿Funciona en Chrome para Android?",
+        "a": "Se puede, pero es incómodo. En el celular es más rápido pegar el link directamente en pintdownload.app."
+      },
+      {
+        "q": "¿La extensión de Pinterest para Chrome sirve para descargar?",
+        "a": "No. El botón **Guardar** de Pinterest para Chrome guarda imágenes en tus tableros de Pinterest, no en tu computadora. Para tener el archivo, usa el marcador o pega el enlace en PintDownload."
+      }
+    ]
+  },
+  "related": {
+    "title": "Herramientas para la computadora"
+  },
+  "schema": {
+    "appName": "Marcador para descargar de Pinterest en Chrome — PintDownload",
+    "howToName": "Cómo descargar videos de Pinterest en Chrome con un marcador",
+    "howToDescription": "Arrastra el marcador de PintDownload a la barra de Chrome y haz clic en él desde cualquier pin para descargarlo."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: Chrome es-419 dice \"barra de favoritos\" (support.google.com/chrome/answer/188842?hl=es-419), es-ES \"barra de marcadores\": se nombran ambas; \"se agrega\" (un marcador no se instala)"
+  }
+}

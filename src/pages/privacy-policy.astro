@@ -8,7 +8,7 @@ import { BRAND } from '../lib/brand';
   description={`Read the official privacy policy for ${BRAND.name}. Learn how we respect user privacy, handle zero-log data, and protect user security.`}
   clean
 >
-  <div class="max-w-3xl mx-auto py-8 text-left">
+  <div class="max-w-3xl mx-auto py-8 text-start">
     <nav class="text-sm font-medium text-ink-500 mb-8 flex flex-wrap items-center gap-2" aria-label="Breadcrumb">
       <a href="/" class="hover:text-brand-600">Home</a>
       <span class="text-ink-300" aria-hidden="true">/</span>
@@ -47,7 +47,7 @@ import { BRAND } from '../lib/brand';
       <p>
         If you email us, we receive the content of your message and your email address so we can respond. We do not sell that information.
       </p>
-      <ul class="list-disc pl-6 space-y-2">
+      <ul class="list-disc ps-6 space-y-2">
         <li>
           Privacy inquiries:
           <a href={`mailto:${BRAND.email.privacy}`} class="text-brand-600 font-semibold hover:underline">{BRAND.email.privacy}</a>

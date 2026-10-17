@@ -1,0 +1,120 @@
+---
+/** Localized home (/es, /pt …): mirrors the English home page. */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TicketHero from '../TicketHero.astro';
+import AdSlot from '../AdSlot.astro';
+import HowToSteps from '../seo/HowToSteps.astro';
+import RelatedTools from '../seo/RelatedTools.astro';
+import BookmarkletGuide from '../seo/BookmarkletGuide.astro';
+import CompareTable from '../seo/CompareTable.astro';
+import FaqSection from '../seo/FaqSection.astro';
+import PageBody from './PageBody.astro';
+import { headingHtml, renderInline } from '../../i18n/inline';
+import type { Locale } from '../../i18n/locales';
+import { pathFor } from '../../i18n/routes';
+import { PROSE_CLASSES, exampleUrlFor, pageContext } from './page-data';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const ctx = await pageContext(locale, 'home');
+const { page, ui, def } = ctx;
+const r = (s: string) => renderInline(s, locale);
+const aside = page.aside!;
+const credit = page.credit!;
+/** Guide links: only pages live in this locale. */
+const guides = page.guides!.items.flatMap((g) => {
+  const href = pathFor(g.page, locale);
+  return href ? [{ ...g, href }] : [];
+});
+---
+
+<BaseLayout
+  field={def.field}
+  title={page.meta.title}
+  description={page.meta.description}
+  canonicalUrl={ctx.url}
+  jsonLd={ctx.jsonLd}
+  fullBleed
+  locale={locale}
+  ui={ui}
+>
+  <TicketHero
+    title={headingHtml(page.hero.h1, locale)}
+    lede={r(page.hero.lede)}
+    variant={ctx.variant}
+    layout="hero"
+    locale={locale}
+    messages={ctx.messages}
+    routes={ctx.routes}
+  >
+    <dl slot="aside" class="mt-6 sm:mt-8 hidden sm:grid grid-cols-3 max-w-xl border-t-2 border-[var(--on-field)]">
+      {aside.map((item, i) => (
+        <div class:list={['pt-3', i === 0 ? 'pe-3' : i === 1 ? 'px-3 border-s-2 border-dashed border-[var(--on-field)]' : 'ps-3 border-s-2 border-dashed border-[var(--on-field)]']}>
+          <dt class="t-label">{item.dt}</dt>
+          <dd class="mt-1 text-sm text-[var(--on-field-2)]">{item.dd}</dd>
+        </div>
+      ))}
+    </dl>
+  </TicketHero>
+
+  <article class="w-full">
+    <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 text-start flex flex-col">
+      <PageBody page={page} locale={locale} kind="home" />
+    </div>
+
+    <HowToSteps
+      title={page.steps.title}
+      intro={r(page.steps.intro)}
+      introHtml
+      exampleUrl={page.steps.exampleUrl ?? exampleUrlFor(ctx.variant)}
+      exampleLabel={page.steps.exampleLabel}
+      steps={page.steps.items.map((s) => ({ title: s.title, body: r(s.body) }))}
+      visual
+      ui={ui}
+    />
+
+    <AdSlot slot={import.meta.env.PUBLIC_AD_SLOT_HOME_1} class="px-4" locale={locale} label={ui.ad.label} />
+
+    <RelatedTools title={page.related.title} tools={ctx.related} intro={ui.related.intro} />
+
+    <section class="field-canary field w-full py-12 sm:py-16" aria-labelledby="credit-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] gap-x-12 gap-y-4 items-end">
+        <h2 id="credit-heading" class="t-display text-5xl sm:text-6xl lg:text-7xl leading-[0.9]" set:html={headingHtml(credit.h2, locale)} />
+        <p class="text-base sm:text-lg leading-relaxed [&_strong]:font-bold [&_a]:font-bold [&_a]:underline [&_a]:decoration-2" set:html={r(credit.body)} />
+      </div>
+    </section>
+
+    {guides.length > 0 && (
+      <section class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 text-start" aria-labelledby="guides-heading">
+        <div class="counter-rule pt-4 mb-6 sm:mb-8 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] gap-x-10 gap-y-3 items-end">
+          <h2 id="guides-heading" class="t-display text-4xl sm:text-5xl leading-[0.95]" set:html={headingHtml(page.guides!.title, locale)} />
+          <p class:list={['text-base text-[var(--ink-2)] leading-relaxed', PROSE_CLASSES]} set:html={r(page.guides!.intro)} />
+        </div>
+        <ul class="grid md:grid-cols-2 gap-x-10 list-none p-0 m-0 border-t-2 border-dashed border-[var(--rule)]">
+          {guides.map((g) => (
+            <li class="border-b-2 border-dashed border-[var(--rule)]">
+              <a href={g.href} class="group flex items-start gap-4 py-4 min-h-[44px]">
+                <span class="t-label shrink-0 w-20 pt-1 text-brand-700 dark:text-brand-300" set:html={headingHtml(g.tag, locale)} />
+                <span class="min-w-0">
+                  <span class="block font-bold text-lg leading-snug group-hover:underline">{g.title}</span>
+                  <span class="block mt-0.5 text-[0.9375rem] text-[var(--ink-2)]">{g.blurb}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <BookmarkletGuide ui={ui} locale={locale} />
+
+    <CompareTable highlight="pin" ui={ui} links={ctx.compareLinks} />
+
+    <AdSlot slot={import.meta.env.PUBLIC_AD_SLOT_HOME_2} class="px-4" locale={locale} label={ui.ad.label} />
+
+    <FaqSection title={page.faq.title} items={page.faq.items.map((f) => ({ q: f.q, a: r(f.a) }))} html />
+  </article>
+</BaseLayout>

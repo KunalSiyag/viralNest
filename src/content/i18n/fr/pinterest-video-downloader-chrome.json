@@ -1,0 +1,121 @@
+{
+  "pageId": "pinterest-video-downloader-chrome",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger des vidéos Pinterest dans Chrome — sans extension",
+    "description": "Un favori dans la barre de Chrome remplace l’extension : sur une épingle, un clic ouvre PintDownload avec son lien. Vidéos, photos et tableaux publics."
+  },
+  "keywords": {
+    "primary": "extension telecharger video pinterest",
+    "secondary": [
+      "pinterest video downloader chrome",
+      "extension pinterest video downloader",
+      "chrome extension download pinterest video",
+      "extension chrome pinterest",
+      "télécharger vidéo pinterest pc"
+    ]
+  },
+  "nav": {
+    "label": "Favori pour Chrome",
+    "short": "Chrome",
+    "card": {
+      "title": "Favori pour Chrome",
+      "blurb": "Un clic depuis une épingle ouvre PintDownload avec son lien. Sans extension.",
+      "badge": "Chrome"
+    }
+  },
+  "hero": {
+    "h1": "Vidéos Pinterest dans Chrome, sans extension",
+    "lede": "Un **favori** dans la barre de Chrome fait le travail d’une extension : sur une épingle, un clic ouvre PintDownload avec son lien."
+  },
+  "intro": [
+    "PintDownload n’est pas une extension du Chrome Web Store. C’est un **favori** (on dit aussi bookmarklet) : un petit raccourci que vous glissez dans la barre de favoris. Sur une épingle, un clic dessus ouvre PintDownload avec le lien déjà collé.",
+    "Il fonctionne dans Chrome, Edge, Brave et Opera, sous Windows, macOS, Linux et ChromeOS. Vidéos, photos et tableaux publics."
+  ],
+  "features": [
+    {
+      "h": "Aucune autorisation",
+      "p": "Une extension peut demander l’accès à tous les sites que vous visitez. Le favori ne s’exécute que lorsque vous cliquez dessus, sur la page ouverte."
+    },
+    {
+      "h": "Un clic depuis Pinterest",
+      "p": "Sur une épingle ou un tableau, il ouvre PintDownload avec le lien prérempli."
+    },
+    {
+      "h": "Rien à installer",
+      "p": "Ni boutique, ni mise à jour : un favori se supprime comme n’importe quel autre."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Favori ou extension Chrome ?",
+      "paragraphs": [
+        "Les extensions de téléchargement demandent souvent l’accès aux données de tous les sites que vous visitez. Le favori PintDownload n’a aucune autorisation permanente : c’est un lien qui lit l’adresse de l’onglet au moment où vous cliquez, puis ouvre notre page."
+      ]
+    },
+    {
+      "h2": "Firefox, Safari et mobile",
+      "paragraphs": [
+        "Dans Firefox, le favori s’appelle un **marque-page** ; dans Safari, un **signet**. Le principe ne change pas. Sur Android et iPhone, il n’y a pas de barre de favoris pratique : copiez plutôt le lien de l’épingle et collez-le sur [[home|l’accueil]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment utiliser PintDownload dans Chrome",
+    "intro": "Trois étapes, et l’installation ne se fait qu’une fois.",
+    "exampleLabel": "Lien Pinterest",
+    "items": [
+      {
+        "title": "Glissez le favori dans la barre",
+        "body": "Affichez la barre de favoris (`Ctrl+Maj+B`, ou `Cmd+Maj+B` sur Mac), puis glissez-y le bouton **PintDownload** ci-dessous."
+      },
+      {
+        "title": "Naviguez sur Pinterest",
+        "body": "Utilisez Pinterest normalement. Quand une vidéo, une épingle ou un tableau vous plaît, restez sur sa page."
+      },
+      {
+        "title": "Cliquez sur le favori",
+        "body": "Un clic sur **PintDownload** dans la barre ouvre notre page avec le lien de l’onglet déjà collé."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur Chrome",
+    "items": [
+      {
+        "q": "PintDownload est-il une extension Chrome ?",
+        "a": "Non. C’est un favori (bookmarklet) que vous glissez dans la barre de favoris. Il rend le même service qu’une extension, sans passer par le Chrome Web Store."
+      },
+      {
+        "q": "Pourquoi un favori plutôt qu’une extension ?",
+        "a": "Parce qu’il n’a aucune autorisation à vous demander. Il ne tourne pas en arrière-plan, ne lit pas vos autres onglets et ne s’exécute que lorsque vous cliquez dessus."
+      },
+      {
+        "q": "Comment afficher la barre de favoris ?",
+        "a": "Dans Chrome et Edge, appuyez sur `Ctrl+Maj+B` sous Windows ou `Cmd+Maj+B` sur Mac. Dans Chrome, vous pouvez aussi passer par le menu **⋮** › **Favoris et listes** › **Afficher la barre de favoris**."
+      },
+      {
+        "q": "Ça marche dans Edge, Firefox ou Safari ?",
+        "a": "Oui. Dans Edge, comme dans Chrome. Dans Firefox, glissez-le dans la **barre personnelle**, comme un marque-page. Dans Safari, ajoutez-le aux signets de la barre des favoris. Sous Windows comme sur Mac."
+      },
+      {
+        "q": "Et dans Chrome sur Android ou iPhone ?",
+        "a": "Les navigateurs mobiles n’ont pas de barre de favoris pratique. Copiez le lien de l’épingle dans l’appli Pinterest et collez-le sur [[home|l’accueil]] ou sur [[pinterest-video-downloader|Télécharger une vidéo]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outils pour ordinateur"
+  },
+  "schema": {
+    "appName": "Vidéos Pinterest dans Chrome — PintDownload",
+    "howToName": "Comment télécharger des vidéos Pinterest dans Chrome sans extension",
+    "howToDescription": "Installer le favori PintDownload dans la barre de Chrome, puis l’utiliser depuis une épingle."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Browser labels assumed: Chrome « Favoris et listes › Afficher la barre de favoris », Ctrl+Maj+B; Firefox « Barre personnelle »; Safari « signets ». Reviewer to confirm current Chrome FR menu wording.",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. \"demander l’accès à tous les sites que vous visitez\"; Safari \"barre des favoris\" in lower case. Chrome FR labels (Favoris et listes, Afficher la barre de favoris, Ctrl+Maj+B) match current Chrome."
+  }
+}

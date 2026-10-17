@@ -1,0 +1,25 @@
+---
+/**
+ * Every localized page except the homes: /es/descargar-videos-pinterest …
+ * Static segments (/blog/x, /about) win over [locale] in Astro's routing, and
+ * getStaticPaths only emits live (locale, pageId) pairs from the route map.
+ */
+import ToolPage from '../../components/i18n/ToolPage.astro';
+import GuidePage from '../../components/i18n/GuidePage.astro';
+import { PAGES, localizedRoutes, type PageId } from '../../i18n/routes';
+import type { Locale } from '../../i18n/locales';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return localizedRoutes().map(({ locale, pageId, slug }) => ({
+    params: { locale, slug },
+    props: { locale, pageId },
+  }));
+}
+
+const { locale, pageId } = Astro.props as { locale: Locale; pageId: PageId };
+const template = PAGES[pageId].template;
+---
+
+{template === 'guide' ? <GuidePage locale={locale} pageId={pageId} /> : <ToolPage locale={locale} pageId={pageId} />}

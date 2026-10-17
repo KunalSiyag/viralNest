@@ -1,0 +1,127 @@
+{
+  "pageId": "how-to-download-pinterest-video-in-gallery",
+  "locale": "fr",
+  "meta": {
+    "title": "Enregistrer une vidéo Pinterest dans sa galerie — sans appli",
+    "description": "Mettez une vidéo Pinterest dans la galerie de votre téléphone Samsung ou Android : copiez le lien, collez-le, enregistrez le MP4. Sans application, gratuit."
+  },
+  "keywords": {
+    "primary": "comment enregistrer une vidéo pinterest dans sa galerie",
+    "secondary": [
+      "enregistrer une video pinterest dans sa galerie",
+      "comment mettre une vidéo pinterest dans sa galerie",
+      "comment enregistrer une vidéo pinterest dans sa galerie samsung",
+      "comment enregistrer une vidéo pinterest sur son téléphone",
+      "télécharger vidéo pinterest sur téléphone"
+    ]
+  },
+  "nav": {
+    "label": "Enregistrer dans la galerie",
+    "short": "Galerie",
+    "card": {
+      "title": "Enregistrer dans la galerie",
+      "blurb": "Faire apparaître la vidéo Pinterest dans la Galerie d’un Android ou d’un Samsung.",
+      "badge": "Galerie"
+    }
+  },
+  "hero": {
+    "h1": "Enregistrer une vidéo Pinterest dans sa galerie",
+    "lede": "Du lien de l’épingle à la **Galerie** de votre Samsung ou de votre Android, sans installer d’application."
+  },
+  "intro": [
+    "Télécharger la vidéo ne suffit pas toujours : sur Android, le MP4 arrive d’abord dans le dossier **Téléchargements**, et la Galerie ne l’affiche pas forcément là où vous l’attendez. Ce guide explique où le trouver et comment le faire apparaître.",
+    "Sur iPhone, l’étape est différente (de Fichiers à Photos) : suivez [[download-pinterest-videos-iphone-android|le guide iPhone]]."
+  ],
+  "sections": [
+    {
+      "h2": "Pourquoi la vidéo n’apparaît pas dans la galerie",
+      "paragraphs": [
+        "Le navigateur enregistre un fichier, pas une photo. Chrome et Samsung Internet le rangent dans **Téléchargements** ; la Galerie Samsung et Google Photos l’affichent ensuite dans un album **Download**, parfois au bout de quelques secondes. Si vous ne le voyez nulle part, il est presque toujours dans ce dossier."
+      ]
+    },
+    {
+      "h2": "Samsung : retrouver la vidéo dans la Galerie",
+      "paragraphs": [
+        "Ouvrez **Galerie**, puis l’onglet **Albums** : la vidéo est dans l’album **Download**. Sinon, ouvrez **Mes fichiers** › **Téléchargements**, et touchez la vidéo pour la lire."
+      ],
+      "list": [
+        "Pour la ranger avec vos photos, appuyez longuement dessus dans **Mes fichiers**, choisissez **Déplacer**, puis le dossier **DCIM**.",
+        "Toujours rien ? Vérifiez dans la barre de notifications que le téléchargement est bien terminé."
+      ]
+    },
+    {
+      "h2": "Autres Android : Google Photos et Fichiers",
+      "paragraphs": [
+        "Dans **Google Photos**, ouvrez l’onglet **Bibliothèque** (ou **Collections** selon la version) : l’album **Download** contient la vidéo. Dans l’app **Fichiers**, ouvrez **Téléchargements**. Si Google Photos ne la montre toujours pas, déplacez le fichier dans **DCIM** ou **Movies** depuis Fichiers."
+      ]
+    },
+    {
+      "h2": "Et pour une photo Pinterest ?",
+      "paragraphs": [
+        "Le principe est le même : téléchargez l’image avec [[pinterest-image-downloader|Télécharger une photo]], puis cherchez-la dans l’album **Download** de la Galerie."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment enregistrer une vidéo Pinterest dans sa galerie",
+    "intro": "Trois étapes dans Chrome ou Samsung Internet, sur n’importe quel Android.",
+    "exampleLabel": "Lien d’une épingle vidéo",
+    "items": [
+      {
+        "title": "Copiez le lien de la vidéo",
+        "body": "Dans l’appli Pinterest, ouvrez la vidéo, touchez l’**icône de partage**, puis **Copier le lien**."
+      },
+      {
+        "title": "Collez-le sur PintDownload",
+        "body": "Ouvrez pintdownload.app dans Chrome ou Samsung Internet, collez le lien dans le ticket et touchez **Télécharger la vidéo**."
+      },
+      {
+        "title": "Ouvrez la Galerie",
+        "body": "La vidéo apparaît dans l’album **Download** de la Galerie ou de Google Photos. Sinon, elle se trouve dans **Téléchargements**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur la galerie",
+    "items": [
+      {
+        "q": "Pourquoi la vidéo n’apparaît-elle pas dans ma galerie ?",
+        "a": "Parce que le navigateur l’a enregistrée comme un fichier, dans **Téléchargements**. La Galerie l’affiche dans l’album **Download** ; si elle n’y est pas, déplacez-la dans **DCIM** avec Mes fichiers ou Fichiers."
+      },
+      {
+        "q": "Sur Samsung, où trouver la vidéo ?",
+        "a": "**Galerie** › **Albums** › **Download**, ou **Mes fichiers** › **Téléchargements**. Les deux montrent le même MP4."
+      },
+      {
+        "q": "Et sur iPhone ?",
+        "a": "Sur iPhone, la vidéo passe d’abord par l’app **Fichiers** avant d’arriver dans Photos. Les étapes sont dans [[download-pinterest-videos-iphone-android|le guide iPhone]]."
+      },
+      {
+        "q": "Faut-il payer ou se connecter ?",
+        "a": "Non. C’est gratuit, sans compte PintDownload ni connexion à Pinterest. Seules les vidéos publiques fonctionnent."
+      },
+      {
+        "q": "Et pour une photo Pinterest dans la galerie ?",
+        "a": "Utilisez [[pinterest-image-downloader|Télécharger une photo]] : l’image arrive elle aussi dans **Téléchargements**, donc dans l’album **Download** de la Galerie."
+      },
+      {
+        "q": "Pourquoi la vidéo paraît-elle floue dans la galerie ?",
+        "a": "La Galerie affiche parfois un aperçu compressé. Ouvrez la vidéo en plein écran : elle a la qualité que Pinterest publie, souvent 720p, et 1080p quand l’épingle le propose."
+      }
+    ]
+  },
+  "related": {
+    "title": "Plus de guides et d’outils"
+  },
+  "schema": {
+    "appName": "Enregistrer une vidéo Pinterest dans sa galerie — PintDownload",
+    "howToName": "Comment enregistrer une vidéo Pinterest dans la galerie d’un Android",
+    "howToDescription": "Télécharger le MP4 d’une épingle vidéo et le retrouver dans la Galerie Samsung ou dans Google Photos."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Unverified phone labels: Samsung Galerie › Albums › Download; Mes fichiers › Déplacer; Google Photos tab « Bibliothèque » vs newer « Collections »; album name « Download » on French phones.",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. FAQ questions inverted; \"appuyez longuement dessus\" replaces \"maintenez-la appuyée\". Album name « Download » is the real label on French phones."
+  }
+}

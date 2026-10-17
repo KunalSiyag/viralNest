@@ -1,12 +1,16 @@
 /** Shared JSON-LD builders + sitemap route registry for intent-specific tool pages */
 
 import { absoluteUrl } from './urls';
+import { LOCALES } from '../i18n/locales';
+import { PAGES, alternatesFor, localizedRoutes, pathFor, routeForPath, type Alternate, type PageId } from '../i18n/routes';
 
 export function softwareAppSchema(opts: {
   name: string;
   description: string;
   url: string;
   applicationCategory?: string;
+  /** Localized pages only; English output keeps no inLanguage here. */
+  inLanguage?: string;
 }) {
   // Do NOT include fake aggregateRating — Google may ignore or penalize fabricated reviews.
   return {
@@ -15,6 +19,7 @@ export function softwareAppSchema(opts: {
     name: opts.name,
     description: opts.description,
     url: opts.url,
+    ...(opts.inLanguage ? { inLanguage: opts.inLanguage } : {}),
     operatingSystem: 'Web, iOS, Android, Windows, macOS',
     applicationCategory: opts.applicationCategory || 'MultimediaApplication',
     offers: {
@@ -63,6 +68,8 @@ export function webPageSchema(opts: {
   name: string;
   description: string;
   url: string;
+  /** Default 'en-US' keeps English output unchanged. */
+  inLanguage?: string;
 }) {
   return {
     '@context': 'https://schema.org',
@@ -70,7 +77,7 @@ export function webPageSchema(opts: {
     name: opts.name,
     description: opts.description,
     url: opts.url,
-    inLanguage: 'en-US',
+    inLanguage: opts.inLanguage ?? 'en-US',
     isPartOf: {
       '@type': 'WebSite',
       name: 'PintDownload',
@@ -95,7 +102,7 @@ export const TOOL_LINKS = [
   {
     href: '/pinterest-image-downloader',
     title: 'Image Downloader',
-    blurb: 'Original-resolution photos and artwork from pin links.',
+    blurb: 'Photos and artwork in the largest size Pinterest publishes.',
     badge: 'HD',
   },
   {
@@ -143,13 +150,13 @@ export const TOOL_LINKS = [
   {
     href: '/how-to-download-pinterest-video-on-laptop',
     title: 'Laptop & PC Downloader',
-    blurb: 'Download 1080p HD Pinterest videos on Mac, Windows, & PC.',
+    blurb: 'Download Pinterest videos as MP4 on Mac, Windows, & PC.',
     badge: 'PC',
   },
   {
     href: '/pinterest-profile-picture-downloader',
     title: 'Profile Picture Downloader',
-    blurb: 'Extract full HD profile pictures & avatar icons.',
+    blurb: 'Save the largest profile photo Pinterest publishes.',
     badge: 'PFP',
   },
   {
@@ -161,7 +168,7 @@ export const TOOL_LINKS = [
   {
     href: '/pinterest-audio-downloader',
     title: 'Audio / MP3 Extractor',
-    blurb: 'Save the sound track from a public Pinterest video pin.',
+    blurb: 'An MP3 of a video pin\'s sound, made in your browser.',
     badge: 'MP3',
   },
 ] as const;
@@ -205,3 +212,48 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: '/privacy-policy', changefreq: 'yearly', priority: 0.2 },
   { path: '/terms-of-service', changefreq: 'yearly', priority: 0.2 },
 ];
+
+/** One sitemap <url>, optionally with its hreflang cluster (xhtml:link). */
+export type SitemapEntry = {
+  loc: string;
+  lastmod?: string;
+  changefreq: SitemapRoute['changefreq'];
+  priority: number;
+  alternates?: Alternate[];
+};
+
+/**
+ * hreflang cluster for an English route, or undefined when no locale is live
+ * for it (then the sitemap stays as before: the HTML self-cluster en +
+ * x-default needs no sitemap annotation).
+ */
+export function sitemapAlternatesFor(enPath: string): Alternate[] | undefined {
+  const route = routeForPath(enPath);
+  if (!route || route.locale !== 'en') return undefined;
+  const alts = alternatesFor(route.pageId);
+  return alts.length > 2 ? alts : undefined;
+}
+
+/**
+ * Every live localized URL once, with the full alternate set (same generator
+ * as the HTML <link>s). Priority/changefreq inherit the English route's.
+ * `lastmod` comes from the content JSON dateModified, keyed `<locale>/<pageId>`;
+ * it is never the build date.
+ */
+export function localizedSitemapEntries(lastmods: Record<string, string> = {}): SitemapEntry[] {
+  const byPath = new Map(SITEMAP_ROUTES.map((r) => [r.path, r]));
+  const entries: SitemapEntry[] = [];
+  const homes = LOCALES.map((locale) => ({ locale, pageId: 'home' as PageId, path: pathFor('home', locale) }))
+    .filter((h): h is { locale: (typeof LOCALES)[number]; pageId: PageId; path: string } => Boolean(h.path));
+  for (const { locale, pageId, path } of [...homes, ...localizedRoutes()]) {
+    const en = byPath.get(PAGES[pageId].en);
+    entries.push({
+      loc: absoluteUrl(path),
+      lastmod: lastmods[`${locale}/${pageId}`],
+      changefreq: en?.changefreq ?? 'weekly',
+      priority: en?.priority ?? 0.8,
+      alternates: alternatesFor(pageId),
+    });
+  }
+  return entries;
+}

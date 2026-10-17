@@ -1,0 +1,127 @@
+{
+  "pageId": "pinterest-gif-downloader",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger un GIF Pinterest animé — gratuit, sans compte",
+    "description": "Enregistrez un GIF Pinterest qui reste animé, pas une image figée. Collez le lien de l’épingle GIF et récupérez le fichier en boucle, sur mobile ou PC."
+  },
+  "keywords": {
+    "primary": "télécharger gif pinterest",
+    "secondary": [
+      "enregistrer gif pinterest",
+      "pinterest gif animé",
+      "pinterest gif downloader",
+      "gif pinterest download",
+      "pinterest gif to mp4"
+    ]
+  },
+  "nav": {
+    "label": "Télécharger un GIF",
+    "short": "GIF",
+    "card": {
+      "title": "Télécharger un GIF",
+      "blurb": "Le GIF qui reste animé, pas une image figée de son début.",
+      "badge": "GIF"
+    }
+  },
+  "hero": {
+    "h1": "Télécharger un GIF Pinterest",
+    "lede": "Enregistrez les GIF Pinterest **qui restent animés**, en boucle, et pas une image figée."
+  },
+  "intro": [
+    "Collez le lien d’une **épingle GIF** : PintDownload récupère le fichier animé que Pinterest publie, et non l’image fixe de couverture que donne souvent un appui long. Gratuit et sans compte.",
+    "Les liens `/pin/` et `pin.it` fonctionnent. Épingles GIF publiques uniquement."
+  ],
+  "features": [
+    {
+      "h": "Le GIF animé",
+      "p": "Le fichier `.gif` qui tourne en boucle, celui que Pinterest affiche."
+    },
+    {
+      "h": "GIF ou vidéo ?",
+      "p": "Certains « GIF » de Pinterest sont en fait de courtes vidéos : vous recevez alors un MP4."
+    },
+    {
+      "h": "Téléphone et PC",
+      "p": "Fonctionne dans Safari, Chrome ou Samsung Internet, sans appli."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Pourquoi certains GIF arrivent en MP4",
+      "paragraphs": [
+        "Sur Pinterest, beaucoup d’animations courtes sont publiées comme des vidéos sans son, même si elles ressemblent à des GIF. Il n’existe alors aucun fichier `.gif` à récupérer : PintDownload passe à l’outil vidéo et vous donne le MP4. Un vrai GIF, lui, reste un GIF."
+      ]
+    },
+    {
+      "h2": "Garder l’animation sur téléphone et sur WhatsApp",
+      "paragraphs": [
+        "La plupart des galeries Android lisent les GIF. Sur iPhone, Photos affiche parfois la première image tant que vous n’ouvrez pas le fichier. Pour WhatsApp, joignez le GIF depuis la Galerie ou Fichiers ; s’il apparaît figé, ouvrez-le pour lancer l’animation."
+      ]
+    },
+    {
+      "h2": "Vous cherchez des GIF « bonne nuit » ?",
+      "paragraphs": [
+        "PintDownload ne cherche pas de GIF à votre place : trouvez celui qui vous plaît sur Pinterest, copiez le lien de l’épingle, puis collez-le ici pour le garder."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment enregistrer un GIF Pinterest",
+    "intro": "Trois étapes, pour les épingles GIF publiques, sans compte.",
+    "exampleLabel": "Lien d’une épingle GIF",
+    "items": [
+      {
+        "title": "Ouvrez l’épingle GIF",
+        "body": "Vérifiez qu’elle tourne en boucle comme un GIF (souvent sans son ni barre de lecture). Une vraie vidéo va sur la page vidéo."
+      },
+      {
+        "title": "Copiez le lien",
+        "body": "**Icône de partage** › **Copier le lien**, ou une adresse avec `/pin/`. Les liens `pin.it` marchent aussi."
+      },
+      {
+        "title": "Collez et récupérez le GIF",
+        "body": "Collez le lien ci-dessus, touchez **Télécharger le GIF**, puis ouvrez le fichier dans une appli qui lit les animations."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur les GIF Pinterest",
+    "items": [
+      {
+        "q": "Comment télécharger un GIF depuis Pinterest ?",
+        "a": "Copiez le lien de l’épingle GIF publique, collez-le ici et touchez **Télécharger le GIF**. Vous obtenez le fichier `.gif` animé."
+      },
+      {
+        "q": "Pourquoi mon GIF s’enregistre-t-il comme une photo fixe ?",
+        "a": "Un appui long ou une capture ne garde que l’image de couverture. Certaines épingles qui semblent animées sont aussi de simples images. Passez par cette page pour récupérer le fichier animé quand il existe."
+      },
+      {
+        "q": "Pourquoi certains GIF Pinterest arrivent-ils en MP4 ?",
+        "a": "Parce que Pinterest les publie comme des vidéos courtes, pas comme des GIF. PintDownload vous donne alors le MP4, le seul fichier qui existe ; [[pinterest-to-mp4|le convertisseur MP4]] explique ce format."
+      },
+      {
+        "q": "Le GIF restera-t-il animé dans ma galerie ou sur WhatsApp ?",
+        "a": "Dans la plupart des galeries Android, oui. Sur iPhone, Photos montre parfois la première image tant que vous n’ouvrez pas le fichier. Sur WhatsApp, joignez-le depuis la Galerie ou Fichiers."
+      },
+      {
+        "q": "Faut-il un compte Pinterest ?",
+        "a": "Non. Les épingles GIF publiques suffisent ; les épingles privées ou secrètes ne sont pas accessibles."
+      }
+    ]
+  },
+  "related": {
+    "title": "D’autres formats"
+  },
+  "schema": {
+    "appName": "Télécharger un GIF Pinterest — PintDownload",
+    "howToName": "Comment télécharger un GIF Pinterest animé",
+    "howToDescription": "Copier le lien d’une épingle GIF publique, le coller dans PintDownload et enregistrer le fichier animé."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Unverified: WhatsApp GIF behaviour on Android/iOS; kept generic.",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. Card blurb \"de la première vue\" changed to \"de son début\"; two FAQ questions inverted (s’enregistre-t-il, arrivent-ils)."
+  }
+}

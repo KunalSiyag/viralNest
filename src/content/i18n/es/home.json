@@ -1,0 +1,181 @@
+{
+  "pageId": "home",
+  "locale": "es",
+  "meta": {
+    "title": "Descargador de Pinterest: videos, fotos y GIF | PintDownload",
+    "description": "Descarga videos de Pinterest en MP4, fotos, GIF, tableros y perfiles públicos con solo pegar el enlace. Gratis, sin registrarte y sin instalar apps."
+  },
+  "keywords": {
+    "primary": "descargar de Pinterest",
+    "secondary": [
+      "descargador de Pinterest",
+      "Pinterest downloader",
+      "descargar de Pinterest gratis",
+      "página para descargar de Pinterest",
+      "descargar de Pinterest en línea",
+      "descargar de Pinterest sin marca de agua"
+    ]
+  },
+  "nav": {
+    "label": "Descargador de Pinterest",
+    "short": "Inicio",
+    "card": {
+      "title": "Descargador de Pinterest",
+      "blurb": "Pega un enlace de pin, tablero o perfil y guarda el archivo.",
+      "badge": "Todo"
+    }
+  },
+  "hero": {
+    "h1": "Descargador de Pinterest",
+    "lede": "**Pega el enlace y guarda el archivo.** Videos de Pinterest en **MP4**, fotos en el tamaño más grande que Pinterest publica, GIF y **tableros o perfiles públicos en un ZIP**. Gratis, sin cuenta, en el celular o en la PC."
+  },
+  "aside": [
+    {
+      "dt": "Pin",
+      "dd": "MP4, JPG, GIF o todas las fotos del carrusel"
+    },
+    {
+      "dt": "Tablero",
+      "dd": "Sus pines públicos en un solo ZIP"
+    },
+    {
+      "dt": "Perfil",
+      "dd": "Paquete de pines o la foto de perfil"
+    }
+  ],
+  "intro": [
+    "PintDownload es una página para **descargar de Pinterest**, no la app de Pinterest ni un APK. Si buscas la app oficial, está en la tienda de apps de tu celular. Aquí solo pegas el enlace de un pin, un tablero o un perfil y guardas el archivo.",
+    "Acepta los enlaces (o links) que copias en la app (`pin.it`) y en la web (`pinterest.com/pin/…`), incluidos los de dominios locales como `mx.pinterest.com` o `pinterest.es`. Solo funciona con contenido público."
+  ],
+  "sections": [
+    {
+      "h2": "Qué puedes descargar de Pinterest",
+      "paragraphs": [
+        "Pega el enlace en el recuadro de arriba y PintDownload detecta qué tipo de enlace es. Para cada caso hay también una página dedicada:"
+      ],
+      "list": [
+        "**Videos** en MP4, normalmente en 720p y en 1080p cuando el pin lo tiene: [[pinterest-video-downloader|descargar videos de Pinterest]].",
+        "**Fotos e imágenes** en el tamaño más grande que Pinterest publica, no la miniatura: [[pinterest-image-downloader|descargar imágenes de Pinterest]].",
+        "**GIF** que siguen animados ([[pinterest-gif-downloader|descargar GIF]]) y **carruseles** con todas sus fotos ([[pinterest-carousel-downloader|descargar carrusel]]).",
+        "**Audio** en MP3, creado en tu navegador con el sonido de un video: [[pinterest-audio-downloader|Pinterest a MP3]].",
+        "**Tableros** públicos con sus pines en un ZIP: [[pinterest-board-downloader|descargar tableros de Pinterest]].",
+        "**Perfiles** públicos en un ZIP ([[pinterest-profile-downloader|descargar perfil]]), o solo la [[pinterest-profile-picture-downloader|foto de perfil]] en grande."
+      ]
+    },
+    {
+      "h2": "Lo que no hace",
+      "paragraphs": [
+        "No descarga pines privados, tableros secretos ni nada que pida iniciar sesión, y tampoco pines eliminados. No inventa calidad: si Pinterest publica un video en 720p, el MP4 es de 720p, nunca un 4K falso.",
+        "No añadimos ninguna marca de agua; el texto o el logo que el creador puso en su video sigue ahí. PintDownload es una herramienta independiente, sin afiliación con Pinterest, Inc."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar de Pinterest en 3 pasos",
+    "intro": "Funciona en el navegador del iPhone, Android, Mac o PC. Solo pines públicos: sin cuenta y sin instalar nada.",
+    "exampleLabel": "Enlace de ejemplo",
+    "items": [
+      {
+        "title": "Copia el enlace",
+        "body": "Abre el pin, el tablero o el perfil en la app o en la web. Toca **Compartir** y luego **Copiar enlace**, o copia la dirección con `/pin/`. Los enlaces cortos `pin.it` también sirven."
+      },
+      {
+        "title": "Pégalo en PintDownload",
+        "body": "Pega el enlace público en el recuadro de arriba y toca **Descargar**. Sirve para videos, fotos, GIF, tableros y perfiles."
+      },
+      {
+        "title": "Revisa y guarda",
+        "body": "Elige la calidad si hay varias y guarda el archivo en Descargas, Fotos o Galería. Los tableros y perfiles se descargan en un ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre descargar de Pinterest",
+    "items": [
+      {
+        "q": "¿Cómo descargo de Pinterest sin cuenta?",
+        "a": "Copia el enlace del pin en la app o en la web y pégalo en PintDownload. No necesitas iniciar sesión en Pinterest ni crear una cuenta aquí: solo funciona con contenido público."
+      },
+      {
+        "q": "¿PintDownload es gratis?",
+        "a": "Sí. Descargar videos, fotos, GIF, tableros y perfiles públicos es gratis y no pide registro."
+      },
+      {
+        "q": "¿Esto es la app de Pinterest?",
+        "a": "No. PintDownload es una página web independiente y no está afiliado a Pinterest. Si quieres instalar la app oficial de Pinterest, búscala en la tienda de apps de tu celular o en Microsoft Store."
+      },
+      {
+        "q": "¿Tengo que instalar una app o un APK?",
+        "a": "No. Todo pasa en el navegador (Chrome, Safari, Edge o Samsung Internet). Desconfía de las páginas que te piden instalar un APK para descargar de Pinterest."
+      },
+      {
+        "q": "¿Cómo copio el enlace de un pin en la app?",
+        "a": "Abre el pin, toca **Compartir** y luego **Copiar enlace**. La app copia un enlace corto `pin.it`, que PintDownload acepta tal cual."
+      },
+      {
+        "q": "¿Los archivos salen con marca de agua?",
+        "a": "No añadimos ninguna. El archivo es el que Pinterest publica; si el creador puso su nombre o un texto dentro del video, eso sigue ahí."
+      },
+      {
+        "q": "¿Qué no funciona?",
+        "a": "Pines privados, tableros secretos, enlaces que piden iniciar sesión y pines eliminados. Tampoco aumentamos la calidad artificialmente: recibes la mejor versión que Pinterest publica para ese pin."
+      },
+      {
+        "q": "¿Funciona en iPhone, Android y PC?",
+        "a": "Sí. Abre pintdownload.app en Safari, Chrome o Edge. Hay guías con los pasos para [[download-pinterest-videos-iphone-android|el celular]] y para [[how-to-download-pinterest-video-on-laptop|la PC]]."
+      },
+      {
+        "q": "¿Debo dar crédito a quien creó el contenido?",
+        "a": "Sí. Si usas el video o la foto de otra persona en algo que publicas, menciona al creador y respeta sus derechos. Que sea público no significa que tengas permiso para reutilizarlo."
+      }
+    ]
+  },
+  "related": {
+    "title": "Una herramienta para cada enlace"
+  },
+  "schema": {
+    "appName": "Descargador de Pinterest — PintDownload",
+    "howToName": "Cómo descargar videos, fotos, GIF, tableros y perfiles de Pinterest",
+    "howToDescription": "Copia un enlace público de Pinterest, pégalo en PintDownload, revisa el resultado y guarda el archivo o el ZIP."
+  },
+  "guides": {
+    "title": "Guías paso a paso",
+    "intro": "Instrucciones por dispositivo y por destino, con los nombres de los menús que verás en tu pantalla.",
+    "items": [
+      {
+        "page": "how-to-download-pinterest-videos",
+        "tag": "Guía",
+        "title": "Cómo descargar videos de Pinterest",
+        "blurb": "El método completo, del enlace al MP4, en el celular o en la PC."
+      },
+      {
+        "page": "how-to-download-pinterest-video-in-gallery",
+        "tag": "Galería",
+        "title": "Guardar videos de Pinterest en la galería",
+        "blurb": "Que el video aparezca en Fotos o en la Galería, y qué hacer si no está."
+      },
+      {
+        "page": "download-pinterest-videos-iphone-android",
+        "tag": "Celular",
+        "title": "Descargar videos de Pinterest en el celular",
+        "blurb": "Pasos en Safari para iPhone y en Chrome para Android, sin instalar apps."
+      },
+      {
+        "page": "how-to-download-pinterest-video-on-laptop",
+        "tag": "PC",
+        "title": "Descargar videos de Pinterest en PC",
+        "blurb": "Windows, Mac o Chromebook: copia el enlace y guarda el MP4 en Descargas."
+      }
+    ]
+  },
+  "credit": {
+    "h2": "Da crédito a quien lo creó",
+    "body": "Si usas el video o la imagen de otra persona en algo que publicas (Reels, TikTok, YouTube, anuncios), **menciona al creador**. Guardarlo para verlo sin conexión está bien; volver a publicarlo sin crédito ni permiso, no."
+  },
+  "datePublished": "2026-10-15",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "infra-routing (es pilot); revisado por writer-es (agent), 2026-10-16",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: concordancia \"herramienta independiente, sin afiliación\"; \"dominios locales\"; \"aumentamos la calidad artificialmente\""
+  }
+}

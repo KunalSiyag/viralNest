@@ -1,0 +1,441 @@
+/**
+ * Island catalog, Italian (tu; sentence case; typographic apostrophe ’).
+ * Same keys and {tokens} as en.ts, every plural category
+ * Intl.PluralRules('it') lists (one, many, other). "file", "Pin", "foto" and
+ * "slide" are invariable, so most plural maps only change around them.
+ * Vocabulary: docs/i18n/research/it.json glossary (link, il Pin/i Pin, Pin
+ * video, bacheca/bacheche, la GIF, Condividi › Copia link, Galleria/Foto,
+ * tagliando, INGRESSO SINGOLO, N., ANNULLATO, Ritira, «uno ZIP»).
+ * Buttons say "Scarica"; the sticky bar avoids "Salva", which on Pinterest
+ * means saving a Pin to a board. No → in display strings: use ›.
+ */
+import type { IslandMessages } from './types';
+
+export const ISLAND: IslandMessages = {
+  lang: 'it',
+
+  variants: {
+    hub: {
+      singleTab: 'Pin, bacheca o profilo',
+      placeholder: 'Incolla qui il link di Pinterest… es. https://pin.it/…',
+      ariaLabel: 'Link di un Pin, di una bacheca o di un profilo Pinterest',
+      submitLabel: 'Scarica',
+      hint: 'Link pubblici di Pin, bacheche o profili. Bacheche e profili si scaricano in uno ZIP.',
+      expect: 'In attesa di un link',
+    },
+    pin: {
+      singleTab: 'Link del Pin',
+      placeholder: 'Incolla il link del Pin… https://pinterest.com/pin/… o pin.it/…',
+      ariaLabel: 'Link di un Pin di Pinterest',
+      submitLabel: 'Scarica il Pin',
+      hint: 'Funziona con Pin immagine, Pin video, GIF e caroselli (tutte le slide).',
+      expect: 'Accetta il link di un Pin',
+    },
+    video: {
+      singleTab: 'Link del Pin video',
+      placeholder: 'Incolla il link del Pin video… https://pinterest.com/pin/… o pin.it/…',
+      ariaLabel: 'Link di un Pin video di Pinterest',
+      submitLabel: 'Scarica video',
+      hint: 'Salva l’MP4 (di solito 720p, 1080p quando il Pin ce l’ha). Dal suo audio puoi anche ricavare un MP3, creato nel tuo browser.',
+      expect: 'Accetta un Pin video',
+    },
+    image: {
+      singleTab: 'Link del Pin immagine',
+      placeholder: 'Incolla il link del Pin immagine… https://pinterest.com/pin/…',
+      ariaLabel: 'Link di un Pin immagine di Pinterest',
+      submitLabel: 'Scarica immagine',
+      hint: 'Salva la dimensione più grande che Pinterest pubblica (fino a 1200 px di larghezza). Nei caroselli, tutte le slide.',
+      expect: 'Accetta un Pin immagine',
+    },
+    gif: {
+      singleTab: 'Link del Pin GIF',
+      placeholder: 'Incolla il link del Pin GIF… https://pinterest.com/pin/… o pin.it/…',
+      ariaLabel: 'Link di un Pin GIF di Pinterest',
+      submitLabel: 'Scarica GIF',
+      hint: 'Salva la GIF animata che si ripete, non un JPG fermo sul primo fotogramma.',
+      expect: 'Accetta un Pin GIF',
+    },
+    board: {
+      singleTab: 'Link della bacheca',
+      placeholder: 'Incolla il link della bacheca… https://pinterest.com/nomeutente/nome-bacheca/',
+      ariaLabel: 'Link di una bacheca Pinterest',
+      submitLabel: 'Vedi i Pin della bacheca',
+      hint: 'Incolla il link di una bacheca pubblica per vedere i suoi Pin, poi scarica lo ZIP completo.',
+      expect: 'Accetta il link di una bacheca',
+    },
+    profile: {
+      singleTab: 'Link del profilo',
+      placeholder: 'Incolla il link del profilo… https://pinterest.com/nomeutente/',
+      ariaLabel: 'Link di un profilo Pinterest',
+      submitLabel: 'Scarica il profilo (ZIP)',
+      hint: 'Scarica in uno ZIP i Pin pubblici di questo account.',
+      expect: 'Accetta il link di un profilo',
+    },
+    'profile-picture': {
+      singleTab: 'Link del profilo',
+      placeholder: 'Incolla il link del profilo… https://pinterest.com/nomeutente/',
+      ariaLabel: 'Link del profilo Pinterest di cui vuoi la foto',
+      submitLabel: 'Vedi la foto profilo',
+      hint: 'Salva la foto profilo più grande che Pinterest pubblica per un account pubblico.',
+      expect: 'Accetta il link di un profilo',
+    },
+  },
+
+  ticket: {
+    admitOne: 'Ingresso · link pubblico',
+    serial: 'N. {serial}',
+    serialEmpty: 'N. ——————',
+    modeGroup: 'Modalità link',
+    oneLink: 'Un link',
+    upToFive: 'Fino a 5',
+    hubLabel: 'Link di Pinterest',
+    clearAria: 'Cancella il link',
+    pasteAria: 'Incolla il link dagli appunti',
+    paste: 'Incolla',
+    batchLabel: 'Più link di Pinterest (fino a 5, uno per riga)',
+    batchPlaceholder: 'Un link per riga, fino a 5…\nhttps://pinterest.com/pin/1234567/\nhttps://pin.it/abc1234',
+    processing: 'Lettura del link…',
+    batchProcessing: 'Lettura dei link…',
+    batchSubmit: 'Scarica tutti',
+    toolsNav: 'Scegli lo strumento adatto al tuo link',
+    notPinterestHelp: 'Questo non è un link di Pinterest. Nell’app tocca Condividi › Copia link e incollalo qui.',
+  },
+
+  stamps: {
+    notPinterest: 'Non è Pinterest',
+    board: 'Bacheca › ZIP',
+    profileZip: 'Profilo › ZIP',
+    profileAvatar: 'Profilo › Foto',
+    pinShort: 'Pin · link breve',
+    pin: 'Pin',
+  },
+
+  marks: { void: 'Annullato', partial: 'Parziale', packed: 'Compresso', done: 'Fatto' },
+
+  chips: {
+    pin: 'Pin',
+    video: 'Video MP4',
+    image: 'Foto',
+    gif: 'GIF',
+    board: 'Bacheca ZIP',
+    profile: 'Profilo ZIP',
+    avatar: 'Foto profilo',
+  },
+
+  routeNotice: {
+    boardLink: 'È il link di una bacheca · ora usi lo strumento per le bacheche',
+    profileLink: 'È il link di un profilo · ora il modulo scarica il profilo in uno ZIP',
+    gif: 'È una GIF animata · ora usi lo strumento per le GIF',
+    video: 'È un Pin video · ora usi lo strumento per i video',
+    carousel: {
+      one: 'È un carosello con {n} foto · ora usi lo strumento per le immagini',
+      many: 'È un carosello con {n} foto · ora usi lo strumento per le immagini',
+      other: 'È un carosello con {n} foto · ora usi lo strumento per le immagini',
+    },
+    board: 'È una bacheca di Pinterest · ora usi lo strumento per le bacheche',
+    profile: 'È un profilo di Pinterest · ora il modulo scarica il profilo in uno ZIP',
+    open: 'Apri lo strumento',
+  },
+
+  progress: {
+    reading: 'Lettura dell’audio del video…',
+    making: 'Creazione dell’MP3… {pct}%',
+    connecting: 'Connessione a Pinterest…',
+    downloadingOf: 'Download in corso… {loaded} di {total} ({pct}%)',
+    downloading: 'Download in corso… {loaded}',
+  },
+
+  bytes: { B: 'B', KB: 'KB', MB: 'MB', GB: 'GB' },
+
+  live: {
+    readingLink: 'Sto leggendo il tuo link…',
+    readingLinks: 'Sto leggendo i tuoi link…',
+    packingZip: 'Creazione dello ZIP, {pct}% completato',
+    making: 'Creazione di {file} nel tuo browser…',
+    makingPct: 'Creazione di {file} nel tuo browser, {pct}% completato',
+    downloading: 'Download di {file}…',
+    downloadingPct: 'Download di {file}, {pct}% completato',
+    zipPacked: {
+      one: 'ZIP pronto con {packed} di {total} file. Download avviato.',
+      many: 'ZIP pronto con {packed} di {total} file. Download avviato.',
+      other: 'ZIP pronto con {packed} di {total} file. Download avviato.',
+    },
+    started: 'Download avviato: {file}',
+    copied: 'Copiato negli appunti.',
+  },
+
+  kinds: {
+    image: 'Pin immagine',
+    video: 'Pin video',
+    gif: 'Pin GIF',
+    carousel: 'Carosello',
+    board: 'Bacheca',
+    profile: 'Profilo',
+    avatar: 'Foto profilo',
+  },
+
+  voidCopy: {
+    validation: { title: 'Prima incolla un link' },
+    link: {
+      title: 'Questo non è un link di Pinterest',
+      hint: 'Nell’app Pinterest tocca Condividi › Copia link e incollalo nel tagliando.',
+    },
+    private: {
+      title: 'Niente di pubblico da ritirare',
+      hint: 'Si possono salvare solo Pin, bacheche e profili pubblici. Le bacheche segrete e gli account privati restano privati.',
+    },
+    removed: { title: 'Questo Pin è stato rimosso' },
+    download: { title: 'Il file non si è scaricato', hint: 'A volte Pinterest smette di servire un file. Riprova con lo stesso link.' },
+    other: { title: 'Non riusciamo a ritirare il file da questo link', hint: 'Controlla che il link si apra su Pinterest e riprova.' },
+  },
+
+  receipt: {
+    ready: 'Pronto · {kind}',
+    fetching: 'Recupero da Pinterest in corso…',
+    another: 'Scarica un altro',
+    tryAnother: 'Prova un altro link',
+    guide: 'Leggi la guida passo passo',
+    savesAs: 'Si salva come {file}',
+    download: 'Scarica {format}',
+    downloadShort: 'Scarica',
+    itemAria: '{verb}{item}',
+    downloadProgressAria: 'Avanzamento del download',
+    zipProgressAria: 'Avanzamento dello ZIP',
+    zipProgressText: {
+      one: '{done} di {total} file nello ZIP',
+      many: '{done} di {total} file nello ZIP',
+      other: '{done} di {total} file nello ZIP',
+    },
+    packing: {
+      one: 'Creazione dello ZIP: {done} di {total} file…',
+      many: 'Creazione dello ZIP: {done} di {total} file…',
+      other: 'Creazione dello ZIP: {done} di {total} file…',
+    },
+    cancel: 'Annulla',
+    cancelSr: ' ZIP',
+    downloadZip: 'Scarica ZIP ({n})',
+    zipPartial: {
+      one: '{name} contiene {packed} di {total} file. File non recuperato da Pinterest: {missing}. Salvalo a parte.',
+      many: '{name} contiene {packed} di {total} file. File non recuperati da Pinterest: {missing}. Salvali uno alla volta.',
+      other: '{name} contiene {packed} di {total} file. File non recuperati da Pinterest: {missing}. Salvali uno alla volta.',
+    },
+    zipAll: {
+      one: '{name}: {total} file. Download avviato.',
+      many: '{name}: tutti i {total} file. Download avviato.',
+      other: '{name}: tutti i {total} file. Download avviato.',
+    },
+    noMp3: ' In questo ZIP non c’è l’MP3. {reason}',
+    started: 'Download avviato: {file}',
+    startedShort: 'Download avviato',
+    copyLink: 'Copia link',
+    linkCopied: 'Link copiato',
+    save: 'Salva {format}',
+    tileSr: ', {name}',
+    tagVideo: 'Video',
+    tagGif: 'GIF',
+  },
+
+  specs: {
+    slides: 'Slide',
+    images: 'Immagini',
+    videos: 'Video',
+    gifs: 'GIF',
+    pins: 'Pin',
+    boards: 'Bacheche',
+    format: 'Formato',
+    crop: 'Ritaglio',
+    uncropped: 'Nessuno',
+    resolution: 'Risoluzione',
+    plays: 'Riproduzione',
+    looping: 'In loop',
+    quality: 'Qualità',
+  },
+
+  fallbacks: {
+    pin: 'Pin di Pinterest',
+    carousel: 'Carosello di Pinterest',
+    board: 'Bacheca di Pinterest',
+    profile: 'Profilo di Pinterest',
+    user: 'Utente di Pinterest',
+    slide: 'Slide {n}',
+    pinN: 'Pin {n}',
+    slideSr: 'slide {n}',
+    pinSr: 'Pin {n}',
+  },
+
+  carousel: { everySlide: 'Tutte le slide' },
+
+  avatar: {
+    alt: 'Foto profilo di {name}',
+    openFull: 'Apri in grande',
+    newTabSr: ' (si apre in una nuova scheda)',
+    promo: 'Vuoi tutti i Pin di questo profilo? Usa il {link}.',
+    profileLink: 'download del profilo in ZIP',
+  },
+
+  collection: {
+    byUser: 'di @{user}',
+    atUser: '@{user}',
+    alsoOnProfile: 'Anche su questo profilo',
+    profilePicture: 'Foto profilo',
+    largestSize: 'La dimensione più grande che Pinterest pubblica',
+    profilePictureSr: ' foto profilo (JPG)',
+    boardsHeading: 'Bacheche ({n})',
+    boardsHint: 'Apri una bacheca per ritirare solo i suoi Pin.',
+    boardPins: { one: '{n} Pin', many: '{n} Pin', other: '{n} Pin' },
+    openBoard: 'Apri la bacheca',
+    pinsHeading: 'I Pin',
+    showing: 'Ne vedi {shown} su {total}. Lo ZIP li contiene tutti.',
+    loadMore: 'Carica altri {n}',
+    showAll: 'Mostrali tutti ({n})',
+  },
+
+  single: {
+    previewAria: 'Anteprima: {title}',
+    playPreview: 'Anteprima',
+    freeze: 'Ferma',
+    playLoop: 'Riproduci in loop',
+    alsoInPin: 'In questo Pin trovi anche',
+    videoName: 'Video',
+    withSound: 'Con audio',
+    videoSr: ' video (MP4)',
+    audioName: 'Audio, {kbps} kbps',
+    audioNote: 'Creato nel tuo browser dall’audio del video',
+    audioSr: ' audio (MP3)',
+    coverName: 'Copertina',
+    coverNote: 'L’immagine fissa che mostra Pinterest',
+    coverSr: ' copertina ({format})',
+    packName: 'Tutto',
+    packCover: 'copertina',
+    packSr: ' tutto (ZIP)',
+    sendToPhone: 'Al telefono',
+    hideQr: 'Nascondi il QR',
+    crop: 'Ritaglia',
+    trim: 'Taglia l’audio',
+    qrAltVideo: 'Codice QR con il link al video: inquadralo per aprirlo sul telefono',
+    qrAltImage: 'Codice QR con il link all’immagine: inquadralo per aprirla sul telefono',
+    qrText:
+      'Inquadralo con la fotocamera del telefono per aprire subito il file, poi tieni premuto per salvarlo in Galleria o in Foto. Niente app né login.',
+  },
+
+  extras: {
+    summary: 'Colori, tag e testi per ripubblicare',
+    palette: 'Palette colori',
+    paletteHint: 'Sfumature del colore principale del Pin. Tocca per copiare.',
+    copied: 'Copiato',
+    tags: 'Tag',
+    copyTags: 'Copia i tag',
+    repostCaption: 'Testo per ripubblicare',
+    captionFor: 'Testo per',
+    copyCaption: 'Copia testo e tag',
+    copiedCaption: 'Testo copiato',
+    captionReels: '✨ {title}\n\nTagga chi deve assolutamente vederlo! 👇\n\n📌 Salvato con PintDownload\n\n{tags} #reels #viral #aesthetic',
+    captionTiktok: 'POV: {title} 🌿🔥\n\nSeguimi per altri Pin e idee ogni giorno!\n\n{tags} #fyp #viral #pinterest #perte',
+    captionShorts: '🔥 {title} | Pinterest aesthetic\n\nMetti like e iscriviti per nuovi contenuti ogni giorno!\n\n{tags} #shorts #pintdownload #pinterest',
+  },
+
+  batch: {
+    ready: { one: 'Pronto · {n} Pin', many: 'Pronto · {n} Pin', other: 'Pronto · {n} Pin' },
+    heading: { one: '{n} file ritirato', many: '{n} file ritirati', other: '{n} file ritirati' },
+    downloadAll: 'Scarica tutti ({n})',
+    oneAfterAnother: 'I file si scaricano uno dopo l’altro.',
+  },
+
+  recent: { heading: 'Link recenti' },
+
+  errors: {
+    emptyLink: 'Prima incolla un link pubblico di Pinterest. Nell’app: Condividi › Copia link.',
+    emptyBatch: 'Incolla almeno un link di Pinterest, uno per riga.',
+    batchInvalid: 'Inserisci link di Pinterest validi (es. https://pinterest.com/pin/... o https://pin.it/...)',
+    batchFailed: 'Non riusciamo a leggere questi link. Controlla che i link di Pinterest siano pubblici.',
+    extractFailed: 'Non riusciamo a recuperare il contenuto da Pinterest.',
+    unknown: 'Qualcosa è andato storto. Controlla il link di Pinterest e riprova.',
+    qr: 'Non riusciamo a creare il codice QR. Copia il link al suo posto.',
+    copyLink: 'Non riusciamo a copiare il link. Tieni premuto il pulsante di download per copiarlo.',
+    fileUnavailable:
+      'Non riusciamo a scaricare questo file. Il Pin potrebbe essere privato, oppure Pinterest non serve più quel file.',
+    noBody: 'Il server non ha inviato una risposta',
+    downloadFailed: 'Download non riuscito.',
+    zipNothing: 'Non siamo riusciti a mettere nessun file nello ZIP. Potrebbero non essere disponibili.',
+    zipFailed: 'Non riusciamo a creare l’archivio ZIP.',
+    zipPartial: {
+      one: 'ZIP pronto con {ok} di {total} file (non riusciti: {failed}).',
+      many: 'ZIP pronto con {ok} di {total} file (non riusciti: {failed}).',
+      other: 'ZIP pronto con {ok} di {total} file (non riusciti: {failed}).',
+    },
+    noMp3Video: 'Non siamo riusciti a recuperare il video da Pinterest.',
+    noMp3Browser: 'Questo browser non è riuscito a crearlo.',
+  },
+
+  api: {
+    invalid_input: 'Inserisci un link di Pinterest valido.',
+    blocked: 'Questo contenuto è stato rimosso su richiesta dell’autore.',
+    not_pinterest:
+      'Link non valido. Inserisci un link di Pinterest valido (es. https://pinterest.com/pin/... o https://pin.it/...)',
+    left_pinterest: 'Questo link porta fuori da Pinterest, quindi non c’è niente da scaricare.',
+    removed_or_private:
+      'Questo Pin è stato rimosso o reso privato, quindi non c’è niente da scaricare. Controlla che il link si apra su Pinterest.',
+    avatar_not_found: 'Non troviamo la foto profilo di questo account Pinterest. Il profilo potrebbe essere privato.',
+    collection_empty_board: 'Non troviamo Pin pubblici in questa bacheca. Potrebbe essere segreta o vuota.',
+    collection_empty_profile: 'Non troviamo Pin pubblici in questo profilo. Potrebbe essere privato o vuoto.',
+    collection_unavailable: 'Pinterest non ha inviato i Pin di questa bacheca in questo momento. Riprova tra un minuto.',
+    no_media: 'Non troviamo niente da scaricare in questo link. Controlla che il Pin sia pubblico.',
+    access_denied: 'Accesso negato.',
+    origin_denied: 'L’uso diretto dell’API non è consentito.',
+    server_error: 'Non riusciamo a elaborare il link di Pinterest. Controlla che sia un Pin pubblico valido.',
+  },
+
+  mp3: {
+    no_audio: 'Questo video non ha audio da salvare in MP3. Scarica l’MP4.',
+    unsupported:
+      'Questo browser non riesce a leggere l’audio del video, quindi non può creare l’MP3. Prova Chrome, Edge, Safari o Firefox, oppure scarica l’MP4.',
+    failed: 'Non siamo riusciti a creare l’MP3. Riprova, oppure scarica l’MP4, che ha anche l’audio.',
+    aborted: 'MP3 annullato.',
+  },
+
+  trimmer: {
+    title: 'Taglia l’audio',
+    reading: 'Lettura dell’audio del video…',
+    loadFailed: 'Non riusciamo a caricare l’audio di questo video. Controlla la connessione e riprova.',
+    start: 'Inizio: {time}',
+    end: 'Fine: {time}',
+    seconds: '{n} s',
+    startAria: 'Inizio del taglio, in secondi',
+    endAria: 'Fine del taglio, in secondi',
+    length: 'Durata della clip: {len}',
+    lengthValue: '{n} s',
+    pause: 'Pausa',
+    listen: 'Ascolta la clip',
+    cancel: 'Annulla',
+    wav: 'Clip in WAV',
+    mp3: 'Clip in MP3 ({kbps} kbps)',
+    exportFailed: 'Non siamo riusciti a creare la clip in {format}. Riprova.',
+    making: 'Creazione dell’MP3… {pct}%',
+    note: 'Creato nel tuo browser dall’audio del video. Non viene caricato niente.',
+  },
+
+  cropper: {
+    title: 'Ritaglia e ridimensiona',
+    pick: 'Scegli il formato per i social',
+    presets: {
+      original: 'Intera',
+      square: '1:1 quadrato (post IG)',
+      story: '9:16 storia/reel (TikTok)',
+      portrait: '4:5 verticale (IG)',
+      landscape: '16:9 orizzontale (YT)',
+    },
+    previewAlt: 'Anteprima del ritaglio',
+    processing: 'Elaborazione dell’immagine…',
+    cancel: 'Annulla',
+    download: 'Scarica l’immagine ({ratio})',
+  },
+
+  sticky: {
+    close: 'Chiudi la barra per incollare',
+    label: 'Incolla il link di Pinterest',
+    placeholder: 'Link…',
+    paste: 'Incolla',
+    save: 'Scarica',
+    top: 'Torna su',
+  },
+};

@@ -1,0 +1,145 @@
+{
+  "pageId": "pinterest-video-downloader",
+  "locale": "nl",
+  "meta": {
+    "title": "Pinterest video downloaden — gratis als HD MP4, zonder app",
+    "description": "Plak de link van een openbare videopin en download de Pinterest-video als MP4 in de beste beschikbare kwaliteit. Gratis, geen account, geen watermerk."
+  },
+  "keywords": {
+    "primary": "pinterest video downloaden",
+    "secondary": [
+      "pinterest video's downloaden",
+      "pinterest video downloaden online",
+      "pinterest video downloader gratis",
+      "pinterest video opslaan",
+      "filmpjes van pinterest downloaden",
+      "van pinterest naar mp4"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest video downloaden",
+    "short": "Video’s",
+    "card": {
+      "title": "Video downloaden",
+      "blurb": "Openbare videopins als MP4. Plak een pinlink of de korte link uit de app.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest video downloaden",
+    "lede": "Openbare videopins als **MP4**, met geluid als de video dat heeft. Gratis, zonder account en zonder watermerk van ons."
+  },
+  "intro": [
+    "Plak de link van een **videopin** en download de **MP4** die Pinterest publiceert. Geen app, geen extensie: het werkt gewoon in je browser. Ook de korte filmpjes die in de Pinterest-app voorbijkomen zijn videopins en werken hier.",
+    "Plak een adres met `/pin/` of een korte pin.it-link uit de app. Het werkt alleen met openbare videopins."
+  ],
+  "features": [
+    {
+      "h": "Alleen video, als MP4",
+      "p": "Voor pins die afspelen. Is het een stilstaande foto, gebruik dan [[pinterest-image-downloader|Pinterest foto downloaden]]."
+    },
+    {
+      "h": "De kwaliteit die Pinterest publiceert",
+      "p": "Meestal 720p, en 1080p als de pin dat heeft. Zijn er meer versies, dan kies je zelf welke je opslaat."
+    },
+    {
+      "h": "Telefoon, laptop en pc",
+      "p": "Werkt in Safari op de iPhone, Chrome op Android en elke gangbare browser op je computer."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Van Pinterest naar MP4, zonder converter",
+      "paragraphs": [
+        "Zoek je hoe je **van Pinterest naar MP4** gaat? Daar heb je geen aparte converter voor nodig. Pinterest speelt video’s in kleine stukjes af, maar publiceert bij een videopin ook gewone MP4-bestanden. PintDownload zoekt die MP4 op en geeft je hem als één bestand.",
+        "Er wordt niets omgezet of opnieuw gecodeerd. De MP4 heeft dus precies de kwaliteit die Pinterest levert, met het geluid erbij als de video geluid heeft."
+      ]
+    },
+    {
+      "h2": "Video, foto, pin of bord: welke tool?",
+      "paragraphs": [
+        "Gebruik deze pagina als de pin **afspeelt** en je één MP4 wilt. Voor een stilstaande foto is er [[pinterest-image-downloader|Pinterest foto downloaden]]. Weet je niet of het een foto, GIF of carrousel is, probeer dan [[pinterest-pin-downloader|Pinterest pin downloaden]]. Wil je veel pins tegelijk, download dan [[pinterest-board-downloader|een heel bord als ZIP]]."
+      ],
+      "list": [
+        "**Videopin › MP4**: deze pagina.",
+        "**Bewegende GIF**: [[pinterest-gif-downloader|Pinterest GIF downloaden]].",
+        "**Foto of illustratie**: de foto-downloader.",
+        "**Heel bord**: de bord-downloader."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest-video downloaden in 4 stappen",
+    "intro": "Werkt met openbare videopins. Een bordlink hoort bij [[pinterest-board-downloader|Pinterest bord downloaden]].",
+    "exampleLabel": "Gangbare korte link",
+    "items": [
+      {
+        "title": "Zoek een videopin",
+        "body": "Open een pin die echt afspeelt, geen foto. Kijk eerst of de video op Pinterest zelf werkt."
+      },
+      {
+        "title": "Kopieer de link van de video",
+        "body": "Tik op **Delen** en dan op **Link kopiëren**, of kopieer het adres met `/pin/` uit je browser. Korte pin.it-links uit de app werken ook."
+      },
+      {
+        "title": "Plak hem en download",
+        "body": "Plak de link in het vak hierboven en tik op **Video downloaden**. Staan er meer kwaliteiten, kies er dan een."
+      },
+      {
+        "title": "Sla de MP4 op",
+        "body": "Download de MP4. Op je telefoon komt hij eerst in Downloads of in de app Bestanden; van daaruit zet je hem in Foto’s of je galerij."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Vragen over Pinterest-video’s downloaden",
+    "items": [
+      {
+        "q": "Hoe download je een Pinterest-video als MP4?",
+        "a": "Kopieer de link van de videopin in de app (**Delen** › **Link kopiëren**) of in je browser, plak hem hierboven en tik op **Video downloaden**. Het werkt alleen met openbare videopins."
+      },
+      {
+        "q": "Welke kwaliteit krijg ik: 720p, 1080p of 4K?",
+        "a": "Wat Pinterest publiceert: meestal 720p, en 1080p als de pin dat heeft. Zijn er meer versies, dan zie je ze allemaal. 4K publiceert Pinterest bijna nooit, en wij schalen een video nooit op."
+      },
+      {
+        "q": "Werkt het op iPhone en Android? Waar staat de video daarna?",
+        "a": "Ja. Open pintdownload.app in Safari of Chrome, plak de link en download de MP4. Op de iPhone staat hij daarna in de app **Bestanden**, op Android in **Downloads**. Hoe je hem in Foto’s of je galerij krijgt, lees je in [[how-to-download-pinterest-video-in-gallery|Pinterest video opslaan in je galerij]]."
+      },
+      {
+        "q": "Ziet de maker dat ik de video download?",
+        "a": "PintDownload stuurt de maker geen melding, en omdat je niet inlogt, loopt het downloaden niet via je Pinterest-account. Wil je de video ergens publiceren, vraag het de maker dan gewoon: dat is netjes en voorkomt gedoe."
+      },
+      {
+        "q": "Kan ik alleen het geluid downloaden?",
+        "a": "Ja, als de video geluid heeft. Nadat de pin is opgehaald, maakt de MP3-regel in je browser een MP3 (192 kbps) van het geluid. Meer daarover lees je op de Engelstalige pagina [[en!:/pinterest-audio-downloader|Pinterest audio downloader]]."
+      },
+      {
+        "q": "Waarom wordt er geen video in mijn pin gevonden?",
+        "a": "Misschien is de pin een foto of een GIF, verwijst hij naar een andere website, of is hij privé of verwijderd. Is het geen video, probeer dan [[pinterest-pin-downloader|Pinterest pin downloaden]]."
+      },
+      {
+        "q": "Kan ik alle video’s van een bord in één keer downloaden?",
+        "a": "Deze pagina doet één pin tegelijk. Voor veel pins gebruik je [[pinterest-board-downloader|Pinterest bord downloaden]]: die zet de pins van een openbaar bord in één ZIP."
+      },
+      {
+        "q": "Is het gratis en zonder watermerk?",
+        "a": "Ja. Het is gratis voor openbare video’s en we zetten er zelf geen watermerk op. Wat de maker in beeld heeft gezet, zoals een naam of tekst, blijft wel staan."
+      }
+    ]
+  },
+  "related": {
+    "title": "Andere tools voor Pinterest"
+  },
+  "schema": {
+    "appName": "Pinterest video downloaden — PintDownload",
+    "howToName": "Een Pinterest-video downloaden als MP4",
+    "howToDescription": "Stappen om een openbare videopin van Pinterest op te slaan als MP4-bestand."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-nl",
+    "nativeReviewer": "review-nl (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, je register, glossary (pins, bord, videopin, afhaalbon, omslag), search vocabulary, honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/nl: Afbeelding downloaden (desktop), Download afbeelding (app), drie puntjes, Delen › Link kopiëren, deelpictogram, Bewaren, Privébord. OS labels (Bewaar video/afbeelding, Bestanden, Mijn bestanden, Geanimeerd, album Download) are the standard Dutch iOS/Android names, not checked on a device."
+  }
+}

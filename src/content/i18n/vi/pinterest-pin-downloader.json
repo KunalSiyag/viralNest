@@ -1,0 +1,145 @@
+{
+  "pageId": "pinterest-pin-downloader",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải Ghim Pinterest bằng link: ảnh, video, GIF miễn phí",
+    "description": "Tải Ghim Pinterest bằng link, kể cả link pin.it: ảnh nét, video MP4, GIF hoặc từng ảnh trong Ghim nhiều ảnh. Miễn phí, không cần đăng nhập, không cài app."
+  },
+  "keywords": {
+    "primary": "tải ghim pinterest",
+    "secondary": [
+      "cách tải ghim trên pinterest",
+      "tải ghim pinterest về máy tính",
+      "tải pin pinterest",
+      "tải video bằng liên kết pinterest",
+      "pinterest pin downloader"
+    ]
+  },
+  "nav": {
+    "label": "Tải Ghim Pinterest",
+    "short": "Ghim",
+    "card": {
+      "title": "Tải Ghim Pinterest",
+      "blurb": "Một link Ghim, đúng file bên trong: ảnh, video, GIF hoặc đủ từng ảnh.",
+      "badge": "Ghim"
+    }
+  },
+  "hero": {
+    "h1": "Tải Ghim Pinterest bằng link",
+    "lede": "Một link Ghim, đúng file bên trong: **ảnh**, **video**, **GIF** hoặc **từng ảnh** của Ghim nhiều ảnh."
+  },
+  "intro": [
+    "Có link một Ghim mà không rõ đó là ảnh, video hay GIF? Bạn không cần biết trước. Trang này đọc link, nhận ra loại Ghim và đưa đúng file: **JPG** cho ảnh, **MP4** cho video, **GIF** còn chuyển động, và **đủ từng ảnh** nếu là Ghim nhiều ảnh.",
+    "Nhận địa chỉ trên trình duyệt (`pinterest.com/pin/…`) lẫn link rút gọn `pin.it` mà app sao chép, kể cả link người khác gửi qua Zalo. Chỉ Ghim công khai."
+  ],
+  "features": [
+    {
+      "h": "Một link, Ghim loại nào cũng được",
+      "p": "Ảnh, video, GIF hay Ghim nhiều ảnh: kết quả tự thay đổi theo Ghim. Video thì hiện thêm các mức chất lượng có sẵn."
+    },
+    {
+      "h": "Đủ từng ảnh của Ghim nhiều ảnh",
+      "p": "Ghim có nhiều ảnh thì bạn nhận đủ, không chỉ ảnh bìa. Tải từng ảnh hoặc gom cả vào một file ZIP."
+    },
+    {
+      "h": "Tối đa 5 Ghim một lần",
+      "p": "Chọn **Tối đa 5** phía trên ô nhập, dán mỗi dòng một link. Các file sẽ tải lần lượt."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Bạn nhận được gì theo từng loại Ghim",
+      "paragraphs": [
+        "Không cần chọn công cụ trước khi dán. Tùy Ghim, PintDownload sẽ hiện:"
+      ],
+      "list": [
+        "**Ghim ảnh:** ảnh ở kích thước lớn nhất Pinterest cung cấp, rộng tối đa khoảng 1.200 px. Xem thêm [[pinterest-image-downloader|tải ảnh Pinterest]].",
+        "**Ghim video:** file MP4, thường 720p, 1080p khi Ghim có bản này; video có tiếng thì có thêm dòng MP3 tạo trong trình duyệt. Xem [[pinterest-video-downloader|tải video Pinterest]].",
+        "**GIF:** file .gif còn chuyển động, không phải ảnh tĩnh của khung hình đầu. Xem [[pinterest-gif-downloader|tải GIF Pinterest]].",
+        "**Ghim nhiều ảnh** (Pinterest gọi là Ghim băng chuyền): từng ảnh một, tải lẻ hoặc trong một file ZIP."
+      ]
+    },
+    {
+      "h2": "Tải Ghim khác với nút Lưu trên Pinterest",
+      "paragraphs": [
+        "Nút **Lưu** màu đỏ trên Pinterest chỉ thêm Ghim vào một bảng của bạn, ngay trong Pinterest; file không về điện thoại hay máy tính. Pinterest cũng tách bạch hai việc này: lưu là thêm vào bảng, tải mới là lưu file về thiết bị. Muốn có file, hãy chạm **biểu tượng chia sẻ** › **Sao chép liên kết** rồi tải ở đây."
+      ]
+    },
+    {
+      "h2": "Khi Ghim không tải được",
+      "paragraphs": [
+        "Có ba lý do hay gặp: Ghim nằm trong bảng bí mật hay tài khoản riêng tư, Ghim đã bị xóa, hoặc thứ bạn sao chép không phải link của một Ghim (ví dụ link kết quả tìm kiếm hay bảng tin nhà).",
+        "Cách thử nhanh: mở link trong cửa sổ ẩn danh. Nếu Pinterest đòi đăng nhập mới cho xem, Ghim đó không công khai và PintDownload cũng không đọc được."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tải Ghim trên Pinterest",
+    "intro": "Một link cho mọi loại Ghim công khai. Link bảng hoặc hồ sơ sẽ được chuyển sang đúng công cụ.",
+    "exampleLabel": "Link Ghim mẫu",
+    "items": [
+      {
+        "title": "Mở Ghim cần tải",
+        "body": "Mở Ghim ở chế độ xem lớn trong app hoặc trên pinterest.com, không phải lưới Ghim của bảng."
+      },
+      {
+        "title": "Sao chép liên kết",
+        "body": "Trong app: **biểu tượng chia sẻ** › **Sao chép liên kết**. Trên máy tính: sao chép địa chỉ có `/pin/`."
+      },
+      {
+        "title": "Dán và tải Ghim",
+        "body": "Dán link vào ô phía trên rồi bấm **Tải Ghim**. Kết quả hiện đúng loại file của Ghim đó."
+      },
+      {
+        "title": "Lưu file về máy",
+        "body": "Tải từng file, hoặc với Ghim nhiều ảnh thì tải cả gói ZIP. File vào thư mục Tải xuống của máy."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải Ghim",
+    "items": [
+      {
+        "q": "Link Ghim trông như thế nào?",
+        "a": "Là địa chỉ của một Ghim cụ thể: `pinterest.com/pin/` kèm một dãy số, hoặc link rút gọn `pin.it/…` mà app sao chép. Cả hai đều dán được ở đây."
+      },
+      {
+        "q": "Lấy link Ghim trên app và trên máy tính thế nào?",
+        "a": "Trong app, mở Ghim rồi chạm **biểu tượng chia sẻ** › **Sao chép liên kết**. Trên máy tính, mở Ghim và sao chép địa chỉ trên thanh địa chỉ (**Ctrl + L**, **Ctrl + C**)."
+      },
+      {
+        "q": "Ghim nhiều ảnh có tải được đủ từng ảnh không?",
+        "a": "Được. Khi Ghim có nhiều ảnh (Ghim băng chuyền), kết quả hiện đủ từng ảnh để bạn tải lẻ hoặc gom vào một file ZIP."
+      },
+      {
+        "q": "Vì sao link bảng hoặc hồ sơ không chạy ở trang này?",
+        "a": "Trang này chờ link của một Ghim. Cứ dán vào: ô tải sẽ báo và chuyển bạn sang [[pinterest-board-downloader|tải bảng Pinterest]] hoặc [[pinterest-profile-downloader|tải hồ sơ Pinterest]], hai công cụ gom nhiều Ghim vào file ZIP."
+      },
+      {
+        "q": "Tải Ghim khác gì bấm Lưu trên Pinterest?",
+        "a": "Bấm **Lưu** là thêm Ghim vào một bảng trên Pinterest. Tải Ghim là lưu file ảnh, video về điện thoại hay máy tính của bạn."
+      },
+      {
+        "q": "Có miễn phí không, có giới hạn lượt tải không?",
+        "a": "Miễn phí, không cần tài khoản và không có gói trả phí. Mỗi lần bạn dán được một link, hoặc tối đa 5 link với chế độ **Tối đa 5**."
+      },
+      {
+        "q": "Không cài app Pinterest thì có tải được không?",
+        "a": "Được. Ai gửi link Ghim cho bạn thì cứ dán thẳng vào đây; bạn không cần cài app hay đăng nhập Pinterest."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Tải Ghim Pinterest — PintDownload",
+    "howToName": "Cách tải Ghim Pinterest bằng link",
+    "howToDescription": "Dán link một Ghim công khai để tải ảnh, video MP4, GIF hoặc đủ từng ảnh của Ghim nhiều ảnh."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Carousel folded in here as 'Ghim nhiều ảnh' (research: no vi carousel page). 'Ghim băng chuyền' is Pinterest's own term (help.pinterest.com/vi node/1251)."
+  }
+}

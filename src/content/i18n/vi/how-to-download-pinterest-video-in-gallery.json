@@ -1,0 +1,123 @@
+{
+  "pageId": "how-to-download-pinterest-video-in-gallery",
+  "locale": "vi",
+  "meta": {
+    "title": "Lưu video Pinterest vào thư viện ảnh, album điện thoại",
+    "description": "Lưu video Pinterest vào thư viện ảnh: app Ảnh trên iPhone, Bộ sưu tập trên Samsung hay Google Photos. Tải MP4 bằng trình duyệt rồi lưu vào máy, không cần app."
+  },
+  "keywords": {
+    "primary": "lưu video pinterest vào thư viện ảnh",
+    "secondary": [
+      "tải video pinterest về thư viện ảnh",
+      "lưu video pinterest về album ảnh",
+      "lưu video pinterest về bộ sưu tập",
+      "cách lưu video trên pinterest về bộ sưu tập",
+      "tải video pinterest về thư viện ảnh iphone"
+    ]
+  },
+  "nav": {
+    "label": "Lưu vào thư viện ảnh",
+    "short": "Thư viện",
+    "card": {
+      "title": "Lưu vào thư viện ảnh",
+      "blurb": "Đưa video Pinterest vào app Ảnh, Bộ sưu tập hoặc Google Photos.",
+      "badge": "Album"
+    }
+  },
+  "hero": {
+    "h1": "Lưu video Pinterest vào thư viện ảnh",
+    "lede": "Tải **MP4** bằng trình duyệt rồi đưa vào app **Ảnh**, **Bộ sưu tập** hoặc **Google Photos**."
+  },
+  "intro": [
+    "Tải được video mới là một nửa chặng đường: trên iPhone, file MP4 nằm trong app **Tệp** trước; trên Android, nó vào thư mục **Download**. Bài này chỉ cách đưa video vào album điện thoại và xử lý khi không thấy video đâu.",
+    "Các bước tải chi tiết cho từng máy có ở [[download-pinterest-videos-iphone-android|tải video Pinterest về điện thoại]]."
+  ],
+  "sections": [
+    {
+      "h2": "Vì sao video chưa hiện trong thư viện ảnh",
+      "paragraphs": [
+        "Trình duyệt lưu mọi thứ bạn tải dưới dạng file, không phải dạng ảnh, video của album. Trên iPhone, Safari lưu file vào **Tệp** › **Tải về**, và app Ảnh chỉ thấy video sau khi bạn tự lưu vào. Trên Android, Chrome lưu file vào thư mục **Download**; app thư viện hay Google Photos thường tự hiện nó trong một album tải xuống, đôi khi chậm vài giây."
+      ]
+    },
+    {
+      "h2": "iPhone: chuyển video từ Tệp sang app Ảnh",
+      "paragraphs": [
+        "Tải xong, mở app **Tệp**, vào **Tải về** rồi chạm vào video. Chạm nút **Chia sẻ** và chọn **Lưu video**. Video sẽ xuất hiện trong app Ảnh, ở mục mới nhất."
+      ],
+      "list": [
+        "Không thấy **Lưu video**? Vuốt bảng chia sẻ lên: dòng này nằm dưới hàng biểu tượng app.",
+        "File không mở được? Kiểm tra biểu tượng tải xuống của Safari xem video đã tải xong chưa.",
+        "Không cần app Documents hay app tải video nào: Tệp và Ảnh có sẵn trên iPhone là đủ."
+      ]
+    },
+    {
+      "h2": "Samsung: tìm video trong Bộ sưu tập",
+      "paragraphs": [
+        "Trên Samsung, video vừa tải thường hiện ngay trong app **Bộ sưu tập**, ở album **Download**. Nếu chưa thấy, mở app quản lý file của Samsung, vào thư mục **Download**: file MP4 nằm ở đó. Nhấn giữ file để di chuyển sang thư mục **DCIM** nếu bạn muốn video nằm chung với ảnh chụp."
+      ]
+    },
+    {
+      "h2": "Google Photos và các máy Android khác",
+      "paragraphs": [
+        "Trên Xiaomi, OPPO, vivo hay Pixel, mở app thư viện ảnh của máy hoặc **Google Photos**, tìm album **Download** trong phần ảnh trên thiết bị. Nếu không thấy, đóng hẳn app thư viện rồi mở lại để máy quét file mới."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách lưu video Pinterest vào thư viện ảnh",
+    "intro": "Ba bước với Safari trên iPhone hoặc Chrome trên Android.",
+    "exampleLabel": "Link Ghim video",
+    "items": [
+      {
+        "title": "Sao chép link video",
+        "body": "Trong app Pinterest, mở video, chạm **biểu tượng chia sẻ** rồi **Sao chép liên kết**."
+      },
+      {
+        "title": "Tải MP4 bằng trình duyệt",
+        "body": "Mở pintdownload.app trên Safari hoặc Chrome, dán link vào ô phía trên rồi chạm **Tải video**."
+      },
+      {
+        "title": "Đưa video vào album",
+        "body": "iPhone: **Tệp** › **Tải về** › **Chia sẻ** › **Lưu video**. Android: video hiện trong album **Download** của thư viện ảnh."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về lưu video vào thư viện ảnh",
+    "items": [
+      {
+        "q": "Tải xong sao không thấy video trong thư viện ảnh?",
+        "a": "Vì trình duyệt lưu video dạng file. Trên iPhone, video ở **Tệp** › **Tải về** cho tới khi bạn chọn **Chia sẻ** › **Lưu video**. Trên Android, video ở thư mục **Download** và thường hiện trong album cùng tên."
+      },
+      {
+        "q": "Lưu video vào Bộ sưu tập trên Samsung thế nào?",
+        "a": "Tải bằng Chrome hoặc Samsung Internet là video tự vào thư mục **Download**, và app **Bộ sưu tập** hiện nó trong album **Download**. Chưa thấy thì đóng app rồi mở lại."
+      },
+      {
+        "q": "Có cần app Documents hay app tải video không?",
+        "a": "Không. Nhiều bài hướng dẫn cũ dùng Documents vì ngày trước Safari không tải được file. iPhone bây giờ chỉ cần Safari, app Tệp và app Ảnh có sẵn."
+      },
+      {
+        "q": "Có mất phí hay phải đăng nhập không?",
+        "a": "Không mất phí, không cần tài khoản PintDownload hay đăng nhập Pinterest. Chỉ áp dụng cho video công khai."
+      },
+      {
+        "q": "Lưu GIF vào thư viện ảnh có còn chuyển động không?",
+        "a": "Có, nếu bạn lưu đúng file .gif. Xem cách làm ở [[pinterest-gif-downloader|tải GIF Pinterest]]; trên iPhone, GIF chuyển động khi bạn mở nó trong app Ảnh."
+      }
+    ]
+  },
+  "related": {
+    "title": "Hướng dẫn và công cụ khác"
+  },
+  "schema": {
+    "appName": "Lưu video Pinterest vào thư viện ảnh — PintDownload",
+    "howToName": "Cách lưu video Pinterest vào thư viện ảnh điện thoại",
+    "howToDescription": "Tải file MP4 của một Ghim video bằng trình duyệt rồi lưu vào app Ảnh trên iPhone, Bộ sưu tập trên Samsung hoặc Google Photos."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Verify on device (vi locale): iOS 'Tệp' › 'Tải về' and share sheet 'Lưu video'; Samsung 'Bộ sưu tập' album 'Download'; Google Photos 'ảnh trên thiết bị' section wording."
+  }
+}

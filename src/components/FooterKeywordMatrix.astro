@@ -1,4 +1,11 @@
 ---
+interface Props {
+  /** Localized pages pass their own groups (live pages only); English keeps MATRIX_GROUPS. */
+  groups?: { category: string; links: { href: string; label: string }[] }[];
+  /** sr-only heading (localized). */
+  heading?: string;
+}
+
 const MATRIX_GROUPS = [
   {
     category: 'Device & Mobile Downloaders',
@@ -18,7 +25,7 @@ const MATRIX_GROUPS = [
       { href: '/pinterest-image-downloader', label: 'Pinterest Photo & Image Downloader (HD)' },
       { href: '/pinterest-gif-downloader', label: 'Pinterest Animated GIF Downloader' },
       { href: '/pinterest-audio-downloader', label: 'Pinterest MP3 Audio Extractor' },
-      { href: '/pinterest-4k-downloader', label: 'Pinterest 4K Ultra HD Downloader' },
+      { href: '/pinterest-4k-downloader', label: 'Pinterest 4K? Real HD Quality' },
       { href: '/pinterest-story-downloader', label: 'Pinterest Story & Idea Pin Downloader' },
     ],
   },
@@ -47,13 +54,15 @@ const MATRIX_GROUPS = [
     ],
   },
 ];
+
+const { groups = MATRIX_GROUPS, heading = 'All PintDownload tools and guides' } = Astro.props;
 ---
 
-<nav class="w-full bg-ink-950 text-slate-300 pt-14 text-left" aria-labelledby="all-tools-heading">
+<nav class="w-full bg-ink-950 text-slate-300 pt-14 text-start" aria-labelledby="all-tools-heading">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 border-b-2 border-dashed border-white/20">
-    <h2 id="all-tools-heading" class="sr-only">All PintDownload tools and guides</h2>
+    <h2 id="all-tools-heading" class="sr-only">{heading}</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8">
-      {MATRIX_GROUPS.map((group) => (
+      {groups.map((group) => (
         <div>
           <h3 class="t-label text-stock-canary mb-3">{group.category.replace(' (Indexable)', '')}</h3>
           <ul class="space-y-0.5 text-[0.9375rem]">

@@ -1,0 +1,139 @@
+{
+  "pageId": "pinterest-pin-downloader",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar Pin do Pinterest pelo Link: Foto, Vídeo e GIF",
+    "description": "Cole o link de um pin (pinterest.com/pin ou pin.it) e baixe a foto em alta resolução, o vídeo em MP4, o GIF animado ou todas as imagens do carrossel."
+  },
+  "keywords": {
+    "primary": "baixar pin pinterest",
+    "secondary": [
+      "baixar pinterest pelo link",
+      "baixador de link pinterest",
+      "baixar link pin pinterest",
+      "download pin pinterest",
+      "pin downloader"
+    ]
+  },
+  "nav": {
+    "label": "Baixar pin",
+    "short": "Pin",
+    "card": {
+      "title": "Baixar pin pelo link",
+      "blurb": "Um link de pin vira foto, MP4, GIF ou o carrossel inteiro.",
+      "badge": "Pin"
+    }
+  },
+  "hero": {
+    "h1": "Baixar pin do Pinterest",
+    "lede": "Cole **o link de um pin** e receba o arquivo certo: foto, **MP4**, GIF ou **todas as imagens do carrossel**. Grátis e sem login."
+  },
+  "intro": [
+    "Não sabe se o pin é foto, vídeo ou GIF? Não precisa saber. Cole aqui o link curto `pin.it` ou o endereço com `/pin/`, e o PintDownload descobre o tipo e mostra o arquivo para baixar.",
+    "Esta página é para **um pin por vez**. Links de pasta e de perfil têm ferramentas próprias, logo abaixo."
+  ],
+  "features": [
+    {
+      "h": "Qualquer pin pelo link",
+      "p": "Pin de foto, de vídeo, de GIF ou em carrossel: o mesmo link serve para todos."
+    },
+    {
+      "h": "Carrossel completo",
+      "p": "Pins com várias imagens trazem todos os cartões, não só a capa."
+    },
+    {
+      "h": "O maior arquivo publicado",
+      "p": "Fotos com até 1200 px de largura; vídeo geralmente em 720p, e em 1080p quando o pin tem essa versão."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "O que é o link de um pin",
+      "paragraphs": [
+        "É o endereço de um único pin. Ele aparece de dois jeitos, e os dois funcionam aqui:"
+      ],
+      "list": [
+        "`pinterest.com/pin/123456789/` (ou `br.pinterest.com/pin/…`): o endereço completo, que você copia na barra do navegador.",
+        "`pin.it/AbC123`: o link curto que o app copia em **Compartilhar** › **Copiar link** (em Portugal: **Partilhar** › **Copiar ligação**).",
+        "`pinterest.com/usuario/nome-da-pasta/` não é pin, é pasta: use o [[pinterest-board-downloader|baixador de pastas]]."
+      ]
+    },
+    {
+      "h2": "Quando usar o baixador de pin",
+      "paragraphs": [
+        "Use quando você quer **uma** ideia: a receita em vídeo, a foto de um look, o GIF de reação, o carrossel de um passo a passo. Para tudo de uma pasta, o ZIP de pasta é mais rápido.",
+        "Se você já sabe o tipo, as páginas de [[pinterest-video-downloader|vídeo]], [[pinterest-image-downloader|imagem]] e [[pinterest-gif-downloader|GIF]] explicam cada formato em detalhe."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como baixar um pin do Pinterest",
+    "intro": "Use este caminho quando tiver o link de um único pin. Para pastas ou perfis, troque de ferramenta mais abaixo.",
+    "exampleLabel": "Link de pin de exemplo",
+    "items": [
+      {
+        "title": "Abra o pin",
+        "body": "No app ou no site, abra o pin que você quer, e não a grade da pasta."
+      },
+      {
+        "title": "Copie o link do pin",
+        "body": "Toque em **Compartilhar** › **Copiar link**, ou copie a barra de endereço quando ela tiver `/pin/`."
+      },
+      {
+        "title": "Cole no PintDownload",
+        "body": "Cole o link na caixa acima e toque em **Baixar pin**."
+      },
+      {
+        "title": "Baixe os arquivos",
+        "body": "Salve a foto ou o MP4. Nos carrosséis, baixe cada cartão ou todos juntos em ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre baixar pins",
+    "items": [
+      {
+        "q": "O que é o link de um pin?",
+        "a": "É o endereço de um único pin: `pinterest.com/pin/123…/` ou o link curto `pin.it/…`. É diferente do link de uma pasta (`usuario/nome-da-pasta`) ou de um perfil (só o nome de usuário)."
+      },
+      {
+        "q": "Como copiar o link no app?",
+        "a": "Abra o pin, toque em **Compartilhar** e depois em **Copiar link**. O app copia um link `pin.it`, que funciona aqui do jeito que está. Em Portugal, os botões são **Partilhar** e **Copiar ligação**."
+      },
+      {
+        "q": "Baixa todas as imagens de um pin em carrossel?",
+        "a": "Baixa. O PintDownload lê o carrossel inteiro e lista cada cartão, para você baixar um por um ou todos em um ZIP. Também existe o [[pinterest-carousel-downloader|baixador de carrossel]], focado nisso."
+      },
+      {
+        "q": "Funciona com vídeo e GIF?",
+        "a": "Funciona. Pin de vídeo vira MP4, e GIF continua GIF animado. Pins privados ou apagados não funcionam."
+      },
+      {
+        "q": "Por que meu link de pasta ou de perfil não funcionou aqui?",
+        "a": "Porque esta página espera o link de um pin. Para uma pasta inteira, use o [[pinterest-board-downloader|baixador de pastas]]; para um perfil, o [[pinterest-profile-downloader|baixador de perfil]]."
+      },
+      {
+        "q": "É grátis e sem login?",
+        "a": "Sim. Funciona no navegador, sem conta no PintDownload e sem entrar no Pinterest. Só pins públicos."
+      },
+      {
+        "q": "Posso baixar o pin de outra pessoa?",
+        "a": "Para guardar e usar só para você, pode. Para repostar ou usar em algo comercial, peça permissão a quem criou e dê crédito."
+      }
+    ]
+  },
+  "related": {
+    "title": "Precisa de pasta, perfil ou vídeo?"
+  },
+  "schema": {
+    "appName": "Baixador de pin do Pinterest — PintDownload",
+    "howToName": "Como baixar um pin do Pinterest pelo link",
+    "howToDescription": "Copie o link de um pin público, cole no PintDownload e salve a foto, o MP4, o GIF ou todas as imagens do carrossel."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. pt-PT labels Partilhar / Copiar ligação from help.pinterest.com/pt-pt/node/66.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device. Edits: intro “Cole aqui o link curto pin.it ou o endereço com /pin/”."
+  }
+}

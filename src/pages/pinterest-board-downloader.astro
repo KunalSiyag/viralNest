@@ -68,7 +68,7 @@ const jsonLd = [
   <!-- Hero card with curved background image -->
   <TicketHero title={"Pinterest Board Downloader"} variant="board" />
 
-  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-left">
+  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-start">
     <!-- SEO Intro & Subtitle Banner -->
     <div class="w-full max-w-3xl mb-6 counter-rule pt-4">
       <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-3 leading-relaxed">
@@ -80,7 +80,7 @@ const jsonLd = [
         Public boards only.
       </p>
     </div>
-    <div class="mt-2 w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm">
+    <div class="mt-2 w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-start text-sm">
       <div class="pt-3 border-t-2 border-[var(--ink)]">
         <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Board-only intent</h2>
         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Optimized for <code class="text-[10px]">/username/board-slug/</code> URLs and "download whole board" searches.</p>
@@ -99,16 +99,16 @@ const jsonLd = [
       <HowToSteps
         title="How to download a Pinterest board as a ZIP"
         intro="This page is only for board links. If your URL has /pin/ in it, use the Pin Downloader instead."
-        exampleUrl="https://www.pinterest.com/pinterest/spice-up-your-dinner-plans/"
+        exampleUrl="https://www.pinterest.com/pinterest/pinterest-presents/"
         exampleLabel="Example board URL"
         steps={steps}
       />
 
-      <section class="mt-14 text-left" aria-labelledby="board-use-heading">
+      <section class="mt-14 text-start" aria-labelledby="board-use-heading">
         <h2 id="board-use-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 scroll-mt-24">
           Best use cases for a board downloader
         </h2>
-        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed list-disc pl-5">
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed list-disc ps-5">
           <li>Saving a wedding, interior, or fashion <strong class="text-slate-800 dark:text-slate-200">moodboard</strong> offline.</li>
           <li>Archiving a recipe or DIY board before pins disappear.</li>
           <li>Handing a design reference pack to a team as one ZIP.</li>
@@ -116,7 +116,7 @@ const jsonLd = [
         </ul>
       </section>
 
-      <section class="mt-14 text-left rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6" aria-labelledby="board-url-heading">
+      <section class="mt-14 text-start rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6" aria-labelledby="board-url-heading">
         <h2 id="board-url-heading" class="text-lg font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24">
           Board URL checklist (avoid common errors)
         </h2>

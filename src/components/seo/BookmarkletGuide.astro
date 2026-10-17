@@ -1,48 +1,79 @@
 ---
-const bookmarkletCode = `javascript:(function(){var u=location.href;if(u.indexOf('pinterest.com')===-1&&u.indexOf('pin.it')===-1){alert('Please open a Pinterest page first!');return;}window.open('https://pintdownload.app/?url='+encodeURIComponent(u)+'&auto=true','_blank');})();`;
+import type { AnyLocale } from '../../i18n/locales';
+import { localeHome } from '../../i18n/routes';
+import { headingHtml, renderInline } from '../../i18n/inline';
+import type { UiStrings } from '../../i18n/ui/en';
+
+interface Props {
+  /** Localized chrome strings (default: today's English copy). */
+  ui?: UiStrings;
+  /** Locale whose home the bookmarklet opens (default English). */
+  locale?: AnyLocale;
+}
+
+const { ui, locale = 'en' } = Astro.props;
+
+const enBookmarkletCode = `javascript:(function(){var u=location.href;if(u.indexOf('pinterest.com')===-1&&u.indexOf('pin.it')===-1){alert('Please open a Pinterest page first!');return;}window.open('https://pintdownload.app/?url='+encodeURIComponent(u)+'&auto=true','_blank');})();`;
+/** Localized: opens the locale home and accepts every Pinterest country domain (pinterest.de, tr.pinterest.com …). */
+const jsString = (v: string) => JSON.stringify(v).replace(/</g, '\\u003c');
+const localizedBookmarkletCode = ui
+  ? `javascript:(function(){var h=location.hostname;if(!/(^|\\.)pinterest\\.[a-z.]+$/.test(h)&&h!=='pin.it'){alert(${jsString(ui.bookmarklet.notPinterest)});return;}window.open('https://pintdownload.app${localeHome(locale)}?url='+encodeURIComponent(location.href)+'&auto=true','_blank');})();`
+  : '';
+const bookmarkletCode = ui ? localizedBookmarkletCode : enBookmarkletCode;
+const kbd = (html: string) =>
+  html
+    .replace(/<code dir="ltr" translate="no">/g, '<kbd class="px-1.5 py-0.5 rounded bg-white/10 font-semibold text-white" dir="ltr">')
+    .replace(/<\/code>/g, '</kbd>')
+    .replace(/<strong>/g, '<strong class="text-white">');
+const brandTr = locale === 'tr'; // Turkish caps: brand names in lang="en" (inline.ts headingHtml)
 ---
 
-<section class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 text-left" aria-labelledby="bookmarklet-heading">
-  <div class="bg-ink-900 text-white rounded-md overflow-hidden grid lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+<section class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 text-start" aria-labelledby="bookmarklet-heading">
+  <div class:list={['bg-ink-900 text-white rounded-md overflow-hidden grid', !ui && 'lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]']}>
     <div class="p-6 sm:p-10 flex flex-col gap-5">
-      <h2 id="bookmarklet-heading" class="t-display text-4xl sm:text-5xl leading-[0.95]">
-        One-click bookmarklet
-      </h2>
-      <p class="text-base text-slate-200 leading-relaxed max-w-xl">
-        Save Pinterest videos, photos, and boards while you browse Pinterest on a computer. Click the bookmark on any pin and PintDownload opens with that link ready.
-      </p>
+      <h2 id="bookmarklet-heading" class="t-display text-4xl sm:text-5xl leading-[0.95]">{brandTr && ui ? <Fragment set:html={headingHtml(ui.bookmarklet.title, 'tr')} /> : ui ? ui.bookmarklet.title : '\nOne-click bookmarklet\n'}</h2>
+      <p class="text-base text-slate-200 leading-relaxed max-w-xl">{ui ? ui.bookmarklet.body : '\nSave Pinterest videos, photos, and boards while you browse Pinterest on a computer. Click the bookmark on any pin and PintDownload opens with that link ready.\n'}</p>
       <div>
         <a
           href={bookmarkletCode}
-          onclick="alert('Drag this button to your browser Bookmarks Bar to install!'); return false;"
+          onclick={ui ? `alert(${jsString(ui.bookmarklet.dragAlert)}); return false;` : "alert('Drag this button to your browser Bookmarks Bar to install!'); return false;"}
           class="inline-flex items-center gap-2 min-h-[3.25rem] px-6 rounded-md bg-stock-canary text-ink-900 t-display text-xl cursor-grab active:cursor-grabbing hover:bg-white transition-colors"
-          title="Drag me to your Bookmarks Bar"
+          title={ui ? ui.bookmarklet.dragTitle : 'Drag me to your Bookmarks Bar'}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-          <span>Drag to bookmarks bar</span>
+          <span>{ui ? ui.bookmarklet.button : 'Drag to bookmarks bar'}</span>
         </a>
       </div>
       <ol class="grid sm:grid-cols-3 gap-5 text-[0.9375rem] pt-5 mt-1 border-t-2 border-dashed border-white/25 list-none p-0">
         <li>
-          <h3 class="t-label text-stock-canary mb-1.5">Chrome / Edge</h3>
-          <p class="text-slate-200 leading-relaxed">
-            Press <kbd class="px-1.5 py-0.5 rounded bg-white/10 font-semibold text-white">Ctrl+Shift+B</kbd> (Cmd+Shift+B on Mac) to show the bookmarks bar, then drag the button onto it.
-          </p>
+          <h3 class="t-label text-stock-canary mb-1.5">{brandTr && ui ? <Fragment set:html={headingHtml(ui.bookmarklet.chromeTitle, 'tr')} /> : ui ? ui.bookmarklet.chromeTitle : 'Chrome / Edge'}</h3>
+          {ui ? (
+            <p class="text-slate-200 leading-relaxed" set:html={kbd(renderInline(ui.bookmarklet.chromeBodyHtml, locale))} />
+          ) : (
+            <p class="text-slate-200 leading-relaxed">
+              Press <kbd class="px-1.5 py-0.5 rounded bg-white/10 font-semibold text-white">Ctrl+Shift+B</kbd> (Cmd+Shift+B on Mac) to show the bookmarks bar, then drag the button onto it.
+            </p>
+          )}
         </li>
         <li>
-          <h3 class="t-label text-stock-canary mb-1.5">Safari</h3>
-          <p class="text-slate-200 leading-relaxed">
-            Drag to Favorites. On iPhone or iPad, bookmark any page, edit its URL, and paste the bookmarklet code.
-          </p>
+          <h3 class="t-label text-stock-canary mb-1.5">{brandTr && ui ? <Fragment set:html={headingHtml(ui.bookmarklet.safariTitle, 'tr')} /> : ui ? ui.bookmarklet.safariTitle : 'Safari'}</h3>
+          <p class="text-slate-200 leading-relaxed">{ui ? ui.bookmarklet.safariBody : '\nDrag to Favorites. On iPhone or iPad, bookmark any page, edit its URL, and paste the bookmarklet code.\n'}</p>
         </li>
         <li>
-          <h3 class="t-label text-stock-canary mb-1.5">Use it</h3>
-          <p class="text-slate-200 leading-relaxed">
-            On a pin or board, click your <strong class="text-white">PintDownload</strong> bookmark. We open with the link filled in.
-          </p>
+          <h3 class="t-label text-stock-canary mb-1.5">{ui ? ui.bookmarklet.useTitle : 'Use it'}</h3>
+          {ui ? (
+            <p class="text-slate-200 leading-relaxed" set:html={kbd(renderInline(ui.bookmarklet.useBodyHtml, locale))} />
+          ) : (
+            <p class="text-slate-200 leading-relaxed">
+              On a pin or board, click your <strong class="text-white">PintDownload</strong> bookmark. We open with the link filled in.
+            </p>
+          )}
         </li>
       </ol>
     </div>
+    {/* The illustration is an English Chrome screenshot; localized pages have
+        the same steps in their own language above, so they leave it out. */}
+    {!ui && (
     <div class="bg-ink-800 p-4 sm:p-6 flex items-center">
       <img
         src="/images/bookmark.webp"
@@ -54,5 +85,6 @@ const bookmarkletCode = `javascript:(function(){var u=location.href;if(u.indexOf
         decoding="async"
       />
     </div>
+    )}
   </div>
 </section>

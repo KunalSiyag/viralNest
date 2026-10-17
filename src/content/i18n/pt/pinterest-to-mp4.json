@@ -1,0 +1,134 @@
+{
+  "pageId": "pinterest-to-mp4",
+  "locale": "pt",
+  "meta": {
+    "title": "Pinterest para MP4: Converter Vídeo do Pinterest Grátis",
+    "description": "Transforme o link de um vídeo do Pinterest em um arquivo MP4 que toca em qualquer celular ou PC. Cole o link do pin e baixe, sem cadastro e sem marca d’água."
+  },
+  "keywords": {
+    "primary": "pinterest para mp4",
+    "secondary": [
+      "converter vídeo do pinterest para mp4",
+      "pinterest mp4",
+      "converter video pinterest mp4",
+      "pinterest mp4 converter",
+      "baixar vídeo do pinterest em mp4"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest para MP4",
+    "short": "MP4",
+    "card": {
+      "title": "Pinterest para MP4",
+      "blurb": "O link do vídeo vira um MP4 comum, que abre em qualquer aparelho.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest para MP4",
+    "lede": "Transforme o **link de um vídeo do Pinterest** em um **MP4 comum**, que abre no celular, no PC, no editor e na TV. Sem cadastro."
+  },
+  "intro": [
+    "No Pinterest, o vídeo toca em streaming, dividido em pedaços que não dá para salvar como estão. O PintDownload encontra o arquivo MP4 que o Pinterest também publica para o pin e entrega esse arquivo pronto para salvar. Não há conversão de verdade: o vídeo já existe em MP4, o formato que todo aparelho entende.",
+    "É o mesmo MP4 do [[pinterest-video-downloader|baixador de vídeo]]; esta página explica o formato."
+  ],
+  "features": [
+    {
+      "h": "MP4 que abre em tudo",
+      "p": "Galeria, WhatsApp, CapCut, VLC ou a TV pelo pendrive: o MP4 é o formato que todos aceitam."
+    },
+    {
+      "h": "Com som, quando o vídeo tem",
+      "p": "O arquivo traz o áudio do vídeo. Se o pin é mudo, o MP4 também vem sem som."
+    },
+    {
+      "h": "Sem programa",
+      "p": "Nada para instalar no PC ou no celular: cole o link no navegador e baixe."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Por que “converter” se o vídeo já está lá",
+      "paragraphs": [
+        "Porque o player do Pinterest não entrega um arquivo: ele toca o vídeo em pedaços. Gravar a tela perde qualidade e ainda pega notificação. Aqui você baixa o MP4 inteiro, na qualidade que o pin tem: geralmente 720p, e 1080p quando o pin tem essa versão."
+      ]
+    },
+    {
+      "h2": "MP4, GIF ou MP3?",
+      "paragraphs": [
+        "Cada pin vem no formato que já tem:"
+      ],
+      "list": [
+        "**Vídeo › MP4**: esta página.",
+        "**GIF › GIF**: o [[pinterest-gif-downloader|baixador de GIF]]. Não convertemos vídeo em GIF.",
+        "**Só o som › MP3**: o [[pinterest-audio-downloader|baixador de som]] gera o MP3 no seu navegador."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como converter vídeo do Pinterest para MP4",
+    "intro": "Só pins de vídeo públicos. Nenhum programa no computador.",
+    "exampleLabel": "Link de pin de vídeo",
+    "items": [
+      {
+        "title": "Copie o link do vídeo",
+        "body": "Abra um pin que toca vídeo de verdade. **Compartilhar** › **Copiar link**, ou copie o endereço com `/pin/` ou `pin.it`."
+      },
+      {
+        "title": "Cole no conversor",
+        "body": "Cole o link acima e toque em **Baixar vídeo**. O PintDownload encontra o MP4 público do pin."
+      },
+      {
+        "title": "Baixe o MP4",
+        "body": "Salve o arquivo e abra na galeria, no VLC ou no editor. A qualidade é a do pin, sem resolução inventada."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre Pinterest para MP4",
+    "items": [
+      {
+        "q": "Como converter vídeo do Pinterest para MP4?",
+        "a": "Copie o link do pin de vídeo público, cole aqui e baixe o MP4. A conversão é só isso: sem programa e sem cadastro."
+      },
+      {
+        "q": "É grátis?",
+        "a": "Sim. Sem cadastro e sem marca d’água colocada por nós."
+      },
+      {
+        "q": "Qual a diferença para o baixador de vídeo?",
+        "a": "O resultado é o mesmo MP4. Esta página é para quem procura “Pinterest para MP4” e quer entender o formato; o [[pinterest-video-downloader|baixador de vídeo]] detalha as opções de qualidade."
+      },
+      {
+        "q": "Dá para converter vídeo do Pinterest em GIF?",
+        "a": "Não fazemos essa conversão. Se o pin já é GIF, use o [[pinterest-gif-downloader|baixador de GIF]]; se é vídeo, ele vem em MP4."
+      },
+      {
+        "q": "E de MP4 para MP3?",
+        "a": "Dá, sem sair daqui: depois de ler o pin, a linha MP3 gera o áudio no seu navegador. Detalhes em [[pinterest-audio-downloader|baixar som do Pinterest]]."
+      },
+      {
+        "q": "Funciona no iPhone e no Android?",
+        "a": "Sim. Cole o link `pin.it` do app no Safari ou no Chrome e salve o MP4 em Arquivos, no app Fotos ou na Galeria."
+      },
+      {
+        "q": "O MP4 abre no WhatsApp e no CapCut?",
+        "a": "Abre. É um MP4 comum, aceito pelos apps de mensagem e pelos editores. Se for publicar o vídeo de outra pessoa, peça permissão e dê crédito."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outras ferramentas para o Pinterest"
+  },
+  "schema": {
+    "appName": "Pinterest para MP4 — PintDownload",
+    "howToName": "Como converter vídeo do Pinterest para MP4",
+    "howToDescription": "Cole o link de um pin de vídeo público e baixe o MP4 que o Pinterest publica para ele."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. Angle: the format (streaming vs file), to stay apart from the video page (research cannibalisation map).",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device. Edits: intro no longer repeats “entrega”; says plainly there is no real conversion."
+  }
+}

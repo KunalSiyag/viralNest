@@ -1,0 +1,146 @@
+{
+  "pageId": "download-pinterest-videos-iphone-android",
+  "locale": "id",
+  "meta": {
+    "title": "Cara Download Video Pinterest di HP Android & iPhone",
+    "description": "Simpan video Pinterest ke HP: ke Galeri Android atau app Foto iPhone lewat Chrome atau Safari. Salin tautan, tempel, simpan MP4. Tanpa install aplikasi."
+  },
+  "keywords": {
+    "primary": "cara download video pinterest di hp",
+    "secondary": [
+      "cara download video pinterest di iphone",
+      "cara download video pinterest di android",
+      "download video pinterest di hp",
+      "download video pinterest ke galeri hp",
+      "cara save video pinterest di iphone"
+    ]
+  },
+  "nav": {
+    "label": "Download di HP",
+    "short": "HP",
+    "card": {
+      "title": "Video Pinterest di HP",
+      "blurb": "iPhone lewat Safari, Android lewat Chrome: dari tautan sampai MP4 di galeri.",
+      "badge": "HP"
+    }
+  },
+  "hero": {
+    "h1": "Cara Download Video Pinterest di HP",
+    "lede": "Satu cara untuk **Android** dan **iPhone**: salin tautan, tempel, simpan ke galeri."
+  },
+  "intro": [
+    "Di HP, prosesnya ada dua bagian: mengunduh MP4 lewat PintDownload, lalu memastikan videonya ada di tempat kamu biasa menonton. Di bawah ada langkah untuk tiap sistem, lengkap dengan nama tombol yang akan kamu lihat.",
+    "Videonya sudah terunduh tapi tidak ketemu? Langsung saja ke [[how-to-download-pinterest-video-in-gallery|cara menyimpan video Pinterest ke galeri]]."
+  ],
+  "sections": [
+    {
+      "h2": "iPhone: lewat Safari",
+      "paragraphs": [
+        "Safari menyimpan unduhan di app **File**, bukan di **Foto**, jadi ada satu langkah tambahan dibanding Android:"
+      ],
+      "list": [
+        "Di aplikasi Pinterest, buka videonya lalu ketuk **Bagikan** › **Salin tautan**.",
+        "Buka pintdownload.app di **Safari**, tempel tautannya, lalu ketuk **Unduh Video**.",
+        "Di struk hasilnya, ketuk **Unduh MP4**. Kalau Safari bertanya, konfirmasi dengan **Unduh**.",
+        "Ketuk ikon unduhan di Safari (atau buka **File** › **Unduhan**), lalu ketuk videonya.",
+        "Ketuk **Bagikan**, lalu pilih **Simpan Video**. Sekarang videonya ada di **Foto**."
+      ]
+    },
+    {
+      "h2": "Android: lewat Chrome",
+      "paragraphs": [
+        "Di Android lebih singkat: Chrome menyimpan video ke folder **Unduhan**, dan galeri menemukannya sendiri."
+      ],
+      "list": [
+        "Di aplikasi Pinterest, buka videonya, ketuk **Bagikan**, lalu **Salin tautan**.",
+        "Buka pintdownload.app di **Chrome**, tempel tautannya, lalu ketuk **Unduh Video**.",
+        "Di struk hasilnya, ketuk **Unduh MP4**. Chrome memberi tahu kalau unduhan sudah selesai.",
+        "Buka **Galeri** atau **Google Foto**: videonya ada di album unduhan. Di Samsung, bisa juga lewat **File Saya** › **Unduhan**."
+      ]
+    },
+    {
+      "h2": "Samsung, Xiaomi, OPPO, vivo, dan Android lain",
+      "paragraphs": [
+        "Langkahnya sama di semua merek; yang berbeda hanya tempat videonya muncul. Samsung, Xiaomi, OPPO, dan vivo punya app **Galeri** sendiri, sementara sebagian HP lain memakai **Google Foto**. Kalau kamu browsing pakai Samsung Internet atau browser bawaan HP, caranya juga sama."
+      ]
+    },
+    {
+      "h2": "Hemat kuota: pilih kualitas sebelum mengunduh",
+      "paragraphs": [
+        "Kalau Pin-nya punya 720p dan 1080p, versi 720p lebih kecil dan tetap tajam di layar HP. Saat mengunduh, PintDownload menampilkan berapa MB yang sudah masuk dari total ukuran file, jadi kamu tahu berapa kuota yang terpakai."
+      ]
+    },
+    {
+      "h2": "Pinterest Lite, tablet, dan iPad",
+      "paragraphs": [
+        "Pakai Pinterest Lite? Caranya sama, asalkan tautan Pin bisa disalin dari opsi bagikan. Di iPad, ikuti langkah iPhone dengan Safari; di tablet Android, ikuti langkah Chrome."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara download video Pinterest di HP",
+    "intro": "Ringkasan untuk HP apa pun. Langkah detail iPhone dan Android ada di atas.",
+    "exampleLabel": "Link yang disalin aplikasi",
+    "items": [
+      {
+        "title": "Salin tautan di aplikasi",
+        "body": "Buka videonya, lalu ketuk **Bagikan** › **Salin tautan**."
+      },
+      {
+        "title": "Tempel di browser",
+        "body": "Buka pintdownload.app di Safari atau Chrome, tempel tautannya, lalu ketuk **Unduh Video**."
+      },
+      {
+        "title": "Simpan ke galeri",
+        "body": "iPhone: dari app **File**, ketuk **Bagikan** › **Simpan Video**. Android: videonya sudah ada di Galeri atau Google Foto."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab download di HP",
+    "items": [
+      {
+        "q": "Bagaimana cara menyimpan video Pinterest ke app Foto di iPhone?",
+        "a": "Unduh dulu lewat Safari di pintdownload.app. Lalu buka **File** › **Unduhan**, ketuk videonya, ketuk **Bagikan**, dan pilih **Simpan Video**. Videonya pindah ke app **Foto**."
+      },
+      {
+        "q": "Bagaimana cara menyimpan ke Galeri atau Google Foto di Android?",
+        "a": "Tidak perlu langkah tambahan: Chrome menyimpannya ke folder **Unduhan**, dan Galeri atau Google Foto menampilkannya di album unduhan. Kalau belum terlihat, tutup lalu buka lagi app galerinya."
+      },
+      {
+        "q": "Kenapa tidak perlu install aplikasi dari Play Store atau App Store?",
+        "a": "Karena semua prosesnya berjalan di browser yang sudah ada di HP kamu. Tidak ada aplikasi baru yang memakan memori HP, dan tidak ada yang meminta izin akses ke galeri atau kontak."
+      },
+      {
+        "q": "Video tidak muncul di galeri, apa yang harus dicek?",
+        "a": "Pertama, pastikan unduhannya selesai (cek notifikasi atau daftar unduhan browser). Di iPhone, video masih di app **File** sampai kamu memilih **Simpan Video**. Di Android, cari di folder **Unduhan** lewat app File."
+      },
+      {
+        "q": "Berapa kuota yang terpakai?",
+        "a": "Sebesar ukuran file MP4-nya, tidak lebih. Kalau ada pilihan 720p dan 1080p, 720p lebih hemat. Selama mengunduh, ukuran file-nya terlihat di bawah tombol unduh."
+      },
+      {
+        "q": "Bisa di Samsung, Xiaomi, OPPO, atau vivo?",
+        "a": "Bisa, di Android apa pun dengan browser yang masih diperbarui: Chrome, Samsung Internet, Firefox, atau browser bawaan HP."
+      },
+      {
+        "q": "Bisa di tablet atau iPad?",
+        "a": "Bisa. Di iPad pakai Safari dan ikuti langkah iPhone; di tablet Android, ikuti langkah Chrome."
+      }
+    ]
+  },
+  "related": {
+    "title": "Alat dan panduan lain"
+  },
+  "schema": {
+    "appName": "Download Video Pinterest di HP — PintDownload",
+    "howToName": "Cara download video Pinterest di HP Android dan iPhone",
+    "howToDescription": "Salin tautan Pin video di aplikasi Pinterest, unduh MP4 lewat Safari atau Chrome, lalu simpan ke galeri."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16. Cek di perangkat (label belum diverifikasi): Safari “Unduh”, iOS “File” › “Unduhan”, “Simpan Video”, app “Foto”; Samsung “File Saya”; Android “Google Foto”.",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

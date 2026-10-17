@@ -1,0 +1,146 @@
+{
+  "pageId": "pinterest-board-downloader",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar Pasta do Pinterest Inteira em ZIP, Grátis",
+    "description": "Cole o link de uma pasta pública do Pinterest e baixe todas as imagens e vídeos de uma vez em um arquivo ZIP. Grátis, sem login e sem instalar extensão."
+  },
+  "keywords": {
+    "primary": "baixar pasta do pinterest",
+    "secondary": [
+      "como baixar várias imagens de uma vez do pinterest",
+      "como baixar todas as imagens do pinterest",
+      "baixar todos os pins de uma pasta",
+      "baixar zip pinterest",
+      "baixar painel pinterest",
+      "baixar board pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Baixar pasta",
+    "short": "Pastas",
+    "card": {
+      "title": "Baixar pasta em ZIP",
+      "blurb": "Cole o link de uma pasta pública e baixe os pins dela em um ZIP.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Baixar pasta do Pinterest",
+    "lede": "Cole o link de uma **pasta pública** e baixe as imagens e os vídeos dela **de uma vez, em um ZIP**."
+  },
+  "intro": [
+    "Quer baixar várias imagens de uma vez do Pinterest? O jeito é este: cole o link da **pasta do Pinterest**, confira os pins que encontramos e baixe tudo em um **ZIP**. Sem extensão paga e sem conta.",
+    "Aqui “pasta” é a coleção de pins do Pinterest, não uma pasta do computador. O link tem esta cara: `pinterest.com/usuario/nome-da-pasta/`. Só pastas públicas."
+  ],
+  "features": [
+    {
+      "h": "Só links de pasta",
+      "p": "Para endereços `/usuario/pasta/`. Um pin solto vai no [[pinterest-pin-downloader|baixador de pin]]."
+    },
+    {
+      "h": "Tudo em um ZIP",
+      "p": "Os pins públicos da pasta em um só arquivo, para um moodboard sem internet ou para compartilhar."
+    },
+    {
+      "h": "Fotos e vídeos",
+      "p": "Inclui as imagens e os vídeos dos pins que a página pública da pasta carrega."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Vem a pasta inteira?",
+      "paragraphs": [
+        "Vêm os pins públicos que aparecem quando a página da pasta carrega, até um limite seguro. Em pastas muito grandes, alguns pins antigos podem ficar de fora. De cada pin em carrossel vem a capa; para ter todos os cartões, abra esse pin no [[pinterest-carousel-downloader|baixador de carrossel]]."
+      ]
+    },
+    {
+      "h2": "Confira o link antes de colar",
+      "paragraphs": [
+        "Colar o tipo errado de link é o erro mais comum. Veja como reconhecer cada um:"
+      ],
+      "list": [
+        "`pinterest.com/usuario/nome-da-pasta/`: é uma pasta, use aqui.",
+        "`pinterest.com/pin/123…/`: é um pin; use o [[pinterest-pin-downloader|baixador de pin]].",
+        "`pinterest.com/usuario/`: é um perfil; use o [[pinterest-profile-downloader|baixador de perfil]].",
+        "Pasta secreta ou conta privada: não dá para baixar."
+      ]
+    },
+    {
+      "h2": "Como abrir o ZIP no celular",
+      "paragraphs": [
+        "No iPhone, o ZIP vai para **Arquivos** › **Downloads**; toque nele e o iPhone cria uma pasta com as imagens. No Android, abra o app **Arquivos** (ou **Meus Arquivos**, no Samsung), toque no ZIP e escolha **Extrair**. Depois é só mover as fotos para a galeria."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como baixar uma pasta do Pinterest em ZIP",
+    "intro": "Esta página é só para links de pasta. Se o seu link tem `/pin/`, use o baixador de pin.",
+    "exampleLabel": "Exemplo de link de pasta",
+    "items": [
+      {
+        "title": "Abra a pasta pública",
+        "body": "No Pinterest, abra a página da pasta (a grade de pins), e não um pin ampliado."
+      },
+      {
+        "title": "Copie o link da pasta",
+        "body": "Copie da barra de endereço ou use **Compartilhar** › **Copiar link**. Ele deve ficar parecido com `pinterest.com/usuario/nome-da-pasta/`."
+      },
+      {
+        "title": "Cole e liste os pins",
+        "body": "Cole o link na caixa acima e toque em **Ver pins da pasta** para listar os pins públicos."
+      },
+      {
+        "title": "Baixe o ZIP",
+        "body": "Toque em **Baixar ZIP** para salvar as fotos e os vídeos em um arquivo, ou baixe os pins um por um."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre pastas",
+    "items": [
+      {
+        "q": "Como baixar todas as imagens de uma pasta do Pinterest de uma vez?",
+        "a": "Copie o link da pasta pública, cole acima, confira a lista e toque em **Baixar ZIP**. Vêm os pins públicos que a página da pasta carrega, até um limite; em pastas enormes pode faltar algum pin antigo."
+      },
+      {
+        "q": "Como é o link de uma pasta?",
+        "a": "Tem duas partes depois do domínio: o nome de usuário e o nome da pasta, como `pinterest.com/usuario/receitas-faceis/`. Se tiver `/pin/` no meio, é um pin, não uma pasta."
+      },
+      {
+        "q": "Funciona com pasta secreta?",
+        "a": "Não. O PintDownload só lê pastas públicas. Pastas secretas, contas privadas e pins que pedem login ficam de fora."
+      },
+      {
+        "q": "Pasta ou perfil: qual ferramenta usar?",
+        "a": "Use esta página para uma coleção específica, como “receitas” ou “casamento”. Para os pins visíveis de uma conta inteira, use o [[pinterest-profile-downloader|baixador de perfil]]."
+      },
+      {
+        "q": "Os pins em carrossel vêm com todas as imagens?",
+        "a": "No ZIP vem a capa de cada pin. Para todos os cartões de um carrossel, abra esse pin no [[pinterest-carousel-downloader|baixador de carrossel]]."
+      },
+      {
+        "q": "Em Portugal a pasta tem outro nome. Funciona igual?",
+        "a": "Funciona. No app em português de Portugal, a pasta aparece como “álbum” (antes, “painel”), mas o link tem o mesmo formato. Copie com **Partilhar** › **Copiar ligação** e cole aqui."
+      },
+      {
+        "q": "Preciso de extensão do Chrome?",
+        "a": "Não. Tudo funciona na página. Se preferir um clique a partir do Pinterest no computador, o [[pinterest-video-downloader-chrome|favorito de 1 clique]] abre o PintDownload com o link já colado."
+      }
+    ]
+  },
+  "related": {
+    "title": "Ferramentas relacionadas"
+  },
+  "schema": {
+    "appName": "Baixador de pasta do Pinterest — PintDownload",
+    "howToName": "Como baixar uma pasta do Pinterest em ZIP",
+    "howToDescription": "Passos para salvar os pins públicos de uma pasta do Pinterest em um arquivo ZIP."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. Board = “pasta” (help.pinterest.com/pt-br). The pt-PT FAQ quotes “álbum”/“painel” once, as the Portugal screen label (help.pinterest.com/pt-pt, “Criar um álbum”). To verify: Android Files “Extrair”.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device."
+  }
+}

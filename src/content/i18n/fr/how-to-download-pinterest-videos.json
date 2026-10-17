@@ -1,0 +1,128 @@
+{
+  "pageId": "how-to-download-pinterest-videos",
+  "locale": "fr",
+  "meta": {
+    "title": "Comment télécharger une vidéo Pinterest — 3 méthodes simples",
+    "description": "Trois façons d’enregistrer une vidéo Pinterest sur téléphone ou ordinateur : l’option de l’appli si elle existe, PintDownload, ou l’enregistrement d’écran."
+  },
+  "keywords": {
+    "primary": "comment télécharger une vidéo pinterest",
+    "secondary": [
+      "comment enregistrer une vidéo pinterest",
+      "télécharger une vidéo pinterest gratuit",
+      "copier une video pinterest",
+      "télécharger vidéo pinterest sans application",
+      "site pour telecharger video pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Comment télécharger",
+    "short": "Méthodes",
+    "card": {
+      "title": "Comment télécharger une vidéo",
+      "blurb": "L’option de l’appli, PintDownload ou l’enregistrement d’écran : les trois méthodes.",
+      "badge": "Guide"
+    }
+  },
+  "hero": {
+    "h1": "Comment télécharger une vidéo Pinterest",
+    "lede": "L’option de l’appli quand elle existe, **PintDownload** avec le lien, ou l’enregistrement d’écran : trois façons d’enregistrer une vidéo Pinterest, sur téléphone comme sur ordinateur."
+  },
+  "intro": [
+    "Pinterest ne propose pas toujours de télécharger ses vidéos. Ce guide compare les trois méthodes qui marchent, dit ce que chacune donne vraiment, et renvoie vers les étapes détaillées pour chaque appareil.",
+    "Vous voulez directement les étapes pour votre appareil ? Voyez [[download-pinterest-videos-iphone-android|le guide iPhone]], [[how-to-download-pinterest-video-in-gallery|le guide galerie Android]] ou [[how-to-download-pinterest-video-on-laptop|le guide PC et Mac]]."
+  ],
+  "sections": [
+    {
+      "h2": "Méthode 1 : le bouton « Télécharger » de Pinterest",
+      "paragraphs": [
+        "Sur une épingle vidéo, ouvrez le menu **⋯**. Si le créateur a autorisé le téléchargement, l’option **Télécharger** apparaît et la vidéo rejoint votre galerie. Il faut être connecté, et l’option manque sur beaucoup de vidéos : c’est un choix du créateur, pas un bug de votre téléphone."
+      ]
+    },
+    {
+      "h2": "Méthode 2 : PintDownload, avec le lien",
+      "paragraphs": [
+        "Quand l’option n’existe pas, ou si vous n’avez pas de compte, copiez le lien de l’épingle (**icône de partage** › **Copier le lien**), collez-le dans le ticket ci-dessus et touchez **Télécharger la vidéo**. Vous récupérez le MP4 public, souvent en 720p, en 1080p quand l’épingle le propose, sans logo ajouté. Où le retrouver ensuite :"
+      ],
+      "list": [
+        "Sur iPhone, le MP4 arrive d’abord dans **Fichiers** : [[download-pinterest-videos-iphone-android|comment le mettre dans Photos]].",
+        "Sur Android, il arrive dans **Téléchargements** : [[how-to-download-pinterest-video-in-gallery|comment le voir dans la Galerie]].",
+        "Sur ordinateur, il arrive dans le dossier **Téléchargements** : [[how-to-download-pinterest-video-on-laptop|le guide PC et Mac]]."
+      ]
+    },
+    {
+      "h2": "Méthode 3 : l’enregistrement d’écran",
+      "paragraphs": [
+        "En dernier recours, filmez l’écran pendant la lecture : **Enregistrement de l’écran** dans le centre de contrôle de l’iPhone, **Enregistreur d’écran** dans les réglages rapides d’Android. La qualité baisse, les notifications s’incrustent et il faut recadrer, mais cela marche partout, même hors de Pinterest."
+      ]
+    },
+    {
+      "h2": "Ce qui ne marche pas",
+      "paragraphs": [
+        "Les applis APK qui promettent de « télécharger Pinterest » ne font rien de plus et demandent souvent des autorisations inutiles. Un appui long sur une vidéo ne propose pas de l’enregistrer. Et aucune méthode ne récupère une épingle privée ou supprimée."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Télécharger une vidéo Pinterest avec PintDownload",
+    "intro": "La méthode 2 en trois étapes, sur téléphone ou ordinateur.",
+    "exampleLabel": "Lien d’une épingle vidéo",
+    "items": [
+      {
+        "title": "Copiez le lien",
+        "body": "Dans l’appli, ouvrez la vidéo, touchez l’**icône de partage** puis **Copier le lien**. Sur le site, copiez l’adresse qui contient `/pin/`."
+      },
+      {
+        "title": "Collez-le ici",
+        "body": "Collez le lien dans le ticket en haut de la page et touchez **Télécharger la vidéo**."
+      },
+      {
+        "title": "Récupérez le MP4",
+        "body": "Choisissez la qualité si plusieurs s’affichent, puis téléchargez le MP4. Il arrive dans Téléchargements ou dans Fichiers."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes : télécharger une vidéo Pinterest",
+    "items": [
+      {
+        "q": "Pinterest permet-il de télécharger ses vidéos ?",
+        "a": "Parfois. L’option **Télécharger** du menu **⋯** n’apparaît que si le créateur a autorisé le téléchargement, et seulement si vous êtes connecté. Sinon, PintDownload récupère le MP4 public à partir du lien."
+      },
+      {
+        "q": "Pourquoi l’option « Télécharger » n’apparaît-elle pas sur ma vidéo ?",
+        "a": "Parce que le créateur l’a désactivée, ou parce que vous n’êtes pas connecté. Votre téléphone n’y est pour rien. Pour une vidéo publique, collez simplement son lien ici."
+      },
+      {
+        "q": "Comment copier le lien d’une vidéo Pinterest ?",
+        "a": "Ouvrez la vidéo, touchez l’**icône de partage**, puis **Copier le lien**. Sur ordinateur, copiez l’adresse affichée dans la barre du navigateur."
+      },
+      {
+        "q": "Où la vidéo est-elle enregistrée ?",
+        "a": "Sur iPhone, dans **Fichiers** › **Téléchargements**, jusqu’à ce que vous l’enregistriez dans Photos. Sur Android, dans **Téléchargements**, et la Galerie la montre dans l’album Download. Sur PC ou Mac, dans le dossier **Téléchargements**."
+      },
+      {
+        "q": "Faut-il installer une application ?",
+        "a": "Non. Tout se fait dans le navigateur. Méfiez-vous des APK « téléchargeur Pinterest » : ils n’apportent rien et réclament souvent des accès dont ils n’ont pas besoin."
+      },
+      {
+        "q": "Est-il légal de télécharger une vidéo Pinterest ?",
+        "a": "Garder une vidéo publique pour la revoir hors ligne relève de l’usage personnel. La republier sans l’accord du créateur peut porter atteinte à son droit d’auteur : demandez-lui et créditez-le. Ce n’est pas un conseil juridique."
+      }
+    ]
+  },
+  "related": {
+    "title": "Guides et outils"
+  },
+  "schema": {
+    "appName": "Comment télécharger une vidéo Pinterest — PintDownload",
+    "howToName": "Comment télécharger une vidéo Pinterest avec son lien",
+    "howToDescription": "Copier le lien d’une épingle vidéo, le coller dans PintDownload et enregistrer le MP4 sur téléphone ou ordinateur."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Unverified labels: Pinterest app ⋯ › « Télécharger » on video pins (creator-allowed); iOS « Enregistrement de l’écran » (centre de contrôle); Android « Enregistreur d’écran » (Samsung; Pixel may say « Enregistrement de l’écran »).",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. FAQ questions: \"n’apparaît-elle pas\", \"Est-il légal\"."
+  }
+}

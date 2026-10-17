@@ -1,0 +1,130 @@
+---
+/**
+ * Per-locale 404 (architecture §5.4). Built as /<locale>/404/index.html and
+ * renamed to /<locale>/404.html by the locale-404 integration in
+ * astro.config.mjs, so Cloudflare's 404-page mode serves it, with status 404,
+ * for any missing URL under /<locale>/. noindex, no canonical, no hreflang.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BRAND } from '../../lib/brand';
+import { LOCALES, type Locale } from '../../i18n/locales';
+import { isLocaleLive, localeHome, pathFor, type PageId } from '../../i18n/routes';
+import { fillUi } from '../../i18n/ui/en';
+import { livePagesOf, stockOf, uiFor } from '../../components/i18n/page-data';
+import { islandCatalog } from '../../i18n/island/catalogs';
+import { fmt } from '../../i18n/island/fmt';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return LOCALES.filter((locale) => isLocaleLive(locale)).map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const ui = uiFor(locale);
+const t = ui.notFound;
+// Same serial wording as the receipts ("Nº 404", "№ 404", "رقم 404").
+const serial = fmt(islandCatalog(locale)?.ticket.serial ?? 'No. {serial}', { serial: '404' });
+const pages = await livePagesOf(locale);
+const CARDS: { id: PageId; blurb: string; badge?: string }[] = [
+  { id: 'pinterest-video-downloader', blurb: t.videoBlurb },
+  { id: 'pinterest-pin-downloader', blurb: t.pinBlurb },
+  { id: 'pinterest-board-downloader', blurb: t.boardBlurb },
+  { id: 'how-to-download-pinterest-videos', blurb: t.guideBlurb, badge: t.guideBadge },
+];
+const tools = CARDS.flatMap((c) => {
+  const page = pages.get(c.id);
+  const href = pathFor(c.id, locale);
+  return page && href
+    ? [{ href, label: page.nav.label, blurb: c.blurb, badge: c.badge ?? page.nav.card.badge, stock: stockOf(c.id) }]
+    : [];
+});
+---
+
+<BaseLayout
+  title={fillUi(t.title, { brand: BRAND.name })}
+  description={fillUi(t.description, { domain: BRAND.domain })}
+  clean
+  noindex
+  fullBleed
+  locale={locale}
+  ui={ui}
+>
+  <section class="field" aria-labelledby="nf-heading">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-12 pb-12 sm:pb-16 grid gap-8 lg:gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] items-start"
+    >
+      <div class="min-w-0">
+        <h1
+          id="nf-heading"
+          class="t-display text-[2.875rem] leading-[0.9] sm:text-6xl sm:leading-[0.88] lg:text-6xl max-w-[12ch]"
+          style="text-wrap: balance;"
+        >
+          {t.h1}
+        </h1>
+        <p class="mt-4 sm:mt-5 text-[1.0625rem] sm:text-lg leading-relaxed max-w-xl text-[var(--on-field-2)]" style="text-wrap: pretty;">
+          {t.lede}
+        </p>
+      </div>
+
+      <div class="ticket void-ticket min-w-0 w-full max-w-md lg:max-w-none">
+        <div class="ticket-paper">
+          <div class="ticket-head">
+            <span class="t-label">{t.ticketLabel}</span>
+            <span class="ticket-serial" translate="no">{serial}</span>
+          </div>
+          <div class="ticket-body">
+            <p class="void-no" aria-hidden="true">404</p>
+            <p class="stamp stamp-warn stamp-in void-stamp">{t.stamp}</p>
+            <div class="mt-6 grid grid-cols-2 gap-2 w-full">
+              {/* English-only pages carry the footer's "(English)" marker, on a
+                  second small line so the label keeps its one line at 390px. */}
+              <a href="/blog" hreflang="en" class="void-btn void-btn--en">
+                <span>{t.blog}</span>
+                <span class="void-btn-note">{ui.footer.englishMarker}</span>
+              </a>
+              <a href="/contact" hreflang="en" class="void-btn void-btn--en">
+                <span>{t.contact}</span>
+                <span class="void-btn-note">{ui.footer.englishMarker}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="perf" aria-hidden="true"></div>
+        <div class="stub">
+          <a href={localeHome(locale)} class="stub-btn">{t.home}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16" aria-label={t.toolsAria}>
+    <ul class="counter-rule pt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 list-none p-0 m-0">
+      {tools.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="group flex h-full bg-[var(--paper)] rounded-md overflow-hidden min-w-0 touch-manipulation transition-transform duration-200 hover:-translate-y-0.5"
+          >
+            <span
+              class="shrink-0 w-[4.25rem] flex items-center justify-center border-e-2 border-dashed border-[var(--paper)]"
+              style={`background:${item.stock.color};color:${item.stock.onColor}`}
+              aria-hidden="true"
+            >
+              <span class="t-display text-xl -rotate-90 whitespace-nowrap">{item.badge}</span>
+            </span>
+            <span class="p-4 min-w-0">
+              <span class="block font-bold text-[1.0625rem] leading-snug group-hover:underline">{item.label}</span>
+              <span class="block mt-1 text-sm text-[var(--ink-2)] leading-relaxed">{item.blurb}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-10 text-sm text-[var(--ink-2)]">
+      {t.bug}
+      <a href={`mailto:${BRAND.email.support}`} dir="ltr" class="font-semibold text-[var(--ink)] underline decoration-2 decoration-[var(--red)] hover:text-[var(--red)] dark:hover:text-[#EC8C7D]">{BRAND.email.support}</a>
+    </p>
+  </section>
+</BaseLayout>

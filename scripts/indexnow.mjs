@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import { posts } from '../src/data/blog.ts';
 
 const HOST = 'pintdownload.app';
@@ -33,7 +34,20 @@ const staticPages = [
 
 const blogPages = posts.map((p) => `https://${HOST}/blog/${p.slug}`);
 
-const urlList = Array.from(new Set([...staticPages, ...blogPages]));
+/**
+ * Localized pages (/es, /es/descargar-videos-pinterest …) come from the built
+ * sitemap, which src/i18n/routes.ts generates with only the live locales, so a
+ * new locale is pinged as soon as it is released. Run after `npm run build`.
+ */
+const SITEMAP = new URL('../dist/sitemap.xml', import.meta.url);
+const sitemapPages = fs.existsSync(SITEMAP)
+  ? Array.from(fs.readFileSync(SITEMAP, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g), (m) => m[1])
+  : [];
+if (!sitemapPages.length) {
+  console.warn('dist/sitemap.xml not found: run `npm run build` first to include localized pages.');
+}
+
+const urlList = Array.from(new Set([...staticPages, ...blogPages, ...sitemapPages]));
 
 console.log(`Preparing IndexNow submission for ${urlList.length} URLs to Bing...`);
 

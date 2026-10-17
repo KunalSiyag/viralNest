@@ -1,0 +1,126 @@
+{
+  "pageId": "pinterest-gif-downloader",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải GIF Pinterest: lưu ảnh động, giữ nguyên chuyển động",
+    "description": "Tải GIF Pinterest đúng định dạng .gif, ảnh động vẫn chuyển động, không thành ảnh tĩnh. Dán link Ghim GIF, dùng được trên điện thoại, máy tính. Miễn phí."
+  },
+  "keywords": {
+    "primary": "tải gif pinterest",
+    "secondary": [
+      "tải ảnh động pinterest",
+      "lưu gif pinterest",
+      "cách tải gif trên pinterest",
+      "tải gif pinterest về điện thoại",
+      "tải ảnh gif pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Tải GIF Pinterest",
+    "short": "GIF",
+    "card": {
+      "title": "Tải GIF Pinterest",
+      "blurb": "Ảnh động lưu thành file .gif vẫn chuyển động, không thành ảnh tĩnh.",
+      "badge": "GIF"
+    }
+  },
+  "hero": {
+    "h1": "Tải GIF Pinterest",
+    "lede": "Lưu **ảnh động** Pinterest thành file **.gif** còn chuyển động, không phải một khung hình đứng yên."
+  },
+  "intro": [
+    "Lưu ảnh động từ Pinterest bằng cách thông thường, nhiều khi bạn chỉ nhận về một ảnh JPG của khung hình đầu tiên. PintDownload tìm đúng file **.gif** công khai của Ghim, bản chạy lặp liên tục, và đưa nguyên file đó cho bạn.",
+    "Dán link `/pin/` hoặc `pin.it`. Chỉ Ghim công khai, không cần tài khoản Pinterest."
+  ],
+  "features": [
+    {
+      "h": "File GIF, không phải ảnh chụp",
+      "p": "Chúng tôi lấy file động của Ghim, không bao giờ đưa một ảnh JPG khung đầu rồi gọi đó là GIF."
+    },
+    {
+      "h": "GIF hay video? Ô tải sẽ báo",
+      "p": "Nếu Ghim thật ra là video, ô tải sẽ chuyển bạn sang công cụ tải video để lấy file MP4."
+    },
+    {
+      "h": "Điện thoại hay máy tính",
+      "p": "Chạy trên trình duyệt của iPhone, Android, MacBook hay máy Windows, không cần cài app."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Vì sao GIF lưu về lại thành ảnh tĩnh",
+      "paragraphs": [
+        "Thường vì một trong hai lý do. Hoặc công cụ bạn dùng đã lưu ảnh bìa thay cho file động, hoặc file GIF vẫn ổn nhưng thư viện ảnh chỉ hiện khung đầu ở chế độ xem nhỏ. Hãy mở hẳn file ra trước khi kết luận:"
+      ],
+      "list": [
+        "**iPhone:** lưu GIF vào app Ảnh rồi chạm để mở; ảnh sẽ chuyển động khi mở, dù ảnh thu nhỏ trông như đứng yên.",
+        "**Android:** tùy app. Google Photos và phần lớn app thư viện phát được GIF; nếu app của bạn không phát, hãy mở bằng Google Photos hoặc trình duyệt.",
+        "**Máy tính:** nếu trình xem ảnh không chạy GIF, kéo file vào một thẻ trình duyệt."
+      ]
+    },
+    {
+      "h2": "Phân biệt GIF và video",
+      "paragraphs": [
+        "GIF trên Pinterest tự lặp lại, không có tiếng và không có thanh thời gian. Ghim có tiếng hoặc có thanh tua là **Ghim video**: hãy tải dạng MP4 ở [[pinterest-video-downloader|tải video Pinterest]].",
+        "PintDownload không chuyển video thành GIF hay ngược lại. Mỗi Ghim được tải đúng định dạng Pinterest đăng."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tải GIF trên Pinterest",
+    "intro": "Ba bước, không tài khoản, không app. Chỉ GIF công khai.",
+    "exampleLabel": "Link Ghim GIF",
+    "items": [
+      {
+        "title": "Mở Ghim GIF",
+        "body": "Kiểm tra ảnh tự lặp lại và không có tiếng. Có tiếng hoặc có thanh thời gian thì đó là video."
+      },
+      {
+        "title": "Sao chép link",
+        "body": "Trong app: **biểu tượng chia sẻ** › **Sao chép liên kết**. Trên máy tính: địa chỉ có `/pin/` trên trình duyệt."
+      },
+      {
+        "title": "Dán và lưu GIF",
+        "body": "Dán link vào ô phía trên, bấm **Tải GIF** và lưu file .gif. Mở file ra để thấy ảnh chuyển động."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải GIF Pinterest",
+    "items": [
+      {
+        "q": "Cách tải GIF trên Pinterest về điện thoại, máy tính?",
+        "a": "Sao chép liên kết của Ghim GIF, dán vào ô phía trên rồi bấm **Tải GIF**. Trên máy tính file vào thư mục **Tải xuống**; trên điện thoại, file vào mục tải xuống của trình duyệt."
+      },
+      {
+        "q": "Vì sao GIF tải về chỉ là ảnh tĩnh?",
+        "a": "Hoặc bạn đã lưu ảnh bìa chứ không phải file động, hoặc thư viện ảnh chỉ hiện khung đầu ở chế độ xem nhỏ. Mở file ra: nếu chuyển động là ổn. Nếu không, hãy tải lại từ trang này để nhận đúng file .gif."
+      },
+      {
+        "q": "Tải GIF về iPhone thì lưu ở đâu, có chạy trong app Ảnh không?",
+        "a": "Safari lưu file vào app **Tệp** › **Tải về**. Mở file, chạm **Chia sẻ** › **Lưu hình ảnh** để đưa vào app Ảnh; GIF sẽ chuyển động khi bạn mở nó."
+      },
+      {
+        "q": "GIF khác gì video MP4? Có đổi video thành GIF được không?",
+        "a": "GIF không có tiếng và tự lặp lại; video MP4 có thể có tiếng và có thanh thời gian. PintDownload không chuyển đổi định dạng: GIF tải về là GIF, video tải về là MP4 ([[pinterest-to-mp4|chuyển video Pinterest sang MP4]]). Muốn đổi, hãy dùng app chỉnh sửa sau khi tải."
+      },
+      {
+        "q": "Có cần tài khoản Pinterest không?",
+        "a": "Không. GIF công khai nào cũng tải được mà không cần đăng nhập. GIF trong bảng bí mật hay tài khoản riêng tư thì không tải được."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Tải GIF Pinterest — PintDownload",
+    "howToName": "Cách tải GIF Pinterest còn chuyển động",
+    "howToDescription": "Dán link một Ghim GIF công khai và lưu file .gif động về điện thoại hoặc máy tính."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Verify: iOS share sheet 'Lưu hình ảnh' for a .gif in Files; GIF playback in Samsung 'Bộ sưu tập'."
+  }
+}

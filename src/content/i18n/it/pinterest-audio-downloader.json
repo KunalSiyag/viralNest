@@ -1,0 +1,136 @@
+{
+  "pageId": "pinterest-audio-downloader",
+  "locale": "it",
+  "meta": {
+    "title": "Scaricare l’audio da Pinterest — MP3 dai Pin video, gratis",
+    "description": "Estrai musica o voce da un Pin video pubblico e salvala in MP3, quando l’audio è disponibile. Gratis e senza login. Usa solo audio che hai diritto a tenere."
+  },
+  "keywords": {
+    "primary": "scaricare audio da pinterest",
+    "secondary": [
+      "pinterest mp3",
+      "audio pinterest download",
+      "convertitore pinterest mp3",
+      "pinterest audio download mp3",
+      "pinterest audio downloader"
+    ]
+  },
+  "nav": {
+    "label": "Scarica l’audio",
+    "short": "Audio",
+    "card": {
+      "title": "Audio in MP3",
+      "blurb": "L’audio di un Pin video in MP3, creato nel tuo browser.",
+      "badge": "MP3"
+    }
+  },
+  "hero": {
+    "h1": "Scarica l’audio da Pinterest",
+    "lede": "Salva la musica o la voce di un **Pin video** pubblico in **MP3**, creato nel tuo browser dall’audio del video. Gratis e senza login."
+  },
+  "intro": [
+    "Pinterest non pubblica un file audio separato: il suono sta dentro il video. Per questo PintDownload prende l’MP4 pubblico del Pin e, nel tuo browser, ne estrae l’audio e lo codifica in un **MP3 a 192 kbps**. Il file nasce sul tuo dispositivo e non viene caricato da nessuna parte.",
+    "Usa solo audio che hai il diritto di tenere: una canzone sentita in un Pin pubblico resta di chi ne detiene i diritti."
+  ],
+  "features": [
+    {
+      "h": "Un MP3 vero",
+      "p": "Un file MP3 a 192 kbps creato con LAME, l’encoder MP3 open source: non un video con un altro nome."
+    },
+    {
+      "h": "Fatto nel browser",
+      "p": "Decodifica e codifica avvengono sul tuo dispositivo. Non carichiamo niente sui nostri server."
+    },
+    {
+      "h": "Anche solo un pezzo",
+      "p": "Con **Taglia l’audio** scegli inizio e fine e salvi solo la parte che ti serve, in MP3 o in WAV."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "MP3 o MP4: cosa scegliere",
+      "paragraphs": [
+        "L’**MP4** contiene video e audio insieme: è la scelta giusta se vuoi rivedere il Pin o montarlo. L’**MP3** contiene solo il suono, pesa molto meno e lo ascolti in qualsiasi lettore musicale o lo usi in un editor audio. Se non sei sicuro, scarica l’MP4: l’audio c’è anche lì."
+      ]
+    },
+    {
+      "h2": "Quando l’MP3 non è disponibile",
+      "paragraphs": [
+        "Non tutti i Pin hanno qualcosa da estrarre. Ecco i casi più comuni:"
+      ],
+      "list": [
+        "Il Pin è un **video muto**: non c’è audio da salvare.",
+        "Il Pin è una **GIF** o una **foto**: niente audio, quindi niente MP3.",
+        "Il browser è molto vecchio e non riesce a leggere l’audio del video: prova con una versione aggiornata di Chrome, Edge, Safari o Firefox."
+      ]
+    },
+    {
+      "h2": "Musica e diritti",
+      "paragraphs": [
+        "Tanti video su Pinterest usano canzoni famose. Che un Pin sia pubblico non vuol dire che tu possa riutilizzarne la musica: per ascoltarla da solo va bene, ma per un video da pubblicare, un podcast o una pubblicità servono i diritti. La traccia resta di chi l’ha creata."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Come estrarre l’audio da un Pin video",
+    "intro": "Solo Pin video pubblici con audio. Cita il creatore se riutilizzi la traccia.",
+    "exampleLabel": "Link di un Pin video",
+    "items": [
+      {
+        "title": "Scegli un Pin video con audio",
+        "body": "Prima controlla su Pinterest che il video abbia davvero un suono: i video muti e le GIF non hanno niente da estrarre."
+      },
+      {
+        "title": "Incolla il link",
+        "body": "**Icona di condivisione** › **Copia link**, oppure un URL con `/pin/`. Incollalo qui sopra e tocca **Scarica video**."
+      },
+      {
+        "title": "Scarica l’MP3",
+        "body": "Nella riga **Audio, 192 kbps** tocca **Scarica**: il browser crea l’MP3 dall’audio del video, senza caricare niente."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti sull’audio di Pinterest",
+    "items": [
+      {
+        "q": "Come scarico l’audio di un video Pinterest in MP3?",
+        "a": "Incolla qui sopra il link di un Pin video pubblico e tocca **Scarica video**. Nella riga **Audio, 192 kbps** tocca **Scarica**: il browser crea un MP3 a 192 kbps dall’audio del video. Puoi tenere anche l’MP4, che ha lo stesso audio."
+      },
+      {
+        "q": "Perché sul mio Pin non c’è l’MP3?",
+        "a": "Il Pin può essere muto, una GIF o una foto: in tutti questi casi non c’è un suono da salvare. Pinterest non ha un file audio separato, quindi senza un video con audio l’MP3 non si può creare."
+      },
+      {
+        "q": "È legale scaricare la musica da Pinterest?",
+        "a": "Estrai solo audio che hai il diritto di usare: un tuo Pin, musica con licenza o un riferimento per uso personale. Il fatto che un Pin sia pubblico non è una licenza commerciale. Non è una consulenza legale."
+      },
+      {
+        "q": "Come viene creato l’MP3?",
+        "a": "Il browser scarica il video tramite PintDownload, ne decodifica l’audio e lo codifica in MP3 a 192 kbps con LAME, l’encoder MP3 open source (licenza LGPL). Tutto succede sul tuo dispositivo e niente viene caricato."
+      },
+      {
+        "q": "Serve un account Pinterest?",
+        "a": "No, per i Pin video pubblici basta il link. I Pin privati e quelli nelle bacheche segrete non si possono leggere."
+      },
+      {
+        "q": "Posso salvare solo un pezzo della canzone?",
+        "a": "Sì. Quando il Pin è pronto, apri **Taglia l’audio**, scegli inizio e fine, ascolta la clip e salvala in MP3 o in WAV."
+      }
+    ]
+  },
+  "related": {
+    "title": "Altri formati e strumenti"
+  },
+  "schema": {
+    "appName": "Pinterest audio downloader — PintDownload",
+    "howToName": "Come scaricare l’audio di un video Pinterest in MP3",
+    "howToDescription": "Incolla un Pin video pubblico e salva il suo audio in un MP3 creato nel tuo browser."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-it (agent). MP3 facts from the English audio page: 192 kbps, LAME (LGPL), made in the browser, nothing uploaded.",
+    "nativeReviewer": "review-it (agent), 2026-10-16: read on the live build at 390/1440 for fluency, tu register, glossary (Pin, bacheca, la GIF, tagliando, Galleria/Foto), honesty and English leftovers. Pinterest labels rechecked on help.pinterest.com/it: Scarica immagine, Copia link, Invia; secret boards are now called private (Mantieni la bacheca privata). Device labels (iOS File › Download, Salva video/Salva immagine, Samsung Archivio, Files di Google) are the standard it-IT names, not checked on a phone."
+  }
+}

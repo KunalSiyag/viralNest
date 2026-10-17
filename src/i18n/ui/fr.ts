@@ -1,0 +1,115 @@
+/**
+ * Chrome strings, French (vouvoiement, one version for France, Belgium,
+ * Québec and Francophone Africa). Same keys and {tokens} as en.ts.
+ * Vocabulary from docs/i18n/research/fr.json glossary: épingle, tableau,
+ * photo de profil, icône de partage › Copier le lien, Galerie/Photos,
+ * Téléchargements, favori (bookmarklet).
+ * Typography: U+00A0 (never U+202F) before : ; ? ! and inside « ».
+ */
+import type { UiStrings } from './en';
+
+export const UI: UiStrings = {
+  skipToContent: 'Aller au contenu',
+  homeAria: 'Accueil de PintDownload',
+  logoAlt: 'Logo de PintDownload',
+  header: {
+    mainNavAria: 'Navigation principale',
+    mobileNavAria: 'Outils',
+    guides: 'Guides',
+    themeToggle: 'Passer du mode clair au mode sombre',
+    menuOpen: 'Ouvrir le menu',
+    menuClose: 'Fermer le menu',
+  },
+  languageMenu: {
+    label: 'Langue',
+    buttonAria: 'Langue : {current}',
+    homeFallbackHint: 'page d’accueil',
+  },
+  footer: {
+    blurb: 'Téléchargez les vidéos, photos et tableaux Pinterest publics. Gratuit, sans compte et sans logo ajouté.',
+    tools: 'Outils',
+    learn: 'Guides',
+    company: 'À propos',
+    blog: 'Blog',
+    about: 'Qui sommes-nous',
+    contact: 'Contact',
+    privacy: 'Confidentialité',
+    terms: 'Conditions',
+    englishMarker: '(en anglais)',
+    copyright: '© {year} {brand} · {domain}',
+    credit: 'Créditez les créateurs quand vous réutilisez leur contenu. Service indépendant : PintDownload n’est pas affilié à Pinterest Inc.',
+  },
+  matrix: {
+    heading: 'Tous les outils et guides PintDownload',
+    devices: 'Téléphone, PC et navigateur',
+    formats: 'Formats et qualité',
+    batch: 'Tableaux et épingles',
+    guides: 'Guides',
+  },
+  howTo: {
+    exampleLabel: 'Exemple de lien',
+    stepPrefix: 'Étape {n} : ',
+  },
+  faq: {
+    title: 'Questions fréquentes',
+  },
+  related: {
+    title: 'Autres outils pour Pinterest',
+    intro: 'Chaque outil prend un type de lien précis. Choisissez celui qui correspond au vôtre pour tomber du premier coup sur le bon téléchargeur.',
+  },
+  compare: {
+    title: 'Épingle, tableau ou profil : quel outil choisir ?',
+    intro: 'Prenez l’outil qui correspond à votre lien. Un lien du mauvais type est la première cause d’échec d’un téléchargement.',
+    feature: 'Critère',
+    pin: 'Épingle',
+    board: 'Tableau ZIP',
+    profile: 'Profil ZIP',
+    rows: {
+      url: { feature: 'Exemple de lien', pin: 'pinterest.com/pin/123…', board: 'pinterest.com/nom/tableau/', profile: 'pinterest.com/nom/' },
+      what: { feature: 'Ce que vous obtenez', pin: '1 fichier ou tout le carrousel', board: 'Plusieurs épingles en ZIP', profile: 'Épingles visibles en ZIP' },
+      best: { feature: 'Idéal pour', pin: 'Garder une idée ou une vidéo', board: 'Moodboards et collections', profile: 'Archiver un compte' },
+      carousel: { feature: 'Images d’un carrousel', pin: 'Oui, toutes', board: 'La couverture de chaque épingle*', profile: 'La couverture de chaque épingle*' },
+      private: { feature: 'Contenu privé ou secret', pin: 'Non pris en charge', board: 'Non pris en charge', profile: 'Non pris en charge' },
+    },
+    footnoteBefore: '* Pour toutes les images du carrousel d’une épingle rangée dans un tableau ou un profil, ouvrez cette épingle avec l’outil',
+    footnoteLink: 'Télécharger une épingle',
+    footnoteAfter: '.',
+  },
+  bookmarklet: {
+    title: 'Le favori en un clic',
+    body: 'Enregistrez vidéos, photos et tableaux Pinterest pendant que vous naviguez sur ordinateur. Cliquez sur le favori depuis une épingle : PintDownload s’ouvre avec son lien déjà collé.',
+    button: 'Glisser dans la barre de favoris',
+    dragAlert: 'Glissez ce bouton dans la barre de favoris de votre navigateur pour l’installer.',
+    dragTitle: 'Glissez-moi dans la barre de favoris',
+    notPinterest: 'Ouvrez d’abord une page Pinterest.',
+    chromeTitle: 'Chrome / Edge',
+    chromeBodyHtml: 'Appuyez sur `Ctrl+Maj+B` (`Cmd+Maj+B` sur Mac) pour afficher la barre de favoris, puis glissez-y le bouton.',
+    safariTitle: 'Safari',
+    safariBody: 'Glissez-le dans la barre des favoris. Sur iPhone ou iPad, créez un signet sur n’importe quelle page, modifiez son adresse et collez-y le code du favori.',
+    useTitle: 'Utilisation',
+    useBodyHtml: 'Sur une épingle ou un tableau, cliquez sur votre favori **PintDownload**. Le site s’ouvre avec le lien déjà rempli.',
+    imageAlt:
+      'Ajouter PintDownload aux favoris dans Chrome : ouvrez le menu, allez dans Favoris et listes, choisissez Ajouter cet onglet aux favoris et rangez-le dans la barre de favoris',
+  },
+  ad: {
+    label: 'Publicité',
+  },
+  notFound: {
+    title: 'Page introuvable — {brand}',
+    description: 'Cette page n’existe pas sur {domain}. Revenez à l’accueil ou essayez un téléchargeur Pinterest.',
+    h1: 'Cette épingle n’est pas sur le tableau.',
+    lede: 'Le lien est peut-être ancien, mal recopié ou supprimé. Essayez le téléchargeur, lisez un guide ou choisissez un outil ci-dessous.',
+    ticketLabel: 'Entrée · lien public',
+    stamp: 'Page introuvable',
+    home: 'Retour à l’accueil',
+    blog: 'Le blog',
+    contact: 'Contact',
+    toolsAria: 'Téléchargeurs Pinterest',
+    bug: 'Vous pensez que c’est un bug ?',
+    videoBlurb: 'Vidéos d’épingles publiques en MP4',
+    pinBlurb: 'Images, GIF et carrousels',
+    boardBlurb: 'Tableaux publics en ZIP',
+    guideBlurb: 'Étapes sur téléphone et sur PC',
+    guideBadge: 'Guide',
+  },
+};

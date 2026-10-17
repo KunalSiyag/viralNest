@@ -1,0 +1,149 @@
+{
+  "pageId": "pinterest-image-downloader",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Bilder herunterladen – in HD, ohne Anmeldung",
+    "description": "Pinterest-Bilder in der größten verfügbaren Auflösung speichern, auch wenn „Bild herunterladen“ fehlt. Pin-Link einfügen, JPG laden – kostenlos, ohne Konto."
+  },
+  "keywords": {
+    "primary": "pinterest bilder herunterladen",
+    "secondary": [
+      "pinterest bild herunterladen",
+      "pinterest bilder speichern",
+      "pinterest bilder herunterladen ohne anmeldung",
+      "pinterest bilder herunterladen geht nicht mehr",
+      "pinterest bilder herunterladen gute qualität",
+      "pinterest fotos herunterladen"
+    ]
+  },
+  "nav": {
+    "label": "Bilder herunterladen",
+    "short": "Bilder",
+    "card": {
+      "title": "Pinterest-Bilder herunterladen",
+      "blurb": "Fotos, Wallpaper und Illustrationen in der größten Version, die Pinterest hat.",
+      "badge": "HD"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Bilder herunterladen",
+    "lede": "**„Bild herunterladen“ fehlt oder geht nicht mehr?** Füge den Pin-Link ein und speichere das Bild in der größten Version, die Pinterest veröffentlicht. Kostenlos, ohne Konto."
+  },
+  "intro": [
+    "Meistens fällt es erst auf, wenn man ein Bild sichern will: Im Drei-Punkte-Menü fehlt **Bild herunterladen**, oder es passiert nichts, auf dem iPhone, dem iPad und am PC. Mit dem Pin-Link holst du dir das Bild trotzdem, egal ob Foto, Wallpaper, Rezept oder Vorlage zum Nachzeichnen.",
+    "Funktioniert mit `/pin/`-Links und `pin.it`-Kurzlinks. Nur öffentliche Bild-Pins; Videos gehören in den [[pinterest-video-downloader|Video-Download]]."
+  ],
+  "features": [
+    {
+      "h": "Größte verfügbare Auflösung",
+      "p": "Bis 1200 px breit, so wie Pinterest das Bild öffentlich ausliefert, nicht das unscharfe Vorschaubild aus dem Feed."
+    },
+    {
+      "h": "Ohne Anmeldung",
+      "p": "Kein Pinterest-Konto, keine Registrierung bei uns. Nur öffentliche Pins; private Pins bleiben privat."
+    },
+    {
+      "h": "Auch Karussells",
+      "p": "Hat ein Pin mehrere Bilder, bekommst du alle, einzeln oder zusammen als ZIP."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Wenn „Bild herunterladen“ fehlt",
+      "paragraphs": [
+        "In der Pinterest-App speicherst du ein Bild normalerweise über das **Drei-Punkte-Symbol** › **Bild herunterladen**. Fehlt der Eintrag oder tut sich nichts, nimm den Umweg über den Link:"
+      ],
+      "list": [
+        "In der App: **Teilen** › **Link kopieren**.",
+        "Am PC oder iPad im Browser: die Adresse mit `/pin/` aus der Adressleiste kopieren.",
+        "Link oben einfügen, **Bild herunterladen** antippen und das JPG speichern."
+      ]
+    },
+    {
+      "h2": "Wie groß ist das Bild?",
+      "paragraphs": [
+        "Du bekommst die größte Version, die Pinterest öffentlich bereitstellt, meist bis 1200 px breit. Die Datei, die der Creator hochgeladen hat, gibt Pinterest nicht heraus, und manche Pins gibt es nur kleiner. Wir rechnen nichts hoch und erfinden keine Pixel."
+      ]
+    },
+    {
+      "h2": "Darf ich Pinterest-Bilder speichern?",
+      "paragraphs": [
+        "Ein Bild für dich zu speichern, als Wallpaper, fürs Moodboard oder als Vorlage zum Nachzeichnen, ist etwas anderes, als es selbst zu veröffentlichen. Wenn du es weiterverwendest, nenne die Person, die es erstellt hat, und frag im Zweifel nach. Das ist keine Rechtsberatung."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So lädst du Pinterest-Bilder in HD herunter",
+    "intro": "Für Bild-Pins. Ganze Pinnwände gehören in den Pinnwand-Download.",
+    "exampleLabel": "Beispiel für einen Bild-Pin",
+    "items": [
+      {
+        "title": "Bild-Pin öffnen",
+        "body": "Öffne den Pin in der Großansicht, sodass die Adresse `/pin/` enthält und ein Foto zu sehen ist, kein laufendes Video."
+      },
+      {
+        "title": "Link kopieren",
+        "body": "**Teilen** › **Link kopieren** in der App, oder die Adresse aus dem Browser. `pin.it`-Links gehen auch."
+      },
+      {
+        "title": "Einfügen und abrufen",
+        "body": "Füge den Link oben ein und tippe auf **Bild herunterladen**. Gibt es mehrere Größen, nimm die größte."
+      },
+      {
+        "title": "JPG speichern",
+        "body": "Speichere die Datei. Am PC liegt sie danach im Downloads-Ordner, auf dem Handy erst in Downloads und von dort in Fotos oder der Galerie."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zu Pinterest-Bildern",
+    "items": [
+      {
+        "q": "Wie lade ich Pinterest-Bilder ohne Konto herunter?",
+        "a": "Füge den Link eines öffentlichen Bild-Pins oben ein. PintDownload speichert die größte Version, die Pinterest für das Foto veröffentlicht, ohne dass du dich anmelden oder ein Konto anlegen musst."
+      },
+      {
+        "q": "„Bild herunterladen“ geht nicht mehr – was kann ich tun?",
+        "a": "Kopiere stattdessen den Link (**Teilen** › **Link kopieren**) und füge ihn hier ein. Das klappt auch auf dem iPad und am PC, wo der Menüpunkt oft fehlt."
+      },
+      {
+        "q": "Bekomme ich die volle Größe oder nur ein Vorschaubild?",
+        "a": "Kein Vorschaubild, aber auch nicht die hochgeladene Datei: Du bekommst die größte Version, die Pinterest öffentlich zeigt, meist bis 1200 px breit. Manche Pins gibt es nur kleiner."
+      },
+      {
+        "q": "Wie kommen die Bilder in die Fotos-App oder die Galerie?",
+        "a": "Auf Android zeigt die Galerie heruntergeladene Bilder meist im Album **Download**. Auf dem iPhone öffnest du das Bild in der App **Dateien** › **Downloads**, tippst auf **Teilen** und wählst **Bild sichern**."
+      },
+      {
+        "q": "Kann ich alle Bilder eines Karussells laden?",
+        "a": "Ja. Bei Pins mit mehreren Bildern listet PintDownload jedes einzeln auf, und mit dem ZIP-Button bekommst du alle auf einmal. Mehr dazu beim [[pinterest-carousel-downloader|Karussell-Download]]."
+      },
+      {
+        "q": "Kann ich ein Pinterest-Bild per WhatsApp verschicken?",
+        "a": "Ja. Speichere es zuerst hier, dann teilst du es aus der Galerie oder der Fotos-App in WhatsApp. Willst du nur zeigen, was du gefunden hast, reicht auch der Pin-Link."
+      },
+      {
+        "q": "Taugt das für Wallpaper und Vorlagen?",
+        "a": "Für Handy-Wallpaper und Vorlagen zum Nachzeichnen reichen 1200 px Breite meist gut aus. Für großformatige Drucke sind sie oft zu klein; dann frag den Creator nach einer größeren Datei."
+      },
+      {
+        "q": "Warum klappt ein Video-Pin hier nicht?",
+        "a": "Diese Seite speichert Standbilder. Für Pins, die abgespielt werden, nimm den [[pinterest-video-downloader|Video-Download]], der das MP4 holt."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Tools für Pinterest-Bilder"
+  },
+  "schema": {
+    "appName": "Pinterest-Bild-Downloader – PintDownload",
+    "howToName": "Pinterest-Bilder in HD herunterladen",
+    "howToDescription": "Schritte, um ein öffentliches Pinterest-Bild in der größten Version zu speichern, die Pinterest veröffentlicht."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). For the native reviewer: verify iOS Teilen › Bild sichern from the Dateien app and the Android Galerie album name Download.",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

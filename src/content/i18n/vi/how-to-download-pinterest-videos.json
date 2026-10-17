@@ -1,0 +1,148 @@
+{
+  "pageId": "how-to-download-pinterest-videos",
+  "locale": "vi",
+  "meta": {
+    "title": "Cách tải video trên Pinterest: 3 bước, không cần cài app",
+    "description": "Cách tải video trên Pinterest về điện thoại, máy tính: sao chép liên kết Ghim, dán vào PintDownload, lưu MP4. Có cách xử lý video mờ, mất tiếng."
+  },
+  "keywords": {
+    "primary": "cách tải video trên pinterest",
+    "secondary": [
+      "cách tải video pinterest",
+      "cách lưu video trên pinterest",
+      "có cách nào tải video trên pinterest không",
+      "cách tải video trên pinterest không bị mờ",
+      "cách tải video trên pinterest không dính logo",
+      "hướng dẫn tải video pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Cách tải video Pinterest",
+    "short": "Hướng dẫn",
+    "card": {
+      "title": "Cách tải video trên Pinterest",
+      "blurb": "Ba bước từ link Ghim tới file MP4, kèm cách xử lý lỗi thường gặp.",
+      "badge": "3 bước"
+    }
+  },
+  "hero": {
+    "h1": "Cách tải video trên Pinterest",
+    "lede": "Ba bước cho điện thoại và máy tính, cùng cách xử lý khi video **bị mờ**, **mất tiếng** hoặc **không tải được**."
+  },
+  "intro": [
+    "Pinterest không có nút tải cho phần lớn Ghim video, còn nút **Lưu** thì chỉ thêm Ghim vào bảng của bạn. Thứ Ghim nào cũng có là một **link**, và từ link đó PintDownload tìm ra file MP4 công khai của video. Dưới đây là cách làm đầy đủ và cách xử lý khi không tải được.",
+    "Cần các bước cho một thiết bị cụ thể? Xem hướng dẫn [[download-pinterest-videos-iphone-android|tải video Pinterest về điện thoại]], [[how-to-download-pinterest-video-on-laptop|tải video Pinterest về máy tính]] và [[how-to-download-pinterest-video-in-gallery|lưu video vào thư viện ảnh]]."
+  ],
+  "sections": [
+    {
+      "h2": "Bấm Lưu trên Pinterest không tải video về máy",
+      "paragraphs": [
+        "Đây là chỗ nhiều người nhầm nhất. Theo chính trang trợ giúp của Pinterest, **lưu** Ghim là thêm Ghim vào một bảng của bạn trên Pinterest, còn **tải** Ghim mới là lưu file về thiết bị. Bấm **Lưu** xong, video vẫn chỉ nằm trong Pinterest, không có trong máy.",
+        "Muốn có file MP4 thật trên điện thoại hay máy tính, bạn cần link của Ghim video và một công cụ lấy được file đó, như PintDownload. Công cụ này không chèn logo và chạy được trên mọi trình duyệt."
+      ]
+    },
+    {
+      "h2": "Lấy link video trên app và trên máy tính",
+      "paragraphs": [
+        "Link phải là link của **chính Ghim video**, không phải của bảng hay bảng tin nhà:"
+      ],
+      "list": [
+        "**Trong app:** mở video, chạm **biểu tượng chia sẻ** rồi chọn **Sao chép liên kết**. App sẽ sao chép một link `pin.it` ngắn.",
+        "**Trên máy tính:** bấm vào video để mở Ghim, rồi sao chép địa chỉ có `/pin/` trên thanh địa chỉ. Nhanh nhất là nhấn **Ctrl + L** rồi **Ctrl + C** (trên Mac: **Cmd + L**, **Cmd + C**).",
+        "**Link bạn bè gửi qua Zalo, Messenger:** nhấn giữ để sao chép là dùng được ngay."
+      ]
+    },
+    {
+      "h2": "Vì sao không tải được video Pinterest",
+      "paragraphs": [
+        "Khi video không tải được, gần như luôn vì một trong các lý do sau:"
+      ],
+      "list": [
+        "**Ghim không phải video.** Đó là ảnh, GIF hoặc Ghim nhiều ảnh. Dán link vào [[pinterest-pin-downloader|trang tải Ghim]] để nó tự nhận loại.",
+        "**Ghim riêng tư hoặc đã bị xóa.** Ghim trong bảng bí mật hay tài khoản riêng tư không công khai. Nếu link không mở được trên Pinterest thì ở đây cũng vậy.",
+        "**Link không phải của Ghim.** Link kết quả tìm kiếm, bảng tin nhà hay bảng không dùng để tải một video. Hãy mở video rồi sao chép link của Ghim đó.",
+        "**Video nằm ngoài Pinterest.** Có Ghim chỉ dẫn sang YouTube hay một web bán hàng; video không được lưu trên Pinterest nên không có file MP4 nào để tải.",
+        "**Trình duyệt chặn tải xuống.** Trên iPhone, xem biểu tượng tải xuống của Safari; trên máy tính, xem danh sách tải xuống của trình duyệt."
+      ]
+    },
+    {
+      "h2": "Video bị mờ hoặc mất tiếng",
+      "paragraphs": [
+        "Khi phần kết quả có nhiều mức chất lượng, hãy chọn bản lớn nhất: thường là 720p, 1080p khi Ghim có bản này. Ghim chỉ có 720p thì không có cách nào lấy bản nét hơn. Nếu video chỉ mờ sau khi gửi qua Zalo hay Messenger, đó là do app nén lại; gửi dạng file để giữ độ nét.",
+        "Về âm thanh: file MP4 giữ nguyên tiếng của video. Hãy bật tiếng nghe thử ngay trên Pinterest; nếu ở đó cũng im lặng thì Ghim vốn là video không có tiếng."
+      ]
+    },
+    {
+      "h2": "Video tải về nằm ở đâu",
+      "paragraphs": [
+        "Trong thư mục **Tải xuống** của điện thoại hoặc máy tính. Android thường hiện video luôn trong thư viện ảnh. Trên iPhone, Safari lưu video vào app **Tệp**, và bạn cần thêm một bước để đưa sang app Ảnh, như trong hướng dẫn [[how-to-download-pinterest-video-in-gallery|lưu video Pinterest vào thư viện ảnh]].",
+        "Nếu bạn dùng lại video trong bài đăng của mình, nhớ ghi nguồn tác giả."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tải video trên Pinterest trong 3 bước",
+    "intro": "Cùng một cách cho điện thoại và máy tính. Chỉ áp dụng cho video công khai.",
+    "exampleLabel": "Link rút gọn từ app",
+    "items": [
+      {
+        "title": "Sao chép liên kết Ghim video",
+        "body": "Mở video trong app hoặc trên pinterest.com. Trong app: **biểu tượng chia sẻ** › **Sao chép liên kết**. Trên máy tính: địa chỉ có `/pin/`."
+      },
+      {
+        "title": "Dán vào PintDownload",
+        "body": "Dán link vào ô phía trên rồi bấm **Tải video**."
+      },
+      {
+        "title": "Chọn chất lượng và lưu MP4",
+        "body": "Nếu Ghim có cả 720p và 1080p, bạn sẽ thấy cả hai. File MP4 được lưu vào thư mục **Tải xuống**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp: cách tải video trên Pinterest",
+    "items": [
+      {
+        "q": "Có cách nào tải video trên Pinterest không?",
+        "a": "Có. Pinterest chỉ có nút tải cho một số Ghim, và thường là Ghim ảnh. Với video, bạn sao chép liên kết của Ghim rồi dán vào PintDownload để lấy file MP4, không cần cài app."
+      },
+      {
+        "q": "Bấm Lưu trên Pinterest có lưu video về máy không?",
+        "a": "Không. Nút **Lưu** chỉ thêm Ghim vào một bảng trên Pinterest. Video không vào thư viện ảnh hay thư mục Tải xuống nào cả."
+      },
+      {
+        "q": "Lấy link video Pinterest trên máy tính thế nào?",
+        "a": "Bấm vào video để mở Ghim, rồi sao chép địa chỉ trên thanh địa chỉ (có `/pin/` và một dãy số). Trong app thì dùng **biểu tượng chia sẻ** › **Sao chép liên kết**."
+      },
+      {
+        "q": "Vì sao không tải được video Pinterest về máy?",
+        "a": "Thường là vì link không phải của một Ghim video: bạn đã sao chép link bảng, link tìm kiếm, hoặc Ghim là ảnh hay GIF. Ghim riêng tư, đã xóa, hay chỉ dẫn sang YouTube cũng không tải được."
+      },
+      {
+        "q": "Làm sao tải video Pinterest không bị mờ?",
+        "a": "Chọn bản chất lượng cao nhất trong phần kết quả (thường 720p, 1080p khi Ghim có). Đừng gửi qua Zalo dạng video vì app sẽ nén; gửi dạng file để giữ độ nét."
+      },
+      {
+        "q": "Tải video Pinterest có vi phạm bản quyền không?",
+        "a": "Lưu video công khai để xem offline cho riêng mình là cách dùng phổ biến. Muốn đăng lại, bạn cần xin phép tác giả và ghi nguồn. Quy định mỗi nơi một khác, đây không phải tư vấn pháp lý."
+      },
+      {
+        "q": "Có cần cài app tải video không?",
+        "a": "Không. Trình duyệt có sẵn trên máy là đủ: Safari, Chrome, Cốc Cốc hay Samsung Internet. Đừng cài APK lạ chỉ để tải video Pinterest."
+      }
+    ]
+  },
+  "related": {
+    "title": "Hướng dẫn và công cụ khác"
+  },
+  "schema": {
+    "appName": "Cách tải video trên Pinterest — PintDownload",
+    "howToName": "Cách tải video trên Pinterest về điện thoại và máy tính",
+    "howToDescription": "Sao chép liên kết của một Ghim video công khai, dán vào PintDownload và lưu file MP4."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Lưu vs tải wording from help.pinterest.com/vi (research pinterestAppTerms.saveToBoard)."
+  }
+}

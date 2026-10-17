@@ -1,0 +1,142 @@
+{
+  "pageId": "pinterest-profile-downloader",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải hồ sơ Pinterest: lưu Ghim công khai về file ZIP",
+    "description": "Tải hồ sơ Pinterest công khai: ảnh, video đang hiển thị trên hồ sơ gom vào một file ZIP. Miễn phí, không cần đăng nhập. Hồ sơ riêng tư không hỗ trợ."
+  },
+  "keywords": {
+    "primary": "tải hồ sơ pinterest",
+    "secondary": [
+      "tải tất cả ảnh từ pinterest",
+      "pinterest profile downloader",
+      "tải ảnh pinterest hàng loạt",
+      "cách lấy link tài khoản pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Tải hồ sơ Pinterest",
+    "short": "Hồ sơ",
+    "card": {
+      "title": "Tải hồ sơ Pinterest",
+      "blurb": "Ghim công khai trên hồ sơ một tài khoản, gom vào một file ZIP.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Tải hồ sơ Pinterest",
+    "lede": "Gom các **Ghim công khai** trên trang hồ sơ của một người vào **một file ZIP** để xem offline."
+  },
+  "intro": [
+    "Với link của một tài khoản (`pinterest.com/tai-khoan/`), PintDownload liệt kê các Ghim công khai mà hồ sơ đó đang hiển thị: ảnh, video và GIF. Xem qua danh sách rồi tải tất cả trong một **file ZIP**, hoặc tải từng Ghim.",
+    "Kết quả cũng hiện ảnh đại diện và các bảng công khai của tài khoản, phòng khi bạn chỉ muốn lấy một bộ sưu tập."
+  ],
+  "features": [
+    {
+      "h": "Nhận link hồ sơ",
+      "p": "Dành cho địa chỉ chỉ có tên tài khoản. Nếu sau đó còn tên bảng, hãy dùng trang tải bảng."
+    },
+    {
+      "h": "Gọn trong một file ZIP",
+      "p": "Các Ghim công khai của tài khoản trong một file, để sao lưu hoặc làm moodboard offline."
+    },
+    {
+      "h": "Mở từng bảng chỉ với một chạm",
+      "p": "Kết quả liệt kê các bảng công khai của tài khoản, để bạn mở đúng bảng mình cần."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Có tải được mọi Ghim của tài khoản không?",
+      "paragraphs": [
+        "Không phải lúc nào cũng được. PintDownload lưu các Ghim công khai mà trang hồ sơ tải ra, tới một giới hạn. Tài khoản có hàng nghìn Ghim sẽ thiếu những Ghim cũ nhất; khi đó hãy tải lần lượt từng bảng của họ ở [[pinterest-board-downloader|tải bảng Pinterest]]."
+      ]
+    },
+    {
+      "h2": "Hồ sơ, bảng hay Ghim: nhìn link là biết",
+      "paragraphs": [
+        "Ba loại link trông khá giống nhau, nhưng mỗi loại dùng một công cụ:"
+      ],
+      "list": [
+        "`pinterest.com/tai-khoan/`: hồ sơ. Tải các Ghim ở trang này; riêng ảnh đại diện thì có [[pinterest-profile-picture-downloader|tải avatar Pinterest]].",
+        "`pinterest.com/tai-khoan/ten-bang/`: một bảng. Dùng [[pinterest-board-downloader|tải bảng Pinterest]].",
+        "`pinterest.com/pin/123…`: một Ghim lẻ. Dùng [[pinterest-pin-downloader|tải Ghim Pinterest]]."
+      ]
+    },
+    {
+      "h2": "Lấy link tài khoản Pinterest ở đâu",
+      "paragraphs": [
+        "Trong app, mở trang hồ sơ (chạm vào tên hoặc ảnh đại diện), chạm **biểu tượng chia sẻ** rồi **Sao chép liên kết**. Trên máy tính, mở hồ sơ và sao chép địa chỉ trên thanh địa chỉ. Link đúng chỉ có tên miền và tên tài khoản, không có `/pin/`."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tải hồ sơ Pinterest thành file ZIP",
+    "intro": "Chỉ hồ sơ công khai. Link có thêm tên bảng thì dán ở trang tải bảng.",
+    "exampleLabel": "Link hồ sơ mẫu",
+    "items": [
+      {
+        "title": "Mở hồ sơ công khai",
+        "body": "Mở trang hồ sơ của tài khoản trên Pinterest, nơi có tên, ảnh đại diện và các bảng."
+      },
+      {
+        "title": "Sao chép link hồ sơ",
+        "body": "Chạm **biểu tượng chia sẻ** › **Sao chép liên kết**, hoặc sao chép địa chỉ dạng `pinterest.com/tai-khoan/`."
+      },
+      {
+        "title": "Dán và xem danh sách Ghim",
+        "body": "Dán link vào ô phía trên rồi bấm **Tải hồ sơ (ZIP)**. Danh sách Ghim công khai sẽ hiện ra."
+      },
+      {
+        "title": "Tải file ZIP",
+        "body": "Bấm **Tải ZIP** để lưu tất cả, hoặc mở một bảng để chỉ lấy Ghim trong bảng đó."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải hồ sơ Pinterest",
+    "items": [
+      {
+        "q": "Link hồ sơ trông như thế nào, lấy ở đâu?",
+        "a": "Link hồ sơ có dạng `pinterest.com/tai-khoan/`, chỉ gồm tên miền và tên tài khoản. Trong app, mở hồ sơ rồi chạm **biểu tượng chia sẻ** › **Sao chép liên kết**; trên máy tính, sao chép địa chỉ trang."
+      },
+      {
+        "q": "Hồ sơ khác bảng thế nào?",
+        "a": "Hồ sơ là cả tài khoản (`pinterest.com/tai-khoan/`), còn bảng là một bộ sưu tập bên trong (`pinterest.com/tai-khoan/ten-bang/`). Muốn lấy đúng một chủ đề, dùng trang tải bảng sẽ chính xác hơn."
+      },
+      {
+        "q": "Có tải được mọi Ghim một người từng đăng không?",
+        "a": "Không. Chỉ những Ghim công khai mà trang hồ sơ tải ra, tới một giới hạn. Với tài khoản rất lớn, tải từng bảng sẽ lấy được nhiều Ghim hơn."
+      },
+      {
+        "q": "Hồ sơ riêng tư có tải được không?",
+        "a": "Không. Nếu tài khoản riêng tư hoặc phải đăng nhập mới xem được, không có gì công khai để tải."
+      },
+      {
+        "q": "Tải hàng loạt như vậy có được phép không?",
+        "a": "Lưu nội dung công khai để xem riêng, hoặc sao lưu tài khoản của chính bạn, là cách dùng thông thường. Ảnh, video tải về vẫn thuộc về tác giả: đừng đăng lại khi chưa xin phép hay chưa ghi nguồn."
+      },
+      {
+        "q": "Chỉ cần ảnh đại diện thì sao?",
+        "a": "Dùng [[pinterest-profile-picture-downloader|tải avatar Pinterest]]: trang đó chỉ lưu ảnh đại diện của tài khoản, ở cỡ lớn nhất có sẵn."
+      },
+      {
+        "q": "Sao lưu tài khoản của chính tôi được không?",
+        "a": "Được, nếu hồ sơ của bạn công khai: dán link của bạn và tải ZIP. Muốn có bản đầy đủ, kể cả bảng bí mật, Pinterest cho phép yêu cầu bản sao dữ liệu tài khoản trong phần cài đặt quyền riêng tư."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Tải hồ sơ Pinterest — PintDownload",
+    "howToName": "Cách tải hồ sơ Pinterest thành file ZIP",
+    "howToDescription": "Dán link một hồ sơ Pinterest công khai, xem danh sách Ghim và lưu ảnh, video vào một file ZIP."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Pinterest data-request path described generically (label in vi settings not verified)."
+  }
+}

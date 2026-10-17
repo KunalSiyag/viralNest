@@ -1,0 +1,146 @@
+{
+  "pageId": "download-pinterest-videos-iphone-android",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải video Pinterest về điện thoại iPhone, Android",
+    "description": "Tải video Pinterest về điện thoại iPhone, Samsung, Android bằng Safari hoặc Chrome, không cần app: sao chép liên kết Ghim, dán vào PintDownload, lưu vào Ảnh."
+  },
+  "keywords": {
+    "primary": "tải video pinterest về điện thoại",
+    "secondary": [
+      "tải video pinterest về iphone",
+      "tải video pinterest về điện thoại android",
+      "cách tải video trên pinterest về điện thoại samsung",
+      "tải video pinterest trên iphone không cần app",
+      "tải video pinterest bằng safari trên iphone",
+      "cách tải video trên pinterest về ipad"
+    ]
+  },
+  "nav": {
+    "label": "Tải video về điện thoại",
+    "short": "Điện thoại",
+    "card": {
+      "title": "Tải video Pinterest về điện thoại",
+      "blurb": "iPhone với Safari, Android và Samsung với Chrome, không cần cài app.",
+      "badge": "Di động"
+    }
+  },
+  "hero": {
+    "h1": "Tải video Pinterest về điện thoại",
+    "lede": "Dùng **Safari** hoặc **Chrome** có sẵn trên máy, không cần cài app tải video."
+  },
+  "intro": [
+    "Trên điện thoại, việc tải gồm hai phần: lấy file MP4 bằng PintDownload, rồi đưa video tới nơi bạn hay xem. Bên dưới là các bước cho từng hệ điều hành, kèm đúng tên nút bạn sẽ gặp.",
+    "Video đã tải xong mà không thấy đâu? Xem ngay [[how-to-download-pinterest-video-in-gallery|cách lưu video Pinterest vào thư viện ảnh]]."
+  ],
+  "sections": [
+    {
+      "h2": "Trên iPhone, dùng Safari",
+      "paragraphs": [
+        "Safari lưu file vào app **Tệp** chứ không vào app Ảnh, nên iPhone có thêm một bước so với Android:"
+      ],
+      "list": [
+        "Trong app Pinterest, mở video, chạm **biểu tượng chia sẻ** rồi **Sao chép liên kết**.",
+        "Mở pintdownload.app bằng **Safari**, dán link rồi chạm **Tải video**.",
+        "Chạm nút tải MP4. Nếu Safari hỏi có muốn tải file không, chạm **Tải về**.",
+        "Chạm biểu tượng tải xuống của Safari (hoặc mở app **Tệp** › **Tải về**), rồi chạm vào video.",
+        "Chạm **Chia sẻ** và chọn **Lưu video**. Video giờ đã nằm trong app Ảnh."
+      ]
+    },
+    {
+      "h2": "Không cần app Documents",
+      "paragraphs": [
+        "Nhiều bài hướng dẫn tiếng Việt vẫn bảo bạn cài app Documents để tải video về iPhone. Cách đó có từ khi Safari chưa tải được file. Từ iOS 13, Safari đã có trình quản lý tải xuống riêng, nên các bước ở trên là đủ, không phải cài thêm app hay cấp thêm quyền nào."
+      ]
+    },
+    {
+      "h2": "Trên Android, dùng Chrome",
+      "paragraphs": [
+        "Android ngắn hơn: Chrome lưu video vào thư mục **Download** và thư viện ảnh tự tìm thấy."
+      ],
+      "list": [
+        "Trong app Pinterest, mở video, chạm **biểu tượng chia sẻ** rồi **Sao chép liên kết**.",
+        "Mở pintdownload.app bằng **Chrome**, dán link rồi chạm **Tải video**.",
+        "Chạm nút tải MP4. Chrome báo khi tải xong.",
+        "Mở **Google Photos** hoặc app thư viện ảnh của máy: video nằm trong album tải xuống (thường tên **Download**)."
+      ]
+    },
+    {
+      "h2": "Samsung, Xiaomi, OPPO và các máy Android khác",
+      "paragraphs": [
+        "Các bước giống nhau trên mọi hãng; chỉ khác chỗ bạn xem video. Trên Samsung, app thư viện ảnh tên là **Bộ sưu tập**; trên Xiaomi hay OPPO là app thư viện có sẵn của máy, hoặc Google Photos. Dùng Samsung Internet thay cho Chrome cũng được."
+      ]
+    },
+    {
+      "h2": "Trên iPad",
+      "paragraphs": [
+        "Trên iPad, làm giống iPhone với Safari: file vào app **Tệp** trước, rồi **Chia sẻ** › **Lưu video** để đưa vào app Ảnh. Máy tính bảng Android thì làm như điện thoại Android với Chrome."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Tóm tắt cách tải video Pinterest về điện thoại",
+    "intro": "Ba bước cho mọi điện thoại. Các bước chi tiết cho iPhone và Android ở phía trên.",
+    "exampleLabel": "Link app sao chép",
+    "items": [
+      {
+        "title": "Sao chép liên kết trong app",
+        "body": "Mở video, chạm **biểu tượng chia sẻ** › **Sao chép liên kết**."
+      },
+      {
+        "title": "Dán vào trình duyệt",
+        "body": "Mở pintdownload.app bằng Safari hoặc Chrome, dán link rồi chạm **Tải video**."
+      },
+      {
+        "title": "Đưa video vào thư viện",
+        "body": "Trên iPhone: từ app **Tệp**, chọn **Chia sẻ** › **Lưu video**. Trên Android, video đã có trong thư viện ảnh hoặc Google Photos."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải video trên điện thoại",
+    "items": [
+      {
+        "q": "Lưu video vào app Ảnh trên iPhone thế nào?",
+        "a": "Tải video bằng Safari ở pintdownload.app. Sau đó mở app **Tệp** › **Tải về**, chạm vào video, chạm **Chia sẻ** rồi **Lưu video**. Không cần app Documents."
+      },
+      {
+        "q": "Trên Android, Samsung, video nằm ở đâu?",
+        "a": "Trong thư mục **Download** của máy. Google Photos và app thư viện ảnh (trên Samsung là **Bộ sưu tập**) hiện video trong album tải xuống. Nếu chưa thấy, đóng hẳn app thư viện rồi mở lại."
+      },
+      {
+        "q": "Có cần app tải video Pinterest trên App Store hay CH Play không?",
+        "a": "Không. Trình duyệt có sẵn là đủ, bạn không tốn dung lượng và không phải cấp quyền cho một app khác chỉ để tải video."
+      },
+      {
+        "q": "Trên iPad có giống iPhone không?",
+        "a": "Giống. Dùng Safari, file vào app **Tệp** trước, rồi **Chia sẻ** › **Lưu video** để đưa sang app Ảnh."
+      },
+      {
+        "q": "Video tải về điện thoại có âm thanh không?",
+        "a": "Có, nếu video có tiếng trên Pinterest. File MP4 giữ nguyên âm thanh. Hãy bật tiếng nghe thử trên Pinterest trước: nếu ở đó im lặng thì video vốn không có tiếng."
+      },
+      {
+        "q": "Có dùng Phím tắt (Shortcuts) trên iPhone được không?",
+        "a": "PintDownload không cung cấp phím tắt nào. Bạn chỉ cần dán link vào trang trên Safari, và đừng cài phím tắt lạ đòi quyền truy cập rộng chỉ để tải video."
+      },
+      {
+        "q": "Dùng được trên Samsung Galaxy, Xiaomi, OPPO không?",
+        "a": "Được, trên mọi máy Android có trình duyệt cập nhật: Chrome, Samsung Internet, Cốc Cốc hay Firefox."
+      }
+    ]
+  },
+  "related": {
+    "title": "Hướng dẫn và công cụ khác"
+  },
+  "schema": {
+    "appName": "Tải video Pinterest về điện thoại — PintDownload",
+    "howToName": "Cách tải video Pinterest về điện thoại iPhone và Android",
+    "howToDescription": "Sao chép liên kết Ghim video trong app Pinterest, tải file MP4 bằng Safari hoặc Chrome rồi lưu vào app Ảnh hoặc thư viện ảnh."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Verify on device (vi locale): iOS Safari download prompt 'Tải về', Files app 'Tệp' › 'Tải về', share sheet 'Lưu video'; Samsung Gallery 'Bộ sưu tập'; Android Download album name; Pinterest share sheet 'Sao chép liên kết'."
+  }
+}

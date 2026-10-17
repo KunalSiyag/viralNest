@@ -1,0 +1,131 @@
+{
+  "pageId": "pinterest-to-mp4",
+  "locale": "it",
+  "meta": {
+    "title": "Pinterest in MP4 — convertitore video online gratuito",
+    "description": "Converti un video di Pinterest in MP4: incolla il link del Pin (anche pin.it) e scarica un MP4 che si apre ovunque. Gratis, senza iscrizione né filigrana."
+  },
+  "keywords": {
+    "primary": "convertitore pinterest mp4",
+    "secondary": [
+      "pinterest to mp4",
+      "pinterest in mp4",
+      "convertitore video pinterest mp4",
+      "convertitore pinterest",
+      "convertitore link pinterest",
+      "pinterest mp4 download"
+    ]
+  },
+  "nav": {
+    "label": "Convertitore MP4",
+    "short": "MP4",
+    "card": {
+      "title": "Convertitore Pinterest MP4",
+      "blurb": "Dal link di un Pin video a un MP4 che si apre su qualsiasi dispositivo.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Converti Pinterest in MP4",
+    "lede": "Incolla il link di un Pin video e ottieni un **MP4** pronto per Foto, Galleria, VLC o il tuo editor. Gratis, senza iscrizione e senza filigrane aggiunte."
+  },
+  "intro": [
+    "Chi cerca un «convertitore Pinterest» di solito vuole una cosa sola: trasformare il link di un video in un file MP4 da tenere. Pinterest ospita già il video in MP4, quindi qui la conversione è immediata: PintDownload trova l’MP4 pubblico del Pin e te lo fa scaricare così com’è, senza ricodificarlo.",
+    "Funziona con i link `pin.it` copiati dall’app e con gli URL `/pin/` del sito, anche da `pinterest.it`. Solo Pin video pubblici."
+  ],
+  "features": [
+    {
+      "h": "Nessuna ricodifica",
+      "p": "Ricevi l’MP4 come Pinterest lo pubblica: di solito 720p, 1080p quando il Pin ce l’ha. Niente perdite di qualità in più."
+    },
+    {
+      "h": "Si apre ovunque",
+      "p": "L’MP4 funziona in Foto, in Galleria, in VLC, in CapCut e in qualsiasi editor video."
+    },
+    {
+      "h": "Anche in MP3",
+      "p": "Ti serve solo il suono? Dallo stesso Pin puoi creare un MP3 direttamente nel browser."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Convertitore o video downloader: quale pagina usare",
+      "paragraphs": [
+        "Fanno lo stesso lavoro: dal link del Pin al file MP4. Questa pagina è per chi ragiona in termini di conversione (link › MP4, video › MP3). Se vuoi vedere tutte le qualità disponibili e sapere cosa vuol dire davvero «senza filigrana», vai a [[pinterest-video-downloader|scaricare video da Pinterest]]."
+      ]
+    },
+    {
+      "h2": "Cosa puoi ottenere partendo da un Pin",
+      "paragraphs": [
+        "Dipende da che cosa c’è nel Pin:"
+      ],
+      "list": [
+        "**Pin video › MP4**: incolla il link qui sopra, è il caso più comune.",
+        "**Pin video › MP3**: quando il Pin è pronto, la riga **Audio** crea l’MP3 nel tuo browser; i dettagli sono nella pagina per [[pinterest-audio-downloader|scaricare l’audio da Pinterest]].",
+        "**Pin GIF**: parti dallo strumento per [[pinterest-gif-downloader|scaricare GIF da Pinterest]], che salva la GIF animata così com’è."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Come convertire un video di Pinterest in MP4",
+    "intro": "Tre passaggi, sul telefono o sul computer. Serve un Pin video pubblico.",
+    "exampleLabel": "Link breve dall’app",
+    "items": [
+      {
+        "title": "Copia il link del video",
+        "body": "Apri un Pin che si riproduce davvero e tocca **Condividi** › **Copia link**, oppure copia un URL con `/pin/` o `pin.it`."
+      },
+      {
+        "title": "Incollalo nel convertitore",
+        "body": "Incolla il link qui sopra e tocca **Scarica video**: PintDownload trova l’MP4 pubblico che Pinterest ospita già."
+      },
+      {
+        "title": "Scarica l’MP4",
+        "body": "Salva il file e aprilo in Foto, in VLC o in qualsiasi editor. La qualità è quella del Pin: non inventiamo risoluzioni più alte."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti sul convertitore",
+    "items": [
+      {
+        "q": "Come converto un video di Pinterest in MP4?",
+        "a": "Copia il link del Pin video pubblico, incollalo qui sopra e scarica l’MP4. Tutta la «conversione» sta qui: niente programmi da installare sul computer."
+      },
+      {
+        "q": "Convertire Pinterest in MP4 è gratis?",
+        "a": "Sì. PintDownload è gratuito per i contenuti pubblici, non chiede di iscriverti e non aggiunge filigrane."
+      },
+      {
+        "q": "Convertitore o video downloader: quale pagina uso?",
+        "a": "Il risultato è lo stesso MP4. Usa questa pagina se hai cercato «convertitore» o «Pinterest in MP4»; usa [[pinterest-video-downloader|scaricare video da Pinterest]] se vuoi capire meglio qualità e filigrane."
+      },
+      {
+        "q": "Posso convertire una GIF di Pinterest in MP4?",
+        "a": "Se il Pin è una GIF, parti dallo strumento per [[pinterest-gif-downloader|scaricare GIF da Pinterest]] e salvala come GIF animata. Questa pagina serve per i Pin video, che hanno già un MP4."
+      },
+      {
+        "q": "Funziona su iPhone e Android?",
+        "a": "Sì. Incolla in Safari o in Chrome il link `pin.it` copiato dall’app e salva l’MP4: su iPhone lo trovi nell’app File, su Android nella cartella Download. Per spostarlo in Foto o in Galleria c’è la guida [[how-to-download-pinterest-video-in-gallery|salva i video di Pinterest in Galleria]]."
+      },
+      {
+        "q": "Il convertitore cambia la qualità del video?",
+        "a": "No. Non ricodifichiamo il video: ricevi l’MP4 che Pinterest pubblica, di solito in 720p e in 1080p quando il Pin ce l’ha."
+      }
+    ]
+  },
+  "related": {
+    "title": "Altri modi per salvare da Pinterest"
+  },
+  "schema": {
+    "appName": "Convertitore Pinterest MP4 — PintDownload",
+    "howToName": "Come convertire un video di Pinterest in MP4",
+    "howToDescription": "Passi per ottenere il file MP4 di un Pin video pubblico partendo dal suo link."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-it (agent). Keeps convertitore vocabulary apart from the video page (cannibalisation watch: video tool, how-to, MP4).",
+    "nativeReviewer": "review-it (agent), 2026-10-16: read on the live build at 390/1440 for fluency, tu register, glossary (Pin, bacheca, la GIF, tagliando, Galleria/Foto), honesty and English leftovers. Pinterest labels rechecked on help.pinterest.com/it: Scarica immagine, Copia link, Invia; secret boards are now called private (Mantieni la bacheca privata). Device labels (iOS File › Download, Salva video/Salva immagine, Samsung Archivio, Files di Google) are the standard it-IT names, not checked on a phone."
+  }
+}

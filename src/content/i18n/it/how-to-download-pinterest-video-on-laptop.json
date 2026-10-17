@@ -1,0 +1,112 @@
+{
+  "pageId": "how-to-download-pinterest-video-on-laptop",
+  "locale": "it",
+  "meta": {
+    "title": "Come scaricare video da Pinterest su PC e Mac (MP4 gratis)",
+    "description": "Scarica video da Pinterest su PC, Mac o Chromebook: copia l’URL del Pin, incollalo e salva l’MP4 nella cartella Download. Gratis, senza programmi."
+  },
+  "keywords": {
+    "primary": "come scaricare video da pinterest su pc",
+    "secondary": [
+      "scaricare video da pinterest su pc",
+      "come scaricare un video da pinterest su pc",
+      "scaricare video pinterest pc",
+      "pinterest video downloader chrome"
+    ]
+  },
+  "nav": {
+    "label": "Video su PC",
+    "short": "PC",
+    "card": {
+      "title": "Video da Pinterest su PC",
+      "blurb": "Windows, Mac o Chromebook: copia l’URL e salva l’MP4 in Download.",
+      "badge": "PC"
+    }
+  },
+  "hero": {
+    "h1": "Scarica video da Pinterest su PC",
+    "lede": "Dal computer bastano l’**URL del Pin** e il browser che usi già: l’**MP4** finisce nella cartella **Download**. Niente programmi da installare."
+  },
+  "intro": [
+    "Sul PC non ti serve nessun programma e nessuna estensione. Apri il Pin video su pinterest.it, copi l’indirizzo e lo incolli qui. Funziona allo stesso modo su Windows, Mac, Chromebook e Linux.",
+    "Attenzione a non confonderti con «scaricare Pinterest su PC», che vuol dire installare l’app di Pinterest sul computer: qui scarichi i video, non l’app."
+  ],
+  "sections": [
+    {
+      "h2": "Copia l’URL giusto",
+      "paragraphs": [
+        "Apri il video a schermo intero, in modo che l’indirizzo nella **barra degli indirizzi** contenga `/pin/`. Copialo con Ctrl+C (Cmd+C su Mac), oppure fai clic sull’**icona di condivisione** del Pin e scegli **Copia link**. Il link di una bacheca invece porta a tanti Pin: per quello c’è lo strumento per [[pinterest-board-downloader|scaricare una bacheca Pinterest]]."
+      ]
+    },
+    {
+      "h2": "Dove trovo il file",
+      "paragraphs": [
+        "Chrome, Edge, Firefox e Safari salvano l’MP4 nella cartella **Download** del tuo utente, a meno che tu non l’abbia cambiata nelle impostazioni. In Chrome e in Edge premi Ctrl+J per vedere i download; sul Mac trovi la cartella anche nella barra laterale del Finder."
+      ]
+    },
+    {
+      "h2": "Un clic con il bookmarklet",
+      "paragraphs": [
+        "Se scarichi spesso, aggiungi il bookmarklet qui sotto alla barra dei preferiti. Quando sei su un Pin lo clicchi e PintDownload si apre con il link già incollato. Non è un’estensione del Chrome Web Store: è un semplice preferito, e funziona anche in Edge e in Safari."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Come scaricare un video da Pinterest sul computer",
+    "intro": "Funziona in Chrome, Edge, Firefox e Safari, su Windows, Mac e Chromebook.",
+    "exampleLabel": "URL di un Pin video",
+    "items": [
+      {
+        "title": "Copia l’URL del Pin",
+        "body": "Apri il Pin video su Pinterest e copia l’indirizzo dalla barra degli indirizzi, oppure usa l’**icona di condivisione** › **Copia link**."
+      },
+      {
+        "title": "Incollalo su PintDownload",
+        "body": "Apri PintDownload in una nuova scheda, incolla l’URL nel tagliando qui sopra e premi Invio."
+      },
+      {
+        "title": "Salva l’MP4",
+        "body": "Fai clic su **Scarica MP4**: il file va nella cartella **Download** del tuo PC, Mac o Chromebook."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti sul PC",
+    "items": [
+      {
+        "q": "Come scarico video da Pinterest su un PC Windows o su un Mac?",
+        "a": "Copia l’URL del Pin video, incollalo su PintDownload in Chrome, Edge, Firefox o Safari e fai clic su **Scarica MP4**. Il file arriva nella cartella Download."
+      },
+      {
+        "q": "Devo installare un programma o un’estensione?",
+        "a": "No. Non serve nessun software e nessuna estensione del Chrome Web Store. Se vuoi un clic in meno c’è il bookmarklet: un preferito che apre PintDownload con il link del Pin."
+      },
+      {
+        "q": "Che qualità ottengo dal PC: 720p o 1080p?",
+        "a": "Il 1080p quando il Pin ha quella versione. La maggior parte dei video su Pinterest è in 720p: PintDownload mostra tutte le qualità del Pin e salva quella che scegli."
+      },
+      {
+        "q": "Funziona su Chromebook?",
+        "a": "Sì. PintDownload è un sito web, quindi funziona su ChromeOS come su Windows 11 e 10, macOS e Linux."
+      },
+      {
+        "q": "Dove trovo il file?",
+        "a": "Nella cartella **Download**, se non ne hai scelta un’altra nelle impostazioni del browser. In Chrome ed Edge la scorciatoia Ctrl+J apre l’elenco dei download."
+      }
+    ]
+  },
+  "related": {
+    "title": "Altri strumenti e guide"
+  },
+  "schema": {
+    "appName": "Scarica video da Pinterest su PC — PintDownload",
+    "howToName": "Come scaricare video da Pinterest su PC e Mac",
+    "howToDescription": "Copia l’URL del Pin video dal browser, incollalo su PintDownload e salva l’MP4 nella cartella Download."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-it (agent). Uses PC, never laptop or portatile (no Italian demand). Chrome Italian label: barra dei preferiti.",
+    "nativeReviewer": "review-it (agent), 2026-10-16: read on the live build at 390/1440 for fluency, tu register, glossary (Pin, bacheca, la GIF, tagliando, Galleria/Foto), honesty and English leftovers. Pinterest labels rechecked on help.pinterest.com/it: Scarica immagine, Copia link, Invia; secret boards are now called private (Mantieni la bacheca privata). Device labels (iOS File › Download, Salva video/Salva immagine, Samsung Archivio, Files di Google) are the standard it-IT names, not checked on a phone."
+  }
+}

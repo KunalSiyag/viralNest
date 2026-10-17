@@ -1,0 +1,136 @@
+{
+  "pageId": "pinterest-audio-downloader",
+  "locale": "id",
+  "meta": {
+    "title": "Download MP3 Pinterest — Ambil Audio dari Video Pin",
+    "description": "Download MP3 Pinterest: ambil suara atau musik dari video Pin publik yang punya audio. Tempel link, lalu simpan. Gratis, tanpa login. Hormati hak cipta."
+  },
+  "keywords": {
+    "primary": "download mp3 pinterest",
+    "secondary": [
+      "pinterest mp3",
+      "pinterest audio downloader",
+      "pinterest video to mp3",
+      "download audio pinterest",
+      "unduh video pinterest mp3"
+    ]
+  },
+  "nav": {
+    "label": "Download MP3 Pinterest",
+    "short": "MP3",
+    "card": {
+      "title": "Download MP3",
+      "blurb": "Suara dari Pin video jadi MP3, dibuat langsung di browser kamu.",
+      "badge": "MP3"
+    }
+  },
+  "hero": {
+    "h1": "Download MP3 Pinterest",
+    "lede": "Ambil **musik atau suara** dari video Pin publik sebagai **MP3**, jika videonya memang bersuara. File MP3-nya dibuat di browser kamu dan tidak diunggah ke mana pun."
+  },
+  "intro": [
+    "Pinterest tidak menyediakan audio secara terpisah: suaranya ada di dalam video. Jadi PintDownload mengambil MP4 publik dari Pin itu, lalu browser kamu mengubahnya menjadi **MP3 192 kbps**. Ini MP3 sungguhan, bukan video yang ekstensinya diganti.",
+    "Tempel link `/pin/` atau `pin.it` dari video yang bersuara. GIF dan foto tidak punya audio."
+  ],
+  "features": [
+    {
+      "h": "MP3 sungguhan",
+      "p": "Dikodekan 192 kbps dari suara videonya, siap diputar di pemutar musik apa pun."
+    },
+    {
+      "h": "Potong bagian yang kamu mau",
+      "p": "Cuma butuh reff-nya atau beberapa detik? Tandai awal dan akhirnya, dengarkan, lalu simpan potongan itu sebagai MP3 atau WAV."
+    },
+    {
+      "h": "Tanpa akun dan aplikasi",
+      "p": "Jalan di browser HP atau laptop. Tidak perlu daftar atau login ke Pinterest."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Cara MP3-nya dibuat",
+      "paragraphs": [
+        "Browser kamu mengambil video lewat PintDownload, membaca jalur suaranya, lalu mengodekannya menjadi MP3 192 kbps dengan LAME, encoder MP3 open source (lisensi LGPL). Semua prosesnya terjadi di HP atau laptop kamu: MP3-nya dirakit di memori browser dan tidak pernah diunggah.",
+        "Kalau tidak mau mengonversi apa pun, MP4 videonya juga sudah berisi suara."
+      ]
+    },
+    {
+      "h2": "MP3 atau MP4: mana yang kamu butuhkan?",
+      "paragraphs": [
+        "Pilih **MP3** kalau yang penting suaranya saja: lagu untuk didengarkan, sound untuk referensi, atau audio untuk diedit. Pilih **MP4** kalau kamu butuh gambar dan suaranya sekaligus, misalnya untuk ditonton ulang atau diedit jadi video baru. Keduanya muncul di struk yang sama, dan MP3 biasanya jauh lebih kecil sehingga lebih hemat memori."
+      ]
+    },
+    {
+      "h2": "Hormati hak cipta musiknya",
+      "paragraphs": [
+        "Banyak video Pinterest memakai musik berhak cipta. Menyimpan audionya untuk didengarkan sendiri atau sebagai referensi itu satu hal; memakainya di videomu, menjualnya, atau mengunggahnya sebagai karyamu sendiri itu lain lagi. Akses publik bukan berarti lisensi. Kalau kamu memakai ulang suaranya, cantumkan nama kreator videonya dan hormati lisensi musiknya."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara download MP3 dari video Pinterest",
+    "intro": "Khusus Pin video yang bersuara. Pastikan dulu suaranya terdengar di Pinterest.",
+    "exampleLabel": "Link Pin video",
+    "items": [
+      {
+        "title": "Cari video yang bersuara",
+        "body": "Buka videonya di Pinterest dan nyalakan suaranya. Kalau tidak terdengar apa-apa, MP3-nya juga tidak ada."
+      },
+      {
+        "title": "Salin dan tempel tautannya",
+        "body": "**Bagikan** › **Salin tautan** di aplikasi, tempel di kotak atas, lalu ketuk **Unduh Video** supaya Pin-nya terbaca."
+      },
+      {
+        "title": "Simpan MP3-nya",
+        "body": "Di struk hasilnya, unduh baris **MP3**. Browser kamu membuat file-nya dalam beberapa detik dan menyimpannya ke folder **Unduhan**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab download MP3 Pinterest",
+    "items": [
+      {
+        "q": "Bagaimana cara ambil audio atau lagu dari video Pinterest?",
+        "a": "Tempel tautan Pin video di kotak atas, lalu di struk hasilnya unduh baris MP3. Browser kamu membuatnya dari suara video, tanpa mengunggah apa pun."
+      },
+      {
+        "q": "Kenapa tidak ada MP3 di Pin saya?",
+        "a": "Karena Pin-nya tidak bersuara: videonya bisu, atau Pin-nya GIF atau foto. Bisa juga karena browser kamu versi lama sehingga tidak bisa membaca audionya; coba Chrome, Edge, Safari, atau Firefox versi terbaru."
+      },
+      {
+        "q": "Apakah legal mengambil audio dari Pinterest?",
+        "a": "Tergantung pemakaiannya. Untuk didengarkan sendiri atau sebagai referensi, itu hal yang umum; untuk diunggah ulang atau dipakai di iklan, kamu perlu izin atau lisensi. Pin yang publik tidak memberimu hak atas musiknya. Ini bukan nasihat hukum."
+      },
+      {
+        "q": "Bisa tahu judul lagunya?",
+        "a": "Tidak, PintDownload tidak mengenali lagu; ia hanya menyimpan suara videonya. Untuk mencari judulnya, putar videonya lalu kenali lagunya dengan Shazam atau fitur penelusuran lagu di aplikasi Google."
+      },
+      {
+        "q": "Bisa simpan sebagian audionya saja?",
+        "a": "Bisa. Ketuk **Potong suara**, tandai awal dan akhirnya, dengarkan potongannya, lalu simpan sebagai MP3 atau WAV."
+      },
+      {
+        "q": "Perlu akun Pinterest?",
+        "a": "Tidak. Semua Pin video publik bisa dipakai tanpa login. Video dari papan privat atau akun privat tidak bisa diambil."
+      },
+      {
+        "q": "MP3 atau MP4, mana yang saya butuhkan?",
+        "a": "MP3 kalau yang kamu perlukan hanya suaranya; MP4 kalau kamu juga butuh gambarnya. Keduanya bisa diambil dari tautan yang sama. Untuk penjelasan soal kualitas MP4, baca [[pinterest-video-downloader|download video Pinterest]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Alat video lainnya"
+  },
+  "schema": {
+    "appName": "Download MP3 Pinterest — PintDownload",
+    "howToName": "Cara download MP3 dari video Pinterest",
+    "howToDescription": "Tempel tautan Pin video publik yang bersuara dan simpan audionya sebagai MP3 yang dibuat di browser."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

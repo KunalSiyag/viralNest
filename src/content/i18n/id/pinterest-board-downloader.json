@@ -1,0 +1,148 @@
+{
+  "pageId": "pinterest-board-downloader",
+  "locale": "id",
+  "meta": {
+    "title": "Download Board Pinterest — Simpan Semua Pin Jadi ZIP",
+    "description": "Download board (papan) Pinterest publik sekaligus: tempel link papan, simpan foto dan video Pin-nya dalam satu file ZIP. Gratis, tanpa login, tanpa daftar."
+  },
+  "keywords": {
+    "primary": "download board pinterest",
+    "secondary": [
+      "pinterest board downloader",
+      "download pinterest board zip",
+      "board pinterest downloader",
+      "download papan pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Download Board Pinterest",
+    "short": "Board",
+    "card": {
+      "title": "Download Board",
+      "blurb": "Tempel link papan publik dan simpan semua Pin-nya dalam satu ZIP.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Download Board Pinterest",
+    "lede": "Satu link papan, satu file **ZIP**: foto dan video dari **board publik** sekaligus."
+  },
+  "intro": [
+    "Di aplikasi Pinterest namanya **papan**, tapi banyak yang mencarinya sebagai **board**; maksudnya sama. Tempel link papan publik, cek daftar Pin yang ditemukan, lalu simpan semuanya dalam satu **ZIP**. Tidak perlu ekstensi Chrome atau akun.",
+    "Menerima link seperti `pinterest.com/pengguna/nama-papan/`. Hanya papan publik."
+  ],
+  "features": [
+    {
+      "h": "Khusus link papan",
+      "p": "Untuk alamat `/pengguna/nama-papan/`. Cuma satu Pin? Pakai [[pinterest-pin-downloader|download Pin Pinterest]]."
+    },
+    {
+      "h": "Semua dalam satu ZIP",
+      "p": "Pin publik dari papan itu dalam satu file, untuk moodboard offline atau untuk dibagikan ke tim."
+    },
+    {
+      "h": "Foto dan video",
+      "p": "Berisi gambar dan video dari Pin yang dimuat di halaman publik papan itu."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Apakah semua Pin di papan ikut terunduh?",
+      "paragraphs": [
+        "Yang diambil adalah Pin publik yang muncul saat halaman papan dimuat, sampai batas tertentu. Di papan yang sangat besar, Pin lama mungkin tidak ikut semua. Untuk Pin carousel, yang masuk ZIP adalah sampulnya; untuk semua slide-nya, buka Pin itu di [[pinterest-pin-downloader|download Pin Pinterest]]."
+      ]
+    },
+    {
+      "h2": "Cek link-nya sebelum ditempel",
+      "paragraphs": [
+        "Kesalahan paling sering adalah menempelkan jenis link yang salah. Begini cara mengenalinya:"
+      ],
+      "list": [
+        "`pinterest.com/pengguna/nama-papan/`: ini papan, pakai di sini.",
+        "`pinterest.com/pin/123…/`: ini satu Pin; pakai [[pinterest-pin-downloader|download Pin Pinterest]].",
+        "`pinterest.com/pengguna/`: ini profil. Tempel di [[home|beranda PintDownload]] untuk ZIP berisi Pin-nya, atau di [[pinterest-profile-picture-downloader|download foto profil]] untuk PP-nya saja.",
+        "Papan privat (dulu: papan rahasia) dan akun privat: tidak bisa diunduh."
+      ]
+    },
+    {
+      "h2": "Membuka file ZIP di HP dan laptop",
+      "paragraphs": [
+        "Di Android, buka app **File** (atau **File Saya** di Samsung), ketuk ZIP-nya, lalu pilih **Ekstrak**. Di iPhone, ketuk ZIP-nya di app **File**, dan isinya dibuka ke folder baru. Di laptop, klik kanan file-nya lalu pilih opsi ekstrak."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cara download board Pinterest jadi ZIP",
+    "intro": "Halaman ini khusus link papan. Kalau link-mu berisi `/pin/`, pakai download Pin.",
+    "exampleLabel": "Contoh link papan",
+    "items": [
+      {
+        "title": "Buka papan publiknya",
+        "body": "Di Pinterest, buka halaman papannya (grid Pin), bukan satu Pin yang sedang diperbesar."
+      },
+      {
+        "title": "Salin link papan",
+        "body": "Salin dari bilah alamat atau lewat **Bagikan** › **Salin tautan**. Bentuknya `pinterest.com/pengguna/nama-papan/`."
+      },
+      {
+        "title": "Tempel dan lihat Pin-nya",
+        "body": "Tempel link di kotak atas dan ketuk **Lihat Pin di papan** untuk menampilkan Pin publiknya."
+      },
+      {
+        "title": "Unduh ZIP-nya",
+        "body": "Ketuk **Unduh ZIP** untuk menyimpan foto dan video dalam satu file, atau unduh Pin satu per satu."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Tanya jawab download board Pinterest",
+    "items": [
+      {
+        "q": "Bagaimana cara download semua Pin di board Pinterest sekaligus?",
+        "a": "Salin link papan publiknya, tempel di atas, cek daftar Pin, lalu ketuk **Unduh ZIP**. Yang tersimpan adalah Pin publik yang dimuat halaman papan, sampai batas tertentu; di papan yang sangat besar, beberapa Pin lama bisa tidak ikut."
+      },
+      {
+        "q": "Seperti apa link board atau papan?",
+        "a": "Ada dua bagian setelah nama domain: nama pengguna dan nama papan, misalnya `pinterest.com/pengguna/resep-mudah/`. Kalau ada `/pin/` di tengahnya, itu satu Pin, bukan papan."
+      },
+      {
+        "q": "Bisa download papan privat atau papan rahasia?",
+        "a": "Tidak. Papan privat (dulu disebut papan rahasia) hanya bisa dilihat pemiliknya dan kolaboratornya, jadi PintDownload tidak bisa membacanya. Hanya papan publik yang bisa diunduh."
+      },
+      {
+        "q": "Berapa banyak Pin yang bisa diambil dari satu papan?",
+        "a": "Sebanyak Pin publik yang muncul saat halaman papan dimuat, sampai batas tertentu. Jumlahnya terlihat di daftar sebelum kamu mengunduh ZIP."
+      },
+      {
+        "q": "Apakah slide Pin carousel ikut masuk ZIP?",
+        "a": "ZIP hanya berisi sampul tiap Pin. Untuk semua slide Pin carousel, buka Pin itu di [[pinterest-pin-downloader|download Pin Pinterest]]."
+      },
+      {
+        "q": "Bagaimana cara membuka file ZIP di HP Android atau iPhone?",
+        "a": "Android: buka ZIP-nya di app **File** atau **File Saya**, lalu pilih **Ekstrak**. iPhone: ketuk ZIP-nya di app **File**, dan isinya terbuka di folder baru."
+      },
+      {
+        "q": "Perlu ekstensi Chrome?",
+        "a": "Tidak, semuanya jalan di halaman ini. Kalau mau satu klik dari Pinterest di laptop, [[pinterest-video-downloader-chrome|bookmarklet untuk Chrome]] membuka PintDownload dengan tautan yang sudah terisi."
+      },
+      {
+        "q": "Board atau profil, pakai alat yang mana?",
+        "a": "Pakai halaman ini untuk satu koleksi, misalnya “dekorasi kamar” atau “outfit hijab”. Untuk semua Pin yang terlihat di satu akun, tempel link profilnya di [[home|beranda]], atau pakai [[en!:/pinterest-profile-downloader|Profile Downloader]] (bahasa Inggris)."
+      }
+    ]
+  },
+  "related": {
+    "title": "Alat terkait"
+  },
+  "schema": {
+    "appName": "Download Board Pinterest — PintDownload",
+    "howToName": "Cara download board Pinterest jadi ZIP",
+    "howToDescription": "Langkah menyimpan Pin publik dari satu papan Pinterest dalam satu file ZIP."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-id (agent), 2026-10-16. Cek di perangkat: “Ekstrak” di app File Android dan “File Saya” Samsung.",
+    "nativeReviewer": "review-id (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, kamu register (no Anda), search vocabulary (download/cara download/di HP/ke galeri/tanpa watermark), glossary (Pin, papan in steps, board in titles, tautan in the form, struk, BATAL), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/id: ikon elipsis › Unduh gambar, Salin tautan, Kirim, Simpan (ke papan), tidak semua Pin dapat diunduh. OS labels (Simpan Video/Simpan Gambar, File › Unduhan, Foto, File Saya, Ekstrak, Galeri/Google Foto) are the standard Indonesian iOS/Android names, not checked on a device."
+  }
+}

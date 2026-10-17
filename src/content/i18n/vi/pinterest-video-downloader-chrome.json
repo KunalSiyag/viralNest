@@ -1,0 +1,134 @@
+{
+  "pageId": "pinterest-video-downloader-chrome",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải video Pinterest trên Chrome, không cần cài tiện ích",
+    "description": "Tải video Pinterest trên Chrome bằng bookmarklet: kéo nút lên thanh dấu trang, mở Ghim trên pinterest.com, bấm một lần. Không cài tiện ích, không đăng nhập."
+  },
+  "keywords": {
+    "primary": "tải video pinterest trên chrome",
+    "secondary": [
+      "tiện ích tải video pinterest",
+      "extension tải video pinterest",
+      "tiện ích chrome tải video pinterest",
+      "pinterest video downloader chrome",
+      "tiện ích tải ảnh pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Tải trên Chrome",
+    "short": "Chrome",
+    "card": {
+      "title": "Tải video Pinterest trên Chrome",
+      "blurb": "Bookmarklet trên thanh dấu trang: một cú nhấp, không cài tiện ích.",
+      "badge": "1 nhấp"
+    }
+  },
+  "hero": {
+    "h1": "Tải video Pinterest trên Chrome",
+    "lede": "Một **bookmarklet** trên thanh dấu trang: không cài tiện ích, không cấp quyền đọc bộ nhớ tạm."
+  },
+  "intro": [
+    "Nếu bạn đang tìm **tiện ích** (extension) tải video Pinterest, đây là cách gần nhất mà không phải cài gì: một dấu trang trên thanh dấu trang của Chrome. Khi đang xem một Ghim, bạn bấm vào đó và PintDownload mở ra ở thẻ mới với link đã dán sẵn.",
+    "Đây không phải tiện ích **Lưu vào Pinterest** chính thức: tiện ích đó lưu ảnh vào bảng của bạn trên Pinterest, không tải file về máy tính."
+  ],
+  "features": [
+    {
+      "h": "Không xin quyền gì",
+      "p": "Dấu trang không đọc các thẻ khác hay lịch sử duyệt web. Nó chỉ chạy khi bạn bấm, và chỉ lấy địa chỉ trang đang mở."
+    },
+    {
+      "h": "Một cú nhấp từ Ghim",
+      "p": "Đang xem Ghim, bấm vào dấu trang là PintDownload mở ra với link đã sẵn sàng."
+    },
+    {
+      "h": "Video, ảnh và bảng",
+      "p": "Dùng được trên Ghim video, Ghim ảnh, GIF và cả trang của một bảng."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Vì sao dùng bookmarklet thay cho tiện ích",
+      "paragraphs": [
+        "Tiện ích được cài từ Chrome Web Store, và nhiều tiện ích tải video xin quyền đọc, thay đổi dữ liệu trên mọi trang bạn mở, thậm chí đọc và ghi bộ nhớ tạm. Bookmarklet thì không phải cài: nó chỉ là một dấu trang, khi bấm sẽ mở PintDownload với địa chỉ của thẻ hiện tại. Không muốn dùng nữa thì xóa như mọi dấu trang khác."
+      ]
+    },
+    {
+      "h2": "Cốc Cốc, Edge, Brave, Firefox và Safari",
+      "paragraphs": [
+        "Bookmarklet chạy y như vậy trên các trình duyệt dùng nhân Chromium như Cốc Cốc, Edge hay Brave: kéo nút lên thanh dấu trang hoặc thanh yêu thích của trình duyệt. Trên Firefox, kéo vào thanh dấu trang; trên Safari cho Mac, kéo vào **Mục ưa thích**."
+      ]
+    },
+    {
+      "h2": "Còn trên điện thoại?",
+      "paragraphs": [
+        "Chrome trên điện thoại không có thanh dấu trang tiện để bấm, nên nhanh nhất vẫn là sao chép link trong app Pinterest (**biểu tượng chia sẻ** › **Sao chép liên kết**) rồi dán vào trang. Các bước có ở [[download-pinterest-videos-iphone-android|tải video Pinterest về điện thoại]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách dùng bookmarklet trên Chrome",
+    "intro": "Thêm một lần, dùng mãi. Chạy trên Windows, MacBook, Linux và Chromebook.",
+    "exampleLabel": "Link Pinterest",
+    "items": [
+      {
+        "title": "Kéo bookmarklet lên thanh",
+        "body": "Kéo nút **PintDownload** trên trang này lên thanh dấu trang của Chrome."
+      },
+      {
+        "title": "Mở một Ghim",
+        "body": "Dùng pinterest.com như bình thường và mở video, ảnh hay bảng bạn muốn lưu."
+      },
+      {
+        "title": "Bấm vào dấu trang",
+        "body": "PintDownload mở ở thẻ mới với link đã dán sẵn. Tải file ngay từ đó."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải trên Chrome",
+    "items": [
+      {
+        "q": "PintDownload có phải tiện ích (extension) Chrome không?",
+        "a": "Không. Đây là một trang web kèm bookmarklet một cú nhấp. Nó làm được việc của một tiện ích đơn giản, nhưng không cài từ Chrome Web Store và không chạy ngầm."
+      },
+      {
+        "q": "Vì sao bookmarklet an toàn hơn tiện ích?",
+        "a": "Vì nó không có quyền nào: không thấy các thẻ khác, không đọc lịch sử, không đụng vào bộ nhớ tạm, và chỉ chạy khi bạn bấm. Một tiện ích thì có thể hoạt động trên mọi trang bạn mở, tùy quyền nó xin."
+      },
+      {
+        "q": "Dùng trên Cốc Cốc, Edge được không?",
+        "a": "Được. Cốc Cốc và Edge cùng dùng nhân Chromium như Chrome, nên bạn kéo bookmarklet lên thanh dấu trang (hoặc thanh yêu thích) và dùng y như trên Chrome."
+      },
+      {
+        "q": "Dùng tiện ích Chrome để tải video Pinterest về điện thoại được không?",
+        "a": "Chrome trên điện thoại không cài được tiện ích, và bookmarklet cũng bất tiện ở đó. Trên điện thoại, hãy dán link thẳng vào pintdownload.app."
+      },
+      {
+        "q": "Dùng trên Mac và Windows được không?",
+        "a": "Được, trên mọi máy tính có Chrome, Cốc Cốc, Edge hay Firefox, cả Linux và Chromebook. Trên Mac, Safari cũng dùng được qua Mục ưa thích."
+      },
+      {
+        "q": "Không thấy thanh dấu trang ở đâu?",
+        "a": "Nhấn **Ctrl + Shift + B** (trên Mac: **Cmd + Shift + B**) để hiện thanh dấu trang trong Chrome, rồi kéo nút **PintDownload** lên đó."
+      },
+      {
+        "q": "Tiện ích Lưu vào Pinterest có tải được video không?",
+        "a": "Không. Tiện ích chính thức của Pinterest lưu ảnh vào bảng của bạn trên Pinterest, không lưu file về máy. Muốn có file, dùng bookmarklet hoặc dán link vào PintDownload."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Tải video Pinterest trên Chrome — PintDownload",
+    "howToName": "Cách tải video Pinterest trên Chrome bằng bookmarklet",
+    "howToDescription": "Kéo bookmarklet PintDownload lên thanh dấu trang, mở một Ghim trên pinterest.com và bấm một lần để mở PintDownload với link đã dán sẵn."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Pinterest's extension name 'Lưu vào Pinterest' from help.pinterest.com/vi (research browserExtension). Verify Safari 'Mục ưa thích' label in vi macOS."
+  }
+}

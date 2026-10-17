@@ -7,7 +7,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Access denied.\"}"
+    "bodyText": "{\"error\":\"Access denied.\",\"code\":\"access_denied\"}"
   },
   "02_foreign_origin": {
     "status": 403,
@@ -17,7 +17,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Direct API scraping is unauthorized.\"}"
+    "bodyText": "{\"error\":\"Direct API scraping is unauthorized.\",\"code\":\"origin_denied\"}"
   },
   "03_missing_url": {
     "status": 400,
@@ -27,7 +27,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Please enter a valid Pinterest link.\"}"
+    "bodyText": "{\"error\":\"Please enter a valid Pinterest link.\",\"code\":\"invalid_input\"}"
   },
   "04_non_pinterest": {
     "status": 400,
@@ -37,7 +37,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Invalid link. Please enter a valid Pinterest link (e.g., https://pinterest.com/pin/... or https://pin.it/...)\"}"
+    "bodyText": "{\"error\":\"Invalid link. Please enter a valid Pinterest link (e.g., https://pinterest.com/pin/... or https://pin.it/...)\",\"code\":\"not_pinterest\"}"
   },
   "05_pinit_show_error": {
     "status": 404,
@@ -47,7 +47,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"This pin was removed or made private, so there is nothing to download. Check the link opens on Pinterest.\"}"
+    "bodyText": "{\"error\":\"This pin was removed or made private, so there is nothing to download. Check the link opens on Pinterest.\",\"code\":\"removed_or_private\"}"
   },
   "06_pinit_homepage": {
     "status": 404,
@@ -57,7 +57,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"This pin was removed or made private, so there is nothing to download. Check the link opens on Pinterest.\"}"
+    "bodyText": "{\"error\":\"This pin was removed or made private, so there is nothing to download. Check the link opens on Pinterest.\",\"code\":\"removed_or_private\"}"
   },
   "07_pinresource_image": {
     "status": 200,
@@ -177,7 +177,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Could not find downloadable media for this link. Please check if the Pin is public.\"}"
+    "bodyText": "{\"error\":\"Could not find downloadable media for this link. Please check if the Pin is public.\",\"code\":\"no_media\"}"
   },
   "19_board": {
     "status": 200,
@@ -207,7 +207,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"platform\":\"pinterest\",\"is_board\":false,\"is_profile\":true,\"profile_title\":\"Maker One Studio (maker_one) - Profile\",\"profile_url\":\"https://www.pinterest.com/maker_one/\",\"profile_avatar_url\":\"https://i.pinimg.com/1200x/00/00/00/00000047000000470000004700000047.jpg\",\"username\":\"maker_one\",\"board_title\":\"Maker One Studio (maker_one) - Profile\",\"board_url\":\"https://www.pinterest.com/maker_one/\",\"boards\":[{\"name\":\"Cozy Rooms\",\"url\":\"https://www.pinterest.com/maker_one/cozy-rooms/\",\"pin_count\":42},{\"name\":\"Kitchen &amp; dining\",\"url\":\"https://www.pinterest.com/maker_one/kitchen/\",\"pin_count\":7}],\"pins\":[{\"pin_id\":\"3000000000000001\",\"url\":\"https://www.pinterest.com/pin/3000000000000001/\",\"title\":\"Pin description 501\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/01/000001f5000001f5000001f5000001f5.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/01/000001f5000001f5000001f5000001f5.jpg\",\"video_url\":null,\"is_video\":false},{\"pin_id\":\"3000000000000002\",\"url\":\"https://www.pinterest.com/pin/3000000000000002/\",\"title\":\"Pin description 502\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/01/000001f6000001f6000001f6000001f6.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/01/000001f6000001f6000001f6000001f6.jpg\",\"video_url\":null,\"is_video\":false}],\"pin_count\":2}"
+    "bodyText": "{\"platform\":\"pinterest\",\"is_board\":false,\"is_profile\":true,\"profile_title\":\"Maker One Studio\",\"profile_url\":\"https://www.pinterest.com/maker_one/\",\"profile_avatar_url\":\"https://i.pinimg.com/1200x/00/00/00/00000047000000470000004700000047.jpg\",\"username\":\"maker_one\",\"board_title\":\"Maker One Studio\",\"board_url\":\"https://www.pinterest.com/maker_one/\",\"boards\":[{\"name\":\"Cozy Rooms\",\"url\":\"https://www.pinterest.com/maker_one/cozy-rooms/\",\"pin_count\":42},{\"name\":\"Kitchen &amp; dining\",\"url\":\"https://www.pinterest.com/maker_one/kitchen/\",\"pin_count\":7}],\"pins\":[{\"pin_id\":\"3000000000000001\",\"url\":\"https://www.pinterest.com/pin/3000000000000001/\",\"title\":\"Pin description 501\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/01/000001f5000001f5000001f5000001f5.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/01/000001f5000001f5000001f5000001f5.jpg\",\"video_url\":null,\"is_video\":false},{\"pin_id\":\"3000000000000002\",\"url\":\"https://www.pinterest.com/pin/3000000000000002/\",\"title\":\"Pin description 502\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/01/000001f6000001f6000001f6000001f6.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/01/000001f6000001f6000001f6000001f6.jpg\",\"video_url\":null,\"is_video\":false}],\"pin_count\":2}"
   },
   "22_avatar_redux": {
     "status": 200,
@@ -217,7 +217,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"platform\":\"pinterest\",\"is_avatar_only\":true,\"is_profile\":true,\"profile_avatar_url\":\"https://i.pinimg.com/1200x/00/00/00/00000047000000470000004700000047.jpg\",\"username\":\"maker_one\",\"profile_title\":\"Maker One Studio (maker_one) - Profile\"}"
+    "bodyText": "{\"platform\":\"pinterest\",\"is_avatar_only\":true,\"is_profile\":true,\"profile_avatar_url\":\"https://i.pinimg.com/1200x/00/00/00/00000047000000470000004700000047.jpg\",\"username\":\"maker_one\",\"profile_title\":\"Maker One Studio\"}"
   },
   "23_avatar_userresource": {
     "status": 200,
@@ -227,7 +227,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"platform\":\"pinterest\",\"is_avatar_only\":true,\"is_profile\":true,\"profile_avatar_url\":\"https://i.pinimg.com/1200x/00/00/00/000000e7000000e7000000e7000000e7.jpg\",\"username\":\"maker_one\",\"profile_title\":\"Maker One Studio (maker_one) - Profile\"}"
+    "bodyText": "{\"platform\":\"pinterest\",\"is_avatar_only\":true,\"is_profile\":true,\"profile_avatar_url\":\"https://i.pinimg.com/140x140_RS/00/00/00/000000e7000000e7000000e7000000e7.jpg\",\"username\":\"maker_one\",\"profile_title\":\"Maker One Studio\"}"
   },
   "24_avatar_not_found": {
     "status": 400,
@@ -237,7 +237,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Could not find a profile picture for this Pinterest user. The profile may be private.\"}"
+    "bodyText": "{\"error\":\"Could not find a profile picture for this Pinterest user. The profile may be private.\",\"code\":\"avatar_not_found\"}"
   },
   "25_empty_board": {
     "status": 400,
@@ -247,7 +247,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Could not find public pins on this Pinterest board. The board may be private or empty.\"}"
+    "bodyText": "{\"error\":\"Could not find public pins on this Pinterest board. The board may be private or empty.\",\"code\":\"collection_empty\"}"
   },
   "26_unguarded_throw_generic_400": {
     "status": 400,
@@ -257,7 +257,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Failed to process Pinterest link. Please ensure the link is a valid public Pin.\"}"
+    "bodyText": "{\"error\":\"Failed to process Pinterest link. Please ensure the link is a valid public Pin.\",\"code\":\"server_error\"}"
   },
   "27_every_fetch_throws": {
     "status": 400,
@@ -267,7 +267,7 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Could not find downloadable media for this link. Please check if the Pin is public.\"}"
+    "bodyText": "{\"error\":\"Could not find downloadable media for this link. Please check if the Pin is public.\",\"code\":\"no_media\"}"
   },
   "28_avatar_from_board_og_image": {
     "status": 200,
@@ -287,6 +287,66 @@
         "application/json"
       ]
     ],
-    "bodyText": "{\"error\":\"Please enter a valid Pinterest link.\"}"
+    "bodyText": "{\"error\":\"Please enter a valid Pinterest link.\",\"code\":\"invalid_input\"}"
+  },
+  "30_country_prefix_video_pin_tr": {
+    "status": 200,
+    "headers": [
+      [
+        "content-type",
+        "application/json"
+      ]
+    ],
+    "bodyText": "{\"platform\":\"pinterest\",\"pin_id\":\"100000000000000002\",\"video_url\":\"https://v1.pinimg.com/videos/iht/expMp4/00/00/00/00000016000000160000001600000016_720w.mp4\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/00/00000016000000160000001600000016.jpg\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/00/00000016000000160000001600000016.jpg\",\"title\":\"Morning coffee pour\",\"description\":\"\",\"qualities\":[{\"label\":\"720p HD MP4\",\"url\":\"https://v1.pinimg.com/videos/iht/expMp4/00/00/00/00000016000000160000001600000016_720w.mp4\",\"width\":720,\"height\":1280}],\"tags\":[\"morning\",\"coffee\",\"pour\"],\"colors\":[\"#332211\",\"#8F857C\",\"#1C1309\",\"#D9E6F2\",\"#928981\"],\"dominant_color\":\"#332211\",\"is_video\":true,\"is_gif\":false,\"is_carousel\":false,\"media_count\":1,\"media_items\":[{\"index\":0,\"type\":\"video\",\"url\":\"https://v1.pinimg.com/videos/iht/expMp4/00/00/00/00000016000000160000001600000016_720w.mp4\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/00/00000016000000160000001600000016.jpg\",\"title\":\"Morning coffee pour\"}]}"
+  },
+  "31_country_prefix_board_nl": {
+    "status": 200,
+    "headers": [
+      [
+        "content-type",
+        "application/json"
+      ]
+    ],
+    "bodyText": "{\"platform\":\"pinterest\",\"is_board\":true,\"is_profile\":false,\"board_title\":\"Cozy Rooms\",\"board_url\":\"https://nl.pinterest.com/maker_one/cozy-rooms/\",\"username\":\"maker_one\",\"pins\":[{\"pin_id\":\"2000000000000001\",\"url\":\"https://www.pinterest.com/pin/2000000000000001/\",\"title\":\"Room 01\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/00/00000065000000650000006500000065.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/00/00000065000000650000006500000065.jpg\",\"video_url\":null,\"is_video\":false},{\"pin_id\":\"2000000000000002\",\"url\":\"https://www.pinterest.com/pin/2000000000000002/\",\"title\":\"Room 02\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/00/00000066000000660000006600000066.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/00/00000066000000660000006600000066.jpg\",\"video_url\":\"https://v1.pinimg.com/videos/mc/720p/aa/bb/cc/boardvid002.mp4\",\"is_video\":true},{\"pin_id\":\"2000000000000003\",\"url\":\"https://www.pinterest.com/pin/2000000000000003/\",\"title\":\"Room 03\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/00/00000067000000670000006700000067.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/00/00000067000000670000006700000067.jpg\",\"video_url\":null,\"is_video\":false},{\"pin_id\":\"2000000000000004\",\"url\":\"https://www.pinterest.com/pin/2000000000000004/\",\"title\":\"Feed pin 04\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/01/00000130000001300000013000000130.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/01/00000130000001300000013000000130.jpg\",\"video_url\":null,\"is_video\":false},{\"pin_id\":\"2000000000000005\",\"url\":\"https://www.pinterest.com/pin/2000000000000005/\",\"title\":\"Feed pin 05\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/01/00000131000001310000013100000131.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/01/00000131000001310000013100000131.jpg\",\"video_url\":null,\"is_video\":false}],\"pin_count\":5}"
+  },
+  "32_country_domain_image_pin_co_nz": {
+    "status": 200,
+    "headers": [
+      [
+        "content-type",
+        "application/json"
+      ]
+    ],
+    "bodyText": "{\"platform\":\"pinterest\",\"pin_id\":\"100000000000000001\",\"video_url\":null,\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/00/0000000b0000000b0000000b0000000b.jpg\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/00/0000000b0000000b0000000b0000000b.jpg\",\"title\":\"Brass candle holder & pine\",\"description\":\"Warm #christmas table styling with brass candles and pine garland\",\"qualities\":[],\"tags\":[\"decor\",\"christmas\",\"brass\",\"candle\",\"holder\",\"pine\",\"warm\",\"table\"],\"colors\":[\"#A1B2C3\",\"#CBD5DE\",\"#59626B\",\"#867A6D\",\"#C9D1DA\"],\"dominant_color\":\"#a1b2c3\",\"is_video\":false,\"is_gif\":false,\"is_carousel\":false,\"media_count\":1,\"media_items\":[{\"index\":0,\"type\":\"image\",\"url\":\"https://i.pinimg.com/1200x/00/00/00/0000000b0000000b0000000b0000000b.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/00/0000000b0000000b0000000b0000000b.jpg\",\"title\":\"Brass candle holder & pine\"}]}"
+  },
+  "33_country_prefix_lookalike_rejected": {
+    "status": 400,
+    "headers": [
+      [
+        "content-type",
+        "application/json"
+      ]
+    ],
+    "bodyText": "{\"error\":\"Invalid link. Please enter a valid Pinterest link (e.g., https://pinterest.com/pin/... or https://pin.it/...)\",\"code\":\"not_pinterest\"}"
+  },
+  "34_board_feed_needs_board_id": {
+    "status": 200,
+    "headers": [
+      [
+        "content-type",
+        "application/json"
+      ]
+    ],
+    "bodyText": "{\"platform\":\"pinterest\",\"is_board\":true,\"is_profile\":false,\"board_title\":\"Board\",\"board_url\":\"https://www.pinterest.com/maker_one/id-board/\",\"username\":\"maker_one\",\"pins\":[{\"pin_id\":\"e1_AbC-dEf_001\",\"url\":\"https://www.pinterest.com/pin/e1_AbC-dEf_001/\",\"title\":\"Feed one\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/01/00000155000001550000015500000155.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/01/00000155000001550000015500000155.jpg\",\"video_url\":null,\"is_video\":false},{\"pin_id\":\"e1_AbC-dEf_002\",\"url\":\"https://www.pinterest.com/pin/e1_AbC-dEf_002/\",\"title\":\"Pin description 342\",\"image_url\":\"https://i.pinimg.com/1200x/00/00/01/00000156000001560000015600000156.jpg\",\"thumbnail_url\":\"https://i.pinimg.com/236x/00/00/01/00000156000001560000015600000156.jpg\",\"video_url\":null,\"is_video\":false}],\"pin_count\":2}"
+  },
+  "35_public_board_pins_unavailable": {
+    "status": 503,
+    "headers": [
+      [
+        "content-type",
+        "application/json"
+      ]
+    ],
+    "bodyText": "{\"error\":\"Pinterest did not send the pins of this board just now. Try again in a minute.\",\"code\":\"collection_unavailable\"}"
   }
 }

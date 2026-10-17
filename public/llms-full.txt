@@ -13,7 +13,7 @@ PintDownload runs an on-demand serverless media parser engine capable of parsing
 - **Watermark Status**: Clean original stream (No watermarks added)
 
 ### 2. Pinterest Image & GIF Downloader
-- **Supported Formats**: Original PNG, JPG, WebP, animated GIF.
+- **Supported Formats**: PNG, JPG, WebP and animated GIF, as Pinterest serves them.
 - **Resolution**: Still images up to Pinterest's largest public size, 1200 px wide (`i.pinimg.com/1200x/`). Original-size stills are not publicly served, and there is no 4K. Animated GIFs come from Pinterest's public looping file under `/originals/`.
 
 ### 3. Step-by-Step Instructions for Users

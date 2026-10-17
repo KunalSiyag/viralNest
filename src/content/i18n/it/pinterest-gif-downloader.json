@@ -1,0 +1,131 @@
+{
+  "pageId": "pinterest-gif-downloader",
+  "locale": "it",
+  "meta": {
+    "title": "Scaricare GIF da Pinterest — GIF animate gratis, senza app",
+    "description": "Scarica le GIF animate da Pinterest senza perdere l’animazione: incolla il link del Pin e salva il file GIF originale. Gratis, senza app e senza account."
+  },
+  "keywords": {
+    "primary": "scaricare gif da pinterest",
+    "secondary": [
+      "come scaricare una gif da pinterest",
+      "come scaricare gif animate da pinterest",
+      "salvare gif da pinterest",
+      "pinterest gif downloader",
+      "come scaricare gif su pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Scarica GIF",
+    "short": "GIF",
+    "card": {
+      "title": "Scarica GIF",
+      "blurb": "GIF animate che restano animate, non un fotogramma fermo.",
+      "badge": "GIF"
+    }
+  },
+  "hero": {
+    "h1": "Scarica GIF da Pinterest",
+    "lede": "Salva le **GIF animate** dei Pin pubblici senza perdere l’animazione: il file **.gif** che si ripete, non un’immagine ferma."
+  },
+  "intro": [
+    "Su Pinterest si cercano tantissime GIF del buongiorno, della buonanotte o di buon compleanno da mandare su WhatsApp. Il guaio è che molti metodi salvano solo il primo fotogramma. Qui scarichi la GIF vera, quella che si muove.",
+    "Incolla il link del Pin GIF (`/pin/…` o `pin.it`) e salva il file. Gratis, senza app e senza account."
+  ],
+  "features": [
+    {
+      "h": "Resta animata",
+      "p": "Scarichi il file GIF pubblicato su Pinterest, che si ripete in loop, non un JPG del primo fotogramma."
+    },
+    {
+      "h": "GIF o video?",
+      "p": "Se il Pin è un video vero, con audio e barra di avanzamento, il modulo passa da solo allo strumento video."
+    },
+    {
+      "h": "Telefono e PC",
+      "p": "Funziona da Safari, Chrome o qualsiasi altro browser. Niente app da installare."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Perché la GIF si scarica come immagine ferma",
+      "paragraphs": [
+        "Se usi **Scarica immagine** dal menu dell’**icona a tre puntini** di Pinterest, a volte ottieni un solo fotogramma. PintDownload cerca nel Pin il file **.gif** animato e ti dà quello. Se dopo il download la GIF sembra ferma, spesso è solo l’anteprima: aprila con un’app o un browser che riproduca le animazioni."
+      ]
+    },
+    {
+      "h2": "Mandarla su WhatsApp",
+      "paragraphs": [
+        "Una volta salvata in Galleria o in Foto, la GIF si allega a una chat di WhatsApp come qualsiasi immagine. Di solito WhatsApp la mostra animata, con la scritta GIF in un angolo; la qualità può calare un po’, perché l’app comprime i file che invii."
+      ]
+    },
+    {
+      "h2": "GIF o MP4: quale scegliere",
+      "paragraphs": [
+        "La GIF è comoda per chat e messaggi, ma pesa di più e non ha audio. Se ti serve un file da montare o da caricare su un social, un MP4 di solito va meglio: per i Pin video c’è il [[pinterest-to-mp4|convertitore Pinterest MP4]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Come scaricare una GIF da Pinterest",
+    "intro": "Funziona con i Pin GIF pubblici. I video veri vanno nello strumento video.",
+    "exampleLabel": "Link di un Pin GIF",
+    "items": [
+      {
+        "title": "Apri il Pin GIF",
+        "body": "Controlla che si ripeta come una GIF: di solito non ha audio né barra di avanzamento. Un MP4 vero va nello strumento video."
+      },
+      {
+        "title": "Copia il link",
+        "body": "**Icona di condivisione** › **Copia link**, oppure un URL con `/pin/`. Funzionano anche i link brevi `pin.it`."
+      },
+      {
+        "title": "Incollalo e salva la GIF",
+        "body": "Incolla il link qui sopra, tocca **Scarica GIF** e salva il file. Aprilo con un’app che riproduca le animazioni: alcune gallerie mostrano solo il primo fotogramma."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti sulle GIF",
+    "items": [
+      {
+        "q": "Come scarico una GIF da Pinterest?",
+        "a": "Copia il link del Pin GIF pubblico, incollalo qui sopra e tocca **Scarica GIF**. Ricevi il file .gif animato, pronto da salvare."
+      },
+      {
+        "q": "Perché la mia GIF si è scaricata come foto?",
+        "a": "Alcuni Pin che sembrano muoversi sono in realtà immagini ferme o copertine, e alcuni metodi prendono solo il primo fotogramma. Con questa pagina ottieni il file .gif quando il Pin ce l’ha."
+      },
+      {
+        "q": "GIF o MP4: quale scelgo?",
+        "a": "La GIF per chat e messaggi, l’MP4 per il montaggio video. Se il Pin è un video vero, usa il [[pinterest-to-mp4|convertitore Pinterest MP4]] o lo strumento per [[pinterest-video-downloader|scaricare video da Pinterest]]."
+      },
+      {
+        "q": "La GIF resta animata in Galleria o nell’app Foto di iPhone?",
+        "a": "Quasi tutte le gallerie Android riproducono le GIF. Su iPhone la GIF si muove quando la apri in Foto, mentre nelle miniature può sembrare ferma."
+      },
+      {
+        "q": "Posso mandarla su WhatsApp?",
+        "a": "Sì: salvala in Galleria o in Foto e allegala alla chat come un’immagine. Di solito WhatsApp la mostra animata, con la scritta GIF."
+      },
+      {
+        "q": "Serve un account Pinterest?",
+        "a": "No. Funziona con i Pin GIF pubblici, senza login. I Pin privati o segreti non si possono scaricare."
+      }
+    ]
+  },
+  "related": {
+    "title": "Altri formati da Pinterest"
+  },
+  "schema": {
+    "appName": "Pinterest GIF downloader — PintDownload",
+    "howToName": "Come scaricare una GIF animata da Pinterest",
+    "howToDescription": "Passi per salvare la GIF animata di un Pin pubblico senza perdere l’animazione."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-it (agent). The fixed description says file GIF originale (the GIF file, not a size claim). To verify: WhatsApp shows saved GIFs animated with a GIF label.",
+    "nativeReviewer": "review-it (agent), 2026-10-16: read on the live build at 390/1440 for fluency, tu register, glossary (Pin, bacheca, la GIF, tagliando, Galleria/Foto), honesty and English leftovers. Pinterest labels rechecked on help.pinterest.com/it: Scarica immagine, Copia link, Invia; secret boards are now called private (Mantieni la bacheca privata). Device labels (iOS File › Download, Salva video/Salva immagine, Samsung Archivio, Files di Google) are the standard it-IT names, not checked on a phone."
+  }
+}

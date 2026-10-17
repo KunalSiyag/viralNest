@@ -1,0 +1,120 @@
+{
+  "pageId": "pinterest-carousel-downloader",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Karussell herunterladen – alle Bilder auf einmal",
+    "description": "Alle Bilder eines Pinterest-Karussells herunterladen: Pin-Link einfügen und jedes Bild einzeln oder alle zusammen als ZIP speichern. Kostenlos, ohne Login."
+  },
+  "keywords": {
+    "primary": "pinterest karussell herunterladen",
+    "secondary": [
+      "pinterest mehrere bilder herunterladen",
+      "pinterest karussell pin",
+      "pinterest karussell bilder",
+      "pinterest carousel downloader"
+    ]
+  },
+  "nav": {
+    "label": "Karussell herunterladen",
+    "short": "Karussell",
+    "card": {
+      "title": "Karussell-Pins herunterladen",
+      "blurb": "Alle Bilder eines Karussell-Pins einzeln oder zusammen als ZIP speichern.",
+      "badge": "Bilder"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Karussell herunterladen",
+    "lede": "Hat ein Pin mehrere Bilder, bekommst du **alle auf einmal**: einzeln oder zusammen als **ZIP**. Kostenlos, ohne Login."
+  },
+  "intro": [
+    "Ein Karussell-Pin zeigt mehrere Bilder, durch die du wischst. Wer mehrere Bilder von Pinterest herunterladen will, muss sonst jedes einzeln sichern. Füge den Pin-Link hier ein, und PintDownload listet jedes Bild des Karussells zum Speichern auf.",
+    "Erkennen kannst du ein Karussell an den kleinen Punkten unter dem Bild und daran, dass du seitlich wischen kannst. Funktioniert mit `/pin/`-Links und `pin.it`."
+  ],
+  "features": [
+    {
+      "h": "Jedes Bild einzeln",
+      "p": "Bild 1, Bild 2, Bild 3 … jeweils mit eigenem Button, damit du nur nimmst, was du brauchst."
+    },
+    {
+      "h": "Alle zusammen als ZIP",
+      "p": "Einmal tippen, und alle Bilder des Karussells landen in einer ZIP-Datei."
+    },
+    {
+      "h": "Größte verfügbare Auflösung",
+      "p": "Bilder bis 1200 px breit, Videos meist in 720p, so wie Pinterest sie veröffentlicht."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Bilder und Videos gemischt",
+      "paragraphs": [
+        "Manche Karussells enthalten auch Videos. PintDownload behandelt jedes Element für sich: Bilder kommen als JPG oder PNG, Videos als MP4. Im ZIP liegen beide nebeneinander, in der Reihenfolge des Karussells."
+      ]
+    },
+    {
+      "h2": "Mehrseitige Pins und frühere Idea Pins",
+      "paragraphs": [
+        "Pinterest hat Idea Pins, auch Story-Pins genannt, in normale Pins überführt. Haben sie mehrere Seiten, behandelt PintDownload sie wie ein Karussell. Besteht so ein Pin nur aus einem Video, nimm den [[pinterest-video-downloader|Video-Download]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So lädst du ein Pinterest-Karussell herunter",
+    "intro": "Für Pins mit mehreren Bildern. Einzelne Bilder gehen genauso.",
+    "exampleLabel": "Beispiel für einen Pin-Link",
+    "items": [
+      {
+        "title": "Karussell-Pin finden",
+        "body": "Öffne den Pin. Punkte unter dem Bild zeigen, dass es mehrere Bilder gibt."
+      },
+      {
+        "title": "Link kopieren",
+        "body": "Tippe auf **Teilen** › **Link kopieren**, oder kopier die Adresse mit `/pin/` aus dem Browser."
+      },
+      {
+        "title": "Einfügen und auswählen",
+        "body": "Füge den Link oben ein. Du siehst jedes Bild des Karussells und speicherst einzelne oder lädst alle zusammen als ZIP herunter."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zu Karussell-Pins",
+    "items": [
+      {
+        "q": "Kann ich alle Bilder eines Karussells auf einmal laden?",
+        "a": "Ja. Nach dem Abrufen gibt es neben den einzelnen Bildern einen ZIP-Button, der das ganze Karussell in eine Datei packt."
+      },
+      {
+        "q": "Woran erkenne ich einen Karussell-Pin?",
+        "a": "An den Punkten unter dem Bild und daran, dass du nach links oder rechts wischen kannst. Bei einem normalen Bild-Pin fehlen die Punkte."
+      },
+      {
+        "q": "In welcher Auflösung werden die Bilder gespeichert?",
+        "a": "In der größten Version, die Pinterest für jedes Bild veröffentlicht, meist bis 1200 px breit. Das ist schärfer als ein Screenshot, aber nicht die Datei, die der Creator hochgeladen hat."
+      },
+      {
+        "q": "Warum fehlen im Pinnwand-ZIP Bilder meines Karussells?",
+        "a": "Der [[pinterest-board-downloader|Pinnwand-Download]] packt pro Pin nur das Titelbild ein. Für alle Bilder öffne den einzelnen Pin hier."
+      },
+      {
+        "q": "Brauche ich ein Pinterest-Konto?",
+        "a": "Nein. Öffentliche Karussell-Pins lädst du ohne Anmeldung herunter."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Tools für Bilder"
+  },
+  "schema": {
+    "appName": "Pinterest-Karussell-Downloader – PintDownload",
+    "howToName": "Alle Bilder eines Pinterest-Karussells herunterladen",
+    "howToDescription": "Den Link eines Karussell-Pins einfügen und jedes Bild einzeln oder alle zusammen als ZIP speichern."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). Thin-demand page (P3); absorbs part of the skipped story page (mehrseitige Pins).",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

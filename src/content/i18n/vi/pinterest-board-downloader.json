@@ -1,0 +1,149 @@
+{
+  "pageId": "pinterest-board-downloader",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải bảng Pinterest: toàn bộ ảnh, video về một file ZIP",
+    "description": "Tải bảng Pinterest công khai: toàn bộ ảnh, video gom vào một file ZIP, hoặc tải từng Ghim. Miễn phí, không cần đăng nhập, dùng được cả trên điện thoại."
+  },
+  "keywords": {
+    "primary": "tải bảng pinterest",
+    "secondary": [
+      "tải toàn bộ ảnh pinterest",
+      "tải tất cả ảnh pinterest",
+      "tải ảnh pinterest hàng loạt",
+      "tải board pinterest",
+      "tải bảng pinterest zip",
+      "tải tất cả ghim trong bảng pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Tải bảng Pinterest",
+    "short": "Bảng",
+    "card": {
+      "title": "Tải bảng Pinterest",
+      "blurb": "Ghim công khai của một bảng gom vào một file ZIP, hoặc tải từng Ghim.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Tải bảng Pinterest",
+    "lede": "Một link **bảng công khai**, một **file ZIP** chứa các Ghim đang hiển thị trong bảng."
+  },
+  "intro": [
+    "Muốn **tải toàn bộ ảnh** trong một bảng Pinterest mà không phải mở từng Ghim? Dán link bảng, xem danh sách Ghim chúng tôi tìm được rồi gom tất cả vào một **file ZIP**. Không cần tiện ích, không cần tài khoản.",
+    "Nhận link dạng `pinterest.com/tai-khoan/ten-bang/`. Chỉ bảng công khai."
+  ],
+  "features": [
+    {
+      "h": "Chỉ nhận link bảng",
+      "p": "Dành cho địa chỉ `/tai-khoan/ten-bang/`. Một Ghim lẻ thì dán ở trang tải Ghim."
+    },
+    {
+      "h": "Gom cả vào một file ZIP",
+      "p": "Các Ghim công khai của bảng nằm gọn trong một file, để làm moodboard offline hay gửi cho người khác."
+    },
+    {
+      "h": "Cả ảnh lẫn video",
+      "p": "ZIP chứa ảnh và video của các Ghim mà trang bảng công khai tải ra."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Có tải được hết cả bảng không?",
+      "paragraphs": [
+        "PintDownload tải các Ghim công khai hiện ra khi trang bảng được mở, tới một giới hạn an toàn. Với bảng rất lớn, một số Ghim cũ có thể không có trong ZIP. Ghim nhiều ảnh chỉ được lấy ảnh bìa; muốn đủ từng ảnh, hãy mở riêng Ghim đó ở [[pinterest-pin-downloader|tải Ghim Pinterest]]."
+      ]
+    },
+    {
+      "h2": "Kiểm tra link trước khi dán",
+      "paragraphs": [
+        "Dán nhầm loại link là lỗi hay gặp nhất. Cách nhận ra từng loại:"
+      ],
+      "list": [
+        "`pinterest.com/tai-khoan/ten-bang/`: đây là bảng, dán ở trang này.",
+        "`pinterest.com/pin/123…/`: đây là một Ghim; dùng [[pinterest-pin-downloader|tải Ghim Pinterest]].",
+        "`pinterest.com/tai-khoan/`: đây là hồ sơ; dùng [[pinterest-profile-downloader|tải hồ sơ Pinterest]].",
+        "Bảng bí mật (Pinterest nay gọi là bảng riêng tư, đã bật **Giữ riêng tư bảng này**) hoặc tài khoản riêng tư: không tải được."
+      ]
+    },
+    {
+      "h2": "Mở file ZIP trên điện thoại",
+      "paragraphs": [
+        "Trên iPhone, file ZIP nằm trong app **Tệp**; chạm vào là máy tự giải nén thành một thư mục. Trên Android, mở ZIP bằng app quản lý file của máy (như Files của Google) và chọn giải nén. Sau đó bạn có thể chọn ảnh, video để đưa vào thư viện ảnh."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tải bảng Pinterest thành file ZIP",
+    "intro": "Trang này chỉ nhận link bảng. Link có `/pin/` thì dùng trang tải Ghim.",
+    "exampleLabel": "Link bảng mẫu",
+    "items": [
+      {
+        "title": "Mở bảng công khai",
+        "body": "Trên Pinterest, mở trang của bảng (lưới các Ghim), không phải một Ghim đang phóng to."
+      },
+      {
+        "title": "Sao chép link bảng",
+        "body": "Sao chép từ thanh địa chỉ, hoặc chạm **biểu tượng chia sẻ** › **Sao chép liên kết**. Link đúng có dạng `pinterest.com/tai-khoan/ten-bang/`."
+      },
+      {
+        "title": "Dán link và xem Ghim",
+        "body": "Dán link vào ô phía trên, bấm **Xem Ghim trong bảng** để hiện danh sách Ghim công khai."
+      },
+      {
+        "title": "Tải file ZIP",
+        "body": "Bấm **Tải ZIP** để lưu ảnh và video vào một file, hoặc tải từng Ghim một."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải bảng Pinterest",
+    "items": [
+      {
+        "q": "Làm sao tải tất cả ảnh trong một bảng Pinterest?",
+        "a": "Sao chép link bảng công khai, dán vào ô phía trên, xem danh sách Ghim rồi bấm **Tải ZIP**. ZIP chứa các Ghim công khai mà trang bảng tải ra, tới một giới hạn; bảng quá lớn có thể thiếu vài Ghim cũ."
+      },
+      {
+        "q": "Link bảng trông như thế nào?",
+        "a": "Sau tên miền có hai phần: tên tài khoản và tên bảng, ví dụ `pinterest.com/tai-khoan/mon-an-ngon/`. Nếu giữa link có `/pin/` thì đó là một Ghim, không phải bảng."
+      },
+      {
+        "q": "Có tải được bảng bí mật không?",
+        "a": "Không. PintDownload chỉ đọc bảng công khai. Bảng bí mật, tài khoản riêng tư và Ghim phải đăng nhập mới xem được đều không tải được."
+      },
+      {
+        "q": "Tải được bao nhiêu Ghim trong một bảng?",
+        "a": "Các Ghim công khai hiện ra khi trang bảng được tải, tới một giới hạn an toàn. Bảng vài chục Ghim thường đủ cả; bảng hàng trăm, hàng nghìn Ghim có thể thiếu những Ghim cũ nhất."
+      },
+      {
+        "q": "Video trong bảng có được tải không?",
+        "a": "Có. ZIP chứa cả ảnh và video MP4 của các Ghim công khai trong bảng. Muốn chọn chất lượng cho một video cụ thể, hãy mở Ghim đó ở [[pinterest-video-downloader|tải video Pinterest]]."
+      },
+      {
+        "q": "Tải bảng về điện thoại Android, iPhone được không?",
+        "a": "Được. Mở trang này trên Safari hoặc Chrome, dán link bảng rồi tải ZIP. iPhone tự giải nén khi bạn chạm vào ZIP trong app **Tệp**; Android dùng app quản lý file để giải nén."
+      },
+      {
+        "q": "Tải bảng hay tải hồ sơ: chọn công cụ nào?",
+        "a": "Trang này dành cho một bảng theo chủ đề, như “nhà cửa” hay “đám cưới”. Muốn lấy Ghim công khai của cả một tài khoản, dùng [[pinterest-profile-downloader|tải hồ sơ Pinterest]]."
+      },
+      {
+        "q": "Ghim nhiều ảnh trong ZIP có đủ từng ảnh không?",
+        "a": "Không, ZIP chỉ có ảnh bìa của mỗi Ghim. Muốn đủ từng ảnh của một Ghim nhiều ảnh, hãy mở Ghim đó ở [[pinterest-pin-downloader|trang tải Ghim]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Tải bảng Pinterest — PintDownload",
+    "howToName": "Cách tải bảng Pinterest thành file ZIP",
+    "howToDescription": "Dán link một bảng Pinterest công khai, xem các Ghim và lưu ảnh, video vào một file ZIP."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Verify: secret board toggle 'Giữ bí mật bảng này' (help.pinterest.com/vi); iOS Files unzips on tap."
+  }
+}

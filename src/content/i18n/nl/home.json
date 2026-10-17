@@ -1,0 +1,169 @@
+{
+  "pageId": "home",
+  "locale": "nl",
+  "meta": {
+    "title": "Pinterest downloader — video, foto & GIF gratis | PintDownload",
+    "description": "Gratis Pinterest downloader: sla openbare video's op als MP4, foto's in HD, GIF's en hele borden als ZIP. Zonder account of app, op je telefoon en pc."
+  },
+  "keywords": {
+    "primary": "pinterest downloader",
+    "secondary": [
+      "downloaden van pinterest",
+      "pinterest downloader gratis",
+      "pinterest opslaan",
+      "pinterest video downloaden",
+      "pinterest foto downloaden",
+      "pinterest bord downloaden"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest downloader",
+    "short": "Start",
+    "card": {
+      "title": "Pinterest downloader",
+      "blurb": "Plak de link van een pin, bord of profiel en download het bestand.",
+      "badge": "Alles"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest downloader",
+    "lede": "**Plak de link en je hebt het bestand.** Openbare video’s als **MP4**, foto’s in de grootste versie die Pinterest publiceert, GIF’s en **hele borden of profielen als één ZIP**. Gratis en zonder account."
+  },
+  "aside": [
+    {
+      "dt": "Pin",
+      "dd": "MP4, JPG, GIF of alle afbeeldingen van een carrousel"
+    },
+    {
+      "dt": "Bord",
+      "dd": "Alle openbare pins in één ZIP"
+    },
+    {
+      "dt": "Profiel",
+      "dd": "De openbare pins als ZIP, of de profielfoto"
+    }
+  ],
+  "intro": [
+    "PintDownload is een website om **te downloaden van Pinterest**, geen app die je installeert. Zoek je de Pinterest-app zelf voor je telefoon, laptop of pc? Die staat in de App Store, Google Play of de Microsoft Store. Hier plak je alleen een link en krijg je het bestand.",
+    "Plak de korte link uit de app (`pin.it/…`) of het adres uit je browser (`pinterest.com/pin/…`), ook van `nl.pinterest.com` of `pinterest.nl`. Het werkt alleen met openbare pins, borden en profielen."
+  ],
+  "sections": [
+    {
+      "h2": "Wat je van Pinterest kunt downloaden",
+      "paragraphs": [
+        "Plak een link in het vak hierboven en PintDownload ziet zelf of het om een pin, bord of profiel gaat. Voor elk soort link is er ook een eigen pagina:"
+      ],
+      "list": [
+        "**Video’s** als MP4, meestal in 720p en in 1080p als de pin dat heeft: [[pinterest-video-downloader|Pinterest video downloaden]].",
+        "**Foto’s en afbeeldingen** in de grootste versie die Pinterest publiceert, geen miniatuur: [[pinterest-image-downloader|Pinterest foto downloaden]].",
+        "**GIF’s** die blijven bewegen: [[pinterest-gif-downloader|Pinterest GIF downloaden]].",
+        "**Eén pin** van elk type, ook een carrousel met al zijn afbeeldingen: [[pinterest-pin-downloader|Pinterest pin downloaden]].",
+        "**Openbare borden** met hun pins in één ZIP: [[pinterest-board-downloader|Pinterest bord downloaden]].",
+        "**Openbare profielen**: plak de profiellink hierboven en je krijgt de pins van dat account als ZIP."
+      ]
+    },
+    {
+      "h2": "Wat het niet doet",
+      "paragraphs": [
+        "Privéborden, verborgen borden, privéprofielen en verwijderde pins kun je niet downloaden, en ook niets waarvoor je moet inloggen. We maken de kwaliteit ook niet mooier dan hij is: publiceert Pinterest een video in 720p, dan is je MP4 ook 720p. We schalen nooit iets op.",
+        "We zetten er geen watermerk op. Staat er tekst of een logo van de maker in de video, dan blijft dat staan. PintDownload is een onafhankelijke tool en is niet verbonden aan Pinterest Inc."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Downloaden van Pinterest in 3 stappen",
+    "intro": "Werkt in de browser op iPhone, Android, Mac of pc, zonder account en zonder iets te installeren. Alleen voor openbare pins, borden en profielen.",
+    "exampleLabel": "Voorbeeldlink",
+    "items": [
+      {
+        "title": "Kopieer de link",
+        "body": "Open de pin, het bord of het profiel in de app of op de website. Tik op **Delen** en dan op **Link kopiëren**, of kopieer het adres met `/pin/` erin. Korte pin.it-links werken ook."
+      },
+      {
+        "title": "Plak hem in PintDownload",
+        "body": "Plak de openbare link in het vak hierboven en tik op **Downloaden**. Dat werkt voor video’s, foto’s, GIF’s, borden en profielen."
+      },
+      {
+        "title": "Bekijk en sla op",
+        "body": "Kies een kwaliteit als er meer dan één is en sla het bestand op in Downloads, Foto’s of je galerij. Borden en profielen krijg je als ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Vragen over downloaden van Pinterest",
+    "items": [
+      {
+        "q": "Kan ik downloaden van Pinterest zonder account?",
+        "a": "Ja. Kopieer de link van een openbare pin en plak hem hier. Je logt niet in bij Pinterest en maakt bij ons ook geen account aan. Door Pinterest bladeren zonder account kan hier niet: PintDownload haalt alleen de bestanden op van links die jij plakt."
+      },
+      {
+        "q": "Is dit de Pinterest-app?",
+        "a": "Nee. PintDownload is een losse website en is niet verbonden aan Pinterest. Wil je de app van Pinterest op je telefoon, laptop of pc, kijk dan in de App Store, Google Play of de Microsoft Store. Hier download je alleen de bestanden van openbare pins."
+      },
+      {
+        "q": "Is PintDownload gratis?",
+        "a": "Ja. Video’s, foto’s, GIF’s, borden en profielen downloaden is gratis en je hoeft je nergens voor te registreren."
+      },
+      {
+        "q": "Waarom niet gewoon ‘Download afbeelding’ in de Pinterest-app?",
+        "a": "Bij veel foto’s werkt dat prima: tik op de drie puntjes (…) en kies **Download afbeelding**. Maar [Pinterest zegt zelf](https://help.pinterest.com/nl/article/download-an-image) dat niet alle pins kunnen worden gedownload, en voor veel video’s van anderen en voor een heel bord is er geen knop. Dan plak je de link hier."
+      },
+      {
+        "q": "Hoe kopieer ik de link van een pin?",
+        "a": "Open de pin, tik op het deelpictogram (**Delen**) en dan op **Link kopiëren**. De app kopieert een korte pin.it-link, die je hier zo kunt plakken. Op de computer kopieer je het adres uit de adresbalk."
+      },
+      {
+        "q": "Kan ik een heel bord of profiel als ZIP downloaden?",
+        "a": "Ja, als het openbaar is. Plak de link van het bord of profiel hierboven, bekijk de pins en download de ZIP. Voor borden is er ook een eigen pagina: [[pinterest-board-downloader|Pinterest bord downloaden]]."
+      },
+      {
+        "q": "Komt er een watermerk op de bestanden?",
+        "a": "Niet van ons. Je krijgt het bestand zoals Pinterest het publiceert; heeft de maker een naam of tekst in de video gezet, dan blijft die staan."
+      },
+      {
+        "q": "Werkt het op iPhone, Android, laptop en pc?",
+        "a": "Ja, in elke gangbare browser: Safari, Chrome, Edge of Firefox. Op je telefoon lees je in [[how-to-download-pinterest-video-in-gallery|Pinterest video opslaan in je galerij]] hoe de video in Foto’s of je galerij komt."
+      },
+      {
+        "q": "Mag ik Pinterest-afbeeldingen gebruiken?",
+        "a": "Opslaan voor jezelf, als inspiratie of voor een moodboard, is waar PintDownload voor bedoeld is. Wil je het werk van een ander publiceren, op Instagram, TikTok of in een advertentie, vraag de maker dan eerst om toestemming en noem zijn of haar naam. Openbaar zichtbaar betekent niet dat je het vrij mag hergebruiken."
+      }
+    ]
+  },
+  "related": {
+    "title": "Een downloader voor elke link"
+  },
+  "schema": {
+    "appName": "Pinterest downloader — PintDownload",
+    "howToName": "Video’s, foto’s, GIF’s, borden en profielen downloaden van Pinterest",
+    "howToDescription": "Kopieer een openbare Pinterest-link, plak hem in PintDownload, bekijk het resultaat en sla het bestand of de ZIP op."
+  },
+  "guides": {
+    "title": "Stap voor stap",
+    "intro": "Uitleg per toestel en per plek waar je bestand terechtkomt, met de menunamen die je op je eigen scherm ziet.",
+    "items": [
+      {
+        "page": "how-to-download-pinterest-videos",
+        "tag": "Uitleg",
+        "title": "Hoe download je een Pinterest-video?",
+        "blurb": "Van link naar MP4 op je telefoon, laptop of pc, met de knoppen van de Pinterest-app."
+      },
+      {
+        "page": "how-to-download-pinterest-video-in-gallery",
+        "tag": "Galerij",
+        "title": "Pinterest video opslaan in je galerij",
+        "blurb": "Zo komt de video in Foto’s op je iPhone of in de galerij van je Android, en wat je doet als hij er niet staat."
+      }
+    ]
+  },
+  "credit": {
+    "h2": "Vermeld de maker",
+    "body": "Gebruik je de video of afbeelding van iemand anders in iets wat je publiceert (Reels, TikTok, YouTube, advertenties), **vermeld dan de maker**. Iets downloaden om het offline te bekijken is prima; het opnieuw publiceren zonder vermelding of toestemming niet."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-nl",
+    "nativeReviewer": "review-nl (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, je register, glossary (pins, bord, videopin, afhaalbon, omslag), search vocabulary, honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/nl: Afbeelding downloaden (desktop), Download afbeelding (app), drie puntjes, Delen › Link kopiëren, deelpictogram, Bewaren, Privébord. OS labels (Bewaar video/afbeelding, Bestanden, Mijn bestanden, Geanimeerd, album Download) are the standard Dutch iOS/Android names, not checked on a device."
+  }
+}

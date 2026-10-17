@@ -1,0 +1,150 @@
+{
+  "pageId": "pinterest-pin-downloader",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest Pin İndir — Linkten Video, Fotoğraf ve GIF Kaydet",
+    "description": "Tek bir Pinterest Pin linkini yapıştırın; fotoğrafı, MP4 videoyu, GIF'i ya da karusel Pininin tüm kartlarını indirin. pin.it kısa linkleri de çalışır."
+  },
+  "keywords": {
+    "primary": "pinterest pin indir",
+    "secondary": [
+      "pinterest pin indirici",
+      "pinterest link indir",
+      "pinterest linkle video indir",
+      "pinterest pin video indir",
+      "pinterest pin nasıl indirilir"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest Pin İndir",
+    "short": "Pin",
+    "card": {
+      "title": "Pin İndir",
+      "blurb": "Herhangi bir Pin linki: fotoğraf, video, GIF ya da karuselin bütün kartları.",
+      "badge": "Pin"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Pin İndir",
+    "lede": "**Tek bir Pin linki** yapıştırın, PintDownload içinde ne olduğunu kendisi bulsun: fotoğraf, video, GIF ya da karusel. Doğru dosyayı ücretsiz ve üyeliksiz verir."
+  },
+  "intro": [
+    "Elinizde bir Pin linki var ama fotoğraf mı, video mu, GIF mi olduğunu bilmiyor musunuz? Bilmenize gerek yok. Bu sayfa linki okur, Pinin türünü tanır ve uygun dosyayı sunar: fotoğrafa **JPG**, videoya **MP4**, hareketli olana **GIF**, karusel Pine **bütün kartlar**.",
+    "Tarayıcıdaki `pinterest.com/pin/…` adresini ve uygulamanın kopyaladığı `pin.it` kısa linkini alır; WhatsApp’tan gelen bir link de olur. Yalnızca herkese açık Pinler."
+  ],
+  "features": [
+    {
+      "h": "Tek link, her tür Pin",
+      "p": "Fotoğraf, video, GIF ya da karusel: sonuç Pine göre değişir. Video Pininde mevcut kaliteleri de görürsünüz."
+    },
+    {
+      "h": "Karusel Pinin bütün kartları",
+      "p": "Çoklu fotoğraflı bir Pinde yalnızca kapağı değil, her kartı alırsınız; tek tek ya da hepsi birlikte ZIP olarak."
+    },
+    {
+      "h": "Aynı anda 5 Pine kadar",
+      "p": "Kutunun üstündeki **En fazla 5** seçeneğine dokunun ve her satıra bir link yapıştırın. Dosyalar sırayla iner."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Pinin türüne göre ne alırsınız",
+      "paragraphs": [
+        "Yapıştırmadan önce araç seçmeniz gerekmez. PintDownload bulduğuna göre şunları gösterir:"
+      ],
+      "list": [
+        "**Fotoğraf Pini**: Pinterest’in yayınladığı en büyük boyutta görsel, genişliği en fazla 1200 px. Ayrıntılar: [[pinterest-image-downloader|Pinterest fotoğraf indir]].",
+        "**Video Pini**: MP4; genellikle 720p, Pinde varsa 1080p. Videoda ses varsa tarayıcınızda hazırlanan bir MP3 de. Bkz. [[pinterest-video-downloader|Pinterest video indir]].",
+        "**GIF**: ilk karenin donuk fotoğrafı değil, hareket eden .gif dosyası. Bkz. [[pinterest-gif-downloader|Pinterest GIF indir]].",
+        "**Karusel Pin**: bütün kartlar, tek tek ya da tek bir ZIP’te."
+      ]
+    },
+    {
+      "h2": "Karusel Pinin tüm kartları",
+      "paragraphs": [
+        "Kaydırarak gezilen çoklu fotoğraflı Pinlere Pinterest **karusel** der; içindeki her fotoğraf da bir kart. Pinterest’in kendi **Görüntüyü indir** seçeneğiyle bu kartları tek tek indirmeniz gerekir. Linki PintDownload’a yapıştırdığınızda bütün kartlar sırayla listelenir; istediklerinizi tek tek ya da hepsini birlikte ZIP olarak indirirsiniz."
+      ]
+    },
+    {
+      "h2": "Pin indirilmiyorsa",
+      "paragraphs": [
+        "Üç yaygın neden var: Pin gizli bir panoda ya da gizli bir hesapta duruyor, Pin silinmiş ya da kopyaladığınız şey bir Pinin adresi değil (örneğin bir arama sayfası ya da ana sayfa akışı).",
+        "Hızlı bir deneme: linki tarayıcının gizli sekmesinde açın. Pinterest görmek için giriş istiyorsa Pin herkese açık değildir ve PintDownload da onu okuyamaz."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest Pin nasıl indirilir",
+    "intro": "Telefonda da bilgisayarda da dört adım. Herkese açık her Pinde çalışır.",
+    "exampleLabel": "Örnek Pin linki",
+    "items": [
+      {
+        "title": "Pini açın",
+        "body": "İndirmek istediğiniz Pini uygulamada ya da pinterest.com’da açın; panonun ızgarasını değil, Pinin kendi sayfasını."
+      },
+      {
+        "title": "Linkini kopyalayın",
+        "body": "Paylaş simgesi › **Bağlantıyı kopyala**’ya dokunun ya da tarayıcıda `/pin/` içeren adresi kopyalayın."
+      },
+      {
+        "title": "Yukarıya yapıştırın",
+        "body": "Linki kutuya yapıştırıp **Pini indir**’e dokunun. PintDownload Pinin fotoğraf, video, GIF ya da karusel olduğunu tanır."
+      },
+      {
+        "title": "Dosyayı kaydedin",
+        "body": "Fotoğrafı, MP4’ü ya da GIF’i indirin. Karuselse kartları tek tek ya da hepsini birlikte ZIP olarak kaydedin."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Pin indirme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Pinterest Pin linki nedir, nasıl kopyalanır?",
+        "a": "Bir Pinin kendi adresidir. Uygulamada Pini açıp paylaş simgesine, sonra **Bağlantıyı kopyala**’ya dokunun; bu `pin.it` ile başlayan kısa bir link kopyalar. Tarayıcıda ise adres çubuğundaki, `/pin/` ve bir sayı içeren adres Pin linkidir."
+      },
+      {
+        "q": "pin.it kısa linki çalışır mı?",
+        "a": "Evet. Uygulamanın verdiği `pin.it` linklerini olduğu gibi yapıştırın; PintDownload onları Pinin tam adresine kendisi çevirir."
+      },
+      {
+        "q": "Karusel Pinin bütün kartlarını indirebilir miyim?",
+        "a": "Evet. Linki yapıştırdığınızda her kart ayrı listelenir; birini, birkaçını ya da hepsini birlikte ZIP olarak indirebilirsiniz."
+      },
+      {
+        "q": "Video ve GIF Pinlerinde de çalışır mı?",
+        "a": "Evet. Video Pininde MP4 ve varsa farklı kaliteler, GIF Pininde hareketli .gif dosyası gelir. Yalnızca video ya da GIF arıyorsanız [[pinterest-video-downloader|video]] ve [[pinterest-gif-downloader|GIF]] sayfaları da aynı işi yapar."
+      },
+      {
+        "q": "Pano ya da profil linkim neden burada çalışmadı?",
+        "a": "Bu sayfa tek bir Pin içindir. `pinterest.com/kullanici/pano-adi/` gibi bir pano linki [[pinterest-board-downloader|pano indirmeye]], `pinterest.com/kullanici/` gibi bir profil linki [[pinterest-profile-downloader|profil indirmeye]] gider; form bu linkleri tanıyınca doğru araca kendisi geçer."
+      },
+      {
+        "q": "Linkle indirme ücretsiz mi, giriş gerekiyor mu?",
+        "a": "Ücretsizdir ve giriş gerektirmez; ne Pinterest hesabı ne de PintDownload hesabı gerekir. Yalnızca herkese açık Pinler indirilebilir."
+      },
+      {
+        "q": "Aynı anda birden çok Pin indirebilir miyim?",
+        "a": "Evet, beşe kadar: kutunun üstünde **En fazla 5** seçeneğine dokunun ve her satıra bir Pin linki yapıştırın. Daha fazlası için Pinleri bir panoda toplayıp o panoyu ZIP olarak indirin."
+      },
+      {
+        "q": "Fikir Pini indirebilir miyim?",
+        "a": "Pinterest, Fikir Pinlerini normal Pinlerle birleştirdi; bugün onlar da sıradan Pinler gibi açılır. Linkini burada yapıştırın: videosu MP4, fotoğrafları JPG olarak iner."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer Pinterest araçları"
+  },
+  "schema": {
+    "appName": "Pinterest Pin İndirici — PintDownload",
+    "howToName": "Pinterest Pini linkten nasıl indirilir",
+    "howToDescription": "Herkese açık bir Pinterest Pininin linkini yapıştırıp fotoğrafını, videosunu, GIF’ini ya da karusel kartlarını indirme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Karusel ve kart terimleri help.pinterest.com/tr/node/1251’den. Doğrulanacak: Görüntüyü indir seçeneğinin karusel Pinlerde hangi kartı indirdiği.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edit: intro “… GIF mi olduğunu bilmiyor musunuz?”."
+  }
+}

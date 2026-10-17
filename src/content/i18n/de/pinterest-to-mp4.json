@@ -1,0 +1,126 @@
+{
+  "pageId": "pinterest-to-mp4",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest in MP4 umwandeln – Video-Konverter online & gratis",
+    "description": "Pinterest-Videos online in MP4 umwandeln: Pin-Link einfügen und eine MP4-Datei laden, die überall läuft – kostenlos, ohne Registrierung, ohne Wasserzeichen."
+  },
+  "keywords": {
+    "primary": "pinterest video umwandeln",
+    "secondary": [
+      "pinterest in mp4",
+      "pinterest zu mp4",
+      "pinterest mp4 converter",
+      "pinterest video umwandeln online",
+      "pinterest konverter mp4",
+      "pinterest gif in mp4 umwandeln"
+    ]
+  },
+  "nav": {
+    "label": "In MP4 umwandeln",
+    "short": "MP4",
+    "card": {
+      "title": "Pinterest in MP4 umwandeln",
+      "blurb": "Video-Pin-Link rein, MP4-Datei raus, die auf jedem Gerät läuft.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest in MP4 umwandeln",
+    "lede": "Pin-Link einfügen, **MP4-Datei** laden: Das Video läuft danach in jeder App, offline und ohne Pinterest."
+  },
+  "intro": [
+    "Pinterest spielt Videos als Stream ab; eine Datei, die du in WhatsApp, CapCut oder VLC öffnen kannst, bekommst du dabei nicht. Der Konverter holt das MP4, das Pinterest für den Pin bereithält, und gibt es dir als normale Datei. Ohne Programm, ohne Registrierung.",
+    "Gesucht wird das meist als „Pinterest zu MP4“ oder „Pinterest-Konverter“. Nur öffentliche Video-Pins."
+  ],
+  "features": [
+    {
+      "h": "Echte MP4-Datei",
+      "p": "Kein Stream und keine Bildschirmaufnahme: eine vollständige Datei, die überall läuft."
+    },
+    {
+      "h": "Ohne Neukodierung",
+      "p": "Wir rechnen das Video nicht um. Du bekommst die Auflösung, die der Pin hat, meist 720p."
+    },
+    {
+      "h": "Gratis und ohne Konto",
+      "p": "Keine Registrierung, kein Wasserzeichen von uns, keine Software."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Was „umwandeln“ hier bedeutet",
+      "paragraphs": [
+        "Ehrlich gesagt: Neu kodiert wird nichts. Pinterest hat zu jedem Video-Pin bereits eine MP4-Fassung, sie steckt nur hinter dem Player. PintDownload macht daraus eine Datei, die du speichern, schneiden und verschicken kannst. Deshalb verliert das Video auch nichts an Qualität."
+      ]
+    },
+    {
+      "h2": "Warum ein gespeichertes Video manchmal nicht läuft",
+      "paragraphs": [
+        "Bildschirmaufnahmen und halb geladene Dateien machen oft Ärger: kein Ton, falsches Format, abgebrochene Datei. Ein vollständig geladenes MP4 läuft in Fotos, Galerie, VLC und jedem Schnittprogramm. Startet es trotzdem nicht, ist der Download meist noch nicht fertig; schau im Downloads-Ordner nach."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So wandelst du ein Pinterest-Video in MP4 um",
+    "intro": "Nur öffentliche Video-Pins. Keine Software nötig.",
+    "exampleLabel": "Link zu einem Video-Pin",
+    "items": [
+      {
+        "title": "Video-Link kopieren",
+        "body": "Öffne einen Pin mit einem Video und tippe auf **Teilen** › **Link kopieren**, oder kopiere die Adresse mit `/pin/`."
+      },
+      {
+        "title": "In den Konverter einfügen",
+        "body": "Füge den Link oben ein und tippe auf **Video herunterladen**. PintDownload findet das MP4, das Pinterest für den Pin bereitstellt."
+      },
+      {
+        "title": "MP4 speichern",
+        "body": "Tippe im Ergebnis auf **MP4 herunterladen** und öffne die Datei in Fotos, VLC oder deinem Schnittprogramm. Die Qualität entspricht dem Pin; hochgerechnet wird nichts."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zum MP4-Konverter",
+    "items": [
+      {
+        "q": "Wie wandle ich ein Pinterest-Video in MP4 um?",
+        "a": "Kopiere den Link des Video-Pins, füge ihn oben ein und lade das MP4 herunter. Mehr ist es nicht, ein Programm brauchst du dafür nicht."
+      },
+      {
+        "q": "Ist der Konverter kostenlos?",
+        "a": "Ja. Öffentliche Videos wandelst du ohne Registrierung um, und wir fügen kein Wasserzeichen hinzu."
+      },
+      {
+        "q": "Konverter oder Video-Download – welche Seite brauche ich?",
+        "a": "Beide liefern dasselbe MP4. Diese Seite ist für alle, die eine abspielbare Datei wollen. Der [[pinterest-video-downloader|Video-Download]] geht genauer auf Qualität, Ton und Wasserzeichen ein."
+      },
+      {
+        "q": "Kann ich ein Pinterest-GIF in MP4 umwandeln?",
+        "a": "GIF-Dateien wandeln wir nicht um. Hat ein GIF-Pin zusätzlich eine Videoversion, zeigt das Ergebnis sie als MP4. Sonst speicherst du das GIF im [[pinterest-gif-downloader|GIF-Download]]."
+      },
+      {
+        "q": "Klappt das auf iPhone und Android?",
+        "a": "Ja. Füge den `pin.it`-Link aus der Pinterest-App in Safari oder Chrome ein und speichere das MP4. Danach holst du es in die Fotos-App oder die Galerie."
+      },
+      {
+        "q": "Verliert das Video beim Umwandeln an Qualität?",
+        "a": "Nein, weil wir nicht neu kodieren. Du bekommst genau das MP4, das Pinterest für den Pin veröffentlicht, meist in 720p."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Video-Tools"
+  },
+  "schema": {
+    "appName": "Pinterest-MP4-Konverter – PintDownload",
+    "howToName": "Pinterest-Video in MP4 umwandeln",
+    "howToDescription": "Den Link eines öffentlichen Pinterest-Video-Pins einfügen und das Video als MP4-Datei herunterladen."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). Honesty note: the page says plainly that nothing is re-encoded (the MP4 already exists at Pinterest).",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

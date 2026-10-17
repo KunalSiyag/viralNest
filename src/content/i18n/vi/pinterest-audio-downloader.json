@@ -1,0 +1,135 @@
+{
+  "pageId": "pinterest-audio-downloader",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải nhạc Pinterest: tách âm thanh từ video ra MP3",
+    "description": "Tải nhạc Pinterest dạng MP3 từ Ghim video có tiếng, hoặc giữ cả video MP4. Có thể cắt lấy một đoạn ngắn. Miễn phí, chỉ dùng âm thanh bạn có quyền sử dụng."
+  },
+  "keywords": {
+    "primary": "tải nhạc pinterest",
+    "secondary": [
+      "tải nhạc từ video pinterest",
+      "tải mp3 pinterest",
+      "tải âm thanh pinterest",
+      "chuyển video pinterest thành mp3",
+      "lấy nhạc pinterest làm nhạc chuông"
+    ]
+  },
+  "nav": {
+    "label": "Tải nhạc Pinterest",
+    "short": "MP3",
+    "card": {
+      "title": "Tải nhạc Pinterest",
+      "blurb": "Tách tiếng của Ghim video thành MP3, ngay trong trình duyệt của bạn.",
+      "badge": "MP3"
+    }
+  },
+  "hero": {
+    "h1": "Tải nhạc từ video Pinterest",
+    "lede": "Tách phần tiếng của **Ghim video** công khai thành **MP3** khi video có âm thanh. Trình duyệt của bạn tự tạo file; không có gì bị tải lên."
+  },
+  "intro": [
+    "Pinterest không lưu nhạc thành file riêng: tiếng nằm bên trong video. Vì vậy PintDownload lấy file MP4 công khai của Ghim, rồi trình duyệt của bạn chuyển phần tiếng thành **MP3 192 kbps**. Đây là MP3 thật, không phải video bị đổi đuôi file.",
+    "Dán link `/pin/` hoặc `pin.it` của một video có tiếng. GIF và ảnh tĩnh không có âm thanh."
+  ],
+  "features": [
+    {
+      "h": "MP3 thật, 192 kbps",
+      "p": "Mã hóa từ tiếng của video, mở được trên mọi điện thoại, máy tính và trình phát nhạc."
+    },
+    {
+      "h": "Cắt đúng đoạn bạn cần",
+      "p": "Chỉ cần đoạn điệp khúc hay vài giây? Chọn điểm đầu, điểm cuối, nghe thử rồi lưu đoạn đó dạng MP3 hoặc WAV."
+    },
+    {
+      "h": "Không tài khoản, không app",
+      "p": "Chạy trên trình duyệt điện thoại hay máy tính. Không đăng ký, không đăng nhập Pinterest."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "File MP3 được tạo thế nào",
+      "paragraphs": [
+        "Trình duyệt tải video qua PintDownload, đọc phần tiếng rồi mã hóa thành MP3 192 kbps bằng LAME, bộ mã hóa MP3 mã nguồn mở (giấy phép LGPL). Mọi việc diễn ra trên điện thoại hay máy tính của bạn: file MP3 được tạo trong bộ nhớ trình duyệt và không bị tải lên đâu cả.",
+        "Không muốn chuyển đổi gì? File MP4 của video cũng giữ nguyên tiếng."
+      ]
+    },
+    {
+      "h2": "Cắt một đoạn làm nhạc chuông",
+      "paragraphs": [
+        "Chạm **Cắt âm thanh** trong phần kết quả, kéo điểm bắt đầu và kết thúc, nghe thử rồi lưu đoạn đó. Trên Android, bạn đặt file MP3 làm nhạc chuông ngay trong phần cài đặt âm thanh. iPhone thì không nhận MP3 làm nhạc chuông trực tiếp, bạn cần thêm bước qua app GarageBand."
+      ]
+    },
+    {
+      "h2": "Chỉ dùng âm thanh bạn có quyền dùng",
+      "paragraphs": [
+        "Nhiều video trên Pinterest dùng nhạc có bản quyền. Nghe riêng hay làm tham khảo là một chuyện; chèn vào video của bạn, bán lại hay đăng như của mình là chuyện khác. Nếu dùng lại âm thanh, hãy ghi nguồn tác giả video và tôn trọng giấy phép của bài nhạc."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tách nhạc từ video Pinterest ra MP3",
+    "intro": "Chỉ dành cho Ghim video có tiếng. Hãy bật tiếng nghe thử trên Pinterest trước.",
+    "exampleLabel": "Link Ghim video",
+    "items": [
+      {
+        "title": "Tìm video có tiếng",
+        "body": "Mở video trên Pinterest và bật tiếng. Nếu không nghe gì, sẽ không có MP3."
+      },
+      {
+        "title": "Sao chép và dán link",
+        "body": "Trong app: **biểu tượng chia sẻ** › **Sao chép liên kết**. Dán vào ô phía trên rồi bấm **Tải video**."
+      },
+      {
+        "title": "Lưu file MP3",
+        "body": "Trong phần kết quả, bấm **Tải xuống** ở dòng **MP3**. Trình duyệt tạo file trong vài giây và lưu vào thư mục Tải xuống."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải nhạc Pinterest",
+    "items": [
+      {
+        "q": "Làm sao tách nhạc từ video Pinterest sang MP3?",
+        "a": "Dán link Ghim video vào ô phía trên rồi bấm **Tải xuống** ở dòng MP3 trong phần kết quả. Trình duyệt tạo MP3 từ tiếng của video, không tải gì lên máy chủ."
+      },
+      {
+        "q": "Vì sao Ghim của tôi không có MP3?",
+        "a": "Vì Ghim không có tiếng: đó là video không có tiếng, GIF hoặc ảnh tĩnh. Cũng có thể trình duyệt quá cũ, không đọc được âm thanh của video; hãy thử Chrome, Edge, Safari hoặc Firefox bản mới."
+      },
+      {
+        "q": "Có cắt được một đoạn ngắn để làm nhạc chuông không?",
+        "a": "Được. Chạm **Cắt âm thanh**, chọn điểm đầu và điểm cuối, nghe thử rồi lưu đoạn đó dạng MP3 hoặc WAV. Android dùng MP3 làm nhạc chuông được ngay; iPhone cần thêm bước qua GarageBand."
+      },
+      {
+        "q": "Tải nhạc Pinterest có hợp pháp không?",
+        "a": "Tùy cách bạn dùng. Nghe riêng hoặc làm tham khảo là cách dùng phổ biến; đăng lên mạng, chèn vào quảng cáo hay bán lại thì cần xin phép hoặc mua giấy phép. Ghim công khai không có nghĩa bạn có quyền với bài nhạc."
+      },
+      {
+        "q": "Video tải về bị mất tiếng thì sao?",
+        "a": "File MP4 giữ nguyên tiếng nếu video trên Pinterest có tiếng. Hãy bật tiếng nghe thử ngay trên Pinterest; nếu ở đó cũng im lặng thì Ghim vốn không có âm thanh, và cũng sẽ không có MP3."
+      },
+      {
+        "q": "Có tìm được tên bài hát không?",
+        "a": "PintDownload không nhận diện bài hát, chỉ lưu tiếng của video. Muốn biết tên bài, hãy mở Shazam trong lúc phát video, hoặc dùng tính năng tìm bài hát bằng âm thanh của Google."
+      },
+      {
+        "q": "Có cần tài khoản Pinterest không?",
+        "a": "Không cần, miễn là Ghim video công khai. Video trong bảng bí mật hay tài khoản riêng tư thì không tải được."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Tải nhạc Pinterest — PintDownload",
+    "howToName": "Cách tách nhạc từ video Pinterest ra MP3",
+    "howToDescription": "Dán link một Ghim video công khai có tiếng và lưu phần âm thanh thành MP3 do trình duyệt của bạn tạo."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Real MP3 (192 kbps, LAME, in-browser) per user decision 1 (2026-10-15). Ringtone note: Android accepts MP3 directly; iPhone needs GarageBand."
+  }
+}

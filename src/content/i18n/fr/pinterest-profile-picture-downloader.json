@@ -1,0 +1,137 @@
+{
+  "pageId": "pinterest-profile-picture-downloader",
+  "locale": "fr",
+  "meta": {
+    "title": "Photo de profil Pinterest en grand — voir et télécharger",
+    "description": "Affichez et téléchargez en grand la photo de profil d’un compte Pinterest public, pas la petite vignette ronde. Collez le lien du profil : c’est gratuit."
+  },
+  "keywords": {
+    "primary": "télécharger photo de profil pinterest",
+    "secondary": [
+      "voir photo de profil pinterest",
+      "agrandir photo de profil pinterest",
+      "photo de profil pinterest en HD",
+      "pp pinterest",
+      "pinterest profile picture download",
+      "pinterest full size profile picture"
+    ]
+  },
+  "nav": {
+    "label": "Photo de profil en grand",
+    "short": "Photo profil",
+    "shortWide": "Photo de profil",
+    "card": {
+      "title": "Photo de profil en grand",
+      "blurb": "La photo d’un compte public en grand, pas la petite vignette ronde.",
+      "badge": "JPG"
+    }
+  },
+  "hero": {
+    "h1": "Photo de profil Pinterest en grand",
+    "lede": "La photo de profil d’un compte public **en grand**, pas la petite vignette ronde. Collez simplement le lien du profil."
+  },
+  "intro": [
+    "Collez le lien d’un **profil Pinterest public** pour afficher et télécharger sa **photo de profil** dans la plus grande taille que Pinterest publie. Pratique pour la voir nette ; pas pour la reprendre sans accord.",
+    "Les liens `pinterest.com/nom/` et les liens de profil partagés depuis l’appli sont acceptés. Comptes publics uniquement."
+  ],
+  "features": [
+    {
+      "h": "En grand, sans agrandissement",
+      "p": "La plus grande version publiée, en général jusqu’à environ 600 × 600 px. Rien n’est gonflé artificiellement."
+    },
+    {
+      "h": "Liens de profil",
+      "p": "L’adresse du profil (`pinterest.com/nom/`) ou un lien de profil partagé depuis l’appli. Pas besoin de compte."
+    },
+    {
+      "h": "Un JPG propre",
+      "p": "La photo telle que Pinterest l’héberge, sans logo PintDownload ni cadre ajouté."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Pourquoi la vignette ronde est floue",
+      "paragraphs": [
+        "La pastille affichée dans l’appli est une petite copie de la photo. Pinterest en garde des versions plus grandes : PintDownload récupère la plus grande, carrée et non recadrée en rond. Si vous cherchez plutôt des **idées** de pp, c’est sur Pinterest qu’il faut chercher ; collez ensuite le lien de l’épingle sur [[pinterest-image-downloader|Télécharger une photo]]."
+      ]
+    },
+    {
+      "h2": "Droit à l’image : ce qu’il faut savoir",
+      "paragraphs": [
+        "Une photo de profil montre souvent une personne. En France, chacun a un droit sur son image (article 9 du Code civil), et la photo elle-même peut être protégée par le droit d’auteur. La regarder en grand ne pose pas de problème ; l’utiliser sur un autre compte ou la publier demande l’accord de la personne. Ce n’est pas un conseil juridique."
+      ]
+    },
+    {
+      "h2": "Photo de profil ou épingles du profil ?",
+      "paragraphs": [
+        "Cette page ne récupère que la photo. Pour les épingles publiques d’un compte en ZIP, collez le lien du profil sur [[home|l’accueil]] ; la page dédiée n’existe qu’en anglais : [[en!:/pinterest-profile-downloader|Pinterest Profile Downloader]] (en anglais). Pour un tableau, utilisez [[pinterest-board-downloader|Télécharger un tableau]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment télécharger une photo de profil Pinterest en grand",
+    "intro": "Trois étapes, gratuitement, pour un compte public.",
+    "exampleLabel": "Lien de profil Pinterest",
+    "items": [
+      {
+        "title": "Copiez le lien du profil",
+        "body": "Ouvrez le profil public, touchez l’**icône de partage** › **Copier le lien**, ou copiez `pinterest.com/nom/` dans le navigateur."
+      },
+      {
+        "title": "Collez-le ici",
+        "body": "Collez le lien du profil dans le ticket ci-dessus et touchez **Photo de profil**."
+      },
+      {
+        "title": "Ouvrez ou téléchargez la photo",
+        "body": "L’aperçu montre la plus grande version trouvée. Ouvrez-la en grand ou téléchargez le JPG."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur les photos de profil",
+    "items": [
+      {
+        "q": "Comment voir une photo de profil Pinterest en grand ?",
+        "a": "Collez le lien du profil ici : l’aperçu affiche la plus grande version que Pinterest publie. Touchez **Ouvrir en grand** pour la voir seule, ou téléchargez-la."
+      },
+      {
+        "q": "Quelle taille fait vraiment une photo de profil Pinterest ?",
+        "a": "La plus grande que Pinterest publie pour ce compte, en général jusqu’à environ 600 × 600 px. Nous n’agrandissons pas l’image et n’inventons aucun pixel."
+      },
+      {
+        "q": "« PP », photo de profil, avatar : c’est la même chose ?",
+        "a": "Oui, trois noms pour la même petite image ronde d’un compte. Cette page télécharge celle d’un compte précis ; pour trouver des idées de pp, cherchez sur Pinterest."
+      },
+      {
+        "q": "Peut-on récupérer la photo d’un compte privé ?",
+        "a": "Non. Seules les photos de profil des comptes publics sont accessibles."
+      },
+      {
+        "q": "Puis-je réutiliser la photo de profil de quelqu’un ?",
+        "a": "Pas sans son accord. Le droit à l’image protège la personne représentée, et la photo peut relever du droit d’auteur. Demandez la permission, et ne vous en servez jamais pour vous faire passer pour quelqu’un d’autre."
+      },
+      {
+        "q": "Faut-il un compte Pinterest ou l’appli ?",
+        "a": "Non. Le lien public du profil suffit, sur téléphone comme sur ordinateur, sans extension ni installation."
+      },
+      {
+        "q": "Dans quel format est la photo ?",
+        "a": "En JPG la plupart du temps, parfois en PNG, selon le fichier que Pinterest héberge. Sans logo PintDownload ni cadre ajouté."
+      }
+    ]
+  },
+  "related": {
+    "title": "Autres outils"
+  },
+  "schema": {
+    "appName": "Photo de profil Pinterest en grand — PintDownload",
+    "howToName": "Comment télécharger une photo de profil Pinterest en grand",
+    "howToDescription": "Coller le lien d’un profil Pinterest public et enregistrer sa photo de profil dans la plus grande taille publiée."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Legal line (art. 9 Code civil) is plain guidance from the research, not legal advice; reviewer to confirm tone for BE/CA readers.",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. \"jusqu’à environ 600 × 600 px\" word order; feature no longer suggests a bare username is accepted. Live check: the avatar image still returns 403 (extractor upgradeAvatarUrl, reported)."
+  }
+}

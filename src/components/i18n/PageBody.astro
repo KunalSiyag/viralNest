@@ -1,0 +1,67 @@
+---
+/**
+ * Intro, feature cards and content sections of a localized page, in the
+ * English tool-body voice (paper counter, ink rules, display h2s).
+ * All copy arrives as inline mini-markup and is rendered by renderInline.
+ */
+import type { Locale } from '../../i18n/locales';
+import type { PageContentData } from '../../i18n/schema';
+import { headingHtml, renderInline } from '../../i18n/inline';
+import { PROSE_CLASSES } from './page-data';
+
+interface Props {
+  page: PageContentData;
+  locale: Locale;
+  /** 'guide' prints sections as an article; 'tool' as the "which tool" notes. */
+  kind: 'tool' | 'guide' | 'home';
+}
+
+const { page, locale, kind } = Astro.props;
+const r = (s: string) => renderInline(s, locale);
+const sectionId = (i: number) => `section-${i + 1}`;
+---
+
+<div class:list={['contents', PROSE_CLASSES]}>
+<div class="w-full max-w-3xl mb-6 counter-rule pt-4">
+  {page.intro.map((p, i) => (
+    <p
+      class:list={[
+        'leading-relaxed',
+        i === 0
+          ? 'text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl mb-3'
+          : 'text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-3',
+      ]}
+      set:html={r(p)}
+    />
+  ))}
+</div>
+
+{page.features && (
+  <div class="mt-2 w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-start text-sm mb-10">
+    {page.features.map((f) => (
+      <div class="pt-3 border-t-2 border-[var(--ink)]">
+        <h2 class="font-extrabold text-slate-900 dark:text-white mb-1.5 text-base" set:html={headingHtml(f.h, locale)} />
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed" set:html={r(f.p)} />
+      </div>
+    ))}
+  </div>
+)}
+
+{page.sections.map((sec, i) => (
+  <section
+    class:list={[
+      'w-full max-w-3xl text-start space-y-4 text-base text-slate-700 dark:text-slate-300 leading-relaxed',
+      kind === 'guide' ? 'mt-6 mb-10' : 'mb-12',
+    ]}
+    aria-labelledby={sectionId(i)}
+  >
+    <h2 id={sectionId(i)} class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2 scroll-mt-24" set:html={headingHtml(sec.h2, locale)} />
+    {sec.paragraphs.map((p) => <p set:html={r(p)} />)}
+    {sec.list && (
+      <ul class="list-disc ps-5 space-y-2 marker:text-brand-600">
+        {sec.list.map((li) => <li set:html={r(li)} />)}
+      </ul>
+    )}
+  </section>
+))}
+</div>

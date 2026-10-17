@@ -1,0 +1,153 @@
+{
+  "pageId": "pinterest-image-downloader",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest Fotoğraf İndir — HD Resim ve Duvar Kağıdı Kaydet",
+    "description": "Pinterest fotoğraf ve resimlerini en büyük boyutuyla indirin. Duvar kağıdı, çizim ya da tarif görseli fark etmez: linki yapıştırın, HD JPG'yi kaydedin."
+  },
+  "keywords": {
+    "primary": "pinterest fotoğraf indir",
+    "secondary": [
+      "pinterest resim indir",
+      "pinterest görsel indirme",
+      "pinterest fotoğraf indir hd",
+      "pinterestten fotoğraf indirme",
+      "pinterest duvar kağıdı indir",
+      "pinterestten kaliteli fotoğraf indirme"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest Fotoğraf İndir",
+    "short": "Fotoğraf",
+    "card": {
+      "title": "Fotoğraf İndir",
+      "blurb": "Fotoğrafları ve duvar kağıtlarını Pinterest’in en büyük boyutunda indirin.",
+      "badge": "JPG"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Fotoğraf İndir",
+    "lede": "Pinterest fotoğraflarını, resimlerini ve duvar kağıtlarını küçük önizleme olarak değil, **Pinterest’in yayınladığı en büyük boyutta** kaydedin. Ücretsiz ve üyeliksiz."
+  },
+  "intro": [
+    "Fotoğraf, resim ya da görsel: adı ne olursa olsun, bir **fotoğraf Pininin** linkini yapıştırın ve dosyayı **JPG** (bazen PNG ya da WebP) olarak indirin. Telefon duvar kağıdı, çizim, tarif görseli ya da story’niz için bulduğunuz bir arka plan fark etmez.",
+    "Karusel bir Pinin bütün kartlarını tek tek ya da toplu alabilirsiniz. Yalnızca herkese açık Pinler."
+  ],
+  "features": [
+    {
+      "h": "En büyük herkese açık boyut",
+      "p": "Pinterest’in yayınladığı en büyük sürüm, genişliği en fazla 1200 px. Akıştaki küçük önizleme değil."
+    },
+    {
+      "h": "Karuselin bütün kartları",
+      "p": "Çoklu fotoğraflı Pinlerde her kart ayrı ayrı ya da hepsi birlikte ZIP olarak iner."
+    },
+    {
+      "h": "Kırp ve boyutlandır",
+      "p": "İsterseniz indirmeden önce kare, dikey ya da 9:16 story oranında kırpın."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Pinterest’in Görüntüyü indir seçeneğinden farkı",
+      "paragraphs": [
+        "Pinterest’te bir fotoğraf Pininde üç nokta simgesine dokunup **Görüntüyü indir**’i seçebilirsiniz; tek bir görsel için bu da iş görür. Ancak uygulama bunun için telefonunuzdan fotoğraf izni ister ve karusel Pinlerde kartları tek tek indirtir. PintDownload linkle çalışır, izin istemez ve karuselin bütün kartlarını birlikte verir."
+      ]
+    },
+    {
+      "h2": "Tam boy mu, küçük önizleme mi?",
+      "paragraphs": [
+        "Pinterest, içerik üreticisinin yüklediği dosyanın kendisini herkese açık yayınlamaz; herkese açık en büyük kopya genellikle 1200 px genişliğindedir. PintDownload bu en büyük kopyayı indirir, akıştaki bulanık önizlemeyi değil. Piksel uydurmayız: baskı gibi işler için daha büyük bir dosya gerekiyorsa içerik üreticisinden isteyin."
+      ]
+    },
+    {
+      "h2": "Fotoğraf yerine başka bir şey mi arıyorsunuz?",
+      "paragraphs": [
+        "Bazı Pinler fotoğraf gibi görünür ama başka bir araca aittir:"
+      ],
+      "list": [
+        "**Canlı (hareketli) duvar kağıdı** aslında bir video Pinidir: [[pinterest-video-downloader|video indiricide]] MP4 olarak indirin.",
+        "**Hareketli GIF** için döngü bozulmasın diye [[pinterest-gif-downloader|GIF indiriciyi]] kullanın; form GIF’i tanıyınca oraya kendisi geçer.",
+        "**Toplu resim indirme** için bir panonun bütün fotoğraflarını [[pinterest-board-downloader|pano indirme]] aracıyla tek ZIP’te alın."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest’ten fotoğraf nasıl indirilir",
+    "intro": "Herkese açık fotoğraf Pinleriyle çalışır; telefonda da bilgisayarda da aynı adımlar.",
+    "exampleLabel": "Örnek fotoğraf Pini linki",
+    "items": [
+      {
+        "title": "Fotoğraf Pinini açın",
+        "body": "Akıştaki küçük resme değil, Pinin kendisine dokunun; fotoğraf büyük görünsün."
+      },
+      {
+        "title": "Linki kopyalayın",
+        "body": "Paylaş simgesi › **Bağlantıyı kopyala** ya da tarayıcıda `/pin/` içeren adres."
+      },
+      {
+        "title": "Yapıştırıp indirin",
+        "body": "Linki yukarıya yapıştırın ve **Fotoğrafı indir**’e dokunun. Pin karuselse bütün kartlar listelenir."
+      },
+      {
+        "title": "Galeriye kaydedin",
+        "body": "iPhone’da dosyayı **Dosyalar** › **İndirilenler**’de açıp paylaş › **Görüntüyü Kaydet** ile Fotoğraflar’a ekleyin. Android’de Galeri’nin indirilenler albümünde görünür."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Pinterest fotoğraf indirme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Pinterest’ten hesapsız fotoğraf nasıl indirilir?",
+        "a": "Fotoğraf Pininin linkini kopyalayın, yukarıya yapıştırın ve **Fotoğrafı indir**’e dokunun. Pinterest hesabı, giriş ya da uygulama gerekmez; yeter ki Pin herkese açık olsun."
+      },
+      {
+        "q": "Pinterest’ten fotoğraf indiremiyorum, neden?",
+        "a": "Uygulamadaki **Görüntüyü indir** çalışmıyorsa çoğu zaman Pinterest’e fotoğraf izni verilmemiştir: Android’de Ayarlar › Uygulamalar › Pinterest › İzinler › Fotoğraflar ve videolar. PintDownload’da ise en sık neden linktir: Pin gizli ya da silinmiştir veya kopyalanan adres bir arama sayfasıdır. Tarayıcıdan indirirken izin gerekmez."
+      },
+      {
+        "q": "Tam boy mu iner, yoksa küçük önizleme mi?",
+        "a": "Pinterest’in yayınladığı en büyük boyut iner; çoğu fotoğrafta genişlik en fazla 1200 px’tir. Pinterest yüklenen dosyanın kendisini herkese açık yayınlamadığı için hiçbir araç bir Pinden bundan büyüğünü veremez."
+      },
+      {
+        "q": "Görüntüyü indir varken bu araca neden ihtiyaç var?",
+        "a": "Tek bir fotoğraf için Pinterest’in kendi seçeneği yeterli. PintDownload ise karusel Pinlerin bütün kartlarını birlikte, panoları ZIP olarak, videoları ve GIF’leri de indirir; uygulamaya izin vermeniz de gerekmez."
+      },
+      {
+        "q": "Canlı duvar kağıdı indirebilir miyim?",
+        "a": "Canlı (hareketli) duvar kağıtları aslında video Pinleridir. [[pinterest-video-downloader|Video indiricide]] MP4 olarak indirin; duvar kağıdı olarak ayarlamak için telefonunuza göre ek bir adım gerekebilir."
+      },
+      {
+        "q": "Karusel Pinin bütün fotoğraflarını alabilir miyim?",
+        "a": "Evet. Çoklu fotoğraflı bir Pinin linkini yapıştırdığınızda her kart ayrı listelenir; tek tek ya da hepsini birlikte ZIP olarak indirebilirsiniz."
+      },
+      {
+        "q": "Bir panodaki bütün resimleri toplu indirebilir miyim?",
+        "a": "Evet, [[pinterest-board-downloader|pano indirme]] aracıyla: herkese açık panonun linkini yapıştırın, Pinler tek ZIP dosyasında gelsin."
+      },
+      {
+        "q": "Instagram story için bulduğum görseli nasıl indiririm?",
+        "a": "Pinterest’teki story arka planları ve alıntı görselleri sıradan fotoğraf Pinleridir. Linkini burada yapıştırın; indirmeden önce 9:16 oranında kırpıp doğrudan story boyutunda kaydedebilirsiniz."
+      },
+      {
+        "q": "Pinterest’te bulduğum bir PP’yi nasıl indiririm?",
+        "a": "Pinterest’te beğendiğiniz PP fikirleri sıradan fotoğraf Pinleridir; linkini bu sayfaya yapıştırın. Bir Pinterest hesabının kendi profil fotoğrafını istiyorsanız [[pinterest-profile-picture-downloader|profil fotoğrafı indiriciyi]] kullanın."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer Pinterest araçları"
+  },
+  "schema": {
+    "appName": "Pinterest Fotoğraf İndirici — PintDownload",
+    "howToName": "Pinterest’ten fotoğraf en büyük boyutta nasıl indirilir",
+    "howToDescription": "Herkese açık bir fotoğraf Pinini, Pinterest’in yayınladığı en büyük boyutta JPG olarak kaydetme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Doğrulanacak: Görüntüyü indir (üç nokta menüsü) ve uygulamanın fotoğraf izni istemesi; iOS Türkçe paylaşım sayfasında Görüntüyü Kaydet etiketi; Android izin yolu (Ayarlar › Uygulamalar › Pinterest › İzinler › Fotoğraflar ve videolar) üreticiye göre değişebilir.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edit: FAQ question “Pinterest’ten fotoğraf indiremiyorum, neden?”."
+  }
+}

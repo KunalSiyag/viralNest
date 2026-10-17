@@ -1,33 +1,160 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TicketHero from '../components/TicketHero.astro';
+import RelatedTools from '../components/seo/RelatedTools.astro';
+import FaqSection from '../components/seo/FaqSection.astro';
+import HowToSteps from '../components/seo/HowToSteps.astro';
+import { softwareAppSchema, howToSchema, faqSchema, webPageSchema } from '../lib/seo';
+import { absoluteUrl } from '../lib/urls';
+import { MP3_KBPS } from '../lib/audio/mp3-constants';
 
-const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Pinterest 4K & HD Video Downloader — PintDownload",
-  "operatingSystem": "All",
-  "applicationCategory": "MultimediaApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-};
+// An honest "is 4K possible?" page: it explains the quality Pinterest really
+// publishes and saves exactly that. Keep it consistent with what pin-media and
+// the extractor return (video usually 720p, 1080p when the pin has it; stills
+// up to 1200 px wide; no upscaling).
+const path = '/pinterest-4k-downloader';
+const pageUrl = absoluteUrl(path);
+const title = 'Pinterest 4K Downloader? The Real Quality You Can Get';
+const description =
+  'Pinterest rarely publishes 4K. Get the best file a pin really has: MP4 usually 720p, 1080p when the pin has it, and photos up to 1200 px wide.';
+const NBSP = ' ';
+
+const faqs = [
+  {
+    q: 'Can I download Pinterest videos in 4K?',
+    a: `Almost never. Pinterest re-encodes what creators upload, and the public video files are usually 720p, 1080p when the pin has it. PintDownload saves the best file the pin really has. A site that offers "4K" for a Pinterest pin can only upscale it, which adds pixels but no detail.`,
+  },
+  {
+    q: 'Why is my Pinterest video only 720p?',
+    a: 'Because that is the size Pinterest publishes for that pin. Many video pins only have a 720p file. When a pin also has 1080p, the quality picker lists both so you can choose.',
+  },
+  {
+    q: 'What is the largest image size I can download from Pinterest?',
+    a: `The largest size Pinterest publishes: up to 1200${NBSP}px wide. Pinterest does not make the file the creator uploaded public, so no tool can give you more than that from a pin.`,
+  },
+  {
+    q: 'Can an upscaler turn a Pinterest video into 4K?',
+    a: 'It can make the file bigger, not sharper. Upscalers guess the missing detail, which often looks smeared or invented. For a real 4K asset, ask the creator for the source or license it.',
+  },
+  {
+    q: 'Does PintDownload compress the file or add a watermark?',
+    a: `No. You get the same file Pinterest serves, byte for byte, and we add no watermark. The only file made on your side is the MP3: your browser makes it from the video's sound at ${MP3_KBPS}${NBSP}kbps.`,
+  },
+  {
+    q: 'Is PintDownload affiliated with Pinterest?',
+    a: 'No. PintDownload is an independent tool and is not affiliated with Pinterest Inc. It works with public pins only.',
+  },
+];
+
+const steps = [
+  {
+    title: 'Copy the pin link',
+    body: 'In the app: Share → Copy link. On the web: copy the address with <code>/pin/</code>. <code>pin.it</code> links work too.',
+  },
+  {
+    title: 'Paste it above',
+    body: 'PintDownload reads the files Pinterest publishes for that public pin.',
+  },
+  {
+    title: 'Pick the highest quality listed',
+    body: 'Video pins show 720p, and 1080p when the pin has it. The receipt prints the real resolution next to the file.',
+  },
+  {
+    title: 'Save the file',
+    body: 'Download the MP4 or the photo as it is. Credit the creator if you share it.',
+  },
+];
+
+const jsonLd = [
+  webPageSchema({ name: title, description, url: pageUrl }),
+  softwareAppSchema({
+    name: 'Pinterest HD Downloader — PintDownload',
+    description,
+    url: pageUrl,
+  }),
+  howToSchema({
+    name: 'How to download a Pinterest pin in the highest quality it has',
+    description: 'Paste a public pin and save the largest file Pinterest publishes for it.',
+    steps: steps.map((s) => ({ name: s.title, text: s.body.replace(/<[^>]+>/g, '') })),
+  }),
+  faqSchema(faqs),
+];
+
+const facts = [
+  {
+    kind: 'Video (MP4)',
+    real: 'Usually 720p, 1080p when the pin has it',
+    note: 'The quality picker lists every size the pin has.',
+  },
+  {
+    kind: 'Photo (JPG, PNG, WebP)',
+    real: `Up to 1200${NBSP}px wide`,
+    note: 'The largest size Pinterest publishes. The uploaded file is not public.',
+  },
+  {
+    kind: 'GIF',
+    real: 'The looping GIF Pinterest serves',
+    note: 'Not a still of the first frame.',
+  },
+  {
+    kind: 'Sound (MP3)',
+    real: `${MP3_KBPS}${NBSP}kbps, made in your browser`,
+    note: "From the video's sound. Nothing is uploaded.",
+  },
+];
 ---
 
-<BaseLayout field="tangerine" fullBleed   title="Pinterest 4K & 1080p Full HD Video Downloader Free"
-  description="Download Pinterest videos in maximum 1080p Full HD and 4K ultra quality. Save original uncompressed MP4 videos and images directly to your gallery."
-  jsonLd={webAppSchema}
->
-  <TicketHero title={"Pinterest 4K & 1080p HD Video Downloader"} variant="video" />
-  <div class="flex flex-col items-center py-10 sm:py-14 text-center w-full max-w-6xl mx-auto px-4 sm:px-6">
+<BaseLayout field="tangerine" title={title} description={description} canonicalUrl={pageUrl} jsonLd={jsonLd} fullBleed>
+  <TicketHero
+    title={"Pinterest in 4K? The real quality"}
+    lede={"Paste a pin and get the best file Pinterest actually publishes — no upscaling, and no 4K label on a 720p video."}
+    variant="video"
+  />
 
-    <!-- SEO Intro & Subtitle Banner -->
-    <div class="w-full max-w-3xl mt-6">
-      <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-        Download Pinterest videos in original 1080p Full HD and highest available bitrate quality without compression artifacts or watermarks.
+  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-start">
+    <section class="w-full max-w-3xl mb-10 counter-rule pt-4 text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed space-y-3">
+      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Short answer: Pinterest almost never has 4K</h2>
+      <p>
+        Pinterest re-encodes every upload. The public video files are <strong class="text-slate-900 dark:text-white">usually 720p, 1080p when the pin has it</strong>,
+        and photos top out at <strong class="text-slate-900 dark:text-white">1200&nbsp;px wide</strong>. A “4K Pinterest downloader” can only stretch those
+        files, so we don’t. PintDownload saves the largest file the pin really has and tells you its size.
       </p>
-    </div>
-  </div>
+    </section>
+
+    <section class="w-full max-w-5xl mb-12" aria-labelledby="real-quality">
+      <h2 id="real-quality" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4">What you actually get</h2>
+      <dl class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 text-sm">
+        {facts.map((f) => (
+          <div class="pt-3 border-t-2 border-[var(--ink)]">
+            <dt class="font-extrabold text-slate-900 dark:text-white text-base">{f.kind}</dt>
+            <dd class="mt-1 font-semibold text-slate-800 dark:text-slate-200 [font-variant-numeric:tabular-nums]">{f.real}</dd>
+            <dd class="mt-1 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{f.note}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="w-full max-w-3xl text-start mb-12 space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2">When you need more than Pinterest has</h2>
+      <p>
+        For print, a big screen or client work, the Pinterest copy is a reference, not a master. Open the pin’s source link or ask the creator
+        for the file, and license it if you plan to use it commercially. For everyday saving, the
+        <a href="/pinterest-video-downloader" class="text-rose-700 dark:text-rose-400 font-semibold underline-offset-2 hover:underline">Video Downloader</a>
+        and the
+        <a href="/pinterest-image-downloader" class="text-rose-700 dark:text-rose-400 font-semibold underline-offset-2 hover:underline">Image Downloader</a>
+        give you the same best-available files.
+      </p>
+    </section>
+
+    <HowToSteps
+      title="How to get the highest quality a pin has"
+      intro="Public pins only. The receipt shows the real resolution before you save."
+      exampleUrl="https://www.pinterest.com/pin/…"
+      exampleLabel="Example pin URL"
+      steps={steps}
+      stripe={true}
+    />
+    <FaqSection items={faqs} title="Pinterest 4K and HD quality FAQ" />
+    <RelatedTools currentPath={path} />
+  </article>
 </BaseLayout>

@@ -2,8 +2,11 @@
 /**
  * Reserved, CLS-safe ad placement. Renders nothing until an ad client is
  * configured via PUBLIC_ADSENSE_CLIENT; then it holds its height before the
- * ad loads so the page never shifts.
+ * ad loads so the page never shifts. Locales with LOCALE_META.ads === false
+ * (de: no ads until an Impressum exists) never render a slot.
  */
+import { LOCALE_META, type AnyLocale } from '../i18n/locales';
+
 interface Props {
   /** AdSense ad unit slot id */
   slot?: string;
@@ -11,20 +14,24 @@ interface Props {
   mobileHeight?: number;
   desktopHeight?: number;
   class?: string;
+  /** Page locale (default English). */
+  locale?: AnyLocale;
+  /** Visible label and aria-label (default "Advertisement"). */
+  label?: string;
 }
 
-const { slot, mobileHeight = 280, desktopHeight = 250, class: extra } = Astro.props;
+const { slot, mobileHeight = 280, desktopHeight = 250, class: extra, locale = 'en', label = 'Advertisement' } = Astro.props;
 const client = import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined;
-const enabled = Boolean(client && slot);
+const enabled = Boolean(client && slot && LOCALE_META[locale].ads);
 ---
 
 {enabled && (
   <aside
     class:list={['ad-slot max-w-[970px] my-8', extra]}
     style={`--ad-h:${mobileHeight}px;--ad-h-lg:${desktopHeight}px`}
-    aria-label="Advertisement"
+    aria-label={label}
   >
-    <span class="ad-label" aria-hidden="true">Advertisement</span>
+    <span class="ad-label" aria-hidden="true">{label}</span>
     <ins
       class="adsbygoogle"
       style="display:block;width:100%;height:100%"

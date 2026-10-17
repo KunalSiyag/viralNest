@@ -1,0 +1,442 @@
+/**
+ * Island catalog, French (vouvoiement; one version for France, Belgium,
+ * Québec and Francophone Africa). Same keys and {tokens} as en.ts, every
+ * plural category Intl.PluralRules('fr') lists (one, many, other; "one"
+ * also covers 0). Vocabulary: docs/i18n/research/fr.json glossary and
+ * claim-ticket frame (Entrée · lien public, N°, À retirer · …, Annulé,
+ * Enregistré sous, Découper l’audio). Never a bare « Enregistrer » on a
+ * button: in the Pinterest app it means saving a pin to a board.
+ * Typography: U+00A0 before : ; ? ! % and units (Ko, Mo, px, s).
+ * No → in display strings: use ›.
+ */
+import type { IslandMessages } from './types';
+
+export const ISLAND: IslandMessages = {
+  lang: 'fr',
+
+  variants: {
+    hub: {
+      singleTab: 'Épingle, tableau ou profil',
+      placeholder: 'Collez ici le lien Pinterest… ex. https://pin.it/…',
+      ariaLabel: 'Lien d’une épingle, d’un tableau ou d’un profil Pinterest',
+      submitLabel: 'Télécharger',
+      hint: 'Liens publics d’épingles, de tableaux ou de profils. Les tableaux et les profils se téléchargent en ZIP.',
+      expect: 'En attente d’un lien',
+    },
+    pin: {
+      singleTab: 'Lien de l’épingle',
+      placeholder: 'Collez le lien de l’épingle… https://pinterest.com/pin/… ou pin.it/…',
+      ariaLabel: 'Lien d’une épingle Pinterest',
+      submitLabel: 'Télécharger l’épingle',
+      hint: 'Épingles image, vidéo, GIF et carrousels (toutes les images).',
+      expect: 'Attend un lien d’épingle',
+    },
+    video: {
+      singleTab: 'Lien de l’épingle vidéo',
+      placeholder: 'Collez le lien vidéo… https://pinterest.com/pin/… ou pin.it/…',
+      ariaLabel: 'Lien d’une épingle vidéo Pinterest',
+      submitLabel: 'Télécharger la vidéo',
+      hint: 'Enregistre le MP4 (souvent 720p, 1080p quand l’épingle le propose). Votre navigateur peut aussi en extraire le son en MP3.',
+      expect: 'Attend une épingle vidéo',
+    },
+    image: {
+      singleTab: 'Lien de l’épingle image',
+      placeholder: 'Collez le lien photo… https://pinterest.com/pin/… ou pin.it/…',
+      ariaLabel: 'Lien d’une épingle image Pinterest',
+      submitLabel: 'Télécharger l’image',
+      hint: 'Enregistre la plus grande taille publiée par Pinterest (jusqu’à 1200 px de large). Pour un carrousel, toutes les images.',
+      expect: 'Attend une épingle image',
+    },
+    gif: {
+      singleTab: 'Lien de l’épingle GIF',
+      placeholder: 'Collez le lien du GIF… https://pinterest.com/pin/… ou pin.it/…',
+      ariaLabel: 'Lien d’une épingle GIF Pinterest',
+      submitLabel: 'Télécharger le GIF',
+      hint: 'Enregistre le GIF animé qui tourne en boucle, pas une image figée de son début.',
+      expect: 'Attend une épingle GIF',
+    },
+    board: {
+      singleTab: 'Lien du tableau',
+      placeholder: 'Collez le lien du tableau… https://pinterest.com/nom/nom-du-tableau/',
+      ariaLabel: 'Lien d’un tableau Pinterest',
+      submitLabel: 'Voir les épingles',
+      hint: 'Collez le lien d’un tableau public pour lister ses épingles, puis téléchargez le ZIP complet.',
+      expect: 'Attend un lien de tableau',
+    },
+    profile: {
+      singleTab: 'Lien du profil',
+      placeholder: 'Collez le lien du profil… https://pinterest.com/nom/',
+      ariaLabel: 'Lien d’un profil Pinterest',
+      submitLabel: 'Télécharger le ZIP',
+      hint: 'Télécharge en un ZIP les épingles publiques publiées par ce compte.',
+      expect: 'Attend un lien de profil',
+    },
+    'profile-picture': {
+      singleTab: 'Lien du profil',
+      placeholder: 'Collez le lien du profil… https://pinterest.com/nom/',
+      ariaLabel: 'Lien du profil Pinterest dont vous voulez la photo',
+      submitLabel: 'Photo de profil',
+      hint: 'Enregistre la plus grande photo de profil que Pinterest publie pour un compte public.',
+      expect: 'Attend un lien de profil',
+    },
+  },
+
+  ticket: {
+    admitOne: 'Entrée · lien public',
+    serial: 'N° {serial}',
+    serialEmpty: 'N° ——————',
+    modeGroup: 'Mode de lien',
+    oneLink: 'Un lien',
+    upToFive: 'Jusqu’à 5',
+    hubLabel: 'Lien Pinterest',
+    clearAria: 'Effacer le lien',
+    pasteAria: 'Coller le lien depuis le presse-papiers',
+    paste: 'Coller',
+    batchLabel: 'Liens Pinterest en lot (5 au maximum, un par ligne)',
+    batchPlaceholder: 'Un lien par ligne, 5 au maximum…\nhttps://pinterest.com/pin/1234567/\nhttps://pin.it/abc1234',
+    processing: 'Lecture du lien…',
+    batchProcessing: 'Lecture des liens…',
+    batchSubmit: 'Tout télécharger',
+    toolsNav: 'Choisissez l’outil adapté à votre lien',
+    notPinterestHelp: 'Ce n’est pas un lien Pinterest. Dans l’appli, touchez l’icône de partage puis Copier le lien, et collez-le ici.',
+  },
+
+  stamps: {
+    notPinterest: 'Hors Pinterest',
+    board: 'Tableau › ZIP',
+    profileZip: 'Profil › ZIP',
+    profileAvatar: 'Profil › Photo',
+    pinShort: 'Épingle · lien court',
+    pin: 'Épingle',
+  },
+
+  marks: { void: 'Annulé', partial: 'Partiel', packed: 'Emballé', done: 'Terminé' },
+
+  chips: {
+    pin: 'Épingle',
+    video: 'Vidéo MP4',
+    image: 'Photo HD',
+    gif: 'GIF',
+    board: 'Tableau ZIP',
+    profile: 'Profil ZIP',
+    avatar: 'Photo de profil',
+  },
+
+  routeNotice: {
+    boardLink: 'Lien de tableau détecté · passage à l’outil des tableaux',
+    profileLink: 'Lien de profil détecté · ses épingles publiques en ZIP',
+    gif: 'GIF animé détecté · passage à l’outil GIF',
+    video: 'Épingle vidéo détectée · passage à l’outil vidéo',
+    carousel: {
+      one: 'Carrousel détecté ({n} image) · passage à l’outil photo',
+      many: 'Carrousel détecté ({n} images) · passage à l’outil photo',
+      other: 'Carrousel détecté ({n} images) · passage à l’outil photo',
+    },
+    board: 'Tableau Pinterest détecté · passage à l’outil des tableaux',
+    profile: 'Profil Pinterest détecté · ses épingles publiques en ZIP',
+    open: 'Ouvrir cet outil',
+  },
+
+  progress: {
+    reading: 'Lecture du son de la vidéo…',
+    making: 'Création du MP3… {pct} %',
+    connecting: 'Connexion à Pinterest…',
+    downloadingOf: 'Téléchargement… {loaded} sur {total} ({pct} %)',
+    downloading: 'Téléchargement… {loaded}',
+  },
+
+  bytes: { B: 'o', KB: 'Ko', MB: 'Mo', GB: 'Go' },
+
+  live: {
+    readingLink: 'Lecture de votre lien…',
+    readingLinks: 'Lecture de vos liens…',
+    packingZip: 'Préparation du ZIP, {pct} % effectués',
+    making: 'Création de {file} dans votre navigateur…',
+    makingPct: 'Création de {file} dans votre navigateur, {pct} % effectués',
+    downloading: 'Téléchargement de {file}…',
+    downloadingPct: 'Téléchargement de {file}, {pct} % effectués',
+    zipPacked: {
+      one: 'ZIP prêt : {packed} sur {total} fichier. Le téléchargement a commencé.',
+      many: 'ZIP prêt : {packed} sur {total} fichiers. Le téléchargement a commencé.',
+      other: 'ZIP prêt : {packed} sur {total} fichiers. Le téléchargement a commencé.',
+    },
+    started: 'Téléchargement lancé : {file}',
+    copied: 'Copié dans le presse-papiers.',
+  },
+
+  kinds: {
+    image: 'Épingle image',
+    video: 'Épingle vidéo',
+    gif: 'Épingle GIF',
+    carousel: 'Carrousel',
+    board: 'Tableau',
+    profile: 'Profil',
+    avatar: 'Photo de profil',
+  },
+
+  voidCopy: {
+    validation: { title: 'Collez d’abord un lien' },
+    link: {
+      title: 'Ce n’est pas un lien Pinterest',
+      hint: 'Dans l’appli Pinterest, touchez l’icône de partage puis Copier le lien, et collez-le sur le ticket.',
+    },
+    private: {
+      title: 'Aucun contenu public à récupérer',
+      hint: 'Seuls les épingles, tableaux et profils publics peuvent être téléchargés. Les tableaux secrets et les comptes privés restent privés.',
+    },
+    removed: { title: 'Cette épingle a été retirée' },
+    download: { title: 'Le fichier ne s’est pas téléchargé', hint: 'Pinterest cesse parfois de servir un fichier. Réessayez avec le même lien.' },
+    other: { title: 'Impossible de lire ce lien', hint: 'Vérifiez que le lien s’ouvre sur Pinterest, puis réessayez.' },
+  },
+
+  receipt: {
+    ready: 'À retirer · {kind}',
+    fetching: 'Récupération sur Pinterest…',
+    another: 'Un autre lien',
+    tryAnother: 'Essayer un autre lien',
+    guide: 'Lire le guide pas à pas',
+    savesAs: 'Enregistré sous {file}',
+    download: 'Télécharger le {format}',
+    downloadShort: 'Télécharger',
+    itemAria: '{verb}{item}',
+    downloadProgressAria: 'Progression du téléchargement',
+    zipProgressAria: 'Progression du ZIP',
+    zipProgressText: {
+      one: '{done} sur {total} fichier prêt',
+      many: '{done} sur {total} fichiers prêts',
+      other: '{done} sur {total} fichiers prêts',
+    },
+    packing: {
+      one: 'Préparation : {done} sur {total} fichier…',
+      many: 'Préparation : {done} sur {total} fichiers…',
+      other: 'Préparation : {done} sur {total} fichiers…',
+    },
+    cancel: 'Annuler',
+    cancelSr: ' le ZIP',
+    downloadZip: 'Télécharger le ZIP ({n})',
+    zipPartial: {
+      one: '{name} contient {packed} sur {total} fichier. Pinterest n’a pas servi le fichier manquant ({missing}) : téléchargez-le à part.',
+      many: '{name} contient {packed} sur {total} fichiers. Pinterest n’a pas servi les autres ({missing}) : téléchargez-les un par un.',
+      other: '{name} contient {packed} sur {total} fichiers. Pinterest n’a pas servi les autres ({missing}) : téléchargez-les un par un.',
+    },
+    zipAll: {
+      one: '{name} : {total} fichier. Le téléchargement a commencé.',
+      many: '{name} : les {total} fichiers. Le téléchargement a commencé.',
+      other: '{name} : les {total} fichiers. Le téléchargement a commencé.',
+    },
+    noMp3: ' Pas de MP3 dans ce ZIP. {reason}',
+    started: 'Téléchargement lancé : {file}',
+    startedShort: 'Téléchargement lancé',
+    copyLink: 'Copier le lien',
+    linkCopied: 'Lien copié',
+    // Tile buttons are ~80 px wide on phones: the download icon carries the verb.
+    save: '{format}',
+    tileSr: ' à télécharger, {name}',
+    tagVideo: 'Vidéo',
+    tagGif: 'GIF',
+  },
+
+  specs: {
+    slides: 'Images',
+    images: 'Photos',
+    videos: 'Vidéos',
+    gifs: 'GIF',
+    pins: 'Épingles',
+    boards: 'Tableaux',
+    format: 'Format',
+    crop: 'Cadrage',
+    uncropped: 'Non recadré',
+    resolution: 'Résolution',
+    plays: 'Lecture',
+    looping: 'En boucle',
+    quality: 'Qualité',
+  },
+
+  fallbacks: {
+    pin: 'Épingle Pinterest',
+    carousel: 'Carrousel Pinterest',
+    board: 'Tableau Pinterest',
+    profile: 'Profil Pinterest',
+    user: 'Utilisateur Pinterest',
+    slide: 'Image {n}',
+    pinN: 'Épingle {n}',
+    slideSr: 'image {n}',
+    pinSr: 'épingle {n}',
+  },
+
+  carousel: { everySlide: 'Toutes les images' },
+
+  avatar: {
+    alt: 'Photo de profil de {name}',
+    openFull: 'Ouvrir en grand',
+    newTabSr: ' (s’ouvre dans un nouvel onglet)',
+    promo: 'Vous voulez toutes les épingles de ce profil ? Collez son lien dans {link}.',
+    profileLink: 'le téléchargeur de l’accueil (ZIP)',
+  },
+
+  collection: {
+    byUser: 'par @{user}',
+    atUser: '@{user}',
+    alsoOnProfile: 'Aussi sur ce profil',
+    profilePicture: 'Photo de profil',
+    largestSize: 'La plus grande taille publiée par Pinterest',
+    profilePictureSr: ' la photo de profil (JPG)',
+    boardsHeading: 'Tableaux ({n})',
+    boardsHint: 'Ouvrez un tableau pour ne télécharger que ses épingles.',
+    boardPins: { one: '{n} épingle', many: '{n} épingles', other: '{n} épingles' },
+    openBoard: 'Ouvrir le tableau',
+    pinsHeading: 'Épingles',
+    showing: '{shown} affichées sur {total}. Le ZIP les contient toutes.',
+    loadMore: 'Charger {n} de plus',
+    showAll: 'Tout afficher ({n})',
+  },
+
+  single: {
+    previewAria: 'Aperçu : {title}',
+    playPreview: 'Lire l’aperçu',
+    freeze: 'Figer',
+    playLoop: 'Lire en boucle',
+    alsoInPin: 'Aussi dans cette épingle',
+    videoName: 'Vidéo',
+    withSound: 'Avec le son',
+    videoSr: ' la vidéo (MP4)',
+    audioName: 'Audio, {kbps} kbit/s',
+    audioNote: 'Tiré du son de la vidéo, dans votre navigateur',
+    audioSr: ' l’audio (MP3)',
+    coverName: 'Image de couverture',
+    coverNote: 'L’image fixe affichée sur Pinterest',
+    coverSr: ' l’image de couverture ({format})',
+    packName: 'Tout',
+    packCover: 'image de couverture',
+    packSr: ' le tout (ZIP)',
+    sendToPhone: 'Vers le mobile',
+    hideQr: 'Masquer le QR code',
+    crop: 'Recadrer',
+    trim: 'Couper l’audio',
+    qrAltVideo: 'QR code menant au fichier vidéo : scannez-le pour l’ouvrir sur votre téléphone',
+    qrAltImage: 'QR code menant au fichier image : scannez-le pour l’ouvrir sur votre téléphone',
+    qrText:
+      'Scannez-le avec l’appareil photo de votre téléphone pour ouvrir le fichier, puis appuyez longuement pour l’enregistrer dans la galerie. Sans appli ni compte.',
+  },
+
+  extras: {
+    summary: 'Couleurs, mots-clés et légendes pour republier',
+    palette: 'Palette',
+    paletteHint: 'Nuances de la couleur principale de l’épingle. Touchez pour copier.',
+    copied: 'Copié',
+    tags: 'Mots-clés',
+    copyTags: 'Copier les mots-clés',
+    repostCaption: 'Légende pour republier',
+    captionFor: 'Légende pour',
+    copyCaption: 'Copier la légende et les mots-clés',
+    copiedCaption: 'Légende copiée',
+    captionReels: '✨ {title}\n\nIdentifiez quelqu’un qui doit voir ça ! 👇\n\n📌 Trouvé avec PintDownload\n\n{tags} #reels #viral #aesthetic',
+    captionTiktok: 'POV : {title} 🌿🔥\n\nAbonnez-vous pour plus d’épingles et d’inspiration chaque jour !\n\n{tags} #fyp #viral #pinterest #pourtoi',
+    captionShorts: '🔥 {title} | Esthétique Pinterest\n\nLikez et abonnez-vous pour plus d’inspiration visuelle chaque jour !\n\n{tags} #shorts #pintdownload #pinterest',
+  },
+
+  batch: {
+    ready: { one: 'À retirer · {n} épingle', many: 'À retirer · {n} épingles', other: 'À retirer · {n} épingles' },
+    heading: { one: '{n} fichier récupéré', many: '{n} fichiers récupérés', other: '{n} fichiers récupérés' },
+    downloadAll: 'Tout télécharger ({n})',
+    oneAfterAnother: 'Les fichiers se téléchargent l’un après l’autre.',
+  },
+
+  recent: { heading: 'Liens récents' },
+
+  errors: {
+    emptyLink: 'Collez d’abord un lien Pinterest public. Dans l’appli : icône de partage › Copier le lien.',
+    emptyBatch: 'Collez au moins un lien Pinterest, un par ligne.',
+    batchInvalid: 'Saisissez des liens Pinterest valides (ex. https://pinterest.com/pin/… ou https://pin.it/…)',
+    batchFailed: 'Impossible de lire les liens du lot. Vérifiez que les liens Pinterest sont publics.',
+    extractFailed: 'Impossible de récupérer le contenu sur Pinterest.',
+    unknown: 'Une erreur s’est produite. Vérifiez le lien Pinterest et réessayez.',
+    qr: 'Impossible de créer le QR code. Copiez plutôt le lien.',
+    copyLink: 'Impossible de copier le lien. Appuyez longuement sur le bouton de téléchargement pour le copier.',
+    fileUnavailable:
+      'Impossible de télécharger ce fichier. L’épingle est peut-être privée, ou Pinterest ne sert plus ce fichier.',
+    noBody: 'Le serveur n’a rien renvoyé',
+    downloadFailed: 'Le téléchargement a échoué.',
+    zipNothing: 'Aucun fichier n’a pu être ajouté au ZIP. Ils ne sont peut-être plus disponibles.',
+    zipFailed: 'Impossible de créer l’archive ZIP.',
+    zipPartial: {
+      one: 'ZIP prêt : {ok} sur {total} fichier ({failed} en échec).',
+      many: 'ZIP prêt : {ok} sur {total} fichiers ({failed} en échec).',
+      other: 'ZIP prêt : {ok} sur {total} fichiers ({failed} en échec).',
+    },
+    noMp3Video: 'La vidéo n’a pas pu être récupérée sur Pinterest.',
+    noMp3Browser: 'Ce navigateur n’a pas pu le créer.',
+  },
+
+  api: {
+    invalid_input: 'Saisissez un lien Pinterest valide.',
+    blocked: 'Ce contenu a été retiré à la demande de son auteur.',
+    not_pinterest:
+      'Lien non valide. Saisissez un lien Pinterest valide (ex. https://pinterest.com/pin/… ou https://pin.it/…)',
+    left_pinterest: 'Ce lien mène hors de Pinterest : il n’y a rien à télécharger.',
+    removed_or_private:
+      'Cette épingle a été supprimée ou rendue privée : il n’y a rien à télécharger. Vérifiez que le lien s’ouvre sur Pinterest.',
+    avatar_not_found: 'Photo de profil introuvable pour ce compte Pinterest. Le profil est peut-être privé.',
+    collection_empty_board: 'Aucune épingle publique trouvée sur ce tableau. Il est peut-être secret ou vide.',
+    collection_empty_profile: 'Aucune épingle publique trouvée sur ce profil. Il est peut-être privé ou vide.',
+    collection_unavailable: 'Pinterest n’a pas transmis les épingles de ce tableau pour l’instant. Réessayez dans une minute.',
+    no_media: 'Aucun fichier à télécharger pour ce lien. Vérifiez que l’épingle est publique.',
+    access_denied: 'Accès refusé.',
+    origin_denied: 'L’accès direct à l’API n’est pas autorisé.',
+    server_error: 'Impossible de traiter ce lien Pinterest. Vérifiez qu’il s’agit d’une épingle publique valide.',
+  },
+
+  mp3: {
+    no_audio: 'Cette vidéo n’a pas de son à enregistrer en MP3. Téléchargez plutôt le MP4.',
+    unsupported:
+      'Ce navigateur ne sait pas lire le son de la vidéo, il ne peut donc pas créer le MP3. Essayez Chrome, Edge, Safari ou Firefox, ou téléchargez le MP4.',
+    failed: 'Impossible de créer le MP3. Réessayez, ou téléchargez le MP4, qui garde le son.',
+    aborted: 'MP3 annulé.',
+  },
+
+  trimmer: {
+    title: 'Découper l’audio',
+    reading: 'Lecture du son de la vidéo…',
+    loadFailed: 'Impossible de charger le son de cette vidéo. Vérifiez votre connexion et réessayez.',
+    start: 'Début : {time}',
+    end: 'Fin : {time}',
+    seconds: '{n} s',
+    startAria: 'Début de l’extrait, en secondes',
+    endAria: 'Fin de l’extrait, en secondes',
+    length: 'Durée de l’extrait : {len}',
+    lengthValue: '{n} s',
+    pause: 'Pause',
+    listen: 'Écouter l’extrait',
+    cancel: 'Annuler',
+    wav: 'Extrait en WAV',
+    mp3: 'Extrait en MP3 ({kbps} kbit/s)',
+    exportFailed: 'Impossible de créer l’extrait en {format}. Réessayez.',
+    making: 'Création du MP3… {pct} %',
+    note: 'Créé dans votre navigateur à partir du son de la vidéo. Rien n’est envoyé en ligne.',
+  },
+
+  cropper: {
+    title: 'Recadrer et redimensionner',
+    pick: 'Choisissez le format pour les réseaux sociaux',
+    presets: {
+      original: 'Sans recadrage',
+      square: '1:1 carré (post IG)',
+      story: '9:16 story/reel (TikTok)',
+      portrait: '4:5 portrait (IG)',
+      landscape: '16:9 paysage (YT)',
+    },
+    previewAlt: 'Aperçu du recadrage',
+    processing: 'Traitement de l’image…',
+    cancel: 'Annuler',
+    download: 'Télécharger le recadrage ({ratio})',
+  },
+
+  sticky: {
+    close: 'Fermer la barre de collage',
+    label: 'Coller un lien Pinterest',
+    placeholder: 'Lien…',
+    paste: 'Coller',
+    save: 'Valider',
+    top: 'Remonter en haut',
+  },
+};

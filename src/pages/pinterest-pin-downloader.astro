@@ -64,11 +64,11 @@ const jsonLd = [
   <!-- Hero card with curved background image -->
   <TicketHero title={"Pinterest Pin Downloader"} variant="pin" />
 
-  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-left">
+  <article class="tool-body flex flex-col w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16 text-start">
     <!-- SEO Intro & Subtitle Banner -->
     <div class="w-full max-w-3xl mb-6 counter-rule pt-4">
       <p class="text-slate-700 dark:text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-3 leading-relaxed">
-        Paste one public <strong class="text-slate-900 dark:text-white">pin URL</strong> to download the original image, HD video, GIF,
+        Paste one public <strong class="text-slate-900 dark:text-white">pin URL</strong> to download the HD image, video, GIF,
         or <strong class="text-slate-900 dark:text-white">every carousel slide</strong> — free, no login, no watermark.
       </p>
       <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
@@ -76,7 +76,7 @@ const jsonLd = [
         <code class="text-[11px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">pin.it</code> shortlinks. Public pins only.
       </p>
     </div>
-    <div class="mt-2 w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-left text-sm">
+    <div class="mt-2 w-full max-w-5xl grid sm:grid-cols-3 gap-4 text-start text-sm">
       <div class="pt-3 border-t-2 border-[var(--ink)]">
         <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">Pin URLs only</h2>
         <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Built for <code class="text-[10px]">/pin/…</code> and <code class="text-[10px]">pin.it</code> shortlinks — not boards or profiles.</p>
@@ -87,7 +87,7 @@ const jsonLd = [
       </div>
       <div class="pt-3 border-t-2 border-[var(--ink)]">
         <h2 class="font-extrabold text-slate-900 dark:text-white mb-1 text-sm">HD media</h2>
-        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Prefers original images and highest available MP4 when Pinterest exposes them publicly.</p>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Saves the largest image and MP4 Pinterest publishes for the pin: photos up to 1200&nbsp;px wide, video usually 720p, 1080p when the pin has it.</p>
       </div>
     </div>
 
@@ -100,11 +100,11 @@ const jsonLd = [
         steps={steps}
       />
 
-      <section class="mt-14 text-left" aria-labelledby="when-pin-heading">
+      <section class="mt-14 text-start" aria-labelledby="when-pin-heading">
         <h2 id="when-pin-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-3 scroll-mt-24">
           When to use the pin downloader (not board or profile)
         </h2>
-        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed list-disc pl-5">
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed list-disc ps-5">
           <li>You need <strong class="text-slate-800 dark:text-slate-200">one</strong> idea, recipe video, outfit photo, or GIF.</li>
           <li>The pin is a <strong class="text-slate-800 dark:text-slate-200">carousel</strong> and you want every slide offline.</li>
           <li>You want MP4 quality options or image + caption/tags for reposting.</li>

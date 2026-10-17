@@ -1,0 +1,121 @@
+{
+  "pageId": "download-pinterest-videos-iphone-android",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger une vidéo Pinterest sur iPhone (et Android)",
+    "description": "Enregistrez une vidéo Pinterest dans l’app Photos de l’iPhone ou de l’iPad depuis Safari, et dans la galerie sur Android. Sans appli, gratuit, en HD."
+  },
+  "keywords": {
+    "primary": "télécharger vidéo pinterest iphone",
+    "secondary": [
+      "comment enregistrer une video pinterest sur iphone",
+      "enregistrer video pinterest iphone",
+      "comment enregistrer une vidéo pinterest dans sa galerie iphone",
+      "telecharger video pinterest ios",
+      "télécharger vidéo pinterest android"
+    ]
+  },
+  "nav": {
+    "label": "Sur iPhone et Android",
+    "short": "iPhone",
+    "card": {
+      "title": "Sur iPhone et Android",
+      "blurb": "De Safari à l’app Photos, étape par étape, sans appli à installer.",
+      "badge": "iPhone"
+    }
+  },
+  "hero": {
+    "h1": "Télécharger une vidéo Pinterest sur iPhone",
+    "lede": "De Safari à l’app **Photos** de l’iPhone ou de l’iPad, sans appli à installer. Sur Android, la vidéo rejoint la **Galerie**."
+  },
+  "intro": [
+    "Sur iPhone, Safari ne met pas la vidéo directement dans Photos : il la range dans l’app **Fichiers**. Il faut donc une étape de plus, que ce guide détaille avec les noms de menus d’iOS.",
+    "Sur Android, la vidéo arrive dans Téléchargements et la Galerie la montre ensuite : [[how-to-download-pinterest-video-in-gallery|voir le guide galerie]]."
+  ],
+  "sections": [
+    {
+      "h2": "Télécharger la vidéo dans Safari",
+      "paragraphs": [
+        "Copiez le lien dans l’appli Pinterest (**icône de partage** › **Copier le lien**), ouvrez pintdownload.app dans Safari, collez-le et touchez **Télécharger la vidéo**, puis **Télécharger le MP4**. Si Safari demande une confirmation, touchez **Télécharger**."
+      ]
+    },
+    {
+      "h2": "De Fichiers à Photos",
+      "paragraphs": [
+        "Touchez l’icône de téléchargement dans la barre d’adresse de Safari, ou ouvrez l’app **Fichiers** › **Téléchargements**. Touchez la vidéo, puis le bouton **Partager**, et choisissez **Enregistrer la vidéo**. Elle apparaît dans Photos, avec vos images récentes."
+      ],
+      "list": [
+        "Pas d’**Enregistrer la vidéo** ? Faites défiler la feuille de partage vers le haut : l’option se trouve sous la rangée d’applis.",
+        "La vidéo ne s’ouvre pas ? Vérifiez dans Safari que le téléchargement est terminé."
+      ]
+    },
+    {
+      "h2": "Sur iPad ou avec un autre navigateur",
+      "paragraphs": [
+        "Sur iPad, les étapes sont identiques dans Safari. Avec Chrome ou Firefox sur iPhone, la vidéo arrive aussi dans **Fichiers**, souvent dans un dossier au nom du navigateur ; la suite est la même : **Partager** › **Enregistrer la vidéo**."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment télécharger une vidéo Pinterest sur iPhone",
+    "intro": "Trois étapes dans Safari, sans application.",
+    "exampleLabel": "Lien copié dans l’appli",
+    "items": [
+      {
+        "title": "Copiez le lien dans Pinterest",
+        "body": "Ouvrez la vidéo dans l’appli, touchez l’**icône de partage** puis **Copier le lien**."
+      },
+      {
+        "title": "Collez-le dans Safari",
+        "body": "Ouvrez pintdownload.app dans Safari, collez le lien dans le ticket et touchez **Télécharger la vidéo**."
+      },
+      {
+        "title": "Enregistrez-la dans Photos",
+        "body": "Dans **Fichiers** › **Téléchargements**, touchez la vidéo, puis **Partager** › **Enregistrer la vidéo**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes sur l’iPhone",
+    "items": [
+      {
+        "q": "Comment mettre une vidéo Pinterest dans Photos sur iPhone ?",
+        "a": "Téléchargez le MP4 dans Safari, ouvrez **Fichiers** › **Téléchargements**, touchez la vidéo, puis **Partager** et **Enregistrer la vidéo**. Elle rejoint vos photos récentes."
+      },
+      {
+        "q": "Pourquoi la vidéo est-elle dans Fichiers et pas dans Photos ?",
+        "a": "Safari enregistre tout téléchargement comme un fichier. iOS ne l’ajoute à Photos que si vous le demandez avec **Enregistrer la vidéo**."
+      },
+      {
+        "q": "Sur iPad, est-ce pareil ?",
+        "a": "Oui. Safari sur iPad range aussi la vidéo dans **Fichiers**, et **Partager** › **Enregistrer la vidéo** l’envoie dans Photos."
+      },
+      {
+        "q": "Et sur Android ?",
+        "a": "La vidéo va dans **Téléchargements** et s’affiche dans l’album **Download** de la Galerie. Le détail est dans [[how-to-download-pinterest-video-in-gallery|le guide galerie]]."
+      },
+      {
+        "q": "Pourquoi ne pas installer une appli de téléchargement ?",
+        "a": "Elle ne fait rien de plus, prend de la place et réclame souvent l’accès à vos photos. Safari suffit, et rien ne s’installe sur votre téléphone."
+      },
+      {
+        "q": "La vidéo sera-t-elle en HD ?",
+        "a": "Elle aura la qualité que Pinterest publie pour l’épingle : souvent 720p, 1080p quand l’épingle le propose. Le reçu affiche la résolution avant le téléchargement."
+      }
+    ]
+  },
+  "related": {
+    "title": "Autres guides et outils"
+  },
+  "schema": {
+    "appName": "Télécharger une vidéo Pinterest sur iPhone — PintDownload",
+    "howToName": "Comment enregistrer une vidéo Pinterest dans Photos sur iPhone",
+    "howToDescription": "Télécharger le MP4 d’une épingle vidéo dans Safari, puis l’enregistrer dans l’app Photos."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. iOS labels assumed from French iOS: Fichiers › Téléchargements, Partager › « Enregistrer la vidéo », Safari confirmation « Télécharger ». Unverified: Chrome/Firefox iOS download folder naming.",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. FAQ question inverted (est-elle dans Fichiers). iOS labels (Partager › Enregistrer la vidéo, Fichiers › Téléchargements) match French iOS; not re-checked on a device."
+  }
+}

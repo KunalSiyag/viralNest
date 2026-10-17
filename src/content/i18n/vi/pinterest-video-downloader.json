@@ -1,0 +1,149 @@
+{
+  "pageId": "pinterest-video-downloader",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải video Pinterest không logo, MP4 HD miễn phí",
+    "description": "Dán link Ghim video để tải video Pinterest về máy dạng MP4, bản HD nét nhất Pinterest có (thường 720p, có khi 1080p). Không chèn logo, không cần đăng nhập."
+  },
+  "keywords": {
+    "primary": "tải video pinterest",
+    "secondary": [
+      "tải video pinterest không logo",
+      "tải video pinterest bằng link",
+      "tải video pinterest full hd",
+      "lưu video pinterest",
+      "trình tải video pinterest",
+      "tải video pinterest online"
+    ]
+  },
+  "nav": {
+    "label": "Tải video Pinterest",
+    "short": "Video",
+    "card": {
+      "title": "Tải video Pinterest",
+      "blurb": "Ghim video công khai thành file MP4, dán link Ghim hoặc link pin.it.",
+      "badge": "MP4"
+    }
+  },
+  "hero": {
+    "h1": "Tải video Pinterest",
+    "lede": "Lưu Ghim video công khai thành file **MP4 HD**, miễn phí, không đăng nhập. PintDownload **không chèn logo**."
+  },
+  "intro": [
+    "Dán link một **Ghim video** là bạn nhận về file **MP4** mà Pinterest đang phát cho Ghim đó, không cần cài app tải video. Video ngắn kiểu Reels trên Pinterest cũng là Ghim video, tải giống hệt.",
+    "Nhận link có `/pin/` trên web và link rút gọn `pin.it` từ app. Chỉ áp dụng cho Ghim video công khai."
+  ],
+  "features": [
+    {
+      "h": "Chỉ video, đúng định dạng MP4",
+      "p": "Dành cho Ghim phát được. Nếu Ghim là ảnh tĩnh, hãy dùng trang tải ảnh để lấy file JPG."
+    },
+    {
+      "h": "Bản nét nhất Pinterest có",
+      "p": "Thường là 720p, 1080p khi Ghim có bản này. Có nhiều bản thì bạn tự chọn bản muốn lưu."
+    },
+    {
+      "h": "Điện thoại hay máy tính đều được",
+      "p": "Safari trên iPhone, Chrome trên Android, Cốc Cốc hay bất kỳ trình duyệt nào trên máy tính."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Video tải về có dính logo không?",
+      "paragraphs": [
+        "PintDownload lấy file MP4 công khai của Ghim và không chèn thêm logo, chữ hay khung nào. Thứ duy nhất có thể còn là những gì người đăng đã gắn sẵn vào hình: tên kênh, chữ chạy, logo TikTok hay CapCut. Những phần đó là một phần của video nên không công cụ nào gỡ được, và bạn cũng nên giữ nguyên để ghi nhận tác giả."
+      ]
+    },
+    {
+      "h2": "Vì sao video bị mờ, và cách lấy bản nét nhất",
+      "paragraphs": [
+        "Độ nét phụ thuộc vào bản Pinterest đăng: phần lớn Ghim video chỉ có 720p, một số có thêm 1080p. Khi có nhiều bản, phần kết quả liệt kê đủ để bạn chọn bản lớn nhất. Chúng tôi không phóng to video để gắn nhãn “Full HD” hay 4K, vì phóng to chỉ làm file nặng hơn chứ không nét hơn.",
+        "Video tải về nét mà gửi đi lại bị mờ? Thường là do Zalo, Messenger nén video khi gửi. Muốn giữ chất lượng, hãy gửi dạng file hoặc qua Google Drive. Chi tiết về độ phân giải có ở trang [[pinterest-4k-downloader|tải video Pinterest 4K được không]]."
+      ]
+    },
+    {
+      "h2": "Video, Ghim, bảng hay ảnh: dùng trang nào?",
+      "paragraphs": [
+        "Dùng trang này khi Ghim **phát được** và bạn cần một file MP4. Ảnh tĩnh thì vào [[pinterest-image-downloader|tải ảnh Pinterest]]. Không rõ Ghim là ảnh, GIF hay Ghim nhiều ảnh thì thử [[pinterest-pin-downloader|tải Ghim Pinterest]]. Muốn lấy nhiều Ghim một lúc, dùng [[pinterest-board-downloader|tải bảng Pinterest]].",
+        "Lần đầu tải? [[how-to-download-pinterest-videos|Cách tải video trên Pinterest]] có các bước chi tiết và cách xử lý khi video không tải được."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tải video Pinterest bằng link",
+    "intro": "Dùng cho Ghim video công khai. Link bảng thì dán ở trang tải bảng.",
+    "exampleLabel": "Link rút gọn thường gặp",
+    "items": [
+      {
+        "title": "Mở một Ghim video",
+        "body": "Mở Ghim đang phát được, không phải ảnh tĩnh. Nếu cần video có tiếng, hãy bật tiếng nghe thử trên Pinterest trước."
+      },
+      {
+        "title": "Sao chép link video",
+        "body": "Chạm **biểu tượng chia sẻ** rồi **Sao chép liên kết**, hoặc sao chép địa chỉ có `/pin/` trên trình duyệt. Link `pin.it` từ app cũng dùng được."
+      },
+      {
+        "title": "Dán link rồi bấm tải",
+        "body": "Dán link vào ô phía trên và bấm **Tải video**. Nếu có nhiều chất lượng, hãy chọn bản lớn nhất."
+      },
+      {
+        "title": "Lưu file MP4",
+        "body": "Tải file MP4 về. Trên điện thoại, file vào thư mục tải xuống trước (trên iPhone là **Tệp** › **Tải về**); từ đó bạn chuyển sang app Ảnh hoặc thư viện ảnh."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về tải video Pinterest",
+    "items": [
+      {
+        "q": "Video tải về có dính logo không?",
+        "a": "Chúng tôi không chèn logo nào. Bạn nhận file MP4 công khai của Ghim; chữ hay logo TikTok, CapCut mà người đăng đã gắn sẵn trong video thì vẫn còn."
+      },
+      {
+        "q": "Tải được video 720p, 1080p hay 4K?",
+        "a": "Đúng bản Pinterest có cho Ghim đó: thường là 720p, 1080p khi Ghim có bản này. Pinterest gần như không đăng video 4K, và PintDownload không phóng to video để ghi nhãn 4K. Xem thêm [[pinterest-4k-downloader|chất lượng thật của video Pinterest]]."
+      },
+      {
+        "q": "Video tải về có âm thanh không? Bị mất tiếng thì sao?",
+        "a": "Có, nếu video có tiếng trên Pinterest: file MP4 giữ nguyên âm thanh. Hãy bật tiếng nghe thử ngay trên Pinterest. Ghim vốn là video không có tiếng hay GIF thì file tải về cũng không có tiếng."
+      },
+      {
+        "q": "Video Pinterest bị mờ phải làm sao?",
+        "a": "Chọn bản chất lượng cao nhất trong phần kết quả. Nếu Ghim chỉ có 720p thì không có bản nào nét hơn. Video bị mờ sau khi gửi qua Zalo hay Messenger là do app nén lại; gửi dạng file để giữ độ nét."
+      },
+      {
+        "q": "Dùng trên iPhone, Android được không?",
+        "a": "Được, không cần cài app. Mở pintdownload.app bằng Safari hoặc Chrome, dán link rồi lưu MP4. Xem [[download-pinterest-videos-iphone-android|cách tải video Pinterest về điện thoại]] để biết cách đưa video vào app Ảnh."
+      },
+      {
+        "q": "Vì sao Ghim của tôi không có video?",
+        "a": "Có thể Ghim đó là ảnh tĩnh, GIF, hoặc chỉ dẫn sang một trang web khác như YouTube. Dán link vào [[pinterest-pin-downloader|trang tải Ghim]] để biết đó là loại Ghim gì."
+      },
+      {
+        "q": "Ghim video nhiều trang (Ghim ý tưởng cũ) có tải được không?",
+        "a": "Thường là được. Với Ghim có nhiều trang, PintDownload liệt kê từng trang video hoặc ảnh mà Pinterest còn trả về, để bạn lưu riêng từng file hoặc tải cả gói ZIP."
+      },
+      {
+        "q": "Tải video Pinterest ở đây có an toàn không?",
+        "a": "Bạn không cài APK, không cài tiện ích và không đăng nhập Pinterest. Mọi thứ diễn ra trên trang web, trong trình duyệt của bạn, và file nhận về là MP4 bình thường."
+      },
+      {
+        "q": "Có tách riêng nhạc ra MP3 được không?",
+        "a": "Được, nếu video có tiếng. Sau khi lấy Ghim, bấm tải ở dòng MP3: trình duyệt tạo một file MP3 192 kbps từ tiếng của video, ngay trên máy bạn. Xem [[pinterest-audio-downloader|tải nhạc Pinterest]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Tải video Pinterest — PintDownload",
+    "howToName": "Cách tải video Pinterest dạng MP4 bằng link",
+    "howToDescription": "Các bước lưu một Ghim video công khai trên Pinterest thành file MP4."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Verify: Zalo/Messenger compress videos sent as media (common local advice). Research asked to confirm the pinimg MP4 has no Pinterest end-card; copy only claims we add no logo."
+  }
+}

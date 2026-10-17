@@ -130,11 +130,13 @@ export type ExtractErrorCode =
   | 'wrong_link_type'
   | 'avatar_not_found'
   | 'collection_empty'
+  /** A public board with pins whose pins Pinterest did not hand over (retryable). */
+  | 'collection_unavailable'
   | 'no_media';
 
 export interface ExtractFailure {
   ok: false;
-  status: 400 | 404 | 451;
+  status: 400 | 404 | 451 | 503;
   code: ExtractErrorCode;
   error: string;
   /** Only for wrong_link_type: what the link actually is. */
@@ -170,3 +172,10 @@ export type ExtractSuccess =
   | { ok: true; status: 200; kind: 'avatar'; body: AvatarBody; meta: CollectionMeta };
 
 export type ExtractOutcome = ExtractSuccess | ExtractFailure;
+
+/**
+ * True for the title the extractor makes up for a pin without text ("Pin
+ * 431342", or a bare "Pin" for an opaque e1_… id). The islands and MCP print
+ * their own fallback instead.
+ */
+export const PLACEHOLDER_PIN_TITLE = /^Pin(?: \d{1,6})?$/;

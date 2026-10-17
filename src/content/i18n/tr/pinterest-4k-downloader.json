@@ -1,0 +1,139 @@
+{
+  "pageId": "pinterest-4k-downloader",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest'te 4K Video Var mı? Gerçek Kalitede MP4 İndir",
+    "description": "Pinterest videoları çoğunlukla 720p, bazen 1080p yayınlanır; 4K nadirdir. Pinin sunduğu en yüksek kaliteyi MP4 olarak indirin, sahte 4K üretmeyiz."
+  },
+  "keywords": {
+    "primary": "pinterest 4k video indir",
+    "secondary": [
+      "pinterest hd video indir",
+      "pinterest kaliteli video indir",
+      "pinterest video indir yüksek kalite",
+      "pinterest 1080p video download",
+      "pinterest hd indir"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest’te 4K Var mı?",
+    "short": "4K / HD",
+    "card": {
+      "title": "4K ve HD Kalite",
+      "blurb": "Pinterest’in gerçekte yayınladığı kalite ve en iyisini nasıl alacağınız.",
+      "badge": "HD"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest'te 4K Var mı?",
+    "lede": "Kısa cevap: neredeyse hiç. Pinin linkini yapıştırın, Pinterest’in o Pin için gerçekten yayınladığı **en iyi dosyayı** alın: görüntü büyütme yok, 720p bir videoya “4K” etiketi de yok."
+  },
+  "intro": [
+    "Pinterest yüklenen her videoyu yeniden kodlar. Herkese açık video dosyaları **genellikle 720p, Pinde varsa 1080p** olur; fotoğraflar en fazla **1200 px** genişlikte yayınlanır. “4K Pinterest indirici” diye sunulan araçlar bu dosyaları yalnızca büyütebilir; biz büyütmeyiz. PintDownload, Pinin gerçekten sahip olduğu en büyük dosyayı kaydeder ve boyutunu da yazar.",
+    "“Pinterest kaliteli video indir” ya da “yüksek kalite” diye arıyorsanız doğru yerdesiniz: aşağıda neyin gerçekten mümkün olduğu ve en iyi dosyayı nasıl seçeceğiniz var."
+  ],
+  "features": [
+    {
+      "h": "Video (MP4)",
+      "p": "Genellikle 720p, Pinde varsa 1080p. Kalite listesinde Pinin sahip olduğu her boyut görünür."
+    },
+    {
+      "h": "Fotoğraf (JPG, PNG, WebP)",
+      "p": "Genişliği en fazla 1200 px: Pinterest’in yayınladığı en büyük boyut. Yüklenen dosyanın kendisi herkese açık değildir."
+    },
+    {
+      "h": "Ses (MP3)",
+      "p": "Videonun sesinden tarayıcınızda 192 kbps olarak hazırlanır; hiçbir şey yüklenmez."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Pinterest’te video kalitesi neden düşüyor?",
+      "paragraphs": [
+        "Pinterest uygulaması videoyu bağlantınızın hızına göre oynatır; mobil veride ya da zayıf Wi-Fi’da daha düşük bir akış seçer ve görüntü bulanık görünebilir. İndirdiğiniz dosya ise oynatıcının o an seçtiği akış değil, Pinin sahip olduğu en iyi sürümdür: Pinde 1080p varsa listede görürsünüz."
+      ]
+    },
+    {
+      "h2": "Neden 4K’ya büyütmüyoruz?",
+      "paragraphs": [
+        "Büyütme araçları eksik ayrıntıyı tahmin eder: dosya büyür ama netleşmez, yüzler ve yazılar çoğu zaman yağlı boya gibi görünür. 720p bir videoya “4K” etiketi yapıştırmak da size aynı görüntüyü daha büyük bir adla vermek olur."
+      ]
+    },
+    {
+      "h2": "Pinterest’in sahip olduğundan fazlası gerektiğinde",
+      "paragraphs": [
+        "Baskı, büyük ekran ya da müşteri işi için Pinterest’teki kopya bir referanstır, ana dosya değil. Pinin kaynak linkini açın ya da içerik üreticisinden dosyayı isteyin; ticari kullanacaksanız lisansını alın. Gündelik kayıt için [[pinterest-video-downloader|video indirici]] ve [[pinterest-image-downloader|fotoğraf indirici]] aynı en iyi dosyaları verir."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Bir Pinin en yüksek kalitesi nasıl alınır",
+    "intro": "Yalnızca herkese açık Pinler. Sonuç ekranı, kaydetmeden önce gerçek çözünürlüğü gösterir.",
+    "exampleLabel": "Örnek Pin linki",
+    "items": [
+      {
+        "title": "Pinin linkini kopyalayın",
+        "body": "Uygulamada paylaş simgesi › **Bağlantıyı kopyala**; tarayıcıda `/pin/` içeren adres. `pin.it` linkleri de olur."
+      },
+      {
+        "title": "Yukarıya yapıştırın",
+        "body": "PintDownload, Pinterest’in o herkese açık Pin için yayınladığı dosyaları okur."
+      },
+      {
+        "title": "Listedeki en yüksek kaliteyi seçin",
+        "body": "Video Pinlerinde 720p ve Pinde varsa 1080p görünür. Sonuç, her dosyanın yanında gerçek çözünürlüğü yazar."
+      },
+      {
+        "title": "Dosyayı kaydedin",
+        "body": "MP4’ü ya da fotoğrafı olduğu gibi indirin. Paylaşacaksanız içerik üreticisini kaynak gösterin."
+      }
+    ]
+  },
+  "faq": {
+    "title": "4K ve HD kalite hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Pinterest videoları gerçekten 4K mı?",
+        "a": "Neredeyse hiçbiri. Pinterest içerik üreticilerinin yüklediklerini yeniden kodlar; herkese açık video dosyaları genellikle 720p, Pinde varsa 1080p’dir. PintDownload Pinin gerçekten sahip olduğu en iyi dosyayı kaydeder. Bir Pin için “4K” sunan bir site ancak görüntüyü büyütebilir; bu piksel ekler, ayrıntı eklemez."
+      },
+      {
+        "q": "Videom neden yalnızca 720p?",
+        "a": "Çünkü Pinterest o Pin için bu boyutu yayınlıyor. Birçok video Pininde yalnızca 720p dosya vardır. Pinde 1080p de varsa kalite listesi ikisini de gösterir, siz seçersiniz."
+      },
+      {
+        "q": "En yüksek kaliteyi nasıl seçerim?",
+        "a": "Linki yapıştırdıktan sonra Pinde birden çok sürüm varsa sonuçta bir kalite listesi çıkar; çözünürlüğü en yüksek olanı seçin. Tek seçenek görüyorsanız Pinin tek sürümü odur."
+      },
+      {
+        "q": "Fotoğrafları 4K indirebilir miyim?",
+        "a": "Hayır. Pinterest’in yayınladığı en büyük fotoğraf genellikle 1200 px genişliğindedir ve yüklenen dosyanın kendisi herkese açık değildir; bu yüzden hiçbir araç bir Pinden daha büyüğünü veremez. Fotoğraflar için [[pinterest-image-downloader|fotoğraf indiriciyi]] kullanın."
+      },
+      {
+        "q": "Bir yükseltme aracı Pinterest videosunu 4K yapabilir mi?",
+        "a": "Dosyayı büyütebilir, netleştiremez. Yükseltme araçları eksik ayrıntıyı tahmin eder; sonuç çoğu zaman bulanık ya da yapay görünür. Gerçek bir 4K dosya için içerik üreticisinden kaynağı isteyin ya da lisansını alın."
+      },
+      {
+        "q": "İndirilen MP4 telefonda ve PC’de oynar mı?",
+        "a": "Evet. 720p de olsa 1080p de olsa MP4, her güncel telefonda, tablette ve bilgisayarda ek bir program kurmadan oynar."
+      },
+      {
+        "q": "PintDownload dosyayı sıkıştırıyor ya da filigran ekliyor mu?",
+        "a": "Hayır. Pinterest’in sunduğu dosyanın aynısını alırsınız ve biz filigran eklemeyiz. Yeni bir dosya yalnızca siz isterseniz oluşur: MP3’ü tarayıcınız videonun sesinden 192 kbps olarak hazırlar, kırptığınız bir fotoğraf da tarayıcınızda yeniden kaydedilir."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer Pinterest araçları"
+  },
+  "schema": {
+    "appName": "Pinterest HD Video İndirici — PintDownload",
+    "howToName": "Bir Pinterest Pini sahip olduğu en yüksek kalitede nasıl indirilir",
+    "howToDescription": "Herkese açık bir Pini yapıştırıp Pinterest’in yayınladığı en büyük dosyayı kaydetme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Dürüst 4K sayfası (kullanıcı kararı 2026-10-15, Q2): 720p/1080p ve 1200 px gerçekleri İngilizce /pinterest-4k-downloader ile aynı.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edits: lede “Pinin linkini yapıştırın”; FAQ on new files now also mentions cropped photos, not only the MP3."
+  }
+}

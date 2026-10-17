@@ -499,3 +499,376 @@ describe('MCP docs drift guard', () => {
     assert.ok(server.description.length <= 100, `description is ${server.description.length} chars`);
   });
 });
+
+/* ======================================================================
+ * i18n: route map, hreflang clusters, content, catalogs (plan §6 tests)
+ * ==================================================================== */
+import { LOCALES, LOCALE_META, type Locale } from '../src/i18n/locales';
+import {
+  GATE_OPEN,
+  PAGES,
+  PAGE_IDS,
+  RESERVED_SLUGS,
+  SLUGS,
+  SLUG_PATTERN,
+  alternatesFor,
+  isLive,
+  liveLocales,
+  localeHome,
+  localizedRoutes,
+  pathFor,
+  rawPathFor,
+  routeForPath,
+  routesProp,
+  type PageId,
+} from '../src/i18n/routes';
+import { PageContent } from '../src/i18n/schema';
+import { InlineMarkupError, inlineToText, renderInline } from '../src/i18n/inline';
+import { checkCatalog, checkLocale, checkPageFile, englishPaths, type Finding } from '../src/i18n/content-rules';
+import { localizedSitemapEntries, sitemapAlternatesFor } from '../src/lib/seo';
+import { EN_UI } from '../src/i18n/ui/en';
+
+const ROOT = process.cwd();
+const plan = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/i18n/i18n-plan.json'), 'utf8'));
+
+/** Run fn with every locale routed (PD_I18N_PREVIEW=all, all content assumed present). */
+function withPreviewAll<T>(fn: () => T): T {
+  const prev = process.env.PD_I18N_PREVIEW;
+  const prevIdx = process.env.PD_I18N_CONTENT_INDEX;
+  process.env.PD_I18N_PREVIEW = 'all';
+  delete process.env.PD_I18N_CONTENT_INDEX;
+  try {
+    return fn();
+  } finally {
+    if (prev === undefined) delete process.env.PD_I18N_PREVIEW;
+    else process.env.PD_I18N_PREVIEW = prev;
+    if (prevIdx !== undefined) process.env.PD_I18N_CONTENT_INDEX = prevIdx;
+  }
+}
+
+const errorsOnly = (fs_: Finding[]) => fs_.filter((f) => f.level === 'error').map((f) => `${f.file} ${f.path ?? ''} ${f.message}`);
+
+describe('i18n route map', () => {
+  it('LOCALE_META matches the plan locales[]', () => {
+    assert.deepEqual([...LOCALES], plan.locales.map((l: any) => l.code));
+    for (const l of plan.locales) {
+      const m = LOCALE_META[l.code as Locale];
+      for (const k of ['hreflang', 'htmlLang', 'ogLocale', 'dir', 'endonym', 'homeLabel', 'script', 'release']) {
+        assert.equal((m as any)[k], l[k], `${l.code}.${k}`);
+      }
+    }
+    assert.equal(LOCALE_META.en.hreflang, 'en');
+    assert.equal(LOCALE_META.en.ogLocale, 'en_US');
+    assert.equal(LOCALE_META.de.ads, false, 'user decision: /de has no ad slots');
+  });
+
+  it('SLUGS equal the plan matrix (slug + status), 166 rows', () => {
+    const status: Record<string, string> = { ship: 'live', 'gated-audio': 'gated-audio', 'gated-4k': 'gated-4k' };
+    let n = 0;
+    for (const row of plan.matrix) {
+      const e = SLUGS[row.locale as Locale][row.pageId as PageId];
+      assert.ok(e, `${row.locale}/${row.pageId} missing`);
+      assert.equal(e!.slug, row.slug, `${row.locale}/${row.pageId} slug`);
+      assert.equal(e!.status, status[row.status], `${row.locale}/${row.pageId} status`);
+      n++;
+    }
+    const total = LOCALES.reduce((acc, l) => acc + Object.keys(SLUGS[l]).length, 0);
+    assert.equal(total, n);
+    assert.equal(n, 166);
+  });
+
+  it('PAGES mirrors the English page files (variant, stock)', () => {
+    for (const id of PAGE_IDS) {
+      const file = id === 'home' ? 'index' : id;
+      const src = fs.readFileSync(path.join(ROOT, `src/pages/${file}.astro`), 'utf8');
+      const field = src.match(/<BaseLayout[^>]*field="([a-z]+)"/s)?.[1] ?? 'red'; // BaseLayout default
+      assert.equal(PAGES[id].field, field, `${id} field`);
+      const variant = src.match(/variant="([a-z-]+)"/)?.[1];
+      if (variant) assert.equal(PAGES[id].variant, variant, `${id} variant`);
+      assert.equal(PAGES[id].en, id === 'home' ? '/' : `/${id}`);
+    }
+  });
+
+  it('slugs: lowercase ASCII kebab-case, unique per locale, not reserved, home only empty', () => {
+    for (const l of LOCALES) {
+      const seen = new Set<string>();
+      for (const [id, e] of Object.entries(SLUGS[l])) {
+        if (id === 'home') {
+          assert.equal(e!.slug, '');
+          continue;
+        }
+        assert.match(e!.slug, SLUG_PATTERN, `${l}/${id}`);
+        assert.ok(!(RESERVED_SLUGS as readonly string[]).includes(e!.slug), `${l}/${id} reserved`);
+        assert.ok(!seen.has(e!.slug), `${l} duplicate slug ${e!.slug}`);
+        seen.add(e!.slug);
+      }
+      assert.ok(SLUGS[l].home, `${l} has a home`);
+    }
+  });
+
+  it('no locale prefix or localized path collides with English routes, redirects or public/ files', () => {
+    const config = fs.readFileSync(path.join(ROOT, 'astro.config.mjs'), 'utf8');
+    const redirects = new Set(Array.from(config.matchAll(/^\s*'(\/[^']+)':\s*$|^\s*'(\/[^']+)':\s*'/gm), (m) => m[1] || m[2]));
+    assert.ok(redirects.size >= 10, 'parsed astro.config.mjs redirects');
+    const top = new Set<string>([
+      ...fs.readdirSync(path.join(ROOT, 'src/pages')).map((f) => f.replace(/\.(astro|ts)$/, '')),
+      ...fs.readdirSync(path.join(ROOT, 'public')),
+    ]);
+    for (const l of LOCALES) assert.ok(!top.has(l), `locale /${l} collides with src/pages or public/`);
+    const english = new Set(Object.values(PAGES).map((p) => p.en));
+    for (const l of LOCALES) {
+      for (const id of PAGE_IDS) {
+        const p = rawPathFor(id, l);
+        if (!p) continue;
+        assert.ok(!english.has(p) && !redirects.has(p), `${p} collides`);
+        assert.ok(!p.endsWith('/'), `${p} trailing slash`);
+      }
+    }
+  });
+
+  it('pathFor / routeForPath round-trip, slash-insensitive; homes are /<locale>', () => {
+    withPreviewAll(() => {
+      for (const l of LOCALES) {
+        assert.equal(pathFor('home', l), localeHome(l));
+        for (const id of PAGE_IDS) {
+          const p = pathFor(id, l);
+          if (!p) continue;
+          assert.deepEqual(routeForPath(p), { pageId: id, locale: l });
+          assert.deepEqual(routeForPath(`${p}/`), { pageId: id, locale: l });
+        }
+      }
+      assert.deepEqual(routeForPath('/'), { pageId: 'home', locale: 'en' });
+      assert.deepEqual(routeForPath('/pinterest-video-downloader/'), { pageId: 'pinterest-video-downloader', locale: 'en' });
+      assert.equal(routeForPath('/es/no-existe'), null);
+      assert.equal(routeForPath('/blog/x'), null);
+      assert.equal(localizedRoutes().some((r) => r.pageId === 'home'), false);
+    });
+  });
+
+  it('release mode routes only LOCALE_META.live locales', () => {
+    for (const l of LOCALES) {
+      assert.equal(liveLocales().includes(l), LOCALE_META[l].live);
+      if (!LOCALE_META[l].live) assert.equal(pathFor('pinterest-video-downloader', l), null);
+    }
+  });
+});
+
+describe('i18n hreflang clusters', () => {
+  it('every member lists the identical set: self, en, x-default = English, absolute apex URLs', () => {
+    withPreviewAll(() => {
+      for (const id of PAGE_IDS) {
+        const set = alternatesFor(id);
+        const en = `https://pintdownload.app${PAGES[id].en === '/' ? '/' : PAGES[id].en}`;
+        assert.equal(set[0].hreflang, 'en');
+        assert.equal(set[0].href, en);
+        assert.equal(set.at(-1)!.hreflang, 'x-default');
+        assert.equal(set.at(-1)!.href, en);
+        const codes = set.map((a) => a.hreflang);
+        assert.equal(new Set(codes).size, codes.length, `${id} duplicate hreflang`);
+        for (const a of set) {
+          assert.match(a.href, /^https:\/\/pintdownload\.app\//);
+          if (a.locale !== 'x-default') assert.equal(a.hreflang, LOCALE_META[a.locale].hreflang);
+          if (a.locale !== 'x-default' && a.locale !== 'en') {
+            const back = routeForPath(new URL(a.href).pathname)!;
+            assert.equal(back.pageId, id);
+            assert.deepEqual(alternatesFor(back.pageId), set, 'reciprocal identical set');
+          }
+        }
+      }
+    });
+  });
+
+  it('closed gates and skipped pages are absent from every cluster', () => {
+    withPreviewAll(() => {
+      const saved = { ...GATE_OPEN };
+      try {
+        GATE_OPEN['gated-audio'] = false;
+        GATE_OPEN['gated-4k'] = false;
+        for (const id of ['pinterest-audio-downloader', 'pinterest-4k-downloader'] as PageId[]) {
+          assert.deepEqual(alternatesFor(id).map((a) => a.hreflang), ['en', 'x-default']);
+          assert.equal(localizedRoutes().some((r) => r.pageId === id), false);
+        }
+        // Story and SEO-title pages are skipped in every locale.
+        GATE_OPEN['gated-audio'] = true;
+        GATE_OPEN['gated-4k'] = true;
+        assert.deepEqual(alternatesFor('pinterest-story-downloader').map((a) => a.hreflang), ['en', 'x-default']);
+        assert.equal(alternatesFor('pinterest-4k-downloader').length, 2 + 6, 'six honest 4K pages');
+        assert.equal(alternatesFor('pinterest-audio-downloader').length, 2 + 9, 'nine audio pages');
+      } finally {
+        Object.assign(GATE_OPEN, saved);
+      }
+    });
+  });
+
+  it('sitemap entries carry the same clusters as the HTML', () => {
+    withPreviewAll(() => {
+      const entries = localizedSitemapEntries({ 'es/home': '2026-10-15' });
+      assert.equal(entries.length, 166);
+      for (const e of entries) {
+        const r = routeForPath(new URL(e.loc).pathname)!;
+        assert.deepEqual(e.alternates, alternatesFor(r.pageId));
+      }
+      assert.equal(entries.find((e) => e.loc === 'https://pintdownload.app/es')!.lastmod, '2026-10-15');
+      assert.deepEqual(sitemapAlternatesFor('/pinterest-video-downloader'), alternatesFor('pinterest-video-downloader'));
+      assert.equal(sitemapAlternatesFor('/blog'), undefined);
+    });
+  });
+
+  it('routes prop: live paths of one locale plus its home', () => {
+    withPreviewAll(() => {
+      const r = routesProp('es');
+      assert.equal(r.home, '/es');
+      assert.equal(r['pinterest-board-downloader'], '/es/descargar-tableros-pinterest');
+      assert.equal('pinterest-story-downloader' in r, false);
+      assert.deepEqual(routesProp('en').home, '/');
+    });
+  });
+});
+
+describe('i18n worker routing and redirects', () => {
+  it('run_worker_first covers the deepest localized path (trailing-slash 301, not Cloudflare 307)', () => {
+    const wrangler = parseJsonc(fs.readFileSync(path.join(ROOT, 'wrangler.jsonc'), 'utf8'));
+    const depth = withPreviewAll(() =>
+      Math.max(...LOCALES.flatMap((l) => PAGE_IDS.map((id) => rawPathFor(id, l)?.split('/').length ?? 0))) - 1,
+    );
+    assert.equal(depth, 2);
+    const pattern = `/${Array(depth).fill('*').join('/')}/`;
+    assert.ok(wrangler.assets.run_worker_first.includes(pattern), `run_worker_first needs ${pattern}`);
+    assert.equal(wrangler.assets.not_found_handling, '404-page');
+  });
+
+  it('hostRedirectUrl strips trailing slashes on localized URLs', () => {
+    assert.equal(hostRedirectUrl('https://pintdownload.app/es/'), 'https://pintdownload.app/es');
+    assert.equal(hostRedirectUrl('https://pintdownload.app/ar/x/'), 'https://pintdownload.app/ar/x');
+    assert.equal(hostRedirectUrl('https://www.pintdownload.app/de'), 'https://pintdownload.app/de');
+    assert.equal(hostRedirectUrl('https://pintdownload.app/es/descargar-videos-pinterest'), null);
+  });
+
+  it('no locale redirect logic: worker and middleware never read Accept-Language, CF-IPCountry or a language cookie', () => {
+    for (const f of ['src/worker.ts', 'src/middleware.ts', 'src/lib/host-redirect.ts']) {
+      const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
+      assert.doesNotMatch(src, /accept-language|cf-ipcountry|preferred_lang/i, f);
+    }
+  });
+});
+
+describe('i18n inline markup', () => {
+  it('escapes everything and renders the mini-markup', () => {
+    withPreviewAll(() => {
+      const html = renderInline('a <b> & **c** `pin.it` [[pinterest-board-downloader|tablero]] [[en:/blog|blog]] [x](https://help.pinterest.com/es/)', 'es');
+      assert.equal(
+        html,
+        'a &lt;b&gt; &amp; <strong>c</strong> <code dir="ltr" translate="no">pin.it</code> <a href="/es/descargar-tableros-pinterest">tablero</a> <a href="/blog" hreflang="en">blog</a> <a href="https://help.pinterest.com/es/" rel="noopener" target="_blank">x</a>',
+      );
+      assert.equal(inlineToText('**a** `b` [[home|c]]'), 'a b c');
+      assert.throws(() => renderInline('[[pinterest-carousel-downloader|x]]', 'fr'), InlineMarkupError, 'skipped page');
+      assert.throws(() => renderInline('[x](https://evil.example/)', 'es'), InlineMarkupError);
+      assert.throws(() => renderInline('**unclosed', 'es'), InlineMarkupError);
+    });
+  });
+});
+
+describe('i18n content files', () => {
+  const contentRoot = path.join(ROOT, 'src/content/i18n');
+  const dirs = fs.existsSync(contentRoot) ? fs.readdirSync(contentRoot) : [];
+  const enPaths = englishPaths(getAllPosts().map((p) => p.slug));
+
+  it('every file passes the schema, the plan matrix, links, honesty and glossary rules', () => {
+    const errors: string[] = [];
+    for (const dir of dirs) {
+      if (!(LOCALES as readonly string[]).includes(dir)) {
+        errors.push(`${dir}: not a locale folder`);
+        continue;
+      }
+      const pages = new Map();
+      for (const name of fs.readdirSync(path.join(contentRoot, dir))) {
+        const file = `src/content/i18n/${dir}/${name}`;
+        const data = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+        const { findings, page } = checkPageFile({ file, data, dirLocale: dir, filePageId: name.replace(/\.json$/, '') }, plan.matrix, enPaths);
+        errors.push(...errorsOnly(findings));
+        if (page) pages.set(page.pageId, { file, page });
+      }
+      errors.push(...errorsOnly(checkLocale(dir as Locale, pages, false)));
+    }
+    assert.deepEqual(errors, []);
+  });
+
+  it('released locales have content for every live page (content ↔ SLUGS parity)', () => {
+    for (const l of LOCALES.filter((x) => LOCALE_META[x].live)) {
+      for (const id of PAGE_IDS) {
+        if (!isLive(id, l)) continue;
+        assert.ok(fs.existsSync(path.join(contentRoot, l, `${id}.json`)), `${l}/${id}.json missing for a released locale`);
+      }
+    }
+  });
+
+  it('the schema enforces lengths, NFC and no raw HTML', () => {
+    const file = path.join(contentRoot, 'es/home.json');
+    if (!fs.existsSync(file)) return;
+    const base = JSON.parse(fs.readFileSync(file, 'utf8'));
+    assert.equal(PageContent.safeParse(base).success, true);
+    const bad = (mut: (d: any) => void) => {
+      const d = structuredClone(base);
+      mut(d);
+      return PageContent.safeParse(d).success;
+    };
+    assert.equal(bad((d) => (d.meta.title = 'x'.repeat(63))), false);
+    assert.equal(bad((d) => (d.meta.description = 'x'.repeat(119))), false);
+    assert.equal(bad((d) => (d.hero.h1 = 'Café decomposed')), false, 'NFC');
+    assert.equal(bad((d) => (d.intro[0] = 'raw <b>html</b>')), false);
+    assert.equal(bad((d) => (d.hero.h1 = 'Arrow → here')), false, 'display glyph');
+    assert.equal(bad((d) => delete d.aside), false, 'home requires aside');
+  });
+});
+
+describe('i18n catalogs', () => {
+  // esbuild glob imports: every src/i18n/ui/<xx>.ts and src/i18n/island/<xx>.ts is bundled.
+  const uiCatalog = (code: string): any => {
+    try {
+      const m = require(`../src/i18n/ui/${code}.ts`);
+      return m.UI ?? m.EN_UI;
+    } catch {
+      return null;
+    }
+  };
+  const islandCatalog = (code: string): any => {
+    try {
+      const m = require(`../src/i18n/island/${code}.ts`);
+      return m.ISLAND ?? m.EN_ISLAND;
+    } catch {
+      return null;
+    }
+  };
+
+  it('ui/<locale>.ts and island/<locale>.ts have the English key tree, tokens and plural categories', () => {
+    const errors: string[] = [];
+    const enIsland = islandCatalog('en');
+    for (const l of LOCALES) {
+      const ui = uiCatalog(l);
+      if (ui) errors.push(...errorsOnly(checkCatalog(`src/i18n/ui/${l}.ts`, l, EN_UI, ui)));
+      const isl = islandCatalog(l);
+      if (isl && enIsland) errors.push(...errorsOnly(checkCatalog(`src/i18n/island/${l}.ts`, l, enIsland, isl)));
+      if (LOCALE_META[l].live) assert.ok(ui && isl, `${l} is released without its catalogs`);
+    }
+    assert.deepEqual(errors, []);
+  });
+});
+
+describe('i18n llms.txt Languages section', () => {
+  it('lists English plus exactly the released locales, with endonyms and home URLs', () => {
+    const text = fs.readFileSync(path.join(ROOT, 'public/llms.txt'), 'utf8');
+    const section = text.split('## Languages')[1]?.split('\n## ')[0] ?? '';
+    const listed = Array.from(section.matchAll(/^- (.+) \(([a-z]{2})\): (https:\/\/pintdownload\.app\/[a-z]{0,2})$/gm), (m) => ({
+      endonym: m[1],
+      code: m[2],
+      url: m[3],
+    }));
+    const want = ['en', ...LOCALES.filter((l) => LOCALE_META[l].live)];
+    assert.deepEqual(listed.map((l) => l.code), want, 'update public/llms.txt when a locale is released');
+    for (const l of listed) {
+      const code = l.code as 'en' | Locale;
+      assert.equal(l.endonym, LOCALE_META[code].endonym);
+      assert.equal(l.url, `https://pintdownload.app${localeHome(code)}`);
+    }
+  });
+});

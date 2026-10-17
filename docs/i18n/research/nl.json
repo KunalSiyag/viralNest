@@ -1,0 +1,3125 @@
+{
+  "locale": "nl",
+  "hreflang": "nl",
+  "htmlLang": "nl",
+  "ogLocale": "nl_NL",
+  "markets": [
+    "NL",
+    "BE"
+  ],
+  "urlPrefix": "/nl",
+  "evidence": {
+    "autocomplete": {
+      "endpoint": "https://suggestqueries.google.com/complete/search?client=firefox&hl=nl&gl={nl|be}&ie=utf-8&oe=utf-8&q=<seed>",
+      "fetchedAt": "2026-10-14",
+      "spacingSeconds": 1.1,
+      "seedCount": 210,
+      "raw": {
+        "index": {
+          "pinterest downloader": {
+            "nl": [
+              "pinterest downloader",
+              "pinterest downloader free",
+              "pinterest downloader app",
+              "pinterest downloader mac",
+              "pinterest downloader pics",
+              "pinterest downloader for pc",
+              "pinterest downloader hd",
+              "pinterest downloader chrome",
+              "pinterest downloader laptop",
+              "pinterest downloader windows"
+            ],
+            "be": [
+              "pinterest downloader",
+              "pinterest downloader free",
+              "pinterest downloader app",
+              "pinterest downloader pics",
+              "pinterest downloader mac",
+              "pinterest downloader for pc",
+              "pinterest downloader hd",
+              "pinterest downloader chrome",
+              "pinterest downloader laptop",
+              "pinterest downloader windows"
+            ]
+          },
+          "pinterest downloaden": {
+            "nl": [
+              "pinterest downloaden",
+              "pinterest downloaden macbook",
+              "pinterest downloaden video",
+              "pinterest downloaden windows",
+              "pinterest downloaden laptop",
+              "pinterest downloaden app",
+              "pinterest downloaden pc",
+              "pinterest foto downloaden",
+              "pinterest bord downloaden",
+              "pinterest gif downloaden"
+            ],
+            "be": [
+              "pinterest downloaden",
+              "pinterest downloaden macbook",
+              "pinterest downloaden laptop",
+              "pinterest downloaden video",
+              "pinterest downloaden windows",
+              "pinterest downloaden app",
+              "pinterest downloaden pc",
+              "pinterest foto downloaden",
+              "pinterest bord downloaden",
+              "pinterest gif downloaden"
+            ]
+          },
+          "pinterest download": {
+            "nl": [
+              "pinterest downloader",
+              "pinterest download",
+              "pinterest download video",
+              "pinterest downloaden macbook",
+              "pinterest downloader free",
+              "pinterest downloaden windows",
+              "pinterest downloader app",
+              "pinterest downloaden laptop",
+              "pinterest download app",
+              "pinterest downloader mac"
+            ],
+            "be": [
+              "pinterest downloader",
+              "pinterest download",
+              "pinterest download video",
+              "pinterest downloaden macbook",
+              "pinterest downloaden laptop",
+              "pinterest downloader free",
+              "pinterest download all images",
+              "pinterest downloaden windows",
+              "pinterest downloader app",
+              "pinterest download app"
+            ]
+          },
+          "pinterest opslaan": {
+            "nl": [
+              "pinterest opslaan",
+              "pinterest video opslaan",
+              "pinterest foto opslaan",
+              "pinterest afbeelding opslaan op telefoon",
+              "pinterest foto opslaan in filmrol",
+              "hoe afbeelding pinterest opslaan"
+            ],
+            "be": [
+              "pinterest opslaan",
+              "pinterest video opslaan",
+              "pinterest foto opslaan",
+              "pinterest afbeelding opslaan op telefoon",
+              "pinterest foto opslaan in filmrol",
+              "hoe afbeelding pinterest opslaan"
+            ]
+          },
+          "pinterest downloader nederlands": {
+            "nl": [],
+            "be": []
+          },
+          "downloaden van pinterest": {
+            "nl": [
+              "downloaden van pinterest",
+              "video downloaden van pinterest",
+              "foto downloaden van pinterest",
+              "hoe foto downloaden van pinterest",
+              "hoe video van pinterest downloaden"
+            ],
+            "be": [
+              "downloaden van pinterest",
+              "video downloaden van pinterest",
+              "foto downloaden van pinterest",
+              "hoe foto downloaden van pinterest",
+              "hoe video van pinterest downloaden"
+            ]
+          },
+          "pinterest downloaden zonder account": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest downloaden zonder app": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest saver": {
+            "nl": [
+              "pinterest saver",
+              "pinterest saver video",
+              "pinterest saver download",
+              "pinterest saver video download",
+              "pinterest saver online",
+              "pinterest saver photo",
+              "pinterest saver extension",
+              "pinterest saver chrome",
+              "pinterest saver app",
+              "pinterest saver 4k"
+            ],
+            "be": [
+              "pinterest saver",
+              "pinterest saver video",
+              "pinterest saver download",
+              "pinterest saver video download",
+              "pinterest saver online",
+              "pinterest saver photo",
+              "pinterest saver extension",
+              "pinterest saver chrome",
+              "pinterest saver app",
+              "pinterest saver 4k"
+            ]
+          }
+        },
+        "pin": {
+          "pinterest pin downloaden": {
+            "nl": [
+              "pinterest pin downloaden"
+            ],
+            "be": [
+              "pinterest pin downloaden"
+            ]
+          },
+          "pin downloaden": {
+            "nl": [
+              "pin downloaden",
+              "pinterest pin downloaden"
+            ],
+            "be": [
+              "pin downloaden",
+              "pinterest pin downloaden"
+            ]
+          },
+          "pinterest pin opslaan": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest pin downloader": {
+            "nl": [
+              "pinterest pin downloader",
+              "pinterest pin downloader hd",
+              "pinterest pin downloader video",
+              "pinterest pin downloader extension",
+              "pinterest pin downloader online",
+              "pinterest pin downloader reddit",
+              "pinterest pin downloader 4k",
+              "pinterest pin downloader free",
+              "pinterest board & pin downloader",
+              "pinterest save pin downloader"
+            ],
+            "be": [
+              "pinterest pin downloader",
+              "pinterest pin downloader hd",
+              "pinterest pin downloader video",
+              "pinterest pin downloader extension",
+              "pinterest pin downloader online",
+              "pinterest pin downloader reddit",
+              "pinterest pin downloader 4k",
+              "pinterest pin downloader free",
+              "pinterest board & pin downloader",
+              "pinterest save pin downloader"
+            ]
+          },
+          "pins downloaden": {
+            "nl": [
+              "pinterest pins downloaden"
+            ],
+            "be": [
+              "pinterest pins downloaden"
+            ]
+          }
+        },
+        "video": {
+          "pinterest video downloaden": {
+            "nl": [
+              "pinterest video downloaden",
+              "pinterest video downloaden online",
+              "hoe pinterest video downloaden"
+            ],
+            "be": [
+              "pinterest video downloaden",
+              "pinterest video downloaden online",
+              "hoe pinterest video downloaden"
+            ]
+          },
+          "pinterest video downloader": {
+            "nl": [
+              "pinterest video downloader",
+              "pinterest video downloader app",
+              "pinterest video downloader online",
+              "pinterest video downloader extension",
+              "pinterest video downloader for free",
+              "pinterest video downloader gratis",
+              "pinterest video downloader save videos & images in hd",
+              "pinterest video downloader - klickpin",
+              "pinterest video downloader pindown",
+              "pinterest video downloader without watermark 4k"
+            ],
+            "be": [
+              "pinterest video downloader",
+              "pinterest video downloader - download videos images & gif from pinterest",
+              "pinterest video downloader app",
+              "pinterest video downloader online",
+              "pinterest video downloader extension",
+              "pinterest video downloader for free",
+              "pinterest video downloader gratis",
+              "pinterest video downloader save videos & images in hd",
+              "pinterest video downloader - klickpin",
+              "pinterest video downloader pindown"
+            ]
+          },
+          "pinterest video opslaan": {
+            "nl": [
+              "pinterest video opslaan"
+            ],
+            "be": [
+              "pinterest video opslaan"
+            ]
+          },
+          "pinterest video's downloaden": {
+            "nl": [
+              "pinterest video's downloaden",
+              "pinterest video downloaden online",
+              "hoe pinterest video downloaden"
+            ],
+            "be": [
+              "pinterest video's downloaden",
+              "pinterest video downloaden online",
+              "hoe pinterest video downloaden"
+            ]
+          },
+          "video downloaden van pinterest": {
+            "nl": [
+              "video downloaden van pinterest",
+              "hoe video van pinterest downloaden"
+            ],
+            "be": [
+              "video downloaden van pinterest",
+              "hoe video van pinterest downloaden"
+            ]
+          },
+          "video van pinterest downloaden": {
+            "nl": [
+              "video van pinterest downloaden",
+              "hoe video van pinterest downloaden",
+              "video von pinterest downloaden"
+            ],
+            "be": [
+              "video van pinterest downloaden",
+              "hoe video van pinterest downloaden",
+              "video von pinterest downloaden"
+            ]
+          },
+          "pinterest video download": {
+            "nl": [
+              "pinterest video downloader",
+              "pinterest video download",
+              "pinterest video download app",
+              "pinterest video downloader online",
+              "pinterest video downloader extension",
+              "pinterest video downloader for free",
+              "pinterest video download online",
+              "pinterest video download 4k",
+              "pinterest video download chrome",
+              "pinterest video downloader gratis"
+            ],
+            "be": [
+              "pinterest video downloader",
+              "pinterest video download",
+              "pinterest video download app",
+              "pinterest video downloader - download videos images & gif from pinterest",
+              "pinterest video downloader online",
+              "pinterest video downloader extension",
+              "pinterest video downloader for free",
+              "pinterest video download online",
+              "pinterest video download 4k",
+              "pinterest video download chrome"
+            ]
+          },
+          "pinterest filmpje downloaden": {
+            "nl": [
+              "pinterest filmpje downloaden"
+            ],
+            "be": [
+              "pinterest filmpje downloaden"
+            ]
+          },
+          "pinterest video opslaan zonder watermerk": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "image": {
+          "pinterest foto downloaden": {
+            "nl": [
+              "pinterest foto downloaden"
+            ],
+            "be": [
+              "pinterest foto downloaden"
+            ]
+          },
+          "pinterest foto's downloaden": {
+            "nl": [
+              "pinterest foto downloaden"
+            ],
+            "be": [
+              "pinterest foto downloaden"
+            ]
+          },
+          "pinterest afbeelding downloaden": {
+            "nl": [
+              "pinterest afbeelding downloaden",
+              "hoe afbeelding pinterest downloaden"
+            ],
+            "be": [
+              "pinterest afbeelding downloaden",
+              "hoe afbeelding pinterest downloaden"
+            ]
+          },
+          "pinterest afbeeldingen downloaden": {
+            "nl": [
+              "pinterest afbeeldingen downloaden",
+              "hoe pinterest afbeeldingen downloaden"
+            ],
+            "be": [
+              "pinterest afbeeldingen downloaden",
+              "hoe pinterest afbeeldingen downloaden"
+            ]
+          },
+          "pinterest foto opslaan": {
+            "nl": [
+              "pinterest foto opslaan",
+              "pinterest foto opslaan in filmrol",
+              "hoe pinterest foto opslaan"
+            ],
+            "be": [
+              "pinterest foto opslaan",
+              "pinterest foto opslaan in filmrol",
+              "hoe pinterest foto opslaan"
+            ]
+          },
+          "pinterest plaatje opslaan": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest foto downloaden hoge resolutie": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest image downloader": {
+            "nl": [
+              "pinterest image downloader",
+              "pinterest image downloader 4k",
+              "pinterest image downloader online",
+              "pinterest image downloader chrome",
+              "pinterest image downloader extension chrome",
+              "pinterest image downloader high quality",
+              "pinterest image downloader link",
+              "pinterest image downloader hd 4k",
+              "pinterest image downloader video",
+              "pinterest image downloader png"
+            ],
+            "be": [
+              "pinterest image downloader",
+              "pinterest image downloader 4k",
+              "pinterest image downloader online",
+              "pinterest image downloader chrome",
+              "pinterest image downloader extension chrome",
+              "pinterest image downloader high quality",
+              "pinterest image downloader link",
+              "pinterest image downloader hd 4k",
+              "pinterest image downloader video",
+              "pinterest image downloader png"
+            ]
+          },
+          "pinterest afbeelding opslaan": {
+            "nl": [
+              "pinterest afbeelding opslaan op telefoon",
+              "pinterest afbeelding opslaan",
+              "hoe afbeelding pinterest opslaan"
+            ],
+            "be": [
+              "pinterest afbeelding opslaan op telefoon",
+              "pinterest afbeelding opslaan",
+              "hoe afbeelding pinterest opslaan"
+            ]
+          },
+          "pinterest wallpaper downloaden": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "gif": {
+          "pinterest gif downloaden": {
+            "nl": [
+              "pinterest gif downloaden"
+            ],
+            "be": [
+              "pinterest gif downloaden"
+            ]
+          },
+          "pinterest gif opslaan": {
+            "nl": [],
+            "be": []
+          },
+          "gif downloaden pinterest": {
+            "nl": [
+              "gif van pinterest downloaden"
+            ],
+            "be": [
+              "gif van pinterest downloaden"
+            ]
+          },
+          "pinterest gif": {
+            "nl": [
+              "pinterest gif downloader",
+              "pinterest gif",
+              "pinterest gift ideas",
+              "pinterest gif download",
+              "pinterest gif maker",
+              "pinterest gift ideas for best friend",
+              "pinterest gif to mp4",
+              "pinterest gif banner",
+              "pinterest gift box idea",
+              "pinterest gifts for girls"
+            ],
+            "be": [
+              "pinterest gif",
+              "pinterest gif downloader",
+              "pinterest gift ideas",
+              "pinterest gif maker",
+              "pinterest gift ideas for best friend",
+              "pinterest gif to mp4",
+              "pinterest gif banner",
+              "pinterest gifs download",
+              "pinterest gift box idea",
+              "pinterest gifts for girls"
+            ]
+          }
+        },
+        "board": {
+          "pinterest bord downloaden": {
+            "nl": [
+              "pinterest bord downloaden"
+            ],
+            "be": [
+              "pinterest bord downloaden"
+            ]
+          },
+          "pinterest bord opslaan": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest board downloaden": {
+            "nl": [
+              "pinterest board downloaden"
+            ],
+            "be": [
+              "pinterest board downloaden"
+            ]
+          },
+          "pinterest hele bord downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest alle pins downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest bord": {
+            "nl": [
+              "pinterest bord verwijderen",
+              "pinterest borduren",
+              "pinterest borduren kruissteek",
+              "pinterest bord",
+              "pinterest borduurpatronen",
+              "pinterest borden samenvoegen",
+              "pinterest bord schilderen",
+              "pinterest bord downloaden",
+              "pinterest bord delen",
+              "pinterest bord maken"
+            ],
+            "be": [
+              "pinterest bord verwijderen",
+              "pinterest bord",
+              "pinterest borduren",
+              "pinterest borduren kruissteek",
+              "pinterest borden samenvoegen",
+              "pinterest bord schilderen",
+              "pinterest borduurpatronen",
+              "pinterest bord delen",
+              "pinterest borden",
+              "pinterest bord maken"
+            ]
+          },
+          "pinterest borden downloaden": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "profile": {
+          "pinterest profiel downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest profiel opslaan": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest alle pins van profiel downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest gebruiker pins downloaden": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "pfp": {
+          "pinterest profielfoto downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest profielfoto": {
+            "nl": [
+              "pinterest profielfoto",
+              "pinterest profielfoto verwijderen",
+              "leuke profielfoto pinterest"
+            ],
+            "be": [
+              "pinterest profielfoto",
+              "pinterest profielfoto verwijderen",
+              "leuke profielfoto pinterest"
+            ]
+          },
+          "pinterest profielfoto opslaan": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest profielfoto bekijken": {
+            "nl": [],
+            "be": []
+          },
+          "profielfoto pinterest groot": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest pfp": {
+            "nl": [
+              "pinterest pfp",
+              "pinterest pfps",
+              "pinterest pfp downloader",
+              "pinterest pfp discord",
+              "pinterest pfp girl",
+              "pinterest pfp cat",
+              "pinterest pfp gif",
+              "pinterest pfp pic",
+              "pinterest pfp woman",
+              "pinterest pfp anime"
+            ],
+            "be": [
+              "pinterest pfp",
+              "pinterest pfps",
+              "pinterest pfp downloader",
+              "pinterest pfp discord",
+              "pinterest pfp girl",
+              "pinterest pfp cat",
+              "pinterest pfp gif",
+              "pinterest pfp pic",
+              "pinterest pfp woman",
+              "pinterest pfp anime"
+            ]
+          }
+        },
+        "carousel": {
+          "pinterest carrousel downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest carousel downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest meerdere foto's downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest carrousel": {
+            "nl": [
+              "pinterest carrousel",
+              "pinterest carrousel instagram",
+              "créer carrousel pinterest",
+              "pinterest carrousel linkedin",
+              "format carrousel pinterest",
+              "épingle carrousel pinterest"
+            ],
+            "be": [
+              "pinterest carrousel",
+              "pinterest carrousel instagram",
+              "créer carrousel pinterest",
+              "pinterest carrousel linkedin",
+              "format carrousel pinterest",
+              "épingle carrousel pinterest"
+            ]
+          }
+        },
+        "story": {
+          "pinterest idee pin downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest ideepin": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest idea pin downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest story downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest verhaal downloaden": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "audio": {
+          "pinterest audio downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest muziek downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest mp3": {
+            "nl": [
+              "pinterest mp3 download",
+              "pinterest mp3",
+              "pinterest mp3 converter",
+              "pinterest mp3 audio download",
+              "pinterest video mp3 downloader",
+              "pinterest mp3 video download",
+              "pinterest mp3 video",
+              "pinterest mp3 player",
+              "pinterest mp3 downloader free",
+              "pinterest mp3 convert"
+            ],
+            "be": [
+              "pinterest mp3 download",
+              "pinterest mp3",
+              "pinterest mp3 converter",
+              "pinterest mp3 audio download",
+              "pinterest video mp3 downloader",
+              "pinterest mp3 video download",
+              "pinterest mp3 video",
+              "pinterest mp3 player",
+              "pinterest mp3 downloader free",
+              "pinterest mp3 convert"
+            ]
+          },
+          "pinterest geluid downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest liedje downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video naar mp3": {
+            "nl": [
+              "pinterest video mp3 downloader",
+              "pinterest video mp3 download",
+              "pinterest video mp3",
+              "pinterest video mp3 converter",
+              "pinterest video mp3 download free",
+              "pinterest video mp3 downloader online",
+              "pinterest video download mp3 converter",
+              "pinterest video to mp3 download mp4",
+              "pinterest video to mp3 download without watermark",
+              "pinterest video into mp3"
+            ],
+            "be": [
+              "pinterest video mp3 downloader",
+              "pinterest video mp3 download",
+              "pinterest video mp3",
+              "pinterest video mp3 converter",
+              "pinterest video mp3 download free",
+              "pinterest video mp3 downloader online",
+              "pinterest video download mp3 converter",
+              "pinterest video to mp3 download mp4",
+              "pinterest video to mp3 download without watermark",
+              "pinterest video into mp3"
+            ]
+          }
+        },
+        "4k": {
+          "pinterest 4k": {
+            "nl": [
+              "pinterest 4k wallpaper",
+              "pinterest 4k downloader",
+              "pinterest 4k phone wallpaper",
+              "pinterest 4k",
+              "pinterest 4k iphone wallpaper",
+              "pinterest 4k background",
+              "pinterest 4k video",
+              "pinterest 4k wallpaper pc",
+              "pinterest 4k video download online",
+              "pinterest 4k macbook wallpaper"
+            ],
+            "be": [
+              "pinterest 4k wallpaper",
+              "pinterest 4k downloader",
+              "pinterest 4k phone wallpaper",
+              "pinterest 4k",
+              "pinterest 4k iphone wallpaper",
+              "pinterest 4k background",
+              "pinterest 4k video",
+              "pinterest 4k wallpaper pc",
+              "pinterest 4k video download online",
+              "pinterest 4k macbook wallpaper"
+            ]
+          },
+          "pinterest video hd downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest 1080p": {
+            "nl": [
+              "pinterest 1080p video downloader",
+              "pinterest 1080p download",
+              "pinterest 1080p wallpaper",
+              "pinterest 1080p image downloader",
+              "pinterest 1080p",
+              "pinterest 1080p video",
+              "pinterest 1080p downloader",
+              "pinterest video download 1080p hd",
+              "pinterest video download 1080p 4k",
+              "pinterest hd background 1080p free download"
+            ],
+            "be": [
+              "pinterest 1080p video downloader",
+              "pinterest 1080p download",
+              "pinterest 1080p wallpaper",
+              "pinterest 1080p image downloader",
+              "pinterest 1080p",
+              "pinterest 1080p video",
+              "pinterest 1080p downloader",
+              "pinterest video download 1080p hd",
+              "pinterest video download 1080p 4k",
+              "pinterest hd background 1080p free download"
+            ]
+          },
+          "pinterest hd downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden hd": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "mp4": {
+          "pinterest naar mp4": {
+            "nl": [
+              "van pinterest naar mp4",
+              "pinterest mp4",
+              "pinterest mp4 download",
+              "pinterest mp4 converter",
+              "pinterest mp4 video",
+              "pinterest mp4 video converter",
+              "pinterest mp4 video download",
+              "pinterest mp4 download 4k",
+              "pinterest mp4 to gif",
+              "pinterest mp4 converter download"
+            ],
+            "be": [
+              "van pinterest naar mp4",
+              "pinterest mp4",
+              "pinterest mp4 download",
+              "pinterest mp4 converter",
+              "pinterest mp4 video",
+              "pinterest mp4 video converter",
+              "pinterest mp4 video download",
+              "pinterest mp4 download 4k",
+              "pinterest mp4 to gif",
+              "pinterest mp4 converter download"
+            ]
+          },
+          "pinterest mp4": {
+            "nl": [
+              "pinterest mp4 download",
+              "pinterest mp4 converter",
+              "pinterest mp4",
+              "pinterest mp4 converter download",
+              "pinterest mp4 video",
+              "pinterest mp4 video converter",
+              "pinterest mp4 video download",
+              "pinterest mp4 download 4k",
+              "pinterest mp4 to gif",
+              "pinterest mp4 link"
+            ],
+            "be": [
+              "pinterest mp4 converter",
+              "pinterest mp4 download",
+              "pinterest mp4",
+              "pinterest mp4 converter download",
+              "pinterest mp4 video",
+              "pinterest mp4 video converter",
+              "pinterest mp4 video download",
+              "pinterest mp4 download 4k",
+              "pinterest mp4 to gif",
+              "pinterest mp4 link"
+            ]
+          },
+          "pinterest video naar mp4": {
+            "nl": [
+              "pinterest video mp4",
+              "pinterest video mp4 download",
+              "pinterest video mp4 downloader",
+              "pinterest video mp4 converter",
+              "pinterest video downloader mp4 free",
+              "pinterest video into mp4",
+              "pinterest video mp4 download free",
+              "pinterest video dönüştürücü mp4",
+              "pinterest video downloader mp4 without watermark",
+              "pinterest video download mp4 converter"
+            ],
+            "be": [
+              "pinterest video mp4",
+              "pinterest video mp4 download",
+              "pinterest video mp4 downloader",
+              "pinterest video mp4 converter",
+              "pinterest video downloader mp4 free",
+              "pinterest video into mp4",
+              "pinterest video mp4 download free",
+              "pinterest video dönüştürücü mp4",
+              "pinterest video downloader mp4 without watermark",
+              "pinterest video download mp4 converter"
+            ]
+          },
+          "pinterest to mp4": {
+            "nl": [
+              "pinterest to mp4",
+              "pinterest to mp4 converter",
+              "pinterest to mp4 download",
+              "pinterest to mp4 downloader",
+              "pinterest to mp4 4k",
+              "pinterest to mp4 converter reddit",
+              "pinterest to mp4 free",
+              "pinterest to mp4 high quality",
+              "pinterest to mp4 video download",
+              "pinterest to mp4 converter online free"
+            ],
+            "be": [
+              "pinterest to mp4",
+              "pinterest to mp4 video",
+              "pinterest to mp4 download",
+              "pinterest to mp4 downloader",
+              "pinterest to mp4 4k",
+              "pinterest to mp4 converter reddit",
+              "pinterest to mp4 free",
+              "pinterest to mp4 high quality",
+              "pinterest to mp4 video download",
+              "pinterest to mp4 converter online free"
+            ]
+          },
+          "pinterest video mp4 downloaden": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video converter": {
+            "nl": [
+              "pinterest video converter",
+              "pinterest video converter to gif",
+              "pinterest video converter mp4",
+              "download pinterest video converter",
+              "pinterest video converter online",
+              "pinterest video converter mp3",
+              "pinterest video converter mp3 download",
+              "pinterest video converter reddit",
+              "pinterest video converter free",
+              "pinterest video converter to audio"
+            ],
+            "be": [
+              "pinterest video converter",
+              "pinterest video converter to gif",
+              "pinterest video converter mp4",
+              "download pinterest video converter",
+              "pinterest video converter online",
+              "pinterest video converter mp3",
+              "pinterest video converter mp3 download",
+              "pinterest video converter reddit",
+              "pinterest video converter free",
+              "pinterest video converter to audio"
+            ]
+          }
+        },
+        "chrome": {
+          "pinterest video downloader chrome": {
+            "nl": [
+              "pinterest video downloader chrome",
+              "pinterest video downloader chrome extension",
+              "pinterest video downloader chrome free",
+              "pinterest video downloader chrome extension free",
+              "pinterest video downloader chrome web store",
+              "pinterest video downloader chrome apk",
+              "pinterest video downloader chrome android",
+              "pinterest video and image downloader chrome extension",
+              "best pinterest video downloader chrome",
+              "pinterest video downloader 4k chrome"
+            ],
+            "be": [
+              "pinterest video downloader chrome",
+              "pinterest video downloader chrome extension",
+              "pinterest video downloader chrome free",
+              "pinterest video downloader chrome extension free",
+              "pinterest video downloader chrome web store",
+              "pinterest video downloader chrome apk",
+              "pinterest video downloader chrome android",
+              "pinterest video and image downloader chrome extension",
+              "best pinterest video downloader chrome",
+              "pinterest video downloader 4k chrome"
+            ]
+          },
+          "pinterest downloader extensie": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest extensie chrome": {
+            "nl": [
+              "pinterest extensie chrome"
+            ],
+            "be": [
+              "pinterest extensie chrome"
+            ]
+          },
+          "pinterest downloader chrome": {
+            "nl": [
+              "pinterest downloader chrome",
+              "pinterest downloader chrome extension",
+              "pinterest downloader chrome free",
+              "pinterest downloader chrome plugin",
+              "pinterest video downloader chrome",
+              "pinterest image downloader chrome",
+              "pinterest image downloader extension chrome",
+              "pinterest video downloader chrome extension",
+              "pinterest video and image downloader chrome extension",
+              "pinterest video downloader chrome free"
+            ],
+            "be": [
+              "pinterest downloader chrome",
+              "pinterest downloader chrome extension",
+              "pinterest downloader chrome free",
+              "pinterest downloader chrome plugin",
+              "pinterest video downloader chrome",
+              "pinterest image downloader chrome",
+              "pinterest image downloader extension chrome",
+              "pinterest video downloader chrome extension",
+              "pinterest video and image downloader chrome extension",
+              "pinterest video downloader chrome free"
+            ]
+          },
+          "pinterest bookmarklet": {
+            "nl": [
+              "pinterest bookmarklet"
+            ],
+            "be": [
+              "pinterest bookmarklet"
+            ]
+          }
+        },
+        "seo": {
+          "pinterest seo": {
+            "nl": [
+              "pinterest seo",
+              "pinterest seo meaning",
+              "pinterest seo tool",
+              "pinterest seo keywords",
+              "pinterest seoul",
+              "pinterest seonghwa",
+              "pinterest seo generator",
+              "pinterest seoul korea",
+              "pinterest seoul wallpaper",
+              "pinterest seo 2025"
+            ],
+            "be": [
+              "pinterest seo",
+              "pinterest seo meaning",
+              "pinterest seo tool",
+              "pinterest seo keywords",
+              "pinterest seoul",
+              "pinterest seonghwa",
+              "pinterest seo generator",
+              "pinterest seoul korea",
+              "pinterest seoul wallpaper",
+              "pinterest seo 2025"
+            ]
+          },
+          "pinterest titel generator": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest zoekwoorden": {
+            "nl": [
+              "pinterest zoekwoorden"
+            ],
+            "be": [
+              "pinterest zoekwoorden"
+            ]
+          },
+          "pinterest hashtags": {
+            "nl": [
+              "pinterest hashtags",
+              "pinterest hashtags generator",
+              "pinterest hashtags trending",
+              "pinterest hashtags for fashion",
+              "pinterest hashtags copy and paste",
+              "pinterest hashtags 2025",
+              "pinterest hashtags to use",
+              "pinterest hashtags to go viral",
+              "pinterest hashtags 2026",
+              "pinterest hashtags for photography"
+            ],
+            "be": [
+              "pinterest hashtags",
+              "pinterest hashtags generator",
+              "pinterest hashtags trending",
+              "pinterest hashtags for fashion",
+              "pinterest hashtags copy and paste",
+              "pinterest hashtags 2025",
+              "pinterest hashtags to use",
+              "pinterest hashtags to go viral",
+              "pinterest hashtags 2026",
+              "pinterest hashtags for photography"
+            ]
+          },
+          "pinterest pin titel": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest seo tool": {
+            "nl": [
+              "pinterest seo tool",
+              "pinterest seo tool free",
+              "pinterest seo keywords tool",
+              "best pinterest seo tool"
+            ],
+            "be": [
+              "pinterest seo tool",
+              "pinterest seo tool free",
+              "pinterest seo keywords tool",
+              "best pinterest seo tool"
+            ]
+          }
+        },
+        "howto": {
+          "hoe download je pinterest video": {
+            "nl": [
+              "hoe download je een video van pinterest"
+            ],
+            "be": [
+              "hoe download je een video van pinterest"
+            ]
+          },
+          "hoe pinterest video downloaden": {
+            "nl": [
+              "hoe pinterest video downloaden"
+            ],
+            "be": [
+              "hoe pinterest video downloaden"
+            ]
+          },
+          "hoe sla je een pinterest video op": {
+            "nl": [
+              "hoe sla je een video op van pinterest"
+            ],
+            "be": [
+              "hoe sla je een video op van pinterest"
+            ]
+          },
+          "hoe kan ik pinterest video's downloaden": {
+            "nl": [
+              "hoe pinterest video downloaden"
+            ],
+            "be": [
+              "hoe pinterest video downloaden"
+            ]
+          },
+          "hoe kan je pinterest video's opslaan": {
+            "nl": [],
+            "be": []
+          },
+          "hoe download je een video van pinterest": {
+            "nl": [
+              "hoe download je een video van pinterest"
+            ],
+            "be": [
+              "hoe download je een video van pinterest"
+            ]
+          },
+          "pinterest video downloaden hoe": {
+            "nl": [
+              "hoe pinterest video downloaden"
+            ],
+            "be": [
+              "hoe pinterest video downloaden"
+            ]
+          },
+          "hoe download je foto's van pinterest": {
+            "nl": [
+              "hoe download je een foto van pinterest",
+              "hoe download ik een foto van pinterest"
+            ],
+            "be": [
+              "hoe download je een foto van pinterest",
+              "hoe download ik een foto van pinterest"
+            ]
+          }
+        },
+        "gallery": {
+          "pinterest video opslaan in galerij": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden galerij": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video opslaan in fotos": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video opslaan in filmrol": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video opslaan op telefoon": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden telefoon": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video in galerij": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "laptop": {
+          "pinterest video downloaden laptop": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden pc": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden computer": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden mac": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden windows": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest foto downloaden laptop": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "mobile": {
+          "pinterest video downloaden iphone": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden android": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video opslaan iphone": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video opslaan android": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden samsung": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden ipad": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "prefix_expansion": {
+          "pinterest video ": {
+            "nl": [
+              "pinterest video downloader",
+              "pinterest video download",
+              "pinterest video download app",
+              "pinterest video to gif",
+              "pinterest video ripper",
+              "pinterest video converter",
+              "pinterest video downloader online",
+              "pinterest video downloader extension",
+              "pinterest video save",
+              "pinterest video link download"
+            ],
+            "be": [
+              "pinterest video downloader",
+              "pinterest video download",
+              "pinterest video download app",
+              "pinterest video downloader - download videos images & gif from pinterest",
+              "pinterest video to gif",
+              "pinterest video ripper",
+              "pinterest video converter",
+              "pinterest video downloader online",
+              "pinterest video downloader extension",
+              "pinterest video save"
+            ]
+          },
+          "pinterest foto ": {
+            "nl": [
+              "pinterest foto downloader",
+              "pinterest foto muur",
+              "pinterest fotowand",
+              "pinterest foto man",
+              "pinterest foto inspo",
+              "pinterest foto collage",
+              "pinterest foto girl",
+              "pinterest foto couple",
+              "pinterest foto download",
+              "pinterest photo search"
+            ],
+            "be": [
+              "pinterest foto downloader",
+              "pinterest foto muur",
+              "pinterest foto man",
+              "pinterest foto inspo",
+              "pinterest foto collage",
+              "pinterest fotowand",
+              "pinterest foto girl",
+              "pinterest foto couple",
+              "pinterest foto download",
+              "pinterest photo search"
+            ]
+          },
+          "pinterest video downloaden ": {
+            "nl": [
+              "pinterest video downloaden",
+              "pinterest video downloaden online",
+              "hoe pinterest video downloaden"
+            ],
+            "be": [
+              "pinterest video downloaden",
+              "pinterest video downloaden online",
+              "hoe pinterest video downloaden"
+            ]
+          },
+          "pinterest foto downloaden ": {
+            "nl": [
+              "pinterest foto downloaden"
+            ],
+            "be": [
+              "pinterest foto downloaden"
+            ]
+          },
+          "pinterest opslaan ": {
+            "nl": [
+              "pinterest opslaan",
+              "pinterest video opslaan",
+              "pinterest foto opslaan",
+              "pinterest afbeelding opslaan op telefoon",
+              "pinterest foto opslaan in filmrol",
+              "hoe afbeelding pinterest opslaan"
+            ],
+            "be": [
+              "pinterest opslaan",
+              "pinterest video opslaan",
+              "pinterest foto opslaan",
+              "pinterest afbeelding opslaan op telefoon",
+              "pinterest foto opslaan in filmrol",
+              "hoe afbeelding pinterest opslaan"
+            ]
+          },
+          "pinterest opslaan in": {
+            "nl": [
+              "pinterest foto opslaan in filmrol"
+            ],
+            "be": [
+              "pinterest foto opslaan in filmrol"
+            ]
+          },
+          "pinterest opslaan op": {
+            "nl": [
+              "pinterest afbeelding opslaan op telefoon"
+            ],
+            "be": [
+              "pinterest afbeelding opslaan op telefoon"
+            ]
+          },
+          "pinterest video op": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest foto op": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest afbeelding": {
+            "nl": [
+              "pinterest afbeeldingen",
+              "pinterest afbeeldingen schilderijen",
+              "pinterest afbeeldingen downloaden",
+              "pinterest afbeeldingen gebruiken",
+              "pinterest afbeeldingen verjaardag",
+              "pinterest afbeelding printen",
+              "pinterest afbeelding verwijderen",
+              "pinterest afbeeldingen opslaan",
+              "pinterest afbeelding opslaan op telefoon",
+              "pinterest afbeeldingen kerst"
+            ],
+            "be": [
+              "pinterest afbeeldingen",
+              "pinterest afbeeldingen schilderijen",
+              "pinterest afbeeldingen gebruiken",
+              "pinterest afbeeldingen downloaden",
+              "pinterest afbeeldingen verjaardag",
+              "pinterest afbeelding printen",
+              "pinterest afbeelding verwijderen",
+              "pinterest afbeeldingen opslaan",
+              "pinterest afbeelding opslaan op telefoon",
+              "pinterest afbeeldingen kerst"
+            ]
+          },
+          "pinterest plaatjes": {
+            "nl": [
+              "pinterest plaatjes",
+              "pinterest plaatjes downloaden",
+              "pinterest plaatjes voor decoupage",
+              "pinterest plaatjes bloemen",
+              "pinterest plaatjes kerst",
+              "pinterest pasen plaatjes",
+              "pinterest goedemorgen plaatjes",
+              "pinterest grappige plaatjes",
+              "pinterest leuke plaatjes",
+              "pinterest mooie plaatjes"
+            ],
+            "be": [
+              "pinterest plaatjes",
+              "pinterest plaatjes downloaden",
+              "pinterest plaatjes voor decoupage",
+              "pinterest plaatjes bloemen",
+              "pinterest plaatjes kerst",
+              "pinterest pasen plaatjes",
+              "pinterest goedemorgen plaatjes",
+              "pinterest grappige plaatjes",
+              "pinterest leuke plaatjes",
+              "pinterest mooie plaatjes"
+            ]
+          },
+          "pinterest video's": {
+            "nl": [
+              "pinterest video's downloaden",
+              "pinterest video's",
+              "pinterest video download",
+              "pinterest video downloader",
+              "pinterest video",
+              "pinterest video download link",
+              "pinterest video downloader pingrab",
+              "pinterest video downloader without watermark",
+              "pinterest video downloader online",
+              "pinterest video download app"
+            ],
+            "be": [
+              "pinterest video's downloaden",
+              "pinterest video's",
+              "pinterest video download",
+              "pinterest video downloader",
+              "pinterest video",
+              "pinterest video download link",
+              "pinterest video downloader pingrab",
+              "pinterest video downloader without watermark",
+              "pinterest video downloader online",
+              "pinterest video download app"
+            ]
+          },
+          "pinterest foto's": {
+            "nl": [
+              "pinterest foto's",
+              "pinterest foto",
+              "pinterest fotoğrafları",
+              "pinterest fotoğraf",
+              "fotos de perfil de pinterest",
+              "pinterest foto de perfil",
+              "pinterest foto indir",
+              "pinterest fotoğraf indirme",
+              "pinterest fotoğrafları kız",
+              "pinterest foto cowok"
+            ],
+            "be": [
+              "pinterest foto's",
+              "pinterest foto",
+              "pinterest fotoğrafları",
+              "pinterest fotoğraf",
+              "fotos de perfil de pinterest",
+              "pinterest foto de perfil",
+              "pinterest foto indir",
+              "pinterest fotoğraf indirme",
+              "pinterest fotoğrafları kız",
+              "pinterest foto cowok"
+            ]
+          },
+          "hoe pinterest": {
+            "nl": [
+              "hoe pinterest account verwijderen",
+              "hoe pinterest verwijderen",
+              "hoe pinterest bord delen",
+              "hoe pinterest foto opslaan",
+              "hoe pinterest video downloaden",
+              "hoe pinterest bord verwijderen",
+              "hoe pinterest gebruiken",
+              "hoe pinterest bord verbergen",
+              "hoe pinterest installeren",
+              "hoe pinterest account prive maken"
+            ],
+            "be": [
+              "hoe pinterest account verwijderen",
+              "hoe pinterest verwijderen",
+              "hoe pinterest bord verwijderen",
+              "hoe pinterest gebruiken",
+              "hoe pinterest bord delen",
+              "hoe pinterest foto opslaan",
+              "hoe pinterest video downloaden",
+              "hoe pinterest bord verbergen",
+              "hoe pinterest installeren",
+              "hoe pinterest account prive maken"
+            ]
+          },
+          "hoe download je": {
+            "nl": [
+              "hoe download je muziek",
+              "hoe download je een word document",
+              "hoe download je google maps offline",
+              "hoe download je muziek van spotify",
+              "hoe download je een kaart op google maps",
+              "hoe download je films op netflix",
+              "hoe download je een youtube video zonder premium",
+              "hoe download je een route op google maps",
+              "hoe download je tiktoks",
+              "hoe download je een app"
+            ],
+            "be": [
+              "hoe download je muziek",
+              "hoe download je een film op netflix op laptop",
+              "hoe download je films op netflix",
+              "hoe download je google maps offline",
+              "hoe download je op netflix",
+              "hoe download je muziek gratis",
+              "hoe download je muziek van youtube",
+              "hoe download je op streamz",
+              "hoe download je discord op ps5",
+              "hoe download je tiktoks"
+            ]
+          },
+          "hoe sla je": {
+            "nl": [
+              "hoe sla je een kruisje",
+              "hoe sla je een word bestand op als pdf",
+              "hoe sla je een route op in google maps",
+              "hoe sla je een mail op als pdf",
+              "hoe sla je een foto op als pdf",
+              "hoe sla je met een driver",
+              "hoe sla je iets op als pdf",
+              "hoe sla je stickers op whatsapp",
+              "hoe sla je een draw met golf",
+              "hoe sla je een vlieg dood"
+            ],
+            "be": [
+              "hoe sla je een route op in google maps",
+              "hoe sla je een word document op als pdf",
+              "hoe sla je een mail op als pdf",
+              "hoe sla je een foto op als pdf",
+              "hoe sla je foto's uit whatsapp op",
+              "hoe sla je met een driver",
+              "hoe sla je een pdf op",
+              "hoe sla je een foto op van instagram",
+              "hoe sla je een reel op van instagram",
+              "hoe sla je een word document op"
+            ]
+          },
+          "hoe kan ik pinterest": {
+            "nl": [
+              "hoe kan ik pinterest verwijderen",
+              "hoe kan ik pinterest opschonen",
+              "hoe kan ik pinterest blokkeren",
+              "hoe kan ik pinterest downloaden",
+              "hoe kan ik pinterest installeren",
+              "hoe kan ik een pinterest bord delen",
+              "hoe kan ik mijn pinterest account verwijderen",
+              "hoe kan ik filmpjes van pinterest downloaden",
+              "hoe kan ik printen van pinterest",
+              "hoe kan ik iets op pinterest plaatsen"
+            ],
+            "be": [
+              "hoe kan ik pinterest verwijderen",
+              "hoe kan ik pinterest opschonen",
+              "hoe kan ik pinterest blokkeren",
+              "hoe kan ik pinterest downloaden",
+              "hoe kan ik pinterest installeren",
+              "hoe kan ik een pinterest bord delen",
+              "hoe kan ik mijn pinterest account verwijderen",
+              "hoe kan ik filmpjes van pinterest downloaden",
+              "hoe kan ik printen van pinterest",
+              "hoe kan ik iets op pinterest plaatsen"
+            ]
+          },
+          "pinterest profiel": {
+            "nl": [
+              "pinterest profielfoto",
+              "pinterest profiel",
+              "pinterest profiel verwijderen",
+              "pinterest profiel bekijken",
+              "pinterest profielfoto verwijderen",
+              "pinterest profiel prive maken",
+              "pinterest profiel niet beschikbaar",
+              "pinterest profiel aanmaken",
+              "pinterest profiel zoeken",
+              "pinterest profiel bekeken"
+            ],
+            "be": [
+              "pinterest profiel",
+              "pinterest profielfoto",
+              "pinterest profiel verwijderen",
+              "pinterest profiel bekijken",
+              "pinterest profielfoto verwijderen",
+              "pinterest profiel prive maken",
+              "pinterest profiel niet beschikbaar",
+              "pinterest profiel aanmaken",
+              "pinterest profiel zoeken",
+              "pinterest profiel bekeken"
+            ]
+          },
+          "profielfoto pinterest": {
+            "nl": [
+              "profielfoto pinterest",
+              "pinterest profielfoto verwijderen",
+              "leuke profielfoto pinterest"
+            ],
+            "be": [
+              "profielfoto pinterest",
+              "pinterest profielfoto verwijderen",
+              "leuke profielfoto pinterest"
+            ]
+          },
+          "pinterest borden": {
+            "nl": [
+              "pinterest borden samenvoegen",
+              "pinterest borden",
+              "pinterest borden schilderen",
+              "pinterest borden verwijderen",
+              "pinterest borden prive maken",
+              "pinterest borden ideeën",
+              "pinterest borden verdwenen",
+              "pinterest borden organiseren",
+              "pinterest borden niet zichtbaar",
+              "pinterest borden verbergen"
+            ],
+            "be": [
+              "pinterest borden samenvoegen",
+              "pinterest borden",
+              "pinterest borden prive maken",
+              "pinterest borden schilderen",
+              "pinterest borden verwijderen",
+              "pinterest borden ideeën",
+              "pinterest borden verdwenen",
+              "pinterest borden organiseren",
+              "pinterest borden niet zichtbaar",
+              "pinterest borden verbergen"
+            ]
+          },
+          "opslaan van pinterest": {
+            "nl": [
+              "foto's opslaan van pinterest",
+              "video opslaan van pinterest"
+            ],
+            "be": [
+              "foto's opslaan van pinterest",
+              "video opslaan van pinterest"
+            ]
+          },
+          "foto opslaan van pinterest": {
+            "nl": [
+              "foto's opslaan van pinterest",
+              "hoe foto van pinterest opslaan"
+            ],
+            "be": [
+              "foto's opslaan van pinterest",
+              "hoe foto van pinterest opslaan"
+            ]
+          },
+          "video opslaan van pinterest": {
+            "nl": [
+              "video opslaan van pinterest",
+              "video opslaan pinterest"
+            ],
+            "be": [
+              "video opslaan van pinterest",
+              "video opslaan pinterest"
+            ]
+          },
+          "pinterest video downloaden gratis": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden zonder app": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest link": {
+            "nl": [
+              "pinterest link",
+              "pinterest link download",
+              "pinterest linkedin banner",
+              "pinterest link to mp4",
+              "pinterest link downloader",
+              "pinterest link to video",
+              "pinterest link video download",
+              "pinterest link copy download",
+              "pinterest linkin park tattoo",
+              "pinterest link into mp4"
+            ],
+            "be": [
+              "pinterest link download",
+              "pinterest link downloader",
+              "pinterest link",
+              "pinterest linkedin banner",
+              "pinterest link to mp4",
+              "pinterest link to video",
+              "pinterest link video download",
+              "pinterest link copy download",
+              "pinterest linkin park tattoo",
+              "pinterest link into mp4"
+            ]
+          },
+          "pinterest link kopiëren": {
+            "nl": [
+              "pinterest link kopieren"
+            ],
+            "be": [
+              "pinterest link kopieren"
+            ]
+          },
+          "pinterest downloaden op": {
+            "nl": [
+              "pinterest downloaden op macbook",
+              "pinterest downloaden op mac",
+              "hoe pinterest downloaden op macbook",
+              "kan je pinterest downloaden op macbook"
+            ],
+            "be": [
+              "pinterest downloaden op macbook",
+              "pinterest downloaden op mac",
+              "hoe pinterest downloaden op macbook",
+              "kan je pinterest downloaden op macbook"
+            ]
+          },
+          "pinterest downloader gratis": {
+            "nl": [
+              "pinterest downloader gratis",
+              "pinterest video downloader gratis"
+            ],
+            "be": [
+              "pinterest downloader gratis",
+              "pinterest video downloader gratis"
+            ]
+          },
+          "pinterest downloaden gratis": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest gif": {
+            "nl": [
+              "pinterest gif downloader",
+              "pinterest gif",
+              "pinterest gift ideas",
+              "pinterest gif download",
+              "pinterest gif maker",
+              "pinterest gift ideas for best friend",
+              "pinterest gif to mp4",
+              "pinterest gif banner",
+              "pinterest gift box idea",
+              "pinterest gifts for girls"
+            ],
+            "be": [
+              "pinterest gif",
+              "pinterest gif downloader",
+              "pinterest gift ideas",
+              "pinterest gif maker",
+              "pinterest gift ideas for best friend",
+              "pinterest gif to mp4",
+              "pinterest gif banner",
+              "pinterest gifs download",
+              "pinterest gift box idea",
+              "pinterest gifts for girls"
+            ]
+          },
+          "pinterest gifjes": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloader nederlands": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloader online gratis": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest download video": {
+            "nl": [
+              "pinterest download video",
+              "pinterest download video hd",
+              "pinterest download video link",
+              "pinterest download video to gif",
+              "pinterest download video without watermark",
+              "pinterest download video without watermark free",
+              "pinterest video download reddit",
+              "pinterest download video 4k",
+              "pinterest download video online",
+              "how to download free pinterest video"
+            ],
+            "be": [
+              "pinterest download video",
+              "pinterest download video hd",
+              "pinterest download video link",
+              "pinterest download video to gif",
+              "pinterest download video without watermark",
+              "pinterest download video without watermark free",
+              "pinterest video download reddit",
+              "pinterest download video 4k",
+              "pinterest download video online",
+              "how to download free pinterest video"
+            ]
+          },
+          "pinterest video download iphone": {
+            "nl": [
+              "pinterest video download iphone",
+              "download video pinterest về iphone",
+              "pinterest video download shortcut iphone",
+              "pinterest video download app iphone",
+              "download video pinterest di iphone",
+              "cara download video pinterest iphone",
+              "download video pinterest apk iphone"
+            ],
+            "be": [
+              "pinterest video download iphone",
+              "download video pinterest về iphone",
+              "pinterest video download shortcut iphone",
+              "pinterest video download app iphone",
+              "download video pinterest di iphone",
+              "cara download video pinterest iphone",
+              "download video pinterest apk iphone"
+            ]
+          },
+          "pinterest video download android": {
+            "nl": [
+              "pinterest video download android",
+              "pinterest video download free for android",
+              "pinterest video download apk for android",
+              "pinterest video download app for android",
+              "pinterest video download how to open in android gallery how can i paste it",
+              "cara download video pinterest android",
+              "bot download video pinterest android"
+            ],
+            "be": [
+              "pinterest video download android",
+              "pinterest video download free for android",
+              "pinterest video download apk for android",
+              "pinterest video download app for android",
+              "pinterest video download how to open in android gallery how can i paste it",
+              "cara download video pinterest android",
+              "bot download video pinterest android"
+            ]
+          },
+          "pinterest video download laptop": {
+            "nl": [
+              "pinterest video download laptop",
+              "download video pinterest di laptop",
+              "pinterest se video kaise download kare laptop me"
+            ],
+            "be": [
+              "pinterest video download laptop",
+              "download video pinterest di laptop",
+              "pinterest se video kaise download kare laptop me"
+            ]
+          },
+          "pinterest video download pc": {
+            "nl": [
+              "pinterest video download pc",
+              "pinterest video download pc 4k",
+              "pinterest video download for pc free",
+              "pinterest video download for pc windows 10",
+              "pinterest video download apk for pc",
+              "pinterest video download app for pc",
+              "download video pinterest di pc"
+            ],
+            "be": [
+              "pinterest video download pc",
+              "pinterest video download pc 4k",
+              "pinterest video download for pc free",
+              "pinterest video download for pc windows 10",
+              "pinterest video download apk for pc",
+              "pinterest video download app for pc",
+              "download video pinterest di pc"
+            ]
+          },
+          "pinterest video save": {
+            "nl": [
+              "pinterest video save",
+              "pinterest video saver download",
+              "pinterest video save download",
+              "how to save a video from pinterest to gallery",
+              "pinterest video saver link",
+              "pinterest video save app",
+              "pinterest video saver extension",
+              "pinterest video save downloader",
+              "pinterest video saver free",
+              "pinterest video saver hd"
+            ],
+            "be": [
+              "pinterest video save",
+              "pinterest video saver download",
+              "pinterest video save download",
+              "how to save a video from pinterest to gallery",
+              "pinterest video saver link",
+              "pinterest video save app",
+              "pinterest video saver extension",
+              "pinterest video save downloader",
+              "pinterest video saver free",
+              "pinterest video saver hd"
+            ]
+          },
+          "pinterest video opslaan op": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video opslaan in": {
+            "nl": [],
+            "be": []
+          }
+        },
+        "batch3": {
+          "filmpjes van pinterest": {
+            "nl": [
+              "filmpjes van pinterest downloaden",
+              "filmpjes pinterest",
+              "hoe kan ik filmpjes van pinterest downloaden"
+            ],
+            "be": [
+              "filmpjes van pinterest downloaden",
+              "filmpjes pinterest",
+              "hoe kan ik filmpjes van pinterest downloaden"
+            ]
+          },
+          "filmpjes pinterest downloaden": {
+            "nl": [
+              "pinterest filmpjes downloaden"
+            ],
+            "be": [
+              "pinterest filmpjes downloaden"
+            ]
+          },
+          "pinterest filmpjes": {
+            "nl": [
+              "pinterest filmpjes downloaden",
+              "pinterest filmpjes",
+              "pinterest kerst filmpjes",
+              "pinterest grappige filmpjes"
+            ],
+            "be": [
+              "pinterest filmpjes downloaden",
+              "pinterest filmpjes",
+              "pinterest kerst filmpjes",
+              "pinterest grappige filmpjes"
+            ]
+          },
+          "pinterest video bewaren": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video's opslaan": {
+            "nl": [
+              "pinterest video opslaan"
+            ],
+            "be": [
+              "pinterest video opslaan"
+            ]
+          },
+          "pinterest video's bewaren": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest foto's opslaan": {
+            "nl": [
+              "pinterest foto opslaan",
+              "pinterest foto opslaan in filmrol",
+              "hoe pinterest foto opslaan"
+            ],
+            "be": [
+              "pinterest foto opslaan",
+              "pinterest foto opslaan in filmrol",
+              "hoe pinterest foto opslaan"
+            ]
+          },
+          "pinterest afbeeldingen opslaan": {
+            "nl": [
+              "pinterest afbeeldingen opslaan"
+            ],
+            "be": [
+              "pinterest afbeeldingen opslaan"
+            ]
+          },
+          "pinterest foto downloaden hd": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest afbeelding downloaden hoge kwaliteit": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden gsm": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest foto opslaan gsm": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest gsm": {
+            "nl": [
+              "pinterest gsm",
+              "pinterest gsm blue",
+              "pinterest achtergrond gsm"
+            ],
+            "be": [
+              "pinterest gsm",
+              "pinterest gsm blue",
+              "pinterest achtergrond gsm"
+            ]
+          },
+          "pin.it": {
+            "nl": [
+              "pin.it website",
+              "pin.it",
+              "pin.it link",
+              "pin.it link safe",
+              "pin it meaning",
+              "pin it kahoot",
+              "pin it down meaning",
+              "pin it card",
+              "pin it downloader",
+              "pin it art"
+            ],
+            "be": [
+              "pin.it",
+              "pin.it link",
+              "pin.it website",
+              "pin.it link safe",
+              "pin it meaning",
+              "pin it kahoot",
+              "pin it down meaning",
+              "pin it card",
+              "pin it downloader",
+              "pin it art"
+            ]
+          },
+          "pin.it link": {
+            "nl": [
+              "pin.it link",
+              "pin.it link safe",
+              "pin it link whatsapp",
+              "pin it link download",
+              "pin it link pinterest",
+              "pin it link virus",
+              "pin it link instagram",
+              "pin it link not working",
+              "pin it link scam",
+              "pin it link app"
+            ],
+            "be": [
+              "pin.it link",
+              "pin.it link safe",
+              "pin it link whatsapp",
+              "pin it link download",
+              "pin it link pinterest",
+              "pin it link virus",
+              "pin it link instagram",
+              "pin it link not working",
+              "pin it link scam",
+              "pin it link app"
+            ]
+          },
+          "pinterest naar mp3": {
+            "nl": [
+              "pinterest mp3",
+              "pinterest mp3 download",
+              "pinterest mp3 converter",
+              "pinterest mp3 audio download",
+              "pinterest video mp3 downloader",
+              "pinterest mp3 video download",
+              "pinterest mp3 video",
+              "pinterest mp3 player",
+              "pinterest mp3 downloader free",
+              "pinterest mp3 convert"
+            ],
+            "be": [
+              "pinterest mp3",
+              "pinterest mp3 download",
+              "pinterest mp3 converter",
+              "pinterest mp3 audio download",
+              "pinterest video mp3 downloader",
+              "pinterest mp3 video download",
+              "pinterest mp3 video",
+              "pinterest mp3 player",
+              "pinterest mp3 downloader free",
+              "pinterest mp3 convert"
+            ]
+          },
+          "pinterest gif naar mp4": {
+            "nl": [
+              "pinterest gif mp4",
+              "pinterest gif to mp4 converter",
+              "pinterest gif downloader mp4"
+            ],
+            "be": [
+              "pinterest gif mp4",
+              "pinterest gif to mp4 converter",
+              "pinterest gif downloader mp4"
+            ]
+          },
+          "pinterest video naar gif": {
+            "nl": [
+              "pinterest video gif downloader",
+              "pinterest video gif",
+              "pinterest video gif download",
+              "pinterest video converter to gif",
+              "pinterest video into gif",
+              "pinterest video gif yapma",
+              "pinterest video gif maker",
+              "pinterest video gift",
+              "pinterest video images & gif download"
+            ],
+            "be": [
+              "pinterest video gif downloader",
+              "pinterest video gif",
+              "pinterest video gif download",
+              "pinterest video converter to gif",
+              "pinterest video into gif",
+              "pinterest video gif yapma",
+              "pinterest video gif maker",
+              "pinterest video gift",
+              "pinterest video images & gif download"
+            ]
+          },
+          "pinterest video downloaden met": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden zonder": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest video downloaden op": {
+            "nl": [],
+            "be": []
+          },
+          "hoe video opslaan van pinterest": {
+            "nl": [
+              "video opslaan van pinterest"
+            ],
+            "be": [
+              "video opslaan van pinterest"
+            ]
+          },
+          "hoe foto opslaan van pinterest": {
+            "nl": [
+              "hoe foto opslaan pinterest",
+              "foto's opslaan van pinterest"
+            ],
+            "be": [
+              "hoe foto opslaan pinterest",
+              "foto's opslaan van pinterest"
+            ]
+          },
+          "hoe gif opslaan": {
+            "nl": [
+              "hoe gif opslaan whatsapp",
+              "hoe gif opslaan",
+              "hoe gif opslaan iphone"
+            ],
+            "be": [
+              "hoe gif opslaan whatsapp",
+              "hoe gif opslaan",
+              "hoe gif opslaan iphone"
+            ]
+          },
+          "hoe sla je een gif op": {
+            "nl": [
+              "hoe sla je een gif op",
+              "hoe sla je een gif op in whatsapp",
+              "hoe sla je een gif op iphone"
+            ],
+            "be": [
+              "hoe sla je een gif op",
+              "hoe sla je een gif op in whatsapp",
+              "hoe sla je een gif op iphone"
+            ]
+          },
+          "pinterest afbeelding opslaan iphone": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest foto opslaan iphone": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest foto opslaan android": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest foto opslaan laptop": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest afbeelding opslaan op laptop": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest afbeelding opslaan op computer": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest downloaden zonder account": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest zonder account": {
+            "nl": [
+              "pinterest zonder account",
+              "pinterest gebruiken zonder account",
+              "pinterest bekijken zonder account"
+            ],
+            "be": [
+              "pinterest zonder account",
+              "pinterest gebruiken zonder account",
+              "pinterest bekijken zonder account"
+            ]
+          },
+          "pinterest zonder inloggen": {
+            "nl": [
+              "pinterest zonder inloggen",
+              "pinterest bekijken zonder inloggen",
+              "pinterest bekijken zonder inloggen kerst",
+              "pinterest bekijken zonder inloggen breien",
+              "pinterest gratis zonder inloggen",
+              "pinterest bekijken zonder inloggen kapsels",
+              "pinterest bekijken zonder inloggen schilderen",
+              "pinterest gebruiken zonder inloggen",
+              "pinterest bekijken zonder inloggen haken",
+              "knutselen pinterest bekijken zonder inloggen"
+            ],
+            "be": [
+              "pinterest zonder inloggen",
+              "pinterest bekijken zonder inloggen",
+              "pinterest bekijken zonder inloggen kerst",
+              "pinterest bekijken zonder inloggen breien",
+              "pinterest gratis zonder inloggen",
+              "pinterest bekijken zonder inloggen kapsels",
+              "pinterest bekijken zonder inloggen schilderen",
+              "pinterest gebruiken zonder inloggen",
+              "pinterest bekijken zonder inloggen haken",
+              "knutselen pinterest bekijken zonder inloggen"
+            ]
+          },
+          "pinterest bekijken zonder account": {
+            "nl": [
+              "pinterest bekijken zonder account"
+            ],
+            "be": [
+              "pinterest bekijken zonder account"
+            ]
+          },
+          "pinterest profielfoto groot": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest profielfoto zien": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest profielfoto vergroten": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest bord delen": {
+            "nl": [
+              "pinterest bord delen",
+              "pinterest bord delen via whatsapp",
+              "hoe pinterest bord delen",
+              "pinterest verborgen bord delen",
+              "kan je een pinterest bord delen"
+            ],
+            "be": [
+              "pinterest bord delen",
+              "pinterest bord delen via whatsapp",
+              "hoe pinterest bord delen",
+              "pinterest verborgen bord delen",
+              "kan je een pinterest bord delen"
+            ]
+          },
+          "pinterest bord exporteren": {
+            "nl": [
+              "pinterest bord exporteren"
+            ],
+            "be": [
+              "pinterest bord exporteren"
+            ]
+          },
+          "pinterest borden downloaden naar computer": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest hele bord opslaan": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest idee pin": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest idee pinnen": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest titel": {
+            "nl": [
+              "pinterest titelbild",
+              "pinterest titelbild größe",
+              "pinterest titel",
+              "pinterest titel und beschreibung",
+              "pinterest titel ideen",
+              "pinterest pinnwand titelbild ändern"
+            ],
+            "be": [
+              "pinterest titelbild",
+              "pinterest titelbild größe",
+              "pinterest titel",
+              "pinterest titel und beschreibung",
+              "pinterest titel ideen",
+              "pinterest pinnwand titelbild ändern"
+            ]
+          },
+          "pinterest beschrijving": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest pin beschrijving": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest hashtags nederlands": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest seo nederlands": {
+            "nl": [],
+            "be": []
+          },
+          "pinterest seo tips": {
+            "nl": [
+              "pinterest seo tips for bloggers"
+            ],
+            "be": [
+              "pinterest seo tips for bloggers"
+            ]
+          }
+        }
+      }
+    },
+    "competitors": [
+      {
+        "url": "https://www.savepin.app/pinterest-downloader/nl/",
+        "slugPattern": "/pinterest-downloader/nl/ (English slug + locale folder)",
+        "hreflang": "nl",
+        "title": "Pinterest video downloaden Online - Bewaar Pin als Mp4 | SavePin",
+        "h1": "Pinterest Video Downloaden",
+        "faqTopics": [
+          "Is SavePin gratis te gebruiken?",
+          "Moet ik een account aanmaken?",
+          "Kan ik Pinterest-videos downloaden op mijn mobiele apparaat?",
+          "Welke formaten zijn beschikbaar?",
+          "Kan ik Pinterest-videos downloaden die zijn verwijderd of privé zijn gemaakt?",
+          "Kan ik Pinterest-borden of collecties downloaden?",
+          "Is het veilig?",
+          "Houdt SavePin mijn downloads bij?"
+        ],
+        "notes": "Leads with the Dutch verb phrase 'Pinterest video downloaden' in title and H1. Uses 'Bewaar' for saving to device, which clashes with Pinterest's own 'Bewaren' (save to board). Machine-translated feel ('Pinterest-videos' without apostrophe)."
+      },
+      {
+        "url": "https://pinterestdownloader.com/nl1",
+        "slugPattern": "/nl1",
+        "hreflang": "nl",
+        "title": "Pinterest Video Downloader - Download Pinterest-video's, afbeeldingen en GIF online",
+        "h1": "Pinterest-downloader",
+        "faqTopics": [],
+        "notes": "Hybrid English 'Pinterest Video Downloader' + Dutch 'Pinterest-video's, afbeeldingen en GIF'. Step headings: 'Kopieer de video-URL', 'Plak de koppelingen' (literal, unnatural: Dutch users say 'link', not 'koppeling')."
+      },
+      {
+        "url": "https://screenapp.io/nl/features/pinterest-video-downloader",
+        "slugPattern": "/nl/features/pinterest-video-downloader",
+        "hreflang": "nl",
+        "title": "Pinterest Video-downloader - Gratis HD, Zonder watermerk",
+        "h1": "Pinterest Video-downloader",
+        "faqTopics": [
+          "Is de Pinterest video downloader gratis?",
+          "Hoe kopieer ik een Pinterest videolink?",
+          "Voegt het een watermerk toe?",
+          "Kan ik een privé- of geheim bord-pin downloaden?",
+          "Is er een 4K Pinterest-videodownload?",
+          "Werkt het op iPhone en Android?",
+          "Waarom mislukte mijn pin-link?"
+        ],
+        "notes": "Best-written Dutch competitor page. Description: 'Plak een pin-link en sla de video op als een schone MP4 in HD, zonder watermerk, geen app, geen aanmelding. Werkt met pin.it-links'. H2 'Welke Pinterest-video's je wel en niet kunt opslaan' and 'Waarom sommige pins geen video hebben' mirror our honest-scope copy."
+      },
+      {
+        "url": "https://metricool.com/nl/pinterest-videos-downloaden/",
+        "slugPattern": "/nl/pinterest-videos-downloaden/ (localized Dutch slug)",
+        "hreflang": "nl",
+        "title": "Pinterest-video's downloaden: gratis tools en tips",
+        "h1": "Pinterest-video's downloaden: gratis tools en handige tips",
+        "faqTopics": [
+          "Waarom heeft Pinterest geen ingebouwde downloadknop voor video's?",
+          "Kan ik een Pinterest-video opslaan zonder dat de maker dat ziet?",
+          "Kan ik een Pinterest-video downloaden zonder externe tool?",
+          "Hoe kan je Pinterest-foto's downloaden?"
+        ],
+        "notes": "Guide-style article (competes with our how-to). Sections: via je computer / met je smartphone / je eigen Pinterest-video's downloaden / auteursrechten disclaimer. Uses correct Dutch spelling 'Pinterest-video's'."
+      },
+      {
+        "url": "https://pindown.io/nl",
+        "slugPattern": "/nl, /nl/pinterest-gif-downloader, /nl/how-to-download-pinterest-videos (English slugs)",
+        "hreflang": "nl",
+        "title": "Pinterest Video Downloader - HD Pinterest Video's en GIF's Online Downloaden",
+        "h1": "Pinterest Video Downloader",
+        "faqTopics": [
+          "Hoe Pinterest-video's downloaden naar uw computer?",
+          "naar Android?",
+          "Hoe 4k Pinterest-video's downloaden?",
+          "naar uw iPhone (iOS)?",
+          "Kan ik Pinterest-video's op mijn telefoon opslaan?",
+          "Kan ik Pinterest Livestream-video's downloaden?",
+          "Slaat PinDown.io gedownloade video's op?"
+        ],
+        "notes": "Claims '1080p - 2K - 4K' (we must not copy this; our honesty rule). Formal 'u'. GIF page title: 'Pinterest GIF Downloader Online - Pinterest GIFs Downloaden'; GIF FAQ 'Ik kan de GIF niet vinden na het downloaden. Waar wordt deze opgeslagen?'. How-to page H1: 'Hoe Pinterest-video's downloaden met PinDown?'."
+      },
+      {
+        "url": "https://snappin.app/nl",
+        "slugPattern": "/nl, /nl/pinterest-image-downloader-1, /nl/pinterest-gif-downloader (English slugs)",
+        "hreflang": "nl",
+        "title": "Pinterest Video Downloader – Download gratis Pinterest-video's in HD",
+        "h1": "Pinterest-downloader",
+        "faqTopics": [
+          "Is er een limiet voor het downloaden van Pinterest-video's?",
+          "Hoe video's downloaden van Pinterest op Android?",
+          "Hoe Pinterest-video's downloaden op de iPhone?",
+          "Is de downloader veilig?",
+          "Moet ik een account aanmaken?"
+        ],
+        "notes": "Image page H1 'Pinterest-afbeeldingsdownloader' (an unnatural 26-letter compound nobody searches). Mixes 'je' and 'u'. Claims 'HD en 4K-kwaliteit'."
+      },
+      {
+        "url": "https://pinterestdownloader.io/nl-03",
+        "slugPattern": "/nl-03",
+        "hreflang": "n/a (lang attr 'nl-03', invalid)",
+        "title": "Pinterest Video Downloaden - Download gratis Pinterest-video's, afbeeldingen en GIF's",
+        "h1": "Video's downloaden van Pinterest",
+        "faqTopics": [
+          "Moet ik een account registreren?",
+          "Waar worden Pinterest-video's opgeslagen nadat ze zijn gedownload?",
+          "Is het helemaal gratis?",
+          "Hoe krijg je de downloadlink op je telefoon?",
+          "Is het veilig voor mijn apparaat?",
+          "Is er een limiet aan het aantal video's?"
+        ],
+        "notes": "Partly untranslated Italian step headings ('Inserisci link', 'Scarica video'): the bar for Dutch quality in this niche is low."
+      },
+      {
+        "url": "https://www.bitbrowser.net/nl/blog/how-to-download-pinterest-videos",
+        "slugPattern": "/nl/blog/<english-slug>",
+        "hreflang": "nl",
+        "title": "Pinterest video's downloaden: 7 eenvoudige methoden voor 2026 (Desktop & Mobiel) | bitbrowser",
+        "h1": "Pinterest video's downloaden: 7 eenvoudige methoden voor 2026 (Desktop & Mobiel)",
+        "faqTopics": [
+          "Opslaan is niet downloaden",
+          "Methode 1: Direct downloaden via de officiële Pinterest-app",
+          "Schermopname"
+        ],
+        "notes": "Guide competitor. Useful nuance to copy honestly: 'Opslaan is niet downloaden' (Pinterest's Bewaren puts a pin on a board, it does not put a file on your device)."
+      }
+    ],
+    "pinterestAppTerms": {
+      "_sources": [
+        "https://help.pinterest.com/nl/article/download-an-image",
+        "https://help.pinterest.com/nl/article/send-pins-boards-and-profiles",
+        "https://help.pinterest.com/nl/article/interact-with-pins",
+        "https://help.pinterest.com/nl/article/create-a-board",
+        "https://help.pinterest.com/nl/article/secret-boards",
+        "https://help.pinterest.com/nl/article/edit-your-profile",
+        "https://help.pinterest.com/nl/business/article/create-a-carousel"
+      ],
+      "Share (icon/action)": "Delen; the icon is the 'deelpictogram'. Help center: 'Tik op [deelpictogram] om een pin naar iemand te sturen of een link naar de pin te kopiëren.' Sending inside Pinterest is 'Verzenden'.",
+      "Copy link": "Link kopiëren (exact label in the share sheet, help article 'Pins, borden en profielen delen').",
+      "Download image (desktop)": "Afbeelding downloaden (via the ellipsis/three-dots menu next to the pin).",
+      "Download image (app)": "Download afbeelding (app wording differs from desktop).",
+      "Overflow menu items (app)": "Downloaden, Toevoegen aan collage, Rapporteren (via the '…' icon under the pin).",
+      "Three-dots menu": "the ellipsis icon; say 'de drie puntjes (…)' in copy.",
+      "Save (to a board)": "Bewaren / Bewaar. Pinterest's own definition: 'Als je een pin bewaart, wordt de pin toegevoegd aan een van je borden ... Bij het downloaden van een pin bewaar je de afbeelding op je apparaat.' -> our copy must say 'downloaden' or 'opslaan' for files, never 'bewaren', to avoid confusion with the Bewaren button.",
+      "Pin / pins": "pin / pins (never 'pinnen' in our copy: 'pinnen' also means paying by debit card in Dutch).",
+      "Video pin": "videopin",
+      "Image pin": "afbeeldingspin",
+      "Board / boards": "bord / borden",
+      "Secret board": "privébord ('Dit bord privé maken') in the secret-boards article; 'Dit bord verbergen' / 'verborgen' in the create-a-board article. Use 'privé- of verborgen bord'. Autocomplete also shows 'pinterest verborgen bord delen'.",
+      "Profile": "profiel; 'Profiel bekijken', 'Profiel bewerken'",
+      "Profile picture": "profielfoto ('Profielfoto wijzigen')",
+      "Home feed": "startpagina",
+      "Carousel": "carrousel / carrouselpin; slides are 'kaarten' ('Een carrousel is een pin met meerdere kaarten'). Users say 'meerdere foto's'.",
+      "Idea Pin / Story Pin": "No current Dutch help article (old URLs 404 or redirect to generic pin actions). Dutch press used 'Idee-pins' / 'Idea Pins'. Pinterest folded the format into normal pins, so treat as legacy.",
+      "Where images land": "Android: 'in de galerij op je apparaat'; iOS: 'in de map Foto's op je apparaat'; desktop: 'standaarddownloadmap'.",
+      "iOS camera roll wording in Pinterest app": "'Kies uit filmrol' (profile photo picker). Users still say 'filmrol' (autocomplete: 'pinterest foto opslaan in filmrol').",
+      "Not every pin is downloadable": "'Let op: Niet alle pins kunnen worden gedownload' (help center) - good honest framing for our FAQ."
+    }
+  },
+  "pages": [
+    {
+      "enSlug": "index",
+      "skip": false,
+      "slug": "",
+      "path": "/nl",
+      "primaryKeyword": "pinterest downloader",
+      "secondaryKeywords": [
+        "downloaden van pinterest",
+        "pinterest downloader gratis",
+        "pinterest opslaan",
+        "pinterest video downloaden",
+        "pinterest foto downloaden",
+        "pinterest bord downloaden"
+      ],
+      "keywordEvidence": "'pinterest downloader' has 10 completions with hl=nl (gratis, app, mac, pc, hd, chrome, laptop, windows). 'pinterest downloaden' is NOT used as primary: its completions (macbook, windows, laptop, app, pc) show app-install intent. 'downloaden van pinterest' -> video/foto downloaden van pinterest. 'pinterest downloader gratis' completes in NL.",
+      "title": "Pinterest downloader — video, foto & GIF gratis | PintDownload",
+      "titleLength": 62,
+      "description": "Gratis Pinterest downloader: sla openbare video's op als MP4, foto's in HD, GIF's en hele borden als ZIP. Zonder account of app, op je telefoon en pc.",
+      "descriptionLength": 150,
+      "h1": "Pinterest downloader",
+      "lede": "Plak de link, krijg het bestand. Openbare video's als MP4, foto's in HD, GIF's en hele borden als één ZIP. Gratis en zonder account.",
+      "faqTopics": [
+        "Hoe download je foto's van Pinterest zonder account? (autocomplete: 'pinterest zonder account', 'pinterest bekijken zonder inloggen' are big Dutch clusters)",
+        "Is PintDownload gratis?",
+        "Wat kan ik downloaden van Pinterest? (pin, video, foto, GIF, carrousel, bord, profiel)",
+        "Waarom niet gewoon 'Download afbeelding' in de Pinterest-app? (works for many image pins, not for other people's videos, boards or every pin)",
+        "Hoe download je een Pinterest-video als MP4? ('van pinterest naar mp4')",
+        "Kan ik een heel bord of profiel als ZIP downloaden?",
+        "Wat werkt niet? (privé/verborgen borden, verwijderde pins, privéprofielen)",
+        "Mag ik Pinterest-afbeeldingen gebruiken? (autocomplete 'pinterest afbeeldingen gebruiken'; answer: personal use, vermeld de maker, ask permission for reuse; no legal advice)",
+        "Werkt het op iPhone, Android, laptop en pc?",
+        "Wat is een pin.it-link?"
+      ],
+      "hreflangAlternates": {
+        "en": "https://pintdownload.app/",
+        "nl": "https://pintdownload.app/nl",
+        "x-default": "https://pintdownload.app/"
+      },
+      "_h1Check": {
+        "uppercase": "PINTEREST DOWNLOADER",
+        "longestRun": "DOWNLOADER",
+        "longestRunPx": 234.2,
+        "lineBudgetPx": 328,
+        "fullWidthPx": 421.3,
+        "fits": true
+      }
+    },
+    {
+      "enSlug": "pinterest-pin-downloader",
+      "skip": false,
+      "slug": "pinterest-pin-downloaden",
+      "path": "/nl/pinterest-pin-downloaden",
+      "primaryKeyword": "pinterest pin downloaden",
+      "secondaryKeywords": [
+        "pinterest pins downloaden",
+        "pin downloaden",
+        "pinterest pin downloader",
+        "pin.it link",
+        "pinterest carrousel downloaden"
+      ],
+      "keywordEvidence": "'pin downloaden' -> 'pinterest pin downloaden'; 'pins downloaden' -> 'pinterest pins downloaden'; English 'pinterest pin downloader' has 10 completions. 'pin.it link' completes (safe, download, not working). Carousel has no Dutch demand of its own, so it lives here as a secondary/FAQ.",
+      "title": "Pinterest pin downloaden — foto, video of GIF gratis",
+      "titleLength": 52,
+      "description": "Download één Pinterest-pin: plak de pin- of pin.it-link en sla de foto, MP4-video, GIF of alle afbeeldingen uit een carrousel op. Gratis, zonder account.",
+      "descriptionLength": 153,
+      "h1": "Pinterest pin downloaden",
+      "lede": "Eén pin, elk formaat: foto, video, GIF of alle kaarten van een carrousel.",
+      "faqTopics": [
+        "Wat is een pinlink, en wat is een pin.it-link? ('pin.it link safe' / 'virus' in autocomplete: explain it is Pinterest's own short link)",
+        "Hoe kopieer ik de link van een pin? (Delen → Link kopiëren)",
+        "Kan ik alle foto's uit een carrousel downloaden? (Pinterest calls them 'kaarten')",
+        "Werkt het ook voor video's en GIF's?",
+        "Waarom werkt mijn bord- of profiellink hier niet?",
+        "Wat is het verschil tussen een pin bewaren en downloaden? (Bewaren = op een bord; downloaden = bestand op je apparaat)",
+        "Is het gratis?"
+      ],
+      "hreflangAlternates": {
+        "en": "https://pintdownload.app/pinterest-pin-downloader",
+        "nl": "https://pintdownload.app/nl/pinterest-pin-downloaden",
+        "x-default": "https://pintdownload.app/pinterest-pin-downloader"
+      },
+      "_h1Check": {
+        "uppercase": "PINTEREST PIN DOWNLOADEN",
+        "longestRun": "DOWNLOADEN",
+        "longestRunPx": 237.2,
+        "lineBudgetPx": 328,
+        "fullWidthPx": 491.7,
+        "fits": true
+      }
+    },
+    {
+      "enSlug": "pinterest-video-downloader",
+      "skip": false,
+      "slug": "pinterest-video-downloaden",
+      "path": "/nl/pinterest-video-downloaden",
+      "primaryKeyword": "pinterest video downloaden",
+      "secondaryKeywords": [
+        "pinterest video's downloaden",
+        "pinterest video downloaden online",
+        "pinterest video downloader gratis",
+        "pinterest video opslaan",
+        "filmpjes van pinterest downloaden",
+        "van pinterest naar mp4"
+      ],
+      "keywordEvidence": "'pinterest video downloaden' -> online, hoe pinterest video downloaden; 'pinterest video's downloaden'; 'pinterest video downloader gratis'; 'pinterest video opslaan'; colloquial 'filmpjes van pinterest downloaden' + 'hoe kan ik filmpjes van pinterest downloaden'; 'van pinterest naar mp4' (top completion for 'pinterest naar mp4'). Competitors (SavePin, pinterestdownloader.io) use 'Pinterest video downloaden' in title/H1.",
+      "title": "Pinterest video downloaden — gratis als HD MP4, zonder app",
+      "titleLength": 58,
+      "description": "Plak de link van een openbare videopin en download de Pinterest-video als MP4 in de beste beschikbare kwaliteit. Gratis, geen account, geen watermerk.",
+      "descriptionLength": 150,
+      "h1": "Pinterest video downloaden",
+      "lede": "Openbare videopins als MP4, met geluid als de bron dat heeft. Gratis, zonder account, zonder watermerk.",
+      "faqTopics": [
+        "Hoe download je een Pinterest-video als MP4?",
+        "Welke kwaliteit krijg ik: 720p, 1080p of 4K? (honest: the best stream Pinterest serves for that pin; no invented 4K; screenapp has this FAQ too)",
+        "Werkt het op iPhone en Android? Waar vind ik de video daarna? (Foto's/filmrol, galerij, Downloads)",
+        "Waarom heeft mijn pin geen video? (it is a GIF, an image, or links to another site)",
+        "Kan ik alleen het geluid downloaden? (link to the English audio tool; no Dutch audio page)",
+        "Ziet de maker dat ik de video download? (metricool FAQ topic; answer only what we know: PintDownload sends no notification)",
+        "Kan ik alle video's van een bord in één keer downloaden?",
+        "Is het gratis en zonder watermerk?"
+      ],
+      "hreflangAlternates": {
+        "en": "https://pintdownload.app/pinterest-video-downloader",
+        "nl": "https://pintdownload.app/nl/pinterest-video-downloaden",
+        "x-default": "https://pintdownload.app/pinterest-video-downloader"
+      },
+      "_h1Check": {
+        "uppercase": "PINTEREST VIDEO DOWNLOADEN",
+        "longestRun": "DOWNLOADEN",
+        "longestRunPx": 237.2,
+        "lineBudgetPx": 328,
+        "fullWidthPx": 532.2,
+        "fits": true
+      }
+    },
+    {
+      "enSlug": "pinterest-image-downloader",
+      "skip": false,
+      "slug": "pinterest-foto-downloaden",
+      "path": "/nl/pinterest-foto-downloaden",
+      "primaryKeyword": "pinterest foto downloaden",
+      "secondaryKeywords": [
+        "pinterest afbeelding downloaden",
+        "pinterest afbeeldingen downloaden",
+        "pinterest foto opslaan",
+        "pinterest plaatjes downloaden",
+        "foto's opslaan van pinterest",
+        "pinterest afbeelding opslaan op telefoon"
+      ],
+      "keywordEvidence": "'pinterest foto downloaden' (also suggested under 'pinterest downloaden'); 'pinterest afbeelding(en) downloaden' + 'hoe afbeelding pinterest downloaden'; 'pinterest foto opslaan' -> 'in filmrol', 'hoe pinterest foto opslaan'; 'pinterest afbeelding opslaan op telefoon'; 'pinterest plaatjes downloaden'; 'foto's opslaan van pinterest'; 'hoe download je een foto van pinterest' / 'hoe download ik een foto van pinterest'. 'foto' chosen over 'afbeelding' for slug/H1: shorter, used in more completions, and what people say.",
+      "title": "Pinterest foto downloaden — afbeeldingen in HD, gratis",
+      "titleLength": 54,
+      "description": "Pinterest-foto's en afbeeldingen downloaden in de grootste openbare versie: wallpapers, kunst en plaatjes als JPG of PNG. Gratis, zonder account of app.",
+      "descriptionLength": 152,
+      "h1": "Pinterest foto downloaden",
+      "lede": "De grootste openbare versie van een foto, geen miniatuur. Gratis en zonder account.",
+      "faqTopics": [
+        "Hoe download je een foto van Pinterest? (exact autocomplete 'hoe download ik een foto van pinterest')",
+        "Krijg ik de volledige grootte of een miniatuur? (honest: largest public size Pinterest serves; do not promise 'origineel' where the pipeline serves 1200px)",
+        "Waarom zie ik 'Download afbeelding' niet in de app? (Pinterest help: not every pin can be downloaded)",
+        "Hoe zet ik de foto in mijn filmrol of galerij? ('pinterest foto opslaan in filmrol')",
+        "Kan ik alle foto's uit een carrousel downloaden?",
+        "Mag ik Pinterest-afbeeldingen gebruiken of printen? (autocomplete: 'pinterest afbeeldingen gebruiken', 'pinterest afbeelding printen')",
+        "Werkt het zonder Pinterest-account?",
+        "Waarom mislukt een videopin hier? (send to video page)"
+      ],
+      "hreflangAlternates": {
+        "en": "https://pintdownload.app/pinterest-image-downloader",
+        "nl": "https://pintdownload.app/nl/pinterest-foto-downloaden",
+        "x-default": "https://pintdownload.app/pinterest-image-downloader"
+      },
+      "_h1Check": {
+        "uppercase": "PINTEREST FOTO DOWNLOADEN",
+        "longestRun": "DOWNLOADEN",
+        "longestRunPx": 237.2,
+        "lineBudgetPx": 328,
+        "fullWidthPx": 518.1,
+        "fits": true
+      }
+    },
+    {
+      "enSlug": "pinterest-gif-downloader",
+      "skip": false,
+      "slug": "pinterest-gif-downloaden",
+      "path": "/nl/pinterest-gif-downloaden",
+      "primaryKeyword": "pinterest gif downloaden",
+      "secondaryKeywords": [
+        "gif van pinterest downloaden",
+        "pinterest gif downloader",
+        "pinterest gif opslaan",
+        "hoe sla je een gif op iphone",
+        "pinterest gif naar mp4"
+      ],
+      "keywordEvidence": "'pinterest gif downloaden' (also listed under 'pinterest downloaden'); 'gif downloaden pinterest' -> 'gif van pinterest downloaden'; English 'pinterest gif downloader' / 'pinterest gif download'; 'hoe sla je een gif op' -> 'in whatsapp', 'iphone'; 'pinterest gif naar mp4' -> 'pinterest gif mp4'. Competitors pindown/snappin both have a Dutch GIF page.",
+      "title": "Pinterest GIF downloaden — bewegende GIF's gratis opslaan",
+      "titleLength": 57,
+      "description": "Download een GIF van Pinterest mét animatie: plak de link van een openbare GIF-pin en sla het bewegende bestand op. Gratis, zonder account of app.",
+      "descriptionLength": 146,
+      "h1": "Pinterest GIF downloaden",
+      "lede": "De hele loop, geen stilstaand plaatje. Gratis en zonder account.",
+      "faqTopics": [
+        "Hoe download je een GIF van Pinterest?",
+        "Waarom werd mijn GIF opgeslagen als stilstaande foto?",
+        "Blijft de GIF bewegen in Foto's of de galerij? (iPhone: album 'Geanimeerd'; verify label on device)",
+        "Hoe stuur ik een Pinterest-GIF via WhatsApp? (autocomplete 'hoe gif opslaan whatsapp')",
+        "GIF of MP4: wat is het verschil?",
+        "Heb ik een Pinterest-account nodig?"
+      ],
+      "hreflangAlternates": {
+        "en": "https://pintdownload.app/pinterest-gif-downloader",
+        "nl": "https://pintdownload.app/nl/pinterest-gif-downloaden",
+        "x-default": "https://pintdownload.app/pinterest-gif-downloader"
+      },
+      "_h1Check": {
+        "uppercase": "PINTEREST GIF DOWNLOADEN",
+        "longestRun": "DOWNLOADEN",
+        "longestRunPx": 237.2,
+        "lineBudgetPx": 328,
+        "fullWidthPx": 486.4,
+        "fits": true
+      }
+    },
+    {
+      "enSlug": "pinterest-board-downloader",
+      "skip": false,
+      "slug": "pinterest-bord-downloaden",
+      "path": "/nl/pinterest-bord-downloaden",
+      "primaryKeyword": "pinterest bord downloaden",
+      "secondaryKeywords": [
+        "pinterest board downloaden",
+        "pinterest bord exporteren",
+        "pinterest bord opslaan",
+        "pinterest borden downloaden",
+        "pinterest profiel downloaden"
+      ],
+      "keywordEvidence": "'pinterest bord downloaden' (also listed under 'pinterest downloaden' and 'pinterest bord'); 'pinterest board downloaden' (English noun, Dutch verb) also completes; 'pinterest bord exporteren' completes. Pinterest's Dutch UI says 'bord'. Profile-ZIP has no Dutch demand, so it is a secondary here.",
+      "title": "Pinterest bord downloaden — alle pins als ZIP, gratis",
+      "titleLength": 53,
+      "description": "Download een openbaar Pinterest-bord in één keer: plak de bordlink en sla de pins op als ZIP met foto's en video's. Gratis, zonder account of extensie.",
+      "descriptionLength": 151,
+      "h1": "Pinterest bord downloaden",
+      "lede": "Een heel openbaar bord als één ZIP: foto's, video's en carrousels. Gratis, zonder extensie.",
+      "faqTopics": [
+        "Hoe download je een heel Pinterest-bord?",
+        "Hoe kopieer ik de link van een bord? (deelpictogram → Link kopiëren; autocomplete 'pinterest bord delen')",
+        "Kan ik een privébord of verborgen bord downloaden? (no; 'pinterest verborgen bord delen' shows users know the term)",
+        "Hoeveel pins komen er in de ZIP? (honest: what loads publicly; very large boards may be incomplete)",
+        "Kan ik een Pinterest-bord exporteren? ('pinterest bord exporteren')",
+        "Bord of profiel: wat is het verschil? (profile links also work in the tool; English profile page linked)",
+        "Zitten alle kaarten van een carrousel in de ZIP?"
+      ],
+      "hreflangAlternates": {
+        "en": "https://pintdownload.app/pinterest-board-downloader",
+        "nl": "https://pintdownload.app/nl/pinterest-bord-downloaden",
+        "x-default": "https://pintdownload.app/pinterest-board-downloader"
+      },
+      "_h1Check": {
+        "uppercase": "PINTEREST BORD DOWNLOADEN",
+        "longestRun": "DOWNLOADEN",
+        "longestRunPx": 237.2,
+        "lineBudgetPx": 328,
+        "fullWidthPx": 523.8,
+        "fits": true
+      }
+    },
+    {
+      "enSlug": "pinterest-profile-downloader",
+      "skip": true,
+      "skipReason": "No Dutch demand: 'pinterest profiel downloaden', 'pinterest profiel opslaan', 'pinterest alle pins van profiel downloaden', 'pinterest gebruiker pins downloaden' all return zero completions (NL and BE). 'pinterest profiel ...' completions are account tasks (verwijderen, prive maken, bekijken). Cover profile ZIP as a secondary keyword + FAQ on /nl/pinterest-bord-downloaden; link to the English tool.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "pinterest-profile-picture-downloader",
+      "skip": true,
+      "skipReason": "No Dutch download demand: 'pinterest profielfoto downloaden/opslaan/bekijken/groot/zien/vergroten' all empty. 'pinterest profielfoto' completes only with 'verwijderen' and 'leuke profielfoto pinterest' (people looking for profile-picture IDEAS on Pinterest, a different intent). 'pinterest pfp downloader' exists only as an English query, served by the English page.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "pinterest-carousel-downloader",
+      "skip": true,
+      "skipReason": "No Dutch demand: 'pinterest carrousel downloaden', 'pinterest carousel downloaden', 'pinterest meerdere foto's downloaden' all empty; 'pinterest carrousel' completes with Instagram/LinkedIn and French terms. Folded into /nl/pinterest-pin-downloaden (secondary + FAQ) and the photo page FAQ.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "pinterest-story-downloader",
+      "skip": true,
+      "skipReason": "No Dutch demand ('pinterest idee pin(nen)', 'pinterest ideepin', 'pinterest idea pin downloaden', 'pinterest story/verhaal downloaden' all empty) and Pinterest retired the Idea Pin format (no Dutch help article exists any more). The English source page is also thin (one paragraph, no FAQ, no canonical prop).",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "pinterest-audio-downloader",
+      "skip": true,
+      "skipReason": "No Dutch demand: 'pinterest audio/muziek/geluid/liedje downloaden' and 'pinterest video naar mp3' all empty or return only English completions ('pinterest mp3 download', 'pinterest video mp3 downloader'). Dutch users who want MP3 type English and get the English page. Mention audio in the video page FAQ.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "pinterest-4k-downloader",
+      "skip": true,
+      "skipReason": "No Dutch demand ('pinterest video hd downloaden', 'pinterest hd downloaden', 'pinterest video downloaden hd' empty; 'pinterest 4k' completes in English, mostly wallpapers). It is also an honesty risk: PRODUCT.md says 'no fake 4K' and the English page claims '4K ultra quality'. Answer '4K?' honestly in the video page FAQ instead.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "pinterest-to-mp4",
+      "skip": true,
+      "skipReason": "Demand exists but is too thin to carry its own page: one Dutch completion ('van pinterest naar mp4'); everything else is English ('pinterest mp4 download/converter'). It is the same task as the video page, so a separate nl page would be a near-duplicate in a small market. 'van pinterest naar mp4' is a secondary keyword plus an H2 on /nl/pinterest-video-downloaden. Revisit if Search Console shows impressions for it.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [
+        "van pinterest naar mp4"
+      ],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "pinterest-video-downloader-chrome",
+      "skip": true,
+      "skipReason": "No Dutch demand for our intent: 'pinterest downloader extensie' empty; 'pinterest extensie chrome' (1 completion) most likely means Pinterest's own Save-button extension. 'pinterest video downloader chrome' is English-only. Our tool is a bookmarklet, not an extension, so a Dutch 'extensie' page would mislead.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "pinterest-seo-title-generator",
+      "skip": true,
+      "skipReason": "No Dutch demand ('pinterest titel generator', 'pinterest pin titel', 'pinterest beschrijving', 'pinterest seo nederlands', 'pinterest hashtags nederlands' all empty; 'pinterest titel' completes in German). Only 'pinterest zoekwoorden' exists. The generator's prompt (src/pages/api/generate-seo.ts) is English-only, and the English page has unsupported claims ('increases user clicks by up to 40%'). Localize only after the generator can output Dutch.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "how-to-download-pinterest-videos",
+      "skip": false,
+      "slug": "hoe-pinterest-video-downloaden",
+      "path": "/nl/hoe-pinterest-video-downloaden",
+      "primaryKeyword": "hoe pinterest video downloaden",
+      "secondaryKeywords": [
+        "hoe download je een video van pinterest",
+        "hoe kan ik filmpjes van pinterest downloaden",
+        "hoe sla je een video op van pinterest",
+        "video opslaan van pinterest",
+        "pinterest video downloaden laptop",
+        "pinterest video downloaden pc"
+      ],
+      "keywordEvidence": "'hoe pinterest video downloaden' is the completion for 4 different question seeds (and appears under 'pinterest video downloaden'); 'hoe download je een video van pinterest'; 'hoe sla je een video op van pinterest'; 'hoe kan ik filmpjes van pinterest downloaden'; 'video opslaan van pinterest'. Laptop/pc have no Dutch completions of their own (and 'pinterest downloaden laptop/pc' means installing the app), so the laptop intent is a section here.",
+      "title": "Hoe download je een Pinterest-video? Uitleg voor elk toestel",
+      "titleLength": 60,
+      "description": "Zo download je een video van Pinterest: tik op Delen → Link kopiëren, plak de link in PintDownload en sla de MP4 op. Voor iPhone, Android, laptop en pc.",
+      "descriptionLength": 152,
+      "h1": "Hoe download je een Pinterest-video?",
+      "lede": "Kopieer de link, plak hem, sla de MP4 op. Zo werkt het op telefoon, laptop en pc.",
+      "faqTopics": [
+        "Waarom heeft Pinterest geen downloadknop voor video's? (metricool topic; note: your OWN videos can be downloaded in the app)",
+        "Hoe kopieer ik de link in de app? (deelpictogram → Link kopiëren) en op de computer? (adresbalk)",
+        "Hoe download ik een Pinterest-video op mijn laptop, pc, Mac of Chromebook? (merged laptop page)",
+        "Waar komt de video terecht? (Downloads, Foto's, galerij)",
+        "Kan ik een video downloaden zonder app of account?",
+        "Mag ik Pinterest-video's downloaden? (personal use, credit the maker, ask before reposting)"
+      ],
+      "hreflangAlternates": {
+        "en": "https://pintdownload.app/how-to-download-pinterest-videos",
+        "nl": "https://pintdownload.app/nl/hoe-pinterest-video-downloaden",
+        "x-default": "https://pintdownload.app/how-to-download-pinterest-videos"
+      },
+      "_h1Check": {
+        "uppercase": "HOE DOWNLOAD JE EEN PINTEREST-VIDEO?",
+        "longestRun": "PINTEREST-",
+        "longestRunPx": 197.5,
+        "lineBudgetPx": 328,
+        "fullWidthPx": 717.3,
+        "fits": true
+      }
+    },
+    {
+      "enSlug": "how-to-download-pinterest-video-in-gallery",
+      "skip": false,
+      "slug": "pinterest-video-opslaan",
+      "path": "/nl/pinterest-video-opslaan",
+      "primaryKeyword": "pinterest video opslaan",
+      "secondaryKeywords": [
+        "video opslaan van pinterest",
+        "pinterest video opslaan in galerij",
+        "pinterest foto opslaan in filmrol",
+        "pinterest afbeelding opslaan op telefoon",
+        "pinterest video downloaden iphone",
+        "pinterest video downloaden android"
+      ],
+      "keywordEvidence": "'pinterest video opslaan' completes from 'pinterest opslaan' and 'pinterest video's opslaan'; 'video opslaan van pinterest'; phone-specific Dutch completions exist only for photos ('pinterest foto opslaan in filmrol', 'pinterest afbeelding opslaan op telefoon'); 'pinterest video downloaden iphone/android/samsung/ipad' and '... in galerij/filmrol' are empty, so one Dutch phone guide covers both OSes. 'opslaan' (save) is a separate verb cluster from 'downloaden', which limits cannibalization with the video tool page.",
+      "title": "Pinterest video opslaan in galerij of filmrol — zonder app",
+      "titleLength": 58,
+      "description": "Zo zet je een Pinterest-video in de Foto's-app van je iPhone of de galerij van je Android-telefoon: link kopiëren, plakken, MP4 opslaan. Gratis, zonder app.",
+      "descriptionLength": 156,
+      "h1": "Pinterest video opslaan in je galerij",
+      "lede": "Van link naar filmrol of galerij in drie stappen. Werkt op iPhone, iPad en Android, telefoon of gsm.",
+      "faqTopics": [
+        "Hoe zet ik een Pinterest-video in mijn filmrol op de iPhone? (Safari download → share sheet 'Bewaar video'; verify exact iOS nl labels on device)",
+        "Hoe zet ik een Pinterest-video in de galerij of Google Foto's op Android?",
+        "Waarom staat mijn gedownloade video niet in de galerij? (it is in Downloads/Bestanden; move it)",
+        "Heb ik een app nodig? (no; geen App Store- of Play Store-app)",
+        "Kost het geld of moet ik inloggen?",
+        "Kan ik ook foto's zo opslaan? (link to /nl/pinterest-foto-downloaden; 'pinterest foto opslaan in filmrol')"
+      ],
+      "hreflangAlternates": {
+        "en": "https://pintdownload.app/how-to-download-pinterest-video-in-gallery",
+        "nl": "https://pintdownload.app/nl/pinterest-video-opslaan",
+        "x-default": "https://pintdownload.app/how-to-download-pinterest-video-in-gallery"
+      },
+      "_h1Check": {
+        "uppercase": "PINTEREST VIDEO OPSLAAN IN JE GALERIJ",
+        "longestRun": "PINTEREST",
+        "longestRunPx": 177.0,
+        "lineBudgetPx": 328,
+        "fullWidthPx": 689.4,
+        "fits": true
+      }
+    },
+    {
+      "enSlug": "how-to-download-pinterest-video-on-laptop",
+      "skip": true,
+      "skipReason": "No Dutch demand: 'pinterest video downloaden laptop/pc/computer/mac/windows' and 'pinterest foto downloaden laptop' all empty. The Dutch completions 'pinterest downloaden laptop/pc/windows/macbook' mean installing the Pinterest app (wrong intent). Covered as a section + FAQ on /nl/hoe-pinterest-video-downloaden.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    },
+    {
+      "enSlug": "download-pinterest-videos-iphone-android",
+      "skip": true,
+      "skipReason": "Merged: Dutch queries do not split by OS ('pinterest video downloaden iphone/android/samsung/ipad', 'pinterest video opslaan iphone/android' all empty), and the English gallery page and this page target the same intent. One Dutch phone guide (/nl/pinterest-video-opslaan, hreflang-paired with how-to-download-pinterest-video-in-gallery) avoids two thin near-duplicates. Do not emit an nl alternate on this English page.",
+      "slug": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "title": null,
+      "description": null,
+      "h1": null,
+      "faqTopics": []
+    }
+  ],
+  "glossary": {
+    "_voice": "Informal 'je/jij' throughout (Pinterest's Dutch help center uses 'je'; competitors that mix 'u' and 'je' read as machine-translated). Sentence case in titles and meta descriptions (Dutch does not title-case; H1/H2 are uppercased by CSS anyway). Short imperative sentences: 'Plak de link.' 'Tik op Delen.'",
+    "_spelling": "Proper noun + noun compounds take a hyphen in running text: Pinterest-link, Pinterest-video, Pinterest-video's, Pinterest-bord, GIF-pin, pin.it-link, ZIP-bestand, MP4-video. Keyword-led H1s/titles may keep the space form people type ('Pinterest video downloaden'); Google treats both the same. Plurals of words ending in a vowel take an apostrophe: video's, foto's, GIF's, dia's. Never 'videos'/'fotos'.",
+    "UI": {
+      "Paste Pinterest link (pin, video, board, profile)…": "Plak een Pinterest-link (pin, video, bord, profiel)…",
+      "Download MP4 / Download photo / Download ZIP (stub button)": "Download MP4 / Download foto / Download ZIP ('download' is the correct Dutch imperative). Fix: the current nl string uses 'Download MP4' for every variant, so the board page would show 'Download MP4'.",
+      "Extracting HD media… (processingText)": "Bestand ophalen… (replace the current 'HD-media uitpakken…'; 'uitpakken' means unzipping)",
+      "Fetching from Pinterest…": "Ophalen bij Pinterest…",
+      "Processing links… / Extract all": "Links verwerken… / Alles ophalen",
+      "Waiting for a link": "Wacht op een link",
+      "Takes a pin / video pin / image pin / GIF pin / board link / profile link": "Voor een pinlink / videopin / afbeeldingspin / GIF-pin / bordlink / profiellink",
+      "Pick the tool for your link": "Kies de tool voor je link",
+      "Open that tool": "Open die tool",
+      "Rack chips: Pin · Video MP4 · HD photo · GIF · Board ZIP · Profile ZIP · Avatar / DP": "Pin · Video MP4 · HD-foto · GIF · Bord-ZIP · Profiel-ZIP · Profielfoto",
+      "Image pin / Video pin / GIF pin / Carousel / Board / Profile / Profile picture (result kind)": "Afbeeldingspin / Videopin / GIF-pin / Carrousel / Bord / Profiel / Profielfoto",
+      "Every slide": "Alle afbeeldingen (Pinterest calls carousel slides 'kaarten'; users say 'foto's')",
+      "Also in this pin / Also on this profile": "Ook in deze pin / Ook op dit profiel",
+      "Repost caption": "Bijschrift kopiëren",
+      "Recent links": "Recente links",
+      "N files collected": "{n} bestanden opgehaald (1 bestand opgehaald)",
+      "Paste a link first": "Plak eerst een link",
+      "That isn't a Pinterest link": "Dit is geen Pinterest-link",
+      "In the Pinterest app tap Share → Copy link, then paste it into the ticket.": "Tik in de Pinterest-app op Delen → Link kopiëren en plak de link op de bon.",
+      "Nothing public to collect": "Niets openbaars om op te halen",
+      "Only public pins, boards and profiles can be saved. Secret boards and private accounts stay private.": "Alleen openbare pins, borden en profielen kun je downloaden. Privé- en verborgen borden en privéaccounts blijven privé.",
+      "This pin was taken down": "Deze pin is verwijderd",
+      "The file didn't download": "Het bestand is niet gedownload",
+      "Pinterest sometimes stops serving a file. Try the link again.": "Pinterest levert een bestand soms even niet. Probeer de link opnieuw.",
+      "Couldn't collect this link": "Deze link konden we niet ophalen",
+      "Check the link opens on Pinterest, then try again.": "Controleer of de link op Pinterest opent en probeer het opnieuw.",
+      "How it works": "Zo werkt het (shorter and more natural than the current 'Hoe het werkt')",
+      "FAQs": "Veelgestelde vragen",
+      "Related tools": "Andere tools",
+      "Step 1/2/3": "Stap 1/2/3"
+    },
+    "product": {
+      "pin": "pin, plural pins. Never 'pinnen' (also means paying by debit card).",
+      "video pin": "videopin",
+      "image pin": "afbeeldingspin (UI); 'foto' in marketing copy",
+      "board": "bord, plural borden ('board' only as a keyword variant)",
+      "secret board": "privébord / verborgen bord",
+      "profile": "profiel",
+      "profile picture / PFP / DP / avatar": "profielfoto (PFP/DP are not used in Dutch)",
+      "carousel": "carrousel (double r, Dutch spelling); slides = kaarten (Pinterest) / afbeeldingen",
+      "Idea Pin / Story Pin": "Idee-pin (legacy; avoid in new copy)",
+      "save (Pinterest action)": "Bewaren. Pinterest uses it for saving to a board. For files, use 'downloaden' or 'opslaan'.",
+      "download (to device)": "downloaden (verb), download (noun/imperative); 'opslaan' for putting the file into Foto's/galerij",
+      "share / copy link": "Delen / Link kopiëren (exact Pinterest labels)",
+      "three dots menu": "de drie puntjes (…)",
+      "home feed": "startpagina",
+      "public / private": "openbaar / privé",
+      "link / URL": "link (not 'koppeling'); 'URL' only in technical help",
+      "short link pin.it": "pin.it-link",
+      "camera roll (iPhone)": "Foto's-app; colloquially 'filmrol'",
+      "gallery (Android)": "galerij; Google Foto's",
+      "Downloads folder": "map Downloads; iOS 'Bestanden'-app",
+      "phone": "telefoon (NL+BE); add 'gsm' once in phone-guide copy for Flemish readers (no 'gsm' download completions were found)",
+      "laptop / desktop": "laptop, pc, computer (avoid 'desktop' as a noun in body copy)",
+      "free / no login / no watermark / no app": "gratis / zonder account (or zonder inloggen) / zonder watermerk / zonder app",
+      "bookmarklet": "bookmarklet ('bladwijzerknop' as a gloss on first use)",
+      "browser extension": "extensie",
+      "credit creators": "vermeld de maker",
+      "not affiliated with Pinterest Inc.": "PintDownload is niet verbonden aan Pinterest Inc."
+    },
+    "claimTicketMetaphor": {
+      "_approach": "Dutch has a plain everyday word for a cloakroom/collection ticket: 'bon' / 'bonnetje' / 'afhaalbon'. Use those instead of carrying 'ticket' over literally. 'Ticket' works in Dutch for event/transport tickets, but the claim idea lives in 'afhalen' (collect at a counter).",
+      "claim ticket": "afhaalbon (UI); 'de bon' in running copy ('plak de link op de bon')",
+      "Admit one · public link (ticket header label)": "Afhaalbon · openbare link. Alternative closer to 'admit one': 'Geldig voor één · openbare link'. Measured at the 14px label size: 147px vs 127px for the English label, so it fits.",
+      "No. 1120271 (serial)": "Nr. 1120271",
+      "stub / tear-off stub": "strook / afscheurstrook (internal design term only; never shown as UI text)",
+      "collect / collected": "ophalen / opgehaald (also 'afhalen' in metaphor copy: 'Plak je link, haal je bestand op.')",
+      "counter": "balie",
+      "perforation": "perforatie",
+      "stamp Done": "Klaar (or 'Opgehaald')",
+      "stamp Void": "Ongeldig",
+      "stamp Partial": "Deels (shorter than 'Gedeeltelijk', 70px at 14px)",
+      "stamp Not Pinterest": "Geen Pinterest",
+      "Paste link, keep file. (index lede)": "Plak de link, krijg het bestand."
+    }
+  },
+  "formats": {
+    "locale": "nl (Intl: 'nl-NL'; use 'nl-BE' only if a Belgian variant is ever split out)",
+    "numbers": "Decimal comma, thousands dot: 2,4 MB; 12.500. Resolutions and pixel sizes without separators: 1080p, 1200 px. Space between number and unit: 15 MB, 1200 px.",
+    "dates": "Long form '14 oktober 2026' (month lowercase). Numeric: NL '14-10-2026', BE '14/10/2026'. Keep ISO 8601 in JSON-LD.",
+    "time": "24-hour: 14:30 (NL also '14.30 uur').",
+    "currency": "€ 0 / 'gratis' (no prices needed; JSON-LD offers price '0' with priceCurrency 'EUR' or keep 'USD' sitewide).",
+    "quotes": "Typographic: ‘enkel’ or “dubbel”. Avoid „…” (low-high, old-fashioned on screen). Button and menu names from Pinterest in bold, not in quotes, like the English pages do.",
+    "listsAndSteps": "'Stap 1', 'Stap 2'; HowTo JSON-LD step names in Dutch.",
+    "dashes": "Dutch uses a spaced en dash (–) in prose. Titles keep the spaced em dash (—) because BaseLayout derives the breadcrumb name with title.split('—')[0].",
+    "fileNames": "Keep ASCII download file names (pinterest-<id>.mp4); do not translate.",
+    "ogLocale": "og:locale nl_NL (BE readers are served the same page)"
+  },
+  "notes": {
+    "hreflangReasoning": "Use 'nl' (language only), not 'nl-NL'. One Dutch version serves both the Netherlands and Flanders: Pinterest's own Dutch UI is a single locale (help.pinterest.com/nl/), the vocabulary in this niche is identical (NL and BE autocomplete matched for 190 of 210 seeds; the 20 differences were ordering or one extra English suggestion), and every Dutch competitor that sets hreflang uses 'nl'. 'nl-NL' alone would tell Google the page targets only the Netherlands. Pair each kept page reciprocally with its English page (hreflang en + nl + x-default=en). Skipped pages must not emit an nl alternate. Set <html lang='nl'>; BaseLayout currently hard-codes lang='en' and emits only en/x-default alternates.",
+    "urlScheme": "Prefix /nl/ plus a Dutch slug (/nl/pinterest-video-downloaden). The Dutch home is /nl (no trailing slash, matching normalizeCanonical for non-root paths). Competitors keep English slugs (/nl/pinterest-gif-downloader); a Dutch slug matches the query exactly and is a cheap advantage.",
+    "marketReality": "Dutch speakers search Pinterest downloading in English as much as in Dutch: 'pinterest video downloader', 'pinterest downloader', 'pinterest pin downloader', 'pinterest 4k', 'pinterest mp3' all return English completions under hl=nl. The English pages will keep catching those, so the Dutch pages should own the Dutch verb phrases (downloaden / opslaan) and the 'hoe ...' questions. Expect lower volume per page than English; the bar for quality is low (competitor nl pages are machine-translated, one has Italian leftovers), so well-written native copy is the main edge.",
+    "cannibalizationPlan": "Tool page /nl/pinterest-video-downloaden owns 'pinterest video downloaden' (+online/gratis/MP4). Guide /nl/hoe-pinterest-video-downloaden owns the 'hoe ...' questions and laptop/pc. Phone guide /nl/pinterest-video-opslaan owns 'opslaan' + galerij/filmrol. Cross-link all three with distinct anchors.",
+    "keptPages": 8,
+    "skippedPages": 11,
+    "honestyRisks": [
+      "Do not localize the English 4K page's '4K ultra quality' or 'original uncompressed' claims. PRODUCT.md: no fake 4K.",
+      "Do not carry over the SEO generator page's 'increases user clicks by up to 40%' (an unsupported statistic).",
+      "Image quality: the pipeline rewrites blocked 'originals' to 1200x (tests/seo-invariants.entry.ts), so Dutch copy says 'grootste openbare versie', not 'originele resolutie'.",
+      "Existing nl heroSubtitle in src/lib/i18n.ts promises '1080p HD-kwaliteit' for everything; soften it to 'in de beste beschikbare kwaliteit'.",
+      "Copyright FAQs: describe norms (personal use, credit the maker, ask before reposting); do not give legal advice or cite Dutch 'thuiskopie' law.",
+      "iOS Dutch share-sheet labels ('Bewaar video', 'Bewaar in Bestanden') and the iOS 'Geanimeerd' album name came from general knowledge, not a fetched source. Check them on a device before publishing."
+    ],
+    "implementationGotchas": [
+      "BaseLayout: <html lang='en'> and hreflang en/x-default are hard-coded. Localized pages need a lang prop and a real alternates list.",
+      "BaseLayout breadcrumb name = title.split('—')[0]; keep the em dash in Dutch titles (all kept titles except the how-to question title include it; there the full title becomes the breadcrumb, which is acceptable, or pass an explicit breadcrumb name).",
+      "DownloaderForm uses t.downloadButton ('Download MP4') for every variant when lang != 'en', so the board and photo pages would show 'Download MP4'. Dutch needs one submit label per variant.",
+      "seo_health_check.py checks every dist HTML: one H1, canonical, JSON-LD, title 30–65 (warning outside 40–62), description 110–160 (warning outside 120–158), img alt. Every validated nl title/description is inside the strict 40–62 / 120–158 band.",
+      "SITEMAP_ROUTES test only requires English money paths. Add the /nl paths to the sitemap with xhtml:link alternates.",
+      "Translated FAQ answers must also be translated in JSON-LD (faqSchema/howToSchema), not left in English."
+    ],
+    "typography": {
+      "glyphCoverage": "Checked big-shoulders-display-latin-900 with fontTools: ë ï é è ó ö ü á à ê É Ë Ï Ö Ü ’ ‘ “ ” „ – — € · all present. U+0132/0133 (Ĳ ĳ ligature) are missing, which is fine: always type IJ as two letters (the standard practice).",
+      "uppercaseIJ": "Headlines are uppercased by CSS; with lang='nl', 'ij' uppercases to 'IJ' correctly. Never use text-transform: capitalize on Dutch (it gives 'Ijs' instead of 'IJs').",
+      "lengthExpansion": "Keyword-led H1s are length-neutral because 'downloaden' replaces 'Downloader' (measured at 46px: −4% to +1% vs English). The guide H1s are shorter than the English ones (−17% and −25%). Body copy runs about 10–20% longer than English, which matters only in fixed-width chips and stamps: 'AFHAALBON · OPENBARE LINK' measures 147px vs 127px at 14px; stamp 'GEDEELTELIJK' is 70px, so prefer 'DEELS'.",
+      "longCompounds": "Dutch glues nouns together. At the phone H1 size (46px, 328px line), any single word over ~14 uppercase letters overflows: 'PROFIELFOTODOWNLOADER' measures 451px and competitor-style 'PINTEREST-AFBEELDINGSDOWNLOADER' 653px. Keep H1/H2 words short (the validated H1s' longest run is 'DOWNLOADEN' at 237px), and add hyphens:auto with lang='nl' plus overflow-wrap:anywhere as a safety net on display headings.",
+      "apostrophes": "Plural apostrophes (VIDEO'S, FOTO'S, GIF'S) render in the gothic; use the typographic ’ in display text. Strip apostrophes from slugs (no apostrophes in any chosen slug)."
+    },
+    "opportunitiesNotPages": [
+      "'pinterest zonder account' / 'pinterest bekijken zonder inloggen' is a large Dutch cluster (10+ completions). We do not offer browsing, but the home and photo FAQ should answer 'downloaden zonder account'.",
+      "'pinterest afbeeldingen gebruiken' and 'pinterest afbeelding printen' are real Dutch questions; answer them in the photo FAQ.",
+      "'pin.it link safe / virus / scam' completes; a short pin.it explainer in the pin FAQ builds trust."
+    ],
+    "method": "Google autocomplete (suggestqueries client=firefox, hl=nl, gl=nl and gl=be, ie/oe=utf-8), 1.1 s between requests, fetched 2026-10-14; raw lists in evidence.autocomplete.raw. Empty lists mean no completion, which suggests low volume but does not prove zero. Competitor pages fetched directly (title/description/H1/H2/H3/hreflang). Pinterest terms are from help.pinterest.com/nl articles fetched the same day."
+  }
+}

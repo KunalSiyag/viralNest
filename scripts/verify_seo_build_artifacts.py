@@ -6,6 +6,7 @@ Exits non-zero if money-page or sitewide SEO invariants fail.
 
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
@@ -66,7 +67,20 @@ def canonical(html: str) -> str | None:
 
 
 def hreflangs(html: str) -> set[str]:
-    return set(re.findall(r'hreflang="([^"]+)"', html, re.I))
+    """hreflang codes of the head <link rel=alternate> cluster (not language-menu links)."""
+    return set(re.findall(r'<link rel="alternate" hreflang="([^"]+)"', html, re.I))
+
+
+def load_routes(out: Path) -> dict:
+    """dist/.i18n-routes.json: written by the pintdownload-i18n integration (astro.config.mjs)."""
+    fp = out / ".i18n-routes.json"
+    if not fp.exists():
+        raise SystemExit("dist/.i18n-routes.json missing: the i18n build integration did not run")
+    return json.loads(fp.read_text(encoding="utf-8"))
+
+
+def html_file_for(out: Path, path: str) -> Path:
+    return out / "index.html" if path == "/" else out / path.lstrip("/") / "index.html"
 
 
 def main() -> int:
@@ -74,6 +88,8 @@ def main() -> int:
     errors: list[str] = []
     titles: dict[str, str] = {}
     descs: dict[str, str] = {}
+    routes = load_routes(out)
+    route_pages: dict = routes["pages"]
 
     for key, (rel, path_suffix) in MONEY.items():
         fp = out / rel
@@ -109,8 +125,10 @@ def main() -> int:
                 errors.append(f"{key}: canonical {can!r} != {expected!r}")
             if can.endswith("/") and can != "https://pintdownload.app/":
                 errors.append(f"{key}: trailing slash on canonical")
-        if hl - {"en", "x-default"}:
-            errors.append(f"{key}: unexpected hreflang {hl}")
+        # The expected cluster comes from the route map (src/i18n/routes.ts), not a hard-coded set.
+        expected = {a["hreflang"] for a in route_pages.get(path_suffix, {}).get("alternates", [])} or {"en", "x-default"}
+        if hl != expected:
+            errors.append(f"{key}: hreflang {sorted(hl)} != route map {sorted(expected)}")
         if "en" not in hl or "x-default" not in hl:
             errors.append(f"{key}: missing en/x-default hreflang")
         if html.count("<h1") + html.count("<h1 ") < 1 and not re.search(r"<h1[\s>]", html, re.I):
@@ -119,6 +137,54 @@ def main() -> int:
                 errors.append(f"{key}: missing h1")
         if "application/ld+json" not in html:
             errors.append(f"{key}: missing JSON-LD")
+
+    # Localized money pages (home, video, pin, image, board) of every routed locale.
+    LOCAL_MONEY = [
+        "home",
+        "pinterest-video-downloader",
+        "pinterest-pin-downloader",
+        "pinterest-image-downloader",
+        "pinterest-board-downloader",
+    ]
+    local_titles: dict[str, dict[str, str]] = {}
+    local_descs: dict[str, dict[str, str]] = {}
+    for path, info in sorted(route_pages.items()):
+        loc = info["locale"]
+        if loc == "en":
+            continue
+        fp = html_file_for(out, path)
+        if not fp.exists():
+            errors.append(f"{loc}: routed page missing from dist: {path}")
+            continue
+        html = read(fp)
+        t = title_text(html)
+        d = meta_content(html, "description") or ""
+        local_titles.setdefault(loc, {})[path] = t
+        local_descs.setdefault(loc, {})[path] = d
+        if info["pageId"] not in LOCAL_MONEY:
+            continue
+        key = f"{loc}:{info['pageId']}"
+        robots = (meta_content(html, "robots") or "").lower()
+        if "noindex" in robots:
+            errors.append(f"{key}: unexpected noindex")
+        if canonical(html) != f"https://pintdownload.app{path}":
+            errors.append(f"{key}: canonical {canonical(html)!r} is not self")
+        if "application/ld+json" not in html:
+            errors.append(f"{key}: missing JSON-LD")
+        if "aggregateRating" in html:
+            errors.append(f"{key}: fabricated aggregateRating present")
+        if re.search(r'name=["\']keywords["\']', html, re.I):
+            errors.append(f"{key}: meta keywords present")
+        expected = {a["hreflang"] for a in info["alternates"]}
+        if hreflangs(html) != expected:
+            errors.append(f"{key}: hreflang {sorted(hreflangs(html))} != route map {sorted(expected)}")
+    for loc, by_path in local_titles.items():
+        vals = list(by_path.values())
+        if len(vals) != len(set(vals)):
+            errors.append(f"{loc}: duplicate titles {by_path}")
+        dvals = list(local_descs[loc].values())
+        if len(dvals) != len(set(dvals)):
+            errors.append(f"{loc}: duplicate descriptions")
 
     # Uniqueness of titles and descriptions across money pages
     title_vals = list(titles.values())
@@ -204,6 +270,7 @@ def main() -> int:
 
     print(f"✅ SEO build artifacts OK under {out}")
     print(f"   Money titles unique: {len(titles)}")
+    print(f"   Localized pages checked: {sum(len(v) for v in local_titles.values())} across {len(local_titles)} locale(s)")
     print(f"   Sitemap + noindex policy verified")
     return 0
 

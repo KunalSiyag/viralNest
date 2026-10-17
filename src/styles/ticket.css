@@ -1,11 +1,55 @@
 /* Claim-ticket world: perforated ticket-roll stock on a counter. */
 
+/* ---------- Display faces, one per script ----------
+   Self-hosted subsets built by scripts/fonts/build_script_fonts.py (OFL-1.1,
+   licences in public/fonts/licenses/). Every file carries a unicode-range, so a
+   page downloads only the files its own letters need. Where Big Shoulders'
+   ranges overlap, the face declared last is tried first, so the order is Latin
+   Extended, Vietnamese, Latin: Œ and ı come from the Latin file (fr and tr
+   headlines without Ğ İ Ş never pull Latin Extended) and /vi takes Ă Đ Ơ Ư from
+   the small Vietnamese file. */
+/* tr: Ğ ğ İ Ş ş */
+@font-face {
+  font-family: 'Big Shoulders Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/big-shoulders-display-latin-ext-800-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Big Shoulders Display';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/big-shoulders-display-latin-ext-900-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* vi: Ă Đ Ơ Ư and the toned letters */
+@font-face {
+  font-family: 'Big Shoulders Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/big-shoulders-display-vietnamese-800-normal.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Big Shoulders Display';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/big-shoulders-display-vietnamese-900-normal.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* Latin: every page */
 @font-face {
   font-family: 'Big Shoulders Display';
   font-style: normal;
   font-weight: 800;
   font-display: swap;
   src: url('/fonts/big-shoulders-display-latin-800-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: 'Big Shoulders Display';
@@ -13,6 +57,101 @@
   font-weight: 900;
   font-display: swap;
   src: url('/fonts/big-shoulders-display-latin-900-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* ru: Sofia Sans Extra Condensed sets the whole headline, Latin words too, so
+   the face never changes mid-line. One weight (900) serves 800 and 900. Its caps
+   stand 0.655em tall against Big Shoulders' 0.8em: size-adjust brings them to
+   the same printed height. */
+@font-face {
+  font-family: 'PD Cyrillic Display';
+  font-style: normal;
+  font-weight: 800 900;
+  font-display: swap;
+  src: url('/fonts/sofia-sans-extra-condensed-cyrillic-900-normal.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 116%;
+}
+@font-face {
+  font-family: 'PD Cyrillic Display';
+  font-style: normal;
+  font-weight: 800 900;
+  font-display: swap;
+  src: url('/fonts/sofia-sans-extra-condensed-latin-900-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  size-adjust: 116%;
+}
+/* th: Noto Sans Thai, condensed (wdth 75) at 900 */
+@font-face {
+  font-family: 'PD Thai Display';
+  font-style: normal;
+  font-weight: 800 900;
+  font-display: swap;
+  src: url('/fonts/noto-sans-thai-cond-900.woff2') format('woff2');
+  unicode-range: U+0E01-0E5B, U+200C-200D, U+25CC;
+}
+/* ar: Noto Sans Arabic, condensed (wdth 75) at 900; Western digits stay in
+   Big Shoulders, which comes first in the stack */
+@font-face {
+  font-family: 'PD Arabic Display';
+  font-style: normal;
+  font-weight: 800 900;
+  font-display: swap;
+  src: url('/fonts/noto-sans-arabic-cond-900.woff2') format('woff2');
+  unicode-range: U+0600-065F, U+066A-066D, U+0670-0671, U+067E, U+0686, U+06A4, U+06A9, U+06AF, U+06CC, U+200C-200F, U+2010-2011, U+204F, U+2E41;
+}
+
+/* Metric-matched stand-ins while the display faces load (font-display: swap).
+   Width matters, not height: every display line-height is a number, so only a
+   different wrap moves the page. Arial / Helvetica / Liberation Sans / Roboto
+   bold caps run 1/0.69 as wide as Big Shoulders 900 and 1/0.745 as wide as
+   Sofia Sans Extra Condensed at its 116% (measured on en, tr and ru headlines),
+   so these faces scale them down to wrap where the real face wraps (tr
+   "PINTEREST İNDİRİCİ" no longer drops to two lines and back). Latin, Latin
+   Extended and Vietnamese only, so Thai and Arabic letters never take them. */
+@font-face {
+  font-family: 'PD Display Fallback';
+  font-weight: 800 900;
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Neue Bold'), local('HelveticaNeue-Bold'),
+    local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Roboto Bold'), local('Roboto-Bold');
+  size-adjust: 68.5%;
+  unicode-range: U+0000-024F, U+0300-036F, U+1E00-1EFF, U+2000-206F, U+20AC, U+2116, U+2122;
+}
+@font-face {
+  font-family: 'PD Cyrillic Fallback';
+  font-weight: 800 900;
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Neue Bold'), local('HelveticaNeue-Bold'),
+    local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Roboto Bold'), local('Roboto-Bold');
+  size-adjust: 74.5%;
+  unicode-range: U+0000-024F, U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2000-206F, U+2116;
+}
+
+/* th: Noto Sans Thai Bold (Android) runs 1/0.90 as wide as the condensed
+   900 display cut; Thai only, measured on th headlines. */
+@font-face {
+  font-family: 'PD Thai Fallback';
+  font-weight: 800 900;
+  src: local('Noto Sans Thai Bold'), local('NotoSansThai-Bold'), local('Thonburi-Bold'), local('Leelawadee UI Bold'),
+    local('LeelawadeeUI-Bold'), local('Tahoma Bold'), local('Tahoma-Bold');
+  size-adjust: 90%;
+  unicode-range: U+0E01-0E5B;
+}
+
+/* One custom property carries the display voice (.t-display, .t-label, serials,
+   stamps, the stub, receipts, tool-body headings, Tailwind's font-display).
+   lang="en" inside another locale (the brand mark) returns to Big Shoulders. */
+:root,
+:lang(en) {
+  --font-display: 'Big Shoulders Display', 'PD Display Fallback', 'Arial Narrow', ui-sans-serif, sans-serif;
+}
+:lang(ru) {
+  --font-display: 'PD Cyrillic Display', 'PD Cyrillic Fallback', 'Arial Narrow', ui-sans-serif, sans-serif;
+}
+:lang(th) {
+  --font-display: 'Big Shoulders Display', 'PD Thai Display', 'PD Display Fallback', 'PD Thai Fallback', ui-sans-serif, sans-serif;
+}
+:lang(ar) {
+  --font-display: 'Big Shoulders Display', 'PD Arabic Display', 'PD Display Fallback', ui-sans-serif, sans-serif;
 }
 
 :root {
@@ -88,14 +227,14 @@ h1, h2, h3 {
 /* Display voice */
 .font-display,
 .t-display {
-  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-family: var(--font-display);
   font-weight: 900;
   letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
   text-transform: uppercase;
 }
 .t-label {
-  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: 0.875rem;
   letter-spacing: 0.08em;
@@ -258,7 +397,7 @@ h1, h2, h3 {
   --notch: 14px;
   position: relative;
   color: var(--ink);
-  text-align: left;
+  text-align: start;
   isolation: isolate;
 }
 .ticket-paper {
@@ -275,12 +414,16 @@ h1, h2, h3 {
   padding: 0.75rem 1rem 0.5rem;
   border-bottom: 2px solid var(--ink);
   margin: 0 0.75rem;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
+  padding-inline: 0.25rem;
 }
 .ticket-head .t-label { white-space: nowrap; flex-shrink: 0; }
+/* A label longer than English (it, th, tr, vi, ru) would leave the pin id an
+   ellipsis on phones: the serial drops to its own line instead and is cut only
+   when even a full line cannot hold it. */
+.ticket-head { flex-wrap: wrap; row-gap: 0.125rem; }
+.ticket-head .ticket-serial { margin-inline-start: auto; }
 .ticket-serial {
-  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
@@ -300,7 +443,8 @@ h1, h2, h3 {
   border: 2px solid var(--ink);
   border-radius: 4px;
   background: var(--paper);
-  padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+  padding-block: 0.25rem;
+  padding-inline: 0.75rem 0.25rem;
   transition: border-color 160ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .ticket-input:focus-within {
@@ -348,8 +492,8 @@ h1, h2, h3 {
   border-radius: 50%;
   background: var(--notch-fill, var(--field));
 }
-.perf::before { left: calc(var(--notch) * -1); }
-.perf::after { right: calc(var(--notch) * -1); }
+.perf::before { inset-inline-start: calc(var(--notch) * -1); }
+.perf::after { inset-inline-end: calc(var(--notch) * -1); }
 
 /* The tear-off stub: its own piece of ink stock, and the primary action */
 .stub {
@@ -369,7 +513,7 @@ h1, h2, h3 {
   border-top: 3px dashed var(--paper);
   background: #17191e;
   color: #ffffff;
-  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: 1.625rem;
   letter-spacing: 0.04em;
@@ -395,7 +539,7 @@ h1, h2, h3 {
   padding: 0.2rem 0.55rem 0.15rem;
   border: 2px solid currentColor;
   border-radius: 3px;
-  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: 0.95rem;
   letter-spacing: 0.06em;
@@ -452,7 +596,7 @@ h1, h2, h3 {
   padding-top: 1.25rem;
 }
 .void-no {
-  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: 5.75rem;
   line-height: 0.85;
@@ -483,6 +627,17 @@ h1, h2, h3 {
   transition: background-color 160ms ease, color 160ms ease;
 }
 .void-btn:hover { background: var(--ink); color: var(--paper); }
+.void-btn--en {
+  flex-direction: column;
+  gap: 0.0625rem;
+  padding-block: 0.375rem;
+  line-height: 1.2;
+}
+.void-btn-note {
+  font-size: 0.875rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
 .void-ticket .stub-btn { text-decoration: none; }
 
 /* Section rules on the counter */
@@ -504,7 +659,7 @@ h1, h2, h3 {
 .ad-slot > .ad-label {
   position: absolute;
   top: 0.375rem;
-  left: 0.625rem;
+  inset-inline-start: 0.625rem;
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -521,12 +676,12 @@ h1, h2, h3 {
   .ad-slot { height: var(--ad-h-lg, 250px); }
 }
 
-/* Tool page body: one left edge; nested section padding collapses into it */
-.tool-body .mx-auto { margin-left: 0; margin-right: 0; }
-.tool-body .text-center { text-align: left; }
-.tool-body .max-w-6xl { max-width: none; padding-left: 0; padding-right: 0; }
+/* Tool page body: one start edge; nested section padding collapses into it */
+.tool-body .mx-auto { margin-inline: 0; }
+.tool-body .text-center { text-align: start; }
+.tool-body .max-w-6xl { max-width: none; padding-inline: 0; }
 .tool-body h2:not(.t-display):not(.text-sm):not(.text-base) {
-  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-family: var(--font-display);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.01em;
@@ -534,9 +689,16 @@ h1, h2, h3 {
   line-height: 0.98;
 }
 .tool-body code { overflow-wrap: anywhere; }
+/* A chip with its suffix glued on (de "/pin/-Links", "pin.it,"): no end
+   padding, so the hyphen or comma does not read as a separate word. */
+code.code-glued {
+  padding-inline-end: 0.0625rem !important;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
 .tool-body h2.text-sm,
 .tool-body h2.text-base {
-  font-family: 'Big Shoulders Display', 'Arial Narrow', ui-sans-serif, sans-serif;
+  font-family: var(--font-display);
   font-weight: 900;
   text-transform: uppercase;
   font-size: 1.375rem;
@@ -556,3 +718,120 @@ h1, h2, h3 {
   color: var(--ink);
   outline-color: var(--chip);
 }
+
+/* ---------- Scripts: line-height, tracking, case ----------
+   The display line-height (0.88–0.9) clips marks above capitals and lets them
+   collide across lines. Big Shoulders' accented capitals reach 0.98em above the
+   baseline, Vietnamese stacked marks (Ắ Ẩ) 1.16em, Thai tone marks over upper
+   vowels about 1em, Arabic dots and marks 1.1em. Each script gets the leading
+   it needs on headings; English is untouched. Positive tracking pulls Thai
+   clusters and joined Arabic letters apart, so it is 0 there, and caseless
+   scripts print as written. */
+:is(h1, h2, h3).t-display:is(:lang(es), :lang(pt), :lang(fr), :lang(de), :lang(it), :lang(nl), :lang(id), :lang(tr)),
+.tool-body h2:not(.t-display):not(.text-sm):not(.text-base):is(:lang(es), :lang(pt), :lang(fr), :lang(de), :lang(it), :lang(nl), :lang(id), :lang(tr)) {
+  line-height: 1;
+  padding-top: 0.08em;
+}
+:is(h1, h2, h3).t-display:lang(vi),
+.tool-body h2:not(.t-display):not(.text-sm):not(.text-base):lang(vi) {
+  line-height: 1.2;
+  padding-top: 0.12em;
+}
+:is(h1, h2, h3).t-display:lang(ru),
+.tool-body h2:not(.t-display):not(.text-sm):not(.text-base):lang(ru) {
+  /* Й and Ё reach 1em above the baseline at Sofia's 116%: at 1.0 the breve
+     touched (or crossed into) the letters of the line above. */
+  line-height: 1.1;
+}
+@media (min-width: 1024px) {
+  /* At desktop sizes 1.1 still let a breve meet a Д descender on the line
+     above (about 3px at 51px); 1.16 clears it. The hero H1 keeps its own
+     seam rule below. */
+  h2.t-display:lang(ru),
+  .tool-body h2:not(.t-display):not(.text-sm):not(.text-base):lang(ru) {
+    line-height: 1.16;
+  }
+}
+:is(h1, h2, h3).t-display:is(:lang(th), :lang(ar)),
+.tool-body h2:not(.t-display):not(.text-sm):not(.text-base):is(:lang(th), :lang(ar)) {
+  line-height: 1.3;
+  /* Caseless scripts: keep Latin brand names (Chrome, Safari) as written. The
+     generic rule below loses to the uppercase rule's :not() specificity. */
+  text-transform: none;
+}
+.tool-body h2:is(.text-sm, .text-base):is(:lang(vi), :lang(th), :lang(ar)) {
+  line-height: 1.3;
+}
+.tool-body h2:is(.text-sm, .text-base):is(:lang(th), :lang(ar)) {
+  text-transform: none;
+}
+/* Small display text: room for marks inside stamps and clipped serials */
+:is(.t-label, .ticket-serial):lang(vi) { line-height: 1.3; }
+:is(.t-label, .ticket-serial, .stamp):is(:lang(th), :lang(ar)) { line-height: 1.5; }
+.stamp:lang(vi) { line-height: 1.35; }
+.t-display:is(:lang(th), :lang(ar)),
+.t-label:is(:lang(th), :lang(ar)),
+.ticket-serial:is(:lang(th), :lang(ar)),
+.stub-btn:is(:lang(th), :lang(ar)),
+.stamp:is(:lang(th), :lang(ar)),
+.void-no:is(:lang(th), :lang(ar)),
+.tool-body h2:is(:lang(th), :lang(ar)),
+[class*='tracking-']:is(:lang(th), :lang(ar)) {
+  letter-spacing: 0 !important;
+  text-transform: none;
+}
+
+/* Hero seam: the ticket starts on the H1's cap line. The extra leading and
+   top padding above push the first line down, so the seam pulls the heading
+   back up by the same amount; marks above the capitals rise into the hero's
+   top padding, as they would in print. */
+@media (min-width: 1024px) {
+  .seam-hero .seam-h1:is(:lang(es), :lang(pt), :lang(fr), :lang(de), :lang(it), :lang(nl), :lang(id), :lang(tr)) {
+    line-height: 1;
+    margin-top: -0.13em;
+  }
+  .seam-hero .seam-h1:lang(vi) {
+    line-height: 1.2;
+    margin-top: -0.28em;
+  }
+  .seam-hero .seam-h1:lang(ru) {
+    line-height: 1.1;
+    /* -0.11em at 1.0, plus the 0.05em of half-leading 1.1 adds on top */
+    margin-top: -0.16em;
+  }
+  .seam-hero .seam-h1:is(:lang(th), :lang(ar)) {
+    line-height: 1.3;
+    margin-top: -0.2em;
+  }
+  /* "PINTEREST-DOWNLOADER" missed one line by 0.1px from 1440px up and broke
+     at the hyphen; a hair less tracking keeps the one-word title whole. */
+  .seam-hero .seam-h1:lang(de) {
+    letter-spacing: -0.016em;
+  }
+}
+
+/* ---------- Right to left (ar) ----------
+   Logical properties already mirror the layout. What remains is drawn motion
+   and direction-neutral data inside an RTL page. */
+/* The stub tears from the start edge: hinged top-right in RTL. */
+[dir='rtl'] .stub { transform-origin: 100% 0%; }
+@media (prefers-reduced-motion: no-preference) {
+  [dir='rtl'] .ticket[data-tearing='true'] .stub {
+    transform: translate(-6px, 18px) rotate(3.5deg);
+  }
+  /* The stamp leans the same way relative to the reading direction. */
+  [dir='rtl'] .stamp-in { animation-name: stamp-in-rtl; }
+}
+[dir='rtl'] .stamp-in { transform: rotate(2deg); }
+@keyframes stamp-in-rtl {
+  from { transform: scale(1.35) rotate(6deg); opacity: 0; }
+  to { transform: scale(1) rotate(2deg); opacity: 1; }
+}
+/* Pinterest links are LTR. The link field reads left to right once it holds a
+   link, and right to left while it shows the Arabic placeholder. Batch lines
+   each take the direction of their own first letter. */
+[dir='rtl'] .ticket-input input[type='url'] { direction: ltr; }
+[dir='rtl'] .ticket-input input[type='url']:placeholder-shown { direction: rtl; }
+[dir='rtl'] .ticket-input textarea { unicode-bidi: plaintext; }
+/* Serials ('رقم 1120…' or a bare 'No. ——') take the direction of their text. */
+[dir='rtl'] .ticket-serial { unicode-bidi: plaintext; }

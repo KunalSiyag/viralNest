@@ -1,0 +1,140 @@
+{
+  "pageId": "pinterest-profile-picture-downloader",
+  "locale": "tr",
+  "meta": {
+    "title": "Pinterest Profil Fotoğrafı İndir — PP'yi Tam Boy ve HD Gör",
+    "description": "Pinterest profil fotoğrafını (PP) tam boyutta görün ve indirin. Herkese açık profil linkini yapıştırın, en büyük resmi kaydedin; giriş yok, filigran yok."
+  },
+  "keywords": {
+    "primary": "pinterest profil fotoğrafı indir",
+    "secondary": [
+      "pinterest pp indir",
+      "pinterest profil resmi indirme",
+      "pinterest profil fotoğrafı büyütme",
+      "pinterest pp büyütme",
+      "pinterest pp hd",
+      "pinterest profil fotoğrafı indirme"
+    ]
+  },
+  "nav": {
+    "label": "Profil Fotoğrafı İndir",
+    "short": "PP",
+    "card": {
+      "title": "Profil Fotoğrafı (PP) İndir",
+      "blurb": "Bir hesabın PP’sini Pinterest’in yayınladığı en büyük boyutta görün ve indirin.",
+      "badge": "PP"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest Profil Fotoğrafı İndir",
+    "lede": "**PP büyütme ve indirme:** herkese açık bir Pinterest profilinin fotoğrafını küçük daire hâliyle değil, Pinterest’in yayınladığı **en büyük boyutta** görün ve kaydedin. Giriş yok, filigran yok."
+  },
+  "intro": [
+    "Pinterest ekranında **profil resmi** küçük bir daire olarak görünür ve büyütülemez. Profil linkini buraya yapıştırın; PintDownload Pinterest’in o hesap için yayınladığı en büyük profil fotoğrafını bulur, tam boy gösterir ve **JPG** olarak indirmenizi sağlar.",
+    "`pinterest.com/kullaniciadi/` biçimindeki profil linklerini ve uygulamanın paylaş bağlantılarını alır. Yalnızca herkese açık profiller."
+  ],
+  "features": [
+    {
+      "h": "İndirmeden önce tam boy görün",
+      "p": "Sonuçtaki önizleme bulduğumuz en büyük dosyadır; **Tam boyutta aç** ile ayrı bir sekmede de bakabilirsiniz."
+    },
+    {
+      "h": "Uydurma piksel yok",
+      "p": "Pinterest profil fotoğraflarını genellikle en fazla yaklaşık 600×600 piksel yayınlar. Resmi büyütüp keskinmiş gibi göstermeyiz."
+    },
+    {
+      "h": "Yalnızca PP, Pin paketi değil",
+      "p": "Bu sayfa tek bir görsel indirir. Profildeki Pinlerin hepsi için profil indiriciyi kullanın."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "PP fikri mi arıyorsunuz, bir hesabın PP’si mi?",
+      "paragraphs": [
+        "“Pinterest PP” diye arayanların çoğu aslında profil fotoğrafı fikri arar: Pinterest’te kaydedilen estetik PP’ler, çizimler, kedi fotoğrafları. Bunlar sıradan fotoğraf Pinleridir; linklerini [[pinterest-image-downloader|Pinterest fotoğraf indir]] sayfasına yapıştırın. Bu sayfa ise bir Pinterest hesabının kendi profil fotoğrafı içindir."
+      ]
+    },
+    {
+      "h2": "Hangi çözünürlük gelir?",
+      "paragraphs": [
+        "Pinterest profil fotoğraflarını genellikle en fazla yaklaşık 600×600 piksel olarak yayınlar; bazı hesaplarda daha küçüktür. PintDownload o hesap için yayınlanan en büyük dosyayı indirir, akıştaki küçük daireyi değil. Daha büyüğünü üretmeyiz: büyütme araçları piksel ekler ama ayrıntı ekleyemez."
+      ]
+    },
+    {
+      "h2": "Başkasının fotoğrafına saygı",
+      "paragraphs": [
+        "Profil fotoğrafı çoğu zaman kişinin kendi yüzüdür. Referans ya da kişisel arşiv için kaydetmek bir şey; onu kendi hesabınızda kullanmak, paylaşmak ya da birini taklit etmek başka bir şey ve izin gerektirir. Markaların logoları da genellikle tescillidir."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Pinterest profil fotoğrafı nasıl indirilir",
+    "intro": "Herkese açık profillerle çalışır; telefonda da bilgisayarda da aynı adımlar.",
+    "exampleLabel": "Örnek profil linki",
+    "items": [
+      {
+        "title": "Profil linkini kopyalayın",
+        "body": "Herkese açık profili açın; paylaş simgesi › **Bağlantıyı kopyala** ya da tarayıcıdaki `pinterest.com/kullaniciadi/` adresi."
+      },
+      {
+        "title": "Yukarıya yapıştırın",
+        "body": "Linki kutuya yapıştırın ve **Profil fotoğrafını al**’a dokunun. PintDownload, Pinterest’in yayınladığı en büyük PP’yi bulur."
+      },
+      {
+        "title": "Tam boy görüp kaydedin",
+        "body": "Önizlemeye bakın, isterseniz **Tam boyutta aç** ile büyütün ve JPG’yi indirin."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Profil fotoğrafı indirme hakkında sık sorulanlar",
+    "items": [
+      {
+        "q": "Pinterest profil fotoğrafı tam boy nasıl indirilir?",
+        "a": "Herkese açık profilin linkini (`pinterest.com/kullaniciadi/`) kopyalayın, bu sayfaya yapıştırın ve **Profil fotoğrafını al**’a dokunun. Akıştaki küçük daire değil, Pinterest’in yayınladığı en büyük dosya iner."
+      },
+      {
+        "q": "PP büyütme: indirmeden önce tam boy görebilir miyim?",
+        "a": "Evet. Linki yapıştırdıktan sonra sonuçta görünen önizleme, bulduğumuz en büyük dosyadır. **Tam boyutta aç** ile yeni sekmede bakabilir, sonra indirebilirsiniz."
+      },
+      {
+        "q": "Hangi çözünürlükte iner?",
+        "a": "Pinterest’in o hesap için yayınladığı en büyük boyutta; bu genellikle en fazla yaklaşık 600×600 pikseldir. PintDownload piksel uydurmaz, resmi büyütmez."
+      },
+      {
+        "q": "Pinterest’te gördüğüm bir PP fotoğrafını nasıl indiririm?",
+        "a": "Pinterest’te PP fikri olarak gördüğünüz fotoğraflar sıradan Pinlerdir, bir hesabın profil fotoğrafı değil. Linkini [[pinterest-image-downloader|fotoğraf indiriciye]] yapıştırın; en büyük boyutta iner."
+      },
+      {
+        "q": "Gizli profillerin fotoğrafı indirilebilir mi?",
+        "a": "Hayır. Yalnızca herkese açık profillerin fotoğrafları alınabilir; gizli ya da giriş isteyen hesaplara erişemeyiz."
+      },
+      {
+        "q": "Dosya formatı nedir?",
+        "a": "Pinterest’in sunduğu dosyaya göre genellikle JPG, bazen PNG. Üzerine filigran ya da çerçeve eklemeyiz."
+      },
+      {
+        "q": "Bu, profil indirme (ZIP) ile aynı şey mi?",
+        "a": "Hayır. Bu sayfa yalnızca profil fotoğrafını indirir. Bir profilde görünen Pinleri toplu almak için [[pinterest-profile-downloader|profil indirmeyi]] kullanın."
+      },
+      {
+        "q": "Başkasının profil fotoğrafını kullanabilir miyim?",
+        "a": "Kendi hesabınızda kullanmadan ya da paylaşmadan önce sahibinden izin isteyin. Herkese açık olması, fotoğrafın sizin kullanımınıza açık olduğu anlamına gelmez."
+      }
+    ]
+  },
+  "related": {
+    "title": "Diğer Pinterest araçları"
+  },
+  "schema": {
+    "appName": "Pinterest Profil Fotoğrafı İndirici — PintDownload",
+    "howToName": "Pinterest profil fotoğrafı tam boy nasıl indirilir",
+    "howToDescription": "Herkese açık bir Pinterest profilinin fotoğrafını, Pinterest’in yayınladığı en büyük boyutta görme ve indirme adımları."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-tr (agent), 2026-10-16. Pinterest TR arayüzü “profil resmi” der, aramalar “profil fotoğrafı” ve “PP”; ikisi de metinde. Doğrulanacak: profilde paylaş simgesi › Bağlantıyı kopyala.",
+    "nativeReviewer": "review-tr (agent, native review), 2026-10-17: fluency, siz register, search vocabulary (indir/indirme/indirici, pano, PP, galeriye kaydetme), honesty and number/plural forms checked on the built page. Labels Bağlantıyı kopyala, Görüntüyü indir (help.pinterest.com/tr/node/66, /article/download-an-image) and Bu panoyu gizli tut/yap (/article/secret-boards) re-confirmed; iOS/Android labels (Videoyu Kaydet, Dosyalar › İndirilenler, Dosyalarım) match the Turkish OS UI but were not re-checked on a device. Edit: “Türkçe aramalarda …” meta-sentence rewritten. Title/description “Tam Boy”/“tam boyutta” flagged in review (full-size wording)."
+  }
+}

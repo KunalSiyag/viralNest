@@ -1,0 +1,140 @@
+{
+  "pageId": "pinterest-board-downloader",
+  "locale": "es",
+  "meta": {
+    "title": "Descargar tableros de Pinterest en ZIP: fotos y videos",
+    "description": "Pega el enlace de un tablero público de Pinterest y descarga sus pines, fotos y videos, en un solo archivo ZIP. Sin extensiones, sin cuenta y gratis."
+  },
+  "keywords": {
+    "primary": "descargar tableros de Pinterest",
+    "secondary": [
+      "descargar tableros completos de Pinterest",
+      "descargar todas las fotos de un tablero de Pinterest",
+      "descargar tableros de Pinterest online gratis",
+      "extensión para descargar tableros de Pinterest",
+      "descargar tablero de Pinterest en ZIP",
+      "Pinterest board downloader"
+    ]
+  },
+  "nav": {
+    "label": "Descargar tableros",
+    "short": "Tableros",
+    "card": {
+      "title": "Descargar tableros",
+      "blurb": "Pega el enlace de un tablero público y guarda sus pines en un ZIP.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Descargar tableros de Pinterest",
+    "lede": "Pega el enlace de un **tablero público** y guarda sus pines, fotos y videos en **un solo ZIP**."
+  },
+  "intro": [
+    "Descarga un **tablero** público de Pinterest de una vez: pega el enlace, revisa los pines que encontramos y guárdalos en un **ZIP**. No necesitas extensión de Chrome ni cuenta.",
+    "Acepta links de tablero como `pinterest.com/usuario/nombre-del-tablero/`. Solo tableros públicos."
+  ],
+  "features": [
+    {
+      "h": "Solo enlaces de tablero",
+      "p": "Para direcciones `/usuario/tablero/`. Un pin suelto va en el descargador de pines."
+    },
+    {
+      "h": "Todo en un ZIP",
+      "p": "Los pines públicos del tablero en un archivo, para un moodboard sin conexión o para compartir."
+    },
+    {
+      "h": "Fotos y videos",
+      "p": "Incluye las imágenes y los videos de los pines que carga la página pública del tablero."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "¿Descarga el tablero completo?",
+      "paragraphs": [
+        "Descarga los pines públicos que aparecen al cargar la página del tablero, hasta cierto límite. En tableros muy grandes puede que no estén todos los pines antiguos. De cada pin con carrusel se guarda la portada; para tener todas sus fotos, abre ese pin en el [[pinterest-pin-downloader|descargador de pines]]."
+      ]
+    },
+    {
+      "h2": "Comprueba tu enlace antes de pegarlo",
+      "paragraphs": [
+        "El tipo de enlace equivocado es el error más común. Así se reconoce cada uno:"
+      ],
+      "list": [
+        "`pinterest.com/usuario/nombre-del-tablero/`: es un tablero, úsalo aquí.",
+        "`pinterest.com/pin/123…/`: es un pin; usa el [[pinterest-pin-downloader|descargador de pines]].",
+        "`pinterest.com/usuario/`: es un perfil; usa el [[pinterest-profile-downloader|descargador de perfiles]].",
+        "Tableros secretos o cuentas privadas: no se pueden descargar."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar un tablero de Pinterest en ZIP",
+    "intro": "Esta página es solo para enlaces de tablero. Si tu enlace tiene `/pin/`, usa el descargador de pines.",
+    "exampleLabel": "Ejemplo de enlace de tablero",
+    "items": [
+      {
+        "title": "Abre el tablero público",
+        "body": "En Pinterest, abre la página del tablero (la cuadrícula de pines), no un pin ampliado."
+      },
+      {
+        "title": "Copia el enlace del tablero",
+        "body": "Cópialo de la barra de direcciones o con **Compartir** › **Copiar enlace**. Debe verse como `pinterest.com/usuario/nombre-del-tablero/`."
+      },
+      {
+        "title": "Pégalo y busca los pines",
+        "body": "Pega el enlace en el recuadro de arriba y toca **Ver pines del tablero** para listar los pines públicos."
+      },
+      {
+        "title": "Descarga el ZIP",
+        "body": "Toca **Descargar ZIP** para guardar las fotos y los videos en un archivo, o descarga los pines uno por uno."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre tableros",
+    "items": [
+      {
+        "q": "¿Cómo descargo un tablero completo de Pinterest?",
+        "a": "Copia el enlace del tablero público, pégalo arriba, revisa la lista de pines y toca **Descargar ZIP**. Se guardan los pines públicos que carga la página del tablero, hasta un límite; en tableros enormes puede faltar alguno antiguo."
+      },
+      {
+        "q": "¿Cómo es el enlace de un tablero?",
+        "a": "Tiene dos partes después del dominio: el usuario y el nombre del tablero, por ejemplo `pinterest.com/usuario/recetas-faciles/`. Si ves `/pin/` en el medio, es un pin, no un tablero."
+      },
+      {
+        "q": "¿Puedo descargar tableros secretos o privados?",
+        "a": "No. PintDownload solo lee tableros públicos. Los tableros secretos, las cuentas privadas y los pines que piden iniciar sesión no están disponibles."
+      },
+      {
+        "q": "¿Necesito una extensión de Chrome?",
+        "a": "No. Todo funciona en la página. Si prefieres un clic desde Pinterest en la computadora, el [[pinterest-video-downloader-chrome|marcador para Chrome]] abre PintDownload con el enlace ya pegado."
+      },
+      {
+        "q": "¿Cómo descargo mis propios tableros?",
+        "a": "Si el tablero es público, igual que cualquier otro: copia su enlace y pégalo arriba. Si es secreto, hazlo público un momento o pide a Pinterest una copia de tus datos en la configuración: **Privacidad y datos** › **Solicitar tus datos**."
+      },
+      {
+        "q": "¿Tablero o perfil: qué herramienta uso?",
+        "a": "Usa esta página para una colección concreta, como “cocina” o “boda”. Para los pines visibles de una cuenta entera, usa el [[pinterest-profile-downloader|descargador de perfiles]]."
+      },
+      {
+        "q": "¿El ZIP incluye todas las fotos de los carruseles?",
+        "a": "El ZIP guarda la portada de cada pin. Para todas las fotos de un carrusel, abre ese pin en el [[pinterest-pin-downloader|descargador de pines]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Herramientas relacionadas"
+  },
+  "schema": {
+    "appName": "Descargador de tableros de Pinterest — PintDownload",
+    "howToName": "Cómo descargar un tablero de Pinterest en ZIP",
+    "howToDescription": "Pasos para guardar los pines públicos de un tablero de Pinterest en un archivo ZIP."
+  },
+  "datePublished": "2026-10-15",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "infra-routing (es pilot); revisado por writer-es (agent), 2026-10-16",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: \"límite seguro\" (calco) por \"cierto límite\"; ruta real de Pinterest: Privacidad y datos › Solicitar tus datos (help.pinterest.com/es)"
+  }
+}

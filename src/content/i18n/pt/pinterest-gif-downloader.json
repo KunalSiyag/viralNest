@@ -1,0 +1,129 @@
+{
+  "pageId": "pinterest-gif-downloader",
+  "locale": "pt",
+  "meta": {
+    "title": "Baixar GIF do Pinterest Animado: Grátis e pelo Link",
+    "description": "Baixe GIFs do Pinterest sem perder a animação. Cole o link do pin e salve o arquivo .gif original que continua se mexendo, no celular ou no PC, sem login."
+  },
+  "keywords": {
+    "primary": "baixar gif do pinterest",
+    "secondary": [
+      "salvar gif do pinterest",
+      "baixar gif pinterest por link",
+      "como salvar gif do pinterest na galeria",
+      "baixar imagem em movimento do pinterest",
+      "baixador de gif pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Baixar GIF",
+    "short": "GIF",
+    "card": {
+      "title": "Baixar GIF animado",
+      "blurb": "O GIF que continua se mexendo, e não uma foto parada.",
+      "badge": "GIF"
+    }
+  },
+  "hero": {
+    "h1": "Baixar GIF do Pinterest",
+    "lede": "Baixou o GIF e ele **não mexe**? Aqui você salva o **arquivo .gif animado** do pin, e não uma foto parada do primeiro quadro."
+  },
+  "intro": [
+    "É a reclamação mais comum com GIF do Pinterest: você salva pelo app e recebe uma imagem parada, porque a opção de baixar imagem muitas vezes guarda só um quadro, em JPG. Cole o link do pin aqui e o PintDownload pega o arquivo GIF, que continua em loop.",
+    "A **imagem em movimento** que você vê no feed pode ser GIF ou vídeo curto. Se o pin tem barra de tempo ou som, é vídeo: use o [[pinterest-video-downloader|baixador de vídeo]]."
+  ],
+  "features": [
+    {
+      "h": "GIF de verdade",
+      "p": "O arquivo .gif que o Pinterest serve, com a animação inteira, e não a capa em JPG."
+    },
+    {
+      "h": "Pelo link",
+      "p": "Cole o link `pin.it` ou `/pin/`. Sem conta no Pinterest e sem instalar app."
+    },
+    {
+      "h": "Celular e PC",
+      "p": "Funciona no Safari, no Chrome e em qualquer navegador de computador."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Por que o GIF do Pinterest não mexe depois de baixar",
+      "paragraphs": [
+        "Duas causas costumam aparecer. Ou o que foi salvo é uma imagem parada (a capa do GIF em JPG), e não o GIF. Ou o arquivo é GIF, mas a tela onde você abriu mostra só o primeiro quadro."
+      ],
+      "list": [
+        "Se o arquivo termina em `.jpg`, baixe de novo por aqui: o PintDownload entrega o `.gif`.",
+        "Se termina em `.gif` e não mexe, abra no app Fotos do iPhone, no Google Fotos ou no navegador. Algumas galerias pausam o GIF até você tocar nele."
+      ]
+    },
+    {
+      "h2": "GIF ou MP4: qual baixar",
+      "paragraphs": [
+        "Se o pin é um GIF, baixe o GIF: ele toca em loop, sem som, em apps de conversa, em slides e onde mais aceitar imagem. Se o pin é um vídeo, ele vem como MP4. O PintDownload não converte vídeo em GIF; para isso, baixe o MP4 no [[pinterest-to-mp4|Pinterest para MP4]] e use um editor."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Como salvar GIF do Pinterest",
+    "intro": "Três passos. Só pins de GIF públicos, sem conta.",
+    "exampleLabel": "Link de pin de GIF",
+    "items": [
+      {
+        "title": "Abra o pin de GIF",
+        "body": "Confirme que ele fica em loop como GIF, sem som e sem barra de tempo. Vídeo de verdade vai no baixador de vídeo."
+      },
+      {
+        "title": "Copie o link",
+        "body": "**Compartilhar** › **Copiar link**, ou um endereço com `/pin/`. Links curtos `pin.it` também servem."
+      },
+      {
+        "title": "Cole e baixe o GIF",
+        "body": "Cole acima, toque em **Baixar GIF** e abra o arquivo num app que toca animação, como o Fotos ou o navegador."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes sobre GIFs do Pinterest",
+    "items": [
+      {
+        "q": "Por que o GIF do Pinterest não mexe depois de baixar?",
+        "a": "Ou você salvou só um quadro (um JPG), ou a galeria está mostrando o primeiro quadro do GIF. Baixe por aqui para ter o `.gif` e, se ainda parecer parado, abra no app Fotos ou no navegador."
+      },
+      {
+        "q": "Como salvar GIF na galeria do Android e no app Fotos do iPhone?",
+        "a": "No Android, o GIF vai para a pasta **Download** e aparece na Galeria. No iPhone, abra o arquivo em **Arquivos** › **Downloads**, toque em **Compartilhar** e escolha **Salvar Imagem**: ele fica no app Fotos, animado."
+      },
+      {
+        "q": "GIF ou MP4: qual baixar?",
+        "a": "GIF se você quer um loop curto que funciona como imagem; MP4 se o pin é vídeo, tem som ou é mais longo. Quem decide é o pin: GIF vem como GIF, vídeo vem como MP4."
+      },
+      {
+        "q": "Dá para transformar vídeo do Pinterest em GIF?",
+        "a": "Aqui, não: o PintDownload entrega o arquivo que o pin já tem, sem converter. Baixe o vídeo em MP4 e use um editor ou conversor se precisar de GIF."
+      },
+      {
+        "q": "Preciso de conta no Pinterest?",
+        "a": "Não. Basta o link de um pin de GIF público. Pins privados ou secretos não funcionam."
+      },
+      {
+        "q": "Funciona no PC?",
+        "a": "Funciona em qualquer navegador de computador. Copie o endereço do pin na barra, cole aqui e o GIF vai para a pasta Downloads."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outras ferramentas para o Pinterest"
+  },
+  "schema": {
+    "appName": "Baixador de GIF do Pinterest — PintDownload",
+    "howToName": "Como baixar GIF animado do Pinterest",
+    "howToDescription": "Passos para salvar um pin de GIF público como arquivo .gif que continua animado."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-pt (agent), 2026-10-16. “original” in the fixed description refers to the GIF file, not resolution (plan validation note). To verify: iOS pt-BR “Salvar Imagem”.",
+    "nativeReviewer": "review-pt (agent, native review), 2026-10-16: read on the live build at 390/1440 for fluency, você register, glossary (pasta, pin de vídeo, cartões, celular, baixador de pin/perfil/pastas), honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Labels rechecked on help.pinterest.com/pt-br: ícone de reticências › Baixar imagem, Compartilhar › Copiar link / Baixar, Salvar (to a pasta), Galeria/Fotos. OS labels (Salvar Vídeo/Imagem, Arquivos, Meus Arquivos, Extrair, Copiar endereço do link, Mostrar na pasta) are the standard pt-BR names, not checked on a device."
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "pageId": "download-pinterest-videos-iphone-android",
+  "locale": "it",
+  "meta": {
+    "title": "Scaricare video da Pinterest su iPhone e Android (MP4 HD)",
+    "description": "Scarica video da Pinterest su iPhone con Safari e su Android con Chrome: Copia link, incolla e salva l’MP4 in Foto o in Galleria. Gratis e senza app."
+  },
+  "keywords": {
+    "primary": "come scaricare video da pinterest su iphone",
+    "secondary": [
+      "scaricare video da pinterest android",
+      "come scaricare video da pinterest con iphone",
+      "come salvare un video da pinterest su iphone",
+      "scaricare video da pinterest iphone",
+      "come scaricare video da pinterest android"
+    ]
+  },
+  "nav": {
+    "label": "iPhone e Android",
+    "short": "Telefono",
+    "card": {
+      "title": "Video Pinterest su iPhone e Android",
+      "blurb": "Safari su iPhone, Chrome su Android: l’MP4 in Foto o in Galleria.",
+      "badge": "Telefono"
+    }
+  },
+  "hero": {
+    "h1": "Video Pinterest su iPhone e Android",
+    "lede": "Scarica i video di Pinterest sul telefono con **Safari** su iPhone e con **Chrome** su Android, e ritrovali in **Foto** o in **Galleria**. Senza app."
+  },
+  "intro": [
+    "Sul telefono il link si copia dall’app Pinterest, ma il video si scarica dal browser: non c’è niente da installare dall’App Store o dal Play Store. Qui trovi i passaggi separati per iPhone e per Android, con i nomi dei menu che vedrai.",
+    "Se il video è già scaricato ma non lo trovi, passa alla guida per [[how-to-download-pinterest-video-in-gallery|salvare i video di Pinterest in Galleria]]."
+  ],
+  "sections": [
+    {
+      "h2": "iPhone e iPad: con Safari",
+      "paragraphs": [
+        "Nell’app Pinterest apri il video e tocca l’**icona di condivisione** › **Copia link**. Poi apri Safari, vai su pintdownload.app, incolla il link e tocca **Scarica video**, quindi **Scarica MP4**. Safari ti chiede conferma e salva l’MP4 nell’app **File**.",
+        "Per vederlo in Foto apri **File** › **Download**, tocca il video, poi **Condividi** › **Salva video**. Su iPad i passaggi sono identici."
+      ]
+    },
+    {
+      "h2": "Android: con Chrome",
+      "paragraphs": [
+        "Copia il link dall’app Pinterest nello stesso modo. In Chrome apri pintdownload.app, incolla il link e tocca **Scarica MP4**: il file va nella cartella **Download** e compare in **Galleria** o in **Google Foto**, nell’album dei download."
+      ]
+    },
+    {
+      "h2": "Samsung e altri telefoni Android",
+      "paragraphs": [
+        "Sui Samsung il video si vede nella **Galleria** e, come file, nell’app **Archivio** › **Download**. Se navighi con Samsung Internet invece che con Chrome, i passaggi non cambiano. Sugli altri Android cerca il file nell’app **Files** di Google."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Scaricare un video di Pinterest sul telefono",
+    "intro": "Funziona su iPhone, iPad e Android, con qualsiasi Pin video pubblico.",
+    "exampleLabel": "Link breve copiato dall’app",
+    "items": [
+      {
+        "title": "Copia il link nell’app Pinterest",
+        "body": "Apri il video, tocca l’**icona di condivisione** e poi **Copia link**."
+      },
+      {
+        "title": "Incollalo nel browser",
+        "body": "Apri Safari (iPhone) o Chrome (Android), vai su pintdownload.app e incolla il link nel tagliando qui sopra."
+      },
+      {
+        "title": "Salva in Foto o in Galleria",
+        "body": "Tocca **Scarica MP4**. Su iPhone sposta il file in Foto con **Salva video**; su Android compare da solo in Galleria."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti su iPhone e Android",
+    "items": [
+      {
+        "q": "Come salvo un video di Pinterest nell’app Foto di iPhone?",
+        "a": "Scaricalo con Safari, poi apri **File** › **Download**, tocca il video e scegli **Condividi** › **Salva video**. Da quel momento lo ritrovi in Foto, tra gli elementi più recenti."
+      },
+      {
+        "q": "Su Android dove finisce il video?",
+        "a": "Nella cartella **Download**. Lo vedi in Galleria o in Google Foto, nell’album dei download, oppure come file in **Files** o, sui Samsung, in **Archivio**."
+      },
+      {
+        "q": "Perché non serve un’app dall’App Store o dal Play Store?",
+        "a": "Perché PintDownload è un sito: funziona nel browser che hai già, che sia Safari, Chrome, Firefox o Samsung Internet. Non occupa spazio e non chiede permessi."
+      },
+      {
+        "q": "Funziona anche su iPad?",
+        "a": "Sì, con Safari, esattamente come su iPhone. Vale anche per le foto: per le immagini dei Pin c’è lo strumento per [[pinterest-image-downloader|scaricare immagini da Pinterest]]."
+      },
+      {
+        "q": "Funziona su Samsung?",
+        "a": "Sì, sia con Chrome sia con Samsung Internet. Il video compare nella Galleria Samsung e, come file, in **Archivio** › **Download**."
+      },
+      {
+        "q": "Che qualità ha il video sul telefono?",
+        "a": "La stessa che avresti sul computer: quella che Pinterest pubblica, di solito 720p, 1080p quando il Pin ce l’ha."
+      }
+    ]
+  },
+  "related": {
+    "title": "Guide e strumenti per il telefono"
+  },
+  "schema": {
+    "appName": "Video Pinterest su iPhone e Android — PintDownload",
+    "howToName": "Come scaricare video da Pinterest su iPhone e Android",
+    "howToDescription": "Copia il link del Pin dall’app, incollalo su PintDownload in Safari o Chrome e salva l’MP4 in Foto o in Galleria."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-it (agent). Unverified on an it-IT phone: iOS File › Download, Salva video, Samsung Archivio, Files di Google, Google Foto.",
+    "nativeReviewer": "review-it (agent), 2026-10-16: read on the live build at 390/1440 for fluency, tu register, glossary (Pin, bacheca, la GIF, tagliando, Galleria/Foto), honesty and English leftovers. Pinterest labels rechecked on help.pinterest.com/it: Scarica immagine, Copia link, Invia; secret boards are now called private (Mantieni la bacheca privata). Device labels (iOS File › Download, Salva video/Salva immagine, Samsung Archivio, Files di Google) are the standard it-IT names, not checked on a phone."
+  }
+}

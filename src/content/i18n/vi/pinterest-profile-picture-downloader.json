@@ -1,0 +1,142 @@
+{
+  "pageId": "pinterest-profile-picture-downloader",
+  "locale": "vi",
+  "meta": {
+    "title": "Tải avatar Pinterest: xem, lưu ảnh đại diện cỡ lớn nhất",
+    "description": "Tải avatar Pinterest từ link hồ sơ công khai: xem ảnh đại diện phóng to, lưu bản lớn nhất Pinterest có thay vì ảnh nhỏ trong app. Miễn phí, không đăng nhập."
+  },
+  "keywords": {
+    "primary": "tải avatar pinterest",
+    "secondary": [
+      "tải ảnh đại diện pinterest",
+      "xem avatar pinterest",
+      "phóng to ảnh đại diện pinterest",
+      "xem ảnh đại diện pinterest trên máy tính",
+      "tải avatar pinterest full hd"
+    ]
+  },
+  "nav": {
+    "label": "Tải avatar Pinterest",
+    "short": "Avatar",
+    "card": {
+      "title": "Tải avatar Pinterest",
+      "blurb": "Xem ảnh đại diện phóng to, lưu bản lớn nhất Pinterest công khai.",
+      "badge": "Avatar"
+    }
+  },
+  "hero": {
+    "h1": "Tải avatar Pinterest",
+    "lede": "Xem **ảnh đại diện** phóng to và lưu bản lớn nhất Pinterest công khai, thường khoảng **600×600**."
+  },
+  "intro": [
+    "Trên Pinterest, ảnh đại diện (Pinterest gọi là **Ảnh hồ sơ**) chỉ hiện bé xíu và bị cắt tròn. Trang này tìm bản lớn nhất Pinterest công khai cho ảnh đó, hiện trọn khung hình và cho bạn tải về.",
+    "Bạn đang tìm **ý tưởng avatar** (avatar cute, avatar đôi, anime…)? Những ảnh đó tìm bằng ô tìm kiếm của Pinterest. Còn ở đây, bạn lưu ảnh đại diện của một tài khoản cụ thể."
+  ],
+  "features": [
+    {
+      "h": "Phóng to, trọn khung hình",
+      "p": "Xem cả ảnh ở cỡ lớn nhất Pinterest cung cấp, không phải vòng tròn nhỏ trên hồ sơ."
+    },
+    {
+      "h": "Chỉ ảnh đại diện, không lấy Ghim",
+      "p": "Muốn gom các Ghim của tài khoản vào file ZIP thì dùng [[pinterest-profile-downloader|tải hồ sơ Pinterest]]."
+    },
+    {
+      "h": "Không cần tài khoản",
+      "p": "Dán link hồ sơ là xong. Không đăng nhập Pinterest, không cài gì cả."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Ảnh đại diện tải về lớn cỡ nào?",
+      "paragraphs": [
+        "Tùy ảnh mà tài khoản đã tải lên. Nhiều ảnh đại diện trên Pinterest chỉ khoảng **600×600 px**. PintDownload lấy bản lớn nhất Pinterest công khai và không phóng to hay thêm bộ lọc cho giống ảnh HD: tài khoản tải lên ảnh nhỏ thì bạn nhận ảnh nhỏ."
+      ]
+    },
+    {
+      "h2": "Ảnh đại diện hay cả hồ sơ",
+      "paragraphs": [
+        "Hai công cụ dùng chung một kiểu link (`pinterest.com/tai-khoan/`) nhưng lưu hai thứ khác nhau:"
+      ],
+      "list": [
+        "**Ảnh đại diện:** một ảnh duy nhất của tài khoản. Chính là trang này.",
+        "**Cả hồ sơ:** các Ghim công khai của tài khoản trong một file ZIP, ở [[pinterest-profile-downloader|tải hồ sơ Pinterest]]."
+      ]
+    },
+    {
+      "h2": "Lấy lại ảnh đại diện của chính bạn",
+      "paragraphs": [
+        "Lỡ xóa mất ảnh đang dùng làm avatar Pinterest? Dán link hồ sơ của bạn vào đây để tải lại. Để lấy link, mở hồ sơ trong app, chạm **biểu tượng chia sẻ** rồi **Sao chép liên kết**; trên máy tính, sao chép địa chỉ trang hồ sơ."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách xem và tải avatar Pinterest",
+    "intro": "Chỉ cần link hồ sơ công khai. Tài khoản riêng tư thì không xem được.",
+    "exampleLabel": "Link hồ sơ mẫu",
+    "items": [
+      {
+        "title": "Mở hồ sơ",
+        "body": "Trong app hoặc trên pinterest.com, mở trang hồ sơ của tài khoản (có tên và ảnh đại diện), không phải một Ghim."
+      },
+      {
+        "title": "Sao chép link hồ sơ",
+        "body": "Chạm **biểu tượng chia sẻ** › **Sao chép liên kết**, hoặc sao chép địa chỉ dạng `pinterest.com/tai-khoan/`."
+      },
+      {
+        "title": "Dán và xem ảnh",
+        "body": "Dán link vào ô phía trên rồi bấm **Xem ảnh đại diện**. Ảnh hiện trọn khung, ở cỡ lớn nhất có sẵn."
+      },
+      {
+        "title": "Tải ảnh về",
+        "body": "Tải file ảnh, hoặc mở ảnh cỡ lớn ở thẻ mới để xem kỹ."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về avatar Pinterest",
+    "items": [
+      {
+        "q": "Làm sao xem avatar Pinterest phóng to?",
+        "a": "Sao chép link hồ sơ, dán vào ô phía trên và bấm **Xem ảnh đại diện**. Ảnh hiện trọn khung ở cỡ lớn nhất Pinterest công khai; trên máy tính, bạn có thể mở ảnh ở thẻ mới để xem kỹ hơn."
+      },
+      {
+        "q": "Ảnh tải về thường có độ phân giải bao nhiêu, có Full HD không?",
+        "a": "Thường khoảng 600×600 px, tùy ảnh tài khoản đã tải lên. Không có bản Full HD nếu Pinterest không có, và chúng tôi không phóng to giả để gắn nhãn HD."
+      },
+      {
+        "q": "Trang này khác gì công cụ Tải hồ sơ (ZIP)?",
+        "a": "Ở đây bạn chỉ lưu ảnh đại diện. Muốn lấy các Ghim công khai của tài khoản, hãy dùng [[pinterest-profile-downloader|tải hồ sơ Pinterest]]."
+      },
+      {
+        "q": "Tài khoản riêng tư có tải được ảnh đại diện không?",
+        "a": "Không. Hồ sơ riêng tư hoặc phải đăng nhập mới xem được thì ảnh đại diện cũng không công khai."
+      },
+      {
+        "q": "File tải về là định dạng gì?",
+        "a": "Thường là JPG, đôi khi PNG, đúng như Pinterest lưu. Chúng tôi không thêm khung hay logo nào."
+      },
+      {
+        "q": "Dùng avatar của người khác có được không?",
+        "a": "Lưu về để xem thì không sao, nhưng đó là ảnh của người khác. Đừng dùng làm avatar của bạn hay để mạo danh họ; muốn dùng thì hãy xin phép."
+      },
+      {
+        "q": "Có cần tài khoản hay app không?",
+        "a": "Không. Chỉ cần link hồ sơ và một trình duyệt, trên điện thoại hay máy tính đều được."
+      }
+    ]
+  },
+  "related": {
+    "title": "Công cụ khác cho Pinterest"
+  },
+  "schema": {
+    "appName": "Tải avatar Pinterest — PintDownload",
+    "howToName": "Cách xem và tải avatar Pinterest cỡ lớn nhất",
+    "howToDescription": "Dán link hồ sơ Pinterest công khai để xem ảnh đại diện phóng to và tải bản lớn nhất có sẵn."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Pinterest's own label 'Ảnh hồ sơ' (help.pinterest.com/vi edit-your-profile); searchers say avatar / ảnh đại diện."
+  }
+}

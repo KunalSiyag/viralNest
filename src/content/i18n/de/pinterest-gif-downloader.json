@@ -1,0 +1,121 @@
+{
+  "pageId": "pinterest-gif-downloader",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-GIF herunterladen – animiert speichern, kostenlos",
+    "description": "GIFs von Pinterest herunterladen, ohne dass die Animation verloren geht: GIF-Pin-Link einfügen und die Datei mit Loop speichern. Kostenlos, ohne Anmeldung."
+  },
+  "keywords": {
+    "primary": "pinterest gif herunterladen",
+    "secondary": [
+      "pinterest gif downloader",
+      "pinterest gif speichern",
+      "gif von pinterest herunterladen",
+      "pinterest gifs herunterladen",
+      "pinterest gif in mp4 umwandeln"
+    ]
+  },
+  "nav": {
+    "label": "GIFs herunterladen",
+    "short": "GIFs",
+    "card": {
+      "title": "Pinterest-GIFs herunterladen",
+      "blurb": "Animierte GIFs mit Loop speichern, nicht nur das erste Standbild.",
+      "badge": "GIF"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-GIFs herunterladen",
+    "lede": "Speichere GIFs von Pinterest **mit Animation**: Link zum GIF-Pin einfügen, Datei mit Loop laden. Kostenlos, ohne Anmeldung."
+  },
+  "intro": [
+    "Das Ärgerliche an GIFs auf Pinterest: Beim Speichern bleibt oft nur ein Standbild übrig. PintDownload holt die animierte GIF-Datei des Pins und nicht das JPG-Titelbild.",
+    "Funktioniert mit `/pin/`-Links und `pin.it`-Kurzlinks von öffentlichen GIF-Pins, auf dem Handy und am PC."
+  ],
+  "features": [
+    {
+      "h": "Bleibt animiert",
+      "p": "Du bekommst die GIF-Datei mit Loop, so wie Pinterest sie abspielt."
+    },
+    {
+      "h": "GIF oder MP4",
+      "p": "Für Messenger und Reels ist ein MP4 oft praktischer. Echte Video-Pins wandelt der [[pinterest-to-mp4|MP4-Konverter]] um."
+    },
+    {
+      "h": "Ohne Konto",
+      "p": "Nur öffentliche GIF-Pins, keine Anmeldung bei Pinterest oder bei uns."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Warum ein GIF nur als Bild gespeichert wird",
+      "paragraphs": [
+        "Langes Drücken im Feed oder **Bild herunterladen** sichern oft nur das Titelbild, also ein JPG vom ersten Frame. Manche Pins, die sich bewegen, sind auch gar keine GIFs, sondern kurze Videos. Erkennt PintDownload ein Video, schickt es dich zum [[pinterest-video-downloader|Video-Download]]."
+      ]
+    },
+    {
+      "h2": "Bleibt das GIF in der Galerie animiert?",
+      "paragraphs": [
+        "Die meisten Android-Galerien spielen GIFs ab. In der Fotos-App vom iPhone zeigt die Übersicht oft nur das erste Bild; öffne die Datei, dann bewegt sie sich. Wirkt sie trotzdem eingefroren, öffne sie in Safari oder in einer App, die GIFs abspielt."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So speicherst du GIFs von Pinterest",
+    "intro": "Drei Schritte. Nur öffentliche GIF-Pins, ohne Konto.",
+    "exampleLabel": "Link zu einem GIF-Pin",
+    "items": [
+      {
+        "title": "GIF-Pin öffnen",
+        "body": "Prüf, ob er sich wie ein GIF in Schleife bewegt, meist ohne Ton und ohne Zeitleiste. Ein echtes Video gehört in den Video-Download."
+      },
+      {
+        "title": "Pin-Link kopieren",
+        "body": "**Teilen** › **Link kopieren** oder die Adresse mit `/pin/` aus dem Browser. `pin.it`-Kurzlinks gehen auch."
+      },
+      {
+        "title": "Einfügen und GIF speichern",
+        "body": "Füge den Link oben ein, tippe auf **GIF herunterladen** und speichere die Datei."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zu Pinterest-GIFs",
+    "items": [
+      {
+        "q": "Wie lade ich ein GIF von Pinterest herunter?",
+        "a": "Kopiere den Link des öffentlichen GIF-Pins, füge ihn hier ein und tippe auf **GIF herunterladen**. Du bekommst eine .gif-Datei, die sich weiter bewegt."
+      },
+      {
+        "q": "„GIF speichern nicht möglich“ – was kann ich tun?",
+        "a": "Wenn Pinterest selbst das GIF nicht speichern lässt oder nur ein Standbild ankommt, nimm den Weg über den Link: kopieren, hier einfügen, GIF-Datei laden."
+      },
+      {
+        "q": "GIF oder MP4 – was ist besser für WhatsApp und Instagram?",
+        "a": "Viele Apps kommen mit MP4 besser zurecht als mit GIF-Dateien, ein GIF läuft dafür überall als Bild mit Loop. PintDownload wandelt GIF-Dateien nicht um; hat der Pin zusätzlich eine Videoversion, zeigt das Ergebnis sie als MP4 an."
+      },
+      {
+        "q": "Bleibt das GIF in der Fotos-App animiert?",
+        "a": "Ja, die Datei bleibt ein animiertes GIF. Auf dem iPhone siehst du die Bewegung, sobald du das GIF öffnest; in der Übersicht steht oft nur das erste Bild."
+      },
+      {
+        "q": "Brauche ich ein Pinterest-Konto?",
+        "a": "Nein. Öffentliche GIF-Pins lädst du ohne Anmeldung. Private oder geheime Pins lassen sich nicht abrufen."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Tools für Pinterest"
+  },
+  "schema": {
+    "appName": "Pinterest-GIF-Downloader – PintDownload",
+    "howToName": "GIF von Pinterest herunterladen",
+    "howToDescription": "Den Link eines öffentlichen GIF-Pins einfügen und die animierte Datei speichern."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent).",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

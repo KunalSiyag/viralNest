@@ -1,0 +1,137 @@
+{
+  "pageId": "pinterest-profile-downloader",
+  "locale": "es",
+  "meta": {
+    "title": "Descargar perfil de Pinterest: pines públicos en un ZIP",
+    "description": "Descarga en un ZIP los pines públicos de un perfil de Pinterest, con fotos y videos, pegando el enlace de la cuenta. Gratis, sin registro y sin apps."
+  },
+  "keywords": {
+    "primary": "descargar perfil de Pinterest",
+    "secondary": [
+      "descargar todos los pines de un perfil de Pinterest",
+      "descargar todas las fotos de un perfil de Pinterest",
+      "descargar pines de Pinterest en ZIP",
+      "Pinterest profile downloader"
+    ]
+  },
+  "nav": {
+    "label": "Descargar perfiles",
+    "short": "Perfiles",
+    "card": {
+      "title": "Descargar perfiles",
+      "blurb": "Los pines públicos de una cuenta en un ZIP, con el enlace del perfil.",
+      "badge": "ZIP"
+    }
+  },
+  "hero": {
+    "h1": "Descargar perfil de Pinterest",
+    "lede": "Pega el enlace de un **perfil público** y guarda sus pines en **un ZIP**. ¿Solo quieres la foto de la cuenta? Usa [[pinterest-profile-picture-downloader|descargar foto de perfil]]."
+  },
+  "intro": [
+    "Con el link de una cuenta (`pinterest.com/usuario/`), PintDownload lista los pines públicos que muestra su perfil: fotos, videos y GIF. Revisa la lista y descárgalos juntos en un **ZIP** o uno por uno.",
+    "En el resultado también verás la foto de perfil y los tableros públicos de la cuenta, por si prefieres guardar solo una colección."
+  ],
+  "features": [
+    {
+      "h": "Enlace de perfil",
+      "p": "Para direcciones con solo el nombre de usuario. Si después viene el nombre de un tablero, usa el descargador de tableros."
+    },
+    {
+      "h": "Todo en un ZIP",
+      "p": "Los pines públicos de la cuenta en un archivo, como respaldo o para un moodboard sin conexión."
+    },
+    {
+      "h": "Sus tableros, a un clic",
+      "p": "El resultado muestra los tableros públicos de la cuenta para que abras solo el que te interesa."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "¿Se descargan todos los pines de la cuenta?",
+      "paragraphs": [
+        "No siempre. PintDownload guarda los pines públicos que carga la página del perfil, hasta un límite. En cuentas con miles de pines faltarán los más antiguos: en ese caso, descarga sus tableros uno por uno."
+      ]
+    },
+    {
+      "h2": "Perfil, tablero o pin: mira el enlace",
+      "paragraphs": [
+        "Las tres direcciones se parecen, pero cada una va a una herramienta:"
+      ],
+      "list": [
+        "`pinterest.com/usuario/`: un perfil. Aquí guardas sus pines; la foto de la cuenta sola tiene su propia herramienta.",
+        "`pinterest.com/usuario/nombre-del-tablero/`: un tablero. Usa el [[pinterest-board-downloader|descargador de tableros]].",
+        "`pinterest.com/pin/123…`: un pin suelto. Usa el [[pinterest-pin-downloader|descargador de pines]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar los pines de un perfil en ZIP",
+    "intro": "Solo con el enlace del perfil. Si después del usuario aparece el nombre de un tablero, usa el descargador de tableros.",
+    "exampleLabel": "Enlace de un perfil",
+    "items": [
+      {
+        "title": "Abre el perfil público",
+        "body": "Entra en la página de la cuenta, la que muestra su foto y su nombre de usuario."
+      },
+      {
+        "title": "Copia el enlace",
+        "body": "Copia la dirección `pinterest.com/usuario/` o usa **Compartir** › **Copiar enlace** en la app."
+      },
+      {
+        "title": "Pégalo y busca los pines",
+        "body": "Pega el enlace arriba y toca **Descargar perfil (ZIP)** para ver los pines públicos."
+      },
+      {
+        "title": "Guarda el ZIP",
+        "body": "Descarga todos los pines en un ZIP o elige los que quieras de la lista."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes sobre perfiles",
+    "items": [
+      {
+        "q": "¿Cómo descargo los pines de un perfil de Pinterest?",
+        "a": "Copia el enlace del perfil público, pégalo arriba y toca **Descargar perfil (ZIP)**. Verás la lista de pines y podrás guardarlos en un ZIP."
+      },
+      {
+        "q": "¿Perfil o tablero: cuál es la diferencia?",
+        "a": "Un perfil es la cuenta entera (`pinterest.com/usuario/`); un tablero es una colección dentro de ella (`pinterest.com/usuario/tablero/`). Para una colección concreta, el descargador de tableros es más preciso."
+      },
+      {
+        "q": "¿Se descargan todos los pines que publicó la cuenta?",
+        "a": "No siempre: se guardan los pines públicos que carga el perfil, hasta un límite. En cuentas muy grandes, descarga sus tableros por separado para llegar a más pines."
+      },
+      {
+        "q": "¿Funciona con perfiles privados?",
+        "a": "No. Si la cuenta es privada o hay que iniciar sesión para verla, no hay nada público que descargar."
+      },
+      {
+        "q": "¿Solo quieres la foto de perfil?",
+        "a": "Usa [[pinterest-profile-picture-downloader|descargar foto de perfil de Pinterest]]: guarda solo la imagen de la cuenta, en grande."
+      },
+      {
+        "q": "¿Es legal descargar un perfil?",
+        "a": "Guardar contenido público para verlo tú, o como respaldo de tu propia cuenta, es lo habitual. Lo que descargues sigue siendo de quien lo creó: no lo vuelvas a publicar sin permiso o sin darle crédito."
+      },
+      {
+        "q": "¿Puedo hacer un respaldo de mi propia cuenta?",
+        "a": "Sí, si tu perfil es público: pega tu enlace y descarga el ZIP. Para una copia completa, con tus tableros secretos incluidos, pídela a Pinterest en la configuración: **Privacidad y datos** › **Solicitar tus datos**."
+      }
+    ]
+  },
+  "related": {
+    "title": "Herramientas relacionadas con perfiles"
+  },
+  "schema": {
+    "appName": "Descargador de perfiles de Pinterest — PintDownload",
+    "howToName": "Cómo descargar los pines de un perfil de Pinterest en ZIP",
+    "howToDescription": "Pega el enlace de un perfil público de Pinterest y guarda sus pines públicos en un archivo ZIP."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16. Verificar: nombre de la opción de Pinterest para solicitar tus datos (configuración de privacidad)",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: ruta real de Pinterest: Privacidad y datos › Solicitar tus datos (help.pinterest.com/es)"
+  }
+}

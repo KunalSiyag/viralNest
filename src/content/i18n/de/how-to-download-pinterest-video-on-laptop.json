@@ -1,0 +1,124 @@
+{
+  "pageId": "how-to-download-pinterest-video-on-laptop",
+  "locale": "de",
+  "meta": {
+    "title": "Pinterest-Video am PC herunterladen – Laptop, Mac & Windows",
+    "description": "Pinterest-Videos am PC oder Laptop herunterladen: Pin-Link aus der Adressleiste kopieren, einfügen und als MP4 speichern. Für Windows, Mac und Chromebook."
+  },
+  "keywords": {
+    "primary": "pinterest video herunterladen pc",
+    "secondary": [
+      "pinterest video herunterladen laptop",
+      "pinterest video speichern pc",
+      "pinterest video herunterladen mac",
+      "pinterest video herunterladen windows 11",
+      "pinterest video herunterladen ohne programm"
+    ]
+  },
+  "nav": {
+    "label": "Video am PC herunterladen",
+    "short": "PC",
+    "card": {
+      "title": "Pinterest-Video am PC laden",
+      "blurb": "Windows, Mac oder Chromebook: Adresse kopieren, das MP4 landet im Downloads-Ordner.",
+      "badge": "PC"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest-Video am PC herunterladen",
+    "lede": "Pin-Adresse kopieren, einfügen, **MP4** speichern: für **Windows**, **Mac** und **Chromebook**, ohne Programm."
+  },
+  "intro": [
+    "Am Computer geht es am schnellsten, weil die Adresse des Pins direkt vor dir steht. Kein Programm, keine Erweiterung: PintDownload läuft in Chrome, Edge, Firefox und Safari, und das Video landet als MP4 im Downloads-Ordner.",
+    "Gemeint ist hier ein einzelnes Video als Datei. Wer „Pinterest herunterladen“ für den PC sucht, will oft die Pinterest-App für Windows; die gibt es im Microsoft Store."
+  ],
+  "sections": [
+    {
+      "h2": "Windows-PC und Laptop",
+      "paragraphs": [
+        "Öffne den Video-Pin auf pinterest.de und kopiere die Adresse mit `Strg+L` und `Strg+C`. Wechsel zu PintDownload, füge sie mit `Strg+V` ein und drück Enter. Mit `Strg+J` öffnest du in Chrome und Edge die Downloads-Liste."
+      ]
+    },
+    {
+      "h2": "Mac und MacBook",
+      "paragraphs": [
+        "Auf dem Mac geht es genauso, nur mit `⌘+L`, `⌘+C` und `⌘+V`. Safari, Chrome und Firefox legen das MP4 im Ordner **Downloads** ab, den du im Finder in der Seitenleiste findest."
+      ]
+    },
+    {
+      "h2": "Chromebook",
+      "paragraphs": [
+        "Auf dem Chromebook nimmst du Chrome wie gewohnt. Das MP4 liegt danach in der App **Dateien** unter **Downloads** und lässt sich von dort direkt abspielen oder in Google Drive verschieben."
+      ]
+    },
+    {
+      "h2": "Noch schneller mit dem Lesezeichen",
+      "paragraphs": [
+        "Speicherst du oft Videos, spar dir das Kopieren: Mit dem Lesezeichen weiter unten klickst du auf einem offenen Pin einmal, und PintDownload öffnet sich mit dem Link. Alles dazu auf der Seite [[pinterest-video-downloader-chrome|Pinterest-Downloader für Chrome]]."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "So lädst du ein Pinterest-Video am PC herunter",
+    "intro": "Für Windows, macOS und ChromeOS. Nur öffentliche Video-Pins.",
+    "exampleLabel": "Pin-Adresse aus dem Browser",
+    "exampleUrl": "https://de.pinterest.com/pin/…",
+    "items": [
+      {
+        "title": "Adresse kopieren",
+        "body": "Öffne den Video-Pin im Browser und kopiere die Adresse aus der Adressleiste, oder nimm **Teilen** › **Link kopieren**."
+      },
+      {
+        "title": "Bei PintDownload einfügen",
+        "body": "Öffne PintDownload in einem neuen Tab, füge die Adresse oben ein und drück Enter."
+      },
+      {
+        "title": "MP4 im Downloads-Ordner",
+        "body": "Klick auf **MP4 herunterladen**. Die Datei landet im Downloads-Ordner von Windows, macOS oder ChromeOS."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen zum Download am PC",
+    "items": [
+      {
+        "q": "Wie lade ich Pinterest-Videos am Windows-PC oder Mac herunter?",
+        "a": "Adresse des Video-Pins kopieren, bei PintDownload in Chrome, Edge, Firefox oder Safari einfügen, Enter drücken und im Ergebnis **MP4 herunterladen** klicken. Die Datei liegt dann im Downloads-Ordner."
+      },
+      {
+        "q": "Brauche ich ein Programm?",
+        "a": "Nein. Alles läuft im Browser, du installierst weder eine Software noch eine Erweiterung."
+      },
+      {
+        "q": "Wo finde ich das Video danach?",
+        "a": "Im Ordner **Downloads**. In Chrome und Edge zeigt `Strg+J` die Liste der Downloads; auf dem Mac findest du den Ordner in der Seitenleiste des Finders."
+      },
+      {
+        "q": "Funktioniert das auf dem Chromebook?",
+        "a": "Ja. In Chrome einfügen, MP4 laden, und die Datei erscheint in der App **Dateien** unter **Downloads**."
+      },
+      {
+        "q": "Welche Qualität bekomme ich am Laptop?",
+        "a": "Dieselbe wie am Handy: meist 720p, 1080p, wenn der Pin es hat. Am großen Bildschirm siehst du den Unterschied eher, aber mehr, als Pinterest veröffentlicht, gibt es nicht."
+      },
+      {
+        "q": "Geht es noch schneller?",
+        "a": "Ja, mit dem [[pinterest-video-downloader-chrome|Lesezeichen für Chrome]]: einmal in die Lesezeichenleiste ziehen, danach reicht ein Klick auf dem Pin."
+      }
+    ]
+  },
+  "related": {
+    "title": "Weitere Anleitungen und Tools"
+  },
+  "schema": {
+    "appName": "Pinterest-Video am PC herunterladen – PintDownload",
+    "howToName": "Pinterest-Video am PC oder Laptop herunterladen",
+    "howToDescription": "Die Adresse eines öffentlichen Video-Pins kopieren, bei PintDownload einfügen und das MP4 im Downloads-Ordner speichern."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-de (agent). Keyboard labels follow the research (Strg, Umschalt, ⌘); Strg+J opens downloads in Chrome and Edge.",
+    "nativeReviewer": "review-de (agent, native review), 2026-10-16: fluency, du register, search vocabulary and honesty checked on the built page; Pinterest DE labels (Bild herunterladen, Herunterladen, Teilen-Symbol › Link kopieren, Merken) confirmed on help.pinterest.com/de. iOS/Android labels (Video sichern, Bild sichern, Laden, Dateien, Eigene Dateien) match the German OS UI but were not re-checked on a device."
+  }
+}

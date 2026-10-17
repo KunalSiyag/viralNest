@@ -1,0 +1,139 @@
+{
+  "pageId": "pinterest-4k-downloader",
+  "locale": "fr",
+  "meta": {
+    "title": "Télécharger Pinterest en 4K ? La vraie qualité maximale",
+    "description": "Pinterest diffuse rarement ses vidéos en 4K. PintDownload récupère la meilleure version publiée (souvent 720p ou 1080p) et les photos en grand format public."
+  },
+  "keywords": {
+    "primary": "télécharger vidéo pinterest 4k",
+    "secondary": [
+      "télécharger photo pinterest 4k",
+      "telecharger video pinterest 1080p",
+      "telecharger video pinterest haute qualité",
+      "telecharger video pinterest full hd",
+      "convertisseur pinterest 4k",
+      "pinterest downloader 4k"
+    ]
+  },
+  "nav": {
+    "label": "Vidéo 4K : la vraie qualité",
+    "short": "4K ?",
+    "card": {
+      "title": "Pinterest en 4K ?",
+      "blurb": "Ce que Pinterest publie vraiment : souvent 720p, 1080p quand l’épingle le propose.",
+      "badge": "4K ?"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest en 4K ? La vraie qualité max",
+    "lede": "Collez le lien d’une épingle et récupérez le meilleur fichier que Pinterest publie vraiment : aucun agrandissement, et jamais d’étiquette « 4K » sur une vidéo en 720p."
+  },
+  "intro": [
+    "La 4K revient dans presque toutes les recherches sur les vidéos Pinterest. La réponse honnête : Pinterest n’en publie presque jamais. Cette page explique ce que vous pouvez réellement obtenir, et comment le vérifier avant de télécharger."
+  ],
+  "features": [
+    {
+      "h": "Vidéo (MP4)",
+      "p": "Souvent 720p, 1080p quand l’épingle le propose. Le choix de qualité liste toutes les tailles disponibles."
+    },
+    {
+      "h": "Photo (JPG, PNG, WebP)",
+      "p": "Jusqu’à 1200 px de large : la plus grande taille publiée. Le fichier envoyé par le créateur n’est pas public."
+    },
+    {
+      "h": "Son (MP3)",
+      "p": "192 kbit/s, créé dans votre navigateur à partir du son de la vidéo. Rien n’est envoyé en ligne."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "En bref : Pinterest n’a presque jamais de 4K",
+      "paragraphs": [
+        "Pinterest réencode chaque vidéo envoyée. Les fichiers publics sont **souvent en 720p, en 1080p quand l’épingle le propose**, et les photos plafonnent à **1200 px de large**. Un « téléchargeur Pinterest 4K » ne peut qu’étirer ces fichiers ; nous ne le faisons pas. PintDownload enregistre le plus grand fichier que l’épingle possède et vous indique sa taille."
+      ]
+    },
+    {
+      "h2": "Pourquoi un « convertisseur 4K » ne rend pas la vidéo plus nette",
+      "paragraphs": [
+        "Agrandir une vidéo 720p en 3840 × 2160 ajoute des pixels, pas des détails : le logiciel devine ce qui manque, et le résultat paraît souvent lissé ou inventé. Le fichier devient plus lourd, pas plus net."
+      ]
+    },
+    {
+      "h2": "Quand il vous faut plus que ce que Pinterest publie",
+      "paragraphs": [
+        "Pour une impression, un grand écran ou un projet client, la copie Pinterest sert de référence, pas de source. Suivez le lien source de l’épingle ou demandez le fichier au créateur, et prenez une licence pour un usage commercial. Pour un usage courant, [[pinterest-video-downloader|Télécharger une vidéo]] et [[pinterest-image-downloader|Télécharger une photo]] donnent les mêmes meilleurs fichiers disponibles."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Comment obtenir la meilleure qualité d’une épingle",
+    "intro": "Épingles publiques uniquement. Le reçu indique la résolution réelle avant l’enregistrement.",
+    "exampleLabel": "Exemple de lien d’épingle",
+    "items": [
+      {
+        "title": "Copiez le lien de l’épingle",
+        "body": "Dans l’appli : **icône de partage** › **Copier le lien**. Sur le site : l’adresse avec `/pin/`. Les liens `pin.it` marchent aussi."
+      },
+      {
+        "title": "Collez-le ci-dessus",
+        "body": "PintDownload lit les fichiers que Pinterest publie pour cette épingle publique."
+      },
+      {
+        "title": "Prenez la plus haute qualité listée",
+        "body": "Les épingles vidéo affichent souvent 720p, et 1080p quand l’épingle le propose. Le reçu indique la résolution réelle à côté du fichier."
+      },
+      {
+        "title": "Récupérez le fichier",
+        "body": "Téléchargez le MP4 ou la photo tels quels. Créditez le créateur si vous les partagez."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions fréquentes : 4K et qualité HD",
+    "items": [
+      {
+        "q": "Peut-on vraiment télécharger une vidéo Pinterest en 4K ?",
+        "a": "Presque jamais. Pinterest réencode les vidéos, et les fichiers publics sont souvent en 720p, en 1080p quand l’épingle le propose. Un site qui annonce de la « 4K » pour une épingle ne peut que l’agrandir, ce qui ajoute des pixels sans ajouter de détail."
+      },
+      {
+        "q": "Pourquoi un « convertisseur 4K » ne rend-il pas la vidéo plus nette ?",
+        "a": "Parce qu’il ne peut pas retrouver une information qui n’existe pas. Il étire l’image et devine les détails manquants : le fichier grossit, la netteté reste la même, voire se dégrade."
+      },
+      {
+        "q": "Une photo Pinterest peut-elle être en 4K ?",
+        "a": "Pas depuis Pinterest : la plus grande taille publique fait jusqu’à 1200 px de large. Le fichier envoyé par le créateur n’est pas public ; pour plus grand, demandez-le-lui directement."
+      },
+      {
+        "q": "Comment savoir quelle résolution j’obtiens ?",
+        "a": "Le reçu affiche les dimensions réelles du fichier, par exemple 720 × 1280, avant que vous ne le téléchargiez. Si l’épingle a plusieurs tailles, toutes sont listées."
+      },
+      {
+        "q": "Pourquoi ma vidéo Pinterest est-elle floue ?",
+        "a": "Souvent parce que l’épingle n’existe qu’en petite taille, ou que l’aperçu de votre galerie est compressé. Vérifiez la résolution sur le reçu et ouvrez la vidéo en plein écran. Si l’épingle n’a que du 720p, aucun outil ne fera mieux."
+      },
+      {
+        "q": "PintDownload compresse-t-il le fichier ou ajoute-t-il un logo ?",
+        "a": "Non. Vous recevez le fichier que Pinterest sert, octet pour octet, sans logo ajouté. Seul le MP3 est fabriqué de votre côté, dans votre navigateur, à 192 kbit/s."
+      },
+      {
+        "q": "PintDownload est-il affilié à Pinterest ?",
+        "a": "Non. PintDownload est un outil indépendant : il n’a aucun lien avec Pinterest Inc. et ne fonctionne qu’avec les épingles publiques."
+      }
+    ]
+  },
+  "related": {
+    "title": "Outils pour la meilleure qualité"
+  },
+  "schema": {
+    "appName": "Pinterest en 4K ? — PintDownload",
+    "howToName": "Comment obtenir la meilleure qualité d’une épingle Pinterest",
+    "howToDescription": "Coller le lien d’une épingle publique et enregistrer le plus grand fichier que Pinterest publie pour elle."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-fr (agent), 2026-10-16. Honest 4K explainer per user decision 2 (2026-10-15). Research FAQ « oui si l’original publié l’est » was wrong for photos (1200 px public cap) and is answered as « pas depuis Pinterest ».",
+    "nativeReviewer": "review-fr (agent, relecture native), 2026-10-16: fluency, vous register, search vocabulary, U+00A0 typography and honesty checked on the built page. Lede and HowTo description say \"le lien d’une épingle\"; step 3 now says \"souvent 720p\"; FAQ questions inverted."
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "pageId": "pinterest-image-downloader",
+  "locale": "nl",
+  "meta": {
+    "title": "Pinterest foto downloaden — afbeeldingen in HD, gratis",
+    "description": "Pinterest-foto's en afbeeldingen downloaden in de grootste openbare versie: wallpapers, kunst en plaatjes als JPG of PNG. Gratis, zonder account of app."
+  },
+  "keywords": {
+    "primary": "pinterest foto downloaden",
+    "secondary": [
+      "pinterest afbeelding downloaden",
+      "pinterest afbeeldingen downloaden",
+      "pinterest foto opslaan",
+      "pinterest plaatjes downloaden",
+      "foto's opslaan van pinterest",
+      "pinterest afbeelding opslaan op telefoon"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest foto downloaden",
+    "short": "Foto’s",
+    "card": {
+      "title": "Foto downloaden",
+      "blurb": "De grootste versie die Pinterest van een foto publiceert, geen wazige miniatuur.",
+      "badge": "JPG"
+    }
+  },
+  "hero": {
+    "h1": "Pinterest foto downloaden",
+    "lede": "De **grootste versie** die Pinterest van een foto publiceert, geen miniatuur. Gratis en zonder account."
+  },
+  "intro": [
+    "Download foto’s, wallpapers, kunst en plaatjes van Pinterest in de **grootste versie die Pinterest publiceert** (tot 1200 px breed), met alleen de link van een openbare pin. Gratis, zonder account en zonder watermerk van ons.",
+    "Je kunt een adres met `/pin/` plakken of een pin.it-link uit de app. Alleen openbare afbeeldingspins."
+  ],
+  "features": [
+    {
+      "h": "Grootste versie eerst",
+      "p": "PintDownload pakt de grootste openbare afbeelding, niet de kleinere versie uit je feed of de zoekresultaten."
+    },
+    {
+      "h": "Stilstaande beelden",
+      "p": "Voor foto’s, illustraties en wallpapers. Speelt de pin af, gebruik dan [[pinterest-video-downloader|Pinterest video downloaden]]."
+    },
+    {
+      "h": "Geen account nodig",
+      "p": "Plak een openbare pinlink en sla de foto op. Privépins en pins waarvoor je moet inloggen werken niet."
+    }
+  ],
+  "sections": [
+    {
+      "h2": "Hoe groot is de foto die je krijgt?",
+      "paragraphs": [
+        "In je feed laat Pinterest kleinere versies zien. PintDownload haalt de **grootste versie die Pinterest publiceert**, meestal 1200 px breed. Het bestand dat de maker ooit heeft geüpload is niet openbaar, en van sommige pins bestaat alleen een kleinere versie. We schalen nooit iets op en verzinnen geen pixels.",
+        "Voor een achtergrond op je telefoon is dat ruim genoeg. Wil je de foto printen, houd het dan klein: 1200 px breed is scherp tot ongeveer 10 cm breed op papier."
+      ]
+    },
+    {
+      "h2": "Foto, video of pin: welke tool?",
+      "paragraphs": [
+        "Deze pagina is voor **stilstaande afbeeldingen**. Een videopin hoort bij [[pinterest-video-downloader|Pinterest video downloaden]], een bewegende GIF bij [[pinterest-gif-downloader|Pinterest GIF downloaden]]. Weet je niet wat voor pin het is, gebruik dan [[pinterest-pin-downloader|Pinterest pin downloaden]]. Een carrousel met meerdere afbeeldingen werkt hier ook: je krijgt ze allemaal."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Zo download je een foto van Pinterest",
+    "intro": "Gebruik de link van één pin met een foto. Een heel bord hoort bij [[pinterest-board-downloader|Pinterest bord downloaden]].",
+    "exampleLabel": "Voorbeeld van een pinlink",
+    "items": [
+      {
+        "title": "Open de pin met de foto",
+        "body": "Open de pin zelf, zodat het adres `/pin/` bevat en je een stilstaande foto ziet, geen video die afspeelt."
+      },
+      {
+        "title": "Kopieer de link",
+        "body": "Tik op **Delen** en dan op **Link kopiëren**, of kopieer het adres uit je browser. Korte pin.it-links werken ook."
+      },
+      {
+        "title": "Plak de link",
+        "body": "Plak hem in het vak hierboven en tik op **Foto downloaden**."
+      },
+      {
+        "title": "Sla de foto op",
+        "body": "Download de JPG in de grootste versie die Pinterest publiceert. Op je telefoon komt hij eerst in Downloads; hoe je hem in je filmrol of galerij zet, staat in de vragen hieronder."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Vragen over Pinterest-foto’s downloaden",
+    "items": [
+      {
+        "q": "Hoe download ik een foto van Pinterest?",
+        "a": "Open de pin, tik op **Delen** › **Link kopiëren**, plak de link hierboven en tik op **Foto downloaden**. Je krijgt de grootste versie die Pinterest van die foto publiceert, zonder account."
+      },
+      {
+        "q": "Krijg ik de foto in het groot of een miniatuur?",
+        "a": "Geen miniatuur: je krijgt de grootste versie die Pinterest publiceert, meestal tot 1200 px breed. Het bestand dat de maker heeft geüpload is niet openbaar, dus een grotere versie dan Pinterest laat zien krijg je hier niet."
+      },
+      {
+        "q": "Waarom zie ik ‘Download afbeelding’ niet in de app?",
+        "a": "Volgens [Pinterest zelf](https://help.pinterest.com/nl/article/download-an-image) kunnen niet alle pins worden gedownload. Zie je **Download afbeelding** niet in het menu met de drie puntjes (…), kopieer dan de link van de pin en plak hem hier."
+      },
+      {
+        "q": "Hoe zet ik de foto in mijn filmrol of galerij?",
+        "a": "Op de iPhone open je de foto in **Bestanden** › **Downloads**, tik je op het deelpictogram en kies je **Bewaar afbeelding**; dan staat hij in Foto’s. Op Android verschijnt de foto meestal vanzelf in de galerij of Google Foto’s, in het album **Download**."
+      },
+      {
+        "q": "Kan ik alle foto’s uit een carrousel downloaden?",
+        "a": "Ja. Plak de link van de carrousel hier en je krijgt alle afbeeldingen (Pinterest noemt ze kaarten). Je downloadt ze los of samen als ZIP."
+      },
+      {
+        "q": "Mag ik een Pinterest-afbeelding gebruiken of printen?",
+        "a": "Voor eigen gebruik, zoals een wallpaper, een moodboard of een print voor je eigen muur, is PintDownload bedoeld. Wil je de afbeelding publiceren of verkopen, vraag de maker dan eerst om toestemming. Let op: wie een pin op Pinterest heeft bewaard, is niet altijd de maker. De bron van de pin helpt je de echte maker te vinden."
+      },
+      {
+        "q": "Werkt het zonder Pinterest-account?",
+        "a": "Ja. Je hoeft niet in te loggen en maakt bij ons geen account aan. Het werkt wel alleen met openbare pins."
+      },
+      {
+        "q": "Waarom lukt het niet met een videopin?",
+        "a": "Deze pagina is voor foto’s. Plak je toch een video, dan schakelt het formulier zelf over naar de video-downloader. Je kunt ook meteen naar [[pinterest-video-downloader|Pinterest video downloaden]] gaan."
+      }
+    ]
+  },
+  "related": {
+    "title": "Meer tools voor Pinterest"
+  },
+  "schema": {
+    "appName": "Pinterest foto downloaden — PintDownload",
+    "howToName": "Een foto van Pinterest downloaden in de grootste versie",
+    "howToDescription": "Stappen om een openbare afbeeldingspin op te slaan in de grootste versie die Pinterest publiceert."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-nl; verify on an iPhone set to Dutch: share-sheet label Bewaar afbeelding",
+    "nativeReviewer": "review-nl (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, je register, glossary (pins, bord, videopin, afhaalbon, omslag), search vocabulary, honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/nl: Afbeelding downloaden (desktop), Download afbeelding (app), drie puntjes, Delen › Link kopiëren, deelpictogram, Bewaren, Privébord. OS labels (Bewaar video/afbeelding, Bestanden, Mijn bestanden, Geanimeerd, album Download) are the standard Dutch iOS/Android names, not checked on a device."
+  }
+}

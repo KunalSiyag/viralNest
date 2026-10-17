@@ -1,0 +1,2981 @@
+{
+ "locale": "th",
+ "hreflang": "th",
+ "hreflangReasoning": "Thai is used as a first language essentially only in Thailand, so a language-only code is exact and future-proof; 'th-TH' would add nothing. Of the Thai competitor pages checked, klickpin.com, savepin.app and pindown.io declare 'th', dlpanda.com declares 'th-TH', and pinterestdownloader.io declares the invalid 'th-04' (and canonicalises to its English root, so it cannot rank in Thai). Each Thai page lists itself (th), its English twin (en) and x-default (English). Skipped pages get no th alternate. Set <html lang=\"th\"> and og:locale 'th_TH'.",
+ "markets": [
+  {
+   "country": "TH",
+   "googleGl": "th",
+   "googleHl": "th",
+   "pinterestHost": "th.pinterest.com (help: help.pinterest.com/th)",
+   "notes": "Single market. Thai searchers mix scripts freely: the brand is almost always typed in Latin ('pinterest'), verbs and nouns in Thai ('โหลด', 'รูป', 'วิดีโอ'), and device or format words in Latin or Thai ('iphone'/'ไอโฟน', 'pc'/'คอม', 'gif', 'mp4'). Autocomplete under hl=th also returns English queries, which the English pages already serve."
+  }
+ ],
+ "urlStructure": {
+  "pattern": "/th/<slug>; homepage is /th with no trailing slash (normalizeCanonical in src/lib/urls.ts).",
+  "slugPolicy": "Keep the English slug for every Thai page except one (below). Thai script cannot be used (ASCII-only rule), and RTGS romanisation of the Thai keywords ('lot-witdio-pinterest', 'load-roop') is something no Thai user reads or types. The Latin words Thai searchers really type (pinterest, video, gif, mp4, iphone, android, chrome) are already in the English slugs. Keeping them also makes /th/<enSlug> routing and hreflang pairing mechanical.",
+  "changedSlugs": {
+   "pinterest-4k-downloader": "pinterest-hd-downloader (the Thai page is the honest 'sharpest file available' page; a '4k' URL would contradict its copy and PRODUCT.md's 'no fake 4K')"
+  },
+  "keptEnglishSlugDespiteMismatch": [
+   "how-to-download-pinterest-video-on-laptop: Thai says 'คอม', not 'laptop'. The title and H1 carry 'คอม'; the URL is not worth breaking parity for."
+  ]
+ },
+ "evidence": {
+  "method": "Google autocomplete via suggestqueries.google.com client=firefox, hl=th, gl=th, ie/oe=UTF-8, 1.2 s between requests, 292 seeds in 21 groups, collected 2026-10-14/15 (UTC). Ranking pages: one DuckDuckGo kl=th-th SERP (later queries were rate-limited, and Bing/DDG-lite returned challenge pages), plus direct fetches of competitors' Thai pages (title, meta, H1-H3, hreflang). Pinterest's own Thai wording: help.pinterest.com/th live pages where reachable, otherwise Wayback Machine copies (the live help centre returns HTTP 406 to scripted requests after a few hits).",
+  "autocompleteNote": "Google's suggestions print SARA AM decomposed ('ลายน้ํา' = U+0E4D U+0E32) and insert word-break spaces ('โหลด รูป pinterest ไม่ ชัด'). They are the same queries as the normal spellings; our copy uses precomposed 'ำ' (U+0E33) and normal spacing. Raw strings are kept verbatim below.",
+  "autocomplete": {
+   "index": {
+    "pinterest": [
+     "pinterest",
+     "pinterest wallpaper",
+     "pinterest คืออะไร",
+     "pinterest video downloader",
+     "pinterest com",
+     "pinterest download",
+     "pinterest l",
+     "pinterest ระบายสี",
+     "pinterest logo",
+     "pinterest ค"
+    ],
+    "pinterest ดาวน์โหลด": [
+     "pinterest ดาวน์โหลด",
+     "pinterest ดาวน์โหลดรูป",
+     "pinterest ดาวน์โหลดวิดีโอ",
+     "pinterest ดาวน์โหลดวิดีโอ ฟรี",
+     "pinterest ดาวน์โหลดรูปไม่ได้",
+     "pinterest ดาวน์โหลด video",
+     "ดาวน์โหลด pinterest ไม่มี ลายน้ํา",
+     "ดาวน์โหลด pinterest gif",
+     "เครื่องมือ ดาวน์โหลด pinterest",
+     "วิธี ดาวน์โหลด pinterest"
+    ],
+    "ดาวน์โหลด pinterest": [
+     "ดาวน์โหลด pinterest",
+     "ดาวน์โหลด pinterest ฟรี",
+     "ดาวน์โหลด pinterest video",
+     "ดาวน์โหลด pinterest ไม่มี ลายน้ํา",
+     "ดาวน์โหลด pinterest วิดีโอ",
+     "ดาวน์โหลด pinterest pc",
+     "ดาวน์โหลด pinterest gif",
+     "ดาวน์โหลด pinterest รูป",
+     "download pinterest video",
+     "download pinterest"
+    ],
+    "โหลด pinterest": [
+     "โหลด pinterest",
+     "โหลด pinterest ฟรี",
+     "โหลด pinterest video",
+     "โหลด pinterest ใน mac",
+     "โหลด pinterest วิดีโอ",
+     "โหลด pinterest gif",
+     "download pinterest video",
+     "download pinterest",
+     "download pinterest image",
+     "download pinterest board"
+    ],
+    "pinterest โหลด": [
+     "pinterest โหลดคลิป",
+     "pinterest โหลด",
+     "pinterest โหลดวิดีโอ",
+     "pinterest โหลดรูปไม่ได้",
+     "pinterest โหลด ฟรี",
+     "pinterest โหลด รูป",
+     "โหลด pinterest video",
+     "โหลด pinterest gif"
+    ],
+    "pinterest downloader": [
+     "pinterest downloader",
+     "pinterest downloader videos",
+     "pinterest downloader hd",
+     "pinterest downloader without watermark",
+     "pinterest downloader telegram bot",
+     "pinterest downloader app",
+     "pinterest downloader video hd",
+     "pinterest downloader online",
+     "pinterest downloader reddit",
+     "pinterest downloader high quality"
+    ],
+    "เว็บโหลด pinterest": [
+     "web download pinterest",
+     "pinterest video download web",
+     "เว็บโหลด pinterestฟรี"
+    ],
+    "เว็บ pinterest": [
+     "เว็บ pinterest",
+     "เว็บ pinterest ไม่ สามารถ ล็อกอิน ด้วย account ใด ได้",
+     "เว็บ pinterest คือ",
+     "เว็บ pinterest สามารถล็อกอินด้วย account",
+     "เว็บ pinterest สามารถ ล็อกอิน ด้วย account ใด ได้",
+     "เว็บ pinterest ไม่ สามารถ ล็อกอิน ด้วย account",
+     "เว็บ pinterest ไม่ สามารถ ล็อกอิน ด้วย account ใด",
+     "เว็บ pinterest สามารถล็อกอินด้วย account ต่อไปนี้",
+     "web pinterest",
+     "web pinterest downloader"
+    ],
+    "pinterest ฟรี": [
+     "pinterest ฟรี",
+     "pinterest ฟรีไหม",
+     "ดาวน์โหลด pinterest ฟรี",
+     "pinterest รูป ฟรี",
+     "pinterest ดาวน์โหลด ฟรี ไหม",
+     "pinterest video download ฟรี",
+     "ดาวน์โหลด วิดีโอ pinterest ฟรี",
+     "ภาพ ใน pinterest ฟรี ไหม",
+     "ดาวน์โหลด รูป pinterest ฟรี"
+    ],
+    "pinterest ไม่มีลายน้ำ": [],
+    "pinterest เซฟ": [
+     "pinterest เซฟ รูป ไม่ ได้",
+     "pinterest เซฟรูป"
+    ],
+    "เซฟ pinterest": [
+     "save pinterest",
+     "save pinterest video to camera roll",
+     "save pinterest image",
+     "save pinterest photo",
+     "save pinterest video downloader",
+     "save pinterest video in gallery",
+     "download pinterest save",
+     "save pinterest downloader",
+     "save pinterest video without watermark",
+     "save pinterest images"
+    ],
+    "บันทึก pinterest": [
+     "บันทึก pinterest",
+     "บันทึก pinterest วิดีโอ",
+     "บันทึก pinterest ไม่ ได้",
+     "pinterest บันทึก ภาพ ยัง ไง",
+     "pinterest บันทึก ภาพ ไม่ ได้",
+     "pinterest บันทึก การ อ่าน",
+     "บันทึก รูป pinterest",
+     "บันทึก รูป pinterest ใน ไอ แพ ด",
+     "บันทึกgif pinterest",
+     "วิธีบันทึกpinterest"
+    ],
+    "pinterest บันทึก": [
+     "pinterest บันทึก วิดีโอ",
+     "pinterest บันทึก ภาพ ยัง ไง",
+     "pinterest บันทึก ภาพ ไม่ ได้",
+     "pinterest บันทึก",
+     "pinterest บันทึก การ อ่าน",
+     "pinterest บันทึก ไม่ ได้",
+     "วิธีบันทึกpinterest",
+     "ยกเลิก บันทึก pinterest",
+     "ลบ บันทึก pinterest"
+    ],
+    "พินเทอเรส": [
+     "พินเทอเรส",
+     "พินเทอเรสต์",
+     "พินเทอเรส คือ",
+     "พินเทอเรสฟรี",
+     "พินเทอเรส ดาวน์โหลด",
+     "พินเทอเรส รูป",
+     "พินเทอเรส ล่ม",
+     "พินเทอเรสวิดีโอดาวน์โหลด",
+     "พินเทอเรส ดาวน์โหลด วิดีโอ",
+     "พินเทอเรส เป็นอะไร"
+    ],
+    "พินเทอเรสต์": [
+     "พินเทอเรสต์",
+     "พินเทอเรสต์ คือ"
+    ],
+    "วิธีโหลด pinterest": [
+     "วิธี โหลด pinterest",
+     "วิธี โหลด pinterest ใน คอม",
+     "วิธี โหลด รูป pinterest",
+     "วิธี download video pinterest",
+     "วิธี โหลด gif ใน pinterest",
+     "วิธี โหลด รูป จาก pinterest ให้ ชัด",
+     "วิธี โหลด รูป png ใน pinterest",
+     "วิธีโหลดภาพเคลื่อนไหวใน pinterest",
+     "วิธีโหลด pinterestฟรี"
+    ],
+    "ดูด pinterest": [
+     "ดูด pinterest",
+     "ดูดวิดีโอ pinterest",
+     "ดูด pinterest ไม่ได้",
+     "ดูด pinterest ฟรี"
+    ],
+    "pinterest ไม่ต้องล็อกอิน": [
+     "pinterest ไม่ต้องล็อกอินไม่ได้",
+     "pinterest ไม่ต้องล็อกอินใหม่"
+    ],
+    "pinterest ไม่ต้อง": [
+     "pinterest ไม่ต้องโหลด",
+     "pinterest ไม่ต้องการ",
+     "pinterest ไม่ต้องทํายังไง",
+     "pinterest ไม่ต้องทํา"
+    ]
+   },
+   "video": {
+    "โหลดวิดีโอ pinterest": [
+     "โหลดวิดีโอ pinterest",
+     "โหลด video pinterest",
+     "download วิดีโอ pinterest",
+     "download video pinterest",
+     "download video pinterest hd",
+     "download video pinterest free",
+     "download video pinterest link",
+     "download video pinterest 4k",
+     "download video pinterest full hd",
+     "download video pinterest reddit"
+    ],
+    "โหลดคลิป pinterest": [
+     "โหลดคลิป pinterest ฟรี",
+     "download clip pinterest"
+    ],
+    "ดาวน์โหลดวิดีโอ pinterest": [
+     "ดาวน์โหลดวิดีโอ pinterest",
+     "ดาวน์โหลดวิดีโอ pinterest android",
+     "ดาวน์โหลดวิดีโอ pinterest ฟรี",
+     "ดาวน์โหลดวิดีโอ pinterest ios",
+     "ดาวน์โหลดวิดีโอ pinterest ไม่มีลายน้ํา",
+     "ดาวน์โหลด วิดีโอ pinterest iphone",
+     "ดาวน์โหลด video pinterest",
+     "download วิดีโอ pinterest",
+     "download video pinterest",
+     "download video pinterest hd"
+    ],
+    "ดาวน์โหลดคลิป pinterest": [
+     "ดาวน์โหลดคลิป pinterest",
+     "ดาวน์โหลดคลิป pinterest ฟรี",
+     "ดาวน์โหลดคลิปpinterestไม่มีลายน้ํา",
+     "download clip pinterest",
+     "ดาวน์โหลดคลิปใน pinterest ไม่มีลายน้ํา",
+     "วิธีดาวน์โหลดคลิป pinterest",
+     "ดาวน์โหลดคลิปวิดีโอใน pinterest"
+    ],
+    "เซฟวิดีโอ pinterest": [
+     "เซฟ วิดีโอ pinterest android",
+     "เซฟ วิดีโอ pinterest",
+     "save video pinterest",
+     "save video pinterest download",
+     "save video pinterest link",
+     "save video pinterest to camera roll",
+     "save video pinterest iphone",
+     "save video pinterest 4k",
+     "save video pinterest downloader",
+     "save video pinterest free"
+    ],
+    "เซฟคลิป pinterest": [
+     "เซฟคลิป pinterest",
+     "save clip pinterest"
+    ],
+    "บันทึกวิดีโอ pinterest": [
+     "บันทึกวิดีโอ pinterest",
+     "บันทึกวิดีโอไม่มีลายน้ํา pinterest",
+     "บันทึก วิดีโอ ใน แอ พ pinterest",
+     "สอน บันทึก วิดีโอ ใน pinterest",
+     "บันทึกวิดีโอ pinterest ไม่ได้"
+    ],
+    "บันทึกคลิป pinterest": [
+     "บันทึกคลิป pinterest"
+    ],
+    "ดูดคลิป pinterest": [
+     "ดูดคลิป pinterest"
+    ],
+    "ดูดวิดีโอ pinterest": [
+     "ดูดวิดีโอ pinterest",
+     "ดูดวิดีโอ pinterest ไม่ได้",
+     "ดูดวิดีโอ pinterest ios",
+     "ดูดวิดีโอ pinterest pc"
+    ],
+    "pinterest video downloader": [
+     "pinterest video downloader",
+     "pinterest video downloader ios",
+     "pinterest video downloader app",
+     "pinterest video downloader online",
+     "pinterest video downloader chrome",
+     "pinterest video downloader pinterest video download 1080p 2k 4k free all devices",
+     "pinterest video downloader free",
+     "pinterest video downloader google"
+    ],
+    "pinterest วิดีโอ": [
+     "pinterest วิดีโอดาวน์โหลด",
+     "pinterest ดาวน์โหลด วิดีโอ ฟรี",
+     "ดาวน์โหลด วิดีโอ pinterest ios",
+     "ดาวน์โหลด วิดีโอ pinterest android",
+     "pinterest วิดีโอคอล",
+     "pinterest วิดีโอของ"
+    ],
+    "pinterest คลิป": [
+     "ดาวน์โหลดคลิปpinterestไม่มีลายน้ํา"
+    ],
+    "วิดีโอ pinterest": [
+     "วิดีโอ pinterest",
+     "video pinterest",
+     "video pinterest download",
+     "video pinterest download hd",
+     "video pinterest downloader hd",
+     "video pinterest downloader apk",
+     "video pinterest downloader online",
+     "video pinterest download 4k",
+     "video pinterest downloader free",
+     "video pinterest aesthetic"
+    ],
+    "คลิป pinterest": [
+     "clip pinterest",
+     "clip pinterest download",
+     "ดาวน์โหลดคลิปpinterestไม่มีลายน้ํา",
+     "ดาวน์โหลดคลิป pinterest"
+    ],
+    "pinterest video": [
+     "pinterest video downloader",
+     "pinterest video download",
+     "pinterest video",
+     "pinterest video download ฟรี",
+     "pinterest video download ios",
+     "pinterest video downloader ios",
+     "pinterest video download 4k",
+     "pinterest video download app",
+     "pinterest video download free",
+     "pinterest video downloader app"
+    ],
+    "pinterest โหลดวิดีโอ": [
+     "pinterest โหลดวิดีโอ",
+     "pinterest download video",
+     "pinterest download video expertsphp",
+     "pinterest download video shortcut",
+     "pinterest download video copy link",
+     "pinterest download video 8k",
+     "pinterest download video photo",
+     "pinterest download video high quality",
+     "pinterest download video without watermark free",
+     "pinterest download video mp3"
+    ],
+    "pinterest โหลดคลิป": [
+     "pinterest โหลดคลิป",
+     "pinterest download clip",
+     "pinterest clip download free",
+     "pinterest clip download 4k",
+     "pinterest clip download hd",
+     "pinterest clip download link",
+     "pinterest โหลดคลิปไม่ได้"
+    ]
+   },
+   "image": {
+    "โหลดรูป pinterest": [
+     "โหลดรูป pinterest",
+     "โหลด รูป pinterest ชัด ๆ",
+     "โหลด รูป pinterest ไม่ ชัด",
+     "โหลด รูป pinterest ไม่ ได้",
+     "โหลด รูป ใน pinterest ให้ ชัด",
+     "วิธี โหลด รูป pinterest",
+     "โหลด รูป ฟรี pinterest"
+    ],
+    "เซฟรูป pinterest": [
+     "เซฟ รูป pinterest",
+     "เซฟ รูป pinterest ใน ไอ แพ ด",
+     "เซฟ รูป จาก pinterest ไม่ ชัด",
+     "วิธี เซฟ รูป pinterest",
+     "เซฟ รูป จาก pinterest ให้ ชัด",
+     "เซฟ รูป ใน pinterest ไม่ ได้",
+     "เซฟ รูป จาก pinterest 2566",
+     "เซฟ รูป png จาก pinterest",
+     "เซฟรูป pinterest ไม่ได้"
+    ],
+    "บันทึกรูป pinterest": [
+     "บันทึกรูป pinterest",
+     "บันทึก รูป pinterest ใน ไอ แพ ด",
+     "บันทึก รูป จาก pinterest",
+     "บันทึก รูป ใน pinterest ไม่ ได้",
+     "บันทึกรูป pinterest ไม่ได้"
+    ],
+    "ดาวน์โหลดรูป pinterest": [
+     "ดาวน์โหลดรูป pinterest",
+     "ดาวน์โหลด รูป pinterest ฟรี",
+     "ดาวน์โหลด รูป ใน pinterest ไม่ ได้",
+     "วิธีดาวน์โหลดรูป pinterest",
+     "ดาวน์โหลดรูป จากแอปpinterest"
+    ],
+    "ดาวน์โหลดรูปภาพ pinterest": [
+     "ดาวน์โหลดรูปภาพ pinterest",
+     "ดาวน์โหลด รูปภาพ จาก pinterest",
+     "ดาวน์โหลดรูปภาพ pinterest ไม่ได้",
+     "ดาวน์โหลดรูปภาพ pinterest ฟรี"
+    ],
+    "โหลดภาพ pinterest": [
+     "โหลดภาพ pinterest",
+     "โหลด ภาพ จาก pinterest ให้ ชัด",
+     "วิธี โหลด ภาพ pinterest",
+     "โหลด ภาพ จาก pinterest ไม่ ได้",
+     "pinterest โหลด ภาพ ไม่ ได้",
+     "โหลดภาพ pinterest ไม่ได้",
+     "โหลดภาพ pinterest ฟรี"
+    ],
+    "บันทึกภาพ pinterest": [
+     "บันทึก ภาพ pinterest",
+     "วิธี บันทึก ภาพ pinterest",
+     "บันทึก ภาพ เคลื่อนไหว pinterest",
+     "pinterest บันทึก ภาพ ไม่ ได้",
+     "บันทึกภาพ pinterest ไม่ได้"
+    ],
+    "เซฟภาพ pinterest": [
+     "เซฟ ภาพ pinterest",
+     "เซฟ ภาพ เคลื่อนไหว pinterest",
+     "วิธี เซฟ ภาพ จาก pinterest",
+     "เซฟภาพ pinterest ไม่ได้"
+    ],
+    "รูป pinterest": [
+     "รูป pinterest",
+     "รูป pinterest สวย ๆ",
+     "pinterest รูปไม่ชัด",
+     "รูป pinterest เท่ ๆ",
+     "pinterest รูป การ์ตูน",
+     "pinterest รูป ฟรี",
+     "pinterest รูป ไม่ ขึ้น",
+     "pinterest รูป ผู้หญิง",
+     "pinterest รูป น่า รัก ๆ",
+     "pinterest รูป คน"
+    ],
+    "pinterest รูป": [
+     "pinterest รูป",
+     "pinterest รูป การ์ตูน",
+     "pinterest รูปผู้หญิง",
+     "pinterest รูป ฟรี",
+     "pinterest รูป ไม่ ขึ้น",
+     "pinterest รูป น่า รัก ๆ",
+     "pinterest รูป คน",
+     "pinterest รูป แมว",
+     "pinterest รูป สวย ๆ",
+     "pinterest รูป คู่"
+    ],
+    "pinterest รูปภาพ": [
+     "pinterest รูปภาพ",
+     "ดาวน์โหลด รูปภาพ pinterest",
+     "เว็บ รูปภาพ pinterest",
+     "pinterest ค้นหา ภายใน รูปภาพ",
+     "ค้นหารูปภาพ pinterest",
+     "pinterest รูปภาพฟรี"
+    ],
+    "pinterest ภาพ": [
+     "pinterest ภาพ",
+     "pinterest ภาพพื้นหลัง",
+     "pinterest ภาพ ระบายสี",
+     "pinterest ภาพ ไม่ ชัด",
+     "pinterest ภาพ วาด",
+     "pinterest ภาพ หน้า จอ คอม",
+     "pinterest ภาพ การ์ตูน",
+     "pinterest ภาพ ไม่ ขึ้น",
+     "pinterest ภาพ สวย ๆ",
+     "ภาพถ่าย pinterest"
+    ],
+    "pinterest โหลดรูป": [
+     "pinterest โหลดรูปไม่ได้",
+     "pinterest โหลด รูป",
+     "pinterest download รูป",
+     "โหลด รูป pinterest ชัด ๆ",
+     "โหลด รูป pinterest ไม่ ชัด",
+     "pinterest โหลดรูปภาพ"
+    ],
+    "pinterest เซฟรูป": [
+     "pinterest เซฟ รูป ไม่ ได้",
+     "pinterest เซฟ รูป ยัง ไง",
+     "เซฟ รูป pinterest",
+     "เซฟ รูป pinterest ใน ไอ แพ ด"
+    ],
+    "pinterest image downloader": [
+     "pinterest image downloader",
+     "pinterest image downloader hd",
+     "pinterest image downloader reddit",
+     "pinterest image downloader 4k",
+     "pinterest image downloader chrome extension",
+     "pinterest image downloader high quality",
+     "pinterest image downloader video",
+     "pinterest image downloader bulk",
+     "pinterest image downloader savepin",
+     "pinterest image downloader futoo"
+    ],
+    "รูป pinterest ชัด": [
+     "โหลด รูป pinterest ชัด ๆ",
+     "pinterest รูปไม่ชัด",
+     "โหลด รูป pinterest ไม่ ชัด",
+     "รูป pinterest ชัดๆ"
+    ],
+    "รูป pinterest hd": [],
+    "โหลดรูป pinterest ไม่ชัด": [
+     "โหลด รูป pinterest ไม่ ชัด",
+     "โหลดรูป pinterest ไม่ชัด 2024"
+    ],
+    "โหลดรูป pinterest ให้ชัด": [
+     "โหลด รูป ใน pinterest ให้ ชัด",
+     "โหลดรูป pinterest ให้ชัดขึ้น",
+     "โหลดรูป pinterest ให้ชัดๆ",
+     "โหลดรูป pinterest ให้ชัด ฟรี"
+    ],
+    "pinterest รูปไม่ชัด": [
+     "pinterest รูปไม่ชัด",
+     "โหลด รูป pinterest ไม่ ชัด",
+     "pinterest รูปไม่ชัด แก้ยังไง",
+     "pinterest รูปไม่ชัด ทําไง"
+    ]
+   },
+   "pin": {
+    "pin pinterest": [
+     "حهى pinterest",
+     "pin pinterest video downloader",
+     "pin pinterest downloader",
+     "pin pinterest mehndi design",
+     "pin pinterest image downloader",
+     "pin pinterest blouse designs",
+     "pin pinterest images",
+     "pin pinterest wallpaper",
+     "pin pinterest blouse designs latest",
+     "pin pinterest"
+    ],
+    "พิน pinterest": [
+     "พิน pinterest",
+     "โหลด พิ น pinterest",
+     "ลบ พิ น pinterest"
+    ],
+    "โหลดพิน": [
+     "โหลดพิน",
+     "โหลดพินวิดีโอ"
+    ],
+    "pinterest pin downloader": [
+     "pinterest pin downloader",
+     "pinterest pin downloader hd",
+     "pinterest pin downloader extension",
+     "pinterest pin downloader 4k",
+     "pinterest pin downloader video",
+     "pinterest pin downloader online",
+     "pinterest pin downloader reddit",
+     "pinterest pin downloader free",
+     "pinterest board & pin downloader",
+     "pinterest save pin downloader"
+    ],
+    "pinterest pin": [
+     "pinterest pinterest",
+     "pinterest pin",
+     "pinterest pink",
+     "pinterest pink happy tuesday",
+     "pinterest pin download",
+     "pinterest pink wallpaper",
+     "pink aesthetic wallpaper pinterest",
+     "pinterest pin delete",
+     "pingrab pinterest video downloader",
+     "delete pinterest pins"
+    ],
+    "ลิงก์ pinterest": [
+     "link pinterest",
+     "link pinterest download",
+     "link pinterest download video",
+     "link pinterest video",
+     "link pinterest downloader",
+     "pinterest downloader video link",
+     "link pinterest to mp4",
+     "link pinterest to gif",
+     "link pinterest accounts",
+     "link pinterest app"
+    ],
+    "ลิงค์ pinterest": [
+     "link pinterest",
+     "link pinterest download",
+     "link pinterest download video",
+     "link pinterest video",
+     "link pinterest downloader",
+     "pinterest downloader video link",
+     "link pinterest to mp4",
+     "link pinterest to gif",
+     "link pinterest accounts",
+     "link pinterest app"
+    ],
+    "pinterest ลิงก์": [
+     "pinterest ลิงก์โหลด",
+     "pinterest ลิงก์โหลดฟรี"
+    ],
+    "pinterest ลิงค์": [
+     "แปลง ลิงค์ pinterest"
+    ],
+    "pin.it": [
+     "pin.it",
+     "pin.it link",
+     "pin.it video download",
+     "pin.it what is it",
+     "pin.it downloader",
+     "pin.it link safe",
+     "pin.it website",
+     "pin it game",
+     "pin it down",
+     "pin it meaning"
+    ]
+   },
+   "gif": {
+    "pinterest gif": [
+     "pinterest gif",
+     "pinterest gif download",
+     "pinterest gif anime",
+     "pinterest gif downloader",
+     "pinterest gift ideas",
+     "pinterest gift",
+     "pinterest gift ideas for her",
+     "pinterest gift box",
+     "pinterest gifs download",
+     "pinterest gift card"
+    ],
+    "gif pinterest": [
+     "gif pinterest",
+     "gif pinterest download",
+     "gif pinterest downloader",
+     "gif pinterest anime",
+     "gif pinterest aesthetic",
+     "gif pinterest girl",
+     "gif pinterest wallpaper",
+     "pinterest meme gif",
+     "gif pinterest good morning",
+     "pinterest gif banner"
+    ],
+    "โหลด gif pinterest": [
+     "โหลด gif pinterest",
+     "โหลด gif pinterest ยัง ไง",
+     "download gif pinterest",
+     "download gif pinterest link",
+     "download gif pinterest online",
+     "download gif pinterest to video",
+     "download gif pinterest android",
+     "download pinterest gif free",
+     "download pinterest gif video free",
+     "โหลด gif ใน pinterest"
+    ],
+    "เซฟ gif pinterest": [
+     "save gif pinterest",
+     "save pinterest gif as video",
+     "เซฟ gif จาก pinterest",
+     "เซฟ gif pinterest ไม่ได้"
+    ],
+    "บันทึก gif pinterest": [
+     "บันทึกgif pinterest",
+     "save gif pinterest",
+     "save pinterest gif as video",
+     "บันทึก gif pinterest ไม่ได้"
+    ],
+    "ดาวน์โหลด gif pinterest": [
+     "ดาวน์โหลด gif pinterest",
+     "download gif pinterest",
+     "download gif pinterest link",
+     "download gif pinterest online",
+     "download gif pinterest to video",
+     "download gif pinterest android",
+     "download pinterest gif free",
+     "download pinterest gif video free",
+     "ดาวน์โหลด gif ใน pinterest",
+     "download gif pinterest hd"
+    ],
+    "ภาพเคลื่อนไหว pinterest": [
+     "ภาพ เคลื่อนไหว pinterest",
+     "ดาวน์โหลด ภาพ เคลื่อนไหว pinterest",
+     "เซฟ ภาพ เคลื่อนไหว pinterest"
+    ],
+    "โหลดภาพเคลื่อนไหว pinterest": [
+     "วิธีโหลดภาพเคลื่อนไหวใน pinterest",
+     "โหลดภาพเคลื่อนไหว pinterest ฟรี",
+     "โหลดภาพเคลื่อนไหว pinterest pc"
+    ],
+    "เซฟภาพเคลื่อนไหว pinterest": [
+     "เซฟ ภาพ เคลื่อนไหว pinterest",
+     "เซฟภาพเคลื่อนไหว pinterest ไม่ได้",
+     "เซฟภาพเคลื่อนไหว pinterest pc"
+    ],
+    "pinterest ภาพเคลื่อนไหว": [
+     "ภาพ เคลื่อนไหว pinterest",
+     "pinterest ภาพเคลื่อนไหว ฟรี",
+     "pinterest ภาพเคลื่อนไหวสวยๆ"
+    ],
+    "pinterest gif downloader": [
+     "pinterest gif downloader",
+     "pinterest gif downloader online",
+     "pinterest gif downloader hd",
+     "pinterest gif downloader free",
+     "pinterest gif downloader to video",
+     "pinterest gif downloader klickpin",
+     "pinterest gif downloader 4k",
+     "pinterest gif downloader chrome",
+     "pinterest gif downloader mp4",
+     "pinterest gif downloader apk"
+    ]
+   },
+   "board": {
+    "บอร์ด pinterest": [
+     "board pinterest",
+     "board pinterest ideas",
+     "board pinterest downloader",
+     "board pinterest names",
+     "board pinterest meaning",
+     "บอร์ด pinterest คือ",
+     "บอร์ด pinterest คืออะไร"
+    ],
+    "pinterest บอร์ด": [
+     "pinterest บอร์ดเกม"
+    ],
+    "โหลดบอร์ด pinterest": [
+     "โหลดบอร์ด pinterest ฟรี",
+     "โหลดบอร์ด pinterest ไม่ได้",
+     "โหลดบอร์ด pinterest pc"
+    ],
+    "ดาวน์โหลดบอร์ด pinterest": [
+     "download board pinterest",
+     "download pinterest board images",
+     "download pinterest board online",
+     "download pinterest board free",
+     "download video pinterest board",
+     "download pinterest board firefox",
+     "download pinterest board at once",
+     "download pinterest board github",
+     "download pinterest board image",
+     "download pinterest board as pdf"
+    ],
+    "pinterest board": [
+     "pinterest board",
+     "pinterest board downloader",
+     "pinterest board ideas",
+     "pinterest boards",
+     "pinterest board names",
+     "pinterest board name ideas",
+     "pinterest board downloader online",
+     "pinterest board download",
+     "pinterest board downloader extension",
+     "pinterest board downloader free"
+    ],
+    "pinterest board downloader": [
+     "pinterest board downloader",
+     "pinterest board downloader online",
+     "pinterest board downloader extension",
+     "pinterest board downloader free",
+     "pinterest board downloader android",
+     "pinterest board downloader online free",
+     "pinterest board downloader github",
+     "pinterest board downloader firefox",
+     "pinterest board downloader apk",
+     "pinterest board downloader chrome extension"
+    ],
+    "โหลดรูปทั้งบอร์ด pinterest": [
+     "โหลดรูปทั้งบอร์ด pinterest ฟรี"
+    ],
+    "โหลดรูปทั้งหมด pinterest": [
+     "โหลดรูปทั้งหมด pinterest ฟรี"
+    ],
+    "pinterest โหลดทั้งหมด": [
+     "pinterest โหลดทั้งหมดกี่รูป",
+     "pinterest โหลดทั้งหมดกี่บาท"
+    ],
+    "pinterest โหลดหลายรูป": [
+     "pinterest โหลดหลายรูปไม่ได้",
+     "pinterest โหลดหลายรูปได้ไหม"
+    ]
+   },
+   "profile": {
+    "โปรไฟล์ pinterest": [
+     "โปรไฟล์ pinterest",
+     "profile pinterest",
+     "profile pinterest girl",
+     "profile pinterest aesthetic",
+     "boy profile pinterest",
+     "profile cute pinterest",
+     "anime profile pinterest",
+     "profile pinterest photo",
+     "profile picture pinterest",
+     "profile pinterest dark"
+    ],
+    "pinterest โปรไฟล์": [
+     "pinterest โปรไฟล์",
+     "pinterest รูป โปรไฟล์"
+    ],
+    "pinterest profile": [
+     "pinterest profile",
+     "pinterest profile picture",
+     "pinterest profile picture girl",
+     "pinterest profile picture download",
+     "pinterest profile picture aesthetic",
+     "pinterest profile picture size",
+     "pinterest profile pictures",
+     "pinterest profile picture boy",
+     "pinterest profile picture downloader",
+     "pinterest profiles"
+    ],
+    "pinterest profile downloader": [
+     "pinterest profile downloader",
+     "pinterest profile downloader free",
+     "pinterest profile downloader online",
+     "pinterest profile picture downloader",
+     "pinterest profile pic downloader",
+     "pinterest profile picture downloader hd",
+     "pinterest profile picture downloader online free",
+     "pinterest full profile downloader",
+     "pinterest profile picture downloader online",
+     "pinterest profile banner downloader"
+    ],
+    "รูปโปรไฟล์ pinterest": [
+     "รูปโปรไฟล์ pinterest",
+     "รูป โปรไฟล์ น่า รัก ๆ pinterest",
+     "รูปโปรไฟล์ pinterest น่ารักๆ"
+    ],
+    "pinterest รูปโปรไฟล์": [
+     "pinterest รูป โปรไฟล์",
+     "pinterest รูปโปรไฟล์เท่ๆ",
+     "pinterest รูปโปรไฟล์ฟรี",
+     "pinterest รูปโปรไฟล์ facebook"
+    ],
+    "โหลดรูปโปรไฟล์ pinterest": [
+     "โหลดรูปโปรไฟล์ pinterest ไม่ได้",
+     "โหลดรูปโปรไฟล์ pinterest ฟรี"
+    ],
+    "pinterest profile picture": [
+     "pinterest profile picture",
+     "pinterest profile picture girl",
+     "pinterest profile picture download",
+     "pinterest profile picture aesthetic",
+     "pinterest profile picture size",
+     "pinterest profile pictures",
+     "pinterest profile picture boy",
+     "pinterest profile picture downloader",
+     "pinterest profile picture ideas",
+     "pinterest profile picture boy anime"
+    ],
+    "ดูรูปโปรไฟล์ pinterest": [
+     "ดูรูปโปรไฟล์ pinterest ไม่ได้"
+    ],
+    "pinterest pfp": [
+     "pinterest pfp",
+     "pinterest pfps",
+     "pinterest pfp aesthetic",
+     "pinterest pfp girl",
+     "pinterest pfp boy",
+     "pinterest pfp ideas",
+     "pinterest pfp for girls",
+     "pinterest anime pfp",
+     "pinterest pfp downloader",
+     "pinterest pfp discord"
+    ],
+    "pinterest dp": [
+     "pinterest dp",
+     "pinterest dp for girls",
+     "pinterest dp boy",
+     "pinterest dp aesthetic",
+     "pinterest dpz",
+     "pinterest dp for instagram",
+     "pinterest dp for girls aesthetic",
+     "pinterest dps",
+     "pinterest dp download",
+     "pinterest dpz for girls"
+    ],
+    "รูปโปรไฟล์": [
+     "รูปโปรไฟล์",
+     "รูปโปรไฟล์เท่ๆ",
+     "รูปโปรไฟล์น่ารักๆ",
+     "รูปโปรไฟล์ไม่มีตัวตน",
+     "รูปโปรไฟล์สีดํา",
+     "รูปโปรไฟล์เฟส เท่ๆ",
+     "รูปโปรไฟล์กวนๆ",
+     "รูปโปรไฟล์ผู้หญิง",
+     "รูปโปรไฟล์เท่ๆผู้หญิง",
+     "รูปโปรไฟล์เศร้าๆ"
+    ],
+    "pinterest รูปโปร": [
+     "รูป โปร pinterest",
+     "pinterest รูปโปรไฟล์"
+    ],
+    "โหลดรูปทั้งหมดจากโปรไฟล์ pinterest": [],
+    "ดาวน์โหลดโปรไฟล์ pinterest": [
+     "download profile pinterest",
+     "download pinterest profile picture",
+     "download pinterest profile picture hd",
+     "download pinterest profile picture full size",
+     "download pinterest profile pic",
+     "download pinterest profile pictures",
+     "download pinterest profile picture hd free",
+     "ดาวน์โหลดโปรไฟล์ pinterest ไม่ได้",
+     "ดาวน์โหลดโปรไฟล์ pinterest ฟรี"
+    ],
+    "ดูรูปโปรไฟล์เต็ม": [],
+    "ดูรูปโปรไฟล์ pinterest เต็ม": [
+     "ดูรูปโปรไฟล์ pinterest เต็มจอ",
+     "ดูรูปโปรไฟล์ pinterest เต็มรูป",
+     "ดูรูปโปรไฟล์ pinterest เต็มหน้าจอ",
+     "ดูรูปโปรไฟล์ pinterest เต็มเรื่อง"
+    ],
+    "ซูมรูปโปรไฟล์": [],
+    "รูปโปรไฟล์ pinterest ชัด": [
+     "รูปโปรไฟล์ pinterest ชัดๆ",
+     "รูปโปรไฟล์ pinterest ชัดเจน"
+    ],
+    "pinterest ผู้ใช้": [
+     "pinterest ไม่ พบ ผู้ ใช้",
+     "pinterest เหมาะ กับ ผู้ ใช้ งาน ประเภท ใด",
+     "pinterest ผู้ใช้ใหม่",
+     "pinterest ผู้ใช้งาน"
+    ],
+    "โหลดรูปโปรไฟล์": [
+     "โหลดรูปโปรไฟล์ไอจี",
+     "โหลดรูปโปรไฟล์ tiktok",
+     "โหลดรูปโปรไฟล์ facebook",
+     "โหลดรูปโปรไฟล์ ig คนอื่น",
+     "โหลดรูปโปรไฟล์",
+     "โหลดรูปโปรไฟล์ discord"
+    ]
+   },
+   "carousel": {
+    "pinterest carousel": [
+     "pinterest carousel",
+     "pinterest carousel downloader",
+     "pinterest carousel post",
+     "pinterest carousel ideas",
+     "pinterest carousel ads",
+     "pinterest carousel ad specs",
+     "pinterest carousel pin",
+     "pinterest carousel examples",
+     "pinterest carousel ad examples",
+     "pinterest carousel specs"
+    ],
+    "pinterest หลายรูป": [
+     "pinterest หลายรูปภาพ",
+     "pinterest หลายรูปได้ไหม"
+    ],
+    "pinterest โพสต์หลายรูป": [
+     "pinterest โพสต์หลายรูปไม่ได้"
+    ],
+    "pinterest carousel downloader": [
+     "pinterest carousel downloader"
+    ],
+    "pinterest สไลด์": [
+     "pinterest สไลด์สอน",
+     "pinterest สไลด์ powerpoint"
+    ],
+    "โหลดรูปหลายรูป pinterest": [],
+    "pinterest พินหลายรูป": [
+     "pinterest พินหลายรูปได้ไหม",
+     "pinterest พินหลายรูปภาพ"
+    ]
+   },
+   "story": {
+    "pinterest idea pin": [
+     "pinterest idea pins",
+     "pinterest idea pin examples",
+     "pinterest idea pin builder",
+     "pinterest idea pin downloader",
+     "pinterest idea pin size",
+     "pinterest idea pin ads",
+     "pinterest idea pins 2025",
+     "pinterest idea pins gone",
+     "pinterest idea pins specs",
+     "pinterest pink idea"
+    ],
+    "pinterest story": [
+     "pinterest story download",
+     "pinterest story ideas",
+     "pinterest story template",
+     "pinterest story",
+     "pinterest story background",
+     "pinterest story saver",
+     "pinterest story ideas for instagram",
+     "pinterest story background aesthetic",
+     "pinterest story download link copy",
+     "pinterest story ideas for girls"
+    ],
+    "pinterest สตอรี่": [],
+    "pinterest ไอเดียพิน": [
+     "pinterest ไอเดียพินอิน",
+     "pinterest ไอเดียพินิจ"
+    ],
+    "pinterest idea pin downloader": [
+     "pinterest idea pin downloader",
+     "pinterest idea pin downloader free",
+     "pinterest idea pin downloader free download"
+    ],
+    "pinterest story downloader": [
+     "pinterest story downloader",
+     "pinterest story downloader online",
+     "pinterest video story downloader",
+     "pinterest story pin downloader",
+     "pinterest story pin video downloader"
+    ],
+    "pinterest พินไอเดีย": [
+     "pinterest พินไอเดียการ์ตูน"
+    ]
+   },
+   "audio": {
+    "pinterest เพลง": [
+     "pinterest เพลง",
+     "pinterest คอร์ด เพลง",
+     "pinterest เพลงไทย",
+     "pinterest เพลงจีน",
+     "pinterest เพลงไทยใหญ่"
+    ],
+    "โหลดเพลง pinterest": [],
+    "pinterest mp3": [
+     "pinterest mp3",
+     "pinterest mp3 download",
+     "pinterest mp3 converter",
+     "pinterest mp3 video downloader",
+     "pinterest mp3 video download",
+     "pinterest mp3 video",
+     "pinterest mp3 download free",
+     "pinterest mp3 audio",
+     "pinterest mp3 downloader online",
+     "pinterest mp3 dönüştürücü"
+    ],
+    "pinterest เสียง": [
+     "ปิด เสียง pinterest"
+    ],
+    "โหลดเสียง pinterest": [
+     "โหลดเสียง pinterest ฟรี",
+     "โหลดเสียง pinterest mp3",
+     "โหลดเสียง pinterest ไม่ได้"
+    ],
+    "pinterest audio downloader": [
+     "pinterest audio downloader",
+     "pinterest audio downloader mp3",
+     "pinterest audio downloader online free",
+     "pinterest audio downloader free",
+     "pinterest audio downloader mp3 free",
+     "pinterest audio downloader online",
+     "pinterest audio downloader reddit",
+     "pinterest audio downloader hd",
+     "pinterest audio downloader mp4",
+     "pinterest audio downloader online free mp3"
+    ],
+    "pinterest to mp3": [
+     "pinterest to mp3",
+     "pinterest to mp3 converter",
+     "pinterest to mp3 download free",
+     "pinterest to mp3 audio",
+     "pinterest to mp3 video",
+     "pinterest to mp34",
+     "pinterest to mp3 converter online free",
+     "pinterest to mp3 player",
+     "pinterest to mp3 converter online",
+     "pinterest to mp3 converter free"
+    ],
+    "เพลงใน pinterest": [],
+    "แปลง pinterest เป็น mp3": [],
+    "ดึงเสียง pinterest": [
+     "ดึงเสียง pinterest ไม่ได้",
+     "ดึงเสียง pinterest ออก"
+    ],
+    "แยกเสียง pinterest": [
+     "แยกเสียง pinterest ไม่ได้"
+    ],
+    "โหลดเพลงจาก pinterest": [],
+    "เพลง pinterest": [
+     "เพลง pinterest",
+     "คอร์ด เพลง pinterest"
+    ],
+    "pinterest เพลงประกอบ": [
+     "pinterest เพลงประกอบละคร",
+     "pinterest เพลงประกอบซีรีย์",
+     "pinterest เพลงประกอบภาพยนตร์",
+     "pinterest เพลงประกอบหนัง"
+    ]
+   },
+   "fourk": {
+    "pinterest 4k": [
+     "pinterest 4k",
+     "pinterest 4k wallpaper",
+     "pinterest 4k wallpaper for pc",
+     "pinterest 4k downloader",
+     "pinterest 4k image downloader",
+     "pinterest 4k video download free",
+     "pinterest 4k video download online",
+     "pinterest 4k hd video download",
+     "pinterest 4k video",
+     "pinterest 4k wallpaper download"
+    ],
+    "รูป pinterest 4k": [
+     "รูป pinterest 4k download",
+     "รูป pinterest 4k 4k"
+    ],
+    "pinterest 4k downloader": [
+     "pinterest 4k downloader",
+     "pinterest 4k downloader image",
+     "pinterest 4k downloader video",
+     "pinterest 4k downloader online",
+     "pinterest 4k downloader free",
+     "pinterest downloader 4k quality",
+     "pinterest downloader 4k hd",
+     "pinterest 4k video downloader online",
+     "pinterest 4k wallpaper downloader",
+     "pinterest downloader 4k apk"
+    ],
+    "pinterest 1080p": [
+     "pinterest 1080p video downloader",
+     "pinterest 1080p download",
+     "pinterest 1080p wallpaper",
+     "pinterest 1080p image downloader",
+     "pinterest 1080p",
+     "pinterest 1080p video",
+     "pinterest 1080p downloader",
+     "sss pinterest 1080p",
+     "pinterest mp4 1080p",
+     "pinterest video download 1080p hd"
+    ],
+    "pinterest hd": [
+     "pinterest hd video download",
+     "pinterest hd downloader",
+     "pinterest hd wallpaper",
+     "pinterest hd image downloader",
+     "pinterest hd photo download",
+     "pinterest hd video download 4k",
+     "pinterest hd",
+     "pinterest hd wallpaper for laptop",
+     "pinterest hd images",
+     "pinterest hd wallpaper download"
+    ],
+    "pinterest ความละเอียดสูง": [
+     "pinterest ความละเอียดสูงสุด"
+    ],
+    "pinterest ภาพชัด": [
+     "pinterest ภาพ ไม่ ชัด",
+     "pinterest ภาพชัดๆ",
+     "pinterest ภาพชัด ฟรี",
+     "pinterest ภาพชัดชัด"
+    ],
+    "pinterest full hd": [
+     "pinterest full hd video download",
+     "pinterest full hd photo download",
+     "pinterest full hd download",
+     "pinterest full hd wallpaper",
+     "pinterest full hd image downloader",
+     "pinterest full hd",
+     "pinterest full hd wallpaper 4k download",
+     "pinterest full hd video download free",
+     "pinterest full hd wallpaper for pc",
+     "pinterest full hd video"
+    ],
+    "วอลเปเปอร์ 4k pinterest": [
+     "wallpaper 4k pinterest",
+     "wallpaper 4k pinterest pc",
+     "wallpaper 4k pinterest aesthetic",
+     "wallpaper 4k pinterest anime",
+     "wallpapers 4k pinterest pc",
+     "wallpaper 4k pinterest laptop",
+     "wallpaper 4k pinterest phone",
+     "wallpaper 4k pinterest desktop",
+     "wallpaper 4k pinterest iphone",
+     "wallpaper 4k pinterest car"
+    ]
+   },
+   "mp4": {
+    "pinterest mp4": [
+     "pinterest mp4",
+     "pinterest mp4 download",
+     "pinterest mp4 converter",
+     "pinterest mp4 video",
+     "pinterest mp4 video download",
+     "pinterest mp4 download 4k",
+     "pinterest mp4 convert",
+     "gif to mp4 pinterest",
+     "pinterest mp4 download free",
+     "pinterest mp4 link"
+    ],
+    "pinterest to mp4": [
+     "pinterest to mp4",
+     "pinterest to mp4 converter",
+     "pinterest to mp4 1080p",
+     "pinterest to mp4 free",
+     "pinterest to mp4 free download",
+     "pinterest to mp4 online",
+     "pinterest to mp4 video converter",
+     "pinterest to mp4 download 4k",
+     "pinterest to mp45",
+     "mp4 pinterest hd"
+    ],
+    "pinterest เป็น mp4": [],
+    "แปลง pinterest เป็น mp4": [],
+    "แปลงวิดีโอ pinterest": [
+     "แปลงวิดีโอ pinterest",
+     "แปลง ลิงค์ เป็น วิดีโอ pinterest",
+     "แปลงวิดีโอ pinterest เป็นภาพ"
+    ],
+    "แปลงลิงก์ pinterest": [],
+    "pinterest แปลง": [
+     "pinterest แปลง",
+     "pinterest แปลงไฟล์",
+     "pinterest แปลงรูป"
+    ],
+    "pinterest to mp4 converter": [
+     "pinterest to mp4 converter",
+     "pinterest to mp4 converter 4k",
+     "pinterest to mp4 converter free",
+     "pinterest to mp4 converter hd",
+     "pinterest to mp4 converter online",
+     "pinterest to mp4 converter download",
+     "pinterest to mp4 converter reddit",
+     "pinterest to mp4 converter online free",
+     "pinterest link to mp4 converter",
+     "pinterest gif to mp4 converter"
+    ]
+   },
+   "chrome": {
+    "pinterest chrome": [
+     "pinterest chrome extension",
+     "pinterest chrome",
+     "pinterest chrome nails",
+     "pinterest chromebook wallpaper",
+     "pinterest chrome wallpaper",
+     "pinterest chrome hearts",
+     "pinterest chrome login",
+     "pinterest chrome hearts wallpaper",
+     "pinterest chrome nail designs",
+     "pinterest chrome extension download"
+    ],
+    "pinterest ส่วนขยาย": [],
+    "pinterest extension": [
+     "pinterest extension",
+     "pinterest extension chrome",
+     "pinterest extensions",
+     "pinterest extension firefox",
+     "pinterest extension download",
+     "pinterest extension google chrome",
+     "pinterest extension dark mode",
+     "pinterest extension downloader",
+     "pinterest extension edge",
+     "pinterest extension black"
+    ],
+    "ส่วนขยาย chrome โหลด pinterest": [
+     "ส่วนขยาย chrome โหลด pinterest ไม่ได้",
+     "ส่วนขยาย chrome โหลด pinterest ฟรี"
+    ],
+    "pinterest video downloader chrome": [
+     "pinterest video downloader chrome",
+     "pinterest video downloader chrome extension",
+     "pinterest video downloader chrome free",
+     "pinterest video downloader chrome apk",
+     "pinterest video downloader chrome extension free",
+     "pinterest video downloader chrome android",
+     "pinterest video downloader chrome web store",
+     "best pinterest video downloader chrome",
+     "pinterest video downloader 4k chrome",
+     "download pinterest video downloader chrome"
+    ],
+    "pinterest บุ๊กมาร์ก": [
+     "pinterest บุ๊กมาร์กี้"
+    ],
+    "bookmarklet": [
+     "bookmarklet",
+     "bookmarklet คือ",
+     "bookmarklet creator",
+     "bookmarklet neal fun",
+     "bookmarklet text spacing",
+     "bookmarklets accessibility",
+     "bookmarklet proxy",
+     "bookmarklet altmetric",
+     "bookmarklet target size",
+     "bookmarklet picoctf"
+    ]
+   },
+   "seo": {
+    "pinterest seo": [
+     "pinterest seo",
+     "pinterest seo tool",
+     "pinterest seo keywords",
+     "pinterest seo meaning",
+     "pinterest seo optimization",
+     "pinterest seo business",
+     "pinterest seo course",
+     "pinterest seoul",
+     "pinterest seonghyeon",
+     "pinterest seo tips for bloggers"
+    ],
+    "pinterest แฮชแท็ก": [
+     "pinterest แฮชแท็ก tiktok"
+    ],
+    "pinterest hashtag": [
+     "pinterest hashtags",
+     "pinterest hashtag generator",
+     "pinterest hashtags trending",
+     "pinterest hashtags to go viral",
+     "pinterest hashtags copy and paste",
+     "pinterest hashtag generator recurpost",
+     "pinterest hashtags for fashion",
+     "pinterest hashtag generator free",
+     "pinterest hashtags 2025",
+     "pinterest hashtag limit"
+    ],
+    "ชื่อพิน pinterest": [],
+    "pinterest คีย์เวิร์ด": [
+     "pinterest คีย์เวิร์ด คือ",
+     "pinterest คีย์เวิร์ดหาย"
+    ],
+    "pinterest seo title generator": [
+     "pinterest seo title generator",
+     "pinterest seo title generator free",
+     "pinterest seo title generator ไทย",
+     "pinterest seo title generator คือ"
+    ],
+    "pinterest การตลาด": [
+     "pinterest การตลาดออนไลน์"
+    ],
+    "pinterest หาเงิน": [
+     "pinterest หาเงิน ยัง ไง",
+     "pinterest หาเงิน ได้ ไหม",
+     "รูปใน pinterest หาเงินยังไง",
+     "pinterest หาเงินไม่ได้",
+     "pinterest หาเงินไม่เจอ",
+     "pinterest หาเงินได้"
+    ],
+    "pinterest ขายของ": [
+     "pinterest ขาย ของ",
+     "pinterest ขายของออนไลน์",
+     "pinterest ขายของอะไรดี",
+     "pinterest ขายของในไทย",
+     "pinterest ขายของได้ไหม"
+    ],
+    "pinterest title generator": [
+     "pinterest title generator",
+     "pinterest title generator free",
+     "pinterest title description generator",
+     "pinterest pin title generator",
+     "pinterest seo title generator",
+     "pinterest video title generator",
+     "pinterest title generator ไทย",
+     "pinterest title generator ai"
+    ],
+    "ตั้งชื่อบอร์ด pinterest": []
+   },
+   "guide_general": {
+    "วิธีโหลดวิดีโอ pinterest": [
+     "วิธี download video pinterest",
+     "วิธีโหลดวิดีโอ pinterest ios"
+    ],
+    "วิธีโหลดคลิป pinterest": [],
+    "วิธีเซฟวิดีโอ pinterest": [
+     "วิธีเซฟวิดีโอ pinterest",
+     "วิธี save video pinterest",
+     "วิธีเซฟวิดีโอ pinterest ios",
+     "วิธีเซฟวิดีโอ pinterest ไม่ได้"
+    ],
+    "วิธีบันทึกวิดีโอ pinterest": [
+     "วิธี บันทึก วิดีโอ pinterest",
+     "วิธี save video pinterest",
+     "วิธี บันทึก วิดีโอ แอ ป pinterest",
+     "วิธี บันทึก วิดีโอ ใน แอ พ pinterest",
+     "วิธีบันทึกวิดีโอ pinterest ios",
+     "วิธีบันทึกวิดีโอ pinterest ไม่ได้",
+     "วิธีบันทึกวิดีโอ pinterest pc"
+    ],
+    "วิธีดาวน์โหลดวิดีโอ pinterest": [
+     "วิธีดาวน์โหลดวิดีโอ pinterest",
+     "วิธี download video pinterest",
+     "วิธีดาวน์โหลดวิดีโอ pinterest ios"
+    ],
+    "สอนโหลดวิดีโอ pinterest": [
+     "download download video pinterest",
+     "สอนโหลดวิดีโอ pinterest ios"
+    ],
+    "สอนโหลดคลิป pinterest": [
+     "สอนโหลดคลิป pinterest ไม่ได้",
+     "สอนโหลดคลิป pinterest ในคอม"
+    ],
+    "วิธีเซฟคลิป pinterest": [],
+    "วิธีโหลดรูป pinterest": [
+     "วิธี โหลด รูป pinterest",
+     "วิธี โหลด รูป จาก pinterest ให้ ชัด",
+     "วิธี โหลด รูป png ใน pinterest",
+     "วิธีโหลดรูป pinterest ในคอม"
+    ],
+    "วิธีเซฟรูป pinterest": [
+     "วิธี เซฟ รูป pinterest",
+     "วิธี save รูป pinterest",
+     "วิธี เซฟ รูป จาก pinterest ให้ ชัด",
+     "วิธี เซฟ รูป จาก pinterest ipad",
+     "วิธี เซฟ รูป png จาก pinterest",
+     "วิธีเซฟรูป pinterest ในคอม"
+    ]
+   },
+   "guide_gallery": {
+    "pinterest บันทึกลงอัลบั้ม": [
+     "pinterest บันทึกลงอัลบั้มรูป",
+     "pinterest บันทึกลงอัลบั้มไม่ได้"
+    ],
+    "โหลดวิดีโอ pinterest ลงอัลบั้ม": [
+     "โหลดวิดีโอ pinterest ลงอัลบั้มรูป",
+     "โหลดวิดีโอ pinterest ลงอัลบั้มไม่ได้",
+     "โหลดวิดีโอ pinterest ลงอัลบั้มในไลน์"
+    ],
+    "เซฟวิดีโอ pinterest ลงเครื่อง": [
+     "เซฟวิดีโอ pinterest ลงเครื่องคอม",
+     "เซฟวิดีโอ pinterest ลงเครื่อง mac",
+     "เซฟวิดีโอ pinterest ลงเครื่องใหม่"
+    ],
+    "โหลดคลิป pinterest ลงเครื่อง": [
+     "โหลดคลิป pinterest ลงเครื่องคอม",
+     "โหลดคลิป pinterest ลงเครื่อง mac",
+     "โหลดคลิป pinterest ลงเครื่อง pc",
+     "โหลดคลิป pinterest ลงเครื่องอื่น"
+    ],
+    "pinterest ลงแกลเลอรี่": [
+     "pinterest ลงแกลเลอรี่ไม่ได้",
+     "pinterest ลงแกลเลอรี่ได้ไหม",
+     "pinterest ลงแกลเลอรี่ได้"
+    ],
+    "pinterest คลังภาพ": [],
+    "บันทึกวิดีโอ pinterest ลงคลังภาพ": [
+     "บันทึกวิดีโอ pinterest ลงคลังภาพไม่ได้",
+     "บันทึกวิดีโอ pinterest ลงคลังภาพได้"
+    ],
+    "pinterest อัลบั้ม": [
+     "pinterest อัลบั้มรูป",
+     "pinterest อัลบั้มแรก"
+    ],
+    "pinterest ลงเครื่อง": [
+     "pinterest ลงเครื่องใหม่",
+     "pinterest ลงเครื่องบิน"
+    ],
+    "เซฟวิดีโอ pinterest ลงมือถือ": [
+     "เซฟวิดีโอ pinterest ลงมือถือ android",
+     "เซฟวิดีโอ pinterest ลงมือถือ ios"
+    ],
+    "pinterest บันทึกลงเครื่อง": [
+     "pinterest บันทึกลงเครื่องคอม",
+     "pinterest บันทึกลงเครื่องได้ไหม",
+     "pinterest บันทึกลงเครื่องใหม่"
+    ],
+    "pinterest แกลเลอรี่": [
+     "pinterest แกลเลอรี่ ฟรี"
+    ],
+    "บันทึกวิดีโอ pinterest ลงเครื่อง": [
+     "บันทึกวิดีโอ pinterest ลงเครื่องคอม",
+     "บันทึกวิดีโอ pinterest ลงเครื่อง mac"
+    ]
+   },
+   "guide_laptop": {
+    "โหลดวิดีโอ pinterest ในคอม": [],
+    "โหลดคลิป pinterest ในคอม": [],
+    "ดาวน์โหลดวิดีโอ pinterest ในคอม": [],
+    "pinterest ในคอม": [
+     "เข้า pinterest ใน คอม ไม่ ได้",
+     "ติด ตั้ง pinterest ใน คอม",
+     "ออก จาก ระบบ pinterest ใน คอม",
+     "pinterest ในคอมหาย",
+     "pinterest ในคอม คือ"
+    ],
+    "pinterest คอม": [
+     "pinterest คอม",
+     "pinterest วอลเปเปอร์ คอม",
+     "pinterest โต๊ะ คอม",
+     "pinterest จอ คอม",
+     "pinterest จัด โต๊ะ คอม",
+     "ห้องคอม pinterest",
+     "pinterest คอมเม้น",
+     "pinterest คอมพิวเตอร์",
+     "pinterest คอมหาย"
+    ],
+    "pinterest โน๊ตบุ๊ค": [
+     "วอลเปเปอร์ โน๊ ต บุ๊ค pinterest",
+     "พื้นหลังโน๊ตบุ๊ค pinterest",
+     "pinterest โน๊ตบุ๊ค 2024"
+    ],
+    "pinterest โน้ตบุ๊ก": [
+     "pinterest โน้ตบุ๊กลม",
+     "pinterest โน้ตบุ๊กลําโพง"
+    ],
+    "pinterest pc": [
+     "pinterest pc",
+     "pinterest pc wallpaper",
+     "pinterest pc download",
+     "pinterest pc wallpaper 4k",
+     "pinterest pc wallpapers",
+     "pinterest pc dark mode",
+     "pinterest pc app",
+     "pinterest pc setup",
+     "pinterest pc background",
+     "pinterest pc wallpaper aesthetic"
+    ],
+    "pinterest mac": [
+     "pinterest mac",
+     "pinterest macbook wallpaper",
+     "pinterest mac wallpaper",
+     "pinterest macbook",
+     "pinterest mac app",
+     "pinterest macbook wallpaper 4k",
+     "pinterest mac and cheese",
+     "pinterest macbook wallpapers",
+     "pinterest macos",
+     "pinterest macbook wallpaper aesthetic"
+    ],
+    "โหลดวิดีโอ pinterest pc": [
+     "download video pinterest pc",
+     "download video pinterest for pc free",
+     "download video pinterest di pc"
+    ],
+    "เซฟวิดีโอ pinterest ในคอม": [],
+    "pinterest ลงคอม": [
+     "โหลด pinterest ลง คอม",
+     "pinterest ลงคอมได้ไหม",
+     "pinterest ลงคอมไม่ได้",
+     "pinterest ลงคอมยังไง",
+     "pinterest ลงคอมพิวเตอร์"
+    ],
+    "โหลดรูป pinterest ในคอม": [],
+    "pinterest windows": [
+     "pinterest windows",
+     "pinterest windows app",
+     "pinterest windows download",
+     "pinterest windows wallpaper",
+     "pinterest windows 11",
+     "pinterest wallpaper windows 11",
+     "pinterest windows 10",
+     "pinterest windows wallpaper 4k",
+     "pinterest windows 7",
+     "pinterest windows background"
+    ]
+   },
+   "guide_mobile": {
+    "pinterest iphone": [
+     "pinterest iphone wallpaper",
+     "pinterest iphone",
+     "pinterest iphone cute wallpaper",
+     "pinterest iphone 17 pro max",
+     "pinterest iphone wallpaper aesthetic",
+     "pinterest iphone 17",
+     "pinterest iphone pink wallpaper",
+     "pinterest iphone wallpapers",
+     "pinterest iphone 16",
+     "pinterest iphone 17 wallpaper"
+    ],
+    "pinterest ไอโฟน": [
+     "pinterest วอลเปเปอร์ ไอ โฟน"
+    ],
+    "pinterest ios": [
+     "pinterest ios",
+     "pinterest ios download",
+     "pinterest ios wallpaper",
+     "pinterest ios 26 wallpaper",
+     "pinterest ios app",
+     "pinterest ios widget not working",
+     "pinterest ios 6",
+     "pinterest ios interview",
+     "pinterest ios engineer",
+     "pinterest ios emoji"
+    ],
+    "pinterest android": [
+     "pinterest android",
+     "pinterest android wallpaper",
+     "pinterest android app",
+     "pinterest android interview",
+     "pinterest android engineer interview",
+     "pinterest android download",
+     "pinterest android engineer",
+     "pinterest android apk",
+     "pinterest android 18",
+     "pinterest android 4.4"
+    ],
+    "pinterest มือถือ": [],
+    "โหลดวิดีโอ pinterest iphone": [
+     "download video pinterest iphone",
+     "download video pinterest về iphone",
+     "download video pinterest iphone app",
+     "download video pinterest di iphone",
+     "cara download video pinterest iphone",
+     "download video pinterest apk iphone",
+     "โหลดวิดีโอ pinterest iphone ฟรี"
+    ],
+    "โหลดวิดีโอ pinterest ไอโฟน": [
+     "download video pinterest iphone",
+     "download video pinterest iphone app"
+    ],
+    "เซฟวิดีโอ pinterest iphone": [
+     "save video pinterest iphone",
+     "เซฟวิดีโอ pinterest iphone ไม่ได้"
+    ],
+    "เซฟวิดีโอ pinterest ios": [
+     "save pinterest video ios",
+     "เซฟวิดีโอ pinterest ios 18"
+    ],
+    "โหลดวิดีโอ pinterest android": [
+     "download video pinterest android",
+     "cara download video pinterest android",
+     "bot download video pinterest android"
+    ],
+    "เซฟวิดีโอ pinterest android": [
+     "เซฟ วิดีโอ pinterest android",
+     "save video pinterest android"
+    ],
+    "pinterest ไอแพด": [
+     "pinterest วอลเปเปอร์ ไอ แพ ด",
+     "บันทึก รูป pinterest ใน ไอ แพ ด",
+     "pinterest ไอแพดแอร์"
+    ],
+    "โหลดวิดีโอ pinterest มือถือ": [
+     "โหลดวิดีโอ pinterest มือถือ ios",
+     "โหลดวิดีโอ pinterest มือถือ ios ฟรี"
+    ],
+    "pinterest ซัมซุง": [
+     "pinterest ซัมซุงไฟแนนซ์"
+    ],
+    "pinterest แอป": [
+     "pinterest แอ ป ใหม่",
+     "pinterest แอ ป",
+     "แอ ป pinterest คือ",
+     "pinterest แอปเปิ้ล",
+     "pinterest แอปอะไร",
+     "pinterest แอปไหน"
+    ],
+    "pinterest แอพ": [
+     "pinterest แอ พ ใหม่",
+     "pinterest แอ พ",
+     "pinterest คือ แอ พ อะไร",
+     "แอ พ pinterest เสีย เงิน ไหม",
+     "pinterest แอพไหน"
+    ]
+   },
+   "faq": {
+    "โหลดรูป pinterest ผิดกฎหมาย": [
+     "โหลดรูป pinterest ผิดกฎหมายไหม",
+     "โหลดรูป pinterest ผิดกฎหมายหรือไม่",
+     "โหลดรูป pinterest ผิดกฎหมายมั้ย"
+    ],
+    "pinterest ลิขสิทธิ์": [
+     "pinterest ลิขสิทธิ์",
+     "pinterest มี ลิขสิทธิ์ ไหม",
+     "รูป จาก pinterest ลิขสิทธิ์",
+     "pinterest รูป ติด ลิขสิทธิ์ ไหม",
+     "pinterest ลิขสิทธิ์ คือ",
+     "pinterest ลิขสิทธิ์เพลง",
+     "pinterest ลิขสิทธิ์ facebook",
+     "pinterest ลิขสิทธิ์ภาพ"
+    ],
+    "รูป pinterest ลิขสิทธิ์": [
+     "รูป จาก pinterest ลิขสิทธิ์",
+     "pinterest รูปมีลิขสิทธิ์ไหม",
+     "รูป pinterest ลิขสิทธิ์ ฟรี"
+    ],
+    "pinterest ปลอดภัยไหม": [
+     "pinterest ปลอดภัย ไหม"
+    ],
+    "pinterest ดาวน์โหลดรูปภาพ": [
+     "ดาวน์โหลด รูปภาพ pinterest",
+     "pinterest ดาวน์โหลดรูปภาพไม่ได้",
+     "pinterest ดาวน์โหลดรูปภาพฟรี"
+    ],
+    "pinterest ดาวน์โหลดรูปไม่ได้": [
+     "pinterest ดาวน์โหลดรูปไม่ได้",
+     "ดาวน์โหลด รูป ใน pinterest ไม่ ได้",
+     "ดาวน์โหลดรูปจาก pinterest ไม่ได้"
+    ],
+    "ทำไม pinterest": [
+     "ทําไม pinterest โหลดรูปไม่ได้",
+     "ทําไม pinterest ไม่ได้",
+     "ทําไม pinterest ไม่มีโฆษณา",
+     "ทําไม pinterest ไม่มีเสียง"
+    ],
+    "ทําไม pinterest โหลด": [
+     "ทําไม pinterest โหลดรูปไม่ได้",
+     "ทําไม pinterest โหลดไม่ได้",
+     "ทําไม pinterest โหลดช้า",
+     "ทําไม pinterest โหลดแอพไม่ได้"
+    ],
+    "ทําไม pinterest บันทึก": [
+     "ทําไม pinterest บันทึกไม่ได้",
+     "ทําไม pinterest บันทึกรูปไม่ได้"
+    ],
+    "pinterest ไม่มีปุ่มดาวน์โหลด": [
+     "pinterest ไม่มีปุ่มดาวน์โหลดยังไง"
+    ],
+    "pinterest ไม่มี": [
+     "pinterest ไม่มี ลายน้ํา",
+     "ดาวน์โหลด pinterest ไม่มี ลายน้ํา",
+     "ดาวน์โหลดคลิปpinterestไม่มีลายน้ํา",
+     "pinterest ไม่มีพื้นหลัง",
+     "pinterest ไม่มีโฆษณา"
+    ],
+    "pinterest ลายน้ํา": [],
+    "pinterest ไม่มี ลายน้ํา": [
+     "pinterest ไม่มี ลายน้ํา"
+    ],
+    "ลายน้ํา pinterest": [
+     "ลบ ลาย น้ํา pinterest ฟรี",
+     "ไม่มีลาย​น้ํา pinterest",
+     "บันทึกลายน้ําpinterest"
+    ],
+    "pinterest ไม่ต้องสมัคร": [
+     "pinterest ไม่ต้องสมัครงาน",
+     "pinterest ไม่ต้องสมัครได้"
+    ],
+    "pinterest ไม่ต้องลงแอป": [],
+    "pinterest ไม่ต้องติดตั้ง": [],
+    "pinterest ไม่ต้องใช้แอป": [
+     "pinterest ไม่ต้องใช้แอปอะไร"
+    ],
+    "pinterest บอร์ดลับ": [
+     "pinterest บอร์ดลับๆ",
+     "pinterest บอร์ดลับๆติดๆ"
+    ],
+    "pinterest ส่วนตัว": []
+   },
+   "spelling": {
+    "โหลดวีดีโอ pinterest": [
+     "โหลดวีดีโอ pinterest",
+     "โหลด video pinterest",
+     "download video pinterest",
+     "download video pinterest hd",
+     "download video pinterest free",
+     "download video pinterest link",
+     "download video pinterest 4k",
+     "download video pinterest full hd",
+     "download video pinterest reddit",
+     "download video pinterest without watermark"
+    ],
+    "วีดีโอ pinterest": [
+     "วีดีโอ pinterest",
+     "video pinterest",
+     "video pinterest download",
+     "video pinterest download hd",
+     "video pinterest downloader hd",
+     "video pinterest downloader apk",
+     "video pinterest downloader online",
+     "video pinterest download 4k",
+     "video pinterest downloader free",
+     "video pinterest aesthetic"
+    ],
+    "pinterest วีดีโอ": [
+     "pinterest โหลด วีดีโอ",
+     "pinterest วีดีโอคอล",
+     "pinterest วีดีโอฟรี"
+    ],
+    "pinterst": [
+     "pinterest",
+     "pinterest คืออะไร",
+     "pinterest video downloader",
+     "pinterest download",
+     "pinterest l",
+     "pinterest com",
+     "pinterest logo",
+     "pinterest ระบายสี",
+     "pinterest ค",
+     "pinterest gif"
+    ],
+    "pintrest": [
+     "pinterest",
+     "pinterest คืออะไร",
+     "pinterest video downloader",
+     "pinterest download",
+     "pinterest l",
+     "pinterest com",
+     "pinterest logo",
+     "pinterest ระบายสี",
+     "pinterest ค",
+     "pinterest gif"
+    ],
+    "พินเทอเรส ดาวน์โหลด": [
+     "พินเทอเรส ดาวน์โหลด",
+     "พินเทอเรส ดาวน์โหลด วิดีโอ",
+     "พินเทอเรส ดาวน์โหลดฟรี"
+    ],
+    "พินเทอเรส โหลด": [
+     "โหลด พิ น เท อ เร ส",
+     "โหลด วิดีโอ พิ น เท อ เร ส",
+     "พินเทอเรส โหลดฟรี"
+    ],
+    "พินเทอเรสวิดีโอ": [
+     "พินเทอเรสวิดีโอดาวน์โหลด"
+    ],
+    "โหลดรูปพินเทอเรส": [],
+    "ลิงก์ pinterest โหลด": [
+     "link pinterest download",
+     "link pinterest download video",
+     "pinterest link download 4k",
+     "pinterest link download photo",
+     "pinterest download link free",
+     "pinterest link download app",
+     "link download videos pinterest",
+     "pinterest link download image",
+     "pinterest mp4 download link",
+     "pinterest link download gif"
+    ]
+   },
+   "expand": {
+    "โหลดรูป pinterest ไม่": [
+     "โหลด รูป pinterest ไม่ ชัด",
+     "โหลด รูป pinterest ไม่ ได้",
+     "ทํา ไม pinterest โหลด รูป ไม่ ได้",
+     "โหลดรูป pinterest ไม่มีลายน้ํา"
+    ],
+    "โหลดรูป pinterest ให้": [
+     "โหลด รูป ใน pinterest ให้ ชัด",
+     "โหลดรูป pinterest ให้ชัด",
+     "โหลดรูป pinterest ให้ชัดขึ้น",
+     "โหลดรูป pinterest ให้เล็กลง",
+     "โหลดรูป pinterest ให้ได้เงิน"
+    ],
+    "โหลดรูป pinterest ใน": [
+     "โหลด รูป ใน pinterest",
+     "โหลด รูป ใน pinterest ไม่ ได้",
+     "โหลด รูป ใน pinterest ให้ ชัด",
+     "โหลดรูปใน pinterest ยังไง",
+     "วิธี โหลด รูป png ใน pinterest",
+     "โหลดรูป pinterest ในคอม",
+     "โหลดรูป pinterest ในไอแพด",
+     "โหลดรูป pinterest ใน pc",
+     "โหลดรูป pinterest ในโทรศัพท์",
+     "โหลดรูป pinterest ในไอโฟน"
+    ],
+    "โหลดรูป pinterest ลง": [
+     "โหลดรูป pinterest ลงคอม",
+     "โหลดรูป pinterest ลงไอแพด",
+     "โหลดรูป pinterest ลง pc",
+     "โหลดรูป pinterest ลงไอโฟน"
+    ],
+    "โหลดรูป pinterest แบบ": [
+     "โหลดรูป pinterest แบบไม่มีลายน้ํา",
+     "โหลดรูป pinterest แบบฟรี",
+     "โหลดรูป pinterest แบบง่ายๆ"
+    ],
+    "โหลดรูป pinterest png": [
+     "โหลดรูป pinterest png ฟรี"
+    ],
+    "โหลดรูป pinterest ios": [
+     "โหลดรูป pinterest ios ฟรี",
+     "โหลดรูป pinterest ios 18"
+    ],
+    "โหลดรูป pinterest iphone": [
+     "โหลดรูป pinterest iphone ฟรี"
+    ],
+    "โหลดรูป pinterest android": [
+     "โหลดรูป pinterest android ฟรี"
+    ],
+    "โหลดรูป pinterest pc": [
+     "โหลดรูป pinterest pc ฟรี"
+    ],
+    "โหลดรูป pinterest ipad": [
+     "โหลดรูป pinterest ipad ฟรี",
+     "โหลดรูป pinterest ipad pro",
+     "โหลดรูป pinterest ipad air"
+    ],
+    "โหลดรูป pinterest ทั้ง": [
+     "โหลดรูป pinterest ทั้งหมด"
+    ],
+    "โหลดวิดีโอ pinterest ไม่": [],
+    "โหลดวิดีโอ pinterest ให้": [
+     "โหลดวิดีโอ pinterest ให้ชัด",
+     "โหลดวิดีโอ pinterest ให้ชัดขึ้น",
+     "โหลดวิดีโอ pinterest ให้เล็กลง"
+    ],
+    "โหลดวิดีโอ pinterest ใน": [
+     "วิธีโหลดวิดีโอใน pinterest",
+     "โหลดวิดีโอ pinterest ในคอม",
+     "โหลดวิดีโอ pinterest ในไอแพด",
+     "โหลดวิดีโอ pinterest ในโทรศัพท์",
+     "โหลดวิดีโอ pinterest ใน iphone",
+     "โหลดวิดีโอ pinterest ใน pc"
+    ],
+    "โหลดวิดีโอ pinterest ลง": [
+     "โหลดวิดีโอ pinterest ลงคอม",
+     "โหลดวิดีโอ pinterest ลงไอแพด",
+     "โหลดวิดีโอ pinterest ลงไอโฟน",
+     "โหลดวิดีโอ pinterest ลง pc"
+    ],
+    "โหลดวิดีโอ pinterest แบบ": [
+     "โหลดวิดีโอ pinterest แบบไม่มีลายน้ํา",
+     "โหลดวิดีโอ pinterest แบบง่ายๆ",
+     "โหลดวิดีโอ pinterest แบบไม่มีลิขสิทธิ์"
+    ],
+    "โหลดวิดีโอ pinterest png": [
+     "download video pinterest png",
+     "โหลดวิดีโอ pinterest png ฟรี"
+    ],
+    "โหลดวิดีโอ pinterest ios": [
+     "download video pinterest ios",
+     "โหลด วิดีโอ จาก pinterest ios",
+     "โหลดวิดีโอ pinterest ios ฟรี",
+     "โหลดวิดีโอ pinterest ios 18"
+    ],
+    "โหลดวิดีโอ pinterest iphone": [
+     "download video pinterest iphone",
+     "download video pinterest về iphone",
+     "download video pinterest iphone app",
+     "download video pinterest di iphone",
+     "cara download video pinterest iphone",
+     "download video pinterest apk iphone",
+     "โหลดวิดีโอ pinterest iphone ฟรี"
+    ],
+    "โหลดวิดีโอ pinterest android": [
+     "download video pinterest android",
+     "cara download video pinterest android",
+     "bot download video pinterest android"
+    ],
+    "โหลดวิดีโอ pinterest pc": [
+     "download video pinterest pc",
+     "download video pinterest for pc free",
+     "download video pinterest di pc"
+    ],
+    "โหลดวิดีโอ pinterest ipad": [
+     "โหลดวิดีโอ pinterest ipad air",
+     "โหลดวิดีโอ pinterest ipad pro"
+    ],
+    "โหลดวิดีโอ pinterest ทั้ง": [
+     "โหลดวิดีโอ pinterest ทั้งหมด"
+    ],
+    "ดาวน์โหลด pinterest ไม่": [
+     "ดาวน์โหลด pinterest ไม่มี ลายน้ํา",
+     "ดาวน์โหลด pinterest ไม่ได้",
+     "ดาวน์โหลดวิดีโอ pinterest ไม่มีลายน้ํา",
+     "ดาวน์โหลดคลิปpinterestไม่มีลายน้ํา",
+     "ดาวน์โหลด pinterest แบบ ไม่มี ลายน้ํา",
+     "pinterest ดาวน์โหลด รูป ไม่ ได้"
+    ],
+    "ดาวน์โหลด pinterest ให้": [
+     "ดาวน์โหลด pinterest ให้เล็กลง",
+     "ดาวน์โหลด pinterest ให้ชัดขึ้น",
+     "ดาวน์โหลด pinterest ให้ภาพชัด"
+    ],
+    "ดาวน์โหลด pinterest ใน": [
+     "ดาวน์โหลด ใน pinterest",
+     "ดาวน์โหลด วิดีโอ ใน pinterest",
+     "ดาวน์โหลด รูป ใน pinterest",
+     "ดาวน์โหลดคลิปใน pinterest ไม่มีลายน้ํา",
+     "ดาวน์โหลด รูป ใน pinterest ไม่ ได้",
+     "ดาวน์โหลด วิดีโอ ใน pinterest ยัง ไง",
+     "ดาวน์โหลด gif ใน pinterest",
+     "ดาวน์โหลด รูป ใน pinterest ยัง ไง",
+     "ดาวน์โหลดคลิปวิดีโอใน pinterest",
+     "ดาวน์โหลด pinterest ในคอม"
+    ],
+    "ดาวน์โหลด pinterest ลง": [
+     "ดาวน์โหลด pinterest ลงคอม",
+     "ดาวน์โหลด pinterest ลง pc",
+     "ดาวน์โหลด pinterest ลงไอแพด"
+    ],
+    "ดาวน์โหลด pinterest แบบ": [
+     "ดาวน์โหลด pinterest แบบ ไม่มี ลายน้ํา",
+     "ดาวน์โหลด pinterest แบบฟรี",
+     "ดาวน์โหลด pinterest แบบใหม่"
+    ],
+    "ดาวน์โหลด pinterest png": [
+     "download pinterest png",
+     "download pinterest image png",
+     "download video pinterest png",
+     "download foto pinterest png",
+     "download pinterest logo png",
+     "cara download pinterest png",
+     "ดาวน์โหลด pinterest png ฟรี"
+    ],
+    "ดาวน์โหลด pinterest ios": [
+     "download pinterest ios 15",
+     "download pinterest ios",
+     "download pinterest ios 12",
+     "pinterest download ios apk",
+     "ดาวน์โหลด วิดีโอ pinterest ios",
+     "download pinterest video ios",
+     "pinterest download ios macbook",
+     "download pinterest for ios 9.3 5",
+     "how to download image from pinterest ios"
+    ],
+    "ดาวน์โหลด pinterest iphone": [
+     "download pinterest iphone",
+     "download pinterest iphone 7",
+     "ดาวน์โหลด วิดีโอ pinterest iphone",
+     "download pinterest photo iphone",
+     "pinterest download iphone 6",
+     "download pinterest images iphone",
+     "download pinterest board iphone",
+     "download video pinterest iphone app",
+     "ดาวน์โหลด pinterest iphone ฟรี"
+    ],
+    "ดาวน์โหลด pinterest android": [
+     "download pinterest android",
+     "ดาวน์โหลด วิดีโอ pinterest android",
+     "download video pinterest android",
+     "download gif pinterest android",
+     "download pinterest android 5",
+     "pinterest download android apk",
+     "download pinterest board android",
+     "download pinterest apk android 4.0",
+     "ดาวน์โหลด pinterest android ฟรี",
+     "ดาวน์โหลด pinterest android studio"
+    ],
+    "ดาวน์โหลด pinterest pc": [
+     "ดาวน์โหลด pinterest pc",
+     "download pinterest pc",
+     "download pinterest pc app",
+     "pinterest download pc windows 10",
+     "pinterest download pc windows 7",
+     "pinterest download pc windows 11",
+     "pinterest download pc video",
+     "pinterest download pc videos",
+     "download pinterest for pc windows 11 free",
+     "download pinterest for pc windows 8"
+    ],
+    "ดาวน์โหลด pinterest ipad": [
+     "download pinterest ipad",
+     "download photo pinterest ipad",
+     "download image pinterest ipad",
+     "download pinterest pictures ipad",
+     "ดาวน์โหลด pinterest ipad ฟรี",
+     "ดาวน์โหลด pinterest ipad pro"
+    ],
+    "ดาวน์โหลด pinterest ทั้ง": [
+     "ดาวน์โหลด pinterest ทั้งหมด",
+     "ดาวน์โหลด pinterest ทั้งหมดฟรี"
+    ]
+   }
+  },
+  "serp": {
+   "duckduckgo_kl_th-th": {
+    "โหลดวิดีโอ pinterest": [
+     "https://snapwc.com/th/pinterest  ||  ดาวน์โหลด Pinterest - วิดีโอ รูปภาพ และ GIF ออนไลน์ | SnapWC",
+     "https://klickpin.com/th/how-to  ||  จะดาวน์โหลดวิดีโอ Pinterest ออนไลน์ได้อย่างไร?",
+     "https://th.wikihow.com/%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B9%8C%E0%B9%82%E0%B8%AB%E0%B8%A5%E0%B8%94%E0%B8%A7%E0%B8%B4%E0%B8%94%E0%B8%B5%E0%B9%82%E0%B8%AD%E0%B8%88%E0%B8%B2%E0%B8%81-Pinterest  ||  วิธีการ ดาวน์โหลดวิดีโอจาก Pinterest: 11 ขั้นตอน (พร้อมรูปภาพ)",
+     "https://klickpin.com/th/blog/downloading-pinterest-videos  ||  วิธีการดาวน์โหลดวิดีโอจาก Pinterest: ขั้นตอนโดยละเอียด",
+     "https://play.google.com/store/apps/details?id=pin.pinterest.video.downloader.pinterest.downloader&hl=th  ||  ดาวน์โหลดวิดีโอ Pinterest - แอปพลิเคชันใน Google Play",
+     "https://pindown.io/en1  ||  Pinterest Video Downloader - Download HD Pinterest Videos & GIFs Online",
+     "https://pintere.com/?lang=th  ||  ดาวน์โหลดวิดีโอ, เสียง, ภาพและ GIF บนอินเทอร์เน็ต | Pintere.com",
+     "https://pindownload.io/th  ||  ดาวน์โหลดวิดีโอ Pinterest ฟรี HD | Pinterest Video Downloader",
+     "https://pindown.io/th/how-to-download-pinterest-videos  ||  วิธีดาวน์โหลดวิดีโอ พินเทอเรสต์ ออนไลน์ - PinDown",
+     "https://tecnobits.com/th/%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B9%8C%E0%B9%82%E0%B8%AB%E0%B8%A5%E0%B8%94%E0%B8%A7%E0%B8%B4%E0%B8%94%E0%B8%B5%E0%B9%82%E0%B8%AD%E0%B8%88%E0%B8%B2%E0%B8%81-pinterest-2/  ||  วิธีดาวน์โหลดวิดีโอจาก Pinterest? ️"
+    ],
+    "โหลดรูป pinterest": [],
+    "ดาวน์โหลด pinterest ไม่มีลายน้ำ": []
+   }
+  },
+  "competitors": [
+   {
+    "site": "klickpin.com",
+    "url": "https://klickpin.com/th/",
+    "hreflang": "th",
+    "title": "Pinterest Video Downloader - ดาวน์โหลดวิดีโอ HD, GIF และรูปภาพใน 1 คลิก!",
+    "h1": "โปรแกรมดาวน์โหลดวิดีโอ Pinterest- KlickPin",
+    "subpages": {
+     "/th/pin-board-downloader": "โปรแกรมดาวน์โหลดบอร์ด Pinterest",
+     "/th/pin-carousel-downloader": "โปรแกรมดาวน์โหลดภาพสไลด์จาก Pinterest",
+     "/th/pin-story-downloader": "โปรแกรมดาวน์โหลดเรื่องราวจาก Pinterest",
+     "/th/pin-profile-downloader": "โปรแกรมดาวน์โหลดโปรไฟล์ Pinterest",
+     "/th/pinterest-gif-downloader": "Pinterest GIF Downloader",
+     "/th/pinterest-image-downloader": "โปรแกรมดาวน์โหลดรูปภาพ Pinterest",
+     "/th/chrome-extension": "KlickPin ส่วนขยายของเบราว์เซอร์",
+     "/th/how-to": "วิธีดาวน์โหลดวิดีโอจาก Pinterest ด้วย KlickPin"
+    },
+    "faqTopics": [
+     "ฉันสามารถดาวน์โหลดวิดีโอจาก Pinterest ได้หรือไม่?",
+     "จะดาวน์โหลดวิดีโอ Pinterest ได้อย่างไร?",
+     "ฉันจะดาวน์โหลดรูปภาพจาก Pinterest ได้อย่างไร?",
+     "ฉันสามารถดาวน์โหลด GIF จาก Pinterest ได้หรือไม่?",
+     "ไฟล์จะถูกบันทึกไว้ที่ไหนหลังจากดาวน์โหลด?",
+     "Is KlickPin ปลอดภัยในการใช้งาน?"
+    ],
+    "notes": "Ranks #2 in the captured SERP (its /th/how-to). Machine-translated: English slugs, the same FAQ block pasted onto every subpage, broken headings ('ไม่ KlickPin ทำงานบนมือถือ?', 'Is KlickPin ปลอดภัย'), literal 'เรื่องราว' for Story and 'ภาพสไลด์' for carousel. Calls the tool 'โปรแกรมดาวน์โหลด' (a downloader PROGRAM), which reads as installable software."
+   },
+   {
+    "site": "snapwc.com",
+    "url": "https://snapwc.com/th/pinterest",
+    "hreflang": "none (only x-default declared; html lang en-US)",
+    "title": "ดาวน์โหลด Pinterest - วิดีโอ รูปภาพ และ GIF ออนไลน์ | SnapWC",
+    "h1": "โปรแกรมดาวน์โหลดวิดีโอและรูปภาพ Pinterest",
+    "faqTopics": [
+     "วิธีบันทึกวิดีโอและ GIF จาก Pinterest?",
+     "ทำไมวิดีโอที่ดาวน์โหลดมาถึงไม่มีเสียง?",
+     "กดปุ่มดาวน์โหลดแล้วเบราว์เซอร์เล่นวิดีโอทันที ไม่ยอมบันทึก ต้องทำอย่างไร?",
+     "บริการนี้ฟรีจริงหรือไม่? มีข้อจำกัดไหม?",
+     "บน iOS เมื่อกด \"Download\" วิดีโอจะเล่นทันทีและไม่บันทึก ต้องทำอย่างไร?",
+     "ไฟล์ที่ดาวน์โหลดมาเปิดไม่ได้ ควรทำอย่างไร?"
+    ],
+    "notes": "#1 for 'โหลดวิดีโอ pinterest' in the captured SERP despite broken hreflang. Its FAQs are written by someone who watched real users fail (no sound, video plays instead of saving, iOS). Borrow those topics, not the text."
+   },
+   {
+    "site": "pindown.io",
+    "url": "https://pindown.io/th1",
+    "hreflang": "th",
+    "title": "โปรแกรมดาวน์โหลดวิดีโอ Pinterest - ดาวน์โหลดวิดีโอพินเทอเรสต์ออนไลน์แบบ Full HD - PinDown",
+    "h1": "โปรแกรมดาวน์โหลดวิดีโอ Pinterest",
+    "faqTopics": [
+     "วิธีดาวน์โหลดวิดีโอ Pinterest ลงในคอมพิวเตอร์?",
+     "วิธีดาวน์โหลดวิดีโอ Pinterest ลงใน Android?",
+     "วิธีดาวน์โหลดวิดีโอ Pinterest 4K?",
+     "วิธีดาวน์โหลดวิดีโอ Pinterest ลงใน iPhone (iOS)?",
+     "ฉันสามารถบันทึกวิดีโอ Pinterest ลงในโทรศัพท์ได้หรือไม่?"
+    ],
+    "notes": "Uses the Thai-script brand 'พินเทอเรสต์' in titles (also /th/how-to-download-pinterest-videos: 'วิธีดาวน์โหลดวิดีโอ พินเทอเรสต์ ออนไลน์'). Claims '1080p - 2K - 4K', the inflated promise we must not copy."
+   },
+   {
+    "site": "dlpanda.com",
+    "url": "https://dlpanda.com/th/pinterest",
+    "hreflang": "th-TH",
+    "title": "ดาวน์โหลดวิดีโอ รูปภาพ และ GIF จาก Pinterest - DLPanda.com",
+    "h1": "ดาวน์โหลดวิดีโอ รูปภาพ และ GIF จาก Pinterest",
+    "h2h3": [
+     "วิธีดาวน์โหลดวิดีโอ รูปภาพ และ GIF จาก Pinterest",
+     "คัดลอกลิงก์พิน Pinterest",
+     "วาง URL ของ Pinterest",
+     "บันทึกวิดีโอหรือรูปภาพ",
+     "โหลดวิดีโอและรูป Pinterest ด้วยลิงก์เดียว",
+     "รองรับลิงก์สั้น pin.it"
+    ],
+    "notes": "The most natural Thai of the set (written, not machine-translated): 'คัดลอกลิงก์พินแล้ววาง', 'ใช้ได้บน iPhone, Android และคอมพิวเตอร์'. Good vocabulary reference."
+   },
+   {
+    "site": "savepin.app",
+    "url": "https://www.savepin.app/pinterest-downloader/th/",
+    "hreflang": "th",
+    "title": "โปรแกรมดาวน์โหลดวิดีโอ Pinterest ออนไลน์ - บันทึกพินเป็น Mp4 | SavePin",
+    "h1": "ดาวน์โหลดวิดีโอ Pinterest ออนไลน์",
+    "notes": "Step text uses 'คลิกคัดลอกลิงก์'. Shows a 'คะแนนผู้ใช้' (user rating) block, which we must not imitate (no ratings exist). Named in Latin autocomplete ('pinterest image downloader savepin')."
+   },
+   {
+    "site": "pintere.com",
+    "url": "https://pintere.com/?lang=th",
+    "hreflang": "th",
+    "title": "ดาวน์โหลดวิดีโอ, เสียง, ภาพและ GIF บนอินเทอร์เน็ต | Pintere.com",
+    "h1": "Pintere",
+    "notes": "Generic all-sites downloader that still ranks in the TH SERP; its FAQs confuse its own name with 'Pinterest.com'. Shows how thin the Thai competition is."
+   },
+   {
+    "site": "pinterestdownloader.io",
+    "url": "https://pinterestdownloader.io/th-04",
+    "hreflang": "th-04 (invalid)",
+    "title": "ดาวน์โหลด วิดีโอ Pinterest - ดาวน์โหลดวิดีโอ Pinterest รูปภาพ & Gif ฟรี",
+    "h1": "ดาวน์โหลดวิดีโอจาก Pinterest",
+    "faqTopics": [
+     "ฉันจำเป็นต้องลงทะเบียนบัญชีเพื่อดาวน์โหลดวิดีโอบน Pinterest Downloader หรือไม่",
+     "วิดีโอ Pinterest ถูกบันทึกไว้ที่ไหนหลังจากดาวน์โหลด",
+     "การดาวน์โหลดวิดีโอ Pinterest ฟรีทั้งหมดหรือไม่",
+     "มีการจำกัดจำนวนวิดีโอที่ฉันสามารถดาวน์โหลดได้หรือไม่?"
+    ],
+    "notes": "Invalid hreflang and canonical to the English root: the Thai version effectively cannot rank."
+   },
+   {
+    "site": "pindownload.io",
+    "url": "https://pindownload.io/th",
+    "hreflang": "unknown (Cloudflare challenge)",
+    "title": "ดาวน์โหลดวิดีโอ Pinterest ฟรี HD | Pinterest Video Downloader (from SERP)",
+    "notes": "Ranks for 'โหลดวิดีโอ pinterest'. Its name is one letter away from PintDownload: a brand-confusion risk (see notes)."
+   },
+   {
+    "site": "th.wikihow.com / tecnobits.com/th / guru99.com/th",
+    "url": "https://th.wikihow.com/ดาวน์โหลดวิดีโอจาก-Pinterest",
+    "notes": "Informational guides rank for the head video query (pages blocked our fetch; titles from SERP/search: wikiHow 'ดาวน์โหลดวิดีโอจาก Pinterest', guru99 'วิธีบันทึกและดาวน์โหลดวิดีโอจาก Pinterest (5 วิธี)'). Confirms a guide page ('วิธีโหลดวิดีโอ Pinterest') can win alongside tool pages."
+   }
+  ],
+  "competitorTakeaways": [
+   "Nearly every Thai competitor is machine-translated with English slugs and identical FAQ blocks on each page. Native, specific Thai with real troubleshooting answers is the cheapest edge available.",
+   "Competitors say 'โปรแกรมดาวน์โหลด'. Searchers say 'โหลด', 'เว็บโหลด', 'เครื่องมือ ดาวน์โหลด'. Use the searchers' words.",
+   "No competitor targets the 'ไม่ชัด' (blurry) cluster with an honest answer; the HD page does.",
+   "Several competitors claim 2K/4K or show ratings. We do neither, and say so."
+  ],
+  "pinterestAppTerms": {
+   "_sources": {
+    "download-an-image": "https://help.pinterest.com/th/article/download-an-image (live, fetched 2026-10-14)",
+    "secret-boards": "https://help.pinterest.com/th/article/secret-boards (live)",
+    "create-a-board": "https://help.pinterest.com/th/article/create-a-board (live)",
+    "edit-your-profile": "https://help.pinterest.com/th/article/edit-your-profile (live)",
+    "send-pins-boards-and-profiles": "Wayback 2021-10-22 copy (live returns 406)",
+    "share-pins-and-boards-to-social-networks": "Wayback 2020-09-30 copy",
+    "create-idea-pins": "Wayback 2024-11-07 copy",
+    "create-a-collage": "Wayback 2025-08-01 copy"
+   },
+   "Pin": "พิน",
+   "image Pin / video Pin": "พินรูปภาพ / พินวิดีโอ",
+   "Save (to a board)": "บันทึก  <- the red Save button. In Pinterest Thai, 'บันทึก' means saving a Pin to a BOARD, not to the device. Pinterest help: 'การบันทึกพินจะเพิ่มพินดังกล่าวลงในบอร์ดของคุณ ... การดาวน์โหลดพินจะบันทึกรูปภาพดังกล่าวลงในอุปกรณ์ของคุณ'",
+   "Download image (menu item)": "ดาวน์โหลดรูปภาพ  (under the ellipsis icon 'ไอคอนจุดไข่ปลา' next to / below the Pin)",
+   "ellipsis (…) menu": "ไอคอนจุดไข่ปลา",
+   "Share": "แชร์  (icon: 'ไอคอนแชร์'; step text 'แตะแชร์')",
+   "Send (to a Pinterest contact)": "ส่ง",
+   "Copy link": "คัดลอกลิงก์  (UNVERIFIED on device: the help article that names it returns 406 and the archived copies predate the option. Corroborated by competitor tutorials ('คลิกคัดลอกลิงก์', 'คัดลอกลิงก์พิน') and Thai iOS/Android share sheets ('คัดลอก'). Check on a Thai-language phone before shipping the how-to steps.)",
+   "Home feed": "หน้าฟีดหลัก",
+   "Board": "บอร์ด",
+   "Secret board": "บอร์ดส่วนตัว  (current help title; older UI and users say 'บอร์ดลับ'; toggle text 'ทำให้เป็นบอร์ดส่วนตัว' / 'เก็บบอร์ดนี้เป็นความลับ')",
+   "Secret Pin": "พินลับ",
+   "Public board": "บอร์ดสาธารณะ",
+   "Profile": "โปรไฟล์",
+   "Profile picture": "รูปโปรไฟล์  (also 'รูปภาพโปรไฟล์' in some steps)",
+   "Idea Pin": "พินไอเดีย  (Pinterest TH has merged Idea Pin creation into regular pins: 'ไม่เห็นตัวเลือกในการสร้างพินไอเดียแล้วใช่ไหม...')",
+   "Collage / cutout": "ภาพตัดปะ / คัตเอาท์",
+   "Downloads folder / Photos app": "โฟลเดอร์ Downloads (ดาวน์โหลด) / แอป Photos (รูปภาพ)  (Pinterest help: 'รูปภาพที่ดาวน์โหลดจะถูกบันทึกไว้ในโฟลเดอร์ Downloads (ดาวน์โหลด) หรือแอป Photos (รูปภาพ)')",
+   "Gallery (Android)": "โฟลเดอร์แกลเลอรี  (Pinterest help spelling; users type 'แกลเลอรี่')",
+   "Not every pin can be downloaded": "'โปรดทราบว่าไม่ใช่ทุกพินที่สามารถดาวน์โหลดได้' (Pinterest help; quote the idea in FAQ, not the sentence)",
+   "Creators can allow downloads": "'คุณสามารถเลือกที่จะอนุญาตให้ผู้ที่ดูพิน...ดาวน์โหลดพิน' via การตั้งค่า > สิทธิ์โซเชียล (create-idea-pins)",
+   "iOS / Android system labels (verify on device)": {
+    "Save Video (iOS share sheet)": "บันทึกวิดีโอ",
+    "Save Image": "บันทึกภาพ",
+    "Save to Files": "บันทึกไปยังแอปไฟล์",
+    "Files app": "ไฟล์",
+    "Photos app": "รูปภาพ",
+    "Recents album": "ล่าสุด",
+    "Samsung gallery app": "แกลเลอรี่",
+    "Chrome 'Download link'": "ดาวน์โหลดลิงก์"
+   }
+  }
+ },
+ "pages": [
+  {
+   "enSlug": "index",
+   "skip": false,
+   "priority": 1,
+   "slug": "",
+   "path": "/th",
+   "primaryKeyword": "ดาวน์โหลด pinterest",
+   "secondaryKeywords": [
+    "โหลด pinterest",
+    "เว็บโหลด pinterest",
+    "ดาวน์โหลด pinterest ไม่มีลายน้ำ",
+    "ดาวน์โหลด pinterest ฟรี",
+    "pinterest downloader",
+    "พินเทอเรส ดาวน์โหลด"
+   ],
+   "title": "ดาวน์โหลด Pinterest ฟรี วิดีโอ รูป ไม่มีลายน้ำ | PintDownload",
+   "description": "เว็บโหลด Pinterest ฟรี วางลิงก์แล้วเซฟวิดีโอเป็น MP4 รูปขนาดเต็ม GIF หรือโหลดทั้งบอร์ดเป็น ZIP ไม่ต้องล็อกอิน ไม่ต้องลงแอป ใช้ได้ทั้งมือถือและคอม",
+   "h1": "ดาวน์โหลด Pinterest",
+   "lede": "วางลิงก์ รับไฟล์กลับไป: วิดีโอเป็น MP4 รูปขนาดเต็ม GIF หรือทั้งบอร์ดเป็น ZIP ไฟล์เดียว ฟรี ไม่ต้องล็อกอิน ใช้ได้ทั้งมือถือ ไอแพด และคอม",
+   "faqTopics": [
+    "ดาวน์โหลดรูปและวิดีโอจาก Pinterest โดยไม่มีบัญชีได้ไหม",
+    "PintDownload ฟรีไหม มีจำกัดจำนวนครั้งไหม (autocomplete: 'pinterest ฟรีไหม', 'pinterest ดาวน์โหลด ฟรี ไหม')",
+    "ไฟล์ที่ได้มีลายน้ำไหม (เราไม่เติมลายน้ำ แต่ถ้าผู้สร้างใส่ลายน้ำไว้ในงานเองก็ยังอยู่) (autocomplete: 'ไม่มีลายน้ำ' x6)",
+    "ทำไมแอป Pinterest ดาวน์โหลดรูปไม่ได้ หรือไม่มีปุ่มดาวน์โหลดวิดีโอ (autocomplete: 'ทําไม pinterest โหลดรูปไม่ได้', 'pinterest ไม่มีปุ่มดาวน์โหลด'; Pinterest help TH: 'ไม่ใช่ทุกพินที่สามารถดาวน์โหลดได้')",
+    "กด 'บันทึก' ในแอป Pinterest กับดาวน์โหลดต่างกันยังไง (Pinterest help TH: บันทึก = เก็บพินลงบอร์ด, ดาวน์โหลด = เซฟลงเครื่อง)",
+    "โหลดรูปจาก Pinterest ผิดกฎหมายไหม ติดลิขสิทธิ์ไหม (autocomplete: 'โหลดรูป pinterest ผิดกฎหมายไหม', 'pinterest รูปมีลิขสิทธิ์ไหม') - ใช้ส่วนตัวกับนำไปเผยแพร่ต่างกัน ให้เครดิตเจ้าของ ไม่ใช่คำแนะนำทางกฎหมาย",
+    "ใช้บน iPhone, ไอแพด, Android และคอมได้ไหม",
+    "โหลดแล้วไฟล์ไปอยู่ที่ไหน (อัลบั้มรูป แกลเลอรี่ แอปไฟล์ โฟลเดอร์ดาวน์โหลด)",
+    "อะไรที่โหลดไม่ได้ (บอร์ดส่วนตัว พินลับ บัญชีที่ต้องล็อกอิน พินที่ถูกลบ)",
+    "PintDownload เป็นของ Pinterest ไหม (ไม่ใช่ ไม่มีส่วนเกี่ยวข้องกับ Pinterest Inc.)"
+   ],
+   "evidence": [
+    "th:'ดาวน์โหลด pinterest' -> ฟรี | video | ไม่มี ลายน้ํา | วิดีโอ | pc | gif | รูป",
+    "th:'pinterest ดาวน์โหลด' -> ดาวน์โหลดรูป | ดาวน์โหลดวิดีโอ | ดาวน์โหลดวิดีโอ ฟรี | ดาวน์โหลดรูปไม่ได้ | เครื่องมือ ดาวน์โหลด pinterest",
+    "th:'โหลด pinterest' -> ฟรี | video | ใน mac | วิดีโอ | gif",
+    "th:'เว็บโหลด pinterest' -> เว็บโหลด pinterestฟรี",
+    "th:'พินเทอเรส' -> พินเทอเรส ดาวน์โหลด | พินเทอเรสวิดีโอดาวน์โหลด (Thai-script brand spelling is searched; use once in body, never in title)",
+    "th:'pinterest' (bare) -> 'pinterest video downloader' and 'pinterest download' are top-4 completions in TH"
+   ],
+   "notes": "Homepage path is /th with no trailing slash (normalizeCanonical rule). The hub form accepts every link type, so it also catches profile-ZIP, carousel and story links that have no Thai page.",
+   "titleLength": 61,
+   "descriptionLength": 145
+  },
+  {
+   "enSlug": "pinterest-video-downloader",
+   "skip": false,
+   "priority": 1,
+   "slug": "pinterest-video-downloader",
+   "path": "/th/pinterest-video-downloader",
+   "primaryKeyword": "โหลดวิดีโอ pinterest",
+   "secondaryKeywords": [
+    "ดาวน์โหลดวิดีโอ pinterest",
+    "โหลดคลิป pinterest",
+    "ดาวน์โหลดคลิป pinterest ไม่มีลายน้ำ",
+    "ดูดวิดีโอ pinterest",
+    "pinterest video downloader",
+    "แปลงลิงก์เป็นวิดีโอ pinterest"
+   ],
+   "title": "โหลดวิดีโอ Pinterest ฟรี เป็น MP4 ไม่มีลายน้ำ ไม่ต้องลงแอป",
+   "description": "โหลดวิดีโอและคลิป Pinterest เป็นไฟล์ MP4 ฟรี แค่วางลิงก์พินหรือ pin.it ไม่มีลายน้ำ ไม่ต้องล็อกอิน เซฟลงเครื่องได้ทั้ง iPhone, Android และคอม",
+   "h1": "โหลดวิดีโอ Pinterest",
+   "lede": "วางลิงก์พินวิดีโอ แล้วรับไฟล์ MP4 พร้อมเสียง (ถ้าต้นฉบับมีเสียง) ฟรี ไม่มีลายน้ำ ไม่ต้องล็อกอิน",
+   "faqTopics": [
+    "โหลดวิดีโอ Pinterest เป็น MP4 ยังไง (แชร์ -> คัดลอกลิงก์ -> วาง -> โหลด)",
+    "ทำไมวิดีโอที่โหลดมาไม่มีเสียง (autocomplete: 'ทําไม pinterest ไม่มีเสียง'; also a top FAQ on snapwc.com/th)",
+    "ได้ความชัดแค่ไหน 720p หรือ 1080p (ได้เท่าที่ Pinterest มี ไม่มี 4K ถ้าต้นฉบับไม่ใช่) (autocomplete: 'โหลดวิดีโอ pinterest ให้ชัด')",
+    "กดโหลดแล้ววิดีโอเล่นในเบราว์เซอร์ ไม่ยอมเซฟ ต้องทำยังไง (FAQ on snapwc.com/th; iOS Safari behaviour)",
+    "ใช้บน iPhone, ไอแพด และ Android ได้ไหม (autocomplete: 'ดาวน์โหลดวิดีโอ pinterest ios / android')",
+    "ทำไมพินนี้ไม่มีวิดีโอให้โหลด (พินรูป, GIF, วิดีโอจากเว็บอื่น)",
+    "มีลายน้ำไหม (autocomplete: 'ดาวน์โหลดคลิปpinterestไม่มีลายน้ำ', 'บันทึกวิดีโอไม่มีลายน้ํา pinterest')",
+    "ดึงเฉพาะเสียงได้ไหม (ลิงก์ไปหน้าโหลดเสียง)"
+   ],
+   "evidence": [
+    "th:'ดาวน์โหลดวิดีโอ pinterest' -> android | ฟรี | ios | ไม่มีลายน้ํา | iphone",
+    "th:'โหลดวิดีโอ pinterest' -> โหลด video pinterest | download video pinterest hd / 4k / full hd",
+    "th:'ดาวน์โหลดคลิป pinterest' -> ฟรี | ไม่มีลายน้ํา | วิธีดาวน์โหลดคลิป pinterest",
+    "th:'ดูดวิดีโอ pinterest' -> ไม่ได้ | ios | pc ('ดูด' = slang 'rip', used in body copy once)",
+    "th:'แปลงวิดีโอ pinterest' -> แปลง ลิงค์ เป็น วิดีโอ pinterest (folds the to-MP4 intent into this page)",
+    "SERP (DuckDuckGo kl=th-th, 'โหลดวิดีโอ pinterest'): snapwc.com/th/pinterest, klickpin.com/th/how-to, th.wikihow.com, Play Store app, pindown.io, pintere.com, pindownload.io/th"
+   ],
+   "notes": "Thai has no page for pinterest-to-mp4 (skipped), so this page carries 'MP4' and 'แปลงลิงก์เป็นวิดีโอ'. Use 'คลิป' as the colloquial synonym in body copy; correct spelling is 'วิดีโอ' (never the common misspelling 'วีดีโอ', which Google already treats as the same query).",
+   "titleLength": 58,
+   "descriptionLength": 140
+  },
+  {
+   "enSlug": "pinterest-image-downloader",
+   "skip": false,
+   "priority": 1,
+   "slug": "pinterest-image-downloader",
+   "path": "/th/pinterest-image-downloader",
+   "primaryKeyword": "โหลดรูป pinterest",
+   "secondaryKeywords": [
+    "เซฟรูป pinterest",
+    "ดาวน์โหลดรูปภาพ pinterest",
+    "บันทึกรูป pinterest",
+    "โหลดรูป pinterest png",
+    "โหลดรูป pinterest ลงไอแพด",
+    "pinterest image downloader"
+   ],
+   "title": "โหลดรูป Pinterest ฟรี เซฟรูปขนาดเต็ม ไม่ใช่รูปย่อ",
+   "description": "โหลดรูปจาก Pinterest ขนาดเต็มตามที่ผู้โพสต์อัปโหลดไว้ ไม่ใช่รูปย่อ วางลิงก์พินแล้วเซฟลงมือถือ ไอแพด หรือคอมได้เลย ฟรี ไม่ต้องล็อกอิน ไม่มีลายน้ำ",
+   "h1": "โหลดรูป Pinterest",
+   "lede": "วางลิงก์พินรูป แล้วเซฟไฟล์ขนาดใหญ่ที่สุดที่ Pinterest เก็บไว้ ใช้ทำวอลเปเปอร์ งานออกแบบ หรือโน้ตในไอแพดได้ ฟรี ไม่ต้องล็อกอิน",
+   "faqTopics": [
+    "โหลดรูปจาก Pinterest โดยไม่มีบัญชีได้ไหม",
+    "ได้รูปขนาดเต็มหรือแค่รูปย่อ (autocomplete: 'โหลด รูป pinterest ไม่ ชัด' -> link to the HD page for the blur problem)",
+    "ทำไมกด 'ดาวน์โหลดรูปภาพ' ในแอปไม่ได้ หรือไม่เห็นเมนูนี้ (autocomplete: 'pinterest ดาวน์โหลดรูปภาพไม่ได้'; Pinterest help TH: 'ไม่เห็นรูปภาพดาวน์โหลด')",
+    "ได้ไฟล์ PNG ไหม (autocomplete: 'เซฟ รูป png จาก pinterest', 'วิธี โหลด รูป png ใน pinterest') - honest: you get the format Pinterest stores, usually JPG; PNG only when uploaded as PNG",
+    "เซฟรูปลงไอแพดยังไง (autocomplete: 'บันทึก รูป pinterest ใน ไอ แพ ด', 'โหลดรูป pinterest ลงไอแพด')",
+    "พินหลายรูปโหลดได้ครบทุกรูปไหม (covers the skipped carousel page)",
+    "รูปจาก Pinterest มีลิขสิทธิ์ไหม (autocomplete: 'pinterest รูปมีลิขสิทธิ์ไหม')",
+    "ทำไมพินวิดีโอใช้หน้านี้ไม่ได้"
+   ],
+   "evidence": [
+    "th:'โหลดรูป pinterest' -> ชัด ๆ | ไม่ ชัด | ไม่ ได้ | ใน pinterest ให้ ชัด | วิธี โหลด รูป pinterest | ฟรี",
+    "th:'เซฟรูป pinterest' -> ใน ไอ แพ ด | จาก pinterest ไม่ ชัด | วิธี เซฟ รูป | ให้ ชัด | ไม่ ได้ | 2566 | png",
+    "th:'โหลดรูป pinterest ใน/ลง' -> ในคอม | ในไอแพด | ใน pc | ในโทรศัพท์ | ในไอโฟน | ลงคอม | ลงไอแพด | ลงไอโฟน",
+    "th:'pinterest image downloader' -> hd | 4k | high quality | bulk | savepin | futoo",
+    "Pinterest help TH (download-an-image): app menu label is 'ดาวน์โหลดรูปภาพ'"
+   ],
+   "notes": "'รูป' is the colloquial noun and wins in autocomplete; 'รูปภาพ' matches Pinterest's own menu ('ดาวน์โหลดรูปภาพ') - use both. Keep the 'ให้ชัด' cluster as the HD page's primary to avoid cannibalising; mention sharpness here only in passing.",
+   "titleLength": 49,
+   "descriptionLength": 144
+  },
+  {
+   "enSlug": "pinterest-4k-downloader",
+   "skip": false,
+   "priority": 2,
+   "slug": "pinterest-hd-downloader",
+   "path": "/th/pinterest-hd-downloader",
+   "primaryKeyword": "โหลดรูป pinterest ให้ชัด",
+   "secondaryKeywords": [
+    "pinterest รูปไม่ชัด",
+    "โหลดวิดีโอ pinterest ให้ชัด",
+    "pinterest ความละเอียดสูงสุด",
+    "pinterest 4k",
+    "pinterest hd downloader"
+   ],
+   "title": "โหลดรูป Pinterest ให้ชัด ได้ความละเอียดสูงสุดที่มีจริง",
+   "description": "รูปจาก Pinterest ไม่ชัด? วางลิงก์พินแล้วรับไฟล์ใหญ่ที่สุดที่ Pinterest เก็บไว้ ทั้งรูปและวิดีโอ ไม่ใช่รูปย่อ ไม่บีบอัดซ้ำ และไม่อ้าง 4K ถ้าต้นฉบับไม่ใช่",
+   "h1": "โหลดรูป Pinterest ให้ชัด",
+   "lede": "รูปเบลอเพราะได้แค่รูปย่อหรือแคปหน้าจอ วางลิงก์พินแล้วรับไฟล์ต้นฉบับขนาดใหญ่ที่สุดที่มี เราไม่ขยายภาพปลอมเป็น 4K",
+   "faqTopics": [
+    "ทำไมรูปที่เซฟจาก Pinterest ไม่ชัด (รูปย่อในฟีด แคปหน้าจอ แอปบีบอัด) (autocomplete: 'pinterest รูปไม่ชัด', 'โหลด รูป pinterest ไม่ ชัด', 'เซฟ รูป จาก pinterest ไม่ ชัด')",
+    "แก้รูป Pinterest ไม่ชัดยังไง (autocomplete: 'pinterest รูปไม่ชัด แก้ยังไง', 'pinterest รูปไม่ชัด ทําไง')",
+    "ได้ 4K ไหม (ได้เฉพาะเมื่อผู้โพสต์อัปโหลดไฟล์ 4K ไว้ เราไม่อัปสเกล) (autocomplete: 'pinterest 4k', 'รูป pinterest 4k download')",
+    "วิดีโอได้ 1080p ไหม (autocomplete: 'โหลดวิดีโอ pinterest ให้ชัดขึ้น', 'pinterest 1080p')",
+    "ทำไมบางพินยังเบลออยู่ดี (ต้นฉบับเล็ก)",
+    "เซฟรูปให้ชัดบนไอแพดและ iPhone (autocomplete: 'วิธี เซฟ รูป จาก pinterest ipad')"
+   ],
+   "evidence": [
+    "th:'โหลดรูป pinterest ให้ชัด' -> ให้ชัดขึ้น | ให้ชัดๆ | ให้ชัด ฟรี",
+    "th:'pinterest รูปไม่ชัด' -> แก้ยังไง | ทําไง",
+    "th:'โหลดรูป pinterest ไม่ชัด' -> ไม่ชัด 2024",
+    "th:'วิธีโหลดรูป pinterest' -> วิธี โหลด รูป จาก pinterest ให้ ชัด",
+    "th:'ดาวน์โหลด pinterest ให้' -> ให้ชัดขึ้น | ให้ภาพชัด",
+    "th:'pinterest ความละเอียดสูง' -> ความละเอียดสูงสุด; 'pinterest ภาพชัด' -> ภาพ ไม่ ชัด | ภาพชัดๆ",
+    "th:'pinterest 4k' -> 4k downloader | 4k image downloader | 4k video download (Latin-script, served as secondaries)"
+   ],
+   "notes": "Reframed on purpose. The English page promises '4K ultra quality', which PRODUCT.md forbids ('no fake 4K'). Thai demand is about blur ('ไม่ชัด' shows up under almost every image seed), so this page answers 'why is it blurry and how do I get the sharpest file'. The slug drops '4k' so the URL does not contradict the copy; it is still the hreflang twin of /pinterest-4k-downloader. Recommend fixing the English page's 4K claim too.",
+   "titleLength": 54,
+   "descriptionLength": 152
+  },
+  {
+   "enSlug": "pinterest-gif-downloader",
+   "skip": false,
+   "priority": 2,
+   "slug": "pinterest-gif-downloader",
+   "path": "/th/pinterest-gif-downloader",
+   "primaryKeyword": "โหลด gif pinterest",
+   "secondaryKeywords": [
+    "ดาวน์โหลด gif pinterest",
+    "บันทึก gif pinterest",
+    "โหลดภาพเคลื่อนไหว pinterest",
+    "เซฟภาพเคลื่อนไหว pinterest",
+    "pinterest gif downloader"
+   ],
+   "title": "โหลด GIF Pinterest ฟรี เซฟภาพเคลื่อนไหวให้ยังขยับ",
+   "description": "โหลด GIF และภาพเคลื่อนไหวจาก Pinterest ให้ยังขยับเหมือนเดิม ไม่กลายเป็นภาพนิ่ง วางลิงก์พิน GIF แล้วเซฟลงมือถือหรือคอม ฟรี ไม่ต้องล็อกอิน",
+   "h1": "โหลด GIF Pinterest",
+   "lede": "วางลิงก์พิน GIF แล้วได้ไฟล์ที่ยังวนเล่นครบทุกเฟรม ไม่ใช่ภาพนิ่งเฟรมแรก ฟรี ไม่ต้องล็อกอิน",
+   "faqTopics": [
+    "โหลด GIF จาก Pinterest ยังไง (autocomplete: 'โหลด gif pinterest ยัง ไง')",
+    "ทำไมเซฟ GIF แล้วกลายเป็นภาพนิ่ง หรือเซฟไม่ได้ (autocomplete: 'เซฟ gif pinterest ไม่ได้', 'เซฟภาพเคลื่อนไหว pinterest ไม่ได้')",
+    "GIF ยังขยับในอัลบั้ม iPhone และแกลเลอรี่ Android ไหม",
+    "โหลดภาพเคลื่อนไหวลงคอมได้ไหม (autocomplete: 'โหลดภาพเคลื่อนไหว pinterest pc', 'เซฟภาพเคลื่อนไหว pinterest pc')",
+    "ต่างจากโหลดวิดีโอ MP4 ยังไง (autocomplete: 'download gif pinterest to video')",
+    "ต้องมีบัญชี Pinterest ไหม"
+   ],
+   "evidence": [
+    "th:'โหลด gif pinterest' -> ยัง ไง | download gif pinterest link / online / to video / android | โหลด gif ใน pinterest",
+    "th:'ภาพเคลื่อนไหว pinterest' -> ดาวน์โหลด ภาพ เคลื่อนไหว pinterest | เซฟ ภาพ เคลื่อนไหว pinterest",
+    "th:'โหลดภาพเคลื่อนไหว pinterest' -> วิธีโหลดภาพเคลื่อนไหวใน pinterest | ฟรี | pc",
+    "th:'บันทึก pinterest' -> บันทึกgif pinterest; th:'บันทึกภาพ pinterest' -> บันทึก ภาพ เคลื่อนไหว pinterest",
+    "th:'pinterest ดาวน์โหลด' -> ดาวน์โหลด pinterest gif (first-level completion)"
+   ],
+   "notes": "'ภาพเคลื่อนไหว' (moving image) is how Thais say GIF in plain language: put it in the description and lede, keep 'GIF' in title and H1.",
+   "titleLength": 49,
+   "descriptionLength": 136
+  },
+  {
+   "enSlug": "pinterest-board-downloader",
+   "skip": false,
+   "priority": 2,
+   "slug": "pinterest-board-downloader",
+   "path": "/th/pinterest-board-downloader",
+   "primaryKeyword": "โหลดบอร์ด pinterest",
+   "secondaryKeywords": [
+    "โหลดรูปทั้งบอร์ด pinterest",
+    "โหลดรูป pinterest ทั้งหมด",
+    "ดาวน์โหลด pinterest ทั้งหมด",
+    "pinterest โหลดหลายรูป",
+    "pinterest board downloader"
+   ],
+   "title": "โหลดบอร์ด Pinterest ทั้งบอร์ดเป็น ZIP ฟรี ไม่ต้องล็อกอิน",
+   "description": "โหลดรูปและวิดีโอทั้งบอร์ด Pinterest ในครั้งเดียว วางลิงก์บอร์ดสาธารณะแล้วรับไฟล์ ZIP ไฟล์เดียว ไม่ต้องเซฟทีละรูป ฟรี ไม่ต้องล็อกอิน",
+   "h1": "โหลดบอร์ด Pinterest",
+   "lede": "วางลิงก์บอร์ดสาธารณะ แล้วรับทุกพินที่โหลดได้ในไฟล์ ZIP ไฟล์เดียว ลิงก์โปรไฟล์ก็ใช้ได้ ฟรี ไม่ต้องล็อกอิน",
+   "faqTopics": [
+    "โหลดรูปทั้งบอร์ดในครั้งเดียวได้ไหม (autocomplete: 'โหลดรูปทั้งบอร์ด pinterest ฟรี', 'pinterest โหลดหลายรูปได้ไหม')",
+    "คัดลอกลิงก์บอร์ดในแอปยังไง (เปิดบอร์ด -> ไอคอนแชร์ -> คัดลอกลิงก์)",
+    "บอร์ดส่วนตัวโหลดได้ไหม (ไม่ได้ - Pinterest TH calls them 'บอร์ดส่วนตัว'; older 'บอร์ดลับ')",
+    "ได้กี่พินต่อบอร์ด (มีเพดานต่อครั้ง บอร์ดใหญ่มากอาจได้ไม่ครบ - state the real UI cap, do not invent one)",
+    "เปิดไฟล์ ZIP บน iPhone และ Android ยังไง (แอปไฟล์ / Files by Google)",
+    "โหลดทุกพินของโปรไฟล์ได้ไหม (ได้ วางลิงก์โปรไฟล์ในช่องเดียวกัน - covers the skipped profile page)",
+    "พินหลายรูปในบอร์ดได้ครบทุกรูปไหม",
+    "โหลดบอร์ดไม่ได้ ทำยังไง (autocomplete: 'โหลดบอร์ด pinterest ไม่ได้')"
+   ],
+   "evidence": [
+    "th:'โหลดบอร์ด pinterest' -> ฟรี | ไม่ได้ | pc",
+    "th:'โหลดรูปทั้งบอร์ด pinterest' -> ฟรี; th:'โหลดรูปทั้งหมด pinterest' -> ฟรี",
+    "th:'โหลดรูป pinterest ทั้ง' -> ทั้งหมด; th:'ดาวน์โหลด pinterest ทั้ง' -> ทั้งหมด | ทั้งหมดฟรี",
+    "th:'pinterest โหลดหลายรูป' -> ไม่ได้ | ได้ไหม",
+    "th:'pinterest board' -> pinterest board downloader | board downloader online | download (Latin-script)",
+    "Pinterest help TH (secret-boards, create-a-board): 'บอร์ด', 'บอร์ดส่วนตัว', 'บอร์ดสาธารณะ'"
+   ],
+   "notes": "MCP constants cap boards at 250 pins (src/lib/mcp/tools.ts BOARD_MAX_PINS); confirm the web UI uses the same cap before printing a number. Many Thai phone users have never opened a ZIP: a short 'how to open it' answer prevents a dead end.",
+   "titleLength": 56,
+   "descriptionLength": 131
+  },
+  {
+   "enSlug": "how-to-download-pinterest-videos",
+   "skip": false,
+   "priority": 2,
+   "slug": "how-to-download-pinterest-videos",
+   "path": "/th/how-to-download-pinterest-videos",
+   "primaryKeyword": "วิธีโหลดวิดีโอ pinterest",
+   "secondaryKeywords": [
+    "วิธีเซฟวิดีโอ pinterest",
+    "วิธีบันทึกวิดีโอ pinterest",
+    "สอนโหลดวิดีโอ pinterest",
+    "วิธีดาวน์โหลดวิดีโอ pinterest",
+    "บันทึกวิดีโอในแอป pinterest"
+   ],
+   "title": "วิธีโหลดวิดีโอ Pinterest ทีละขั้นตอน บนมือถือและคอม ฟรี",
+   "description": "สอนวิธีโหลดวิดีโอ Pinterest ทีละขั้น ตั้งแต่คัดลอกลิงก์ในแอปจนได้ไฟล์ MP4 ในเครื่อง ใช้ได้ทั้ง iPhone, Android, ไอแพด และคอม ฟรี ไม่ต้องลงแอปเพิ่ม",
+   "h1": "วิธีโหลดวิดีโอ Pinterest",
+   "lede": "คู่มือฉบับเต็ม: คัดลอกลิงก์ วาง แล้วเซฟวิดีโอ MP4 ลงมือถือหรือคอม พร้อมทางแก้เมื่อโหลดไม่ได้",
+   "faqTopics": [
+    "แอป Pinterest มีปุ่มดาวน์โหลดวิดีโอไหม (บางพินมี เพราะผู้สร้างเปิดให้ดาวน์โหลดได้; Pinterest help TH create-idea-pins: 'คุณสามารถเลือกที่จะอนุญาตให้ผู้ที่ดูพิน...ดาวน์โหลดพิน')",
+    "กด 'บันทึก' ในแอปแล้วทำไมวิดีโอไม่อยู่ในเครื่อง (บันทึก = เก็บลงบอร์ด ไม่ใช่ดาวน์โหลด) (autocomplete: 'บันทึก วิดีโอ ใน แอ พ pinterest', 'วิธีบันทึกวิดีโอ pinterest')",
+    "คัดลอกลิงก์วิดีโอจากแอป Pinterest ยังไง (แตะไอคอนแชร์ -> คัดลอกลิงก์)",
+    "ทำไมเซฟวิดีโอ Pinterest ไม่ได้ (autocomplete: 'วิธีเซฟวิดีโอ pinterest ไม่ได้', 'วิธีบันทึกวิดีโอ pinterest ไม่ได้', 'สอนโหลดคลิป pinterest ไม่ได้')",
+    "อัดหน้าจอแทนได้ไหม (ได้ แต่ภาพชัดน้อยกว่าและติดปุ่มแอป)",
+    "โหลดแล้วไฟล์อยู่ที่ไหนบน iPhone, Android และคอม (ลิงก์ไปหน้ามือถือและหน้าคอม)"
+   ],
+   "evidence": [
+    "th:'วิธีเซฟวิดีโอ pinterest' -> วิธี save video pinterest | ios | ไม่ได้",
+    "th:'วิธีบันทึกวิดีโอ pinterest' -> วิธี บันทึก วิดีโอ แอ ป pinterest | ใน แอ พ | ios | ไม่ได้ | pc",
+    "th:'สอนโหลดวิดีโอ pinterest' -> ios; th:'สอนโหลดคลิป pinterest' -> ไม่ได้ | ในคอม",
+    "th:'วิธีดาวน์โหลดวิดีโอ pinterest' -> วิธี download video pinterest | ios",
+    "th:'บันทึกวิดีโอ pinterest' -> สอน บันทึก วิดีโอ ใน pinterest | บันทึกวิดีโอ pinterest ไม่ได้",
+    "SERP: klickpin.com/th/how-to, pindown.io/th/how-to-download-pinterest-videos, th.wikihow.com/ดาวน์โหลดวิดีโอจาก-Pinterest, tecnobits.com/th rank for the head term"
+   ],
+   "notes": "Hub guide for all devices. Link out to the Thai mobile page (iPhone/Android/ไอแพด) and the Thai computer page instead of repeating their device steps. The English page is titled 'to Gallery'; in Thai the gallery angle lives on the mobile page.",
+   "titleLength": 55,
+   "descriptionLength": 146
+  },
+  {
+   "enSlug": "download-pinterest-videos-iphone-android",
+   "skip": false,
+   "priority": 2,
+   "slug": "download-pinterest-videos-iphone-android",
+   "path": "/th/download-pinterest-videos-iphone-android",
+   "primaryKeyword": "โหลดวิดีโอ pinterest iphone",
+   "secondaryKeywords": [
+    "ดาวน์โหลดวิดีโอ pinterest ios",
+    "ดาวน์โหลดวิดีโอ pinterest android",
+    "โหลดวิดีโอ pinterest ลงอัลบั้ม",
+    "โหลดวิดีโอ pinterest ในไอแพด",
+    "เซฟวิดีโอ pinterest ลงมือถือ",
+    "pinterest บันทึกลงอัลบั้มรูป"
+   ],
+   "title": "โหลดวิดีโอ Pinterest ลง iPhone และ Android เข้าอัลบั้มได้เลย",
+   "description": "โหลดวิดีโอ Pinterest ลง iPhone, ไอแพด และ Android ผ่าน Safari หรือ Chrome ไม่ต้องลงแอปเพิ่ม พร้อมวิธีย้ายไฟล์เข้าอัลบั้มรูปหรือแกลเลอรี่เมื่อวิดีโอไม่ขึ้น",
+   "h1": "โหลดวิดีโอ Pinterest ลงมือถือ",
+   "lede": "iPhone · ไอแพด · Android คัดลอกลิงก์จากแอป Pinterest วางที่นี่ แล้วเซฟ MP4 เข้าอัลบั้มรูปหรือแกลเลอรี่",
+   "faqTopics": [
+    "เซฟวิดีโอ Pinterest ลง iPhone ยังไง (Safari -> ไฟล์ไปที่แอปไฟล์ > ดาวน์โหลด -> แชร์ -> 'บันทึกวิดีโอ' เพื่อเข้าแอปรูปภาพ) (autocomplete: 'วิธีเซฟวิดีโอ pinterest ios', 'เซฟวิดีโอ pinterest ios 18')",
+    "ทำไมเซฟวิดีโอลง iPhone ไม่ได้ / โหลดแล้วไม่ขึ้นในอัลบั้ม (autocomplete: 'เซฟวิดีโอ pinterest iphone ไม่ได้', 'โหลดวิดีโอ pinterest ลงอัลบั้มไม่ได้', 'pinterest บันทึกลงอัลบั้มไม่ได้')",
+    "Android เซฟลงแกลเลอรี่หรือ Google Photos ยังไง (autocomplete: 'pinterest ลงแกลเลอรี่ได้ไหม', 'เซฟวิดีโอ pinterest ลงมือถือ android')",
+    "ใช้บนไอแพดได้ไหม (autocomplete: 'โหลดวิดีโอ pinterest ในไอแพด', 'ลงไอแพด')",
+    "ส่งวิดีโอเข้าอัลบั้ม LINE ได้ไหม (autocomplete: 'โหลดวิดีโอ pinterest ลงอัลบั้มในไลน์' - Thai-specific: save to the phone first, then add from the gallery)",
+    "ทำไมไม่ต้องโหลดแอปจาก App Store หรือ Play Store (แอปโหลดวิดีโอส่วนใหญ่มีโฆษณาเยอะ ขอสิทธิ์เกินจำเป็น)",
+    "กดโหลดแล้ววิดีโอเล่นแทนที่จะเซฟ ทำยังไง (กดค้างที่ปุ่ม -> ดาวน์โหลดไฟล์ที่ลิงก์)"
+   ],
+   "evidence": [
+    "th:'ดาวน์โหลดวิดีโอ pinterest' -> android | ios | iphone are FIRST-LEVEL completions of the generic head term (higher volume than the 'ลงอัลบั้ม' family)",
+    "th:'โหลดวิดีโอ pinterest ลง' -> ลงคอม | ลงไอแพด | ลงไอโฟน | ลง pc; 'ใน' -> ในไอแพด | ในโทรศัพท์ | ใน iphone",
+    "th:'โหลดวิดีโอ pinterest มือถือ' -> มือถือ ios | มือถือ ios ฟรี; th:'เซฟวิดีโอ pinterest ลงมือถือ' -> android | ios",
+    "th:'โหลดวิดีโอ pinterest ลงอัลบั้ม' -> อัลบั้มรูป | ไม่ได้ | อัลบั้มในไลน์",
+    "th:'pinterest บันทึกลงอัลบั้ม' -> อัลบั้มรูป | ไม่ได้; th:'บันทึกวิดีโอ pinterest ลงคลังภาพ' -> ไม่ได้ | ได้; th:'pinterest ลงแกลเลอรี่' -> ไม่ได้ | ได้ไหม | ได้",
+    "th:'โหลดวิดีโอ pinterest iphone' -> โหลดวิดีโอ pinterest iphone ฟรี; th:'เซฟวิดีโอ pinterest iphone' -> ไม่ได้"
+   ],
+   "notes": "This Thai page absorbs the English gallery guide (how-to-download-pinterest-video-in-gallery), which is skipped in Thai. 'ไอแพด' matters more in Thailand than in most markets: it appears under image and video seeds alike, so the H1 subline and steps name it.",
+   "titleLength": 60,
+   "descriptionLength": 154
+  },
+  {
+   "enSlug": "how-to-download-pinterest-video-on-laptop",
+   "skip": false,
+   "priority": 2,
+   "slug": "how-to-download-pinterest-video-on-laptop",
+   "path": "/th/how-to-download-pinterest-video-on-laptop",
+   "primaryKeyword": "โหลดวิดีโอ pinterest ลงคอม",
+   "secondaryKeywords": [
+    "โหลดวิดีโอ pinterest ในคอม",
+    "สอนโหลดคลิป pinterest ในคอม",
+    "เซฟวิดีโอ pinterest ลงเครื่องคอม",
+    "โหลดคลิป pinterest ลงเครื่อง mac",
+    "วิธีบันทึกวิดีโอ pinterest pc"
+   ],
+   "title": "โหลดวิดีโอ Pinterest ลงคอม Windows และ Mac ฟรี ทีละขั้นตอน",
+   "description": "สอนโหลดวิดีโอ Pinterest ลงคอมและโน้ตบุ๊ก ทั้ง Windows, Mac และ Chromebook คัดลอกลิงก์จากแถบที่อยู่ วางในช่อง แล้วได้ไฟล์ MP4 ฟรี ไม่ต้องลงโปรแกรม",
+   "h1": "โหลดวิดีโอ Pinterest ลงคอม",
+   "lede": "Windows · Mac · Chromebook คัดลอกลิงก์จากแถบที่อยู่ของเบราว์เซอร์ วางที่นี่ แล้วไฟล์ MP4 จะอยู่ในโฟลเดอร์ดาวน์โหลด",
+   "faqTopics": [
+    "โหลดวิดีโอ Pinterest ลงคอม Windows หรือ Mac ยังไง (autocomplete: 'โหลดคลิป pinterest ลงเครื่องคอม', 'เซฟวิดีโอ pinterest ลงเครื่อง mac')",
+    "ต้องลงโปรแกรมไหม (ไม่ต้อง - and note 'ดาวน์โหลด pinterest pc' often means installing the Pinterest app itself; say plainly that this page downloads pins, not the app)",
+    "ได้วิดีโอ 1080p บนคอมไหม",
+    "ใช้บน Chromebook ได้ไหม",
+    "โหลดแล้วไฟล์อยู่ที่ไหน (โฟลเดอร์ดาวน์โหลด / Downloads)",
+    "โหลดรูปและ GIF ลงคอมได้ด้วยไหม (autocomplete: 'วิธีโหลดรูป pinterest ในคอม', 'โหลดภาพเคลื่อนไหว pinterest pc')",
+    "มีปุ่มลัดในเบราว์เซอร์ไหม (บุ๊กมาร์กเล็ต -> link to the Chrome page)"
+   ],
+   "evidence": [
+    "th:'โหลดวิดีโอ pinterest ลง/ใน' -> ลงคอม | ลง pc | ในคอม | ใน pc",
+    "th:'โหลดคลิป pinterest ลงเครื่อง' -> ลงเครื่องคอม | ลงเครื่อง mac | ลงเครื่อง pc",
+    "th:'เซฟวิดีโอ pinterest ลงเครื่อง' -> ลงเครื่องคอม | ลงเครื่อง mac; th:'บันทึกวิดีโอ pinterest ลงเครื่อง' -> ลงเครื่องคอม | ลงเครื่อง mac",
+    "th:'สอนโหลดคลิป pinterest' -> ในคอม; th:'วิธีโหลด pinterest' -> วิธี โหลด pinterest ใน คอม",
+    "th:'ดาวน์โหลด pinterest ลง' -> ลงคอม | ลง pc; th:'pinterest ลงคอม' -> ได้ไหม | ไม่ได้ | ยังไง (ambiguous: may mean installing the app)",
+    "th:'pinterest โน๊ตบุ๊ค' -> only wallpaper completions: Thais say 'คอม' or 'PC', not 'laptop'/'แล็ปท็อป'"
+   ],
+   "notes": "The English slug says 'laptop'; Thai searchers say 'คอม'. The slug is kept for routing parity (see urlStructure); the title and H1 carry 'คอม'.",
+   "titleLength": 58,
+   "descriptionLength": 145
+  },
+  {
+   "enSlug": "pinterest-pin-downloader",
+   "skip": false,
+   "priority": 3,
+   "slug": "pinterest-pin-downloader",
+   "path": "/th/pinterest-pin-downloader",
+   "primaryKeyword": "โหลดพิน pinterest",
+   "secondaryKeywords": [
+    "โหลดพินวิดีโอ",
+    "pinterest ลิงก์โหลด",
+    "แปลงลิงก์ pinterest",
+    "pinterest พินหลายรูป",
+    "pinterest pin downloader"
+   ],
+   "title": "โหลดพิน Pinterest จากลิงก์ ได้ทั้งรูป วิดีโอ GIF ฟรี",
+   "description": "วางลิงก์พิน Pinterest หรือลิงก์สั้น pin.it แล้วโหลดพินนั้นได้ทันที ทั้งรูปขนาดเต็ม วิดีโอ MP4 GIF และพินหลายรูปครบทุกภาพ ฟรี ไม่ต้องล็อกอิน",
+   "h1": "โหลดพิน Pinterest",
+   "lede": "หนึ่งลิงก์ หนึ่งพิน: รูป วิดีโอ GIF หรือพินหลายรูปครบทุกภาพ วางลิงก์ /pin/ หรือ pin.it ได้เลย",
+   "faqTopics": [
+    "ลิงก์พินหน้าตาแบบไหน (/pin/ หรือ pin.it) และคัดลอกจากแอปยังไง (ไอคอนแชร์ -> คัดลอกลิงก์)",
+    "พินหลายรูปโหลดได้ครบทุกรูปไหม (autocomplete: 'pinterest พินหลายรูป' - covers the skipped carousel page)",
+    "ใช้กับพินวิดีโอและ GIF ได้ไหม (autocomplete: 'โหลดพินวิดีโอ')",
+    "ทำไมลิงก์บอร์ดหรือโปรไฟล์ใช้ที่หน้านี้ไม่ได้",
+    "แปลงลิงก์ Pinterest เป็นไฟล์ได้ยังไง (autocomplete: 'แปลง ลิงค์ pinterest', 'pinterest ลิงก์โหลดฟรี')",
+    "ฟรีไหม ต้องล็อกอินไหม"
+   ],
+   "evidence": [
+    "th:'พิน pinterest' -> โหลด พิ น pinterest | ลบ พิ น pinterest",
+    "th:'โหลดพิน' -> โหลดพินวิดีโอ",
+    "th:'pinterest ลิงก์' -> pinterest ลิงก์โหลด | pinterest ลิงก์โหลดฟรี; th:'pinterest ลิงค์' -> แปลง ลิงค์ pinterest",
+    "th:'pinterest พินหลายรูป' -> ได้ไหม | หลายรูปภาพ (mostly upload intent, so carousel stays an FAQ, not a page)",
+    "th:'pinterest pin downloader' -> hd | extension | 4k | video | online | free"
+   ],
+   "notes": "Weakest Thai demand of the kept tool pages and overlaps the homepage. Keep it because it is the single-pin tool and absorbs the carousel intent; give it the link-based angle ('จากลิงก์') so it does not compete with /th for 'ดาวน์โหลด pinterest'.",
+   "titleLength": 52,
+   "descriptionLength": 139
+  },
+  {
+   "enSlug": "pinterest-profile-picture-downloader",
+   "skip": false,
+   "priority": 3,
+   "slug": "pinterest-profile-picture-downloader",
+   "path": "/th/pinterest-profile-picture-downloader",
+   "primaryKeyword": "โหลดรูปโปรไฟล์ pinterest",
+   "secondaryKeywords": [
+    "ดูรูปโปรไฟล์ pinterest เต็มรูป",
+    "ดาวน์โหลดโปรไฟล์ pinterest",
+    "รูปโปรไฟล์ pinterest ชัดๆ",
+    "pinterest profile picture downloader"
+   ],
+   "title": "โหลดรูปโปรไฟล์ Pinterest ขนาดเต็ม ดูรูปโปรไฟล์แบบเต็มรูป",
+   "description": "ดูและโหลดรูปโปรไฟล์ของบัญชี Pinterest สาธารณะแบบเต็มรูป ขนาดใหญ่ที่สุดที่ Pinterest มี วางลิงก์โปรไฟล์แล้วเซฟได้เลย ฟรี ไม่ต้องล็อกอิน",
+   "h1": "โหลดรูปโปรไฟล์ Pinterest",
+   "lede": "วางลิงก์โปรไฟล์สาธารณะ แล้วดูหรือเซฟรูปโปรไฟล์ในขนาดใหญ่ที่สุดที่มี (ปกติราว 600×600 พิกเซล)",
+   "faqTopics": [
+    "ดูรูปโปรไฟล์ Pinterest แบบเต็มรูปได้ไหม (autocomplete: 'ดูรูปโปรไฟล์ pinterest เต็มจอ / เต็มรูป / เต็มหน้าจอ')",
+    "ได้ความละเอียดเท่าไร (ปกติไม่เกินราว 600×600 ตามที่ Pinterest เก็บไว้ - no 'HD' promise)",
+    "คัดลอกลิงก์โปรไฟล์จากแอปยังไง (เปิดโปรไฟล์ -> ไอคอนแชร์ -> คัดลอกลิงก์)",
+    "อยากได้รูปสวยๆ จาก Pinterest ไปทำรูปโปรไฟล์ ต้องใช้หน้าไหน (หน้าโหลดรูป) - disambiguates the much bigger 'รูปโปรไฟล์ pinterest' aesthetic intent",
+    "บัญชีส่วนตัวโหลดได้ไหม",
+    "ไฟล์เป็น JPG หรือ PNG",
+    "เอารูปโปรไฟล์คนอื่นไปใช้ได้ไหม (ไม่ควรใช้แอบอ้างเป็นคนอื่น)"
+   ],
+   "evidence": [
+    "th:'ดูรูปโปรไฟล์ pinterest เต็ม' -> เต็มจอ | เต็มรูป | เต็มหน้าจอ",
+    "th:'ดาวน์โหลดโปรไฟล์ pinterest' -> download pinterest profile picture hd / full size | ดาวน์โหลดโปรไฟล์ pinterest ไม่ได้ | ฟรี",
+    "th:'โหลดรูปโปรไฟล์ pinterest' -> ไม่ได้ | ฟรี",
+    "th:'รูปโปรไฟล์ pinterest ชัด' -> ชัดๆ | ชัดเจน",
+    "th:'รูปโปรไฟล์ pinterest' -> น่ารักๆ (and 'pinterest รูปโปรไฟล์' -> เท่ๆ | ฟรี | facebook): the BIG volume here is people looking for aesthetic profile-picture IDEAS on Pinterest, not an account's avatar",
+    "th:'โหลดรูปโปรไฟล์' -> ไอจี | tiktok | facebook | ig คนอื่น | discord (Thais run this query per platform)"
+   ],
+   "notes": "Intent risk: do not chase 'รูปโปรไฟล์ pinterest' (aesthetic PFP ideas) with this page; it would pogo-stick. Target the 'see it full size / download this account's avatar' phrasing and send PFP-idea seekers to the image page. Drop 'PFP' and 'DP': neither appears in Thai autocomplete.",
+   "titleLength": 56,
+   "descriptionLength": 134
+  },
+  {
+   "enSlug": "pinterest-audio-downloader",
+   "skip": false,
+   "priority": 3,
+   "slug": "pinterest-audio-downloader",
+   "path": "/th/pinterest-audio-downloader",
+   "primaryKeyword": "โหลดเสียง pinterest",
+   "secondaryKeywords": [
+    "โหลดเสียง pinterest mp3",
+    "ดึงเสียง pinterest",
+    "แยกเสียง pinterest",
+    "pinterest mp3",
+    "pinterest audio downloader"
+   ],
+   "title": "โหลดเสียง Pinterest ดึงเสียงจากวิดีโอพิน ฟรี ไม่ต้องล็อกอิน",
+   "description": "ดึงเสียงเพลงหรือเสียงพูดจากวิดีโอพิน Pinterest สาธารณะ ตัดเฉพาะท่อนที่ต้องการแล้วเซฟเป็นไฟล์เสียง ฟรี ไม่ต้องล็อกอิน ใช้เฉพาะเสียงที่มีสิทธิ์ใช้",
+   "h1": "โหลดเสียง Pinterest",
+   "lede": "วางลิงก์พินวิดีโอที่มีเสียง แล้วดึงเสียงออกมา ตัดเฉพาะท่อนที่อยากได้ แล้วเซฟเป็นไฟล์เสียง",
+   "faqTopics": [
+    "ดึงเสียงจากวิดีโอ Pinterest ยังไง",
+    "ทำไมบางพินดึงเสียงไม่ได้ (พินเงียบ พินรูป GIF) (autocomplete: 'ดึงเสียง pinterest ไม่ได้', 'แยกเสียง pinterest ไม่ได้', 'โหลดเสียง pinterest ไม่ได้')",
+    "ได้ไฟล์ MP3 ไหม (autocomplete: 'โหลดเสียง pinterest mp3') - answer only with what the product really outputs; see notes",
+    "โหลดเพลงจาก Pinterest ผิดลิขสิทธิ์ไหม (autocomplete: 'pinterest ลิขสิทธิ์เพลง')",
+    "ตัดเสียงเฉพาะท่อนได้ไหม (AudioTrimmer exports WAV)",
+    "ต้องมีบัญชี Pinterest ไหม"
+   ],
+   "evidence": [
+    "th:'โหลดเสียง pinterest' -> ฟรี | mp3 | ไม่ได้",
+    "th:'ดึงเสียง pinterest' -> ไม่ได้ | ออก; th:'แยกเสียง pinterest' -> ไม่ได้",
+    "th:'pinterest ลิขสิทธิ์' -> pinterest ลิขสิทธิ์เพลง",
+    "th:'pinterest mp3' -> mp3 download | converter | mp3 video downloader (Latin-script)",
+    "Negative: 'pinterest เพลง' -> คอร์ด เพลง | เพลงไทย | เพลงประกอบละคร (song-chord and soundtrack pins - not a download intent; do not target)"
+   ],
+   "notes": "PRODUCT HONESTY BLOCKER: the form's 'MP3' row saves the video URL unchanged under a .mp3 filename (DownloaderForm.tsx ~L966 and ~L2072: saveProxyDownload(videoUrl, mp3Name); /api/download passes the upstream video content-type through). That file is an MP4 renamed, not MP3. The trimmer exports real WAV. The Thai title and description therefore avoid promising MP3. If the product starts returning real audio/mpeg, add 'เป็น MP3' to the title. The English page's 'Extract MP3' claim has the same problem.",
+   "titleLength": 59,
+   "descriptionLength": 144
+  },
+  {
+   "enSlug": "pinterest-video-downloader-chrome",
+   "skip": false,
+   "priority": 3,
+   "slug": "pinterest-video-downloader-chrome",
+   "path": "/th/pinterest-video-downloader-chrome",
+   "primaryKeyword": "ส่วนขยาย chrome โหลด pinterest",
+   "secondaryKeywords": [
+    "pinterest video downloader chrome",
+    "pinterest chrome extension",
+    "โหลด pinterest บน chrome",
+    "บุ๊กมาร์กเล็ต"
+   ],
+   "title": "ส่วนขยาย Chrome โหลด Pinterest? ใช้บุ๊กมาร์กเล็ตแทน ฟรี",
+   "description": "อยากได้ส่วนขยาย Chrome ไว้โหลด Pinterest? ใช้บุ๊กมาร์กเล็ตแทน ลากไปไว้ที่แถบบุ๊กมาร์ก แล้วกดครั้งเดียวบนหน้าพิน บอร์ด หรือโปรไฟล์ ไม่ต้องติดตั้งอะไร",
+   "h1": "โหลด Pinterest บน Chrome",
+   "lede": "ไม่ต้องลงส่วนขยาย: ลากปุ่มไปที่แถบบุ๊กมาร์ก เปิดพิน บอร์ด หรือโปรไฟล์ แล้วกดครั้งเดียว",
+   "faqTopics": [
+    "PintDownload เป็นส่วนขยาย Chrome ไหม (ไม่ใช่ เป็นบุ๊กมาร์กเล็ต)",
+    "ทำไมบุ๊กมาร์กเล็ตปลอดภัยกว่าส่วนขยาย (ไม่ขอสิทธิ์อ่านทุกเว็บ ทำงานเฉพาะตอนกด)",
+    "ส่วนขยายโหลด Pinterest ใช้ไม่ได้ ทำยังไง (autocomplete: 'ส่วนขยาย chrome โหลด pinterest ไม่ได้')",
+    "ใช้บน Edge, Safari, Firefox และ Mac/Windows ได้ไหม",
+    "ใช้บน Chrome มือถือได้ไหม (honest: awkward on phones; use copy-link + paste instead)"
+   ],
+   "evidence": [
+    "th:'ส่วนขยาย chrome โหลด pinterest' -> ไม่ได้ | ฟรี",
+    "th:'pinterest extension' -> extension chrome | firefox | downloader | edge",
+    "th:'pinterest video downloader chrome' -> chrome extension | free | android | web store",
+    "th:'pinterest chrome' -> pinterest chrome extension (top completion; the rest are chrome nails/wallpaper noise)",
+    "Competitors: klickpin.com/th/chrome-extension ('ส่วนขยาย Chrome'), snapwc.com/th ('ติดตั้งส่วนขยายเบราว์เซอร์')"
+   ],
+   "notes": "Chrome's Thai UI calls extensions 'ส่วนขยาย'; that is the searched term. Be upfront in the H1 area that there is nothing to install, so extension-seekers do not feel baited.",
+   "titleLength": 55,
+   "descriptionLength": 148
+  },
+  {
+   "enSlug": "pinterest-profile-downloader",
+   "skip": true,
+   "skipReason": "No Thai-language demand for 'download all of a user's pins'. Thai profile queries are about the profile picture (own page) or aesthetic PFP ideas. The Thai board page and the /th hub both accept profile links and say so, which covers the rare searcher.",
+   "priority": 4,
+   "slug": "pinterest-profile-downloader",
+   "path": "/th/pinterest-profile-downloader",
+   "primaryKeyword": "โหลดรูป pinterest ทั้งหมดจากโปรไฟล์",
+   "secondaryKeywords": [],
+   "title": "",
+   "description": "",
+   "h1": "",
+   "lede": "",
+   "faqTopics": [],
+   "evidence": [
+    "th:'ดาวน์โหลดโปรไฟล์ pinterest' -> every completion is about the profile PICTURE (download pinterest profile picture hd / full size)",
+    "th:'โหลดรูปทั้งหมดจากโปรไฟล์ pinterest' -> no completions",
+    "th:'pinterest ผู้ใช้' -> account-help queries only",
+    "th:'pinterest profile downloader' -> Latin-script only (served by the English page)"
+   ],
+   "titleLength": 0,
+   "descriptionLength": 0
+  },
+  {
+   "enSlug": "pinterest-carousel-downloader",
+   "skip": true,
+   "skipReason": "No Thai download demand; the Thai multi-image queries are about creating multi-image pins. Covered by an FAQ on the Thai pin and image pages ('พินหลายรูปโหลดได้ครบทุกรูปไหม').",
+   "priority": 4,
+   "slug": "pinterest-carousel-downloader",
+   "path": "/th/pinterest-carousel-downloader",
+   "primaryKeyword": "pinterest พินหลายรูป",
+   "secondaryKeywords": [],
+   "title": "",
+   "description": "",
+   "h1": "",
+   "lede": "",
+   "faqTopics": [],
+   "evidence": [
+    "th:'pinterest carousel' -> Latin-script completions, mostly ads/specs (carousel ads, carousel ad specs)",
+    "th:'pinterest หลายรูป' -> หลายรูปภาพ | หลายรูปได้ไหม; 'pinterest พินหลายรูป' -> ได้ไหม (upload intent: can I post several images)",
+    "th:'โหลดรูปหลายรูป pinterest' -> no completions; 'pinterest สไลด์' -> powerpoint slide pins (noise)"
+   ],
+   "titleLength": 0,
+   "descriptionLength": 0
+  },
+  {
+   "enSlug": "pinterest-story-downloader",
+   "skip": true,
+   "skipReason": "No Thai demand, and Pinterest has folded Idea Pins (TH: 'พินไอเดีย') into regular pins. A Thai page would be thin. Old Idea Pin links still work in the video and pin tools.",
+   "priority": 4,
+   "slug": "pinterest-story-downloader",
+   "path": "/th/pinterest-story-downloader",
+   "primaryKeyword": "pinterest พินไอเดีย",
+   "secondaryKeywords": [],
+   "title": "",
+   "description": "",
+   "h1": "",
+   "lede": "",
+   "faqTopics": [],
+   "evidence": [
+    "th:'pinterest สตอรี่' -> no completions; th:'pinterest ไอเดียพิน' / 'pinterest พินไอเดีย' -> unrelated completions",
+    "th:'pinterest story' -> Latin-script: story ideas / template / background (design intent, not download)",
+    "Pinterest help TH (create-idea-pins, archived 2024-11): 'ไม่เห็นตัวเลือกในการสร้างพินไอเดียแล้วใช่ไหม ... ได้นำฟีเจอร์การสร้างที่ดีที่สุดทั้งหมดมารวมกันในขั้นตอนง่ายๆ ขั้นตอนเดียว' (Idea Pins merged into regular pins)"
+   ],
+   "titleLength": 0,
+   "descriptionLength": 0
+  },
+  {
+   "enSlug": "pinterest-to-mp4",
+   "skip": true,
+   "skipReason": "Thai searchers do not phrase this as a conversion. The Thai video page already promises MP4 and carries 'แปลงลิงก์เป็นวิดีโอ'; a second Thai page would cannibalise it.",
+   "priority": 4,
+   "slug": "pinterest-to-mp4",
+   "path": "/th/pinterest-to-mp4",
+   "primaryKeyword": "แปลง pinterest เป็น mp4",
+   "secondaryKeywords": [],
+   "title": "",
+   "description": "",
+   "h1": "",
+   "lede": "",
+   "faqTopics": [],
+   "evidence": [
+    "th:'pinterest เป็น mp4' -> no completions; th:'แปลง pinterest เป็น mp4' -> no completions",
+    "th:'แปลงวิดีโอ pinterest' -> แปลง ลิงค์ เป็น วิดีโอ pinterest | แปลงวิดีโอ pinterest เป็นภาพ",
+    "th:'pinterest mp4' / 'pinterest to mp4' -> Latin-script only (served by the English page)"
+   ],
+   "titleLength": 0,
+   "descriptionLength": 0
+  },
+  {
+   "enSlug": "pinterest-seo-title-generator",
+   "skip": true,
+   "skipReason": "Real demand exists ('pinterest title generator ไทย'), but the tool cannot serve it: /api/generate-seo's fallback templates are English-only and the Gemini prompt sets no output language. A Thai page promising Thai titles would mislead. Un-skip once the API takes lang=th and returns Thai in both modes.",
+   "priority": 4,
+   "slug": "pinterest-seo-title-generator",
+   "path": "/th/pinterest-seo-title-generator",
+   "primaryKeyword": "pinterest title generator ไทย",
+   "secondaryKeywords": [
+    "ตั้งชื่อพิน pinterest",
+    "pinterest แฮชแท็ก",
+    "pinterest seo"
+   ],
+   "title": "ตั้งชื่อพิน Pinterest ฟรี สร้างชื่อ คำอธิบาย และแฮชแท็กภาษาไทย",
+   "description": "สร้างชื่อพิน คำอธิบาย และแฮชแท็ก Pinterest เป็นภาษาไทยจากคีย์เวิร์ดเดียว ช่วยให้พินถูกค้นเจอง่ายขึ้นใน Pinterest ใช้ฟรี ไม่ต้องสมัครสมาชิก",
+   "h1": "ตั้งชื่อพิน Pinterest",
+   "lede": "พิมพ์หัวข้อพินของคุณ แล้วรับชื่อพิน คำอธิบาย และแฮชแท็กภาษาไทยไปใช้ได้ทันที",
+   "faqTopics": [
+    "สร้างชื่อพินภาษาไทยได้ไหม",
+    "ใส่แฮชแท็กใน Pinterest ได้กี่อัน",
+    "ชื่อพินควรยาวแค่ไหน",
+    "ใช้ฟรีไหม ต้องสมัครไหม"
+   ],
+   "evidence": [
+    "th:'pinterest seo title generator' -> free | ไทย | คือ",
+    "th:'pinterest title generator' -> free | title description generator | pin title generator | ไทย | ai",
+    "th:'pinterest แฮชแท็ก' -> แฮชแท็ก tiktok; th:'pinterest คีย์เวิร์ด' -> คือ | หาย; th:'pinterest หาเงิน' -> ยัง ไง | ได้ ไหม (creator-money interest exists)"
+   ],
+   "notes": "Drafted fields are ready for the day this ships.",
+   "titleLength": 62,
+   "descriptionLength": 138
+  },
+  {
+   "enSlug": "how-to-download-pinterest-video-in-gallery",
+   "skip": true,
+   "skipReason": "Merged into the Thai download-pinterest-videos-iphone-android page. In Thai, 'ลงอัลบั้ม/แกลเลอรี่' and 'ลง iPhone/Android' are the same intent; two near-identical Thai pages would split ranking signals. The gallery keywords are secondaries there.",
+   "priority": 4,
+   "slug": "how-to-download-pinterest-video-in-gallery",
+   "path": "/th/how-to-download-pinterest-video-in-gallery",
+   "primaryKeyword": "โหลดวิดีโอ pinterest ลงอัลบั้ม",
+   "secondaryKeywords": [],
+   "title": "",
+   "description": "",
+   "h1": "",
+   "lede": "",
+   "faqTopics": [],
+   "evidence": [
+    "th:'โหลดวิดีโอ pinterest ลงอัลบั้ม' -> อัลบั้มรูป | ไม่ได้ | อัลบั้มในไลน์",
+    "th:'pinterest ลงแกลเลอรี่' -> ไม่ได้ | ได้ไหม | ได้",
+    "Same phone-save intent as the device family ('ดาวน์โหลดวิดีโอ pinterest ios / android / iphone'), which has the bigger, first-level completions"
+   ],
+   "titleLength": 0,
+   "descriptionLength": 0
+  }
+ ],
+ "glossary": {
+  "voice": {
+   "register": "Friendly-neutral, the way Thai apps talk: short imperative phrases ('วางลิงก์', 'กดโหลด'), no gendered polite particles (ครับ/ค่ะ) in UI or headings, no 'ท่าน'. Use 'คุณ' sparingly; Thai copy usually drops the pronoun.",
+   "free": "ฟรี (appears under almost every seed; use it in every title)",
+   "noLogin": "ไม่ต้องล็อกอิน (primary); ไม่ต้องสมัคร / ไม่ต้องมีบัญชี (variety)",
+   "noApp": "ไม่ต้องลงแอป (phones); ไม่ต้องลงโปรแกรม (computers)",
+   "noWatermark": "ไม่มีลายน้ำ. True only as 'we add none'; a creator's own burned-in watermark stays, and the FAQ must say so.",
+   "sharp": "ชัด / ภาพชัด / ให้ชัด (the Thai way to say HD/high-res; 'ไม่ชัด' = blurry). 'ความละเอียดสูง(สุด)' for the formal register.",
+   "avoid": [
+    "โปรแกรมดาวน์โหลด (implies installable software)",
+    "4K unless the file really is 4K",
+    "ultra / uncompressed claims",
+    "user counts, ratings, 'อันดับ 1'",
+    "'ทางการ' or anything implying a Pinterest partnership"
+   ]
+  },
+  "verbs": {
+   "download": "ดาวน์โหลด (titles and formal), โหลด (H1s and body; the everyday word). Note: 'ดาวน์โหลด' contains 'โหลด', so one title can match both.",
+   "save to device": "เซฟ (colloquial, common), or 'บันทึกลงเครื่อง / ลงอัลบั้ม' WITH an explicit destination. Never bare 'บันทึกพิน': in Pinterest that means 'save to a board'.",
+   "rip (slang)": "ดูด ('ดูดวิดีโอ pinterest'). Real query; at most once in body copy, never in title/H1.",
+   "paste": "วาง ('วางลิงก์')",
+   "copy link": "คัดลอกลิงก์",
+   "share": "แชร์",
+   "convert": "แปลง ('แปลงลิงก์เป็นวิดีโอ')",
+   "extract audio": "ดึงเสียง / แยกเสียง",
+   "tap / click": "แตะ (touch screens) / คลิก (mouse) / กด (either; most colloquial)"
+  },
+  "product": {
+   "Pinterest": "Pinterest (Latin, always). 'พินเทอเรส' is searched; use it once in body copy at most.",
+   "PintDownload": "PintDownload (Latin; never transliterate). Write the domain 'pintdownload.app' near the brand on /th to separate it from the look-alike 'pindownload.io'.",
+   "downloader (tool)": "เครื่องมือโหลด / เว็บโหลด ('เว็บโหลด pinterest' is a real query)",
+   "pin": "พิน",
+   "video pin / image pin / GIF pin": "พินวิดีโอ / พินรูป / พิน GIF",
+   "video": "วิดีโอ (correct spelling; not 'วีดีโอ'). Colloquial synonym: คลิป.",
+   "image / photo": "รูป (colloquial, top query word), รูปภาพ (Pinterest's own label), ภาพ",
+   "GIF": "GIF; plain-language gloss: ภาพเคลื่อนไหว",
+   "carousel": "พินหลายรูป; a slide = 'รูปที่ 2 จาก 5'. Avoid 'แครูเซล' / 'คารูเซล' (nobody searches it).",
+   "board": "บอร์ด",
+   "secret board": "บอร์ดส่วนตัว (Pinterest's current term)",
+   "profile": "โปรไฟล์",
+   "profile picture": "รูปโปรไฟล์ (drop PFP and DP; neither is used in Thai)",
+   "Idea Pin / Story Pin": "พินไอเดีย (Pinterest TH). Never 'เรื่องราว' (klickpin's literal translation).",
+   "link / URL": "ลิงก์ (Royal Institute spelling, also Pinterest's; users also type 'ลิงค์', Google treats them the same). URL only in technical spots.",
+   "pin.it short link": "ลิงก์สั้น pin.it",
+   "public / private": "สาธารณะ / ส่วนตัว",
+   "HD": "HD or ชัด; '1080p' only when the file is 1080p; never 4K by default",
+   "original size": "ขนาดเต็ม / ขนาดเดิม; 'ไม่ใช่รูปย่อ' (not a thumbnail) lands well",
+   "ZIP": "ไฟล์ ZIP ('ไฟล์ ZIP ไฟล์เดียว' = one ZIP file)",
+   "MP4 / MP3 / WAV": "Latin, uppercase",
+   "bookmarklet": "บุ๊กมาร์กเล็ต, glossed once as 'ปุ่มลัดในแถบบุ๊กมาร์ก'",
+   "extension": "ส่วนขยาย (Chrome's own Thai term)",
+   "phone / tablet / computer": "มือถือ / ไอแพด (Thais say iPad for any tablet) / คอม (colloquial), คอมพิวเตอร์ (formal), โน้ตบุ๊ก (laptop; users also type 'โน๊ตบุ๊ค')",
+   "gallery / camera roll": "แกลเลอรี่ (Android, common spelling) / อัลบั้มรูป or แอปรูปภาพ (iPhone; 'ลงอัลบั้ม' is the everyday phrase) / แอปไฟล์ (iOS Files)",
+   "Downloads folder": "โฟลเดอร์ดาวน์โหลด (Downloads)",
+   "credit the creator": "ให้เครดิตเจ้าของผลงาน",
+   "copyright": "ลิขสิทธิ์",
+   "not affiliated with Pinterest": "PintDownload ไม่มีส่วนเกี่ยวข้องกับ Pinterest Inc. (footer and About); short form: 'ไม่ใช่บริการของ Pinterest'"
+  },
+  "claimTicket": {
+   "concept": "Thais know the cloakroom/claim stub ('ต้นขั้ว') and, even more, the numbered queue ticket ('บัตรคิว' at banks, clinics, government offices). The ticket conceit translates well if labels stay short and functional.",
+   "ticket": "ตั๋ว (colloquial, playful) rather than บัตร (formal). Use as a visual noun, not in instructions.",
+   "Admit one · public link": "'1 ลิงก์ 1 สิทธิ์ · สาธารณะเท่านั้น' - riffs on the familiar Thai slogan pattern '1 คน 1 สิทธิ์' (one person, one entitlement). Natural, short, keeps 'admit one' wit. Plainer fallback: 'ตั๋ว 1 ใบ · ลิงก์สาธารณะ'.",
+   "No. (serial)": "Keep 'No.' in the Latin gothic (Thai tickets and receipts print 'No.' too), or 'เลขที่' if the label must be Thai.",
+   "stub (tear-off)": "ต้นขั้ว (the exact Thai word for a ticket/cheque stub). The stub BUTTON label should be the action, not the metaphor: 'โหลด' / 'รับไฟล์'.",
+   "claim / collect": "รับ ('รับไฟล์' = collect the file). Avoid 'เคลม' (Thai 'เคลม' means an insurance or warranty claim).",
+   "receipt": "Do not use 'ใบเสร็จ' (implies payment on a free tool). For receipt headings use functional Thai: 'ได้ไฟล์แล้ว', 'พร้อมโหลด'. If a noun is needed: 'ใบรับ'.",
+   "void (stamp)": "'โมฆะ' as the stamp word (what Thai documents are stamped), with the explanation in plain words: 'ลิงก์นี้ใช้ไม่ได้'.",
+   "counter": "เคาน์เตอร์",
+   "status stamps": {
+    "Ready · Board": "พร้อม · บอร์ด",
+    "Partial": "ได้บางส่วน",
+    "Done": "เสร็จแล้ว",
+    "Not Pinterest": "ไม่ใช่ลิงก์ Pinterest",
+    "Nothing public to collect": "ไม่มีพินสาธารณะให้รับ",
+    "Copied": "คัดลอกแล้ว",
+    "Recent links": "ลิงก์ล่าสุด"
+   }
+  },
+  "uiStrings": {
+   "pastePlaceholder": "วางลิงก์ Pinterest (พิน วิดีโอ บอร์ด โปรไฟล์)…",
+   "primaryButton": "โหลด",
+   "downloadVideo": "โหลดวิดีโอ",
+   "downloadImage": "โหลดรูป",
+   "downloadGif": "โหลด GIF",
+   "boardZip": "โหลดทั้งบอร์ด (ZIP)",
+   "processing": "กำลังอ่านลิงก์…",
+   "connecting": "กำลังเชื่อมต่อ Pinterest…",
+   "pasteFirst": "วางลิงก์ก่อนนะ",
+   "howItWorks": "วิธีใช้",
+   "faq": "คำถามที่พบบ่อย",
+   "relatedTools": "เครื่องมืออื่น",
+   "currentI18nFixes": [
+    "heroSubtitle promises 'HD 1080p' for images and boards: drop '1080p' (it only applies to some videos)",
+    "chromeTool 'เครื่องมือ Chrome' -> 'ปุ่มลัด Chrome' or 'บุ๊กมาร์กเล็ต'",
+    "processingText 'กำลังประมวลผลสื่อ HD…' is stiff; prefer 'กำลังอ่านลิงก์…'"
+   ]
+  }
+ },
+ "formats": {
+  "numerals": "Western digits (0-9). Thai digits (๐-๙) only in formal government documents; never in UI.",
+  "thousandsDecimal": "1,234.5 (comma thousands, point decimal), same as en.",
+  "units": "Space before Latin units: '12.4 MB', '1080p', '600×600 พิกเซล'.",
+  "counts": "Thai has no plural; numbers take classifiers: '250 พิน', '3 ขั้นตอน', 'ไฟล์ ZIP 1 ไฟล์', 'รูปที่ 2 จาก 5'. ICU plural rules for th have only 'other'.",
+  "dates": "Thai readers expect the Buddhist Era: 2026 CE = พ.ศ. 2569. Intl.DateTimeFormat('th-TH') uses the Buddhist calendar by default: medium '15 ต.ค. 2569', long '15 ตุลาคม 2569'. Keep JSON-LD datePublished/dateModified in ISO 8601 (Gregorian). Do not put a year in titles: autocomplete shows both systems ('เซฟ รูป จาก pinterest 2566' is BE, 'โหลดรูป pinterest ไม่ชัด 2024' is CE), so any year halves the match.",
+  "time": "24-hour with 'น.': '14:30 น.'",
+  "readingTime": "'อ่าน 5 นาที'",
+  "punctuation": "No full stop at the end of Thai sentences; a space separates sentences and phrases. '?' is acceptable in FAQ headings (every Thai competitor uses it) but not needed in body text. Repetition mark: write 'ชัด ๆ' (Royal Institute) or avoid it in titles. Quotes: “ ”.",
+  "currency": "None needed (free). If ever: '฿99' or '99 บาท'."
+ },
+ "typography": {
+  "fontCoverage": "Big Shoulders Display has NO Thai glyphs (Google Fonts serves only latin, latin-ext and vietnamese subsets; checked css2 API). Thai headlines would fall back to whatever the OS has (Thonburi on iOS/macOS, Noto Sans Thai on Android, Leelawadee UI or Tahoma on Windows), mismatched in weight and width.",
+  "recommendedHeadlineFont": "Noto Sans Thai (Google Fonts, OFL), variable with wdth 62.5-100% and wght 100-900, with a 'thai' subset (unicode-range U+0E01-0E5B, U+200C-200D, U+25CC). Use it at font-stretch ~75% and weight 800-900: a loopless, condensed Thai gothic that sits next to Big Shoulders. Keep Big Shoulders Display FIRST in the stack. Its unicode-range excludes Thai, so Latin words (PINTEREST, MP4, GIF, ZIP) stay in Big Shoulders and Thai characters fall through to Noto Sans Thai. Self-host only the thai-subset woff2 next to the existing /fonts/big-shoulders-* files and preload it on /th pages only. Alternative: Kanit 800/900 (the most common Thai display face), but it is not condensed.",
+  "bodyFont": "Keep the system stack for body text (Thai system fonts are good, and it costs no bytes); add 'Noto Sans Thai', 'Leelawadee UI', 'Thonburi', Tahoma before sans-serif for Windows coverage.",
+  "lineHeight": "The display line-height of 0.88-0.9 WILL collide or clip Thai: tone marks stack above upper vowels (ที่, นี้, ปุ่ม) and lower vowels hang below the baseline (ดู, ปุ, ฤ). Use about 1.2-1.3 for Thai display/headlines, about 1.7 for body. Check that no hero container uses overflow:hidden with tight heights.",
+  "letterSpacing": "Set letter-spacing: 0 under :lang(th) for label (0.08em), serial (0.04em) and stamps; tracking pulls Thai syllable clusters apart.",
+  "case": "Thai has no case, so text-transform: uppercase only shouts the Latin tokens ('PINTEREST'). Either accept the mixed look (common on Thai posters) or set text-transform: none for :lang(th) headings so 'Pinterest' reads as the brand. The ticket's punch must come from weight and condensed width, not caps.",
+  "lineBreaking": "Thai has no spaces between words; browsers break lines with an ICU dictionary. Never use word-break: keep-all on Thai (no break opportunities, so it overflows). Avoid overflow-wrap: anywhere on Thai text (it can split inside a syllable); keep it only on URLs. Write H1s with natural phrase spaces ('โหลดวิดีโอ Pinterest ลงมือถือ') so breaks land between phrases; use <wbr> if a long H1 breaks badly at 360px.",
+  "lengthVsLatin": "Thai strings are usually SHORTER on screen than their English source: combining vowels and tone marks are separate code points with no advance width. A 60-code-point Thai title is roughly 45-50 visible glyph columns. The repo's 40-62 / 120-158 limits count code points (Python len), so they are conservative for Thai: Google's pixel-based truncation leaves room. All kept titles here are 49-61 code points and descriptions 131-154.",
+  "smallSizes": "Gothic 800 at 0.875rem gets blotchy in Thai (tight counters). Use 600-700 weight for Thai labels at that size, or bump to 0.9375rem.",
+  "encoding": "Store NFC; write SARA AM as U+0E33 'ำ' (not U+0E4D + U+0E32, which Google's suggestion feed prints); no zero-width spaces in <title> or meta (they count toward length and can split matches). The build script checks both."
+ },
+ "notes": [
+  "Kept 13 of 19 pages. Priority 1: index, video, image. Priority 2: HD (ex-4K), GIF, board, how-to hub, mobile (absorbs gallery), computer. Priority 3: pin, profile picture, audio, Chrome.",
+  "Skipped 6: profile-downloader (no Thai demand), carousel (Thai queries are about creating multi-image pins), story (no demand; Idea Pins folded into regular pins), to-mp4 (folded into video), seo-title-generator (tool outputs English only; un-skip when it supports lang=th), gallery guide (merged into the mobile page).",
+  "Biggest Thai-specific opportunity: the 'ไม่ชัด / ให้ชัด' (blurry/sharp) cluster, which shows up under nearly every image seed and has no honest competitor page. It goes on the reframed HD page, so the image page should not also target 'ให้ชัด' as a keyword.",
+  "Second opportunity: device-specific how-tos. 'ios', 'android', 'iphone', 'pc', 'mac', 'ในคอม', 'ลงไอแพด' are first-level completions of the head terms. iPad comes up far more than in Western markets.",
+  "Teach the Pinterest 'บันทึก' trap on every how-to: in Pinterest Thai, 'บันทึก' saves to a board. Users search 'บันทึกวิดีโอ pinterest' expecting a device save; Pinterest's own help draws the line.",
+  "Honesty blockers found in the product while researching: (1) the 'MP3' download is the video file renamed .mp3 (DownloaderForm.tsx ~L966/~L2072); the Thai audio page avoids promising MP3 until that is fixed. (2) The English 4K page promises '4K ultra quality', which PRODUCT.md forbids; the Thai twin is reframed and re-slugged. (3) Current th i18n heroSubtitle says 'ความละเอียด HD 1080p' for images and boards, which is not generally true.",
+  "Brand-confusion risk: 'pindownload.io' ranks for 'โหลดวิดีโอ pinterest' in Thailand and differs from PintDownload by one letter. Thai users read Latin brand names loosely. Show the full domain 'pintdownload.app' on /th and in the Organization schema 'name'/'alternateName'.",
+  "Thai copy must be native, not translated from the English pages. Competitors' machine-translated Thai ('ไม่ KlickPin ทำงานบนมือถือ?') is the norm, and it reads badly. Have a native Thai reader check the final pages, especially the how-to steps against a Thai-language Pinterest app (the 'คัดลอกลิงก์' label is not yet verified on a device).",
+  "Internal links: /th links only to /th pages and to the /th hub for link types without a Thai page (profile ZIP, carousel, story). Do not send Thai users to English pages mid-flow.",
+  "Rank tracking: check positions with gl=th & hl=th; a US-located check misses most Thai SERP features. Thai SERPs for the head terms mix tool pages, how-to guides (wikiHow TH, tecnobits, guru99 TH) and a Play Store app.",
+  "SERP sampling was limited: DuckDuckGo (kl=th-th) answered one query before rate-limiting, and Bing/DDG-lite returned challenge pages. Competitor evidence therefore comes mostly from fetching their Thai pages directly. Re-check SERPs from a Thai IP before launch if possible."
+ ]
+}

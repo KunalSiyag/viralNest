@@ -1,0 +1,135 @@
+{
+  "pageId": "how-to-download-pinterest-videos",
+  "locale": "nl",
+  "meta": {
+    "title": "Hoe download je een Pinterest-video? Uitleg voor elk toestel",
+    "description": "Zo download je een video van Pinterest: tik op Delen → Link kopiëren, plak de link in PintDownload en sla de MP4 op. Voor iPhone, Android, laptop en pc."
+  },
+  "keywords": {
+    "primary": "hoe pinterest video downloaden",
+    "secondary": [
+      "hoe download je een video van pinterest",
+      "hoe kan ik filmpjes van pinterest downloaden",
+      "hoe sla je een video op van pinterest",
+      "video opslaan van pinterest",
+      "pinterest video downloaden laptop",
+      "pinterest video downloaden pc"
+    ]
+  },
+  "nav": {
+    "label": "Hoe download je een video?",
+    "short": "Uitleg",
+    "card": {
+      "title": "Hoe download je een Pinterest-video?",
+      "blurb": "Van link naar MP4 op telefoon, laptop en pc, met de knoppen van de Pinterest-app.",
+      "badge": "Uitleg"
+    }
+  },
+  "hero": {
+    "h1": "Hoe download je een Pinterest-video?",
+    "lede": "Kopieer de link, plak hem, sla de **MP4** op. Zo werkt het op je telefoon, laptop en pc."
+  },
+  "intro": [
+    "In de Pinterest-app vind je bij veel foto’s de optie **Download afbeelding**, maar bij video’s van anderen meestal geen downloadknop. Je hebt dan de link van de pin nodig: daarmee haal je de MP4 op in PintDownload, in een paar tikken.",
+    "Hieronder staat het voor elk toestel: je telefoon (iPhone of Android) en je computer (laptop, pc, Mac of Chromebook). Wil je de video daarna in je galerij of filmrol hebben, lees dan ook [[how-to-download-pinterest-video-in-gallery|Pinterest video opslaan in je galerij]]."
+  ],
+  "sections": [
+    {
+      "h2": "Op je telefoon: via de Pinterest-app",
+      "paragraphs": [
+        "Open de video in de Pinterest-app en tik op het deelpictogram (**Delen**). Kies **Link kopiëren**: de app zet dan een korte pin.it-link op je klembord.",
+        "Open daarna pintdownload.app in Safari of Chrome, plak de link in het vak bovenaan en tik op **Video downloaden**. Op de iPhone komt de MP4 in de app **Bestanden**, op Android in de map **Downloads**."
+      ]
+    },
+    {
+      "h2": "Op je laptop of pc",
+      "paragraphs": [
+        "Op de computer gaat het nog sneller. Ga naar pinterest.com, klik de videopin open en kopieer het adres uit de adresbalk; daar staat `/pin/` in. Plak het hier en klik op **Video downloaden**. De MP4 komt in je map **Downloads**.",
+        "Dat werkt in Chrome, Edge, Firefox en Safari, op Windows, Mac en Chromebook, zonder iets te installeren. Zie je bij het zoeken naar ‘pinterest downloaden laptop’ vooral de Pinterest-app zelf? Die heb je hiervoor niet nodig."
+      ]
+    },
+    {
+      "h2": "Waar komt de video terecht?",
+      "paragraphs": [
+        "Een browser slaat een download op als bestand, niet meteen als video in je galerij. Je vindt hem hier:"
+      ],
+      "list": [
+        "**iPhone en iPad**: app **Bestanden** › **Downloads**.",
+        "**Android**: map **Downloads**; de galerij of Google Foto’s toont hem meestal in het album **Download**.",
+        "**Windows, Mac en Chromebook**: de map **Downloads**."
+      ]
+    },
+    {
+      "h2": "Mag je Pinterest-video’s downloaden?",
+      "paragraphs": [
+        "Een openbare video downloaden om hem zelf te bekijken, ook zonder internet, is waar PintDownload voor bedoeld is. Wil je hem opnieuw publiceren op Instagram, TikTok of YouTube, vraag de maker dan om toestemming en zet zijn of haar naam erbij. Dat een video openbaar te zien is, maakt hem nog niet vrij te gebruiken."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "In 4 stappen van link naar MP4",
+    "intro": "Voor openbare videopins, op elk toestel.",
+    "exampleLabel": "Korte link uit de app",
+    "items": [
+      {
+        "title": "Open de video op Pinterest",
+        "body": "In de app of op pinterest.com. Kijk of de pin echt afspeelt."
+      },
+      {
+        "title": "Kopieer de link",
+        "body": "In de app: **Delen** › **Link kopiëren**. Op de computer: het adres uit de adresbalk."
+      },
+      {
+        "title": "Plak hem in PintDownload",
+        "body": "Plak de link in het vak bovenaan deze pagina en tik op **Video downloaden**."
+      },
+      {
+        "title": "Sla de MP4 op",
+        "body": "Kies een kwaliteit als er meer zijn en download het bestand. Het staat daarna in Downloads of in de app Bestanden."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Vragen over video’s downloaden van Pinterest",
+    "items": [
+      {
+        "q": "Waarom heeft Pinterest geen downloadknop voor video’s?",
+        "a": "Pinterest biedt in de app **Download afbeelding** aan voor veel foto’s, maar bij video’s van anderen meestal niet; Pinterest zegt zelf dat niet alle pins kunnen worden gedownload. Met de link van de pin kun je de MP4 hier wel ophalen, zolang de video openbaar is."
+      },
+      {
+        "q": "Hoe kopieer ik de link in de app en op de computer?",
+        "a": "In de app tik je op het deelpictogram (**Delen**) en dan op **Link kopiëren**. Op de computer klik je de pin open en kopieer je het adres uit de adresbalk, met `/pin/` erin."
+      },
+      {
+        "q": "Hoe download ik een Pinterest-video op mijn laptop of pc?",
+        "a": "Net als op je telefoon, maar met de adresbalk: kopieer het adres van de pin, plak het hier en klik op **Video downloaden**. De MP4 staat daarna in **Downloads**. Werkt op Windows, Mac en Chromebook, zonder programma."
+      },
+      {
+        "q": "Waar vind ik de video na het downloaden?",
+        "a": "Op de iPhone in **Bestanden** › **Downloads**, op Android in **Downloads** en op de computer in je map **Downloads**. Hoe hij in Foto’s of je galerij komt, lees je in [[how-to-download-pinterest-video-in-gallery|video opslaan in je galerij]]."
+      },
+      {
+        "q": "Kan ik een video downloaden zonder app of account?",
+        "a": "Ja. Je gebruikt alleen je browser en je hoeft niet in te loggen, niet bij Pinterest en niet bij ons. Het werkt alleen met openbare video’s."
+      },
+      {
+        "q": "Welke kwaliteit heeft de video?",
+        "a": "De kwaliteit die Pinterest publiceert: meestal 720p, en 1080p als de pin dat heeft. We schalen niets op. Meer over kwaliteit en MP4 lees je bij [[pinterest-video-downloader|Pinterest video downloaden]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Tools en uitleg"
+  },
+  "schema": {
+    "appName": "Hoe download je een Pinterest-video? — PintDownload",
+    "howToName": "Een Pinterest-video downloaden op telefoon, laptop of pc",
+    "howToDescription": "Kopieer de link van een openbare videopin, plak hem in PintDownload en sla de MP4 op."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-nl",
+    "nativeReviewer": "review-nl (agent, native review), 2026-10-17: read on the live build at 390/1440 for fluency, je register, glossary (pins, bord, videopin, afhaalbon, omslag), search vocabulary, honesty (720p/1080p conditional, 1200 px, no 4K, MP3 made in the browser) and English leftovers. Pinterest labels rechecked on help.pinterest.com/nl: Afbeelding downloaden (desktop), Download afbeelding (app), drie puntjes, Delen › Link kopiëren, deelpictogram, Bewaren, Privébord. OS labels (Bewaar video/afbeelding, Bestanden, Mijn bestanden, Geanimeerd, album Download) are the standard Dutch iOS/Android names, not checked on a device."
+  }
+}

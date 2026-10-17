@@ -1,0 +1,186 @@
+{
+  "pageId": "home",
+  "locale": "vi",
+  "meta": {
+    "title": "Pinterest Downloader: tải video, ảnh, GIF | PintDownload",
+    "description": "Pinterest downloader miễn phí: tải video MP4, ảnh, GIF, cả bảng và hồ sơ công khai về điện thoại, máy tính. Không đăng nhập, không cài app, không chèn logo."
+  },
+  "keywords": {
+    "primary": "pinterest downloader",
+    "secondary": [
+      "tải video pinterest",
+      "tải ảnh pinterest",
+      "web tải pinterest",
+      "trình tải xuống pinterest",
+      "tải từ pinterest",
+      "tải pinterest không logo"
+    ]
+  },
+  "nav": {
+    "label": "Pinterest downloader",
+    "short": "Trang chủ",
+    "card": {
+      "title": "Pinterest downloader",
+      "blurb": "Dán link Ghim, bảng hoặc hồ sơ công khai rồi tải file về máy.",
+      "badge": "Tất cả"
+    }
+  },
+  "hero": {
+    "h1": "Tải video, ảnh, GIF từ Pinterest",
+    "lede": "**Gửi link, nhận file.** Dán link Ghim, bảng hoặc hồ sơ công khai, xem trước rồi lưu về máy: **MP4**, **JPG**, **GIF** hoặc **ZIP**. Miễn phí, không cần tài khoản."
+  },
+  "aside": [
+    {
+      "dt": "Ghim",
+      "dd": "MP4, JPG, GIF hoặc trọn bộ ảnh"
+    },
+    {
+      "dt": "Bảng",
+      "dd": "Các Ghim công khai gom vào một file ZIP"
+    },
+    {
+      "dt": "Hồ sơ",
+      "dd": "Các Ghim công khai trong một ZIP, hoặc chỉ ảnh đại diện"
+    }
+  ],
+  "intro": [
+    "PintDownload là một **web tải Pinterest** chạy ngay trong trình duyệt, không phải app Pinterest và cũng không phải file APK. Nếu bạn đang tìm cách cài chính app Pinterest lên máy, hãy vào App Store, CH Play hoặc Microsoft Store. Còn ở đây, bạn chỉ dán link rồi nhận file.",
+    "Ô tải nhận cả link rút gọn `pin.it` mà app sao chép lẫn link `pinterest.com/pin/…` trên web, kể cả link bạn bè gửi qua Zalo hay Messenger. Chỉ dùng được với nội dung công khai."
+  ],
+  "sections": [
+    {
+      "h2": "Tải được những gì từ Pinterest",
+      "paragraphs": [
+        "Dán link vào ô phía trên, PintDownload tự nhận ra đó là Ghim, bảng hay hồ sơ. Mỗi loại cũng có một trang riêng, giải thích kỹ hơn:"
+      ],
+      "list": [
+        "**Video** dạng MP4, thường là 720p, 1080p khi Ghim có bản này: [[pinterest-video-downloader|tải video Pinterest]].",
+        "**Ảnh** ở kích thước lớn nhất Pinterest cung cấp, không phải ảnh thu nhỏ bị mờ: [[pinterest-image-downloader|tải ảnh Pinterest chất lượng cao]].",
+        "**GIF** vẫn còn chuyển động ([[pinterest-gif-downloader|tải GIF Pinterest]]) và **Ghim nhiều ảnh**, lấy đủ từng ảnh ([[pinterest-pin-downloader|tải Ghim Pinterest bằng link]]).",
+        "**Nhạc** dạng MP3, do trình duyệt của bạn tạo từ tiếng của video: [[pinterest-audio-downloader|tải nhạc Pinterest]].",
+        "**Bảng** công khai, gom các Ghim vào một file ZIP: [[pinterest-board-downloader|tải bảng Pinterest]].",
+        "**Hồ sơ** công khai thành file ZIP ([[pinterest-profile-downloader|tải hồ sơ]]), hoặc chỉ lấy [[pinterest-profile-picture-downloader|avatar]] ở cỡ lớn nhất."
+      ]
+    },
+    {
+      "h2": "Những việc PintDownload không làm",
+      "paragraphs": [
+        "Không tải Ghim riêng tư, bảng bí mật, nội dung phải đăng nhập mới xem được, hay Ghim đã bị xóa. Cũng không “nâng cấp” chất lượng: Pinterest chỉ có video 720p thì file MP4 bạn nhận là 720p, không bao giờ là bản 4K giả.",
+        "Chúng tôi không chèn logo nào vào file. Nếu người đăng đã gắn tên mình hay logo TikTok, CapCut sẵn trong video thì phần đó vẫn còn, vì nó nằm trong hình. PintDownload là công cụ độc lập, không trực thuộc và không được Pinterest Inc. bảo trợ."
+      ]
+    },
+    {
+      "h2": "Dùng có an toàn không?",
+      "paragraphs": [
+        "Bạn không phải cài app, tiện ích hay phần mềm nào, và PintDownload không bao giờ hỏi mật khẩu Pinterest. Trang chỉ đọc bộ nhớ tạm khi bạn tự bấm nút **Dán**; danh sách link gần đây được lưu ngay trên trình duyệt của bạn. Hãy cảnh giác với web tải nào bắt cài APK hay đòi đăng nhập Pinterest chỉ để lưu một video."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cách tải từ Pinterest trong 3 bước",
+    "intro": "Dùng được trên trình duyệt của iPhone, Android, MacBook hay máy tính Windows. Chỉ nội dung công khai, không cần tài khoản, không cần cài gì thêm.",
+    "exampleLabel": "Link ví dụ",
+    "items": [
+      {
+        "title": "Sao chép link",
+        "body": "Mở Ghim, bảng hoặc hồ sơ trong app hay trên web. Chạm **biểu tượng chia sẻ** rồi chọn **Sao chép liên kết**, hoặc sao chép địa chỉ có `/pin/` trên thanh địa chỉ. Link rút gọn `pin.it` cũng dùng được."
+      },
+      {
+        "title": "Dán vào PintDownload",
+        "body": "Dán link công khai vào ô phía trên rồi bấm **Tải xuống**. Cùng một ô cho video, ảnh, GIF, bảng và hồ sơ."
+      },
+      {
+        "title": "Xem trước rồi lưu file",
+        "body": "Chọn chất lượng nếu có nhiều bản, rồi lưu file vào thư mục Tải xuống, app Ảnh hoặc thư viện ảnh. Bảng và hồ sơ được tải về dạng file ZIP."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp về Pinterest downloader",
+    "items": [
+      {
+        "q": "Không có tài khoản Pinterest thì có tải được không?",
+        "a": "Được. Bạn chỉ cần link của Ghim, bảng hoặc hồ sơ công khai, ví dụ link bạn bè gửi qua Zalo. Không cần đăng nhập Pinterest, cũng không cần tạo tài khoản ở PintDownload."
+      },
+      {
+        "q": "File tải về có dính logo không?",
+        "a": "PintDownload không chèn logo hay chữ nào vào file. Bạn nhận đúng file Pinterest công khai cho Ghim đó. Logo mà người đăng đã gắn sẵn trong video (tên kênh, logo TikTok hay CapCut) thì vẫn còn, vì nó là một phần của hình."
+      },
+      {
+        "q": "Có phải cài app hay phần mềm không?",
+        "a": "Không. Mọi thứ chạy trong trình duyệt bạn đang dùng: Safari, Chrome, Cốc Cốc, Edge hay Samsung Internet. Đừng cài APK lạ chỉ để tải ảnh, video Pinterest."
+      },
+      {
+        "q": "PintDownload có phải app Pinterest không?",
+        "a": "Không. Đây là trang web độc lập, không trực thuộc Pinterest. Muốn cài app Pinterest chính thức lên điện thoại hay máy tính, bạn tìm trong App Store, CH Play hoặc Microsoft Store."
+      },
+      {
+        "q": "Tải về rồi file nằm ở đâu?",
+        "a": "Trong thư mục **Tải xuống** (Downloads) của máy. Trên iPhone, Safari lưu file vào app **Tệp** trước, rồi bạn chuyển sang app Ảnh theo [[how-to-download-pinterest-video-in-gallery|hướng dẫn lưu vào thư viện ảnh]]. Trên Android, video thường hiện luôn trong thư viện."
+      },
+      {
+        "q": "Dùng PintDownload có an toàn không?",
+        "a": "Bạn không cài gì cả, không đăng nhập Pinterest và không phải cấp quyền nào. Trang chỉ đọc bộ nhớ tạm khi bạn bấm nút **Dán**. File tải về là file ảnh, video thông thường."
+      },
+      {
+        "q": "Tải ảnh, video trên Pinterest có vi phạm bản quyền không?",
+        "a": "Lưu nội dung công khai để xem riêng, làm ảnh tham khảo thì thường không sao. Nếu đăng lại hay dùng cho việc kinh doanh, bạn cần xin phép tác giả và ghi nguồn. Ghim công khai không có nghĩa là bạn được toàn quyền dùng lại."
+      },
+      {
+        "q": "Vì sao không tải được Ghim riêng tư hay bảng bí mật?",
+        "a": "Vì nội dung đó không công khai. PintDownload chỉ thấy những gì một người chưa đăng nhập cũng xem được trên Pinterest, nên Ghim trong bảng bí mật, tài khoản riêng tư hay Ghim đã xóa đều không tải được."
+      },
+      {
+        "q": "Dùng trên iPhone, Android và máy tính được không?",
+        "a": "Được. Mở pintdownload.app trên Safari, Chrome hoặc Cốc Cốc. Có hướng dẫn riêng cho [[download-pinterest-videos-iphone-android|điện thoại]] và cho [[how-to-download-pinterest-video-on-laptop|máy tính]]."
+      }
+    ]
+  },
+  "related": {
+    "title": "Mỗi loại link, một công cụ"
+  },
+  "schema": {
+    "appName": "Pinterest downloader — PintDownload",
+    "howToName": "Cách tải video, ảnh, GIF, bảng và hồ sơ từ Pinterest",
+    "howToDescription": "Sao chép link Pinterest công khai, dán vào PintDownload, xem trước rồi lưu file hoặc file ZIP về máy."
+  },
+  "guides": {
+    "title": "Hướng dẫn từng bước",
+    "intro": "Các bước theo từng thiết bị và từng nơi lưu, với đúng tên nút bạn sẽ thấy trên màn hình.",
+    "items": [
+      {
+        "page": "how-to-download-pinterest-videos",
+        "tag": "Hướng dẫn",
+        "title": "Cách tải video trên Pinterest",
+        "blurb": "Từ link Ghim tới file MP4, kèm cách xử lý khi video bị mờ, mất tiếng hoặc không tải được."
+      },
+      {
+        "page": "download-pinterest-videos-iphone-android",
+        "tag": "Điện thoại",
+        "title": "Tải video Pinterest về điện thoại",
+        "blurb": "iPhone với Safari, Android và Samsung với Chrome, không cần cài app tải video."
+      },
+      {
+        "page": "how-to-download-pinterest-video-on-laptop",
+        "tag": "Máy tính",
+        "title": "Tải video Pinterest về máy tính",
+        "blurb": "Windows, laptop hay MacBook: dán link, file MP4 vào thư mục Tải xuống."
+      },
+      {
+        "page": "how-to-download-pinterest-video-in-gallery",
+        "tag": "Thư viện ảnh",
+        "title": "Lưu video Pinterest vào thư viện ảnh",
+        "blurb": "Đưa video vào app Ảnh trên iPhone, Bộ sưu tập trên Samsung hoặc Google Photos."
+      }
+    ]
+  },
+  "credit": {
+    "h2": "Nhớ ghi nguồn tác giả",
+    "body": "Nếu bạn dùng video hay ảnh của người khác trong bài đăng (Reels, TikTok, YouTube, quảng cáo), hãy **ghi nguồn tác giả**. Lưu về để xem offline thì không sao; đăng lại mà không xin phép, không ghi nguồn thì không nên."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-vi (agent), 2026-10-16. Verify: Pinterest app share sheet labels (biểu tượng chia sẻ › Sao chép liên kết) from help.pinterest.com/vi; 'CH Play' as the everyday name for Google Play."
+  }
+}

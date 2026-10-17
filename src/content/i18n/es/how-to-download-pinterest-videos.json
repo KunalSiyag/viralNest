@@ -1,0 +1,141 @@
+{
+  "pageId": "how-to-download-pinterest-videos",
+  "locale": "es",
+  "meta": {
+    "title": "Cómo descargar videos de Pinterest: guía paso a paso sin apps",
+    "description": "Guía para descargar videos de Pinterest: copia el enlace en la app, pégalo en PintDownload y guarda el MP4 en tu celular o PC. Sin apps y sin registro."
+  },
+  "keywords": {
+    "primary": "cómo descargar videos de Pinterest",
+    "secondary": [
+      "cómo descargar videos de Pinterest sin aplicaciones",
+      "cómo descargar un video de Pinterest",
+      "cómo guardar videos de Pinterest",
+      "por qué no me deja descargar videos de Pinterest",
+      "cómo descargar un video de Pinterest para editar",
+      "cómo bajar videos de Pinterest"
+    ]
+  },
+  "nav": {
+    "label": "Cómo descargar videos",
+    "short": "Guía",
+    "card": {
+      "title": "Cómo descargar videos",
+      "blurb": "La guía completa: copiar el enlace, bajar el MP4 y qué hacer si no funciona.",
+      "badge": "Guía"
+    }
+  },
+  "hero": {
+    "h1": "Cómo descargar videos de Pinterest",
+    "lede": "La guía completa, **sin instalar apps**: copia el enlace del video, descárgalo en MP4 y guárdalo en tu celular o PC. Con soluciones para cuando Pinterest no te deja."
+  },
+  "intro": [
+    "La app de Pinterest solo deja descargar algunos videos, y con su marca de agua. Lo que sí tiene cada pin es un **enlace**, y con ese enlace PintDownload encuentra el MP4 público del video. Aquí está el método completo y qué hacer cuando falla.",
+    "¿Buscas los pasos para un dispositivo concreto? Hay guías para [[download-pinterest-videos-iphone-android|el celular]], para [[how-to-download-pinterest-video-in-gallery|la galería]] y para [[how-to-download-pinterest-video-on-laptop|la PC]]."
+  ],
+  "sections": [
+    {
+      "h2": "¿Se puede descargar desde la propia app?",
+      "paragraphs": [
+        "A veces. En algunos videos, el menú de los tres puntos muestra **Descargar** y el video se guarda en tu galería con la marca de agua de Pinterest. En muchos otros la opción no aparece, porque el creador no la permite o porque ese tipo de pin no la tiene.",
+        "PintDownload no depende de ese botón: usa el enlace del pin para llegar al MP4 público, no le añade ninguna marca y funciona igual en el celular que en la computadora."
+      ]
+    },
+    {
+      "h2": "Por qué no me deja descargar un video de Pinterest",
+      "paragraphs": [
+        "Cuando un video no se descarga, casi siempre es por una de estas razones:"
+      ],
+      "list": [
+        "**No es un video.** Es una foto, un GIF o un carrusel. Pega el enlace en el [[pinterest-pin-downloader|descargador de pines]], que reconoce cada tipo.",
+        "**Es privado o lo borraron.** Los pines de tableros secretos y de cuentas privadas no son públicos. Si el pin ya no abre en Pinterest, tampoco abre aquí.",
+        "**El enlace no es de un pin.** La dirección de una búsqueda, de tu feed de inicio o de un tablero no sirve para un video suelto: abre el video y copia su enlace.",
+        "**El video está fuera de Pinterest.** Algunos pines solo enlazan a otra web, como YouTube o una tienda. Ese video no está alojado en Pinterest y no hay MP4 que bajar.",
+        "**El navegador frenó la descarga.** En el iPhone, revisa la flecha de descargas de Safari; en la PC, la barra o el panel de descargas del navegador."
+      ]
+    },
+    {
+      "h2": "Dónde se guarda el video",
+      "paragraphs": [
+        "En la carpeta **Descargas**. En Android lo ves también en la Galería o en Google Fotos; en el iPhone queda en la app **Archivos** hasta que lo pasas a Fotos. La [[how-to-download-pinterest-video-in-gallery|guía de la galería]] explica cómo hacerlo y qué revisar si no aparece."
+      ]
+    },
+    {
+      "h2": "Para editarlo o ponerlo de fondo de pantalla",
+      "paragraphs": [
+        "El MP4 se abre en CapCut, InShot o el editor que traiga tu celular, como cualquier otro video. Muchos Android dejan usar un video como fondo de la pantalla de bloqueo desde los ajustes; en el iPhone, primero hay que convertirlo en Live Photo con otra app.",
+        "Si publicas lo que hiciste con el video, menciona a quien lo creó."
+      ]
+    }
+  ],
+  "steps": {
+    "title": "Cómo descargar un video de Pinterest, paso a paso",
+    "intro": "El mismo método en el celular y en la computadora. Solo videos públicos.",
+    "exampleLabel": "Enlace corto de la app",
+    "items": [
+      {
+        "title": "Abre el video en Pinterest",
+        "body": "En la app o en pinterest.com, abre el pin que se reproduce, no la cuadrícula del tablero."
+      },
+      {
+        "title": "Copia el enlace",
+        "body": "En la app: **Compartir** › **Copiar enlace**, que copia un `pin.it`. En la computadora: la dirección con `/pin/`."
+      },
+      {
+        "title": "Pégalo en PintDownload",
+        "body": "Pega el enlace en el recuadro de arriba y toca **Descargar video**."
+      },
+      {
+        "title": "Elige la calidad y descarga",
+        "body": "Si el pin tiene 720p y 1080p, verás las dos. El MP4 se guarda en **Descargas**."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes: descargar videos de Pinterest",
+    "items": [
+      {
+        "q": "¿Necesito instalar una aplicación?",
+        "a": "No. Todo pasa en el navegador que ya tienes: Safari, Chrome, Edge o Samsung Internet. Para esto no hace falta ningún APK, así que no instales uno de una página desconocida."
+      },
+      {
+        "q": "¿Se puede descargar desde la propia app de Pinterest?",
+        "a": "En algunos videos sí, desde los tres puntos › **Descargar**, pero el archivo sale con la marca de Pinterest y la opción no está en todos los pines. Con el enlace y PintDownload funciona en cualquier pin de video público."
+      },
+      {
+        "q": "¿Por qué no puedo descargar videos de Pinterest?",
+        "a": "Casi siempre es porque el pin no es un video (es una foto o un GIF), es privado, lo eliminaron, o el enlace es de un tablero o de una búsqueda. Abre el video en Pinterest y copia el link de ese pin."
+      },
+      {
+        "q": "¿Dónde se guarda el video?",
+        "a": "En la carpeta **Descargas** del celular o de la PC. En el iPhone, para verlo en Fotos, ábrelo desde **Archivos** y toca **Compartir** › **Guardar video**."
+      },
+      {
+        "q": "¿En qué calidad se descarga?",
+        "a": "En la que Pinterest publica para ese pin: normalmente 720p y, cuando existe, 1080p. No subimos la resolución ni recomprimimos el archivo."
+      },
+      {
+        "q": "¿Es legal descargar videos de Pinterest?",
+        "a": "Guardar un video público para verlo tú, sin conexión, es el uso habitual. Para volver a publicarlo necesitas permiso de quien lo creó o, como mínimo, darle crédito. Las leyes cambian según el país y esto no es asesoría legal."
+      },
+      {
+        "q": "¿Cómo bajo videos de Pinterest en la PC?",
+        "a": "Igual que en el celular: copia la dirección del pin, pégala aquí y descarga. La [[how-to-download-pinterest-video-on-laptop|guía para PC]] tiene los detalles de Windows, Mac y Chromebook."
+      }
+    ]
+  },
+  "related": {
+    "title": "Guías y herramientas para videos"
+  },
+  "schema": {
+    "appName": "Cómo descargar videos de Pinterest — PintDownload",
+    "howToName": "Cómo descargar un video de Pinterest sin apps",
+    "howToDescription": "Copia el enlace de un pin de video público, pégalo en PintDownload y guarda el MP4 en tu celular o PC."
+  },
+  "datePublished": "2026-10-16",
+  "dateModified": "2026-10-16",
+  "review": {
+    "writer": "writer-es (agent), 2026-10-16. Verificar en el celular: los tres puntos › Descargar (con marca de Pinterest) y en qué pines aparece",
+    "nativeReviewer": "review-es (agent, revisión nativa), 2026-10-16: sin cambios de texto"
+  }
+}

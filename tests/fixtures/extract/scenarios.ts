@@ -4,6 +4,23 @@
  *
  * Shapes mirror the live PinResource / pidgets / oEmbed / resource-feed
  * responses closely enough to walk every extraction branch.
+ *
+ * Golden change log (tests/fixtures/extract/golden.json):
+ * - i18n islands (Phase 2): every failure body gained an additive `code`
+ *   after `error` ({"error":"…","code":"no_media"}), so localized pages can
+ *   show their own text. Re-recording changed exactly the 13 failure
+ *   scenarios (01–06, 18, 24–27, 29, 33) and nothing else: same status,
+ *   headers and `error` text, and all 20 success bodies byte-identical.
+ *   Codes: the extractor's ExtractErrorCode plus the route's own
+ *   access_denied / origin_denied / server_error (src/pages/api/extract.ts).
+ * - i18n fixer (2026-10-17), deliberate extractor changes:
+ *   - Profile titles drop Pinterest's English " - Profile" suffix and the
+ *     repeated "(username)" (21, 22, 23: "Maker One Studio").
+ *   - Avatars are probed size by size (HEAD) and keep the first size the CDN
+ *     serves, else Pinterest's own URL: 21, 22 and 28 still land on 1200x
+ *     (the CDN stub serves it), 23 keeps 140x140_RS (no size served).
+ *   - New 34/35: board feed with board_id (Pinterest 403s without it) and a
+ *     public board whose pins never arrive (collection_unavailable, 503).
  */
 
 export type RouteResult = Response | Promise<Response> | null | undefined;
@@ -46,6 +63,14 @@ export function res(
 }
 
 export const notFound = () => res('Not found', { status: 404 });
+
+/** CDN stub for avatar size probes: serves only the 1200x size. */
+export function avatarCdn(url: string, init?: RequestInit): RouteResult {
+  if (!url.startsWith('https://i.pinimg.com/')) return null;
+  return url.startsWith('https://i.pinimg.com/1200x/') && init?.method === 'HEAD'
+    ? res('', { contentType: 'image/jpeg' })
+    : res('Forbidden', { status: 403 });
+}
 
 /** Decoded `data` option object of a /resource/<Name>/get/ URL, or null. */
 export function resourceOptions(url: string, name: string): any | null {
@@ -256,6 +281,15 @@ function boardHtml(ids: string[], title = 'Cozy Rooms | Pinterest'): string {
   );
 }
 
+/** Board page whose only data is its Redux record (id, pin count, public). */
+function boardReduxHtml(path: string, id: string, pinCount: number): string {
+  const redux = { initialReduxState: { boards: { [id]: { id, name: 'Board', url: path, pin_count: pinCount, privacy: 'public' } } } };
+  return htmlPage(
+    `<meta property="og:title" content="Board | Pinterest">` +
+      `<script id="__PWS_INITIAL_PROPS__" type="application/json">${JSON.stringify(redux)}</script>`,
+  );
+}
+
 /** Board fixture with `total` ids in HTML (all returned by pidgets) and optional feed page. */
 export function boardRoutes(opts: {
   boardUrl?: string;
@@ -339,6 +373,8 @@ export function profileRoutes(opts: { withAvatar?: boolean; extra?: Route } = {}
     const extra = opts.extra?.(url, init);
     if (extra) return extra;
     if (url === PROFILE_URL) return res(profileHtml(opts.withAvatar ?? true), { url: PROFILE_URL });
+    const cdn = opts.withAvatar === false ? null : avatarCdn(url, init);
+    if (cdn) return cdn;
     const ids = pidgetIds(url);
     if (ids) {
       return res({ data: ids.filter((id) => PROFILE_IDS.includes(id)).map((id) => pidgetRow(id, 500 + Number(id.slice(-2)))) });
@@ -601,15 +637,69 @@ export const SCENARIOS: Scenario[] = [
   {
     name: '28_avatar_from_board_og_image',
     body: body({ url: 'https://www.pinterest.com/maker_one/cozy-rooms/', intent: 'avatar' }),
-    route: (url) =>
+    route: (url, init) =>
       url === BOARD_URL
         ? res(htmlPage(`<meta property="og:image" content="${img('280x280_RS', 281)}">`), { url })
-        : notFound(),
+        : avatarCdn(url, init) ?? notFound(),
   },
   {
     name: '29_empty_body',
     body: '',
     route: () => notFound(),
+  },
+  // F2 (i18n Phase 0b): links on any two-letter country prefix and on the
+  // verified country domains. The pre-refactor route answered these with
+  // "not a Pinterest link"; their goldens were recorded from the shared
+  // extractor when the host rule was widened. Earlier goldens are unchanged.
+  {
+    name: '30_country_prefix_video_pin_tr',
+    body: body({ url: `https://tr.pinterest.com/pin/${VIDEO_PIN_ID}/` }),
+    route: pinRoutes({ pageUrl: `https://tr.pinterest.com/pin/${VIDEO_PIN_ID}/`, pinResource: VIDEO_PIN_DATA }),
+  },
+  {
+    name: '31_country_prefix_board_nl',
+    body: body({ url: 'https://nl.pinterest.com/maker_one/cozy-rooms/' }),
+    route: boardRoutes({ boardUrl: 'https://nl.pinterest.com/maker_one/cozy-rooms/', htmlIds: BOARD_HTML_IDS, pageIds: BOARD_PAGE_IDS }),
+  },
+  {
+    name: '32_country_domain_image_pin_co_nz',
+    body: body({ url: `www.pinterest.co.nz/pin/${IMAGE_PIN_ID}/` }),
+    route: pinRoutes({ pageUrl: `https://www.pinterest.co.nz/pin/${IMAGE_PIN_ID}/`, pinResource: IMAGE_PIN_DATA }),
+  },
+  {
+    name: '33_country_prefix_lookalike_rejected',
+    body: body({ url: 'https://tr.pinterest.evil.com/pin/1/' }),
+    route: () => res(htmlPage('<meta property="og:image" content="https://i.pinimg.com/736x/aa/bb/cc/x.jpg">')),
+  },
+  {
+    name: '34_board_feed_needs_board_id',
+    body: body({ url: 'https://www.pinterest.com/maker_one/id-board/' }),
+    route: (url, init) => {
+      const boardUrl = 'https://www.pinterest.com/maker_one/id-board/';
+      if (url === boardUrl) return res(boardReduxHtml('/maker_one/id-board/', '4100000000000000', 2), { url: boardUrl });
+      const feed = resourceOptions(url, 'BoardFeedResource');
+      if (feed) {
+        const h = new Headers(init?.headers);
+        if (feed.board_id !== '4100000000000000' || !h.get('X-Pinterest-PWS-Handler')) {
+          return res({ resource_response: { error: { message: 'Invalid Resource Request' } } }, { status: 403 });
+        }
+        return res({
+          resource_response: { data: [pidgetRow('e1_AbC-dEf_001', 341, { grid_title: 'Feed one' }), pidgetRow('e1_AbC-dEf_002', 342)] },
+          resource: { options: { bookmarks: ['-end-'] } },
+        });
+      }
+      return notFound();
+    },
+  },
+  {
+    name: '35_public_board_pins_unavailable',
+    body: body({ url: 'https://www.pinterest.com/maker_one/shy-board/' }),
+    route: (url) => {
+      const boardUrl = 'https://www.pinterest.com/maker_one/shy-board/';
+      if (url === boardUrl) return res(boardReduxHtml('/maker_one/shy-board/', '4200000000000000', 30), { url: boardUrl });
+      if (resourceOptions(url, 'BoardFeedResource')) return res({ resource_response: { data: [] } });
+      return notFound();
+    },
   },
 ];
 
