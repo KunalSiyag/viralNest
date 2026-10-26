@@ -470,6 +470,20 @@ export function alternatesFor(pageId: PageId): Alternate[] {
   return out;
 }
 
+/** English always; other locales only when LOCALE_META.indexable. */
+export function isLocaleIndexable(locale: AnyLocale): boolean {
+  return locale === 'en' || LOCALE_META[locale].indexable;
+}
+
+/**
+ * The cluster search engines see (HTML <link>s, sitemap, route map): the
+ * alternatesFor set minus noindex locales. alternatesFor stays the full set
+ * for the language menu, which still links every live locale.
+ */
+export function indexableAlternatesFor(pageId: PageId): Alternate[] {
+  return alternatesFor(pageId).filter((a) => a.locale === 'x-default' || isLocaleIndexable(a.locale));
+}
+
 /** Live pages of a locale, in PAGE_IDS order. */
 export function localePagesOf(locale: AnyLocale): PageId[] {
   if (locale === 'en') return PAGE_IDS.slice();

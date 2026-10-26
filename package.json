@@ -13,7 +13,6 @@
     "test:seo-build": "python3 scripts/verify_seo_build_artifacts.py && python3 scripts/verify_i18n_build.py",
     "i18n:check": "node scripts/i18n-check.mjs",
     "preview": "astro build && node -e \"require('fs').writeFileSync('dist/.assetsignore','_worker.js\\n_routes.json\\n.i18n-routes.json\\n')\" && wrangler dev",
-    "announce": "node scripts/announce.mjs",
     "links:scan": "node scripts/link_ops.mjs",
     "deploy": "astro build && node -e \"require('fs').writeFileSync('dist/.assetsignore','_worker.js\\n_routes.json\\n.i18n-routes.json\\n')\" && wrangler deploy",
     "deploy:prod": "npm run deploy",

@@ -4,14 +4,12 @@ on:
   push:
     branches:
       - main
-  schedule:
-    # Run daily at 02:00 UTC
-    - cron: '0 2 * * *'
   workflow_dispatch:
 
 jobs:
   seo-build-check-index:
-    name: Build, Audit SEO Health & Instant Index
+    # IndexNow runs in deploy.yml, for changed URLs only, once the build is live.
+    name: Build & Audit SEO Health
     runs-on: ubuntu-latest
 
     steps:
@@ -37,11 +35,3 @@ jobs:
 
       - name: Automated Build-Time SEO Health Check (0 Errors Enforced)
         run: python3 scripts/seo_health_check.py
-
-      - name: Submit URLs to IndexNow API (Bing, Yandex, Naver)
-        run: python3 scripts/index_now.py
-
-      - name: Submit URLs to Google Indexing API
-        env:
-          SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-        run: python3 scripts/index_pages.py

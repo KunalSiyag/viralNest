@@ -165,7 +165,10 @@ def main() -> int:
             continue
         key = f"{loc}:{info['pageId']}"
         robots = (meta_content(html, "robots") or "").lower()
-        if "noindex" in robots:
+        if not routes["locales"][loc].get("indexable", True):
+            if "noindex" not in robots:
+                errors.append(f"{key}: locale is not indexable but the page is missing noindex")
+        elif "noindex" in robots:
             errors.append(f"{key}: unexpected noindex")
         if canonical(html) != f"https://pintdownload.app{path}":
             errors.append(f"{key}: canonical {canonical(html)!r} is not self")

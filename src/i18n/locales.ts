@@ -34,23 +34,31 @@ export interface LocaleMeta {
   live: boolean;
   /** Ad slots allowed on this locale's pages (de: no ads until an Impressum exists). */
   ads: boolean;
+  /**
+   * Search flag, separate from `live`. A live locale that is not indexable is
+   * still routed and in the language menu, but renders `noindex, follow` and
+   * stays out of hreflang clusters and the sitemap. Flip to true only after a
+   * human native speaker has reviewed the locale: 12 agent-written locales on
+   * a young domain read as scaled content (docs/i18n/architecture.md risks).
+   */
+  indexable: boolean;
 }
 
 export const LOCALE_META: Record<AnyLocale, LocaleMeta> = {
-  en: { hreflang: 'en', htmlLang: 'en', ogLocale: 'en_US', dir: 'ltr', endonym: 'English', script: 'latin', homeLabel: 'Home', release: null, live: true, ads: true },
-  es: { hreflang: 'es', htmlLang: 'es', ogLocale: 'es_LA', dir: 'ltr', endonym: 'Español', script: 'latin', homeLabel: 'Inicio', release: 'A', live: true, ads: true },
-  pt: { hreflang: 'pt', htmlLang: 'pt-BR', ogLocale: 'pt_BR', dir: 'ltr', endonym: 'Português', script: 'latin', homeLabel: 'Início', release: 'A', live: true, ads: true },
-  fr: { hreflang: 'fr', htmlLang: 'fr', ogLocale: 'fr_FR', dir: 'ltr', endonym: 'Français', script: 'latin', homeLabel: 'Accueil', release: 'A', live: true, ads: true },
+  en: { hreflang: 'en', htmlLang: 'en', ogLocale: 'en_US', dir: 'ltr', endonym: 'English', script: 'latin', homeLabel: 'Home', release: null, live: true, ads: true, indexable: true },
+  es: { hreflang: 'es', htmlLang: 'es', ogLocale: 'es_LA', dir: 'ltr', endonym: 'Español', script: 'latin', homeLabel: 'Inicio', release: 'A', live: true, ads: true, indexable: false },
+  pt: { hreflang: 'pt', htmlLang: 'pt-BR', ogLocale: 'pt_BR', dir: 'ltr', endonym: 'Português', script: 'latin', homeLabel: 'Início', release: 'A', live: true, ads: true, indexable: false },
+  fr: { hreflang: 'fr', htmlLang: 'fr', ogLocale: 'fr_FR', dir: 'ltr', endonym: 'Français', script: 'latin', homeLabel: 'Accueil', release: 'A', live: true, ads: true, indexable: false },
   // User decision 4 (2026-10-15): /de launches with no ad slots; Impressum before ads.
-  de: { hreflang: 'de', htmlLang: 'de', ogLocale: 'de_DE', dir: 'ltr', endonym: 'Deutsch', script: 'latin', homeLabel: 'Startseite', release: 'A', live: true, ads: false },
-  it: { hreflang: 'it', htmlLang: 'it', ogLocale: 'it_IT', dir: 'ltr', endonym: 'Italiano', script: 'latin', homeLabel: 'Home', release: 'A', live: true, ads: true },
-  nl: { hreflang: 'nl', htmlLang: 'nl', ogLocale: 'nl_NL', dir: 'ltr', endonym: 'Nederlands', script: 'latin', homeLabel: 'Home', release: 'A', live: true, ads: true },
-  id: { hreflang: 'id', htmlLang: 'id', ogLocale: 'id_ID', dir: 'ltr', endonym: 'Bahasa Indonesia', script: 'latin', homeLabel: 'Beranda', release: 'A', live: true, ads: true },
-  tr: { hreflang: 'tr', htmlLang: 'tr', ogLocale: 'tr_TR', dir: 'ltr', endonym: 'Türkçe', script: 'latin-ext', homeLabel: 'Ana Sayfa', release: 'A', live: true, ads: true },
-  vi: { hreflang: 'vi', htmlLang: 'vi', ogLocale: 'vi_VN', dir: 'ltr', endonym: 'Tiếng Việt', script: 'vietnamese', homeLabel: 'Trang chủ', release: 'A', live: true, ads: true },
-  ru: { hreflang: 'ru', htmlLang: 'ru', ogLocale: 'ru_RU', dir: 'ltr', endonym: 'Русский', script: 'cyrillic', homeLabel: 'Главная', release: 'B', live: true, ads: true },
-  th: { hreflang: 'th', htmlLang: 'th', ogLocale: 'th_TH', dir: 'ltr', endonym: 'ไทย', script: 'thai', homeLabel: 'หน้าแรก', release: 'B', live: true, ads: true },
-  ar: { hreflang: 'ar', htmlLang: 'ar', ogLocale: 'ar_AR', dir: 'rtl', endonym: 'العربية', script: 'arabic', homeLabel: 'الرئيسية', release: 'C', live: true, ads: true },
+  de: { hreflang: 'de', htmlLang: 'de', ogLocale: 'de_DE', dir: 'ltr', endonym: 'Deutsch', script: 'latin', homeLabel: 'Startseite', release: 'A', live: true, ads: false, indexable: false },
+  it: { hreflang: 'it', htmlLang: 'it', ogLocale: 'it_IT', dir: 'ltr', endonym: 'Italiano', script: 'latin', homeLabel: 'Home', release: 'A', live: true, ads: true, indexable: false },
+  nl: { hreflang: 'nl', htmlLang: 'nl', ogLocale: 'nl_NL', dir: 'ltr', endonym: 'Nederlands', script: 'latin', homeLabel: 'Home', release: 'A', live: true, ads: true, indexable: false },
+  id: { hreflang: 'id', htmlLang: 'id', ogLocale: 'id_ID', dir: 'ltr', endonym: 'Bahasa Indonesia', script: 'latin', homeLabel: 'Beranda', release: 'A', live: true, ads: true, indexable: false },
+  tr: { hreflang: 'tr', htmlLang: 'tr', ogLocale: 'tr_TR', dir: 'ltr', endonym: 'Türkçe', script: 'latin-ext', homeLabel: 'Ana Sayfa', release: 'A', live: true, ads: true, indexable: false },
+  vi: { hreflang: 'vi', htmlLang: 'vi', ogLocale: 'vi_VN', dir: 'ltr', endonym: 'Tiếng Việt', script: 'vietnamese', homeLabel: 'Trang chủ', release: 'A', live: true, ads: true, indexable: false },
+  ru: { hreflang: 'ru', htmlLang: 'ru', ogLocale: 'ru_RU', dir: 'ltr', endonym: 'Русский', script: 'cyrillic', homeLabel: 'Главная', release: 'B', live: true, ads: true, indexable: false },
+  th: { hreflang: 'th', htmlLang: 'th', ogLocale: 'th_TH', dir: 'ltr', endonym: 'ไทย', script: 'thai', homeLabel: 'หน้าแรก', release: 'B', live: true, ads: true, indexable: false },
+  ar: { hreflang: 'ar', htmlLang: 'ar', ogLocale: 'ar_AR', dir: 'rtl', endonym: 'العربية', script: 'arabic', homeLabel: 'الرئيسية', release: 'C', live: true, ads: true, indexable: false },
 };
 
 export function isLocale(value: string): value is Locale {

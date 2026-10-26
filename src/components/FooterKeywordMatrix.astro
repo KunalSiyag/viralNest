@@ -6,51 +6,38 @@ interface Props {
   heading?: string;
 }
 
+/**
+ * English footer: plain labels, one link per page. This sits on every page, so
+ * keyword-stuffed anchors here read as sitewide anchor manipulation.
+ */
 const MATRIX_GROUPS = [
   {
-    category: 'Device & Mobile Downloaders',
+    category: 'Downloaders',
     links: [
-      { href: '/download-pinterest-videos-iphone-android', label: 'iPhone & Android Camera Roll Saver' },
-      { href: '/how-to-download-pinterest-video-in-gallery', label: 'How to Download Video in Phone Gallery' },
-      { href: '/how-to-download-pinterest-video-on-laptop', label: 'How to Download Pinterest Video on Laptop & PC' },
-      { href: '/pinterest-video-downloader-chrome', label: 'Pinterest Video Downloader Chrome Extension' },
-      { href: '/how-to-download-pinterest-videos', label: 'Step-by-Step Pinterest Download Guide' },
+      { href: '/pinterest-video-downloader', label: 'Video downloader' },
+      { href: '/pinterest-image-downloader', label: 'Image downloader' },
+      { href: '/pinterest-gif-downloader', label: 'GIF downloader' },
+      { href: '/pinterest-pin-downloader', label: 'Pin downloader' },
+      { href: '/pinterest-carousel-downloader', label: 'Carousel downloader' },
+      { href: '/pinterest-audio-downloader', label: 'Audio to MP3' },
     ],
   },
   {
-    category: 'Format & Quality Downloaders',
+    category: 'Boards & profiles',
     links: [
-      { href: '/pinterest-video-downloader', label: 'Pinterest Video Downloader (HD MP4)' },
-      { href: '/pinterest-carousel-downloader', label: 'Pinterest Carousel & Slide Downloader' },
-      { href: '/pinterest-image-downloader', label: 'Pinterest Photo & Image Downloader (HD)' },
-      { href: '/pinterest-gif-downloader', label: 'Pinterest Animated GIF Downloader' },
-      { href: '/pinterest-audio-downloader', label: 'Pinterest MP3 Audio Extractor' },
-      { href: '/pinterest-4k-downloader', label: 'Pinterest 4K? Real HD Quality' },
-      { href: '/pinterest-story-downloader', label: 'Pinterest Story & Idea Pin Downloader' },
+      { href: '/pinterest-board-downloader', label: 'Board downloader' },
+      { href: '/pinterest-profile-downloader', label: 'Profile downloader' },
+      { href: '/pinterest-profile-picture-downloader', label: 'Profile picture' },
     ],
   },
   {
-    category: 'Batch & Archive Downloaders',
+    category: 'Guides',
     links: [
-      { href: '/pinterest-board-downloader', label: 'Pinterest Board Downloader (ZIP Pack)' },
-      { href: '/pinterest-profile-downloader', label: 'Pinterest Profile Downloader (ZIP Pack)' },
-      { href: '/pinterest-profile-picture-downloader', label: 'Pinterest Avatar / DP Downloader (HD PFP)' },
-      { href: '/pinterest-pin-downloader', label: 'Pinterest Pin Downloader' },
-      { href: '/pinterest-to-mp4', label: 'Pinterest Link to MP4 Converter' },
-      { href: '/pinterest-seo-title-generator', label: 'Pinterest SEO Title & Tag Generator' },
-    ],
-  },
-  {
-    category: 'Core Guides (Indexable)',
-    links: [
-      { href: '/blog/how-to-download-pinterest-videos-fast-and-easy', label: 'How to Download Pinterest Videos Fast' },
-      { href: '/blog/how-to-download-entire-pinterest-board-zip', label: 'Download Entire Board as ZIP' },
-      { href: '/blog/troubleshooting-pinterest-downloads', label: 'Troubleshooting Pinterest Downloads' },
-      { href: '/blog/how-to-download-pinterest-profile-picture', label: 'Download Pinterest Profile Picture (HD PFP)' },
-      { href: '/blog/how-to-make-money-on-pinterest', label: 'Make Money on Pinterest (Realistic Paths)' },
-      { href: '/blog/make-money-on-pinterest-without-website', label: 'Make Money on Pinterest Without a Blog' },
-      { href: '/blog/pinterest-account-backup-shadowban-protection-guide', label: 'Account Backup & Shadowban Protection' },
-      { href: '/blog', label: 'View All Pinterest Download Guides' },
+      { href: '/download-pinterest-videos-iphone-android', label: 'iPhone & Android' },
+      { href: '/how-to-download-pinterest-video-in-gallery', label: 'Save to gallery' },
+      { href: '/how-to-download-pinterest-video-on-laptop', label: 'Laptop & PC' },
+      { href: '/pinterest-video-downloader-chrome', label: 'Chrome' },
+      { href: '/blog', label: 'Blog' },
     ],
   },
 ];
@@ -61,10 +48,10 @@ const { groups = MATRIX_GROUPS, heading = 'All PintDownload tools and guides' } 
 <nav class="w-full bg-ink-950 text-slate-300 pt-14 text-start" aria-labelledby="all-tools-heading">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 border-b-2 border-dashed border-white/20">
     <h2 id="all-tools-heading" class="sr-only">{heading}</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8">
+    <div class={`grid grid-cols-1 sm:grid-cols-2 ${groups.length >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-x-10 gap-y-8`}>
       {groups.map((group) => (
         <div>
-          <h3 class="t-label text-stock-canary mb-3">{group.category.replace(' (Indexable)', '')}</h3>
+          <h3 class="t-label text-stock-canary mb-3">{group.category}</h3>
           <ul class="space-y-0.5 text-[0.9375rem]">
             {group.links.map((link) => (
               <li>

@@ -15,7 +15,8 @@ Checks, for every routed page and every localized HTML file:
   6  internal links stay in-locale (or are marked hreflang="en", or assets)
   7  English leftovers in visible text (errors for released locales, else warnings)
   8  dist/<loc>/404.html exists, noindex, right language; dist/<loc>/404/ absent
-  9  sitemap: xhtml namespace, each localized URL once, xhtml set = HTML set,
+  9  sitemap: xhtml namespace, each indexable localized URL once (noindex
+     locales absent), xhtml set = HTML set,
      lastmod = content dateModified
  10  island bundle isolation: no locale catalog string in dist/_astro/*.js
  11  /de pages render no ad slot or ad script (user decision 4)
@@ -211,6 +212,11 @@ def main() -> int:
         if (page.html_dir == "rtl") != is_ar:
             err(f"{tag}: dir={page.html_dir!r} (rtl iff /ar)")
         # 2
+        if not meta.get("indexable", True):
+            if "noindex" not in page.robots:
+                err(f"{tag}: locale is not indexable but the page is missing noindex")
+        elif "noindex" in page.robots:
+            err(f"{tag}: unexpected noindex ({page.robots})")
         if page.canonical != url:
             err(f"{tag}: canonical {page.canonical!r} != self {url!r}")
         if page.alternates != expected:
@@ -324,6 +330,10 @@ def main() -> int:
         for path, info in pages.items():
             url = SITE + ("/" if path == "/" else path)
             found = by_loc.get(url, [])
+            if not locales[info["locale"]].get("indexable", True):
+                if found:
+                    err(f"sitemap: {url} is noindex (locale not indexable) but listed")
+                continue
             if info["locale"] != "en" and len(found) != 1:
                 err(f"sitemap: {url} listed {len(found)} times")
                 continue
