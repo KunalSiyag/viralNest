@@ -9,7 +9,7 @@ import {
   LanguageMenu,
   getCollection,
   LOCALE_META,
-  alternatesFor,
+  indexableAlternatesFor,
   liveLocales,
   localeHome,
   localeOfPath,
@@ -67,8 +67,10 @@ const isEn = locale === 'en';
 const meta = LOCALE_META[locale];
 const t: UiStrings = Astro.props.ui ?? EN_UI;
 const pageId: PageId | null = route && route.locale === locale ? route.pageId : null;
+/** Live locale not cleared for search (LOCALE_META.indexable): noindex, follow and no hreflang. */
+const localeNoindex = !meta.indexable;
 /** hreflang cluster: one generator for every member (src/i18n/routes.ts). Localized noindex pages (404) carry none. */
-const cluster = pageId ? alternatesFor(pageId) : null;
+const cluster = pageId && !localeNoindex ? indexableAlternatesFor(pageId) : null;
 const otherLocalesLive = liveLocales().length > 0;
 
 /** Content of this locale's live pages (nav labels, cards); English never loads it. */
@@ -373,6 +375,8 @@ const headerScript = `
     <meta name="author" content={BRAND.name} />
     {noindex ? (
       <meta name="robots" content="noindex, nofollow" />
+    ) : localeNoindex ? (
+      <meta name="robots" content="noindex, follow" />
     ) : (
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     )}

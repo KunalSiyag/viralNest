@@ -1,7 +1,7 @@
 name: Deploy to Cloudflare
 
-# Deploys pintdownload.app after the SEO build passes on a push to main
-# (not after the daily scheduled run), or on demand from the Actions tab.
+# Deploys pintdownload.app after the SEO build passes on a push to main, or on
+# demand from the Actions tab, then tells IndexNow about the URLs that changed.
 #
 # Needs two repository secrets (Settings → Secrets and variables → Actions):
 #   CLOUDFLARE_API_TOKEN   a Cloudflare API token from the "Edit Cloudflare Workers" template
@@ -68,6 +68,10 @@ jobs:
       - name: Exclude Worker files from assets
         run: node -e "require('fs').writeFileSync('dist/.assetsignore','_worker.js\n_routes.json\n')"
 
+      # Before deploying: production is still the previous build, the baseline.
+      - name: Find URLs this deploy changes
+        run: node scripts/indexnow-changed.mjs diff "$RUNNER_TEMP/indexnow-urls.txt"
+
       - name: Deploy Worker
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -87,3 +91,7 @@ jobs:
           done
           echo "::error::https://pintdownload.app/ does not reference $css after deploy."
           exit 1
+
+      - name: Submit changed URLs to IndexNow
+        continue-on-error: true
+        run: node scripts/indexnow-changed.mjs submit "$RUNNER_TEMP/indexnow-urls.txt"

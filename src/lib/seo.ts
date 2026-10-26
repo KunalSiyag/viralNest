@@ -2,7 +2,7 @@
 
 import { absoluteUrl } from './urls';
 import { LOCALES } from '../i18n/locales';
-import { PAGES, alternatesFor, localizedRoutes, pathFor, routeForPath, type Alternate, type PageId } from '../i18n/routes';
+import { PAGES, indexableAlternatesFor, isLocaleIndexable, localizedRoutes, pathFor, routeForPath, type Alternate, type PageId } from '../i18n/routes';
 
 export function softwareAppSchema(opts: {
   name: string;
@@ -230,13 +230,13 @@ export type SitemapEntry = {
 export function sitemapAlternatesFor(enPath: string): Alternate[] | undefined {
   const route = routeForPath(enPath);
   if (!route || route.locale !== 'en') return undefined;
-  const alts = alternatesFor(route.pageId);
+  const alts = indexableAlternatesFor(route.pageId);
   return alts.length > 2 ? alts : undefined;
 }
 
 /**
- * Every live localized URL once, with the full alternate set (same generator
- * as the HTML <link>s). Priority/changefreq inherit the English route's.
+ * Every live, indexable localized URL once, with the full alternate set (same
+ * generator as the HTML <link>s). Priority/changefreq inherit the English route's.
  * `lastmod` comes from the content JSON dateModified, keyed `<locale>/<pageId>`;
  * it is never the build date.
  */
@@ -246,13 +246,14 @@ export function localizedSitemapEntries(lastmods: Record<string, string> = {}): 
   const homes = LOCALES.map((locale) => ({ locale, pageId: 'home' as PageId, path: pathFor('home', locale) }))
     .filter((h): h is { locale: (typeof LOCALES)[number]; pageId: PageId; path: string } => Boolean(h.path));
   for (const { locale, pageId, path } of [...homes, ...localizedRoutes()]) {
+    if (!isLocaleIndexable(locale)) continue;
     const en = byPath.get(PAGES[pageId].en);
     entries.push({
       loc: absoluteUrl(path),
       lastmod: lastmods[`${locale}/${pageId}`],
       changefreq: en?.changefreq ?? 'weekly',
       priority: en?.priority ?? 0.8,
-      alternates: alternatesFor(pageId),
+      alternates: indexableAlternatesFor(pageId),
     });
   }
   return entries;

@@ -6,7 +6,7 @@ import cloudflare from '@astrojs/cloudflare';
 import { existsSync, readdirSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { LOCALES, LOCALE_META } from './src/i18n/locales.ts';
-import { PAGE_IDS, alternatesFor, isLocaleLive, pathFor } from './src/i18n/routes.ts';
+import { PAGE_IDS, indexableAlternatesFor, isLocaleIndexable, isLocaleLive, pathFor } from './src/i18n/routes.ts';
 
 // `astro dev` (npm run dev) is the only command that renders in Node.
 const isDevServer = process.argv.slice(2).includes('dev');
@@ -57,10 +57,11 @@ const i18nBuild = {
       /** @type {import('./src/i18n/locales.ts').AnyLocale[]} */
       const all = ['en', ...LOCALES];
       for (const pageId of PAGE_IDS) {
-        const alternates = alternatesFor(pageId).map(({ hreflang, href }) => ({ hreflang, href }));
+        const alternates = indexableAlternatesFor(pageId).map(({ hreflang, href }) => ({ hreflang, href }));
         for (const locale of all) {
           const path = pathFor(pageId, locale);
-          if (path) pages[path] = { pageId, locale, alternates };
+          // noindex locales carry no hreflang cluster (LOCALE_META.indexable).
+          if (path) pages[path] = { pageId, locale, alternates: isLocaleIndexable(locale) ? alternates : [] };
         }
       }
       const locales = Object.fromEntries(

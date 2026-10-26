@@ -512,7 +512,9 @@ import {
   SLUGS,
   SLUG_PATTERN,
   alternatesFor,
+  indexableAlternatesFor,
   isLive,
+  isLocaleIndexable,
   liveLocales,
   localeHome,
   localizedRoutes,
@@ -543,6 +545,17 @@ function withPreviewAll<T>(fn: () => T): T {
     if (prev === undefined) delete process.env.PD_I18N_PREVIEW;
     else process.env.PD_I18N_PREVIEW = prev;
     if (prevIdx !== undefined) process.env.PD_I18N_CONTENT_INDEX = prevIdx;
+  }
+}
+
+/** Every locale indexable for the duration of fn (LOCALE_META.indexable). */
+function withIndexableAll<T>(fn: () => T): T {
+  const saved = LOCALES.map((l) => [l, LOCALE_META[l].indexable] as const);
+  for (const l of LOCALES) LOCALE_META[l].indexable = true;
+  try {
+    return fn();
+  } finally {
+    for (const [l, v] of saved) LOCALE_META[l].indexable = v;
   }
 }
 
@@ -701,16 +714,35 @@ describe('i18n hreflang clusters', () => {
   });
 
   it('sitemap entries carry the same clusters as the HTML', () => {
+    withPreviewAll(() =>
+      withIndexableAll(() => {
+        const entries = localizedSitemapEntries({ 'es/home': '2026-10-15' });
+        assert.equal(entries.length, 166);
+        for (const e of entries) {
+          const r = routeForPath(new URL(e.loc).pathname)!;
+          assert.deepEqual(e.alternates, alternatesFor(r.pageId));
+        }
+        assert.equal(entries.find((e) => e.loc === 'https://pintdownload.app/es')!.lastmod, '2026-10-15');
+        assert.deepEqual(sitemapAlternatesFor('/pinterest-video-downloader'), alternatesFor('pinterest-video-downloader'));
+        assert.equal(sitemapAlternatesFor('/blog'), undefined);
+      }),
+    );
+  });
+
+  it('noindex locales stay routed but leave the sitemap and the search cluster', () => {
     withPreviewAll(() => {
-      const entries = localizedSitemapEntries({ 'es/home': '2026-10-15' });
-      assert.equal(entries.length, 166);
-      for (const e of entries) {
-        const r = routeForPath(new URL(e.loc).pathname)!;
-        assert.deepEqual(e.alternates, alternatesFor(r.pageId));
+      const saved = LOCALE_META.es.indexable;
+      try {
+        LOCALE_META.es.indexable = false;
+        assert.equal(isLocaleIndexable('es'), false);
+        assert.equal(isLocaleIndexable('en'), true);
+        assert.equal(pathFor('pinterest-video-downloader', 'es'), '/es/descargar-videos-pinterest');
+        assert.ok(alternatesFor('pinterest-video-downloader').some((a) => a.locale === 'es'), 'language menu keeps es');
+        assert.equal(indexableAlternatesFor('pinterest-video-downloader').some((a) => a.locale === 'es'), false);
+        assert.equal(localizedSitemapEntries().some((e) => e.loc.startsWith('https://pintdownload.app/es')), false);
+      } finally {
+        LOCALE_META.es.indexable = saved;
       }
-      assert.equal(entries.find((e) => e.loc === 'https://pintdownload.app/es')!.lastmod, '2026-10-15');
-      assert.deepEqual(sitemapAlternatesFor('/pinterest-video-downloader'), alternatesFor('pinterest-video-downloader'));
-      assert.equal(sitemapAlternatesFor('/blog'), undefined);
     });
   });
 
